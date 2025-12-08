@@ -479,5 +479,14 @@
     "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
     "topic": "General",
     "id": 1765162670474
+  },
+  {
+    "title": "Mark Price Chart - EN",
+    "language": "English",
+    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Mark%20Price%20Chart%20-%20EN.jpg?raw=true",
+    "text": "To see the Mark Price chart, please follow the steps in the screenshot: \n\n1 -) Click On Futures \n\n2 -) Click On the Chart Icon\n\n3 -) Click on Last Price button above the chart\n\n4 -) Select Mark Price \n\nThis way you can see the real-time mark price chart.\n\nTo Learn More about the difference between Mark Price and Last Price, you can check this official guide as well: \n\nWhat Is the Difference Between a Futures Contract’s Last Price and Mark Price?\nhttps://www.binance.com/en/blog/futures/5704082076024731087 ",
+    "topic": "Futures Trading",
+    "text_tr": "Mark Price grafiğini görmek için lütfen ekran görüntüsündeki adım takip ediniz: \n\n1 -) Futures'a tıklayın\n\n2 -) Grafik ikonuna tıklayın \n\n3 -) Grafiğin üstündeki Last Price butonuna tıklayın\n\n4 -) Mark Price'ı seçin\n\nBu sayede anlık Mark Price grafiğini görüntüleyebilir ve geçmişini de inceleyebilirsiniz. \n\nMark Price ve Last Price arasındaki farkları öğrenmek adına dilerseniz aşağıdaki makaleyede göz atabilirsiniz; \nhttps://www.binance.com/en/blog/futures/5704082076024731087 ",
+    "id": 1765163177310
   }
 ]
