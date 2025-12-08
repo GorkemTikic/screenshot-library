@@ -1,10 +1,14 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
-import rawData from '../data/data.json';
+import bundledData from '../data/data.json';
 
 const DataContext = createContext();
+const DATA_URL = 'https://raw.githubusercontent.com/GorkemTikic/screenshot-library/main/src/data/data.json';
 
 export function DataProvider({ children }) {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(bundledData); // Start with bundled data (Stale-while-revalidate)
+    const [isLoading, setIsLoading] = useState(true);
+    const [fetchError, setFetchError] = useState(null);
+
     const [favorites, setFavorites] = useState(() => {
         try {
             return JSON.parse(localStorage.getItem('fd_favorites')) || [];
@@ -14,7 +18,24 @@ export function DataProvider({ children }) {
     });
 
     useEffect(() => {
-        setItems(rawData);
+        const loadLines = async () => {
+            try {
+                // Fetch live data with cache busting
+                const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
+                if (!response.ok) throw new Error('Failed to fetch live data');
+                const liveData = await response.json();
+                setItems(liveData);
+                console.log("Loaded live data from GitHub");
+            } catch (err) {
+                console.warn("Live data fetch failed, using bundled data:", err);
+                setFetchError(err.message);
+                // items is already bundledData, so no action needed
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        loadLines();
     }, []);
 
     useEffect(() => {
