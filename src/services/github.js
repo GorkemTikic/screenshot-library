@@ -97,12 +97,19 @@ export const githubService = {
     updateDataJson: async (newItems) => {
         if (!githubService.isConfigured()) throw new Error("Config missing");
         const { owner, repo } = githubService.getConfig();
-        const path = 'src/data/data.json'; // Assuming this is where it lives
+        const path = 'src/data/data.json';
         const url = `${GITHUB_API_URL}/repos/${owner}/${repo}/contents/${path}`;
 
-        // Step A: Get current SHA
-        const getResponse = await fetch(url, { headers: githubService.getHeaders() });
-        if (!getResponse.ok) throw new Error("Could not fetch data.json to get SHA");
+        // Step A: Get current SHA (with cache busting)
+        const getResponse = await fetch(`${url}?t=${Date.now()}`, {
+            headers: githubService.getHeaders(),
+            cache: 'no-store'
+        });
+
+        if (!getResponse.ok) {
+            const err = await getResponse.json().catch(() => ({}));
+            throw new Error(`Could not fetch data.json (Status: ${getResponse.status}): ${err.message || ''}`);
+        }
 
         const currentFile = await getResponse.json();
         const sha = currentFile.sha;
@@ -121,7 +128,12 @@ export const githubService = {
             })
         });
 
-        if (!putResponse.ok) throw new Error("Failed to update data.json");
+        if (!putResponse.ok) {
+            const err = await putResponse.json().catch(() => ({}));
+            console.error("GitHub Sync Error:", err);
+            throw new Error(`Update Failed (Status: ${putResponse.status}): ${err.message || 'Unknown error'}`);
+        }
+
         return await putResponse.json();
     }
 };
