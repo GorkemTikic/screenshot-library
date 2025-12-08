@@ -1,5 +1,14 @@
 [
   {
+    "title": "Copy Trading History - EN",
+    "language": "English",
+    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Copy%20Trading%20History%20-%20EN.jpg?raw=true",
+    "text": "1 -) Click on Futures\n2 -) Click on Copy button\n3 -) Click on Copy on right bottom corner\n4 -) You can see the 'Ongoing - Closed' Copy Portfolios in this page.",
+    "topic": "Copy Trading",
+    "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
+    "id": 1765162649314
+  },
+  {
     "title": "Clear Caches - EN",
     "language": "English",
     "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Clear%20Caches%20-%20EN.jpg?raw=true",
@@ -463,12 +472,12 @@
     "topic": "Futures Trading"
   },
   {
-    "title": "Copy Trading History - EN",
+    "title": "Clear Caches - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Copy%20Trading%20History%20-%20EN.jpg?raw=true",
-    "text": "1 -) Click on Futures\n2 -) Click on Copy button\n3 -) Click on Copy on right bottom corner\n4 -) You can see the 'Ongoing - Closed' Copy Portfolios in this page.",
-    "topic": "Copy Trading",
+    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Clear%20Caches%20-%20EN.jpg?raw=true",
+    "text": "1 -) Click on Home\n2 -) Click on Menu\n3 -) Click on Settings\n4 -) Click on Clear Cache button\n\nThis helps remove temporary files and can make your app run faster and smoother!",
     "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
-    "id": 1765162649314
+    "topic": "General",
+    "id": 1765162670474
   }
 ]
