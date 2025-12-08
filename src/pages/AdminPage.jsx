@@ -372,7 +372,7 @@ export function AdminPage() {
                                     <textarea
                                         className="form-textarea short"
                                         value={formData.text_tr || ''}
-                                        onChange={e => setFormData({ ...formData, text: e.target.value })}
+                                        onChange={e => setFormData({ ...formData, text_tr: e.target.value })}
                                         placeholder="Türkçe çevirisi varsa buraya ekleyin..."
                                     />
                                 </div>
