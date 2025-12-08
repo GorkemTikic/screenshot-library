@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
-import { Moon, Sun, Monitor, Settings, BarChart2 } from 'lucide-react';
+import { Moon, Sun, ShieldCheck, Settings, BarChart2 } from 'lucide-react';
+import { MarketTicker } from './MarketTicker';
 
 export function Layout() {
     const { theme, toggleTheme } = useTheme();
@@ -13,7 +14,7 @@ export function Layout() {
             <header className="app-header">
                 <div className="container header-content">
                     <Link to="/" className="brand" style={{ textDecoration: 'none' }}>
-                        <Monitor className="brand-icon" size={24} />
+                        <ShieldCheck className="brand-icon" size={24} />
                         <h1 className="brand-title">FD Screenshot Assistant</h1>
                     </Link>
 
@@ -36,6 +37,9 @@ export function Layout() {
                     </div>
                 </div>
             </header>
+
+            {/* Market Ticker */}
+            <MarketTicker />
 
             {/* Main Content */}
             <main className="container main-content">

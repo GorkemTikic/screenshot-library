@@ -6,7 +6,9 @@ export function HomePage() {
         <>
             <div className="text-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <h2 className="text-3xl font-bold mb-2">Welcome Back</h2>
-                <p className="text-gray-500 dark:text-gray-400">Quickly find the support screenshot you need.</p>
+                <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+                    💡 <strong>Pro Tip:</strong> Right-click any image and select <strong>"Copy Image"</strong> to paste it directly into your chat. No need to save!
+                </p>
             </div>
             <ScreenshotGallery />
         </>
