@@ -997,6 +997,15 @@ body.dark .lang-switch-btn.active {
   border-bottom-right-radius: var(--radius-lg);
 }
 
+/* Ensure form takes available space for scrolling */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
 /* --- Forms --- */
 
 .form-group {

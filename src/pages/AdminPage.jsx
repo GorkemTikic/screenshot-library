@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '../contexts/DataContext';
-import { Plus, Search, Trash2, Edit2, X, Save, Download, Settings as SettingsIcon, Github, UploadCloud } from 'lucide-react';
+import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github } from 'lucide-react';
 import { githubService } from '../services/github';
 
 export function AdminPage() {
-    const { items, add, update, remove, getJson } = useData();
+    const { items, add, update, remove, allTopics } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -100,13 +100,21 @@ export function AdminPage() {
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
+        let finalData = { ...formData };
+        // Handle New Topic
+        if (finalData.topic === 'NEW') {
+            if (!finalData.newTopicName) return alert("Please enter a topic name");
+            finalData.topic = finalData.newTopicName;
+            delete finalData.newTopicName;
+        }
+
         let newItems;
         if (editingId) {
-            update(editingId, formData);
-            newItems = items.map(i => i.id === editingId ? { ...i, ...formData } : i);
+            update(editingId, finalData);
+            newItems = items.map(i => i.id === editingId ? { ...i, ...finalData } : i);
         } else {
-            add({ ...formData, id: Date.now() });
-            newItems = [...items, { ...formData, id: Date.now() }];
+            add({ ...finalData, id: Date.now() });
+            newItems = [...items, { ...finalData, id: Date.now() }];
         }
 
         // Auto-sync to GitHub
@@ -319,13 +327,20 @@ export function AdminPage() {
                                             onChange={e => setFormData({ ...formData, topic: e.target.value })}
                                         >
                                             <option value="">Select Topic...</option>
-                                            <option value="General">General</option>
-                                            <option value="Authentication">Authentication</option>
-                                            <option value="Dashboard">Dashboard</option>
-                                            <option value="Settings">Settings</option>
-                                            <option value="Account">Account</option>
-                                            <option value="Error Pages">Error Pages</option>
+                                            {/* Dynamic Topics */}
+                                            {allTopics.map(topic => (
+                                                <option key={topic} value={topic}>{topic}</option>
+                                            ))}
+                                            <option value="NEW">+ Create New Topic</option>
                                         </select>
+                                        {formData.topic === 'NEW' && (
+                                            <input
+                                                type="text"
+                                                className="form-input mt-2"
+                                                placeholder="Enter new topic name"
+                                                onChange={(e) => setFormData(prev => ({ ...prev, newTopicName: e.target.value }))}
+                                            />
+                                        )}
                                     </div>
                                     <div className="form-group">
                                         <label>Language</label>
