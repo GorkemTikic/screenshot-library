@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FD Analytics - Restricted Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FCD535;
+            --dark: #1e2329;
+            --light: #f7f8fa;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- LOGIN SCREEN STYLES --- */
+        #login-screen {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        #login-screen h2 { margin-top: 0; color: var(--dark); }
+        #login-screen input {
+            width: 100%;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        #login-screen button {
+            background-color: var(--primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            color: #1e2329;
+        }
+        #login-screen button:hover { background-color: #e6c200; }
+        #error-msg { color: red; font-size: 13px; display: none; margin-top: 10px; }
+
+        /* --- DASHBOARD STYLES (Initially Hidden) --- */
+        #dashboard-content {
+            display: none; /* Gizli başla */
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+        }
+        
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .header-nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+        }
+        .header-nav a:hover { color: var(--dark); }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .card h3 { margin: 10px 0 5px; font-size: 36px; color: var(--dark); }
+        .card p { margin: 0; color: #888; font-size: 14px; }
+        .card i { font-size: 24px; color: var(--primary); margin-bottom: 10px; }
+
+        .action-area {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .btn-sheet {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0f9d58; /* Google Green */
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(15, 157, 88, 0.2);
+        }
+        .btn-sheet:hover {
+            background-color: #0b8043;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(15, 157, 88, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div style="font-size: 40px; color: #FCD535; margin-bottom: 10px;">
+            <i class="fa-solid fa-lock"></i>
+        </div>
+        <h2>Admin Access</h2>
+        <p style="color: #666; font-size: 14px;">Enter password to view analytics.</p>
+        
+        <input type="password" id="passwordInput" placeholder="Enter Password">
+        <button onclick="checkPassword()">Unlock</button>
+        <div id="error-msg">Incorrect password!</div>
+    </div>
+
+    <div id="dashboard-content">
+        <div class="header-nav">
+            <h1><i class="fa-solid fa-chart-pie"></i> FD Analytics Dashboard</h1>
+            <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Back to App</a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="card">
+                <i class="fa-regular fa-image"></i>
+                <h3 id="totalItems">-</h3>
+                <p>Total Screenshots</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-tags"></i>
+                <h3 id="totalTopics">-</h3>
+                <p>Categories</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-language"></i>
+                <h3 id="totalLangs">-</h3>
+                <p>Languages</p>
+            </div>
+        </div>
+
+        <div class="action-area">
+            <h3 style="margin-top:0;">Access Full Database</h3>
+            <p style="color:#666; margin-bottom:25px;">
+                Detailed analytics, user interaction logs, and feedback are stored securely in Google Sheets.
+            </p>
+            <a href="https://docs.google.com/spreadsheets/d/1YmwQeGtO2-y6FVbyYFM8Moq0xuvVlZ4_IQPZb-CG6HQ/edit?gid=0#gid=0" target="_blank" class="btn-sheet">
+                <i class="fa-solid fa-table"></i> Open Google Database
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // --- 🔒 AYARLAR ---
+        // Buraya basit bir şifre belirleyin. 
+        const ACCESS_CODE = "admin123"; 
+        
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value;
+            const error = document.getElementById('error-msg');
+            
+            if (input === ACCESS_CODE) {
+                // Şifre Doğru
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+                loadStats(); // Verileri çekmeye başla
+            } else {
+                // Şifre Yanlış
+                error.style.display = 'block';
+            }
+        }
+
+        // Enter tuşuna basınca da giriş yapsın
+        document.getElementById("passwordInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        function loadStats() {
+            fetch('data.json')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('totalItems').innerText = data.length;
+                    
+                    const topics = new Set(data.map(item => item.topic).filter(t => t));
+                    document.getElementById('totalTopics').innerText = topics.size;
+
+                    const langs = new Set(data.map(item => item.language));
+                    document.getElementById('totalLangs').innerText = langs.size;
+                })
+                .catch(err => console.error("Veri okunamadı:", err));
+        }
+    </script>
+</body>
+</html>

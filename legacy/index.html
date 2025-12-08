@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FD Screenshot Assistant</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+  <style>
+    :root {
+      --bg-color: #f7f8fa;
+      --card-bg: #ffffff;
+      --text-color: #1e2329;
+      --border-color: #e0e0e0;
+      --header-bg: #ffffff;
+      --primary: #FCD535;
+      --primary-hover: #e6c200;
+    }
+
+    /* DARK MODE VARIABLES */
+    body.dark-mode {
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --text-color: #e0e0e0;
+      --border-color: #333333;
+      --header-bg: #1e1e1e;
+      --primary: #FCD535; /* Keep branding color */
+      --primary-hover: #dcb62b;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    header {
+      background: var(--header-bg);
+      padding: 20px;
+      border-bottom: 2px solid var(--border-color);
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    
+    /* Dark Mode Toggle Button */
+    .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        padding: 8px 12px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .theme-toggle:hover {
+        background: rgba(0,0,0,0.05);
+    }
+    body.dark-mode .theme-toggle:hover {
+        background: rgba(255,255,255,0.1);
+    }
+
+    .filters {
+      display: flex;
+      justify-content: center; /* Merkeze hizala */
+      align-items: center;
+      gap: 10px;
+      padding: 15px;
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      transition: background 0.3s;
+    }
+    select, input[type="text"] {
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #d0d0d0;
+      border-radius: 4px;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      cursor: pointer;
+    }
+    
+    /* Analytics Butonu için Özel Stil */
+    .analytics-btn {
+        position: absolute; /* Akıştan çıkar */
+        right: 20px; /* Sağa sabitle */
+        display: flex;
+        align-items: center;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 13px;
+        padding: 5px 10px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background: var(--card-bg);
+    }
+    .analytics-btn:hover {
+        background: rgba(0,0,0,0.05);
+    }
+
+    /* Mobil uyumluluk için Analytics butonu */
+    @media (max-width: 768px) {
+        .analytics-btn {
+            position: relative;
+            right: auto;
+            margin-top: 10px;
+        }
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
+    .item {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      width: 260px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      text-align: center;
+      padding: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+    .item:hover {
+        transform: translateY(-2px);
+    }
+    .item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .label {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      width: 100%;
+      color: var(--text-color);
+    }
+    
+    /* EN/TR Switch Stilleri */
+    .lang-switch {
+      margin-bottom: 8px;
+      font-size: 13px;
+      background: var(--bg-color);
+      border-radius: 12px;
+      padding: 2px 8px;
+      display: inline-block;
+      border: 1px solid var(--border-color);
+    }
+    .lang-btn {
+      cursor: pointer;
+      padding: 2px 4px;
+      font-weight: 600;
+      color: #888;
+    }
+    .lang-btn.active {
+      color: #d97706; /* Koyu sarı/turuncu ton */
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    
+    .tag {
+      font-size: 12px;
+      display: inline-block;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    /* Konu Renkleri */
+    .tag-FuturesTrading { background-color: #2563eb; }
+    .tag-MarginTrading { background-color: #f97316; }
+    .tag-BinanceLOAN { background-color: #059669; }
+    .tag-OptionsTrading { background-color: #7c3aed; }
+    .tag-SmartMoney { background-color: #10b981; }
+    .tag-ArbitrageTrading { background-color: #d97706; }
+    .tag-CopyTrading { background-color: #9333ea; }
+    .tag-GridBot { background-color: #0ea5e9; }
+    .tag-General { background-color: #6b7280; }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: auto; 
+    }
+    .btn {
+      padding: 6px 10px;
+      font-size: 13px;
+      background-color: var(--primary);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #1e2329; /* Text always dark on yellow btn */
+      font-weight: 500;
+    }
+    .btn:hover {
+      background-color: var(--primary-hover);
+    }
+    .hidden {
+      display: none;
+    }
+    .text-preview {
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 13px;
+      white-space: pre-wrap;
+      text-align: left;
+      width: 90%;
+      color: var(--text-color);
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 15px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .lightbox-overlay.show {
+      display: flex;
+    }
+    .lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+    .lightbox-overlay button {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      background: var(--primary);
+      color: #000;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Feedback Modal */
+    #feedbackModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #feedbackModal.show {
+      display: flex;
+    }
+    #feedbackModal .modal-content {
+      background: var(--card-bg);
+      color: var(--text-color);
+      padding: 25px 20px 20px;
+      border-radius: 8px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    #feedbackModal .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #999;
+    }
+    #feedbackModal .modal-close:hover {
+      color: var(--text-color);
+    }
+    #feedbackModal input, #feedbackModal textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+    #feedbackModal button.submit {
+      margin-top: 15px;
+      padding: 8px 14px;
+      background: var(--primary);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      color: #000;
+      font-weight: bold;
+    }
+    #feedbackSuccess, #feedbackError {
+      margin-top: 10px;
+      font-size: 13px;
+      display: none;
+    }
+    #feedbackSuccess { color: green; }
+    #feedbackError { color: red; }
+
+    /* Highlight */
+    .highlight {
+      background-color: #ffeb3b;
+      border-radius: 2px;
+      color: #000; /* Ensure text is readable in dark mode */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FD Screenshot Assistant</h1>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Switch Light/Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+  </header>
+
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Search by keyword...">
+    <select id="languageFilter"></select>
+    <select id="topicFilter"></select>
+    
+    <a href="Analytics.html" class="analytics-btn">
+        <i class="fa-solid fa-chart-bar" style="margin-right:5px;"></i> Analytics
+    </a>
+  </div>
+
+  <div class="gallery" id="gallery"></div>
+
+  <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    Back to Top
+  </button>
+
+  <footer>
+    FD Screenshot Assistant – Internal Use Only<br>
+    Analytics & Data Tracking Enabled
+  </footer>
+
+  <div class="lightbox-overlay" id="lightboxOverlay" onclick="hideLightbox(event)">
+    <button id="lightboxClose">×</button>
+    <img id="lightboxImage" src="" alt="Preview">
+  </div>
+
+  <div id="feedbackModal" onclick="closeModalOutside(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeFeedbackModal()">×</button>
+      <h3>Submit Feedback</h3>
+      <input type="text" id="feedbackName" placeholder="Your name">
+      <textarea id="feedbackComment" rows="4" placeholder="Your comment..."></textarea>
+      <button class="submit" onclick="submitFeedback()">Send</button>
+      <div id="feedbackSuccess">&#10004; Feedback submitted!</div>
+      <div id="feedbackError">&#10060; Please fill in all fields.</div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 🔴 DİKKAT: BURAYA GOOGLE APPS SCRIPT URL'Nİ YAPIŞTIR
+    const TRACKING_URL = "https://script.google.com/macros/s/AKfycbxOnxP_MmAisAATfNTr1O-Qx_4cjT2Yt-svUyUuCotbsuUNToZy2lV77c0GtEOjgq_w/exec";
+    // =========================================================================
+
+    let globalScreenshots = [];
+    let feedbackContext = {};
+
+    // --- THEME MANAGEMENT (DARK MODE) ---
+    function toggleTheme() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('fd_theme', isDark ? 'dark' : 'light');
+        updateThemeIcon(isDark);
+    }
+
+    function updateThemeIcon(isDark) {
+        const btn = document.querySelector('.theme-toggle i');
+        if (isDark) {
+            btn.classList.remove('fa-moon');
+            btn.classList.add('fa-sun');
+        } else {
+            btn.classList.remove('fa-sun');
+            btn.classList.add('fa-moon');
+        }
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('fd_theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        updateThemeIcon(true);
+    }
+
+    // --- ANALYTICS ENGINE (YENİ SİSTEM) ---
+
+    // 1. Device ID Yönetimi
+    function getDeviceId() {
+      let id = localStorage.getItem("fd_device_id");
+      if (!id) {
+        id = 'user_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+        localStorage.setItem("fd_device_id", id);
+      }
+      return id;
+    }
+
+    // 2. Gelişmiş Loglama Fonksiyonu
+    function logEvent(eventType, shot) {
+      if (!TRACKING_URL || TRACKING_URL.includes("BURAYA_UZUN")) return;
+
+      const deviceId = getDeviceId();
+      const url = `${TRACKING_URL}?event=${encodeURIComponent(eventType)}&title=${encodeURIComponent(shot.title)}&lang=${encodeURIComponent(shot.language)}&topic=${encodeURIComponent(shot.topic || '')}&uid=${deviceId}`;
+
+      fetch(url, { mode: 'no-cors' })
+        .then(() => console.log(`Analytics Sent: ${eventType} -> ${shot.title}`))
+        .catch(err => console.error("Analytics Error:", err));
+    }
+
+    // --- UI FONKSİYONLARI ---
+
+    function showLightbox(src, index) {
+      document.getElementById('lightboxImage').src = src;
+      document.getElementById('lightboxOverlay').classList.add('show');
+      // Log: Resim Görüntüleme
+      if (globalScreenshots[index]) logEvent('view_image', globalScreenshots[index]);
+    }
+
+    function hideLightbox(e) {
+      if (e.target.id === 'lightboxOverlay' || e.target.id === 'lightboxClose') {
+        document.getElementById('lightboxOverlay').classList.remove('show');
+      }
+    }
+
+    function handleRightClick(e, index) {
+      // Log: Sağ Tık (Resim Kopyalama Girişimi)
+      if (globalScreenshots[index]) logEvent('right_click_image', globalScreenshots[index]);
+    }
+
+    function copyText(id, button, index) {
+      const shot = globalScreenshots[index];
+      const ta = document.getElementById(id);
+      
+      ta.style.display = 'block';
+      ta.select();
+      document.execCommand('copy');
+      ta.style.display = 'none';
+
+      // Log: Metin Kopyalama
+      logEvent('copy_text', shot);
+
+      const originalHTML = button.innerHTML;
+      button.innerHTML   = `<i class="fa-solid fa-check"></i> Copied!`;
+      button.style.backgroundColor = '#28a745';
+      button.style.color = '#fff';
+
+      setTimeout(() => {
+        button.innerHTML   = originalHTML;
+        button.style.backgroundColor = '#FCD535'; // Reset to primary color (variable not accessible in JS easily, hardcoded)
+        button.style.color = '#1e2329';
+      }, 2000);
+    }
+
+    function togglePreview(id, button, index) {
+      const prev = document.getElementById(id);
+      const showing = !prev.classList.contains('hidden');
+      prev.classList.toggle('hidden');
+      button.innerHTML = showing
+        ? `<i class="fa-regular fa-eye"></i>`
+        : `<i class="fa-regular fa-eye-slash"></i>`;
+      
+      // Log: Metin Önizleme (Sadece açarken)
+      if (!showing) {
+        logEvent('preview_text', globalScreenshots[index]);
+      }
+    }
+
+    // --- EN/TR DİL DEĞİŞTİRME ---
+    function switchLang(index, lang) {
+      const shot = globalScreenshots[index];
+      const textArea = document.getElementById(`text${index}`);
+      const previewDiv = document.getElementById(`preview${index}`);
+      const btnEn = document.getElementById(`btnEn${index}`);
+      const btnTr = document.getElementById(`btnTr${index}`);
+      
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      if (lang === 'tr' && shot.text_tr) {
+        textArea.value = shot.text_tr;
+        previewDiv.innerHTML = highlight(shot.text_tr, q);
+        btnTr.classList.add('active');
+        btnEn.classList.remove('active');
+        // Log: TR Geçiş
+        logEvent('switch_lang_TR', shot);
+      } else {
+        textArea.value = shot.text;
+        previewDiv.innerHTML = highlight(shot.text, q);
+        btnEn.classList.add('active');
+        btnTr.classList.remove('active');
+        // Log: EN Geçiş
+        logEvent('switch_lang_EN', shot);
+      }
+    }
+
+    // --- FEEDBACK SİSTEMİ ---
+    function showFeedbackModal(title, lang, topic, image) {
+      feedbackContext = { title, lang, topic, image };
+      document.getElementById('feedbackModal').classList.add('show');
+      document.getElementById('feedbackSuccess').style.display = 'none';
+      document.getElementById('feedbackError').style.display = 'none';
+    }
+
+    function closeFeedbackModal() {
+      document.getElementById('feedbackModal').classList.remove('show');
+      document.getElementById('feedbackName').value = '';
+      document.getElementById('feedbackComment').value = '';
+    }
+
+    function closeModalOutside(e) {
+      if (e.target.id === 'feedbackModal') closeFeedbackModal();
+    }
+
+    function submitFeedback() {
+      const name = document.getElementById('feedbackName').value.trim();
+      const comment = document.getElementById('feedbackComment').value.trim();
+      const success = document.getElementById('feedbackSuccess');
+      const error   = document.getElementById('feedbackError');
+
+      if (!name || !comment) {
+        success.style.display = 'none';
+        error.innerHTML = '&#10060; Please fill in all fields.';
+        error.style.display = 'block';
+        return;
+      }
+      
+      const deviceId = getDeviceId();
+      const params = new URLSearchParams({
+        event: 'feedback',
+        name,
+        comment,
+        title: feedbackContext.title,
+        lang: feedbackContext.lang,
+        topic: feedbackContext.topic,
+        image: feedbackContext.image || '',
+        uid: deviceId // Device ID'yi feedback'e de ekledik
+      });
+
+      fetch(`${TRACKING_URL}?${params}`, { mode: 'no-cors' })
+        .then(() => {
+          error.style.display   = 'none';
+          success.innerHTML     = '&#10004; Feedback submitted!';
+          success.style.display = 'block';
+          document.getElementById('feedbackName').value    = '';
+          document.getElementById('feedbackComment').value = '';
+          setTimeout(closeFeedbackModal, 1500);
+        })
+        .catch(() => {
+           error.style.display   = 'none';
+           success.innerHTML     = '&#10004; Feedback submitted!'; 
+           success.style.display = 'block';
+           setTimeout(closeFeedbackModal, 1500);
+        });
+    }
+
+    // --- GENEL YARDIMCILAR ---
+
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function highlight(text, q) {
+      if (!q) return text;
+      const pattern = new RegExp(`(${escapeRegExp(q)})`, 'gi');
+      return text.replace(pattern, '<span class="highlight">$1</span>');
+    }
+
+    document.body.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeFeedbackModal();
+        document.getElementById('lightboxOverlay').classList.remove('show');
+      }
+    });
+
+    // --- BAŞLATMA ---
+
+    fetch('data.json')
+      .then(r => r.json())
+      .then(screenshots => {
+        globalScreenshots = screenshots;
+        const gallery   = document.getElementById('gallery');
+        const languages = new Set();
+        const topics    = new Set();
+
+        screenshots.forEach(s => {
+          languages.add(s.language);
+          if (s.topic) topics.add(s.topic);
+        });
+
+        document.getElementById('languageFilter').innerHTML =
+          `<option value="All">All Languages</option>` +
+          [...languages].sort().map(l => `<option>${l}</option>`).join('');
+        document.getElementById('topicFilter').innerHTML =
+          `<option value="All">All Topics</option>` +
+          [...topics].sort().map(t => `<option>${t}</option>`).join('');
+
+        document.getElementById('searchInput').addEventListener('input', render);
+        document.getElementById('languageFilter').addEventListener('change', render);
+        document.getElementById('topicFilter').addEventListener('change', render);
+
+        function sanitizeTopicClass(t) {
+          return 'tag-' + (t||'Uncategorized').replace(/[^a-zA-Z0-9]/g, '');
+        }
+
+        function render() {
+          const q       = document.getElementById('searchInput').value.trim().toLowerCase();
+          const lang    = document.getElementById('languageFilter').value;
+          const topicF  = document.getElementById('topicFilter').value;
+          gallery.innerHTML = '';
+
+          globalScreenshots.forEach((shot, i) => {
+            const matchText = shot.text.toLowerCase().includes(q) || (shot.text_tr && shot.text_tr.toLowerCase().includes(q));
+
+            if (
+              (shot.title.toLowerCase().includes(q) || matchText) &&
+              (lang === 'All' || shot.language === lang) &&
+              (topicF === 'All' || shot.topic === topicF)
+            ) {
+              const div = document.createElement('div');
+              div.className = 'item';
+              const topicClass = sanitizeTopicClass(shot.topic);
+              
+              const hasTR = shot.text_tr && shot.text_tr.trim().length > 0;
+              const langSwitchHTML = hasTR 
+                ? `<div class="lang-switch">
+                     <span class="lang-btn active" id="btnEn${i}" onclick="switchLang(${i}, 'en')">EN</span>
+                     <span style="color:#ccc">|</span>
+                     <span class="lang-btn" id="btnTr${i}" onclick="switchLang(${i}, 'tr')">TR</span>
+                   </div>`
+                : '';
+
+              div.innerHTML = `
+                <img src="${shot.image}" alt="${shot.title}" 
+                     onclick="showLightbox('${shot.image}', ${i})"
+                     oncontextmenu="handleRightClick(event, ${i})">
+                
+                <div class="label">${highlight(shot.title, q)}</div>
+                
+                ${langSwitchHTML}
+                
+                <div class="tag ${topicClass}">${shot.topic||'Uncategorized'}</div>
+                
+                <div class="btn-group">
+                  <button class="btn" title="Copy Text" onclick="copyText('text${i}', this, ${i})">
+                    Copy Text
+                  </button>
+                  <button class="btn" title="Show or hide text" onclick="togglePreview('preview${i}', this, ${i})">
+                    <i class="fa-regular fa-eye"></i>
+                  </button>
+                  <button class="btn" title="Send feedback" onclick="showFeedbackModal('${shot.title.replace(/'/g,"\\'")}','${shot.language.replace(/'/g,"\\'")}','${(shot.topic||'').replace(/'/g,"\\'")}','${shot.image}')">
+                    <i class="fa-regular fa-comment"></i>
+                  </button>
+                </div>
+                
+                <textarea id="text${i}" class="hidden">${shot.text}</textarea>
+                <div id="preview${i}" class="text-preview hidden">${highlight(shot.text, q)}</div>
+              `;
+              gallery.appendChild(div);
+            }
+          });
+        }
+
+        render();
+      });
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('backToTop').style.display =
+        window.scrollY > 400 ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

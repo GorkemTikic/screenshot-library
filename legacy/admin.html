@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FD Screenshot Admin CMS</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f7f8fa; }
+    h1 { margin-bottom: 20px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, textarea, select {
+      width: 100%; padding: 10px; margin-top: 5px;
+      border: 1px solid #ccc; border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px; padding: 10px 20px;
+      background-color: #FCD535; border: none;
+      border-radius: 4px; cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover { background-color: #e6c200; }
+    
+    .section {
+      margin-top: 30px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+    }
+    .section summary {
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #eee;
+    }
+    .entry {
+      padding: 10px;
+      border-top: 1px solid #eee;
+    }
+    .entry img { max-width: 100px; display: block; margin-top: 5px; }
+    .entry pre { background: #f4f4f4; padding: 10px; white-space: pre-wrap; border-radius: 4px; }
+    .pagination { margin-top: 10px; text-align: center; padding-bottom: 10px;}
+    .pagination button { margin: 0 5px; }
+    
+    /* Token alanı stili */
+    .settings-box {
+      background: #eef2f5;
+      padding: 15px;
+      border-left: 5px solid #FCD535;
+      margin-bottom: 20px;
+      border-radius: 4px;
+    }
+
+    /* TR alanı stili */
+    .tr-field-label { color: #d97706; } 
+    .tr-field-area { border-color: #d97706; background-color: #fffaf0; }
+  </style>
+</head>
+<body>
+  <h1>FD Screenshot Admin CMS</h1>
+
+  <div class="settings-box">
+    <details>
+        <summary>⚙️ Admin Settings (GitHub Token)</summary>
+        <p style="font-size: 13px; color: #666; margin-top:5px;">
+            Enter your GitHub Personal Access Token here. It will be saved to your browser locally.<br>
+            Make sure the token has <code>repo</code> permissions.
+        </p>
+        <label for="ghToken">GitHub Token:</label>
+        <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" onchange="saveToken()">
+        <span id="tokenStatus" style="font-size:12px; margin-left:10px;"></span>
+    </details>
+  </div>
+
+  <div class="section" style="padding: 20px; margin-top: 0;">
+    <h2 style="margin-top:0;">Add / Edit Entry</h2>
+    <label for="title">Title:</label>
+    <input type="text" id="title">
+
+    <label for="language">Language:</label>
+    <select id="language">
+      <option>English</option>
+      <option>Arabic</option>
+      <option>Vietnamese</option>
+      <option>Russian</option>
+      <option>Bahasa</option>
+      <option>Turkish</option>
+      <option>Spanish</option>
+      <option>Portuguese</option>
+      <option>French</option>
+      <option>German</option>
+      <option>Italian</option>
+      <option>Chinese</option>
+      <option>Japanese</option>
+      <option>Korean</option>
+    </select>
+
+    <label for="topic">Topic:</label>
+    <select id="topic">
+      <option>Futures Trading</option>
+      <option>Margin Trading</option>
+      <option>Binance LOAN</option>
+      <option>Options Trading</option>
+      <option>Smart Money</option>
+      <option>Arbitrage Trading</option>
+      <option>General</option>
+      <option>Copy Trading</option>
+      <option>Grid Bot</option>
+    </select>
+
+    <label for="image">Image URL:</label>
+    <input type="text" id="image" placeholder="Will auto-fill after upload">
+    <input type="file" id="upload" accept="image/*">
+    <button onclick="uploadImage()">📤 Upload Image</button>
+
+    <label for="text">Macro Text (Primary / English):</label>
+    <textarea id="text" rows="6"></textarea>
+    
+    <label for="text_tr" class="tr-field-label">Macro Text (Turkish Option):</label>
+    <textarea id="text_tr" rows="6" class="tr-field-area" placeholder="Optional: Paste Turkish translation here if available for the same image."></textarea>
+
+    <button onclick="addOrUpdateEntry()">💾 Save Entry to List</button>
+    <button onclick="saveToGitHub()" style="background-color: #333; color: white;">🚀 Push Updates to GitHub</button>
+  </div>
+
+  <details class="section" open>
+    <summary>📚 Saved Entries</summary>
+    <div class="filters" style="padding:10px;">
+      <input type="text" id="search" placeholder="Search by title..." style="margin-bottom:10px;">
+      <select id="languageFilter"><option value="All">All Languages</option></select>
+    </div>
+    <div id="entries"></div>
+    <div class="pagination">
+      <button onclick="prevPage()">⬅️ Prev</button>
+      <span id="pageInfo"></span>
+      <button onclick="nextPage()">Next ➡️</button>
+    </div>
+  </details>
+
+  <details class="section">
+    <summary>🛠 Raw JSON Preview</summary>
+    <pre id="output">Loading...</pre>
+  </details>
+
+  <script>
+    // Configuration
+    const repo = "GorkemTikic/support-screenshot-library";
+    const filePath = "data.json";
+    
+    let entries = [], editIndex = -1, currentPage = 1, itemsPerPage = 20;
+    let githubToken = "";
+
+    // Helper Functions
+    const toBase64 = str => btoa(unescape(encodeURIComponent(str)));
+    const decodeBase64 = str => decodeURIComponent(escape(atob(str)));
+
+    // Token Management
+    function loadToken() {
+        const stored = localStorage.getItem("fd_gh_token");
+        if (stored) {
+            githubToken = stored;
+            document.getElementById("ghToken").value = stored;
+            document.getElementById("tokenStatus").textContent = "✅ Token loaded from memory";
+            document.getElementById("tokenStatus").style.color = "green";
+            loadEntries(); // Load data only if token exists
+        } else {
+            document.getElementById("tokenStatus").textContent = "⚠️ Please enter token";
+            document.getElementById("tokenStatus").style.color = "orange";
+            document.getElementById("output").textContent = "Waiting for token...";
+        }
+    }
+
+    function saveToken() {
+        const val = document.getElementById("ghToken").value.trim();
+        if (val) {
+            localStorage.setItem("fd_gh_token", val);
+            githubToken = val;
+            document.getElementById("tokenStatus").textContent = "✅ Token saved!";
+            document.getElementById("tokenStatus").style.color = "green";
+            loadEntries();
+        }
+    }
+
+    async function uploadImage() {
+      if (!githubToken) return alert("Please enter GitHub Token in settings first!");
+      
+      const fileInput = document.getElementById("upload");
+      const imageInput = document.getElementById("image");
+      if (!fileInput.files.length) return alert("Please select an image file.");
+
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      
+      reader.onload = async function(e) {
+        try {
+            const base64Image = e.target.result.split(',')[1];
+            // Temiz dosya adı oluştur
+            const cleanName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+            const timestamp = new Date().getTime();
+            const filename = `${timestamp}_${cleanName}`;
+            
+            const apiUrl = `https://api.github.com/repos/${repo}/contents/images/${filename}`;
+
+            const res = await fetch(apiUrl, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Bearer ${githubToken}`,
+                "Accept": "application/vnd.github+json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: `Upload image: ${filename}`,
+                content: base64Image
+            })
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+            imageInput.value = data.content.download_url;
+            alert("✅ Image uploaded successfully!");
+            } else {
+            alert(`❌ Upload failed: ${data.message}`);
+            console.error(data);
+            }
+        } catch (err) {
+            alert("Error during upload: " + err.message);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function loadEntries() {
+      if (!githubToken) return;
+      document.getElementById("output").textContent = "Fetching data from GitHub...";
+      
+      try {
+        // Cache busting ekleyelim ki eski veriyi çekmesin
+        const res = await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}?t=${new Date().getTime()}`, {
+            headers: { "Authorization": `Bearer ${githubToken}` }
+        });
+        
+        if (!res.ok) throw new Error("Could not fetch data. Check token or repo name.");
+        
+        const data = await res.json();
+        entries = JSON.parse(decodeBase64(data.content));
+        window._sha = data.sha;
+        
+        renderLanguageFilter();
+        renderEntries();
+      } catch (err) {
+          document.getElementById("output").textContent = "Error: " + err.message;
+          alert("Failed to load entries. Check your Token!");
+      }
+    }
+
+    function renderLanguageFilter() {
+      const set = new Set(entries.map(e => e.language));
+      const filter = document.getElementById("languageFilter");
+      const options = [...set].sort().map(l => `<option>${l}</option>`);
+      filter.innerHTML = '<option value="All">All Languages</option>' + options.join('');
+    }
+
+    function renderEntries() {
+      const search = document.getElementById("search").value.toLowerCase();
+      const lang = document.getElementById("languageFilter").value;
+      const filtered = entries.filter(e =>
+        (lang === "All" || e.language === lang) && e.title.toLowerCase().includes(search)
+      );
+      const start = (currentPage - 1) * itemsPerPage;
+      const page = filtered.slice(start, start + itemsPerPage);
+      
+      document.getElementById("entries").innerHTML = page.map((e, i) => {
+        const realIndex = entries.indexOf(e);
+        const hasTr = e.text_tr ? '<span style="color:orange; font-size:12px; font-weight:bold;"> [TR Option]</span>' : '';
+        
+        return `
+        <div class="entry">
+          <div style="display:flex; justify-content:space-between;">
+             <div><strong>${e.title}</strong> (${e.language}) ${hasTr}</div>
+             <div style="font-size:12px; color:#888;">${e.topic || ''}</div>
+          </div>
+          <img src="${e.image}" alt="" loading="lazy">
+          <div style="display:flex; gap:10px; margin-top:5px;">
+            <div style="flex:1;">
+                <span style="font-size:10px; color:#666;">English:</span>
+                <pre style="font-size:11px; margin-top:2px;">${e.text ? e.text.substring(0, 100) + '...' : ''}</pre>
+            </div>
+            ${e.text_tr ? `
+            <div style="flex:1;">
+                <span style="font-size:10px; color:#d97706;">Turkish:</span>
+                <pre style="font-size:11px; margin-top:2px; background:#fffaf0; border:1px solid #ffeeba;">${e.text_tr.substring(0, 100)}...</pre>
+            </div>` : ''}
+          </div>
+          <div style="margin-top:5px;">
+            <button onclick="editEntry(${realIndex})" style="padding:5px 10px; font-size:12px;">✏️ Edit</button>
+            <button onclick="deleteEntry(${realIndex})" style="padding:5px 10px; font-size:12px; background:#ff4d4d; color:white;">🗑️ Delete</button>
+          </div>
+        </div>`;
+      }).join('');
+      
+      document.getElementById("pageInfo").textContent = `Page ${currentPage} of ${Math.ceil(filtered.length / itemsPerPage) || 1}`;
+      document.getElementById("output").textContent = JSON.stringify(entries, null, 2);
+    }
+
+    function addOrUpdateEntry() {
+      const title = document.getElementById("title").value.trim();
+      const language = document.getElementById("language").value.trim();
+      const topic = document.getElementById("topic").value.trim();
+      const image = document.getElementById("image").value.trim();
+      const text = document.getElementById("text").value.trim();
+      const text_tr = document.getElementById("text_tr").value.trim();
+
+      if (!title || !language || !image || !text || !topic) return alert("Fill out required fields (Title, Lang, Image, Text, Topic)");
+      
+      const newEntry = { title, language, image, text, text_tr, topic };
+      
+      if (editIndex >= 0) entries[editIndex] = newEntry;
+      else entries.push(newEntry);
+      
+      editIndex = -1;
+      clearForm();
+      renderEntries();
+      alert("Entry saved to list! Don't forget to click 'Push Updates to GitHub' when you are done.");
+    }
+
+    function editEntry(index) {
+      const e = entries[index];
+      document.getElementById("title").value = e.title;
+      document.getElementById("language").value = e.language;
+      document.getElementById("topic").value = e.topic || "";
+      document.getElementById("image").value = e.image;
+      document.getElementById("text").value = e.text;
+      document.getElementById("text_tr").value = e.text_tr || "";
+      
+      editIndex = index;
+      window.scrollTo(0, document.querySelector('.section').offsetTop);
+    }
+    
+    function clearForm() {
+      document.getElementById("title").value = "";
+      document.getElementById("language").selectedIndex = 0;
+      document.getElementById("topic").selectedIndex = 0;
+      document.getElementById("image").value = "";
+      document.getElementById("text").value = "";
+      document.getElementById("text_tr").value = "";
+      document.getElementById("upload").value = "";
+      editIndex = -1;
+    }
+
+    function deleteEntry(index) {
+      if (confirm("Are you sure you want to remove this entry?")) {
+        entries.splice(index, 1);
+        renderEntries();
+      }
+    }
+
+    async function saveToGitHub() {
+      if (!githubToken) return alert("Please enter GitHub Token in settings first!");
+      if (!window._sha) return alert("SHA not found. Data might not be loaded yet.");
+
+      const btn = document.querySelector("button[onclick='saveToGitHub()']");
+      const originalText = btn.textContent;
+      btn.textContent = "⏳ Uploading...";
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`, {
+            method: "PUT",
+            headers: {
+            "Authorization": `Bearer ${githubToken}`,
+            "Accept": "application/vnd.github+json"
+            },
+            body: JSON.stringify({
+            message: "Update data.json via Admin CMS",
+            content: toBase64(JSON.stringify(entries, null, 2)),
+            sha: window._sha
+            })
+        });
+
+        if (res.ok) {
+            const data = await res.json();
+            window._sha = data.content.sha; // Update SHA for next save
+            alert("✅ Successfully updated GitHub!");
+            loadEntries(); // Reload to be sure
+        } else {
+            const errData = await res.json();
+            alert(`❌ Failed to update GitHub. \nError: ${errData.message}`);
+        }
+      } catch (error) {
+          alert("Network error: " + error.message);
+      } finally {
+          btn.textContent = originalText;
+          btn.disabled = false;
+      }
+    }
+
+    document.getElementById("search").addEventListener("input", () => { currentPage = 1; renderEntries(); });
+    document.getElementById("languageFilter").addEventListener("change", () => { currentPage = 1; renderEntries(); });
+    function prevPage() { if (currentPage > 1) currentPage--; renderEntries(); }
+    function nextPage() { currentPage++; renderEntries(); }
+
+    // Start
+    loadToken();
+  </script>
+</body>
+</html>
