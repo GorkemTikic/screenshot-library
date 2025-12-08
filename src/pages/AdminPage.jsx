@@ -3,11 +3,24 @@ import { useData } from '../contexts/DataContext';
 import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github } from 'lucide-react';
 import { githubService } from '../services/github';
 
+
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics } = useData();
+    console.log("AdminPage: Rendering started");
+    const contextData = useData();
+    console.log("AdminPage: Context Data:", contextData);
+
+    const { items, addItem, updateItem, deleteItem, allTopics } = contextData || {}; // Safe destructuring for debug
+    console.log("AdminPage: Items:", items?.length, "Topics:", allTopics);
+
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    // ... (rest of state)
+    const [password, setPassword] = useState('');
+
+    // Modals
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+    // Form State
 
     // ... (auth check)
 
