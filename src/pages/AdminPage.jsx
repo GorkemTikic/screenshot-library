@@ -62,9 +62,10 @@ export function AdminPage() {
     };
 
     // Filtered Items
-    const filteredItems = items.filter(item =>
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.text.toLowerCase().includes(searchTerm.toLowerCase())
+    const safeItems = items || [];
+    const filteredItems = safeItems.filter(item =>
+        (item.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (item.text || '').toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -214,7 +215,7 @@ export function AdminPage() {
                                         >
                                             <option value="">Select Topic...</option>
                                             {/* Dynamic Topics */}
-                                            {allTopics.map(topic => (
+                                            {(allTopics || []).map(topic => (
                                                 <option key={topic} value={topic}>{topic}</option>
                                             ))}
                                             <option value="NEW">+ Create New Topic</option>
