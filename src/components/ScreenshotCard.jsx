@@ -3,6 +3,8 @@ import { Copy, Eye, Heart, Check } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { logEvent } from '../services/analytics';
 
+import { resolveImageUrl } from '../utils/imageUtils';
+
 export function ScreenshotCard({ item, onClickImage }) {
     const { isFavorite, toggleFavorite } = useData();
     const [copied, setCopied] = useState(false);
@@ -64,11 +66,21 @@ export function ScreenshotCard({ item, onClickImage }) {
             {/* Image Area */}
             <div className="card-image-wrapper" onClick={handleImageClick}>
                 <img
-                    src={item.image}
+                    src={resolveImageUrl(item.image)}
                     alt={item.title}
                     className="card-image"
-                    loading="lazy"
+                    onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.parentNode.classList.add('image-error');
+                        console.error('Image failed to load:', resolveImageUrl(item.image));
+                    }}
                 />
+                <div className="image-placeholder">
+                    <span>Image N/A</span>
+                    <span style={{ fontSize: '0.6rem', padding: '0 10px', textAlign: 'center', marginTop: '5px' }}>
+                        {resolveImageUrl(item.image)}
+                    </span>
+                </div>
                 <div className="card-overlay">
                     <button
                         onClick={handleToggleFavorite}

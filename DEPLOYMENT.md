@@ -20,7 +20,7 @@ Open your terminal (PowerShell or Command Prompt) in the project folder and run 
 git add .
 
 # 2. Save these changes with a message (describe what you did)
-git commit -m "Update: Fixed bug in Admin page"
+git commit -m Update: Fixed bug in Admin page
 
 # 3. Upload (push) the changes to GitHub
 git push origin main

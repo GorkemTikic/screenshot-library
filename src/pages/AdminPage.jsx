@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '../contexts/DataContext';
-import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github } from 'lucide-react';
+import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor } from 'lucide-react';
 import { githubService } from '../services/github';
 
 export function AdminPage() {
@@ -21,7 +21,8 @@ export function AdminPage() {
         text_tr: '',
         image: '',
         topic: '',
-        language: 'EN'
+        language: 'EN',
+        platform: 'mobile'
     });
 
     // GitHub Settings State
@@ -66,7 +67,7 @@ export function AdminPage() {
     }
 
     const resetForm = () => {
-        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'EN' });
+        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'EN', platform: 'mobile' });
         setEditingId(null);
         setSyncStatus('');
     };
@@ -225,7 +226,10 @@ export function AdminPage() {
                             <h3 className="admin-card-title">{item.title}</h3>
                             <div className="admin-card-meta">
                                 <span className="text-muted">{item.language}</span>
-                                <span className="text-muted text-xs">ID: {item.id}</span>
+                                <div className="flex items-center gap-1 text-muted text-xs">
+                                    {item.platform === 'web' ? <Monitor size={14} /> : <Smartphone size={14} />}
+                                    <span>ID: {item.id}</span>
+                                </div>
                             </div>
                             <div className="admin-card-actions">
                                 <button className="btn-icon" onClick={() => handleEdit(item)} title="Edit">
@@ -279,6 +283,36 @@ export function AdminPage() {
                         </div>
                         <form onSubmit={handleFormSubmit}>
                             <div className="modal-body">
+                                <div className="form-group">
+                                    <label>Platform</label>
+                                    <div className="flex gap-4">
+                                        <label className={`flex items-center gap-2 px-4 py-2 rounded-lg border cursor-pointer transition-all ${formData.platform === 'mobile' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-white border-gray-200 text-gray-600'}`}>
+                                            <input
+                                                type="radio"
+                                                name="platform"
+                                                value="mobile"
+                                                checked={formData.platform === 'mobile'}
+                                                onChange={e => setFormData({ ...formData, platform: e.target.value })}
+                                                className="hidden"
+                                            />
+                                            <Smartphone size={18} />
+                                            <span>Mobile App</span>
+                                        </label>
+                                        <label className={`flex items-center gap-2 px-4 py-2 rounded-lg border cursor-pointer transition-all ${formData.platform === 'web' ? 'bg-blue-50 border-blue-500 text-blue-700' : 'bg-white border-gray-200 text-gray-600'}`}>
+                                            <input
+                                                type="radio"
+                                                name="platform"
+                                                value="web"
+                                                checked={formData.platform === 'web'}
+                                                onChange={e => setFormData({ ...formData, platform: e.target.value })}
+                                                className="hidden"
+                                            />
+                                            <Monitor size={18} />
+                                            <span>Web Desktop</span>
+                                        </label>
+                                    </div>
+                                </div>
+
                                 <div className="form-group">
                                     <label>Title</label>
                                     <input
