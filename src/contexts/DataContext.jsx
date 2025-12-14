@@ -20,7 +20,12 @@ export function DataProvider({ children }) {
     useEffect(() => {
         const loadLines = async () => {
             try {
-                // Fetch live data with cache busting
+                // Fetch live data with cache busting ONLY in production
+                if (import.meta.env.DEV) {
+                    console.log("Development mode: Using local data");
+                    setIsLoading(false);
+                    return;
+                }
                 const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
                 if (!response.ok) throw new Error('Failed to fetch live data');
                 const liveData = await response.json();
