@@ -16,9 +16,13 @@ export const resolveImageUrl = (url) => {
     // Vite serves from the base path in dev if it is configured.
     let baseUrl = import.meta.env.BASE_URL;
 
-    // HOTFIX: If running in DEV mode but BASE_URL is still set to the production path 
-    // (e.g. if config didn't reload or is hardcoded), force it to root.
-    if (import.meta.env.DEV && baseUrl === '/screenshot-library/') {
+    // HOTFIX: Robust local development check.
+    // If we are on localhost, force base URL to root to avoid path issues
+    // regardless of what vite config or environment variables say.
+    const isLocal = typeof window !== 'undefined' &&
+        (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+    if (isLocal) {
         baseUrl = '/';
     }
 
