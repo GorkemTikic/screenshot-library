@@ -38,6 +38,35 @@ export function AdminPage() {
         }
     }, []);
 
+    // Group feedbacks by item for the UI
+    const groupedFeedbacks = useMemo(() => {
+        if (!feedbacks) return [];
+        const currentList = feedbacks.filter(fb => fb.status === feedbackTab);
+        const groups = {};
+
+        currentList.forEach(fb => {
+            if (!groups[fb.itemId]) {
+                const item = (items || []).find(i => i.id === fb.itemId);
+                groups[fb.itemId] = {
+                    item: item || { title: `Unknown Item (${fb.itemId})`, image: '', topic: 'N/A' },
+                    feedbacks: []
+                };
+            }
+            groups[fb.itemId].feedbacks.push(fb);
+        });
+
+        return Object.values(groups);
+    }, [feedbacks, feedbackTab, items]);
+
+    const feedbackCount = (feedbacks || []).filter(fb => fb.status === 'active').length;
+
+    // Filtered Items
+    const safeItems = items || [];
+    const filteredItems = safeItems.filter(item =>
+        (item.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (item.text || '').toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     // Auth Check
     if (!isAuthenticated) {
         return (
@@ -80,6 +109,27 @@ export function AdminPage() {
         setIsModalOpen(true);
     };
 
+    const handleDelete = async (itemId) => {
+        if (window.confirm("Are you sure you want to delete this item?")) {
+            deleteItem(itemId);
+            const newItems = items.filter(i => i.id !== itemId);
+            if (githubService.isConfigured()) {
+                const confirmSync = window.confirm("Deleted locally. Sync change to GitHub?");
+                if (confirmSync) {
+                    try {
+                        setSyncStatus('syncing');
+                        await githubService.updateDataJson(newItems);
+                        setSyncStatus('success');
+                        alert("Successfully synced to GitHub!");
+                    } catch (err) {
+                        setSyncStatus('error');
+                        alert("Sync failed: " + err.message);
+                    }
+                }
+            }
+        }
+    };
+
     const handleSaveSettings = () => {
         const { token } = ghConfig;
         if (token) {
@@ -112,29 +162,10 @@ export function AdminPage() {
         }
     };
 
-    // Sync Helper
-    const syncToGithub = async (newItems) => {
-        if (githubService.isConfigured()) {
-            const confirmSync = window.confirm("Action successful locally. Push changes to GitHub?");
-            if (confirmSync) {
-                try {
-                    setSyncStatus('syncing');
-                    await githubService.updateDataJson(newItems);
-                    setSyncStatus('success');
-                    alert("Successfully synced to GitHub!");
-                } catch (err) {
-                    setSyncStatus('error');
-                    alert("GitHub Sync Failed: " + err.message);
-                }
-            }
-        }
-    };
-
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         let finalData = { ...formData };
-        // Handle New Topic
         if (finalData.topic === 'NEW') {
             if (!finalData.newTopicName) return alert("Please enter a topic name");
             finalData.topic = finalData.newTopicName;
@@ -146,13 +177,13 @@ export function AdminPage() {
             updateItem(editingId, finalData);
             newItems = items.map(i => i.id === editingId ? { ...i, ...finalData } : i);
         } else {
-            addItem({ ...finalData, id: Date.now() });
-            newItems = [...items, { ...finalData, id: Date.now() }];
+            const newItem = { ...finalData, id: Date.now() };
+            addItem(newItem);
+            newItems = [...items, newItem];
         }
 
-        // Auto-sync to GitHub
         if (githubService.isConfigured()) {
-            const confirmSync = window.confirm("Saved locally. Do you want to push updates to GitHub (data.json)?");
+            const confirmSync = window.confirm("Saved locally. Do you want to push updates to GitHub?");
             if (confirmSync) {
                 try {
                     setSyncStatus('syncing');
@@ -175,7 +206,6 @@ export function AdminPage() {
 
         resolveFeedback(feedbackId);
 
-        // Calculate updated state for immediate sync
         const updatedFeedbacks = feedbacks.map(fb =>
             fb.id === feedbackId ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() } : fb
         );
@@ -186,35 +216,6 @@ export function AdminPage() {
             console.error("Resolution sync failed", err);
         }
     };
-
-    // Group feedbacks by item for the UI
-    const groupedFeedbacks = useMemo(() => {
-        if (!feedbacks) return [];
-        const currentList = feedbacks.filter(fb => fb.status === feedbackTab);
-        const groups = {};
-
-        currentList.forEach(fb => {
-            if (!groups[fb.itemId]) {
-                const item = (items || []).find(i => i.id === fb.itemId);
-                groups[fb.itemId] = {
-                    item: item || { title: `Unknown Item (${fb.itemId})`, image: '', topic: 'N/A' },
-                    feedbacks: []
-                };
-            }
-            groups[fb.itemId].feedbacks.push(fb);
-        });
-
-        return Object.values(groups);
-    }, [feedbacks, feedbackTab, items]);
-
-    const feedbackCount = (feedbacks || []).filter(fb => fb.status === 'active').length;
-
-    // Filtered Items
-    const safeItems = items || [];
-    const filteredItems = safeItems.filter(item =>
-        (item.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (item.text || '').toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     return (
         <div className="admin-container animate-in">
