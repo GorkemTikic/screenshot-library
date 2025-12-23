@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useData } from '../contexts/DataContext';
 import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle } from 'lucide-react';
 import { githubService } from '../services/github';
@@ -189,14 +189,15 @@ export function AdminPage() {
 
     // Group feedbacks by item for the UI
     const groupedFeedbacks = useMemo(() => {
+        if (!feedbacks) return [];
         const currentList = feedbacks.filter(fb => fb.status === feedbackTab);
         const groups = {};
 
         currentList.forEach(fb => {
             if (!groups[fb.itemId]) {
-                const item = items.find(i => i.id === fb.itemId);
+                const item = (items || []).find(i => i.id === fb.itemId);
                 groups[fb.itemId] = {
-                    item: item || { title: 'Deleted Item', image: '' },
+                    item: item || { title: `Unknown Item (${fb.itemId})`, image: '', topic: 'N/A' },
                     feedbacks: []
                 };
             }
@@ -206,7 +207,7 @@ export function AdminPage() {
         return Object.values(groups);
     }, [feedbacks, feedbackTab, items]);
 
-    const feedbackCount = feedbacks.filter(fb => fb.status === 'active').length;
+    const feedbackCount = (feedbacks || []).filter(fb => fb.status === 'active').length;
 
     // Filtered Items
     const safeItems = items || [];

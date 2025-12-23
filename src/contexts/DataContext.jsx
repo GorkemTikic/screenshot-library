@@ -45,15 +45,34 @@ export function DataProvider({ children }) {
                     console.warn("Could not load feedbacks.json, starting fresh:", fbErr);
                 }
 
-                // Sanitize data: Ensure every item has an ID
-                const sanitizedData = liveData.map((item, index) => ({
-                    ...item,
-                    id: item.id || Date.now() + index,
-                    feedbacks: undefined // Clear legacy feedbacks from items
-                }));
+                // Sanitize data and migrate legacy feedbacks
+                let legacyFeedbacks = [];
+                const sanitizedData = liveData.map((item, index) => {
+                    const itemId = item.id || Date.now() + index;
+                    if (item.feedbacks && Array.isArray(item.feedbacks)) {
+                        const enriched = item.feedbacks.map(fb => ({
+                            ...fb,
+                            itemId: itemId,
+                            status: fb.status || 'active'
+                        }));
+                        legacyFeedbacks = [...legacyFeedbacks, ...enriched];
+                    }
+                    return {
+                        ...item,
+                        id: itemId,
+                        feedbacks: undefined // Clear legacy feedbacks from items
+                    };
+                });
+
+                // Merge legacy with loaded feedbacks (avoid duplicates by ID)
+                setFeedbacks(prev => {
+                    const existingIds = new Set(prev.map(f => f.id));
+                    const newUnique = legacyFeedbacks.filter(f => !existingIds.has(f.id));
+                    return [...prev, ...newUnique];
+                });
 
                 setItems(sanitizedData);
-                console.log("Loaded live data and feedbacks from GitHub");
+                console.log("Loaded live data and feedbacks from GitHub. Migrated:", legacyFeedbacks.length);
             } catch (err) {
                 console.warn("Live data fetch failed, using bundled data:", err);
                 setFetchError(err.message);
