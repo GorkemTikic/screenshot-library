@@ -600,5 +600,16 @@
     "language": "English",
     "platform": "web",
     "id": 1766512912428
+  },
+  {
+    "title": "测试测试测试测试",
+    "text": "测试测试测试测试 \n测试测试测试测试\n\n测试测试测试测试\n测试测试测试测试\n测试测试测试测试\n",
+    "text_tr": "",
+    "image": "screenshots/1766531347308_Screenshot-2025-12-23-at-20.22.15.png",
+    "topic": "DCA BOT",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766531351334
   }
 ]
