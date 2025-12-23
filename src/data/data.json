@@ -590,5 +590,15 @@
     "language": "EN",
     "platform": "mobile",
     "id": 1765679311039
+  },
+  {
+    "title": "Futures Margin Transfer History (Isolated Position) - EN (Web)",
+    "text": "Please follow the steps in the screenshot to see the Margin Transfer History to Isolated positions on USDⓈ-M Futures\n\n1 -) Please go to Futures Wallet Page: \n\n[USDⓈ-M Futures Wallet Page](https://www.binance.com/my/wallet/account/futures)\n\n2 -) Click on the three dots icon on top right corner\n\n3 -) Click on ''Transaction History''\n\n4 -) On Transaction History page, you will see the Margin Trasfer History button on right. \n\n5 -) Click on Margin Transfer History Button. \n\n6 -) Select the Symbol\n\n7 -) Click on Search button. \n\nYou will see the records of margin transfer into isolated positions and out of isolated positions in this info page",
+    "text_tr": "USDⓈ-M Futures/Vadeli işlemlerde İzole pozisyonlardaki Marjin geçmişini görmek için, ekran görüntüsündeki adımları takip edebilirsiniz: \n\n1 -) Lütfen Futures Cüzdan sayfasına gidin: \nhttps://www.binance.com/my/wallet/account/futures\n\n[USDⓈ-M Futures Cüzdan](https://www.binance.com/my/wallet/account/futures)\n\n2 -) Sağ üst köşedeki Üç nokta ikonuna tıklayın \n\n3 -) ''Transaction History/İşlem Geçmişi'' butonuna tıklayın. \n\n4 -) Transaction History sayfasında, sağ tarafta ''Margin Transfer History'/Marjin Transfer Geçmişi' butonunu göreceksiniz. \n\n5 -) Marjin Transfer Geçmişi butonuna tıklayın. \n\n6 -) Sembol/İşlem Çiftini seçin. \n\n7 -) Search/Ara butonuna tıklayın. \n\nAçılan sayfada izole pozisyonlara ait marjin geçmişini göreceksiniz.",
+    "image": "screenshots/1766512882878_Margin-Transfer-History-(Isolated-Position)---EN-(Web).jpeg",
+    "topic": "Futures Trading",
+    "language": "EN",
+    "platform": "web",
+    "id": 1766512912428
   }
 ]
