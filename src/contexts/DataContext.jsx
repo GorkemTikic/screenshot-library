@@ -82,6 +82,37 @@ export function DataProvider({ children }) {
         setItems(prev => prev.filter(item => item.id !== id));
     };
 
+    const addFeedback = (itemId, message) => {
+        const feedbackId = Date.now();
+        const newFeedback = {
+            id: feedbackId,
+            message,
+            timestamp: new Date().toISOString()
+        };
+
+        setItems(prev => prev.map(item => {
+            if (item.id === itemId) {
+                const existingFeedbacks = item.feedbacks || [];
+                return { ...item, feedbacks: [...existingFeedbacks, newFeedback] };
+            }
+            return item;
+        }));
+
+        return feedbackId;
+    };
+
+    const resolveFeedback = (itemId, feedbackId) => {
+        setItems(prev => prev.map(item => {
+            if (item.id === itemId && item.feedbacks) {
+                return {
+                    ...item,
+                    feedbacks: item.feedbacks.filter(fb => fb.id !== feedbackId)
+                };
+            }
+            return item;
+        }));
+    };
+
     const getJson = () => JSON.stringify(items, null, 2);
 
     // Derived lists
@@ -99,6 +130,8 @@ export function DataProvider({ children }) {
             addItem,
             updateItem,
             deleteItem,
+            addFeedback,
+            resolveFeedback,
             getJson
         }}>
             {children}

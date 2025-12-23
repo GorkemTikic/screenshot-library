@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '../contexts/DataContext';
-import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor } from 'lucide-react';
+import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle } from 'lucide-react';
 import { githubService } from '../services/github';
 
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics } = useData();
+    const { items, addItem, updateItem, deleteItem, allTopics, resolveFeedback } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -12,6 +12,7 @@ export function AdminPage() {
     // Modals
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
 
     // Form State
     const [editingId, setEditingId] = useState(null);
@@ -176,12 +177,32 @@ export function AdminPage() {
         }
     };
 
+    const handleResolveFeedback = async (itemId, feedbackId) => {
+        resolveFeedback(itemId, feedbackId);
+        // After resolving, we should offer to sync
+        const updatedItems = items.map(item => {
+            if (item.id === itemId) {
+                return {
+                    ...item,
+                    feedbacks: item.feedbacks.filter(fb => fb.id !== feedbackId)
+                };
+            }
+            return item;
+        });
+
+        // Auto-sync
+        setTimeout(() => syncToGithub(updatedItems), 100);
+    };
+
     // Filtered Items
     const safeItems = items || [];
     const filteredItems = safeItems.filter(item =>
         (item.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
         (item.text || '').toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const activeFeedbacks = (items || []).filter(item => item.feedbacks && item.feedbacks.length > 0);
+    const feedbackCount = activeFeedbacks.reduce((acc, item) => acc + item.feedbacks.length, 0);
 
     return (
         <div className="admin-container animate-in">
@@ -191,6 +212,10 @@ export function AdminPage() {
                     <p className="text-muted">Manage your screenshots knowledge base</p>
                 </div>
                 <div className="header-actions">
+                    <button className={`btn btn-secondary ${feedbackCount > 0 ? 'pulse' : ''}`} onClick={() => setIsFeedbackModalOpen(true)}>
+                        <MessageSquare size={18} className="mr-2" />
+                        Feedbacks {feedbackCount > 0 && <span className="feedback-badge">{feedbackCount}</span>}
+                    </button>
                     <button className="btn btn-secondary" onClick={() => setIsSettingsOpen(true)}>
                         <Github size={18} className="mr-2" /> GitHub Settings
                     </button>
@@ -418,6 +443,60 @@ export function AdminPage() {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Feedbacks Modal */}
+            {isFeedbackModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content" style={{ maxWidth: '800px' }}>
+                        <div className="modal-header">
+                            <h3>Active Feedbacks</h3>
+                            <button className="close-btn" onClick={() => setIsFeedbackModalOpen(false)}><X size={24} /></button>
+                        </div>
+                        <div className="modal-body">
+                            {feedbackCount === 0 ? (
+                                <div className="text-center py-8 text-muted">No active feedbacks! Great job.</div>
+                            ) : (
+                                <div className="feedback-list">
+                                    {activeFeedbacks.map(item => (
+                                        <div key={item.id} className="feedback-item-group">
+                                            <div className="feedback-item-header">
+                                                <img src={item.image} alt="" className="feedback-thumb" />
+                                                <div className="flex-1">
+                                                    <h4 className="font-bold">{item.title}</h4>
+                                                    <p className="text-xs text-muted">ID: {item.id} | Topic: {item.topic}</p>
+                                                </div>
+                                            </div>
+                                            <div className="feedback-messages">
+                                                {item.feedbacks.map(fb => (
+                                                    <div key={fb.id} className="feedback-message-row">
+                                                        <div className="flex-1">
+                                                            <p className="feedback-text line-clamp-2" title={fb.message}>{fb.message}</p>
+                                                            <p className="text-xs text-muted">{new Date(fb.timestamp).toLocaleString()}</p>
+                                                        </div>
+                                                        <button
+                                                            className="btn btn-xs btn-success"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleResolveFeedback(item.id, fb.id);
+                                                            }}
+                                                            title="Mark as Fixed / Resolved"
+                                                        >
+                                                            <CheckCircle size={14} className="mr-1" /> Resolve
+                                                        </button>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                        <div className="modal-footer">
+                            <button className="btn btn-secondary" onClick={() => setIsFeedbackModalOpen(false)}>Close</button>
+                        </div>
                     </div>
                 </div>
             )}
