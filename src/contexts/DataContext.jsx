@@ -128,7 +128,7 @@ export function DataProvider({ children }) {
         };
 
         setFeedbacks(prev => [newFeedback, ...prev]);
-        return feedbackId;
+        return newFeedback;
     };
 
     const resolveFeedback = (feedbackId) => {

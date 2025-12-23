@@ -6,7 +6,7 @@ import { logEvent } from '../services/analytics';
 import { resolveImageUrl } from '../utils/imageUtils';
 
 export function ScreenshotCard({ item, onClickImage }) {
-    const { isFavorite, toggleFavorite, addFeedback, syncFeedbacks } = useData();
+    const { isFavorite, toggleFavorite, addFeedback, syncFeedbacks, feedbacks } = useData();
     const [copied, setCopied] = useState(false);
     const [showText, setShowText] = useState(false);
     const [contentLang, setContentLang] = useState('en'); // 'en' or 'tr'
@@ -65,12 +65,12 @@ export function ScreenshotCard({ item, onClickImage }) {
         if (!feedbackMessage.trim()) return;
 
         setIsSubmitting(true);
-        const feedbackId = addFeedback(item.id, feedbackMessage);
+        const newFb = addFeedback(item.id, feedbackMessage);
 
         logEvent('send_feedback', { title: item.title, topic: item.topic });
 
-        // Auto-sync if token is available
-        syncFeedbacks().catch(err => console.error("Auto-sync failed:", err));
+        // Auto-sync: Send BOTH the new one and the existing ones to avoid stale state
+        syncFeedbacks([newFb, ...feedbacks]).catch(err => console.error("Auto-sync failed:", err));
 
         // Small delay for UX
         setTimeout(() => {
