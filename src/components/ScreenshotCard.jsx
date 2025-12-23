@@ -6,7 +6,7 @@ import { logEvent } from '../services/analytics';
 import { resolveImageUrl } from '../utils/imageUtils';
 
 export function ScreenshotCard({ item, onClickImage }) {
-    const { isFavorite, toggleFavorite, addFeedback } = useData();
+    const { isFavorite, toggleFavorite, addFeedback, syncData } = useData();
     const [copied, setCopied] = useState(false);
     const [showText, setShowText] = useState(false);
     const [contentLang, setContentLang] = useState('en'); // 'en' or 'tr'
@@ -65,9 +65,12 @@ export function ScreenshotCard({ item, onClickImage }) {
         if (!feedbackMessage.trim()) return;
 
         setIsSubmitting(true);
-        addFeedback(item.id, feedbackMessage);
+        const feedbackId = addFeedback(item.id, feedbackMessage);
 
         logEvent('send_feedback', { title: item.title, topic: item.topic });
+
+        // Auto-sync if token is available
+        syncData().catch(err => console.error("Auto-sync failed:", err));
 
         // Small delay for UX
         setTimeout(() => {

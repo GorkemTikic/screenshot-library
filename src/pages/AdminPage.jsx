@@ -4,7 +4,7 @@ import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github,
 import { githubService } from '../services/github';
 
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics, resolveFeedback } = useData();
+    const { items, addItem, updateItem, deleteItem, allTopics, resolveFeedback, syncData } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -171,7 +171,7 @@ export function AdminPage() {
     };
 
     const handleResolveFeedback = async (itemId, feedbackId) => {
-        resolveFeedback(itemId, feedbackId);
+        if (!window.confirm("Mark this feedback as resolved and sync to GitHub?")) return;
 
         // Construct the updated status locally to sync immediately
         const updatedItems = items.map(item => {
@@ -186,8 +186,13 @@ export function AdminPage() {
             return item;
         });
 
-        // Auto-sync
-        setTimeout(() => syncToGithub(updatedItems), 100);
+        resolveFeedback(itemId, feedbackId);
+
+        try {
+            await syncData(updatedItems);
+        } catch (err) {
+            console.error("Resolution sync failed", err);
+        }
     };
 
     const activeFeedbacks = (items || []).filter(item =>

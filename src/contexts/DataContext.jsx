@@ -3,6 +3,7 @@ import bundledData from '../data/data.json';
 
 const DataContext = createContext();
 const DATA_URL = 'https://raw.githubusercontent.com/GorkemTikic/screenshot-library/main/src/data/data.json';
+import { githubService } from '../services/github';
 
 export function DataProvider({ children }) {
     const [items, setItems] = useState(bundledData); // Start with bundled data (Stale-while-revalidate)
@@ -120,6 +121,21 @@ export function DataProvider({ children }) {
 
     const getJson = () => JSON.stringify(items, null, 2);
 
+    const syncData = async (itemsToSync = items) => {
+        if (!githubService.isConfigured()) {
+            console.warn("Sync skipped: GitHub not configured");
+            return false;
+        }
+
+        try {
+            await githubService.updateDataJson(itemsToSync);
+            return true;
+        } catch (err) {
+            console.error("Sync failed:", err);
+            throw err;
+        }
+    };
+
     // Derived lists
     const allTopics = useMemo(() => Array.from(new Set(items.map(i => i.topic).filter(Boolean))).sort(), [items]);
     const allLanguages = useMemo(() => Array.from(new Set(items.map(i => i.language))).sort(), [items]);
@@ -137,6 +153,7 @@ export function DataProvider({ children }) {
             deleteItem,
             addFeedback,
             resolveFeedback,
+            syncData,
             getJson
         }}>
             {children}
