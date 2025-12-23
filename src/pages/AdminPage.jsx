@@ -4,7 +4,7 @@ import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github,
 import { githubService } from '../services/github';
 
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics, feedbacks, resolveFeedback, syncData, syncFeedbacks } = useData();
+    const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, feedbacks, resolveFeedback, syncData, syncFeedbacks } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -23,8 +23,9 @@ export function AdminPage() {
         text_tr: '',
         image: '',
         topic: '',
-        language: 'EN',
-        platform: 'mobile'
+        language: 'English',
+        platform: 'mobile',
+        newLanguageName: ''
     });
 
     // GitHub Settings State
@@ -99,7 +100,7 @@ export function AdminPage() {
     }
 
     const resetForm = () => {
-        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'EN', platform: 'mobile' });
+        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'English', platform: 'mobile', newLanguageName: '' });
         setEditingId(null);
         setSyncStatus('');
     };
@@ -171,6 +172,12 @@ export function AdminPage() {
             if (!finalData.newTopicName) return alert("Please enter a topic name");
             finalData.topic = finalData.newTopicName;
             delete finalData.newTopicName;
+        }
+
+        if (finalData.language === 'NEW') {
+            if (!finalData.newLanguageName) return alert("Please enter a language name");
+            finalData.language = finalData.newLanguageName;
+            delete finalData.newLanguageName;
         }
 
         let newItems;
@@ -419,10 +426,21 @@ export function AdminPage() {
                                             value={formData.language}
                                             onChange={e => setFormData({ ...formData, language: e.target.value })}
                                         >
-                                            <option value="Multi">Multi-Language</option>
-                                            <option value="EN">English Only</option>
-                                            <option value="TR">Turkish Only</option>
+                                            <option value="Multi-Language">Multi-Language</option>
+                                            {/* Dynamic Languages */}
+                                            {(allLanguages || []).filter(l => l !== 'Multi-Language').map(lang => (
+                                                <option key={lang} value={lang}>{lang}</option>
+                                            ))}
+                                            <option value="NEW">+ Create New Language</option>
                                         </select>
+                                        {formData.language === 'NEW' && (
+                                            <input
+                                                type="text"
+                                                className="form-input mt-2"
+                                                placeholder="Enter new language name (e.g. Spanish)"
+                                                onChange={(e) => setFormData(prev => ({ ...prev, newLanguageName: e.target.value }))}
+                                            />
+                                        )}
                                     </div>
                                 </div>
 
