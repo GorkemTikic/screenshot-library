@@ -9,13 +9,13 @@ export function MarketTicker() {
         const fetchData = async () => {
             try {
                 // 1. Fetch Prices (CoinGecko is good for simple prices)
-                const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin,solana,ripple&vs_currencies=usd&include_24hr_change=true');
+                const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple&vs_currencies=usd&include_24hr_change=true');
                 const priceData = await priceRes.json();
 
                 const prices = [
                     { type: 'price', name: 'BTC', price: priceData.bitcoin?.usd, change: priceData.bitcoin?.usd_24h_change },
                     { type: 'price', name: 'ETH', price: priceData.ethereum?.usd, change: priceData.ethereum?.usd_24h_change },
-                    { type: 'price', name: 'BNB', price: priceData.binancecoin?.usd, change: priceData.binancecoin?.usd_24h_change },
+                    { type: 'price', name: 'SOL', price: priceData.solana?.usd, change: priceData.solana?.usd_24h_change },
                 ];
 
                 // 2. Fetch News (CryptoCompare is more reliable for valid links)
@@ -74,7 +74,7 @@ export function MarketTicker() {
             url: 'https://cointelegraph.com/category/market-news',
             source: 'CoinTelegraph'
         },
-        { type: 'price', name: 'BNB', price: 610, change: 0.8 },
+        { type: 'price', name: 'SOL', price: 215, change: 2.1 },
         {
             type: 'news',
             text: 'Latest Regulatory Updates in Crypto',

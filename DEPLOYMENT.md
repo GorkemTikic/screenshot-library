@@ -1,47 +1,51 @@
-# 🚀 Comprehensive Deployment & Workflow Guide
+# 🚀 Maintenance & Deployment Guide
 
-This guide provides step-by-step instructions for initial setup, daily updates, and synchronization between your local computer and GitHub.
+This guide ensures your local computer stays in sync with the GitHub repository and explains how to publish updates to the live website.
 
 ---
 
-## �️ Step 0: Terminal Navigation
-Before running any commands, ensure your terminal (PowerShell or CMD) is in the correct project folder.
+## 📁 Environment Setup
 
-**1. Copy and paste this command:**
-```powershell
-cd "C:\Users\user\Desktop\Screenshot Assistant\FD SCREENSHOT V04 - EDIT\support-screenshot-library-main"
+All commands below should be run from inside the project folder. 
+
+**Quick Navigation:**
+Open your terminal and enter:
+```bash
+cd support-screenshot-library-main
 ```
 
-> [!TIP]
-> If you get an error saying "not a git repository", it usually means you are in the wrong folder. Running the `cd` command above will fix this.
+> [!IMPORTANT]
+> If you are already inside the `support-screenshot-library-main` folder, you don't need to run `cd` again. Always verify your position with `pwd` (PowerShell) or `cd` (CMD).
 
 ---
 
-## 🔄 Daily Workflow (Updates)
+## 🔄 Daily Maintenance Workflow
 
-### 1. Pull Updates from GitHub (Reverse Sync)
-If changes were made via the Admin Panel on the live site, they exist only on GitHub. **Always run this first** before starting your work to avoid conflicts.
+Follow these steps in order whenever you want to update the project or save your work.
+
+### 1. Synchronize (Pull)
+If you added images or resolved feedbacks on the live website (Admin Panel), those changes are on GitHub but NOT on your computer yet. Run this to get them:
 
 ```bash
 git pull origin main
 ```
 
-### 2. Save Your Local Changes (Push)
-When you modify code or files on your computer, run these commands to save them to GitHub:
+### 2. Save Local Work (Commit)
+If you changed some code or data files on your computer, save them to the repository:
 
 ```bash
-# Prepare all changed files
+# Stage all changes
 git add .
 
-# Save with a descriptive message
-git commit -m "Update: [Describe your changes here]"
+# Save with a message
+git commit -m "Update: Brief description of what you changed"
 
 # Upload to GitHub
 git push origin main
 ```
 
-### 3. Update the Live Website (Deploy)
-After pushing your code, run this command to build the project and publish it to GitHub Pages:
+### 3. Publish to Live Site (Deploy)
+To update the actual website that everyone sees, run the deployment script:
 
 ```bash
 npm run deploy
@@ -49,38 +53,23 @@ npm run deploy
 
 ---
 
-## 🏗️ Initial Repository Setup
-*Only follow these steps if you are setting up a NEW repository.*
+## 🔑 Admin Token Setup
 
-1. **Create Repository**: Go to [github.com/new](https://github.com/new) and create a repo named `screenshot-library`.
-2. **Link Local Code**:
-   ```bash
-   git init
-   git remote add origin https://github.com/YOUR_USERNAME/screenshot-library.git
-   git branch -M main
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin main
-   ```
-3. **Automated Deployment**: Ensure `gh-pages` is installed (`npm install gh-pages --save-dev`).
+To enable the **Save & Sync** feature in the Admin Panel:
+1. Create a **GitHub Personal Access Token (Classic)** on GitHub.com.
+2. Grant the **`repo`** permission.
+3. Paste this token into the **Settings** modal on your Admin Page.
 
 ---
 
-## 🔑 GitHub Token Configuration (Admin)
-To allow the Admin Panel to save data to GitHub:
-1. Go to **GitHub Settings > Developer Settings > Personal Access Tokens > Tokens (Classic)**.
-2. Generate a token with the `repo` scope.
-3. In your application, click the **Admin > Settings** button and enter this token.
+## 🚨 Troubleshooting
 
----
-
-## 🚨 Troubleshooting Checklist
-| Issue | Solution |
+| Scenario | Solution |
 | :--- | :--- |
-| **"not a git repository"** | Run the `cd` command in Step 0. |
-| **"permission denied"** | Ensure your GitHub Token is correct and hasn't expired. |
-| **"merge conflict"** | Run `git pull origin main` BEFORE you make any local changes. |
-| **Images not showing** | Run `git pull origin main` to download images uploaded via the Admin Panel. |
+| **"not a git repository"** | You are in the wrong folder. Use the `cd` command above. |
+| **"merge conflict"** | This happens if you modified the same file locally and on GitHub. Usually, `git add .` and `git commit` followed by `git pull` will resolve it. |
+| **Changes not showing live** | Wait 1-2 minutes for GitHub Pages to refresh, then hard refresh your browser (Ctrl+F5). |
+| **Sync failed on Admin Page** | Check your GitHub Token and ensure you have an active internet connection. |
 
 ---
-*Senior Architecture & Documentation Standard*
+*Senior Architecture Standard*
