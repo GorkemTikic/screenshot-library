@@ -35,14 +35,30 @@ export function DataProvider({ children }) {
                 const liveData = await response.json();
 
                 // Load feedbacks separately
+                let remoteFeedbacks = [];
                 try {
-                    const fbResponse = await fetch(`${FEEDBACKS_URL}?t=${Date.now()}`);
-                    if (fbResponse.ok) {
-                        const fbData = await fbResponse.json();
-                        setFeedbacks(Array.isArray(fbData) ? fbData : []);
+                    // If we have GitHub configured, use API to get freshest data
+                    if (githubService.isConfigured()) {
+                        const { owner, repo } = githubService.getConfig();
+                        const url = `https://api.github.com/repos/${owner}/${repo}/contents/src/data/feedbacks.json?t=${Date.now()}`;
+                        const fbApiRes = await fetch(url, {
+                            headers: githubService.getHeaders(),
+                            cache: 'no-store'
+                        });
+                        if (fbApiRes.ok) {
+                            const fbFile = await fbApiRes.json();
+                            const decoded = decodeURIComponent(escape(atob(fbFile.content)));
+                            remoteFeedbacks = JSON.parse(decoded);
+                        }
+                    } else {
+                        // Public view: Use RAW URL with cache busting
+                        const fbResponse = await fetch(`${FEEDBACKS_URL}?t=${Date.now()}`);
+                        if (fbResponse.ok) {
+                            remoteFeedbacks = await fbResponse.json();
+                        }
                     }
                 } catch (fbErr) {
-                    console.warn("Could not load feedbacks.json, starting fresh:", fbErr);
+                    console.warn("Could not load feedbacks, starting fresh:", fbErr);
                 }
 
                 // Sanitize data and migrate legacy feedbacks
@@ -64,20 +80,23 @@ export function DataProvider({ children }) {
                     };
                 });
 
-                // Merge legacy with loaded feedbacks (avoid duplicates by ID)
-                setFeedbacks(prev => {
-                    const existingIds = new Set(prev.map(f => f.id));
-                    const newUnique = legacyFeedbacks.filter(f => !existingIds.has(f.id));
-                    return [...prev, ...newUnique];
+                // Final Merge: remote feedbacks + legacy ones
+                const mergedFeedbacks = [...(Array.isArray(remoteFeedbacks) ? remoteFeedbacks : [])];
+                const existingIds = new Set(mergedFeedbacks.map(f => f.id));
+                legacyFeedbacks.forEach(fb => {
+                    if (!existingIds.has(fb.id)) {
+                        mergedFeedbacks.push(fb);
+                    }
                 });
 
+                setFeedbacks(mergedFeedbacks);
                 setItems(sanitizedData);
-                console.log("Loaded live data and feedbacks from GitHub. Migrated:", legacyFeedbacks.length);
+                console.log("Loaded data. Feedbacks count:", mergedFeedbacks.length);
             } catch (err) {
-                console.warn("Live data fetch failed, using bundled data:", err);
+                console.warn("Data fetch failed:", err);
                 setFetchError(err.message);
-                // Fallback to bundled data, but also sanitize it
-                setItems(prev => prev.map((item, index) => ({
+                // Fallback to bundled data
+                setItems(bundledData.map((item, index) => ({
                     ...item,
                     id: item.id || Date.now() + index
                 })));
@@ -132,11 +151,13 @@ export function DataProvider({ children }) {
     };
 
     const resolveFeedback = (feedbackId) => {
-        setFeedbacks(prev => prev.map(fb =>
+        const updated = feedbacks.map(fb =>
             fb.id === feedbackId
                 ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() }
                 : fb
-        ));
+        );
+        setFeedbacks(updated);
+        return updated;
     };
 
     const getJson = () => JSON.stringify(items, null, 2);
@@ -157,6 +178,17 @@ export function DataProvider({ children }) {
     const allTopics = useMemo(() => Array.from(new Set(items.map(i => i.topic).filter(Boolean))).sort(), [items]);
     const allLanguages = useMemo(() => Array.from(new Set(items.map(i => i.language))).sort(), [items]);
 
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-slate-900">
+                <div className="text-center">
+                    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-blue-400 font-medium">Initializing Dashboard...</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <DataContext.Provider value={{
             items,
@@ -173,7 +205,8 @@ export function DataProvider({ children }) {
             resolveFeedback,
             syncData,
             syncFeedbacks,
-            getJson
+            getJson,
+            isLoading // Export loading state too
         }}>
             {children}
         </DataContext.Provider>

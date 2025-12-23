@@ -205,11 +205,7 @@ export function AdminPage() {
     const handleResolveFeedback = async (feedbackId) => {
         if (!window.confirm("Mark this feedback as resolved and sync to GitHub?")) return;
 
-        resolveFeedback(feedbackId);
-
-        const updatedFeedbacks = feedbacks.map(fb =>
-            fb.id === feedbackId ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() } : fb
-        );
+        const updatedFeedbacks = resolveFeedback(feedbackId);
 
         try {
             await syncFeedbacks(updatedFeedbacks);
