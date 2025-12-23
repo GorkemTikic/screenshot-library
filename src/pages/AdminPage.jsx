@@ -4,7 +4,7 @@ import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github,
 import { githubService } from '../services/github';
 
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics, resolveFeedback, syncData } = useData();
+    const { items, addItem, updateItem, deleteItem, allTopics, feedbacks, resolveFeedback, syncData, syncFeedbacks } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -170,47 +170,43 @@ export function AdminPage() {
         resetForm();
     };
 
-    const handleResolveFeedback = async (itemId, feedbackId) => {
+    const handleResolveFeedback = async (feedbackId) => {
         if (!window.confirm("Mark this feedback as resolved and sync to GitHub?")) return;
 
-        // Construct the updated status locally to sync immediately
-        const updatedItems = items.map(item => {
-            if (item.id === itemId) {
-                return {
-                    ...item,
-                    feedbacks: item.feedbacks.map(fb =>
-                        fb.id === feedbackId ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() } : fb
-                    )
-                };
-            }
-            return item;
-        });
+        resolveFeedback(feedbackId);
 
-        resolveFeedback(itemId, feedbackId);
+        // Calculate updated state for immediate sync
+        const updatedFeedbacks = feedbacks.map(fb =>
+            fb.id === feedbackId ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() } : fb
+        );
 
         try {
-            await syncData(updatedItems);
+            await syncFeedbacks(updatedFeedbacks);
         } catch (err) {
             console.error("Resolution sync failed", err);
         }
     };
 
-    const activeFeedbacks = (items || []).filter(item =>
-        item.feedbacks && item.feedbacks.some(fb => fb.status === 'active')
-    ).map(item => ({
-        ...item,
-        feedbacks: item.feedbacks.filter(fb => fb.status === 'active')
-    }));
+    // Group feedbacks by item for the UI
+    const groupedFeedbacks = useMemo(() => {
+        const currentList = feedbacks.filter(fb => fb.status === feedbackTab);
+        const groups = {};
 
-    const resolvedFeedbacks = (items || []).filter(item =>
-        item.feedbacks && item.feedbacks.some(fb => fb.status === 'resolved')
-    ).map(item => ({
-        ...item,
-        feedbacks: item.feedbacks.filter(fb => fb.status === 'resolved')
-    }));
+        currentList.forEach(fb => {
+            if (!groups[fb.itemId]) {
+                const item = items.find(i => i.id === fb.itemId);
+                groups[fb.itemId] = {
+                    item: item || { title: 'Deleted Item', image: '' },
+                    feedbacks: []
+                };
+            }
+            groups[fb.itemId].feedbacks.push(fb);
+        });
 
-    const feedbackCount = activeFeedbacks.reduce((acc, item) => acc + item.feedbacks.length, 0);
-    const displayFeedbacks = feedbackTab === 'active' ? activeFeedbacks : resolvedFeedbacks;
+        return Object.values(groups);
+    }, [feedbacks, feedbackTab, items]);
+
+    const feedbackCount = feedbacks.filter(fb => fb.status === 'active').length;
 
     // Filtered Items
     const safeItems = items || [];
@@ -486,23 +482,23 @@ export function AdminPage() {
                                 </button>
                             </div>
 
-                            {displayFeedbacks.length === 0 ? (
+                            {groupedFeedbacks.length === 0 ? (
                                 <div className="text-center py-8 text-muted">
                                     {feedbackTab === 'active' ? "No active feedbacks! Great job." : "No resolution history yet."}
                                 </div>
                             ) : (
                                 <div className="feedback-list">
-                                    {displayFeedbacks.map(item => (
-                                        <div key={item.id} className="feedback-item-group">
+                                    {groupedFeedbacks.map(group => (
+                                        <div key={group.item.id || Math.random()} className="feedback-item-group">
                                             <div className="feedback-item-header">
-                                                <img src={item.image} alt="" className="feedback-thumb" />
+                                                <img src={group.item.image} alt="" className="feedback-thumb" />
                                                 <div className="flex-1">
-                                                    <h4 className="font-bold">{item.title}</h4>
-                                                    <p className="text-xs text-muted">ID: {item.id} | Topic: {item.topic}</p>
+                                                    <h4 className="font-bold">{group.item.title}</h4>
+                                                    <p className="text-xs text-muted">ID: {group.item.id} | Topic: {group.item.topic}</p>
                                                 </div>
                                             </div>
                                             <div className="feedback-messages">
-                                                {item.feedbacks.map(fb => (
+                                                {group.feedbacks.map(fb => (
                                                     <div key={fb.id} className="feedback-message-row">
                                                         <div className="flex-1">
                                                             <p className="feedback-text line-clamp-2" title={fb.message}>{fb.message}</p>
@@ -520,7 +516,7 @@ export function AdminPage() {
                                                                 className="btn btn-xs btn-success ml-4"
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();
-                                                                    handleResolveFeedback(item.id, fb.id);
+                                                                    handleResolveFeedback(fb.id);
                                                                 }}
                                                                 title="Mark as Fixed / Resolved"
                                                             >

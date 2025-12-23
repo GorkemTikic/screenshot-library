@@ -2,11 +2,14 @@ import React, { createContext, useContext, useEffect, useState, useMemo } from '
 import bundledData from '../data/data.json';
 
 const DataContext = createContext();
-const DATA_URL = 'https://raw.githubusercontent.com/GorkemTikic/screenshot-library/main/src/data/data.json';
+const BASE_DATA_URL = 'https://raw.githubusercontent.com/GorkemTikic/screenshot-library/main/src/data';
+const DATA_URL = `${BASE_DATA_URL}/data.json`;
+const FEEDBACKS_URL = `${BASE_DATA_URL}/feedbacks.json`;
 import { githubService } from '../services/github';
 
 export function DataProvider({ children }) {
-    const [items, setItems] = useState(bundledData); // Start with bundled data (Stale-while-revalidate)
+    const [items, setItems] = useState(bundledData); // Start with bundled data
+    const [feedbacks, setFeedbacks] = useState([]); // Separate feedback state
     const [isLoading, setIsLoading] = useState(true);
     const [fetchError, setFetchError] = useState(null);
 
@@ -31,14 +34,26 @@ export function DataProvider({ children }) {
                 if (!response.ok) throw new Error('Failed to fetch live data');
                 const liveData = await response.json();
 
+                // Load feedbacks separately
+                try {
+                    const fbResponse = await fetch(`${FEEDBACKS_URL}?t=${Date.now()}`);
+                    if (fbResponse.ok) {
+                        const fbData = await fbResponse.json();
+                        setFeedbacks(Array.isArray(fbData) ? fbData : []);
+                    }
+                } catch (fbErr) {
+                    console.warn("Could not load feedbacks.json, starting fresh:", fbErr);
+                }
+
                 // Sanitize data: Ensure every item has an ID
                 const sanitizedData = liveData.map((item, index) => ({
                     ...item,
-                    id: item.id || Date.now() + index
+                    id: item.id || Date.now() + index,
+                    feedbacks: undefined // Clear legacy feedbacks from items
                 }));
 
                 setItems(sanitizedData);
-                console.log("Loaded live data from GitHub");
+                console.log("Loaded live data and feedbacks from GitHub");
             } catch (err) {
                 console.warn("Live data fetch failed, using bundled data:", err);
                 setFetchError(err.message);
@@ -87,53 +102,36 @@ export function DataProvider({ children }) {
         const feedbackId = Date.now();
         const newFeedback = {
             id: feedbackId,
+            itemId,
             message,
             status: 'active',
             timestamp: new Date().toISOString()
         };
 
-        setItems(prev => prev.map(item => {
-            if (item.id === itemId) {
-                const existingFeedbacks = item.feedbacks || [];
-                return { ...item, feedbacks: [...existingFeedbacks, newFeedback] };
-            }
-            return item;
-        }));
-
+        setFeedbacks(prev => [newFeedback, ...prev]);
         return feedbackId;
     };
 
-    const resolveFeedback = (itemId, feedbackId) => {
-        setItems(prev => prev.map(item => {
-            if (item.id === itemId && item.feedbacks) {
-                return {
-                    ...item,
-                    feedbacks: item.feedbacks.map(fb =>
-                        fb.id === feedbackId
-                            ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() }
-                            : fb
-                    )
-                };
-            }
-            return item;
-        }));
+    const resolveFeedback = (feedbackId) => {
+        setFeedbacks(prev => prev.map(fb =>
+            fb.id === feedbackId
+                ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() }
+                : fb
+        ));
     };
 
     const getJson = () => JSON.stringify(items, null, 2);
 
     const syncData = async (itemsToSync = items) => {
-        if (!githubService.isConfigured()) {
-            console.warn("Sync skipped: GitHub not configured");
-            return false;
-        }
+        if (!githubService.isConfigured()) return false;
+        await githubService.updateDataJson(itemsToSync);
+        return true;
+    };
 
-        try {
-            await githubService.updateDataJson(itemsToSync);
-            return true;
-        } catch (err) {
-            console.error("Sync failed:", err);
-            throw err;
-        }
+    const syncFeedbacks = async (feedbacksToSync = feedbacks) => {
+        if (!githubService.isConfigured()) return false;
+        await githubService.updateJsonFile('src/data/feedbacks.json', feedbacksToSync, "Update feedbacks.json via Admin Panel");
+        return true;
     };
 
     // Derived lists
@@ -151,9 +149,11 @@ export function DataProvider({ children }) {
             addItem,
             updateItem,
             deleteItem,
+            feedbacks,
             addFeedback,
             resolveFeedback,
             syncData,
+            syncFeedbacks,
             getJson
         }}>
             {children}

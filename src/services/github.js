@@ -93,38 +93,42 @@ export const githubService = {
         });
     },
 
-    // 3. Update data.json
-    updateDataJson: async (newItems) => {
+    // 3. General Update JSON helper
+    updateJsonFile: async (path, newContent, message = "Update file via Admin Panel") => {
         if (!githubService.isConfigured()) throw new Error("Config missing");
         const { owner, repo } = githubService.getConfig();
-        const path = 'src/data/data.json';
         const url = `${GITHUB_API_URL}/repos/${owner}/${repo}/contents/${path}`;
 
         // Step A: Get current SHA (with cache busting)
-        const getResponse = await fetch(`${url}?t=${Date.now()}`, {
-            headers: githubService.getHeaders(),
-            cache: 'no-store'
-        });
+        let sha = null;
+        try {
+            const getResponse = await fetch(`${url}?t=${Date.now()}`, {
+                headers: githubService.getHeaders(),
+                cache: 'no-store'
+            });
 
-        if (!getResponse.ok) {
-            const err = await getResponse.json().catch(() => ({}));
-            throw new Error(`Could not fetch data.json (Status: ${getResponse.status}): ${err.message || ''}`);
+            if (getResponse.ok) {
+                const currentFile = await getResponse.json();
+                sha = currentFile.sha;
+            } else if (getResponse.status !== 404) {
+                const err = await getResponse.json().catch(() => ({}));
+                throw new Error(`Could not fetch ${path} (Status: ${getResponse.status}): ${err.message || ''}`);
+            }
+        } catch (e) {
+            console.warn(`File ${path} may not exist yet, or fetch failed:`, e);
+            // If it's not a 404, we might want to rethrow, but here 404 is allowed for initial creation
         }
 
-        const currentFile = await getResponse.json();
-        const sha = currentFile.sha;
-
         // Step B: Commit Update
-        // Encode content to Base64 (supporting UTF-8)
-        const content = btoa(unescape(encodeURIComponent(JSON.stringify(newItems, null, 2))));
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(newContent, null, 2))));
 
         const putResponse = await fetch(url, {
             method: 'PUT',
             headers: githubService.getHeaders(),
             body: JSON.stringify({
-                message: "Update data.json via Admin Panel",
+                message,
                 content: content,
-                sha: sha
+                sha: sha || undefined
             })
         });
 
@@ -135,5 +139,10 @@ export const githubService = {
         }
 
         return await putResponse.json();
+    },
+
+    // Bridge for existing code
+    updateDataJson: async (newItems) => {
+        return githubService.updateJsonFile('src/data/data.json', newItems, "Update data.json via Admin Panel");
     }
 };
