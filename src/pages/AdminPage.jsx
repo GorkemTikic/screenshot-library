@@ -13,6 +13,7 @@ export function AdminPage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
     const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+    const [feedbackTab, setFeedbackTab] = useState('active'); // 'active' or 'history'
 
     // Form State
     const [editingId, setEditingId] = useState(null);
@@ -169,22 +170,17 @@ export function AdminPage() {
         resetForm();
     };
 
-    const handleDelete = (id) => {
-        if (window.confirm('Delete this item?')) {
-            deleteItem(id);
-            const newItems = items.filter(i => i.id !== id);
-            syncToGithub(newItems);
-        }
-    };
-
     const handleResolveFeedback = async (itemId, feedbackId) => {
         resolveFeedback(itemId, feedbackId);
-        // After resolving, we should offer to sync
+
+        // Construct the updated status locally to sync immediately
         const updatedItems = items.map(item => {
             if (item.id === itemId) {
                 return {
                     ...item,
-                    feedbacks: item.feedbacks.filter(fb => fb.id !== feedbackId)
+                    feedbacks: item.feedbacks.map(fb =>
+                        fb.id === feedbackId ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() } : fb
+                    )
                 };
             }
             return item;
@@ -194,15 +190,29 @@ export function AdminPage() {
         setTimeout(() => syncToGithub(updatedItems), 100);
     };
 
+    const activeFeedbacks = (items || []).filter(item =>
+        item.feedbacks && item.feedbacks.some(fb => fb.status === 'active')
+    ).map(item => ({
+        ...item,
+        feedbacks: item.feedbacks.filter(fb => fb.status === 'active')
+    }));
+
+    const resolvedFeedbacks = (items || []).filter(item =>
+        item.feedbacks && item.feedbacks.some(fb => fb.status === 'resolved')
+    ).map(item => ({
+        ...item,
+        feedbacks: item.feedbacks.filter(fb => fb.status === 'resolved')
+    }));
+
+    const feedbackCount = activeFeedbacks.reduce((acc, item) => acc + item.feedbacks.length, 0);
+    const displayFeedbacks = feedbackTab === 'active' ? activeFeedbacks : resolvedFeedbacks;
+
     // Filtered Items
     const safeItems = items || [];
     const filteredItems = safeItems.filter(item =>
         (item.title || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
         (item.text || '').toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-    const activeFeedbacks = (items || []).filter(item => item.feedbacks && item.feedbacks.length > 0);
-    const feedbackCount = activeFeedbacks.reduce((acc, item) => acc + item.feedbacks.length, 0);
 
     return (
         <div className="admin-container animate-in">
@@ -456,11 +466,28 @@ export function AdminPage() {
                             <button className="close-btn" onClick={() => setIsFeedbackModalOpen(false)}><X size={24} /></button>
                         </div>
                         <div className="modal-body">
-                            {feedbackCount === 0 ? (
-                                <div className="text-center py-8 text-muted">No active feedbacks! Great job.</div>
+                            <div className="tabs-header mb-6">
+                                <button
+                                    className={`tab-btn ${feedbackTab === 'active' ? 'active' : ''}`}
+                                    onClick={() => setFeedbackTab('active')}
+                                >
+                                    Active Reports ({feedbackCount})
+                                </button>
+                                <button
+                                    className={`tab-btn ${feedbackTab === 'history' ? 'active' : ''}`}
+                                    onClick={() => setFeedbackTab('history')}
+                                >
+                                    Resolution History
+                                </button>
+                            </div>
+
+                            {displayFeedbacks.length === 0 ? (
+                                <div className="text-center py-8 text-muted">
+                                    {feedbackTab === 'active' ? "No active feedbacks! Great job." : "No resolution history yet."}
+                                </div>
                             ) : (
                                 <div className="feedback-list">
-                                    {activeFeedbacks.map(item => (
+                                    {displayFeedbacks.map(item => (
                                         <div key={item.id} className="feedback-item-group">
                                             <div className="feedback-item-header">
                                                 <img src={item.image} alt="" className="feedback-thumb" />
@@ -474,18 +501,27 @@ export function AdminPage() {
                                                     <div key={fb.id} className="feedback-message-row">
                                                         <div className="flex-1">
                                                             <p className="feedback-text line-clamp-2" title={fb.message}>{fb.message}</p>
-                                                            <p className="text-xs text-muted">{new Date(fb.timestamp).toLocaleString()}</p>
+                                                            <div className="flex justify-between items-center">
+                                                                <p className="text-xs text-muted">{new Date(fb.timestamp).toLocaleString()}</p>
+                                                                {fb.resolvedAt && (
+                                                                    <p className="text-xs text-green-600 font-semibold italic">
+                                                                        Resolved: {new Date(fb.resolvedAt).toLocaleString()}
+                                                                    </p>
+                                                                )}
+                                                            </div>
                                                         </div>
-                                                        <button
-                                                            className="btn btn-xs btn-success"
-                                                            onClick={(e) => {
-                                                                e.stopPropagation();
-                                                                handleResolveFeedback(item.id, fb.id);
-                                                            }}
-                                                            title="Mark as Fixed / Resolved"
-                                                        >
-                                                            <CheckCircle size={14} className="mr-1" /> Resolve
-                                                        </button>
+                                                        {fb.status === 'active' && (
+                                                            <button
+                                                                className="btn btn-xs btn-success ml-4"
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleResolveFeedback(item.id, fb.id);
+                                                                }}
+                                                                title="Mark as Fixed / Resolved"
+                                                            >
+                                                                <CheckCircle size={14} className="mr-1" /> Resolve
+                                                            </button>
+                                                        )}
                                                     </div>
                                                 ))}
                                             </div>

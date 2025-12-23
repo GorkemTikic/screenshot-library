@@ -87,6 +87,7 @@ export function DataProvider({ children }) {
         const newFeedback = {
             id: feedbackId,
             message,
+            status: 'active',
             timestamp: new Date().toISOString()
         };
 
@@ -106,7 +107,11 @@ export function DataProvider({ children }) {
             if (item.id === itemId && item.feedbacks) {
                 return {
                     ...item,
-                    feedbacks: item.feedbacks.filter(fb => fb.id !== feedbackId)
+                    feedbacks: item.feedbacks.map(fb =>
+                        fb.id === feedbackId
+                            ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() }
+                            : fb
+                    )
                 };
             }
             return item;
