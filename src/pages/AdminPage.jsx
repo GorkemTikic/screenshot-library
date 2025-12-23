@@ -41,7 +41,8 @@ export function AdminPage() {
     // Group feedbacks by item for the UI
     const groupedFeedbacks = useMemo(() => {
         if (!feedbacks) return [];
-        const currentList = feedbacks.filter(fb => fb.status === feedbackTab);
+        const targetStatus = feedbackTab === 'active' ? 'active' : 'resolved';
+        const currentList = feedbacks.filter(fb => fb.status === targetStatus);
         const groups = {};
 
         currentList.forEach(fb => {
