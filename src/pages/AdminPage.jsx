@@ -180,6 +180,11 @@ export function AdminPage() {
             delete finalData.newLanguageName;
         }
 
+        // Final normalization to prevent EN/English split
+        if (finalData.language === 'EN') {
+            finalData.language = 'English';
+        }
+
         let newItems;
         if (editingId) {
             updateItem(editingId, finalData);
@@ -426,11 +431,13 @@ export function AdminPage() {
                                             value={formData.language}
                                             onChange={e => setFormData({ ...formData, language: e.target.value })}
                                         >
-                                            <option value="Multi-Language">Multi-Language</option>
                                             {/* Dynamic Languages */}
-                                            {(allLanguages || []).filter(l => l !== 'Multi-Language').map(lang => (
-                                                <option key={lang} value={lang}>{lang}</option>
-                                            ))}
+                                            {(allLanguages || [])
+                                                .filter(l => l !== 'Multi-Language' && l !== 'Multi')
+                                                .map(lang => {
+                                                    const displayName = lang === 'EN' ? 'English' : lang;
+                                                    return <option key={lang} value={lang}>{displayName}</option>;
+                                                })}
                                             <option value="NEW">+ Create New Language</option>
                                         </select>
                                         {formData.language === 'NEW' && (
