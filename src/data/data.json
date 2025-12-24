@@ -600,5 +600,16 @@
     "language": "English",
     "platform": "web",
     "id": 1766512912428
+  },
+  {
+    "title": "跟单组合历史",
+    "text": "1. 点击【合约】\n2. 点击【跟单】\n3. 点击右下角的【跟单】\n4.  您可以在此页面看到【进行中 / 已结束 / 模拟跟单】的跟单组合。",
+    "text_tr": "",
+    "image": "screenshots/1766591016206_Copy-Trading-History.png",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766591083794
   }
 ]
