@@ -611,5 +611,16 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766591083794
+  },
+  {
+    "title": "EC Index Price History 事件合约指数价格历史数据 - CN",
+    "text": "1. 右上角点击【...】\n2. 指数历史数据\n3. 筛选想要查看的时间\n\n注意⚠️：该页面仅提供过去两天的数据",
+    "text_tr": "",
+    "image": "screenshots/1766592026888_EC-Index-Price-History.png",
+    "topic": "General",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766592070086
   }
 ]
