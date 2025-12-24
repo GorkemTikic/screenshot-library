@@ -666,5 +666,16 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766598202606
+  },
+  {
+    "title": "PM Enable/Disable 如何开启/关闭统一账户 - CN",
+    "text": "在【经典交易】和【统一账户】之间切换，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【统一账户】\n3）在此页面中，您可以在【经典交易】和【统一账户】之间进行切换\n\n如需了解更多关于【统一账户】的信息，请参考以下详细指南：\nhttps://www.binance.com/zh-CN/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
+    "text_tr": "",
+    "image": "screenshots/1766598901842_PM-Enable:Disable.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766598907265
   }
 ]
