@@ -1,5 +1,16 @@
 [
   {
+    "title": "Funding Fee History 资金费用历史 - CN",
+    "text": "在手机App上查看资金费用历史记录，请按照截图中的步骤操作：\n\n1）点击【合约】\n2）点击 【历史订单】图标\n3）在上方菜单中向右滑动，点击【资金费用】\n\n在该页面中，您可以查看自己收到或支付的资金费用明细。",
+    "text_tr": "",
+    "image": "screenshots/1766595036418_Funding-Fee-资金费用.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766595089163
+  },
+  {
     "title": "Futures Transaction History (Export) 合约资金流水（导出）- CN",
     "text": "1. 请点击 【合约】，然后点击我标记的 【订单历史】图标。\n2. 接着进入 【资金流水】 选项，并点击右上角的 【导出】 按钮。\n3. 进入导出页面后，在这里请进行以下选择：\n\n选择：【全部时间】\n\n时间范围最多只能选择 12 个月。如果你需要查看 过去 2–5 年 的记录，可以按年份分别导出交易历史，例如：\n\n- 2020-01-01 至 2020-12-31\n- 2021-01-01 至 2021-12-31\n- 2022-01-01 至 2022-12-31\n- 2023-01-01 至 2023-12-31\n- 2024-01-01 至 2024-12-31\n\n这样就可以分别生成每一年的交易历史文件。",
     "text_tr": "",
@@ -635,14 +646,14 @@
     "id": 1766592070086
   },
   {
-    "title": "Funding Fee History 资金费用历史 - CN",
-    "text": "在手机App上查看资金费用历史记录，请按照截图中的步骤操作：\n\n1）点击【合约】\n2）点击 【历史订单】图标\n3）在上方菜单中向右滑动，点击【资金费用】\n\n在该页面中，您可以查看自己收到或支付的资金费用明细。",
+    "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
+    "text": "要更改资产模式，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出的菜单中点击 【偏好设置】\n3）点击【资产模式】\n4）在该页面中即可更改您的资产模式（单币保证金模式/联合保证金模式）",
     "text_tr": "",
-    "image": "screenshots/1766595036418_Funding-Fee-资金费用.png",
+    "image": "screenshots/1766597344203_change-asset-mode.png",
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766595089163
+    "id": 1766597363030
   }
 ]
