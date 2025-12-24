@@ -4,6 +4,7 @@ import { useData } from '../contexts/DataContext';
 import { logEvent } from '../services/analytics';
 
 import { resolveImageUrl } from '../utils/imageUtils';
+import { getLangCode } from '../utils/langUtils';
 
 export function ScreenshotCard({ item, onClickImage }) {
     const { isFavorite, toggleFavorite, addFeedback, syncFeedbacks, feedbacks } = useData();
@@ -159,7 +160,7 @@ export function ScreenshotCard({ item, onClickImage }) {
                         title="Copy Content"
                     >
                         {copied ? <Check size={16} /> : <Copy size={16} />}
-                        {copied ? 'Copied' : `Copy (${contentLang.toUpperCase()})`}
+                        {copied ? 'Copied' : `Copy (${contentLang === 'en' ? getLangCode(item.language) : 'TR'})`}
                     </button>
 
                     <button

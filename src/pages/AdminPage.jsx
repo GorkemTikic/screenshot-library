@@ -452,7 +452,7 @@ export function AdminPage() {
                                 </div>
 
                                 <div className="form-group">
-                                    <label>English Text (Content)</label>
+                                    <label>{formData.language} Text (Content)</label>
                                     <textarea
                                         className="form-textarea"
                                         required
