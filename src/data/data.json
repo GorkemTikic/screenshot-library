@@ -1,5 +1,16 @@
 [
   {
+    "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
+    "text": "要更改资产模式，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出的菜单中点击 【偏好设置】\n3）点击【资产模式】\n4）在该页面中即可更改您的资产模式（单币保证金模式/联合保证金模式）",
+    "text_tr": "",
+    "image": "screenshots/1766597344203_change-asset-mode.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766597363030
+  },
+  {
     "title": "Funding Fee History 资金费用历史 - CN",
     "text": "在手机App上查看资金费用历史记录，请按照截图中的步骤操作：\n\n1）点击【合约】\n2）点击 【历史订单】图标\n3）在上方菜单中向右滑动，点击【资金费用】\n\n在该页面中，您可以查看自己收到或支付的资金费用明细。",
     "text_tr": "",
@@ -164,7 +175,7 @@
     "title": "Change Button Settings in Positions - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Button_Settings_in_Positions_-_EN.jpg",
-    "text": "To Change Button Settings, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Button Settings In Positions.\n\n5 -) In this page you can change your Button settings on the open positions. You can enable or the disable options you prefer.",
+    "text": "To Change Asset Mode, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Button Settings In Positions.\n\n5 -) In this page you can change your Button settings on the open positions. You can enable or the disable options you prefer.",
     "topic": "Futures Trading",
     "id": 1765164170442
   },
@@ -646,25 +657,14 @@
     "id": 1766592070086
   },
   {
-    "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
-    "text": "要更改资产模式，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出的菜单中点击 【偏好设置】\n3）点击【资产模式】\n4）在该页面中即可更改您的资产模式（单币保证金模式/联合保证金模式）",
+    "title": "Change position button 仓位按钮设置 - CN",
+    "text": "更改仓位按钮设置，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【偏好设置】\n3）在布局管理中点击【仓位按钮设置】\n4）在此页面中，您可以更改持仓的按钮设置，根据个人偏好启用或关闭相关选项。",
     "text_tr": "",
-    "image": "screenshots/1766597344203_change-asset-mode.png",
+    "image": "screenshots/1766598170504_Change-position-button.png",
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766597363030
-  },
-  {
-    "title": "Event Contracts ''Index Price History'' - EN",
-    "text": "To see the Index Price History for Event Contracts, please follow the steps in the screenshot: \n\n1 -) Please click  the ''...'' Icon on top right corner on Event Contract Trading page. \n\n2 -) Click on ''Historical Index Data'' button. \n\n3 -) In this page you can see the Historical Index Data for the related symbols you choose.\n\nPlease Note That: ''* Only data from the last two days are available.''\n",
-    "text_tr": "",
-    "image": "screenshots/1766597536075_Event-Contracts-''Index-Price-History''---EN.jpeg",
-    "topic": "Event Contract",
-    "language": "English",
-    "platform": "mobile",
-    "newLanguageName": "",
-    "id": 1766597550081
+    "id": 1766598202606
   }
 ]
