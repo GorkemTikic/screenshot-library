@@ -655,5 +655,16 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766597363030
+  },
+  {
+    "title": "Event Contracts ''Index Price History'' - EN",
+    "text": "To see the Index Price History for Event Contracts, please follow the steps in the screenshot: \n\n1 -) Please click  the ''...'' Icon on top right corner on Event Contract Trading page. \n\n2 -) Click on ''Historical Index Data'' button. \n\n3 -) In this page you can see the Historical Index Data for the related symbols you choose.\n\nPlease Note That: ''* Only data from the last two days are available.''\n",
+    "text_tr": "",
+    "image": "screenshots/1766597536075_Event-Contracts-''Index-Price-History''---EN.jpeg",
+    "topic": "Event Contract",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766597550081
   }
 ]
