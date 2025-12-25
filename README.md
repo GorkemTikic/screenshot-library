@@ -1,7 +1,7 @@
 # 📸 Screenshot Library Assistant
 
-> **Last Updated:** 2025-12-24  
-> **Version:** 1.1.0  
+> **Last Updated:** 2025-12-25  
+> **Version:** 1.2.0  
 > **Role:** Senior Technical Architecture Map
 
 A premium dashboard for managing and viewing project screenshots, featuring automated GitHub synchronization, real-time feedback processing, and a high-performance filtering system.
@@ -40,7 +40,8 @@ support-screenshot-library-main/
 │   │   ├── github.js       # GitHub API integration (Rest/Content)
 │   │   └── analytics.js    # Data processing logic
 │   ├── utils/              # Helper functions
-│   │   └── imageUtils.js   # Image path resolution
+│   │   ├── imageUtils.js   # Image path resolution
+│   │   └── langUtils.js    # Language code mapping (CN, RU, etc.)
 │   ├── App.jsx             # Root router
 │   ├── index.css           # Design system (Glassmorphism & Neon)
 │   └── main.jsx            # Entry point
@@ -100,6 +101,7 @@ support-screenshot-library-main/
 
 - **Main Registry**: `src/data/data.json`.
 - **Feedback Loop**: Entries in `feedbacks.json` should be resolved via the Admin Page to ensure status updates are committed correctly.
+- **Filename Restrictions**: Avoid using special characters like colons `:` or parentheses `()` in screenshot filenames, as these cause loading issues in certain environments.
 - **Rules**: Do not modify JSON files directly in the `dist/` folder; always use the Admin Panel or update the `src/data/` source files.
 
 ---
