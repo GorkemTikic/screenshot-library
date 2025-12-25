@@ -432,7 +432,8 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Clear_Cache_CN.png",
     "text": "1 -) 点击【首页】\n2 -) 左上角点击【三条杠】\n3 -) 右上角点击【设置（⚙️）】\n4 -) 点击清除缓存\n\n这有助于清理临时文件，使您的应用运行得更快、更流畅！",
     "topic": "General",
-    "id": 1765164170467
+    "id": 1765164170467,
+    "platform": "mobile"
   },
   {
     "title": "System Feedback - AR",
