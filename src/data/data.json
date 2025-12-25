@@ -747,5 +747,16 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766677925281
+  },
+  {
+    "title": "Loan Order History 借币订单历史 - CN",
+    "text": "要查看正在进行中的借币订单或借币/还款历史记录，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击【更多】\n3）在页面中向下滑动，在【金融业务】分类下找到【质押借币】\n4）点击右上角的【历史记录】\n\n在该页面中，您可以查看当前进行中的订单以及借币/还款历史记录。",
+    "text_tr": "",
+    "image": "screenshots/1766683861367_Loan-Order-History.png",
+    "topic": "Binance LOAN",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766683877481
   }
 ]
