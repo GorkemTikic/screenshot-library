@@ -1,5 +1,16 @@
 [
   {
+    "title": "Loan Order History 借币订单历史 - CN",
+    "text": "要查看正在进行中的借币订单或借币/还款历史记录，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击【更多】\n3）在页面中向下滑动，在【金融业务】分类下找到【质押借币】\n4）点击右上角的【历史记录】\n\n在该页面中，您可以查看当前进行中的订单以及借币/还款历史记录。",
+    "text_tr": "",
+    "image": "screenshots/1766683861367_Loan-Order-History.png",
+    "topic": "Binance LOAN",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766683877481
+  },
+  {
     "title": "BNB Discount BNB折扣 - CN",
     "text": "要在合约/杠杆交易手续费或杠杆利息中启用BNB折扣，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击左上角【三条杠（菜单）】\n3）点击右上角【设置】\n4）点击【使用 BNB】\n5）在此页面中，您可以为合约/杠杆交易手续费和杠杆利息启用BNB折扣",
     "text_tr": "",
@@ -749,14 +760,14 @@
     "id": 1766677925281
   },
   {
-    "title": "Loan Order History 借币订单历史 - CN",
-    "text": "要查看正在进行中的借币订单或借币/还款历史记录，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击【更多】\n3）在页面中向下滑动，在【金融业务】分类下找到【质押借币】\n4）点击右上角的【历史记录】\n\n在该页面中，您可以查看当前进行中的订单以及借币/还款历史记录。",
+    "title": "Loan Repay (Collateral) 借币还款（抵押物）- CN",
+    "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【抵押物】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【抵押物】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
     "text_tr": "",
-    "image": "screenshots/1766683861367_Loan-Order-History.png",
+    "image": "screenshots/1766684943856_Loan-Repay-Collateral.png",
     "topic": "Binance LOAN",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766683877481
+    "id": 1766684949490
   }
 ]
