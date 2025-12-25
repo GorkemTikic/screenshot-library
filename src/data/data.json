@@ -1,5 +1,16 @@
 [
   {
+    "title": "Webhook Failed Signal Webhook失败信号 - CN",
+    "text": "要查看Webhook失败信号，请按照截图中的步骤操作：\n\n1）点击【机器人】\n2）点击【Webhook 信号交易】\n3）点击垃圾桶按钮旁边的 【历史记录】图标\n4）进入此页面后，您将看到【失败信号】，可在此查看信号失败的原因\n\n如何使用 TradingView 设置信号交易？\nhttps://www.binance.com/zh-CN/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
+    "text_tr": "",
+    "image": "screenshots/1766676587242_Webhook-Failed-Signal.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "web",
+    "newLanguageName": "",
+    "id": 1766676606420
+  },
+  {
     "title": "PM Enable/Disable 如何开启/关闭统一账户 - CN",
     "text": "在【经典交易】和【统一账户】之间切换，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【统一账户】\n3）在此页面中，您可以在【经典交易】和【统一账户】之间进行切换\n\n如需了解更多关于【统一账户】的信息，请参考以下详细指南：\nhttps://www.binance.com/zh-CN/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
     "text_tr": "",
@@ -690,14 +701,14 @@
     "id": 1766599708483
   },
   {
-    "title": "Webhook Failed Signal Webhook失败信号 - CN",
-    "text": "要查看Webhook失败信号，请按照截图中的步骤操作：\n\n1）点击【机器人】\n2）点击【Webhook 信号交易】\n3）点击垃圾桶按钮旁边的 【历史记录】图标\n4）进入此页面后，您将看到【失败信号】，可在此查看信号失败的原因\n\n如何使用 TradingView 设置信号交易？\nhttps://www.binance.com/zh-CN/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
+    "title": "PNL Analysis Page (To see Fees) 盈亏分析页面（查看费用）- CN",
+    "text": "要查看合约盈亏分析以检查您的资金费用与交易手续费，请按照截图中的步骤操作：\n\n1）点击【资产】\n2）点击【合约】\n3）选择【U本位合约】\n4）点击【今日已实现盈亏】，进入合约盈亏页面\n5）切换到【资金费用与交易手续费】\n6）开启【显示交易手续费\n\n您将看到的内容：\n\n- 您支付交易手续费总额\n\n- 您支付或获得的资金费用\n\n小提示：\n您可以使用日期筛选功能，选择自定义时间范围，或快速选项：7日 / 近1个月 / 近3个月 / 近1年",
     "text_tr": "",
-    "image": "screenshots/1766676587242_Webhook-Failed-Signal.png",
+    "image": "screenshots/1766677904613_PNL-Analysis-Page-(To-see-Fees).png",
     "topic": "Futures Trading",
     "language": "Chinese",
-    "platform": "web",
+    "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766676606420
+    "id": 1766677925281
   }
 ]
