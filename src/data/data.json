@@ -536,7 +536,8 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Cooling_Off_Period_Futures_-_CN.png",
     "text": "如果您想要禁用合约交易功能。您可以通过以下方式禁用合约交易：\n\n1 -) 请点击合约交易页面上的“...”图标\n\n2 -) 点击“冷静期”\n\n3 -) 点击“启用”按钮。\n\n4 -) 然后，您可以选择冷静期，例如：\n\n1 天\n1 周\n1 个月\n无限期\n\n5 -) 点击【确认】\n\n一旦您激活冷静期，您将无法进行合约交易，因此合约交易将被禁用。\n\n请注意，一旦您激活冷静期，我们将无法协助您解除冷静期。\n\n什么是冷静期功能以及如何使用它？\nhttps://www.binance.com/zh-CN/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc",
     "topic": "Futures Trading",
-    "id": 1765164170480
+    "id": 1765164170480,
+    "platform": "mobile"
   },
   {
     "title": "Mark Price Chart 标记价格K线图 - CN",
