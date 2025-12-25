@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useData } from '../contexts/DataContext';
-import { getLibraryStats } from '../services/analytics';
+import { getLibraryStats, fetchInteractionStats } from '../services/analytics';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { Lock, BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database } from 'lucide-react';
+import { Lock, BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2 } from 'lucide-react';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658'];
 
@@ -13,12 +13,17 @@ export function AnalyticsPage() {
     const [password, setPassword] = useState('');
 
     useEffect(() => {
-        if (items.length > 0) {
-            setStats(getLibraryStats(items));
-        }
+        const loadStats = async () => {
+            if (items.length > 0) {
+                // Fetch interaction data if available
+                const interactionData = await fetchInteractionStats();
+                setStats(getLibraryStats(items, interactionData));
+            }
+        };
+        loadStats();
     }, [items]);
 
-    // Auth Check (Same as Admin)
+    // Auth Check
     if (!isAuthenticated) {
         return (
             <div className="auth-container animate-in">
@@ -48,14 +53,19 @@ export function AnalyticsPage() {
         );
     }
 
-    if (!stats) return <div>Loading interactions...</div>;
+    if (!stats) return (
+        <div className="analytics-loading">
+            <div className="spinner"></div>
+            <p>Gathering library insights...</p>
+        </div>
+    );
 
     return (
         <div className="analytics-container animate-in">
             <div className="analytics-header">
                 <div>
                     <h2 className="page-title">Analytics Dashboard</h2>
-                    <p className="text-muted">Real-time stats based on current content library</p>
+                    <p className="text-muted">Real-time stats based on current content library & user activity</p>
                 </div>
                 <div className="header-actions">
                     <a
@@ -82,12 +92,24 @@ export function AnalyticsPage() {
                 </div>
 
                 <div className="stat-card">
-                    <div className="stat-icon green">
-                        <PieIcon size={24} />
+                    <div className="stat-icon purple">
+                        <Users size={24} />
                     </div>
                     <div>
-                        <p className="stat-label">Active Topics</p>
-                        <h3 className="stat-value">{stats.topicData.length}</h3>
+                        <p className="stat-label">Total Visitors</p>
+                        <h3 className="stat-value">{stats.uniqueUsers !== null ? stats.uniqueUsers : 'Scanning...'}</h3>
+                    </div>
+                </div>
+
+                <div className="stat-card">
+                    <div className="stat-icon yellow">
+                        <MousePointer2 size={24} />
+                    </div>
+                    <div style={{ maxWidth: '180px' }}>
+                        <p className="stat-label">Top Interaction</p>
+                        <h3 className="stat-value text-truncate" title={stats.topScreenshot} style={{ fontSize: stats.topScreenshot?.length > 15 ? '1rem' : '1.2rem' }}>
+                            {stats.topScreenshot || 'N/A'}
+                        </h3>
                     </div>
                 </div>
 
@@ -116,17 +138,19 @@ export function AnalyticsPage() {
                                     data={stats.topicData}
                                     cx="50%"
                                     cy="50%"
-                                    labelLine={false}
+                                    labelLine={true}
                                     label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                                    outerRadius={80}
-                                    fill="#8884d8"
+                                    outerRadius={65} // Slightly reduced to give labels more room
+                                    innerRadius={40} // Added inner radius for a cleaner look
+                                    paddingAngle={2}
+                                    minAngle={15} // Ensures small slices are visible and have space for labels
                                     dataKey="value"
                                 >
                                     {stats.topicData.map((entry, index) => (
                                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                     ))}
                                 </Pie>
-                                <Tooltip contentStyle={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)', color: 'var(--text-color)' }} />
+                                <Tooltip contentStyle={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)', color: 'var(--text-color)', borderRadius: '8px' }} />
                             </PieChart>
                         </ResponsiveContainer>
                     </div>
@@ -135,15 +159,15 @@ export function AnalyticsPage() {
                 {/* Language Distribution */}
                 <div className="chart-card">
                     <h3 className="chart-title">
-                        <Globe size={18} className="icon-muted" /> Content by Language
+                        <Globe size={18} className="icon-muted" /> Language Breakdown
                     </h3>
                     <div className="chart-wrapper">
                         <ResponsiveContainer width="100%" height="100%">
-                            <BarChart data={stats.langData}>
-                                <XAxis dataKey="name" stroke="#888" fontSize={12} />
+                            <BarChart data={stats.langData} margin={{ top: 10, right: 30, left: 0, bottom: 20 }}>
+                                <XAxis dataKey="name" stroke="#888" fontSize={10} angle={-45} textAnchor="end" height={50} />
                                 <YAxis stroke="#888" fontSize={12} />
-                                <Tooltip cursor={{ fill: 'rgba(0,0,0,0.05)' }} contentStyle={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)', color: 'var(--text-color)' }} />
-                                <Bar dataKey="count" fill="#FCD535" radius={[4, 4, 0, 0]} />
+                                <Tooltip cursor={{ fill: 'rgba(0,0,0,0.05)' }} contentStyle={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)', color: 'var(--text-color)', borderRadius: '8px' }} />
+                                <Bar dataKey="count" fill="#FCD535" radius={[4, 4, 0, 0]} barSize={40} />
                             </BarChart>
                         </ResponsiveContainer>
                     </div>
@@ -152,9 +176,9 @@ export function AnalyticsPage() {
 
             {/* Note Section */}
             <div className="info-box">
-                <div className="info-icon">⚠️</div>
+                <div className="info-icon">💡</div>
                 <div>
-                    <strong>Note on Tracking:</strong> User interactions (clicks, views) are being logged securely to the <a href="https://docs.google.com/spreadsheets/d/1YmwQeGtO2-y6FVbyYFM8Moq0xuvVlZ4_IQPZb-CG6HQ/edit" className="link-bold" target="_blank">Google Database</a> in real-time. This dashboard currently visualizes the <em>library content structure</em>. To view historical click data, please access the raw database.
+                    <strong>Analytics Tip:</strong> This dashboard now combines library metadata with user interaction logs. The <strong>"Total Visitors"</strong> count is based on unique device IDs tracked since the implementation of the tracking script.
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const TRACKING_URL = "https://script.google.com/macros/s/AKfycbxOnxP_MmAisAATfNTr1O-Qx_4cjT2Yt-svUyUuCotbsuUNToZy2lV77c0GtEOjgq_w/exec";
+const TRACKING_URL = "https://script.google.com/macros/s/AKfycbwiV5jEeAofw6y4wbqvEMg-mvnDtJB9lQCGq4EnWoMzUZHzaoPBbO0CrtHJ7KQ0Vjj8/exec";
 
 // Device ID Management
 export const getDeviceId = () => {
@@ -33,8 +33,25 @@ export const logEvent = (eventType, data = {}) => {
         .catch(err => console.error("[Analytics] Error:", err));
 };
 
+// Update interaction data (Fetch from Google Apps Script if supported)
+export const fetchInteractionStats = async () => {
+    if (!TRACKING_URL) return null;
+
+    try {
+        // We use mode: 'cors' here if the script supports it, 
+        // but typically Apps Script web apps return JSON if called via GET with specific params.
+        const response = await fetch(`${TRACKING_URL}?getStats=true`);
+        if (response.ok) {
+            return await response.json();
+        }
+    } catch (err) {
+        console.warn("[Analytics] Could not fetch interaction stats (likely CORS or script limitation):", err);
+    }
+    return null;
+};
+
 // Calculate Library Stats for Dashboard
-export const getLibraryStats = (items) => {
+export const getLibraryStats = (items, interactionData = null) => {
     const totalItems = items.length;
 
     // Topics Distribution
@@ -57,11 +74,19 @@ export const getLibraryStats = (items) => {
     const langData = Object.keys(langCounts).map(key => ({
         name: key,
         count: langCounts[key]
-    }));
+    })).sort((a, b) => b.count - a.count);
+
+    // Interaction KPIs (from external data)
+    const interactionStats = interactionData || {
+        uniqueUsers: null,
+        topScreenshot: 'N/A',
+        totalClicks: 0
+    };
 
     return {
         totalItems,
         topicData,
-        langData
+        langData,
+        ...interactionStats
     };
 };

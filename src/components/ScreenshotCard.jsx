@@ -60,6 +60,12 @@ export function ScreenshotCard({ item, onClickImage }) {
         onClickImage(item);
     };
 
+    const handleContextMenu = (e) => {
+        // We don't preventDefault because users might want the actual context menu,
+        // but we want to log that they were interested enough to right-click (save, etc.)
+        logEvent('right_click_image', { title: item.title, topic: item.topic });
+    };
+
     const handleFeedbackSubmit = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -90,7 +96,7 @@ export function ScreenshotCard({ item, onClickImage }) {
     return (
         <div className="card">
             {/* Image Area */}
-            <div className="card-image-wrapper" onClick={handleImageClick}>
+            <div className="card-image-wrapper" onClick={handleImageClick} onContextMenu={handleContextMenu}>
                 <img
                     src={resolveImageUrl(item.image)}
                     alt={item.title}
