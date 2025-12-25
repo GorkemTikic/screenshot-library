@@ -207,6 +207,14 @@
     "id": 1765164170444
   },
   {
+    "title": "Portfolio Margin (Enable,Disable) - EN",
+    "language": "English",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Portfolio_Margin_(Enable%2CDisable)_-_EN.jpg",
+    "text": "To change between Classic Trading and Portfolio Margin, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Portfolio Margin'' button on the pop-up menu.\n\n4 -) In this page you can change between Classic Trading and Portfolio Margin. \n\nTo Learn more about Portfolio Margin, here are some detailed guides: \nhttps://www.binance.com/en/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
+    "topic": "Futures Trading",
+    "id": 1765164170445
+  },
+  {
     "title": "Futures Referral Page - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures_Referral_Page_-_EN.jpeg",
@@ -682,25 +690,14 @@
     "id": 1766599708483
   },
   {
-    "title": "Enable Portfolio Margin - EN",
-    "text": "To Enable **Portfolio Margin** please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"Portfolio Margin\"** button on the pop-up menu.\n\n**4 -)** Select **\"Portfolio Margin\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\n---\n\nTo Learn more about Portfolio Margin, here are some detailed guides:\n\n* [Introduction to Binance Portfolio Margin Mode](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [How to View Portfolio Margin Information from Your Binance Account and Trading Interface?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nIf you have any additional questions, please don't hesitate to share them with me.",
-    "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkinleştirmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Portfolyo Marjin\"** (Portfolio Margin) butonuna tıklayın.\n\n**4 -)** **\"Portfolyo Marjin\"** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\n---\n\nPortfolyo Marjin hakkında daha fazla bilgi edinmek için, aşağıda detaylı rehberleri bulabilirsiniz:\n\n* [Binance Portfolyo Marjin Moduna Giriş](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [Binance Hesabınızdan ve Alım Satım Arayüzünden Portfolyo Marjin Bilgilerini Nasıl Görüntüleyebilirsiniz?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.",
-    "image": "screenshots/1766619323800_Enable-Portfolio-Margin---EN.jpeg",
+    "title": "Webhook Failed Signal Webhook失败信号 - CN",
+    "text": "要查看Webhook失败信号，请按照截图中的步骤操作：\n\n1）点击【机器人】\n2）点击【Webhook 信号交易】\n3）点击垃圾桶按钮旁边的 【历史记录】图标\n4）进入此页面后，您将看到【失败信号】，可在此查看信号失败的原因\n\n如何使用 TradingView 设置信号交易？\nhttps://www.binance.com/zh-CN/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
+    "text_tr": "",
+    "image": "screenshots/1766676587242_Webhook-Failed-Signal.png",
     "topic": "Futures Trading",
-    "language": "English",
-    "platform": "mobile",
+    "language": "Chinese",
+    "platform": "web",
     "newLanguageName": "",
-    "id": 1766619986216
-  },
-  {
-    "title": "Disable Portfolio Margin (Classic Trading) - EN",
-    "text": "To Disable **Portfolio Margin** and Switch back to **Classic Trading** please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"To Classic Trading\"** button on the pop-up menu.\n\n**4 -)** Select **\"Classic Trading\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\nIf you have any additional questions, please don't hesitate to share them with me.",
-    "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkisiz hale getirip **Klasik Alım-Satımı** aktif etmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"To Classic Trading\"** (Klasik Alım-Satıma Dönüş) butonuna tıklayın.\n\n**4 -)** **\"Classic Trading** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.\n",
-    "image": "screenshots/1766620789853_Disable-Portfolio-Margin-Classic-Trading---EN.jpeg",
-    "topic": "Futures Trading",
-    "language": "English",
-    "platform": "mobile",
-    "newLanguageName": "",
-    "id": 1766620823364
+    "id": 1766676606420
   }
 ]
