@@ -369,7 +369,8 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Webhook_Failed_Signals_WEB_-_EN.jpeg",
     "text": "To check the failed signals of the Webhook Signal, please follow the steps in the screenshot: \n\n1 -) Click on ''Bots''\n\n2 -) Click on ''Webhook Signal Trading'' \n\n3 -) Click on the ''History Icon'' next to trash and pause button. \n\n4 -) On this page, you will see ''Failed Signals'' tab, you can see the reason of failed signals in here. \n\nHow to Set up Signal Trading With TradingView?\nhttps://www.binance.com/en/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
     "topic": "Futures Trading",
-    "id": 1765164170455
+    "id": 1765164170455,
+    "platform": "web"
   },
   {
     "title": "Check For Updates - EN",
