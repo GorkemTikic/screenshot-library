@@ -547,12 +547,13 @@
     "id": 1765164170481
   },
   {
-    "title": "Change Position Mode (One-Way,Hedge) - CN",
+    "title": "Change Position Mode (One-Way,Hedge) 仓位模式设置 - CN",
     "language": "Chinese",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Position_Mode_(One-Way%2CHedge)_-_CN.png",
     "text": "要切换仓位模式，请按照截图中的步骤操作：\n\n1 -) 点击右上角的“...”图标。\n\n2 -) 点击弹出菜单中的“偏好设置”。\n\n3 -) 点击“仓位模式”按钮。\n\n4 -) 您可以在此页面切换仓位模式。",
     "topic": "Futures Trading",
-    "id": 1765164170482
+    "id": 1765164170482,
+    "platform": "mobile"
   },
   {
     "title": "How To Add/Remove Margin to Isolated Position - EN",
