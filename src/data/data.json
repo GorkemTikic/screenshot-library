@@ -780,5 +780,16 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766677925281
+  },
+  {
+    "title": "Loan Adjust LTV 姐带订单调整质押率 - CN",
+    "text": "如果您希望在进行的借贷订单调整质押率，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【调整质押率】\n3）您可以选择【增加】或【移除】，然后在此输入【调整质押率百分比】或【抵押金额】\n4）点击【增加抵押物/移除抵押物】即可",
+    "text_tr": "",
+    "image": "screenshots/1766686169762_Loan-Adjust-LTV.png",
+    "topic": "Binance LOAN",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766686213796
   }
 ]
