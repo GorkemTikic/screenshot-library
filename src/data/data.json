@@ -1,5 +1,16 @@
 [
   {
+    "title": "Enable Portfolio Margin - EN",
+    "text": "To Enable **Portfolio Margin** please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"Portfolio Margin\"** button on the pop-up menu.\n\n**4 -)** Select **\"Portfolio Margin\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\n---\n\nTo Learn more about Portfolio Margin, here are some detailed guides:\n\n* [Introduction to Binance Portfolio Margin Mode](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [How to View Portfolio Margin Information from Your Binance Account and Trading Interface?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nIf you have any additional questions, please don't hesitate to share them with me.",
+    "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkinleştirmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Portfolyo Marjin\"** (Portfolio Margin) butonuna tıklayın.\n\n**4 -)** **\"Portfolyo Marjin\"** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\n---\n\nPortfolyo Marjin hakkında daha fazla bilgi edinmek için, aşağıda detaylı rehberleri bulabilirsiniz:\n\n* [Binance Portfolyo Marjin Moduna Giriş](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [Binance Hesabınızdan ve Alım Satım Arayüzünden Portfolyo Marjin Bilgilerini Nasıl Görüntüleyebilirsiniz?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.",
+    "image": "screenshots/1766691091776_Enable-Portfolio-Margin---EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766691181367
+  },
+  {
     "title": "Loan Repay (Borrowed Coin) 借币还款（借贷币种）- CN",
     "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【借贷币种】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【借贷币种】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
     "text_tr": "",
@@ -786,14 +797,14 @@
     "id": 1766686213796
   },
   {
-    "title": "Enable Portfolio Margin - EN",
-    "text": "To Enable **Portfolio Margin** please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"Portfolio Margin\"** button on the pop-up menu.\n\n**4 -)** Select **\"Portfolio Margin\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\n---\n\nTo Learn more about Portfolio Margin, here are some detailed guides:\n\n* [Introduction to Binance Portfolio Margin Mode](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [How to View Portfolio Margin Information from Your Binance Account and Trading Interface?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nIf you have any additional questions, please don't hesitate to share them with me.",
-    "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkinleştirmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Portfolyo Marjin\"** (Portfolio Margin) butonuna tıklayın.\n\n**4 -)** **\"Portfolyo Marjin\"** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\n---\n\nPortfolyo Marjin hakkında daha fazla bilgi edinmek için, aşağıda detaylı rehberleri bulabilirsiniz:\n\n* [Binance Portfolyo Marjin Moduna Giriş](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [Binance Hesabınızdan ve Alım Satım Arayüzünden Portfolyo Marjin Bilgilerini Nasıl Görüntüleyebilirsiniz?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.",
-    "image": "screenshots/1766691091776_Enable-Portfolio-Margin---EN.jpeg",
+    "title": "Disable Portfolio Margin (To Classic) - EN",
+    "text": "To disable **Portfolio Margin** and activate **Classic Trading**, please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"To Classic Trading\"** button on the pop-up menu.\n\n**4 -)** Select **\"Classic Trading\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\nIf you have any additional questions, please don't hesitate to share them with me.",
+    "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkisiz hale getirip **Klasik Alım-Satımı** aktif etmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Back to Classic Trading\"** (Klasik Alım-Satıma Dönüş) butonuna tıklayın.\n\n**4 -)** **\"Classic Trading\"** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.",
+    "image": "screenshots/1766691211202_Disable-Portfolio-Margin-(To-Classic)---EN.jpeg",
     "topic": "Futures Trading",
     "language": "English",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766691181367
+    "id": 1766691251410
   }
 ]
