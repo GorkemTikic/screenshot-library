@@ -1,5 +1,16 @@
 [
   {
+    "title": "BNB Discount BNB折扣 - CN",
+    "text": "要在合约/杠杆交易手续费或杠杆利息中启用BNB折扣，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击左上角【三条杠（菜单）】\n3）点击右上角【设置】\n4）点击【使用 BNB】\n5）在此页面中，您可以为合约/杠杆交易手续费和杠杆利息启用BNB折扣",
+    "text_tr": "",
+    "image": "screenshots/1766681669769_BNB-Discount.png",
+    "topic": "General",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766681686727
+  },
+  {
     "title": "Add/Remove Margin in Isolated Position 增加/减少保证金（逐仓） - CN",
     "text": "要在合约逐仓仓位中增加或减少保证金，请按照截图中的步骤操作：\n\n1）点击保证金旁边的 （+）图标\n2）选择【增加保证金】或【减少保证金】\n3）输入要增加或减少的【数量】\n4）点击【确认】以继续操作\n\n当前仓位保证金：\n这是您当前仓位中的保证金金额。\n\n最大可增加：\n这是您可以增加的最大保证金数额。\n\n调整后参考强平价：\n这是在您调整后保证金后显示的预计强平价格。\n\n如需了解更多详细信息，您也可以参考官方指南：\n\n如何在全仓 / 逐仓保证金模式下调整保证金余额？\nhttps://www.binance.com/zh-CN/support/faq/detail/360038447311\n",
     "text_tr": "",
@@ -528,7 +539,7 @@
     "id": 1765164170480
   },
   {
-    "title": "Mark Price - CN",
+    "title": "Mark Price Chart 标记价格K线图 - CN",
     "language": "Chinese",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Mark_Price_-_CN.png",
     "text": "要查看标记价格K线图，请根据截图中的步骤进行操作：\n\n\n1 -) 点击图表图标\n\n2 -) 点击图表上方的“最新价格”按钮\n\n3 -) 选择“标记价格”\n\n这样您就可以查看实时标记价格K线图。\n\n要了解更多关于标记价格和最新价格之间的区别，您也可以查看以下官方指南：\n\n合约合约的最新价格和标记价格有什么区别？\nhttps://www.binance.com/zh-CN/blog/%E5%90%88%E7%BA%A6/5704082076024731087",
@@ -732,16 +743,5 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766677925281
-  },
-  {
-    "title": "BNB Discount BNB折扣 - CN",
-    "text": "要在合约/杠杆交易手续费或杠杆利息中启用BNB折扣，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击左上角【三条杠（菜单）】\n3）点击右上角【设置】\n4）点击【使用 BNB】\n5）在此页面中，您可以为合约/杠杆交易手续费和杠杆利息启用BNB折扣",
-    "text_tr": "",
-    "image": "screenshots/1766681669769_BNB-Discount.png",
-    "topic": "General",
-    "language": "Chinese",
-    "platform": "mobile",
-    "newLanguageName": "",
-    "id": 1766681686727
   }
 ]
