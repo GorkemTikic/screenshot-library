@@ -1,5 +1,16 @@
 [
   {
+    "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率）- CN",
+    "text": "要设置合约通知设置，请按照截图中的步骤操作：\n\n1）点击右上角的【…】\n2）在弹出菜单中点击【偏好设置】\n3）点击【通知设置】\n4）在此页面中，您可以启用或关闭以下通知：\n\n止盈 / 止损触发：\n当任意止盈或止损被触发时接收通知。每日最多 25 条 通知。\n\n资金费率触发：\n设置资金费率阈值；当任一持仓的预计资金费率超过该比例时，您将收到提醒。\n\n合约交易：\n当合约订单成交时接收通知。\n\n追加保证金提醒：\n默认阈值为 80%。点击【编辑】可设置不同的保证金率；当您的仓位达到该比例时，您将收到通知。",
+    "text_tr": "",
+    "image": "screenshots/1766678571625_Notification-settings.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766678630969
+  },
+  {
     "title": "Webhook Failed Signal Webhook失败信号 - CN",
     "text": "要查看Webhook失败信号，请按照截图中的步骤操作：\n\n1）点击【机器人】\n2）点击【Webhook 信号交易】\n3）点击垃圾桶按钮旁边的 【历史记录】图标\n4）进入此页面后，您将看到【失败信号】，可在此查看信号失败的原因\n\n如何使用 TradingView 设置信号交易？\nhttps://www.binance.com/zh-CN/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
     "text_tr": "",
@@ -712,14 +723,14 @@
     "id": 1766677925281
   },
   {
-    "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率）- CN",
-    "text": "要设置合约通知设置，请按照截图中的步骤操作：\n\n1）点击右上角的【…】\n2）在弹出菜单中点击【偏好设置】\n3）点击【通知设置】\n4）在此页面中，您可以启用或关闭以下通知：\n\n止盈 / 止损触发：\n当任意止盈或止损被触发时接收通知。每日最多 25 条 通知。\n\n资金费率触发：\n设置资金费率阈值；当任一持仓的预计资金费率超过该比例时，您将收到提醒。\n\n合约交易：\n当合约订单成交时接收通知。\n\n追加保证金提醒：\n默认阈值为 80%。点击【编辑】可设置不同的保证金率；当您的仓位达到该比例时，您将收到通知。",
+    "title": "Add/Remove Margin in Isolated Position 增加/减少保证金（逐仓） - CN",
+    "text": "要在合约逐仓仓位中增加或减少保证金，请按照截图中的步骤操作：\n\n1）点击保证金旁边的 （+）图标\n2）选择【增加保证金】或【减少保证金】\n3）输入要增加或减少的【数量】\n4）点击【确认】以继续操作\n\n当前仓位保证金：\n这是您当前仓位中的保证金金额。\n\n最大可增加：\n这是您可以增加的最大保证金数额。\n\n调整后参考强平价：\n这是在您调整后保证金后显示的预计强平价格。\n\n如需了解更多详细信息，您也可以参考官方指南：\n\n如何在全仓 / 逐仓保证金模式下调整保证金余额？\nhttps://www.binance.com/zh-CN/support/faq/detail/360038447311\n",
     "text_tr": "",
-    "image": "screenshots/1766678571625_Notification-settings.png",
+    "image": "screenshots/1766679646400_Add:Remove-Margin-in-Position.png",
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766678630969
+    "id": 1766679658205
   }
 ]
