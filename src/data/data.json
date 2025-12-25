@@ -710,5 +710,16 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766677925281
+  },
+  {
+    "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率）- CN",
+    "text": "要设置合约通知设置，请按照截图中的步骤操作：\n\n1）点击右上角的【…】\n2）在弹出菜单中点击【偏好设置】\n3）点击【通知设置】\n4）在此页面中，您可以启用或关闭以下通知：\n\n止盈 / 止损触发：\n当任意止盈或止损被触发时接收通知。每日最多 25 条 通知。\n\n资金费率触发：\n设置资金费率阈值；当任一持仓的预计资金费率超过该比例时，您将收到提醒。\n\n合约交易：\n当合约订单成交时接收通知。\n\n追加保证金提醒：\n默认阈值为 80%。点击【编辑】可设置不同的保证金率；当您的仓位达到该比例时，您将收到通知。",
+    "text_tr": "",
+    "image": "screenshots/1766678571625_Notification-settings.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766678630969
   }
 ]
