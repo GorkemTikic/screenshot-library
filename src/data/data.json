@@ -58,7 +58,7 @@
     "title": "Add/Remove Margin in Isolated Position 增加/减少保证金（逐仓） - CN",
     "text": "要在合约逐仓仓位中增加或减少保证金，请按照截图中的步骤操作：\n\n1）点击保证金旁边的 （+）图标\n2）选择【增加保证金】或【减少保证金】\n3）输入要增加或减少的【数量】\n4）点击【确认】以继续操作\n\n当前仓位保证金：\n这是您当前仓位中的保证金金额。\n\n最大可增加：\n这是您可以增加的最大保证金数额。\n\n调整后参考强平价：\n这是在您调整后保证金后显示的预计强平价格。\n\n如需了解更多详细信息，您也可以参考官方指南：\n\n如何在全仓 / 逐仓保证金模式下调整保证金余额？\nhttps://www.binance.com/zh-CN/support/faq/detail/360038447311\n",
     "text_tr": "",
-    "image": "screenshots/1766679646400_Add:Remove-Margin-in-Position.png",
+    "image": "screenshots/1766679646400_Add-Remove-Margin-in-Position.png",
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
