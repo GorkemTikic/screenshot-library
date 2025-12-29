@@ -218,6 +218,11 @@ export function ScreenshotCard({ item, onClickImage }) {
                     </div>
                 )}
 
+                {/* Last Updated */}
+                <div className="card-updated">
+                    Last Updated: {item.updatedAt || 'N/A'}
+                </div>
+
                 {/* Text Preview */}
                 {showText && (
                     <div className="text-preview">

@@ -3,6 +3,20 @@ import { useData } from '../contexts/DataContext';
 import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle } from 'lucide-react';
 import { githubService } from '../services/github';
 
+const formatUpdatedAt = (language) => {
+    const date = new Date();
+    const tzOffset = language === 'Chinese' ? 8 : 0;
+    const adjustedDate = new Date(date.getTime() + (tzOffset * 60 * 60 * 1000));
+
+    const Y = adjustedDate.getUTCFullYear();
+    const M = String(adjustedDate.getUTCMonth() + 1).padStart(2, '0');
+    const D = String(adjustedDate.getUTCDate()).padStart(2, '0');
+    const h = String(adjustedDate.getUTCHours()).padStart(2, '0');
+    const m = String(adjustedDate.getUTCMinutes()).padStart(2, '0');
+
+    return `${Y}-${M}-${D} ${h}:${m} UTC+${tzOffset}`;
+};
+
 export function AdminPage() {
     const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, feedbacks, resolveFeedback, syncData, syncFeedbacks } = useData();
     const [searchTerm, setSearchTerm] = useState('');
@@ -186,11 +200,14 @@ export function AdminPage() {
         }
 
         let newItems;
+        const updatedAt = formatUpdatedAt(finalData.language);
+
         if (editingId) {
-            updateItem(editingId, finalData);
-            newItems = items.map(i => i.id === editingId ? { ...i, ...finalData } : i);
+            const updatedItem = { ...finalData, updatedAt };
+            updateItem(editingId, updatedItem);
+            newItems = items.map(i => i.id === editingId ? { ...i, ...updatedItem } : i);
         } else {
-            const newItem = { ...finalData, id: Date.now() };
+            const newItem = { ...finalData, id: Date.now(), updatedAt };
             addItem(newItem);
             newItems = [...items, newItem];
         }

@@ -1,0 +1,69 @@
+﻿node : file:///C:/User
+s/user/Desktop/Screens
+hot%20Assistant/FD%20S
+CREENSHOT%20V04%20-%20
+EDIT/support-screensho
+t-library-main/backfil
+l.js:1
+At line:1 char:1
++ node backfill.js 
+2>&1 | Out-File 
+-FilePath 
+backfill_log.txt 
+-Encoding ...
++ 
+~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (file:///C:   
+ /User...n/backfil    
+l.js:1:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+const fs = 
+require('fs');
+           ^
+
+ReferenceError: 
+require is not 
+defined in ES module 
+scope, you can use 
+import instead
+This file is being 
+treated as an ES 
+module because it has 
+a '.js' file 
+extension and 'C:\User
+s\user\Desktop\Screens
+hot Assistant\FD 
+SCREENSHOT V04 - EDIT\
+support-screenshot-lib
+rary-main\package.json
+' contains "type": 
+"module". To treat it 
+as a CommonJS script, 
+rename it to use the 
+'.cjs' file extension.
+    at file:///C:/User
+s/user/Desktop/Screens
+hot%20Assistant/FD%20S
+CREENSHOT%20V04%20-%20
+EDIT/support-screensho
+t-library-main/backfil
+l.js:1:12
+    at ModuleJob.run (
+node:internal/modules/
+esm/module_job:345:25)
+    at async onImport.
+tracePromise.__proto__
+ (node:internal/module
+s/esm/loader:651:26)
+    at async asyncRunE
+ntryPointWithESMLoader
+ (node:internal/module
+s/run_main:117:5)
+
+Node.js v22.19.0

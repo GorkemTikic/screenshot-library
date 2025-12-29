@@ -536,6 +536,15 @@ body.dark .tag-general {
   background: rgba(128, 128, 128, 0.1);
 }
 
+.card-updated {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  color: #888;
+  font-family: monospace;
+}
+
 .text-preview {
   margin-top: 15px;
   padding: 12px;
@@ -1657,11 +1666,20 @@ body.dark .tab-btn.active::after {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.stat-icon.purple { background-color: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
-.stat-icon.yellow { background-color: rgba(252, 213, 53, 0.1); color: #dcb62b; }
+.stat-icon.purple {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+
+.stat-icon.yellow {
+  background-color: rgba(252, 213, 53, 0.1);
+  color: #dcb62b;
+}
 
 .text-truncate {
   white-space: nowrap;
