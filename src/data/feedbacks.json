@@ -3,8 +3,9 @@
     "id": 1767045851942,
     "itemId": 1766691181367,
     "message": "testtesttest",
-    "status": "active",
-    "timestamp": "2025-12-29T22:04:11.942Z"
+    "status": "resolved",
+    "timestamp": "2025-12-29T22:04:11.942Z",
+    "resolvedAt": "2025-12-29T22:19:43.925Z"
   },
   {
     "id": 1766529836779,
