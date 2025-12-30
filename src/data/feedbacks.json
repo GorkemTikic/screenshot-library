@@ -60,7 +60,7 @@
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
     "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:21:18.080Z"
+    "resolvedAt": "2025-12-30T00:23:08.986Z"
   },
   {
     "id": 1767054179320,
@@ -69,7 +69,7 @@
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
     "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:21:18.080Z"
+    "resolvedAt": "2025-12-30T00:23:08.986Z"
   },
   {
     "id": 1767054179320,
@@ -78,15 +78,16 @@
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
     "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:21:18.080Z"
+    "resolvedAt": "2025-12-30T00:23:08.986Z"
   },
   {
     "id": 1767054179320,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
-    "status": "active",
-    "device": "Win32 (7e31d1e3)"
+    "status": "resolved",
+    "device": "Win32 (7e31d1e3)",
+    "resolvedAt": "2025-12-30T00:23:08.986Z"
   },
   {
     "id": 1767053510879,
