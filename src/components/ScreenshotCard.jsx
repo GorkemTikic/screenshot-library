@@ -4,7 +4,7 @@ import { useData } from '../contexts/DataContext';
 import { logEvent } from '../services/analytics';
 
 import { resolveImageUrl } from '../utils/imageUtils';
-import { getLangCode } from '../utils/langUtils';
+import { getLangCode, formatDate } from '../utils/langUtils';
 
 export function ScreenshotCard({ item, onClickImage }) {
     const { isFavorite, toggleFavorite, addFeedback, syncFeedbacks, feedbacks } = useData();
@@ -232,9 +232,8 @@ export function ScreenshotCard({ item, onClickImage }) {
                     </div>
                 )}
 
-                {/* Last Updated */}
                 <div className="card-updated">
-                    Last Updated: {item.updatedAt || 'N/A'}
+                    Last Updated: {item.updatedAt || formatDate(item.id, item.language)}
                 </div>
 
                 {/* Text Preview */}

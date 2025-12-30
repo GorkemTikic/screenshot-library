@@ -2,20 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useData } from '../contexts/DataContext';
 import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle, Cloud } from 'lucide-react';
 import { githubService } from '../services/github';
+import { formatDate } from '../utils/langUtils';
 
-const formatUpdatedAt = (language) => {
-    const date = new Date();
-    const tzOffset = language === 'Chinese' ? 8 : 0;
-    const adjustedDate = new Date(date.getTime() + (tzOffset * 60 * 60 * 1000));
-
-    const Y = adjustedDate.getUTCFullYear();
-    const M = String(adjustedDate.getUTCMonth() + 1).padStart(2, '0');
-    const D = String(adjustedDate.getUTCDate()).padStart(2, '0');
-    const h = String(adjustedDate.getUTCHours()).padStart(2, '0');
-    const m = String(adjustedDate.getUTCMinutes()).padStart(2, '0');
-
-    return `${Y}-${M}-${D} ${h}:${m} UTC+${tzOffset}`;
-};
 
 export function AdminPage() {
     const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, feedbacks, resolveFeedback, syncData, syncFeedbacks } = useData();
@@ -206,7 +194,7 @@ export function AdminPage() {
         }
 
         let newItems;
-        const updatedAt = formatUpdatedAt(finalData.language);
+        const updatedAt = formatDate(Date.now(), finalData.language);
 
         if (editingId) {
             const updatedItem = { ...finalData, updatedAt };
