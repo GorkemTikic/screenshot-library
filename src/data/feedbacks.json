@@ -53,42 +53,38 @@
     "resolvedAt": "2025-12-30T00:13:29.241Z"
   },
   {
-    "id": "cloud_1767053512000_1",
+    "id": 1767054178672,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
-    "source": "cloud",
     "device": "Win32 (7e31d1e3)",
     "resolvedAt": "2025-12-30T00:21:18.080Z"
   },
   {
-    "id": "cloud_1767053512000_1",
+    "id": 1767054178672,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
-    "source": "cloud",
     "device": "Win32 (7e31d1e3)",
     "resolvedAt": "2025-12-30T00:21:18.080Z"
   },
   {
-    "id": "cloud_1767053512000_1",
+    "id": 1767054178672,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
-    "source": "cloud",
     "device": "Win32 (7e31d1e3)",
     "resolvedAt": "2025-12-30T00:21:18.080Z"
   },
   {
-    "id": "cloud_1767053512000_1",
+    "id": 1767054178672,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "active",
-    "source": "cloud",
     "device": "Win32 (7e31d1e3)"
   },
   {
