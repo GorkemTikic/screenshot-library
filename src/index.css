@@ -1485,173 +1485,6 @@ body.dark .image-placeholder {
   color: #666;
 }
 
-/* --- Feedback Popover & Admin Dashboard --- */
-
-.feedback-popover {
-  margin-top: 15px;
-  padding: 12px;
-  background: var(--card-bg);
-  border: 1px solid var(--primary);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-}
-
-.feedback-form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.feedback-textarea {
-  width: 100%;
-  min-height: 80px;
-  padding: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-  background: var(--bg-color);
-  color: var(--text-color);
-  font-size: 0.85rem;
-  resize: vertical;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.feedback-textarea:focus {
-  border-color: var(--primary);
-}
-
-.feedback-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-}
-
-.btn-xs {
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  min-height: unset;
-}
-
-.feedback-badge {
-  background: #ef4444;
-  color: white;
-  font-size: 0.65rem;
-  padding: 2px 6px;
-  border-radius: 10px;
-  margin-left: 4px;
-}
-
-.feedback-item-group {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  margin-bottom: 16px;
-  background: var(--bg-color);
-}
-
-.feedback-item-header {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
-  margin-bottom: 12px;
-}
-
-.feedback-thumb {
-  width: 60px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.feedback-message-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background: var(--card-bg);
-  border-radius: var(--radius-sm);
-  margin-bottom: 8px;
-  border: 1px solid var(--border-color);
-}
-
-.feedback-text {
-  font-size: 0.95rem;
-  margin-bottom: 6px;
-  word-break: break-word;
-  color: var(--text-color);
-  line-height: 1.5;
-}
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.feedback-context-preview {
-  background: rgba(128, 128, 128, 0.05);
-  border-left: 4px solid #3b82f6;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-style: italic;
-  color: #888;
-  margin-bottom: 8px;
-}
-
-body.dark .feedback-context-preview {
-  background: rgba(255, 255, 255, 0.05);
-  color: #aaa;
-}
-
-.tabs-header {
-  display: flex;
-  gap: 8px;
-  border-bottom: 1px solid var(--border-color);
-  padding: 0 4px;
-}
-
-.tab-btn {
-  background: none;
-  border: none;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #666;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s;
-}
-
-.tab-btn:hover {
-  color: var(--text-color);
-}
-
-.tab-btn.active {
-  color: #d97706;
-}
-
-.tab-btn.active::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #d97706;
-}
-
-body.dark .tab-btn.active {
-  color: var(--primary);
-}
-
-body.dark .tab-btn.active::after {
-  background: var(--primary);
-}
 
 @keyframes pulse {
   0% {
@@ -1670,6 +1503,19 @@ body.dark .tab-btn.active::after {
 .pulse {
   animation: pulse 2s infinite;
 }
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- End of styles --- */
+
+
+/* --- End of styles --- */
 
 /* --- Analytics Specific --- */
 .analytics-loading {

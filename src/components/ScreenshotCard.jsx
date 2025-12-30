@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Eye, Heart, Check, MessageSquare, Send } from 'lucide-react';
+import { Copy, Check, Heart, ExternalLink, Eye } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { logEvent } from '../services/analytics';
 
@@ -7,13 +7,10 @@ import { resolveImageUrl } from '../utils/imageUtils';
 import { getLangCode, formatDate } from '../utils/langUtils';
 
 export function ScreenshotCard({ item, onClickImage }) {
-    const { isFavorite, toggleFavorite, addFeedback, syncFeedbacks, feedbacks } = useData();
+    const { isFavorite, toggleFavorite } = useData();
     const [copied, setCopied] = useState(false);
     const [showText, setShowText] = useState(false);
     const [contentLang, setContentLang] = useState('en'); // 'en' or 'tr'
-    const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
-    const [feedbackMessage, setFeedbackMessage] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const hasTr = item.text_tr && item.text_tr.trim().length > 0;
     const currentText = (contentLang === 'tr' && hasTr) ? item.text_tr : item.text;
@@ -40,6 +37,12 @@ export function ScreenshotCard({ item, onClickImage }) {
         }
     };
 
+    const handleLangSwitch = (e, lang) => {
+        e.stopPropagation();
+        setContentLang(lang);
+        logEvent('switch_lang', { title: item.title, topic: item.topic, language: lang });
+    };
+
     const handlePreviewToggle = (e) => {
         e.stopPropagation();
         const newState = !showText;
@@ -47,12 +50,6 @@ export function ScreenshotCard({ item, onClickImage }) {
         if (newState) {
             logEvent('preview_text', { title: item.title, topic: item.topic });
         }
-    };
-
-    const handleLangSwitch = (e, lang) => {
-        e.stopPropagation();
-        setContentLang(lang);
-        logEvent('switch_lang', { title: item.title, topic: item.topic, language: lang });
     };
 
     const handleImageClick = () => {
@@ -64,42 +61,6 @@ export function ScreenshotCard({ item, onClickImage }) {
         // We don't preventDefault because users might want the actual context menu,
         // but we want to log that they were interested enough to right-click (save, etc.)
         logEvent('right_click_image', { title: item.title, topic: item.topic });
-    };
-
-    const handleFeedbackSubmit = async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (!feedbackMessage.trim()) return;
-
-        setIsSubmitting(true);
-        const newFb = addFeedback(item.id, feedbackMessage);
-
-        logEvent('send_feedback', {
-            title: item.title,
-            topic: item.topic,
-            language: item.language,
-            message: feedbackMessage
-        });
-
-        // Auto-sync: Send BOTH the new one and the existing ones to avoid stale state
-        // 3rd party users without a token will fail here, which is expected.
-        const syncSuccess = await syncFeedbacks([newFb, ...feedbacks]).catch(err => {
-            console.warn("Feedback Git-Sync failed (likely permissions):", err);
-            return false;
-        });
-
-        // Small delay for UX
-        setTimeout(() => {
-            setFeedbackMessage('');
-            setIsFeedbackOpen(false);
-            setIsSubmitting(false);
-
-            if (syncSuccess) {
-                alert('Feedback sent & synced successfully!');
-            } else {
-                alert('Feedback logged via Analytics. Note: Git-Sync skipped (Admin token required for repository update).');
-            }
-        }, 600);
     };
 
     const getTopicClass = (t) => {
@@ -188,49 +149,16 @@ export function ScreenshotCard({ item, onClickImage }) {
                         className="btn btn-icon"
                         title="Preview Text"
                     >
-                        {showText ? <Eye className="text-primary" size={20} /> : <Eye size={20} />}
+                        <Eye size={20} className={showText ? 'text-primary' : ''} />
                     </button>
 
-                    <button
-                        onClick={(e) => { e.stopPropagation(); setIsFeedbackOpen(!isFeedbackOpen); }}
-                        className={`btn btn-icon ${isFeedbackOpen ? 'active' : ''}`}
-                        title="Report Outdated / Give Feedback"
-                    >
-                        <MessageSquare size={18} className={isFeedbackOpen ? 'text-primary' : ''} />
+                    <button className="btn-icon" onClick={(e) => {
+                        e.stopPropagation();
+                        onClickImage();
+                    }} title="View Full">
+                        <ExternalLink size={18} />
                     </button>
                 </div>
-
-                {/* Feedback Popover */}
-                {isFeedbackOpen && (
-                    <div className="feedback-popover animate-in" onClick={e => e.stopPropagation()}>
-                        <form onSubmit={handleFeedbackSubmit} className="feedback-form">
-                            <textarea
-                                className="feedback-textarea"
-                                placeholder="What's outdated or wrong?"
-                                value={feedbackMessage}
-                                onChange={e => setFeedbackMessage(e.target.value)}
-                                autoFocus
-                                required
-                            />
-                            <div className="feedback-actions">
-                                <button
-                                    type="button"
-                                    className="btn btn-xs"
-                                    onClick={() => setIsFeedbackOpen(false)}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="btn btn-xs btn-primary"
-                                    disabled={isSubmitting || !feedbackMessage.trim()}
-                                >
-                                    {isSubmitting ? '...' : <><Send size={12} /> Send</>}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                )}
 
                 <div className="card-updated">
                     Last Updated: {item.updatedAt || formatDate(item.id, item.language)}

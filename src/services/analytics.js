@@ -26,7 +26,7 @@ export const logEvent = (eventType, data = {}) => {
         lang: data.language || '',
         topic: data.topic || '',
         image: data.image || '',
-        ...data // specific extras like user feedback
+        ...data // specific extras
     });
 
     // Fire and forget (no-cors means we can't read response, but it sends)
@@ -45,18 +45,6 @@ export const fetchInteractionStats = async () => {
         console.warn("[Analytics] Stats fetch failed:", err);
     }
     return null;
-};
-
-// FETCH FEEDBACKS from Google Sheets
-export const fetchCloudFeedbacks = async () => {
-    if (!TRACKING_URL) return [];
-    try {
-        const response = await fetch(`${TRACKING_URL}?getFeedbacks=true`);
-        if (response.ok) return await response.json();
-    } catch (err) {
-        console.warn("[Analytics] Feedback fetch failed:", err);
-    }
-    return [];
 };
 
 // Calculate Library Stats for Dashboard

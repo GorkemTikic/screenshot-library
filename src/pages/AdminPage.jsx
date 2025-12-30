@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useData } from '../contexts/DataContext';
-import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle, Cloud } from 'lucide-react';
+import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, CheckCircle, Cloud } from 'lucide-react';
 import { githubService } from '../services/github';
 import { formatDate } from '../utils/langUtils';
 
 
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, feedbacks, resolveFeedback, syncData, syncFeedbacks } = useData();
+    const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, syncData } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -14,8 +14,6 @@ export function AdminPage() {
     // Modals
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
-    const [feedbackTab, setFeedbackTab] = useState('active'); // 'active' or 'history'
 
     // Form State
     const [editingId, setEditingId] = useState(null);
@@ -41,34 +39,6 @@ export function AdminPage() {
         }
     }, []);
 
-    // Group feedbacks by item for the UI
-    const groupedFeedbacks = useMemo(() => {
-        if (!feedbacks) return [];
-        const targetStatus = feedbackTab === 'active' ? 'active' : 'resolved';
-        const currentList = feedbacks.filter(fb => fb.status === targetStatus);
-        const groups = {};
-
-        currentList.forEach(fb => {
-            const groupId = fb.itemId || `unlinked_${fb.title || 'unknown'}`;
-            if (!groups[groupId]) {
-                const item = (items || []).find(i => i.id === fb.itemId);
-                groups[groupId] = {
-                    item: item || {
-                        title: fb.title || `Unlinked Source (${fb.itemId || 'N/A'})`,
-                        image: '',
-                        topic: 'N/A',
-                        id: fb.itemId || 'N/A'
-                    },
-                    feedbacks: []
-                };
-            }
-            groups[groupId].feedbacks.push(fb);
-        });
-
-        return Object.values(groups);
-    }, [feedbacks, feedbackTab, items]);
-
-    const feedbackCount = (feedbacks || []).filter(fb => fb.status === 'active').length;
 
     // Filtered Items
     const safeItems = items || [];
@@ -225,30 +195,6 @@ export function AdminPage() {
         resetForm();
     };
 
-    const handleResolveFeedback = async (feedbackId) => {
-        if (!window.confirm("Mark this feedback as resolved and sync to GitHub?")) return;
-        const updatedFeedbacks = resolveFeedback(feedbackId);
-        try {
-            await syncFeedbacks(updatedFeedbacks);
-            alert("Feedback resolved and synced!");
-        } catch (err) {
-            console.error("Resolution sync failed", err);
-            alert("Resolution failed to sync to GitHub");
-        }
-    };
-
-    const handleSyncCloudFeedback = async (fb) => {
-        const updated = feedbacks.map(f =>
-            f.id === fb.id ? { ...f, source: undefined, id: Date.now() } : f
-        );
-        try {
-            await syncFeedbacks(updated);
-            alert("Feedback moved from Cloud Inbox to GitHub repository!");
-            window.location.reload();
-        } catch (err) {
-            alert("Failed to sync cloud feedback: " + err.message);
-        }
-    };
 
     return (
         <div className="admin-container animate-in">
@@ -258,10 +204,6 @@ export function AdminPage() {
                     <p className="text-muted">Manage your screenshots knowledge base</p>
                 </div>
                 <div className="header-actions">
-                    <button className={`btn btn-secondary ${feedbackCount > 0 ? 'pulse' : ''}`} onClick={() => setIsFeedbackModalOpen(true)}>
-                        <MessageSquare size={18} className="mr-2" />
-                        Feedbacks {feedbackCount > 0 && <span className="feedback-badge">{feedbackCount}</span>}
-                    </button>
                     <button className="btn btn-secondary" onClick={() => setIsSettingsOpen(true)}>
                         <Github size={18} className="mr-2" /> GitHub Settings
                     </button>
@@ -506,113 +448,6 @@ export function AdminPage() {
                 </div>
             )}
 
-            {/* Feedbacks Modal */}
-            {isFeedbackModalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-content" style={{ maxWidth: '800px' }}>
-                        <div className="modal-header">
-                            <h3>Active Feedbacks</h3>
-                            <button className="close-btn" onClick={() => setIsFeedbackModalOpen(false)}><X size={24} /></button>
-                        </div>
-                        <div className="modal-body">
-                            <div className="tabs-header mb-6">
-                                <button
-                                    className={`tab-btn ${feedbackTab === 'active' ? 'active' : ''}`}
-                                    onClick={() => setFeedbackTab('active')}
-                                >
-                                    Active Reports ({feedbackCount})
-                                </button>
-                                <button
-                                    className={`tab-btn ${feedbackTab === 'history' ? 'active' : ''}`}
-                                    onClick={() => setFeedbackTab('history')}
-                                >
-                                    Resolution History
-                                </button>
-                            </div>
-
-                            {groupedFeedbacks.length === 0 ? (
-                                <div className="text-center py-8 text-muted">
-                                    {feedbackTab === 'active' ? "No active feedbacks! Great job." : "No resolution history yet."}
-                                </div>
-                            ) : (
-                                <div className="feedback-list">
-                                    {groupedFeedbacks.map(group => (
-                                        <div key={group.item.id || Math.random()} className="feedback-item-group">
-                                            <div className="feedback-item-header">
-                                                {group.item.image ? (
-                                                    <img src={group.item.image} alt="" className="feedback-thumb" />
-                                                ) : (
-                                                    <div className="feedback-thumb bg-slate-800 flex items-center justify-center text-blue-400">
-                                                        <MessageSquare size={16} />
-                                                    </div>
-                                                )}
-                                                <div className="flex-1">
-                                                    <h4 className="font-bold text-slate-100">{group.item.title || "Untitled Feedback"}</h4>
-                                                    <p className="text-xs text-muted">ID: {group.item.id} | Topic: {group.item.topic}</p>
-                                                </div>
-                                            </div>
-                                            <div className="feedback-messages">
-                                                {group.feedbacks.map(fb => (
-                                                    <div key={fb.id} className="feedback-message-row">
-                                                        <div className="flex-1">
-                                                            {fb.source === 'cloud' && (
-                                                                <span className="flex items-center gap-1 text-[10px] font-bold text-blue-500 mb-1">
-                                                                    <Cloud size={10} /> CLOUD INBOX (Not on Git)
-                                                                </span>
-                                                            )}
-                                                            <div className="feedback-context-preview line-clamp-2">
-                                                                "{group.item.text}"
-                                                            </div>
-                                                            <p className="feedback-text line-clamp-2" title={fb.message}>{fb.message}</p>
-                                                            <div className="flex justify-between items-center">
-                                                                <p className="text-xs text-muted">{new Date(fb.timestamp).toLocaleString()}</p>
-                                                                {fb.resolvedAt && (
-                                                                    <p className="text-xs text-green-600 font-semibold italic">
-                                                                        Resolved: {new Date(fb.resolvedAt).toLocaleString()}
-                                                                    </p>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                        {fb.status === 'active' && (
-                                                            <div className="flex gap-2 ml-4">
-                                                                {fb.source === 'cloud' && (
-                                                                    <button
-                                                                        className="btn btn-xs btn-secondary"
-                                                                        onClick={(e) => {
-                                                                            e.stopPropagation();
-                                                                            handleSyncCloudFeedback(fb);
-                                                                        }}
-                                                                        title="Permanently save to GitHub repository"
-                                                                    >
-                                                                        <Save size={14} className="mr-1" /> Save to Git
-                                                                    </button>
-                                                                )}
-                                                                <button
-                                                                    className="btn btn-xs btn-success"
-                                                                    onClick={(e) => {
-                                                                        e.stopPropagation();
-                                                                        handleResolveFeedback(fb.id);
-                                                                    }}
-                                                                    title="Mark as Fixed / Resolved"
-                                                                >
-                                                                    <CheckCircle size={14} className="mr-1" /> Resolve
-                                                                </button>
-                                                            </div>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                        <div className="modal-footer">
-                            <button className="btn btn-secondary" onClick={() => setIsFeedbackModalOpen(false)}>Close</button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 }
