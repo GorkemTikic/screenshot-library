@@ -56,7 +56,7 @@
     "status": "resolved",
     "source": "cloud",
     "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:19:58.290Z"
+    "resolvedAt": "2025-12-30T00:21:18.080Z"
   },
   {
     "id": "cloud_1767053512000_1",
@@ -66,16 +66,17 @@
     "status": "resolved",
     "source": "cloud",
     "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:19:58.290Z"
+    "resolvedAt": "2025-12-30T00:21:18.080Z"
   },
   {
     "id": "cloud_1767053512000_1",
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
-    "status": "active",
+    "status": "resolved",
     "source": "cloud",
-    "device": "Win32 (7e31d1e3)"
+    "device": "Win32 (7e31d1e3)",
+    "resolvedAt": "2025-12-30T00:21:18.080Z"
   },
   {
     "id": 1767053510879,
