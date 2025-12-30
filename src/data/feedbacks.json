@@ -4,9 +4,10 @@
     "title": "Enable Portfolio Margin - EN",
     "message": "testtest888888888888888888888888888",
     "timestamp": "2025-12-30T00:26:50.000Z",
-    "status": "active",
+    "status": "resolved",
     "device": "Win32 (4b00d060)",
-    "itemId": 1766691181367
+    "itemId": 1766691181367,
+    "resolvedAt": "2025-12-30T00:28:29.050Z"
   },
   {
     "id": "cloud_1767053554000_2",
