@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const TRACKING_URL = "https://script.google.com/macros/s/AKfycbwa1YY3NZcwAIOy3om4iUvf4Hb-lIvZFy6BF40hy7_AApIx25fUiYwpn6dV9oP0djq5/exec";
+const TRACKING_URL = "https://script.google.com/macros/s/AKfycbyxjTSqYKoXkBwp47ewEBdiX4HqgGPv9gsU5fH76ezsdzm-Okjej9lw3gSKrYjE6w9K/exec";
 
 /**
  * Generates a stable Device Hash using Canvas Fingerprinting and Hardware Specs.
