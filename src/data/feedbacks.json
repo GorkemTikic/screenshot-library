@@ -6,7 +6,7 @@
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:21:16.618Z"
+    "resolvedAt": "2025-12-30T00:23:06.090Z"
   },
   {
     "id": 1767054167506,
@@ -15,7 +15,7 @@
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:21:16.618Z"
+    "resolvedAt": "2025-12-30T00:23:06.091Z"
   },
   {
     "id": 1767054167506,
@@ -24,7 +24,7 @@
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:21:16.618Z"
+    "resolvedAt": "2025-12-30T00:23:06.091Z"
   },
   {
     "id": 1767054167506,
@@ -33,15 +33,16 @@
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:21:16.618Z"
+    "resolvedAt": "2025-12-30T00:23:06.091Z"
   },
   {
     "id": 1767054167506,
     "title": "System Feedback - EN",
     "message": "testest///////////////5454466",
     "timestamp": "2025-12-30T00:12:34.000Z",
-    "status": "active",
-    "device": "Win32 (4b00d060)"
+    "status": "resolved",
+    "device": "Win32 (4b00d060)",
+    "resolvedAt": "2025-12-30T00:23:06.091Z"
   },
   {
     "id": 1767053582062,
