@@ -1,48 +1,43 @@
 [
   {
-    "id": 1767054167506,
+    "id": "cloud_1767053554000_2",
     "title": "System Feedback - EN",
     "message": "testest///////////////5454466",
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
+    "source": "cloud",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:23:06.090Z"
+    "resolvedAt": "2025-12-30T00:21:16.618Z"
   },
   {
-    "id": 1767054167506,
+    "id": "cloud_1767053554000_2",
     "title": "System Feedback - EN",
     "message": "testest///////////////5454466",
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
+    "source": "cloud",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:23:06.091Z"
+    "resolvedAt": "2025-12-30T00:21:16.618Z"
   },
   {
-    "id": 1767054167506,
+    "id": "cloud_1767053554000_2",
     "title": "System Feedback - EN",
     "message": "testest///////////////5454466",
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
+    "source": "cloud",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:23:06.091Z"
+    "resolvedAt": "2025-12-30T00:21:16.618Z"
   },
   {
-    "id": 1767054167506,
+    "id": "cloud_1767053554000_2",
     "title": "System Feedback - EN",
     "message": "testest///////////////5454466",
     "timestamp": "2025-12-30T00:12:34.000Z",
     "status": "resolved",
+    "source": "cloud",
     "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:23:06.091Z"
-  },
-  {
-    "id": 1767054167506,
-    "title": "System Feedback - EN",
-    "message": "testest///////////////5454466",
-    "timestamp": "2025-12-30T00:12:34.000Z",
-    "status": "resolved",
-    "device": "Win32 (4b00d060)",
-    "resolvedAt": "2025-12-30T00:23:06.091Z"
+    "resolvedAt": "2025-12-30T00:21:16.618Z"
   },
   {
     "id": 1767053582062,
@@ -54,40 +49,30 @@
     "resolvedAt": "2025-12-30T00:13:29.241Z"
   },
   {
-    "id": 1767054179320,
+    "id": 1767054195923,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
     "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:23:08.986Z"
+    "resolvedAt": "2025-12-30T00:19:58.290Z"
   },
   {
-    "id": 1767054179320,
+    "id": 1767054195923,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
     "status": "resolved",
     "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:23:08.986Z"
+    "resolvedAt": "2025-12-30T00:19:58.290Z"
   },
   {
-    "id": 1767054179320,
+    "id": 1767054195923,
     "title": "Enable Portfolio Margin - EN",
     "message": "testetstetetstst",
     "timestamp": "2025-12-30T00:11:52.000Z",
-    "status": "resolved",
-    "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:23:08.986Z"
-  },
-  {
-    "id": 1767054179320,
-    "title": "Enable Portfolio Margin - EN",
-    "message": "testetstetetstst",
-    "timestamp": "2025-12-30T00:11:52.000Z",
-    "status": "resolved",
-    "device": "Win32 (7e31d1e3)",
-    "resolvedAt": "2025-12-30T00:23:08.986Z"
+    "status": "active",
+    "device": "Win32 (7e31d1e3)"
   },
   {
     "id": 1767053510879,
