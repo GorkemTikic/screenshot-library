@@ -1,5 +1,16 @@
 [
   {
+    "title": "Adjust Min Copy Amount (Private) 调整最小跟单金额（私域）",
+    "text": "如果您想要在私域带单里调整最低跟单金额，请按照截图中的步骤操作：\n\n1）在您的私域带单页面，在【最小跟单金额(USDT)】右旁点击【⬆️】\n2）输入您想要调整的最低跟单金额\n3）点击【确认】",
+    "text_tr": "",
+    "image": "screenshots/1767115481935_Adjust-Min-Copy-Amount.jpeg",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767115486730
+  },
+  {
     "title": "Enable Portfolio Margin - EN",
     "text": "To Enable **Portfolio Margin** please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"Portfolio Margin\"** button on the pop-up menu.\n\n**4 -)** Select **\"Portfolio Margin\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\n---\n\nTo Learn more about Portfolio Margin, here are some detailed guides:\n\n* [Introduction to Binance Portfolio Margin Mode](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [How to View Portfolio Margin Information from Your Binance Account and Trading Interface?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nIf you have any additional questions, please don't hesitate to share them with me.",
     "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkinleştirmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Portfolyo Marjin\"** (Portfolio Margin) butonuna tıklayın.\n\n**4 -)** **\"Portfolyo Marjin\"** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\n---\n\nPortfolyo Marjin hakkında daha fazla bilgi edinmek için, aşağıda detaylı rehberleri bulabilirsiniz:\n\n* [Binance Portfolyo Marjin Moduna Giriş](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [Binance Hesabınızdan ve Alım Satım Arayüzünden Portfolyo Marjin Bilgilerini Nasıl Görüntüleyebilirsiniz?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.",
@@ -808,14 +819,14 @@
     "id": 1766691251410
   },
   {
-    "title": "Adjust Min Copy Amount (Private) 调整最小跟单金额（私域）",
-    "text": "如果您想要在私域带单里调整最低跟单金额，请按照截图中的步骤操作：\n\n1）在您的私域带单页面，在【最小跟单金额(USDT)】右旁点击【⬆️】\n2）输入您想要调整的最低跟单金额\n3）点击【确认】",
+    "title": "Create Invitation Code (Private) 创建邀请码（私域）",
+    "text": "如果您想要在私域带单里创建/获取邀请码，请按照截图中的步骤操作：\n\n1）在您的私域带单页面，点击【创建】\n2）输入您的邀请码最大可邀请人数\n3）点击【确认】\n4）创建成功后，再次点击【邀请】\n5）可以在项目邀请页面复制邀请码\n6）如果您还想要再次创建邀请码，可以在右上角点击【+】创建",
     "text_tr": "",
-    "image": "screenshots/1767115481935_Adjust-Min-Copy-Amount.jpeg",
+    "image": "screenshots/1767116492684_Create-Invitation-Code-(Private).png",
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1767115486730
+    "id": 1767116503784
   }
 ]
