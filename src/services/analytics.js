@@ -2,7 +2,58 @@ import { v4 as uuidv4 } from 'uuid';
 
 const TRACKING_URL = "https://script.google.com/macros/s/AKfycbwWBcp_SOszo_eYYI3aVR5GdXbuVhTOiOWgspAxqgYO497jZrRuizi9Bt5km2sMmTqb/exec";
 
-// Device ID Management
+/**
+ * Generates a stable Device Hash using Canvas Fingerprinting and Hardware Specs.
+ * This identifies the "Physical Device" rather than just the browser session.
+ */
+const generateDeviceHash = () => {
+    // 1. Canvas Fingerprinting (Identifies GPU/Driver variation)
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const txt = 'AntigravityID_v1';
+    ctx.textBaseline = "top";
+    ctx.font = "14px 'Arial'";
+    ctx.fillStyle = "#f60";
+    ctx.fillRect(125, 1, 62, 20);
+    ctx.fillStyle = "#069";
+    ctx.fillText(txt, 2, 15);
+    ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
+    ctx.fillText(txt, 4, 17);
+    const canvasHash = canvas.toDataURL().slice(-50); // Get unique tail of the image data
+
+    // 2. Hardware & Environment Specs
+    const specs = [
+        navigator.platform,
+        screen.width + "x" + screen.height,
+        screen.colorDepth,
+        Intl.DateTimeFormat().resolvedOptions().timeZone,
+        navigator.language
+    ].join('|');
+
+    // 3. Combine and Generate Hash
+    const raw = canvasHash + specs;
+    let hash = 0;
+    for (let i = 0; i < raw.length; i++) {
+        const char = raw.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+    }
+    return Math.abs(hash).toString(16);
+};
+
+// Persistent Cache for Device Hash
+let cachedHash = null;
+const getDeviceHash = () => {
+    if (!cachedHash) {
+        cachedHash = localStorage.getItem("fd_device_hash");
+        if (!cachedHash) {
+            cachedHash = generateDeviceHash();
+            localStorage.setItem("fd_device_hash", cachedHash);
+        }
+    }
+    return cachedHash;
+};
+
 export const getDeviceId = () => {
     let id = localStorage.getItem("fd_device_id");
     if (!id) {
@@ -16,26 +67,26 @@ export const getDeviceId = () => {
 export const logEvent = (eventType, data = {}) => {
     if (!TRACKING_URL) return;
 
-    const deviceId = getDeviceId();
+    const deviceHash = getDeviceHash();
     const params = new URLSearchParams({
         event: eventType,
-        uid: deviceId,
+        hash: deviceHash,
+        uid: getDeviceId(), // Keep legacy UID for backward compatibility
         platform: navigator.platform,
         ua: navigator.userAgent,
+        screen: `${screen.width}x${screen.height}`,
+        tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        lang: navigator.language,
         title: data.title || '',
-        lang: data.language || '',
         topic: data.topic || '',
-        image: data.image || '',
-        ...data // specific extras
+        ...data
     });
 
-    // Fire and forget (no-cors means we can't read response, but it sends)
     fetch(`${TRACKING_URL}?${params.toString()}`, { mode: 'no-cors' })
-        .then(() => console.log(`[Analytics] Sent: ${eventType}`, data))
+        .then(() => console.log(`[Analytics] Sent (Hash: ${deviceHash}): ${eventType}`, data))
         .catch(err => console.error("[Analytics] Error:", err));
 };
 
-// Update interaction data (Fetch from Google Apps Script if supported)
 export const fetchInteractionStats = async () => {
     if (!TRACKING_URL) return null;
     try {
@@ -47,7 +98,6 @@ export const fetchInteractionStats = async () => {
     return null;
 };
 
-// Calculate Library Stats for Dashboard
 export const getLibraryStats = (items, interactionData = null) => {
     const totalItems = items.length;
 
@@ -73,11 +123,10 @@ export const getLibraryStats = (items, interactionData = null) => {
         count: langCounts[key]
     })).sort((a, b) => b.count - a.count);
 
-    // Interaction KPIs (from external data)
     const interactionStats = interactionData || {
-        uniqueUsers: null,
+        uniqueUsers: 0,
         topScreenshot: 'N/A',
-        totalClicks: 0
+        totalEvents: 0
     };
 
     return {
