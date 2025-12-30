@@ -1,15 +1,17 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import bundledData from '../data/data.json';
+import bundledFeedbacks from '../data/feedbacks.json';
 
 const DataContext = createContext();
 const BASE_DATA_URL = 'https://raw.githubusercontent.com/GorkemTikic/screenshot-library/main/src/data';
 const DATA_URL = `${BASE_DATA_URL}/data.json`;
 const FEEDBACKS_URL = `${BASE_DATA_URL}/feedbacks.json`;
 import { githubService } from '../services/github';
+import { fetchCloudFeedbacks } from '../services/analytics';
 
 export function DataProvider({ children }) {
     const [items, setItems] = useState(bundledData); // Start with bundled data
-    const [feedbacks, setFeedbacks] = useState([]); // Separate feedback state
+    const [feedbacks, setFeedbacks] = useState(bundledFeedbacks); // Start with bundled feedbacks
     const [isLoading, setIsLoading] = useState(true);
     const [fetchError, setFetchError] = useState(null);
 
@@ -26,7 +28,15 @@ export function DataProvider({ children }) {
             try {
                 // Fetch live data with cache busting ONLY in production
                 if (import.meta.env.DEV) {
-                    console.log("Development mode: Using local data");
+                    console.log("Development mode: Loading local data + cloud feedbacks...");
+                    // We still want cloud feedbacks in DEV to test the system!
+                    let devCloud = [];
+                    try {
+                        devCloud = await fetchCloudFeedbacks();
+                    } catch (e) {
+                        console.warn("Dev cloud fetch failed:", e);
+                    }
+                    setFeedbacks([...bundledFeedbacks, ...devCloud]);
                     setIsLoading(false);
                     return;
                 }
@@ -58,7 +68,15 @@ export function DataProvider({ children }) {
                         }
                     }
                 } catch (fbErr) {
-                    console.warn("Could not load feedbacks, starting fresh:", fbErr);
+                    console.warn("Could not load feedbacks from Git, starting with fresh or cloud data:", fbErr);
+                }
+
+                // --- CLOUD FEEDBACKS ---
+                let cloudFeedbacks = [];
+                try {
+                    cloudFeedbacks = await fetchCloudFeedbacks();
+                } catch (cErr) {
+                    console.warn("Could not load cloud feedbacks:", cErr);
                 }
 
                 // Sanitize data and migrate legacy feedbacks
@@ -80,18 +98,34 @@ export function DataProvider({ children }) {
                     };
                 });
 
-                // Final Merge: remote feedbacks + legacy ones
+                // Final Merge: remote(git) + legacy + cloud
                 const mergedFeedbacks = [...(Array.isArray(remoteFeedbacks) ? remoteFeedbacks : [])];
                 const existingIds = new Set(mergedFeedbacks.map(f => f.id));
+
+                // Add legacy
                 legacyFeedbacks.forEach(fb => {
-                    if (!existingIds.has(fb.id)) {
-                        mergedFeedbacks.push(fb);
-                    }
+                    if (!existingIds.has(fb.id)) mergedFeedbacks.push(fb);
                 });
+
+                // Add cloud (and link to itemId by title)
+                cloudFeedbacks.forEach(cfb => {
+                    // Try to finding matching item if itemId is 0
+                    if (cfb.itemId === 0 && cfb.title) {
+                        const match = sanitizedData.find(i => i.title === cfb.title);
+                        if (match) cfb.itemId = match.id;
+                    }
+                    // Since Git-sync gives them real IDs later, we only add if not already in Git
+                    // (Actually, cloud is 'new', Git is 'confirmed'. We can show both or filter duplicates)
+                    // For now, let's add them all, but keep track of source.
+                    mergedFeedbacks.push(cfb);
+                });
+
+                // Sort by timestamp newest first
+                mergedFeedbacks.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 
                 setFeedbacks(mergedFeedbacks);
                 setItems(sanitizedData);
-                console.log("Loaded data. Feedbacks count:", mergedFeedbacks.length);
+                console.log("Loaded total feedbacks:", mergedFeedbacks.length);
             } catch (err) {
                 console.warn("Data fetch failed:", err);
                 setFetchError(err.message);
@@ -100,6 +134,7 @@ export function DataProvider({ children }) {
                     ...item,
                     id: item.id || Date.now() + index
                 })));
+                setFeedbacks(bundledFeedbacks);
             } finally {
                 setIsLoading(false);
             }

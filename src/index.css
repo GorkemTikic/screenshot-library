@@ -1577,9 +1577,35 @@ body.dark .image-placeholder {
 }
 
 .feedback-text {
-  font-size: 0.9rem;
-  margin-bottom: 4px;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
   word-break: break-word;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.feedback-context-preview {
+  background: rgba(128, 128, 128, 0.05);
+  border-left: 4px solid #3b82f6;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+body.dark .feedback-context-preview {
+  background: rgba(255, 255, 255, 0.05);
+  color: #aaa;
 }
 
 .tabs-header {

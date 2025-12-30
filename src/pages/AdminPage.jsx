@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useData } from '../contexts/DataContext';
-import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle } from 'lucide-react';
+import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle, Cloud } from 'lucide-react';
 import { githubService } from '../services/github';
 
 const formatUpdatedAt = (language) => {
@@ -233,13 +233,26 @@ export function AdminPage() {
 
     const handleResolveFeedback = async (feedbackId) => {
         if (!window.confirm("Mark this feedback as resolved and sync to GitHub?")) return;
-
         const updatedFeedbacks = resolveFeedback(feedbackId);
-
         try {
             await syncFeedbacks(updatedFeedbacks);
+            alert("Feedback resolved and synced!");
         } catch (err) {
             console.error("Resolution sync failed", err);
+            alert("Resolution failed to sync to GitHub");
+        }
+    };
+
+    const handleSyncCloudFeedback = async (fb) => {
+        const updated = feedbacks.map(f =>
+            f.id === fb.id ? { ...f, source: undefined, id: Date.now() } : f
+        );
+        try {
+            await syncFeedbacks(updated);
+            alert("Feedback moved from Cloud Inbox to GitHub repository!");
+            window.location.reload();
+        } catch (err) {
+            alert("Failed to sync cloud feedback: " + err.message);
         }
     };
 
@@ -542,6 +555,14 @@ export function AdminPage() {
                                                 {group.feedbacks.map(fb => (
                                                     <div key={fb.id} className="feedback-message-row">
                                                         <div className="flex-1">
+                                                            {fb.source === 'cloud' && (
+                                                                <span className="flex items-center gap-1 text-[10px] font-bold text-blue-500 mb-1">
+                                                                    <Cloud size={10} /> CLOUD INBOX (Not on Git)
+                                                                </span>
+                                                            )}
+                                                            <div className="feedback-context-preview line-clamp-2">
+                                                                "{group.item.text}"
+                                                            </div>
                                                             <p className="feedback-text line-clamp-2" title={fb.message}>{fb.message}</p>
                                                             <div className="flex justify-between items-center">
                                                                 <p className="text-xs text-muted">{new Date(fb.timestamp).toLocaleString()}</p>
@@ -553,16 +574,30 @@ export function AdminPage() {
                                                             </div>
                                                         </div>
                                                         {fb.status === 'active' && (
-                                                            <button
-                                                                className="btn btn-xs btn-success ml-4"
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    handleResolveFeedback(fb.id);
-                                                                }}
-                                                                title="Mark as Fixed / Resolved"
-                                                            >
-                                                                <CheckCircle size={14} className="mr-1" /> Resolve
-                                                            </button>
+                                                            <div className="flex gap-2 ml-4">
+                                                                {fb.source === 'cloud' && (
+                                                                    <button
+                                                                        className="btn btn-xs btn-secondary"
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            handleSyncCloudFeedback(fb);
+                                                                        }}
+                                                                        title="Permanently save to GitHub repository"
+                                                                    >
+                                                                        <Save size={14} className="mr-1" /> Save to Git
+                                                                    </button>
+                                                                )}
+                                                                <button
+                                                                    className="btn btn-xs btn-success"
+                                                                    onClick={(e) => {
+                                                                        e.stopPropagation();
+                                                                        handleResolveFeedback(fb.id);
+                                                                    }}
+                                                                    title="Mark as Fixed / Resolved"
+                                                                >
+                                                                    <CheckCircle size={14} className="mr-1" /> Resolve
+                                                                </button>
+                                                            </div>
                                                         )}
                                                     </div>
                                                 ))}

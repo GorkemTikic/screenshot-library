@@ -66,7 +66,7 @@ export function ScreenshotCard({ item, onClickImage }) {
         logEvent('right_click_image', { title: item.title, topic: item.topic });
     };
 
-    const handleFeedbackSubmit = (e) => {
+    const handleFeedbackSubmit = async (e) => {
         e.preventDefault();
         e.stopPropagation();
         if (!feedbackMessage.trim()) return;
@@ -74,17 +74,31 @@ export function ScreenshotCard({ item, onClickImage }) {
         setIsSubmitting(true);
         const newFb = addFeedback(item.id, feedbackMessage);
 
-        logEvent('send_feedback', { title: item.title, topic: item.topic });
+        logEvent('send_feedback', {
+            title: item.title,
+            topic: item.topic,
+            language: item.language,
+            message: feedbackMessage
+        });
 
         // Auto-sync: Send BOTH the new one and the existing ones to avoid stale state
-        syncFeedbacks([newFb, ...feedbacks]).catch(err => console.error("Auto-sync failed:", err));
+        // 3rd party users without a token will fail here, which is expected.
+        const syncSuccess = await syncFeedbacks([newFb, ...feedbacks]).catch(err => {
+            console.warn("Feedback Git-Sync failed (likely permissions):", err);
+            return false;
+        });
 
         // Small delay for UX
         setTimeout(() => {
             setFeedbackMessage('');
             setIsFeedbackOpen(false);
             setIsSubmitting(false);
-            alert('Feedback sent! Admin will review it.');
+
+            if (syncSuccess) {
+                alert('Feedback sent & synced successfully!');
+            } else {
+                alert('Feedback logged via Analytics. Note: Git-Sync skipped (Admin token required for repository update).');
+            }
         }, 600);
     };
 
