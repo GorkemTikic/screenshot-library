@@ -1,7 +1,7 @@
 # 📸 Screenshot Library Assistant
 
-> **Last Updated:** 2025-12-30  
-> **Version:** 1.3.0  
+> **Last Updated:** 2025-12-31  
+> **Version:** 1.4.0  
 > **Role:** Senior Technical Architecture Map
 
 A premium dashboard for managing and viewing project screenshots, featuring automated GitHub synchronization and a high-performance filtering system.
@@ -24,8 +24,8 @@ support-screenshot-library-main/
 │   │   ├── Lightbox.jsx    # Full-screen image preview
 │   │   ├── MarketTicker.jsx# Real-time data ticker
 │   │   ├── PlatformIcons.jsx# Platform identifiers
-│   │   ├── ScreenshotCard.jsx# Individual item display and timestamps
-│   │   └── ScreenshotGallery.jsx# Main grid and filtering logic
+│   │   ├── ScreenshotCard.jsx# Item display, Eye-button preview & timestamps
+│   │   └── ScreenshotGallery.jsx# Main grid, filtered BOTS/LOAN logic
 │   ├── contexts/           # Global state management
 │   │   ├── DataContext.jsx # Centralized data, API fetching & sync state
 │   │   └── ThemeContext.jsx# Theme management
@@ -36,7 +36,7 @@ support-screenshot-library-main/
 │   │   └── HomePage.jsx    # User entry point
 │   ├── services/           # Service layer
 │   │   ├── github.js       # GitHub API integration (Rest/Content)
-│   │   └── analytics.js    # Google Apps Script tracking bridge
+│   │   └── analytics.js    # Identity Resolution (v7.0) tracking bridge
 │   ├── utils/              # Helper functions
 │   │   ├── imageUtils.js   # Image path resolution
 │   │   └── langUtils.js    # Language code mapping (CN, RU, etc.)
@@ -57,10 +57,10 @@ support-screenshot-library-main/
 | Component / File | Responsibility | Key Feature |
 | :--- | :--- | :--- |
 | `AdminPage.jsx` | Management UI for content and settings. | Centralized configuration |
-| `ScreenshotCard.jsx` | Item display + Interactive Feedback + Timestamps. | Multi-lang text toggle |
+| `ScreenshotCard.jsx` | Item display + Macro Text Preview + Timestamps. | Multi-lang text toggle |
 | `github.js` | Direct communication with GitHub REST API. | SHA-aware commits |
-| `analytics.js` | Event logging pipeline via Google Apps Script. | Persistent Device UID |
-| `backfill.cjs` | CLI tool to populate `updatedAt` metadata. | Timezone-aware formatting |
+| `analytics.js` | Advanced Identity Resolution & Event Logging. | Canvas Fingerprinting |
+| `backfill.cjs` | CLI tool to populate `updatedAt` metadata. | Timezone-aware (CN vs EN) |
 | `index.css` | Premium Design System with smooth animations. | Neon & Glassmorphism |
 
 ---
@@ -74,10 +74,12 @@ support-screenshot-library-main/
     *   The system tracks `updatedAt` for every entry. 
     *   **Logic**: Chinese screenshots use **UTC+8**, while all other languages default to **UTC+0**. 
     *   Maintenance is handled by `backfill.cjs` to ensure legacy data remains compliant.
-3.  **Analytics Pipeline**: 
-    *   Events (clicks, copies, views) are piped to a Google Apps Script endpoint.
-    *   Uses `no-cors` mode for fire-and-forget logging to minimize UI latency.
-    *   Assigns a unique `uuid` stored in `localStorage` to distinguish unique users.
+3.  **Identity Resolution Engine (v7.0)**: 
+    *   **Heuristic Fingerprinting**: Instead of simple cookies, the app generates a stable `deviceHash` using Canvas rendering, GPU signatures, screen specs, and environment variables.
+    *   **Relational Storage**: Logs are piped to a relational Google Sheets backend containing dedicated tabs:
+        *   `DB_Users`: Stores unique "Physical Users" with IP history and cross-browser identity.
+        *   `DB_Logs`: Stores the raw event stream linked by `Device_ID`.
+    *   **Accuracy**: Successfully merges sessions from different browsers (e.g., Chrome, Opera) into a single user identity.
 4.  **State Protection**: The `DataProvider` implements an "Initialization" state that prevents user interactions until the latest data from GitHub is fully synchronized locally.
 
 ---
