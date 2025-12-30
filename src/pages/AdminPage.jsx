@@ -61,14 +61,20 @@ export function AdminPage() {
         const groups = {};
 
         currentList.forEach(fb => {
-            if (!groups[fb.itemId]) {
+            const groupId = fb.itemId || `unlinked_${fb.title || 'unknown'}`;
+            if (!groups[groupId]) {
                 const item = (items || []).find(i => i.id === fb.itemId);
-                groups[fb.itemId] = {
-                    item: item || { title: `Unknown Item (${fb.itemId})`, image: '', topic: 'N/A' },
+                groups[groupId] = {
+                    item: item || {
+                        title: fb.title || `Unlinked Source (${fb.itemId || 'N/A'})`,
+                        image: '',
+                        topic: 'N/A',
+                        id: fb.itemId || 'N/A'
+                    },
                     feedbacks: []
                 };
             }
-            groups[fb.itemId].feedbacks.push(fb);
+            groups[groupId].feedbacks.push(fb);
         });
 
         return Object.values(groups);
@@ -545,9 +551,15 @@ export function AdminPage() {
                                     {groupedFeedbacks.map(group => (
                                         <div key={group.item.id || Math.random()} className="feedback-item-group">
                                             <div className="feedback-item-header">
-                                                <img src={group.item.image} alt="" className="feedback-thumb" />
+                                                {group.item.image ? (
+                                                    <img src={group.item.image} alt="" className="feedback-thumb" />
+                                                ) : (
+                                                    <div className="feedback-thumb bg-slate-800 flex items-center justify-center text-blue-400">
+                                                        <MessageSquare size={16} />
+                                                    </div>
+                                                )}
                                                 <div className="flex-1">
-                                                    <h4 className="font-bold">{group.item.title}</h4>
+                                                    <h4 className="font-bold text-slate-100">{group.item.title || "Untitled Feedback"}</h4>
                                                     <p className="text-xs text-muted">ID: {group.item.id} | Topic: {group.item.topic}</p>
                                                 </div>
                                             </div>

@@ -27,115 +27,87 @@ export function DataProvider({ children }) {
         const loadLines = async () => {
             try {
                 // Fetch live data with cache busting ONLY in production
+                // --- FAST PATH FOR DEV ---
                 if (import.meta.env.DEV) {
-                    console.log("Development mode: Loading local data + cloud feedbacks...");
-                    // We still want cloud feedbacks in DEV to test the system!
-                    let devCloud = [];
-                    try {
-                        devCloud = await fetchCloudFeedbacks();
-                    } catch (e) {
-                        console.warn("Dev cloud fetch failed:", e);
-                    }
-                    setFeedbacks([...bundledFeedbacks, ...devCloud]);
+                    console.log("Development mode: Quick Load...");
+                    setItems(bundledData);
+                    setFeedbacks(bundledFeedbacks);
                     setIsLoading(false);
+                    // Fetch cloud in background
+                    fetchCloudFeedbacks().then(cfbs => {
+                        if (cfbs.length > 0) {
+                            setFeedbacks(prev => {
+                                const existingIds = new Set(prev.map(f => f.id));
+                                const newOnes = cfbs.filter(f => !existingIds.has(f.id));
+                                return [...prev, ...newOnes].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                            });
+                        }
+                    }).catch(console.warn);
                     return;
                 }
+                // --- PERSISTENCE LOAD (PRODUCTION) ---
                 const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-                if (!response.ok) throw new Error('Failed to fetch live data');
+                if (!response.ok) throw new Error('Failed to fetch data');
                 const liveData = await response.json();
 
-                // Load feedbacks separately
-                let remoteFeedbacks = [];
-                try {
-                    // If we have GitHub configured, use API to get freshest data
-                    if (githubService.isConfigured()) {
-                        const { owner, repo } = githubService.getConfig();
-                        const url = `https://api.github.com/repos/${owner}/${repo}/contents/src/data/feedbacks.json?t=${Date.now()}`;
-                        const fbApiRes = await fetch(url, {
-                            headers: githubService.getHeaders(),
-                            cache: 'no-store'
-                        });
-                        if (fbApiRes.ok) {
-                            const fbFile = await fbApiRes.json();
-                            const decoded = decodeURIComponent(escape(atob(fbFile.content)));
-                            remoteFeedbacks = JSON.parse(decoded);
-                        }
-                    } else {
-                        // Public view: Use RAW URL with cache busting
-                        const fbResponse = await fetch(`${FEEDBACKS_URL}?t=${Date.now()}`);
-                        if (fbResponse.ok) {
-                            remoteFeedbacks = await fbResponse.json();
-                        }
-                    }
-                } catch (fbErr) {
-                    console.warn("Could not load feedbacks from Git, starting with fresh or cloud data:", fbErr);
-                }
-
-                // --- CLOUD FEEDBACKS ---
-                let cloudFeedbacks = [];
-                try {
-                    cloudFeedbacks = await fetchCloudFeedbacks();
-                } catch (cErr) {
-                    console.warn("Could not load cloud feedbacks:", cErr);
-                }
-
-                // Sanitize data and migrate legacy feedbacks
-                let legacyFeedbacks = [];
-                const sanitizedData = liveData.map((item, index) => {
-                    const itemId = item.id || Date.now() + index;
-                    if (item.feedbacks && Array.isArray(item.feedbacks)) {
-                        const enriched = item.feedbacks.map(fb => ({
-                            ...fb,
-                            itemId: itemId,
-                            status: fb.status || 'active'
-                        }));
-                        legacyFeedbacks = [...legacyFeedbacks, ...enriched];
-                    }
-                    return {
-                        ...item,
-                        id: itemId,
-                        feedbacks: undefined // Clear legacy feedbacks from items
-                    };
-                });
-
-                // Final Merge: remote(git) + legacy + cloud
-                const mergedFeedbacks = [...(Array.isArray(remoteFeedbacks) ? remoteFeedbacks : [])];
-                const existingIds = new Set(mergedFeedbacks.map(f => f.id));
-
-                // Add legacy
-                legacyFeedbacks.forEach(fb => {
-                    if (!existingIds.has(fb.id)) mergedFeedbacks.push(fb);
-                });
-
-                // Add cloud (and link to itemId by title)
-                cloudFeedbacks.forEach(cfb => {
-                    // Try to finding matching item if itemId is 0
-                    if (cfb.itemId === 0 && cfb.title) {
-                        const match = sanitizedData.find(i => i.title === cfb.title);
-                        if (match) cfb.itemId = match.id;
-                    }
-                    // Since Git-sync gives them real IDs later, we only add if not already in Git
-                    // (Actually, cloud is 'new', Git is 'confirmed'. We can show both or filter duplicates)
-                    // For now, let's add them all, but keep track of source.
-                    mergedFeedbacks.push(cfb);
-                });
-
-                // Sort by timestamp newest first
-                mergedFeedbacks.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-                setFeedbacks(mergedFeedbacks);
-                setItems(sanitizedData);
-                console.log("Loaded total feedbacks:", mergedFeedbacks.length);
-            } catch (err) {
-                console.warn("Data fetch failed:", err);
-                setFetchError(err.message);
-                // Fallback to bundled data
-                setItems(bundledData.map((item, index) => ({
+                // Sanitize and set Items IMMEDIATELY to clear loading screen
+                const sanitizedData = liveData.map((item, index) => ({
                     ...item,
                     id: item.id || Date.now() + index
-                })));
+                }));
+                setItems(sanitizedData);
+                setIsLoading(false); // <--- UNBLOCK UI HERE
+
+                // --- BACKGROUND FEEDBACK LOAD (Does not block UI) ---
+                const processFeedbacks = async () => {
+                    let allFbs = [];
+
+                    // A. Try Git Feedbacks
+                    try {
+                        let gitFbs = [];
+                        if (githubService.isConfigured()) {
+                            const { owner, repo } = githubService.getConfig();
+                            const url = `https://api.github.com/repos/${owner}/${repo}/contents/src/data/feedbacks.json?t=${Date.now()}`;
+                            const fbApiRes = await fetch(url, { headers: githubService.getHeaders(), cache: 'no-store' });
+                            if (fbApiRes.ok) {
+                                const fbFile = await fbApiRes.json();
+                                gitFbs = JSON.parse(decodeURIComponent(escape(atob(fbFile.content))));
+                            }
+                        } else {
+                            const fbRes = await fetch(`${FEEDBACKS_URL}?t=${Date.now()}`);
+                            if (fbRes.ok) gitFbs = await fbRes.json();
+                        }
+                        allFbs = [...gitFbs];
+                    } catch (e) { console.warn("Git FB fetch failed:", e); }
+
+                    // B. Try Cloud Feedbacks
+                    try {
+                        const cloudFbs = await fetchCloudFeedbacks();
+                        cloudFbs.forEach(cfb => {
+                            // LINKING LOGIC: Match by title if itemId is missing
+                            if (!cfb.itemId && cfb.title) {
+                                const match = sanitizedData.find(i => i.title === cfb.title);
+                                if (match) cfb.itemId = match.id;
+                            }
+
+                            // Avoid duplicates if already synced to git
+                            const exists = allFbs.some(gf => gf.message === cfb.message && gf.timestamp === cfb.timestamp);
+                            if (!exists) allFbs.push(cfb);
+                        });
+                    } catch (e) { console.warn("Cloud FB fetch failed:", e); }
+
+                    // C. Sort and Update State
+                    allFbs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                    setFeedbacks(allFbs);
+                };
+
+                processFeedbacks();
+
+            } catch (err) {
+                console.warn("Critical data fetch failed:", err);
+                setFetchError(err.message);
+                setItems(bundledData);
                 setFeedbacks(bundledFeedbacks);
-            } finally {
                 setIsLoading(false);
             }
         };
