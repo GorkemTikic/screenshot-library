@@ -1,5 +1,16 @@
 [
   {
+    "title": "How to remove CT in portfolio 如何在带单项目里移除跟单员",
+    "text": "如果您想要在带单项目里移除跟单员，请按照截图中的步骤操作：\n\n1）在项目里点击【跟单员】\n2）在您想要移除的跟单员并点击【移除】\n3）点击【确认】\n",
+    "text_tr": "",
+    "image": "screenshots/1767117702784_How-to-remove-CT-in-Portfolio.png",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767117728709
+  },
+  {
     "title": "Create Invitation Code (Private) 创建邀请码（私域）",
     "text": "如果您想要在私域带单里创建/获取邀请码，请按照截图中的步骤操作：\n\n1）在您的私域带单页面，点击【创建】\n2）输入您的邀请码最大可邀请人数\n3）点击【确认】\n4）创建成功后，再次点击【邀请】\n5）可以在项目邀请页面复制邀请码\n6）如果您还想要再次创建邀请码，可以在右上角点击【+】创建",
     "text_tr": "",
@@ -11,7 +22,7 @@
     "id": 1767116503784
   },
   {
-    "title": "Adjust Min Copy Amount (Private) 调整最小跟单金额（私域）",
+    "title": "Adjust Min Copy Amount (Private) 调整最小跟单金额（私域）- CN",
     "text": "如果您想要在私域带单里调整最低跟单金额，请按照截图中的步骤操作：\n\n1）在您的私域带单页面，在【最小跟单金额(USDT)】右旁点击【⬆️】\n2）输入您想要调整的最低跟单金额\n3）点击【确认】",
     "text_tr": "",
     "image": "screenshots/1767115481935_Adjust-Min-Copy-Amount.jpeg",
@@ -828,16 +839,5 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766691251410
-  },
-  {
-    "title": "How to remove CT in portfolio 如何在带单项目里移除跟单员",
-    "text": "如果您想要在带单项目里移除跟单员，请按照截图中的步骤操作：\n\n1）在项目里点击【跟单员】\n2）在您想要移除的跟单员并点击【移除】\n3）点击【确认】\n",
-    "text_tr": "",
-    "image": "screenshots/1767117702784_How-to-remove-CT-in-Portfolio.png",
-    "topic": "Copy Trading",
-    "language": "Chinese",
-    "platform": "mobile",
-    "newLanguageName": "",
-    "id": 1767117728709
   }
 ]
