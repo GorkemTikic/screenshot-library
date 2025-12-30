@@ -1,9 +1,31 @@
 [
   {
-    "title": "How to add/remove funds in portfolio 如何添加/移除项目里的资金 - CN",
-    "text": "如果您想要在带单项目里【添加/移除】资金，请按照截图中的步骤操作：\n\n1）在项目里点击【调整余额】\n2）选择【添加】或者【移除】\n3）币种可选择【USDT】或【BNB】，注意⚠️：BNB仅限于抵扣手续费，无法作为带单项目的保证金\n4）输入您要添加/移除的数量\n5）点击【确认】",
+    "title": "EC Max Loss 事件合约最大损失 - CN",
+    "text": "如果您想要在事件合约设置单日最大损失金额，请按照截图中的步骤操作：\n\n1）事件合约页面右上角点击【...】\n2）点击【最大损失】\n3）输入您希望设置的单日最大亏损金额\n4）点击【确认】完成设置\n\n⚠️ 注意事项：\n当损失达到您设定的单日最大损失金额后，将无法继续提交订单。该限制将在下一个 UTC 日 00:00 自动重置。",
     "text_tr": "",
-    "image": "screenshots/1767118613287_How-to-add-remove-funds-in-portfolio.png",
+    "image": "screenshots/1767121811463_EC-Max-Loss.png",
+    "topic": "Event Contract",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767121840986
+  },
+  {
+    "title": "EC Cooling Off Period 事件合约冷静期 - CN",
+    "text": "如果您想要开启事件合约冷静期，请按照截图中的步骤操作：\n\n1）事件合约页面右上角点击【...】\n2）点击【冷静期】\n3）打开禁用事件合约功能的选项\n4）选择您想要禁用的期限（1天，1周，1个月，无限期）\n5）点击【确认】完成设置\n\n⚠️ 重要提示：\n冷静期一旦开启，将无法取消或提前关闭，请确认后再操作。",
+    "text_tr": "",
+    "image": "screenshots/1767120913193_EC-Cooling-Off-Period.png",
+    "topic": "Event Contract",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767120924398
+  },
+  {
+    "title": "How to add/remove funds in portfolio 如何添加/移除项目里的资金 - CN",
+    "text": "如果您想要在带单项目里【添加/移除】资金，请按照截图中的步骤操作：\n\n1）在项目里点击【调整余额】\n2）选择【添加】或者【移除】\n3）币种可选择【USDT】或【BNB】\n注意⚠️：BNB仅限于抵扣手续费，无法作为带单项目的保证金\n4）输入您要添加/移除的数量\n5）点击【确认】完成操作",
+    "text_tr": "",
+    "image": "screenshots/1767122300440_How-to-add-or-remove-funds-in-portfolio.png",
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
@@ -67,14 +89,15 @@
   },
   {
     "title": "Loan Repay (Collateral) 借币还款（抵押物）- CN",
-    "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【抵押物】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【抵押物】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
+    "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【抵押物】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【抵押物】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n- 兑换汇率以及使用抵押物数量\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
     "text_tr": "",
     "image": "screenshots/1766684943856_Loan-Repay-Collateral.png",
     "topic": "Binance LOAN",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766684949490
+    "id": 1766684949490,
+    "updatedAt": "2025-12-31 03:31 UTC+8"
   },
   {
     "title": "Loan Order History 借币订单历史 - CN",
