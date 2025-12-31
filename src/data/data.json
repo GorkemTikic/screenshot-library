@@ -695,10 +695,7 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/How_To_Change_TP%3ASL_to_Stop-Limit_-_EN.jpeg",
     "text": "To Change Your TP/SL Order to a Stop-Limit order, please follow steps in the screenshot: \n\n\n1 -) Click on TP/SL button on the open position. \n\n\n2 -) Select TP/SL button on the upper menu. \n\n\n3 -) Click on ''Market'' button. \n\n\n4 -) You can choose ''Limit'' in this menu. \n\n\n5 -) Once you choose ''Limit'' your TP/SL order is now a Stop-Limit order. \n\nYou can enter both trigger and Limit price for your Stop-Limit order now.\n\n\nTo Learn More About the Order Types, I advise you to check the official guides below: \n\n\n[What Are Stop Orders in Binance Futures?](https://www.binance.com/blog/futures/2094497753519691034)  \n\n\n[Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)  \n\n\n[What Is a Stop-Limit Order?](https://academy.binance.com/articles/what-is-a-stop-limit-order)  \n\n\nHope this clarifies your queries 🙏 If you have any further questions, don’t hesitate to share them with me.",
     "topic": "Futures Trading",
-    "id": 1765164170486,
-    "platform": "mobile",
-    "text_tr": "**TP/SL Emrinizi bir Stop-Limit emrine dönüştürmek** için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Açık pozisyonun üzerindeki **\"TP/SL\"** butonuna tıklayın.\n\n**2 -)** Üst menüden tekrar **\"TP/SL\"** sekmesini seçin.\n\n**3 -)** **\"Market\"** butonuna tıklayın.\n\n**4 -)** Bu menüden **\"Limit\"** seçeneğini belirleyin.\n\n**5 -)** **\"Limit\"** seçeneğini seçtiğinizde, TP/SL emriniz artık bir **Stop-Limit** emrine dönüşecektir.\n\nArtık Stop-Limit emriniz için hem stop (trigger) fiyatını hem de Limit fiyatını girebilirsiniz.\n\n---\n\nEmir türleri hakkında daha fazla bilgi edinmek için aşağıdaki resmi makalelerimize göz atmanızı tavsiye etmek isterim:\n\n* [Binance Vadeli İşlemlerde Stop Emirleri Nelerdir?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n* [Stop-Limit Emri Nedir?](https://academy.binance.com/articles/what-is-a-stop-limit-order)\n\n---\n\nUmarım bu açıklamalar sorularınızı netleştirmiştir 🙏 Başka bir sorunuz olursa benimle paylaşmaktan çekinmeyin.",
-    "updatedAt": "2025-12-31 00:10 UTC+0"
+    "id": 1765164170486
   },
   {
     "title": "TP/SL Before Position - EN",
@@ -879,5 +876,17 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766691251410
+  },
+  {
+    "title": "TRANFER FROM COIN-M TO SPOT WALLET - EN",
+    "text": "To transfer assets from **COIN-M Futures** to your **Spot Wallet**, please follow the steps in the screenshots above:\n\n**1 -)** Click on **\"Assets\"**.\n\n**2 -)** Click on **\"Futures\"**.\n\n**3 -)** Click on **\"COIN-M\"**.\n\n**4 -)** Click on **\"Transfer\"**.\n\n**5 -)** Click on the **\"Arrows\"** icon to set the transfer direction.\n\n**6 -)** Ensure the correct pathway is selected as shown in the screenshot:\n\n* **From:** COIN-M Futures\n* **To:** Spot Wallet\n\n**7 -)** Select the **Coin/Token** you want to transfer.\n\n**8 -)** Enter the **Amount** you wish to transfer.\n\n**9 -)** Click **\"Confirm Transfer\"**.\n\nIf you get stuck on any of these steps, please take a screenshot and share it with me; I'll be happy to assist you further!",
+    "text_tr": "Varlıklarınızı **COIN-M Vadeli İşlemler** hesabından **Spot Cüzdanınıza** aktarmak için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) seçeneğine tıklayın.\n\n**3 -)** **\"COIN-M\"** bölümüne tıklayın.\n\n**4 -)** **\"Transfer\"** butonuna tıklayın.\n\n**5 -)** Transfer yönünü ayarlamak için **\"Oklar\"** simgesine tıklayın.\n\n**6 -)** Transfer yolunun ekran görüntüsündeki gibi doğru olduğundan emin olun:\n\n* **Nereden (From):** COIN-M Vadeli İşlemler\n* **Nereye (To):** Spot Cüzdanı\n\n**7 -)** Transfer etmek istediğiniz **Coin/Tokeni**' seçin.\n\n**8 -)** Transfer etmek istediğiniz **Tutarı** girin.\n\n**9 -)** **\"Transferi Onayla\"** (Confirm Transfer) butonuna tıklayın.\n\nBu adımların herhangi birinde takılırsanız, lütfen bir ekran görüntüsü alıp benimle paylaşın; size yardımcı olmaktan mutluluk duyarım!",
+    "image": "screenshots/1767140586069_TRANFER-FROM-COIN-M-TO-SPOT-WALLET---EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767140613167,
+    "updatedAt": "2025-12-31 00:23 UTC+0"
   }
 ]
