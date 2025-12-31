@@ -888,5 +888,17 @@
     "newLanguageName": "",
     "id": 1767140613167,
     "updatedAt": "2025-12-31 00:23 UTC+0"
+  },
+  {
+    "title": "TRANFER FROM COIN-M TO SPOT WALLET - EN",
+    "text": "To transfer assets from your **Spot Wallet** to your **COIN-M Futures** wallet, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Assets\"**.\n\n**2 -)** Click on **\"Futures\"**.\n\n**3 -)** Click on **\"COIN-M\"**.\n\n**4 -)** Click on **\"Transfer\"**.\n\n**5 -)** Ensure the correct pathway is selected as shown in the screenshot:\n\n* **From:** Spot Wallet\n* **To:** COIN-M Futures\n\n**6 -)** Select the **Coin/Token** you want to transfer.\n\n**7 -)** Enter the **Amount** you wish to transfer.\n\n**8 -)** Click **\"Confirm Transfer\"**.\n\nIf you are stuck on any steps, take a screenshot and share it with me; I'll be happy to assist you further!",
+    "text_tr": "Varlıklarınızı **Spot Cüzdanınızdan** **COIN-M Vadeli İşlemler** hesabınıza aktarmak için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**3 -)** **\"COIN-M\"** bölümüne tıklayın.\n\n**4 -)** **\"Transfer\"** butonuna tıklayın.\n\n**5 -)** Transfer yolunun ekran görüntüsündeki gibi doğru olduğundan emin olun:\n\n* **Nereden (From):** Spot Cüzdanı\n* **Nereye (To):** COIN-M Vadeli İşlemler\n\n**6 -)** Transfer etmek istediğiniz **Coin/Token** türünü seçin.\n\n**7 -)** Transfer etmek istediğiniz **Tutarı** girin.\n\n**8 -)** **\"Transferi Onayla\"** (Confirm Transfer) butonuna tıklayın.\n\nBu adımların herhangi birinde takılırsanız, lütfen bir ekran görüntüsü alıp benimle paylaşın; size yardımcı olmaktan mutluluk duyarım!",
+    "image": "screenshots/1767140811279_TRANFER-FROM-SPOT-TO-COIN-M-WALLET---EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767140848378,
+    "updatedAt": "2025-12-31 00:27 UTC+0"
   }
 ]
