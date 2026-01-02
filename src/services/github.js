@@ -59,7 +59,8 @@ export const githubService = {
             reader.readAsDataURL(file);
             reader.onload = async () => {
                 const base64Content = reader.result.split(',')[1];
-                const fileName = `screenshots/${Date.now()}_${file.name.replace(/\s+/g, '-')}`;
+                const sanitizedName = file.name.replace(/[^a-z0-9.]/gi, '-').replace(/-+/g, '-');
+                const fileName = `screenshots/${Date.now()}_${sanitizedName}`;
                 const url = `${GITHUB_API_URL}/repos/${owner}/${repo}/contents/public/${fileName}`;
 
                 try {
