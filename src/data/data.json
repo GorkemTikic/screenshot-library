@@ -874,5 +874,17 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766691251410
+  },
+  {
+    "title": "How To Change Order Size/Unit Preference to Initial Margin - EN.jpeg",
+    "text": "To change your order size unit preference, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **Asset Unit** (e.g., USDT) button located next to the amount input field.\n\n> The **\"Unit Preference\"** menu will appear at the bottom.\n\n**3 -)** **Symbol Selection:** If you want to input or view the order size in the specific token (e.g., BTC,BNB,RIVER), select the **Asset Name**.\n\n**4 -)** **USDT \"Order Size\":** If you select this, the amount entered will represent the **notional value** (the total value of the order including leverage).\n\n**5 -)** **USDT \"Initial Margin\":** If you select this, the amount you enter will be the **actual margin** you want to invest.\n\n* *Example:* If you enter **10 USDT**, the order will use **10 USDT** from your balance as margin for that position.\n\nIf you are stuck on any steps, take a screenshot and share it with me; I'll be happy to assist you further!",
+    "text_tr": "Birim tercihinizi değiştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Miktar giriş alanının yanında bulunan **Varlık Birimi** (örneğin USDT) butonuna tıklayın.\n\n> Ekranın alt kısmında **\"Birim Tercihi\"** (Unit Preference) menüsü açılacaktır.\n\n**3 -)** **Sembol Seçimi:** Emri ilgili token cinsinden (örneğin BTC,BNB,RIVER) girmek veya görüntülemek istiyorsanız, **Varlık Adını** seçin.\n\n**4 -)** **USDT \"Order Size\" (Emir Büyüklüğü):** Bu seçeneği işaretlerseniz, girdiğiniz tutar **itibari değeri** (kaldıraç dahil toplam emir büyüklüğünü) temsil eder.\n\n**5 -)** **USDT \"Initial Margin\" (Başlangıç Teminatı):** Bu seçeneği işaretlerseniz, girdiğiniz tutar o işleme yatırmak istediğiniz ** teminatı** temsil eder.\n\n* *Örnek:* Bu seçenek seçiliyken miktar kısmına **10 USDT** yazarsanız, işlem için bakiyenizden **10 USDT** teminat ayrılır.\n\nBu adımların herhangi birinde takılırsanız, lütfen bir ekran görüntüsü alıp benimle paylaşın; size yardımcı olmaktan mutluluk duyarım!",
+    "image": "screenshots/1767371197519_How-To-Change-Order-Size-Unit-Preference-to-Initial-Margin-EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767371337539,
+    "updatedAt": "2026-01-02 16:28 UTC+0"
   }
 ]
