@@ -1,120 +1,112 @@
 # 📸 Screenshot Library Assistant
 
-> **Last Updated:** 2025-12-31  
-> **Version:** 1.4.0  
-> **Role:** Senior Technical Architecture Map
+[![React](https://img.shields.io/badge/React-19.2-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=github&logoColor=white)](https://pages.github.com/)
+[![License-MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-A premium dashboard for managing and viewing project screenshots, featuring automated GitHub synchronization and a high-performance filtering system.
+> **Senior Technical Architecture Map | Version 1.5.0**  
+> A premium, high-performance dashboard for institutional screenshot management. Featuring glassmorphism aesthetics, automated GitHub synchronization, and advanced identity resolution.
 
 ---
 
-## 🗺️ Project Structure Map
+## ✨ Core Features
+
+*   **💎 Premium UI/UX**: Built with a "Modern Dark" aesthetic using glassmorphism, neon accents, and smooth Framer Motion animations.
+*   **🔄 Automated Sync**: Seamless integration with the GitHub REST API for real-time data updates and image uploads directly from the Admin Panel.
+*   **🔍 Semantic Search**: Instant results powered by Fuse.js for high-performance fuzzy matching across titles and content.
+*   **📊 Insightful Analytics**: Interactive data visualization using Recharts, tracking trends in content distribution and user interactions.
+*   **🧠 Identity Resolution v7.0**: Advanced canvas fingerprinting and hardware telemetry to track unique physical devices across sessions.
+*   **🌍 Intelligent Localization**: Dynamic language handling with automated timezone offsets (e.g., UTC+8 for Chinese entries).
+
+---
+
+## 🗺️ Project Structure
 
 ```text
 support-screenshot-library-main/
-├── .github/                # GitHub Actions & Workflows
-├── legacy/                 # Legacy assets (Safe to ignore)
-├── public/                 # Static assets
-│   ├── screenshots/        # Local screenshot storage (synced via Git)
-│   └── fd-logo.svg         # Library logo
-├── src/                    # Source code
-│   ├── assets/             # Component-specific styles/images
-│   ├── components/         # Reusable UI components
-│   │   ├── Layout.jsx      # Main application frame
-│   │   ├── Lightbox.jsx    # Full-screen image preview
-│   │   ├── MarketTicker.jsx# Real-time data ticker
-│   │   ├── PlatformIcons.jsx# Platform identifiers
-│   │   ├── ScreenshotCard.jsx# Item display, Eye-button preview & timestamps
-│   │   └── ScreenshotGallery.jsx# Main grid, filtered BOTS/LOAN logic
-│   ├── contexts/           # Global state management
-│   │   ├── DataContext.jsx # Centralized data, API fetching & sync state
-│   │   └── ThemeContext.jsx# Theme management
-│   │   └── data.json       # Source of truth for all entries
-│   ├── pages/              # Top-level view components
-│   │   ├── AdminPage.jsx   # Content management / Settings
-│   │   ├── AnalyticsPage.jsx# Data insights and trends (Recharts)
-│   │   └── HomePage.jsx    # User entry point
-│   ├── services/           # Service layer
-│   │   ├── github.js       # GitHub API integration (Rest/Content)
-│   │   └── analytics.js    # Identity Resolution (v7.0) tracking bridge
-│   ├── utils/              # Helper functions
-│   │   ├── imageUtils.js   # Image path resolution
-│   │   └── langUtils.js    # Language code mapping (CN, RU, etc.)
-│   ├── App.jsx             # Root router
-│   ├── index.css           # Design system (Glassmorphism & Neon)
-│   └── main.jsx            # Entry point
-├── backfill.cjs            # Maintenance script for data timestamp backfilling
-├── DEPLOYMENT.md           # Maintenance & Deployment guide
-├── index.html              # HTML template
-├── package.json            # Scripts & Dependencies (Vite, React 19)
-└── vite.config.js          # Build configuration
+├── .github/                # CI/CD Workflows & GitHub Actions
+├── public/                 # Static Assets
+│   ├── screenshots/        # Screenshot Repository (Auto-synced)
+│   └── fd-logo.svg         # Platform Branding
+├── src/                    # Source Code
+│   ├── components/         # Modular UI Components
+│   │   ├── Layout.jsx      # Core Application Shell
+│   │   ├── Lightbox.jsx    # Immersive Image Preview
+│   │   ├── ScreenshotCard.jsx# Item Display & Interaction Logic
+│   │   └── ...             # Specialized sub-components
+│   ├── contexts/           # State Management (Data, Theme)
+│   ├── data/               # Persistent Storage
+│   │   └── data.json       # Centralized JSON Database
+│   ├── pages/              # View Layers (Home, Admin, Analytics)
+│   ├── services/           # Integration Layer (GitHub, Analytics)
+│   └── utils/              # Helper Libraries (Time, Image, Language)
+├── backfill.cjs            # Maintenance script for timestamp population
+├── DEPLOYMENT.md           # Engineering Playbook for Production
+└── package.json            # Deployment Manifest & Dependencies
 ```
 
 ---
 
-## 🛠️ Technical Breakdown
+## 🧠 Technical Architecture
 
-| Component / File | Responsibility | Key Feature |
-| :--- | :--- | :--- |
-| `AdminPage.jsx` | Management UI for content and settings. | Centralized configuration |
-| `ScreenshotCard.jsx` | Item display + Macro Text Preview + Timestamps. | Multi-lang text toggle |
-| `github.js` | Direct communication with GitHub REST API. | SHA-aware commits |
-| `analytics.js` | Advanced Identity Resolution & Event Logging. | Canvas Fingerprinting |
-| `backfill.cjs` | CLI tool to populate `updatedAt` metadata. | Timezone-aware (CN vs EN) |
-| `index.css` | Premium Design System with smooth animations. | Neon & Glassmorphism |
+### 1. Dual-Source Synchronization Engine
+The platform implements a sophisticated data fetching strategy:
+-   **Client Mode**: Pulls `data.json` from `raw.githubusercontent.com` leveraging the raw CDN for maximum speed and global availability.
+-   **Admin Mode**: Switches to direct **GitHub API** calls to bypass CDN caching (approx. 5-minute TTL), ensuring that management actions are reflected immediately without ghosting.
 
----
+### 2. Identity Resolution Engine (v7.0)
+Beyond simple cookies, the system employs **Heuristic Fingerprinting**:
+-   **Canvas Rendering**: Generates unique signatures based on GPU and internal browser rendering variations.
+-   **Hardware Telemetry**: Incorporates screen specs, platform identifiers, and environment variables into a persistent `deviceHash`.
+-   **Stability**: Successfully merges identities across different browsers on the same physical machine.
 
-## 🧠 Core Architecture Logic
-
-1.  **Dual-Source Fetching**: 
-    *   The app uses `raw.githubusercontent.com` for public read-only access (fast CDN).
-    *   In the **Admin Panel**, it switches to the **GitHub API** for fetching `data.json`, bypassing the CDN cache (approx. 5 min) to ensure real-time consistency.
-2.  **Timezone-Aware Metadata**: 
-    *   The system tracks `updatedAt` for every entry. 
-    *   **Logic**: Chinese screenshots use **UTC+8**, while all other languages default to **UTC+0**. 
-    *   Maintenance is handled by `backfill.cjs` to ensure legacy data remains compliant.
-3.  **Identity Resolution Engine (v7.0)**: 
-    *   **Heuristic Fingerprinting**: Instead of simple cookies, the app generates a stable `deviceHash` using Canvas rendering, GPU signatures, screen specs, and environment variables.
-    *   **Relational Storage**: Logs are piped to a relational Google Sheets backend containing dedicated tabs:
-        *   `DB_Users`: Stores unique "Physical Users" with IP history and cross-browser identity.
-        *   `DB_Logs`: Stores the raw event stream linked by `Device_ID`.
-    *   **Accuracy**: Successfully merges sessions from different browsers (e.g., Chrome, Opera) into a single user identity.
-4.  **State Protection**: The `DataProvider` implements an "Initialization" state that prevents user interactions until the latest data from GitHub is fully synchronized locally.
+### 3. Automated Filename Sanitization
+To prevent filesystem conflicts on Windows environments, the **GitHub Service** automatically sanitizes all uploaded filenames:
+-   Replaces illegal characters (`:`, `<`, `>`, etc.) with hyphens (`-`).
+-   Ensures compatibility for all developers during `git pull` operations.
 
 ---
 
-## 🚀 Setup & Usage
+## 🚀 Getting Started
 
-1.  **Install Dependencies**:
-    ```bash
-    npm install
-    ```
-2.  **GitHub Configuration**:
-    *   Generate a GitHub PAT (Classic) with `repo` scope.
-    *   Apply it in **Admin > Settings** to enable synchronization.
-3.  **Data Maintenance**:
-    ```bash
-    node backfill.cjs
-    ```
-4.  **Local Development**:
-    ```bash
-    npm run dev
-    ```
-5.  **Production Deployment**:
-    ```bash
-    npm run deploy
-    ```
+### Prerequisites
+- Node.js (v18+)
+- npm
 
----
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/GorkemTikic/screenshot-library.git
 
-## 🤖 AI & Developer Instructions
+# Install dependencies
+npm install
 
-- **Main Registry**: `src/data/data.json`.
-- **Filename Restrictions**: Avoid using special characters like colons `:` or parentheses `()` in screenshot filenames, as these cause loading issues in certain environments.
-- **Backfill Rule**: Always run `node backfill.cjs` after bulk importing data to ensure the `updatedAt` field is populated with the correct timezone offset.
-- **Analytics**: To update the tracking endpoint, modify the `TRACKING_URL` in `src/services/analytics.js`.
+# Start development server
+npm run dev
+```
+
+### GitHub Integration
+To enable the **Admin Panel** sync features:
+1.  Generate a **GitHub Personal Access Token (Classic)** with `repo` scopes.
+2.  Navigate to **Admin > Settings** in the dashboard and input your token.
+3.  Changes will now commit directly to your repository.
 
 ---
-*Created with care by Antigravity Senior Architect 🚀*
 
+## 🛠️ Maintenance & Deployment
+
+### Data Backfilling
+After bulk importing or manual JSON edits, run the backfill utility to normalize timestamps:
+```bash
+node backfill.cjs
+```
+
+### Production Build
+```bash
+# Build & Deploy to GitHub Pages
+npm run deploy
+```
+
+---
+*Architected and documented with precision by Antigravity 🚀*
