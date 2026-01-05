@@ -81,7 +81,7 @@
     "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【借贷币种】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【借贷币种】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
     "text_tr": "",
     "image": "screenshots/1766685500345_Loan-Repay-(Borrowed-Coin).png",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
@@ -92,7 +92,7 @@
     "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【抵押物】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【抵押物】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n- 兑换汇率以及使用抵押物数量\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
     "text_tr": "",
     "image": "screenshots/1766684943856_Loan-Repay-Collateral.png",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
@@ -104,7 +104,7 @@
     "text": "要查看正在进行中的借币订单或借币/还款历史记录，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击【更多】\n3）在页面中向下滑动，在【金融业务】分类下找到【质押借币】\n4）点击右上角的【历史记录】\n\n在该页面中，您可以查看当前进行中的订单以及借币/还款历史记录。",
     "text_tr": "",
     "image": "screenshots/1766683861367_Loan-Order-History.png",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
@@ -270,7 +270,7 @@
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/LOAN_HISTORY_(ONGOING_LOANS)_-_EN_.png",
     "text": "To see your ongoing Loan orders or your Loan history, you can follow the steps in the screenshot: \n\n1 -) Click on Home button \n\n2 -) Click on ''More'' \n\n3 -) Scroll Down on that page and find ''Loans'' under Finance. \n\n4 -) Click on The History Icon on Top Right Corner\n\nIn that page you can see your ongoing Loans and your Loan history.",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "id": 1765164170433
   },
   {
@@ -350,7 +350,7 @@
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Collateral)_-_EN.jpg",
     "text": "There are two ways to repay an ongoing loan\n\nBorrowed Coin\nCollateral \n\nSo if you wish to repay an ongoing Loan with the collateral amount, please follow the steps in the screenshot: \n\n1 -) Click on ''Ongoing Orders'' on Loan Orders Page\n2 -) Click on ''Repay'' \n3 -) Click on ''Collateral'' on upper menu\n\nEnter the amount you wish to repay and you will see the LTV after repayment and the amount of collateral will return after the repayment on the details as well. \n\nThis is how you repay an ongoing Loan with Collateral.",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "id": 1765164170443
   },
   {
@@ -358,7 +358,7 @@
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Borrowed_Coin)_-_EN.jpg",
     "text": "There are two ways to repay an ongoing loan\n\nBorrowed Coin\nCollateral \n\nSo if you wish to repay an ongoing Loan with the borrowed coin, please follow the steps in the screenshot: \n\n1 -) Click on ''Ongoing Orders'' on Loan Orders Page\n2 -) Click on ''Repay'' \n3 -) Click on ''Borrowed Coin'' on upper menu\n\nEnter the amount you wish to repay and you will see the LTV after repayment and the amount of collateral will return after the repayment on the details as well. \n\nThis is how you repay an ongoing Loan with Borrowed Coin.",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "id": 1765164170444
   },
   {
@@ -390,7 +390,7 @@
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/How_To_Close_The_Grid_Position_When_The_Grid_is_Stop.jpg",
     "text": "To Close the open position in a stopped grid, please follow the steps in the screenshot: \n\n1 -) Click on Futures button\n\n2 -) Click on Bots button\n\n3 -) Click on ''All Orders'' on the right corner\n\n4 -) You will see ''Position'' button on your stopped grid. \n\n5 -) Then you will see a second ''Position'' button on running order detail page. \n\n6 -) In this page you can see the open positions to close by clicking Close buttons.",
-    "topic": "Grid Bot",
+    "topic": "BOTS",
     "id": 1765164170449
   },
   {
@@ -616,7 +616,7 @@
     "language": "Arabic",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Borrowed_Coin)_-_AR.png",
     "text": "لذا إذا كنت ترغب في سداد قرض جاري باستخدام العملة المقترضة، يرجى اتباع الخطوات في لقطة الشاشة:\n\n1 -) انقر على \"الطلبات الجارية\" في صفحة طلبات القرض\n2 -) انقر على \"سداد\"\n3 -) انقر على \"العملة المقترضة\" في القائمة العلوية\n\nأدخل المبلغ الذي ترغب في سداده وسترى نسبة القرض إلى القيمة بعد السداد وسيرجع مبلغ الضمان بعد السداد ضمن التفاصيل أيضًا.\n\nهذه هي الطريقة التي تسدد بها قرضًا جاريًا باستخدام العملة المقترضة.",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "id": 1765164170477
   },
   {
@@ -624,7 +624,7 @@
     "language": "Arabic",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/LOAN_HISTORY_(ONGOING_LOANS)_-_AR.png",
     "text": "للاطلاع على طلبات القروض الجارية الخاصة بك أو تاريخ قرضك، يمكنك اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على صفحة الكسب\n\n2 -) انقر على زر الاقتراض\n\n3 -) ثم انقر على رمز التاريخ في الأعلى\n\nفي تلك الصفحة، يمكنك رؤية قروضك الجارية وتاريخ قروضك.\n\nLoans history - on going",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "id": 1765164170478
   },
   {
@@ -857,7 +857,7 @@
     "text": "如果您希望在进行的借贷订单调整质押率，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【调整质押率】\n3）您可以选择【增加】或【移除】，然后在此输入【调整质押率百分比】或【抵押金额】\n4）点击【增加抵押物/移除抵押物】即可",
     "text_tr": "",
     "image": "screenshots/1766686169762_Loan-Adjust-LTV.png",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",

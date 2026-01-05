@@ -466,6 +466,26 @@ body.dark .tag-general {
   color: #d1d5db;
 }
 
+.tag-bots {
+  background-color: #fce7f3;
+  color: #be185d;
+}
+
+.tag-loan {
+  background-color: #f0fdf4;
+  color: #15803d;
+}
+
+body.dark .tag-bots {
+  background-color: #500724;
+  color: #fbcfe8;
+}
+
+body.dark .tag-loan {
+  background-color: #052e16;
+  color: #bbf7d0;
+}
+
 .lang-badge {
   font-size: 0.7rem;
   color: #888;
