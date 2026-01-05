@@ -52,7 +52,11 @@ export function ScreenshotGallery() {
         if (showFavoritesOnly) {
             result = result.filter(i => isFavorite(i.title));
         }
-        return result;
+
+        // 4. Sort by ID descending (newest first)
+        // We Use ID because it's set once as Date.now() when created, 
+        // so it represents the addition time rather than the update time.
+        return [...result].sort((a, b) => (b.id || 0) - (a.id || 0));
     }, [items, search, selectedTopic, selectedLang, fuse, showFavoritesOnly, favorites, isFavorite, selectedPlatform]);
 
     return (
