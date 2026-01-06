@@ -380,9 +380,11 @@
     "title": "Change Position Mode (One-Way,Hedge) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Position_Mode_(One-Way%2CMulti)_-_EN.jpg",
-    "text": "To Change Position Mode, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Position Mode button.\n\n5 -) In this page you can change your Position mode.",
+    "text": "To change your **Position Mode**, please follow the steps in the screenshot:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon on the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on the **Position Mode** button.\n\n**5 -)** In this page, you can change your **Position Mode**.\n\n---\n\nTo learn more about **Hedge Mode**, you can check these official guides:\n\n* [What Is Hedge Mode and How to Use It?](https://www.binance.com/support/faq/detail/360041513552)\n* [Managing Risks With Hedge Mode in Crypto Futures Trading](https://www.binance.com/blog/futures/3345275339961971082)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170441
+    "id": 1765164170441,
+    "text_tr": "**Pozisyon Modunuzu** (Position Mode) değiştirmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Pozisyon Modu\"** (Position Mode) butonuna tıklayın.\n\n**5 -)** Bu sayfada **Pozisyon Modunuzu** değiştirebilirsiniz.\n\n---\n\n**Hedge Modu** hakkında daha fazla bilgi edinmek için bu resmi rehberlere göz atabilirsiniz:\n\n* [Hedge Modu Nedir ve Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/360041513552)\n* [Kripto Vadeli İşlemler Alım Satımında Hedge Modu ile Risk Yönetimi](https://www.binance.com/blog/futures/3345275339961971082)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:26 UTC+0"
   },
   {
     "title": "Change Button Settings in Positions - EN",
