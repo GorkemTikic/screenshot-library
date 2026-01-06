@@ -250,7 +250,9 @@
     "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/35a09846ff73857b2a751883ba8879dd22ab5242/images/Futures%20Swap%20Button%20(Mostly%20for%20BNFCR)%20-%20EN.jpg?raw=true",
     "text": "You **can't directly transfer** BNFCR back to spot wallet, so you need to **swap it to BNB, BTC, or ETH** first to transfer it back to spot wallet.\n\n### **Step-by-Step Process:**\n\n1 -) **Click on** `Assets`\n2 -) **Click on** `Futures`\n3 -) **Click on** `USDsM Futures`\n4 -) **Click on** `SWAP`\n\n---\n\n### **In the SWAP Page:**\n\n- **Select** BNFCR \n- **Swap it** to one of the supported coins *(ETH, BNB, or BTC)*\n\n---\n\n> **Please make sure to select** `USDsM Futures` **from both options**\n\n- ✅ **Choose the** *second sub-category option* **for your selected coin** (BNB, ETH, or BTC)\n- ✅ **Select the** *first sub-category option* **for BNFCR**\n\n---\n\nOnce you have these supported assets, you **can transfer them back to spot wallet** ✅",
     "topic": "Futures Trading",
-    "id": 1765164170426
+    "id": 1765164170426,
+    "text_tr": "BNFCR'yi doğrudan Spot Cüzdanınıza **transfer edemezsiniz**; bu nedenle, Spot Cüzdanınıza geri aktarmadan önce BNFCR'yi **BNB, BTC veya ETH'ye takas etmeniz (swap)** gerekir.\n\n### **Bunun için ilgili adımları takip edebilirsiniz:**\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**3 -)** **\"USDⓈ-M\"** bölümüne tıklayın.\n\n**4 -)** **\"Swap\"** (Takas) butonuna tıklayın.\n\n---\n\n### **Takas (SWAP) Sayfasında:**\n\n* **BNFCR** varlığını seçin.\n* BNFCR'yi desteklenen coinlerden birine *(ETH, BNB veya BTC)* **dönüştürün**.\n\n---\n\n> **Lütfen her iki seçenek için de \"USDⓈ-M Vadeli İşlemler\" cüzdanının seçili olduğundan emin olun.**\n\n* ✅ Seçtiğiniz coin (BNB, ETH veya BTC) için **ikinci alt kategori seçeneğini** tercih edin.\n* ✅ BNFCR için ise **birinci alt kategori seçeneğini** tercih edin.\n\n---\n\nBu desteklenen varlıklara sahip olduğunuzda, onları **Spot Cüzdanınıza geri transfer edebilirsiniz**. ✅",
+    "updatedAt": "2026-01-06 21:00 UTC+0"
   },
   {
     "title": "System Feedback - EN",
