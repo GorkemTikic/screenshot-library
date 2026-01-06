@@ -499,9 +499,12 @@
     "title": "Check For Updates - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/WhatsApp_Image_2025-08-04_at_00.05.57.jpeg",
-    "text": "To update your app to the latest version, please follow the steps in the screenshot: \n\n1 -) Click on the Home \n\n2 -) Click on the Menu \n\n3 -) Click on the Settings\n\n4 -) Click on ''Check For Updates'' tab \n\nThis way, you can check if your app is up to date or not.",
+    "text": "To update your app to the latest version, please follow the steps in the screenshot provided:\n\n1. **Click on the Home button.**\n2. **Click on the Menu.**\n3. **Click on the Settings gear icon.**\n4. **Click on the \"Check for updates\" tab.**\n\nThis way, you can check if your app is up to date or not.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "General",
-    "id": 1765164170456
+    "id": 1765164170456,
+    "platform": "mobile",
+    "text_tr": "Uygulamanızı en son sürüme güncellemek için lütfen ekran görüntüsündeki adımları takip edin:\n\n1. **Ana Sayfa (Home) butonuna tıklayın.**\n2. **Menü (Menu) simgesine tıklayın.**\n3. **Ayarlar (Settings) çark simgesine tıklayın.**\n4. **\"Güncellemeleri denetle\" (Check for updates) sekmesine tıklayın.**\n\nBu sayede uygulamanızın güncel olup olmadığını kontrol edebilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 23:39 UTC+0"
   },
   {
     "title": "ADL Indicator/Explanation - EN",
