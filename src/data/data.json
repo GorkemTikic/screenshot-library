@@ -390,9 +390,11 @@
     "title": "Change Button Settings in Positions - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Button_Settings_in_Positions_-_EN.jpg",
-    "text": "To Change Asset Mode, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Button Settings In Positions.\n\n5 -) In this page you can change your Button settings on the open positions. You can enable or the disable options you prefer.",
+    "text": "To change the **Button Settings in Positions**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon in the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on the **\"Button Settings in Positions\"** button.\n\n**5 -)** On this page, you can change your **Button settings** for open positions. You can enable or disable the options you prefer.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170442
+    "id": 1765164170442,
+    "text_tr": "**Pozisyonlardaki Buton Ayarlarını** (Button Settings in Positions) değiştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Pozisyonlardaki Buton Ayarları\"** (Button Settings in Positions) seçeneğine tıklayın.\n\n**5 -)** Bu sayfada açık pozisyonlarınız için **Buton ayarlarınızı** değiştirebilirsiniz. Tercih ettiğiniz seçenekleri etkinleştirebilir veya devre dışı bırakabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:30 UTC+0"
   },
   {
     "title": "Loan Repayment (Collateral) - EN",
