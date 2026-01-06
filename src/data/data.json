@@ -312,9 +312,11 @@
     "title": "LOAN HISTORY (ONGOING LOANS) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/LOAN_HISTORY_(ONGOING_LOANS)_-_EN_.png",
-    "text": "To see your ongoing Loan orders or your Loan history, you can follow the steps in the screenshot: \n\n1 -) Click on Home button \n\n2 -) Click on ''More'' \n\n3 -) Scroll Down on that page and find ''Loans'' under Finance. \n\n4 -) Click on The History Icon on Top Right Corner\n\nIn that page you can see your ongoing Loans and your Loan history.",
+    "text": "To see your ongoing Loan orders or your Loan history, please follow the steps in the screenshot:\n\n**1 -)** Click on the **Home** button.\n\n**2 -)** Click on **\"More\"**.\n\n**3 -)** Scroll down on that page and find **\"Loans\"** under the Finance section.\n\n**4 -)** Click on **The History Icon** in the top right corner.\n\nIn that page, you can see your ongoing Loans and your Loan history.",
     "topic": "LOAN",
-    "id": 1765164170433
+    "id": 1765164170433,
+    "text_tr": "Devam eden Borç/Kredi emirlerinizi veya geçmişinizi görmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) butonuna tıklayın.\n\n**2 -)** **\"Daha Fazla\"** (More) seçeneğine tıklayın.\n\n**3 -)** Sayfayı aşağı kaydırın ve Finans bölümü altındaki **\"Borç Alma\"** (Loans) seçeneğini bulun.\n\n**4 -)** Sağ üst köşedeki **Geçmiş İkonuna** tıklayın.\n\nBu sayfada devam eden kredilerinizi ve kredi geçmişinizi görebilirsiniz.",
+    "updatedAt": "2026-01-06 21:15 UTC+0"
   },
   {
     "title": "Transfer From Spot Wallet to Isolated Margin - EN",
