@@ -488,10 +488,12 @@
     "title": "Webhook Failed Signals WEB - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Webhook_Failed_Signals_WEB_-_EN.jpeg",
-    "text": "To check the failed signals of the Webhook Signal, please follow the steps in the screenshot: \n\n1 -) Click on ''Bots''\n\n2 -) Click on ''Webhook Signal Trading'' \n\n3 -) Click on the ''History Icon'' next to trash and pause button. \n\n4 -) On this page, you will see ''Failed Signals'' tab, you can see the reason of failed signals in here. \n\nHow to Set up Signal Trading With TradingView?\nhttps://www.binance.com/en/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
+    "text": "To check the failed signals of the **Webhook Signal**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Bots\"**.\n\n**2 -)** Click on **\"Webhook Signal Trading\"**.\n\n**3 -)** Click on the **\"History Icon\"** located next to the trash and pause buttons.\n\n**4 -)** On this page, you will see the **\"Failed Signals\"** tab, where you can view the reason for failed signals.\n\n---\n\nTo learn more about setting up signals, you can check this official guide:\n\n* [How to Set up Signal Trading With TradingView?](https://www.binance.com/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
     "id": 1765164170455,
-    "platform": "web"
+    "platform": "web",
+    "text_tr": "**Webhook Sinyal İşlemlerindeki** başarısız sinyalleri kontrol etmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Botlar\"** (Bots) sekmesine tıklayın.\n\n**2 -)** **\"Webhook Sinyal İşlemleri\"** (Webhook Signal Trading) seçeneğine tıklayın.\n\n**3 -)** Çöp kutusu ve duraklat butonunun yanındaki **\"Geçmiş İkonuna\"** tıklayın.\n\n**4 -)** Bu sayfada **\"Başarısız Sinyaller\"** (Failed Signals) sekmesini göreceksiniz; sinyallerin başarısız olma nedenlerini buradan inceleyebilirsiniz.\n\n---\n\nSinyal kurulumu hakkında daha fazla bilgi edinmek için bu resmi rehbere göz atabilirsiniz:\n\n* [TradingView ile Sinyal İşlemleri Nasıl Kurulur?](https://www.binance.com/en/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:48 UTC+0"
   },
   {
     "title": "Check For Updates - EN",
