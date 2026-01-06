@@ -747,10 +747,11 @@
     "title": "Clear Caches - EN",
     "language": "English",
     "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Clear%20Caches%20-%20EN.jpg?raw=true",
-    "text": "1 -) Click on Home\n2 -) Click on Menu\n3 -) Click on Settings\n4 -) Click on Clear Cache button\n\nThis helps remove temporary files and can make your app run faster and smoother!",
-    "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
+    "text": "**1 -)** Click on **Home**.\n**2 -)** Click on **Menu**.\n**3 -)** Click on **Settings**.\n**4 -)** Click on the **Clear Cache** button.\n\n> This helps remove temporary files and makes your app run smoother!",
+    "text_tr": "**1 -)** **Ana Sayfa** (Home) sekmesine tıklayın.\n**2 -)** **Menü** simgesine tıklayın.\n**3 -)** **Ayarlar** (Settings) bölümüne tıklayın.\n**4 -)** **Önbelleği Temizle** (Clear Cache) butonuna tıklayın.\n\n> Bu işlem geçici dosyaları temizler ve uygulamanın daha hızlı çalışmasını sağlar!",
     "topic": "General",
-    "id": 1765162670474
+    "id": 1765162670474,
+    "updatedAt": "2026-01-06 19:53 UTC+0"
   },
   {
     "title": "Transaction History - EN (WEB)",
