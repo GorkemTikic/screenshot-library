@@ -456,9 +456,12 @@
     "title": "BNB Discount (Futures,Margin Interest) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/BNB_Discount_(Futures%2CMargin_Interest)_-_EN.jpg",
-    "text": "To Enable BNB Discount on Futures or Margin Interest, please follow the steps in the screenshot: \n\n1 -) Click on the Home \n\n2 -) Click on the Menu \n\n3 -) Click on the Settings\n\n4 -) Click on ''Using BNB'' button \n\n5 -) You can enable the BNB discount on for Futures and Margin interests in this page",
+    "text": "To enable the **BNB Discount** for Futures or Margin interest, please follow the steps in the screenshot above:\n\n**1 -)** Click on the **Home** button.\n\n**2 -)** Click on the **Menu** icon in the top left corner.\n\n**3 -)** Click on the **Settings** gear icon in the top right corner.\n\n**4 -)** Click on the **\"Using BNB\"** button.\n\n**5 -)** On this page, you can **enable the BNB discount** for Futures and Margin interests.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "General",
-    "id": 1765164170451
+    "id": 1765164170451,
+    "text_tr": "Vadeli İşlemler veya Marjin faizlerinde **BNB İndirimini** (BNB Discount) etkinleştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) butonuna tıklayın.\n\n**2 -)** Sol üst köşedeki **Menü** simgesine tıklayın.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (çark simgesi) bölümüne tıklayın.\n\n**4 -)** **\"BNB Kullanımı\"** (Using BNB) butonuna tıklayın.\n\n**5 -)** Bu sayfada, Vadeli İşlemler ve Marjin faizleri için **BNB indirimini etkinleştirebilirsiniz**.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "platform": "mobile",
+    "updatedAt": "2026-01-06 23:46 UTC+0"
   },
   {
     "title": "SWAP LDUSDT to USDT - EN",
