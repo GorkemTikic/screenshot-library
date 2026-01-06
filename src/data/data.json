@@ -1,5 +1,17 @@
 [
   {
+    "title": "Token & Project Feedback - EN",
+    "text": "To submit feedback regarding a token or project, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **\"Chart\"** icon (candlestick icon).\n\n**3 -)** Click on the **\"Info\"** tab.\n\n**4 -)** Scroll down and click on **\"Submit Feedback\"**.\n\n**5 -)** Fill in the required fields:\n\n**6 -)** Click **\"Submit\"**.\n\n**7 -)** You can click on **\"My feedback history\"** to track your previous submissions.",
+    "text_tr": "Bir token veya proje hakkında geri bildirim göndermek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** **\"Grafik\"** simgesine (mum grafiği simgesi) tıklayın.\n\n**3 -)** **\"Info\"** (Bilgi) sekmesine tıklayın.\n\n**4 -)** Sayfayı aşağı kaydırın ve **\"Submit Feedback\"** (Geri Bildirim Gönder) seçeneğine tıklayın.\n\n**5 -)** Gerekli alanları doldurun:\n\n**6 -)** **\"Submit\"** (Gönder) butonuna tıklayın.\n\n**7 -)** Önceki gönderimlerinizi takip etmek için **\"My feedback history\"** (Geri bildirim geçmişim) kısmına tıklayabilirsiniz.",
+    "image": "screenshots/1767733027515_Token-Project-Feedback-EN.jpeg",
+    "topic": "General",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767733057149,
+    "updatedAt": "2026-01-06 20:57 UTC+0"
+  },
+  {
     "title": "PM Disable (Back to Classic) 关闭统一账户 (回到经典交易账户) - CN",
     "text": "如要回到【经典交易账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【回到经典交易账户】\n3）在此页面中，您选择【经典交易】\n4）点击【切换】完成操作",
     "text_tr": "",
