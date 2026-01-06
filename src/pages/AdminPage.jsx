@@ -6,7 +6,7 @@ import { formatDate } from '../utils/langUtils';
 
 
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, syncData } = useData();
+    const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, performAtomicUpdate } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -98,8 +98,8 @@ export function AdminPage() {
                 if (confirmSync) {
                     try {
                         setSyncStatus('syncing');
-                        // Use atomic update
-                        await githubService.atomicUpdateDataJson('DELETE', { id: itemId });
+                        // Use atomic update bridge
+                        await performAtomicUpdate('DELETE', { id: itemId });
                         setSyncStatus('success');
                         alert("Successfully synced deletion to GitHub!");
                     } catch (err) {
@@ -181,8 +181,8 @@ export function AdminPage() {
             if (confirmSync) {
                 try {
                     setSyncStatus('syncing');
-                    // Use atomic update to prevent overwriting other people's work
-                    await githubService.atomicUpdateDataJson(action, itemToSync);
+                    // Use the bridge which updates local state too
+                    await performAtomicUpdate(action, itemToSync);
                     setSyncStatus('success');
                     alert("Successfully synced to GitHub!");
                 } catch (err) {

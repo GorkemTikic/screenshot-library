@@ -94,8 +94,8 @@ export const githubService = {
         });
     },
 
-    // 3. General Update JSON helper
-    updateJsonFile: async (path, newContent, message = "Update file via Admin Panel") => {
+    // 3. General Update JSON helper (INTERNAL USE ONLY)
+    _updateJsonFileInternal: async (path, newContent, message = "Update file via Admin Panel") => {
         if (!githubService.isConfigured()) throw new Error("Config missing");
         const { owner, repo } = githubService.getConfig();
         const url = `${GITHUB_API_URL}/repos/${owner}/${repo}/contents/${path}`;
@@ -163,7 +163,15 @@ export const githubService = {
 
         if (!response.ok) throw new Error("Could not fetch remote data.json to sync changes.");
         const fileData = await response.json();
-        const currentItems = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+
+        let currentItems;
+        try {
+            currentItems = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+        } catch (e) {
+            console.error("Failed to parse remote JSON:", e);
+            throw new Error("Remote data.json is corrupted or not a valid JSON array.");
+        }
+
         const sha = fileData.sha;
 
         // B. Apply change
@@ -192,14 +200,12 @@ export const githubService = {
 
         if (!putResponse.ok) {
             const err = await putResponse.json().catch(() => ({}));
-            throw new Error(`Sync conflict or failure: ${err.message || 'Unknown error'}`);
+            if (putResponse.status === 409) {
+                throw new Error("Conflict: Someone else updated the data. Please refresh and try again.");
+            }
+            throw new Error(`Sync failure: ${err.message || 'Unknown error'}`);
         }
 
         return newItems;
     },
-
-    // Bridge for compatibility (Full overwrite - use sparingly)
-    updateDataJson: async (newItems) => {
-        return githubService.updateJsonFile('src/data/data.json', newItems, "Full Data Sync via Admin Panel");
-    }
 };

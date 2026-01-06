@@ -22,26 +22,28 @@ export function DataProvider({ children }) {
     useEffect(() => {
         const loadLines = async () => {
             try {
-                // Fetch live data with cache busting ONLY in production
-                // --- FAST PATH FOR DEV ---
-                if (import.meta.env.DEV) {
-                    console.log("Development mode: Quick Load...");
-                    setItems(bundledData);
-                    setIsLoading(false);
-                    return;
-                }
-                // --- PERSISTENCE LOAD (PRODUCTION) ---
-                const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-                if (!response.ok) throw new Error('Failed to fetch data');
-                const liveData = await response.json();
+                // --- PERSISTENCE LOAD ---
+                // Fetch live data with cache busting
+                // In DEV mode, we only fetch if GitHub is configured to avoid local-to-remote confusion
+                // unless we are explicitly trying to sync.
+                const shouldFetchRemote = !import.meta.env.DEV || githubService.isConfigured();
 
-                // Sanitize and set Items IMMEDIATELY to clear loading screen
-                const sanitizedData = liveData.map((item, index) => ({
-                    ...item,
-                    id: item.id || Date.now() + index
-                }));
-                setItems(sanitizedData);
-                setIsLoading(false); // <--- UNBLOCK UI HERE
+                if (shouldFetchRemote) {
+                    const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
+                    if (!response.ok) throw new Error('Failed to fetch data');
+                    const liveData = await response.json();
+
+                    // Sanitize and set Items IMMEDIATELY to clear loading screen
+                    const sanitizedData = liveData.map((item, index) => ({
+                        ...item,
+                        id: item.id || Date.now() + index
+                    }));
+                    setItems(sanitizedData);
+                } else {
+                    console.log("Development mode (unconfigured): Using bundled data.");
+                    setItems(bundledData);
+                }
+                setIsLoading(false);
 
 
             } catch (err) {
@@ -86,10 +88,14 @@ export function DataProvider({ children }) {
 
     const getJson = () => JSON.stringify(items, null, 2);
 
-    const syncData = async (itemsToSync = items) => {
-        if (!githubService.isConfigured()) return false;
-        await githubService.updateDataJson(itemsToSync);
-        return true;
+    // Atomic Update Bridge
+    const performAtomicUpdate = async (action, item) => {
+        if (!githubService.isConfigured()) return;
+        const newItems = await githubService.atomicUpdateDataJson(action, item);
+        if (newItems) {
+            setItems(newItems);
+        }
+        return newItems;
     };
 
 
@@ -119,7 +125,7 @@ export function DataProvider({ children }) {
             addItem,
             updateItem,
             deleteItem,
-            syncData,
+            performAtomicUpdate,
             getJson,
             isLoading // Export loading state too
         }}>
