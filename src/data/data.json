@@ -238,19 +238,15 @@
     "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/35a09846ff73857b2a751883ba8879dd22ab5242/images/Futures%20Swap%20Button%20(Mostly%20for%20BNFCR)%20-%20EN.jpg?raw=true",
     "text": "You **can't directly transfer** BNFCR back to spot wallet, so you need to **swap it to BNB, BTC, or ETH** first to transfer it back to spot wallet.\n\n### **Step-by-Step Process:**\n\n1 -) **Click on** `Assets`\n2 -) **Click on** `Futures`\n3 -) **Click on** `USDsM Futures`\n4 -) **Click on** `SWAP`\n\n---\n\n### **In the SWAP Page:**\n\n- **Select** BNFCR \n- **Swap it** to one of the supported coins *(ETH, BNB, or BTC)*\n\n---\n\n> **Please make sure to select** `USDsM Futures` **from both options**\n\n- ✅ **Choose the** *second sub-category option* **for your selected coin** (BNB, ETH, or BTC)\n- ✅ **Select the** *first sub-category option* **for BNFCR**\n\n---\n\nOnce you have these supported assets, you **can transfer them back to spot wallet** ✅",
     "topic": "Futures Trading",
-    "id": 1765164170426,
-    "text_tr": "BNFCR'yi doğrudan Spot Cüzdanınıza **transfer edemezsiniz**; bu nedenle, Spot Cüzdanınıza geri aktarmadan önce BNFCR'yi **BNB, BTC veya ETH'ye takas etmeniz (swap)** gerekir.\n\n### **Adım Adım İşlem Süreci:**\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**3 -)** **\"USDⓈ-M\"** bölümüne tıklayın.\n\n**4 -)** **\"Swap\"** (Takas) butonuna tıklayın.\n\n---\n\n### **Takas (SWAP) Sayfasında:**\n\n* **BNFCR** varlığını seçin.\n* BNFCR'yi desteklenen coinlerden birine *(ETH, BNB veya BTC)* **dönüştürün**.\n\n---\n\n> **Lütfen her iki seçenek için de \"USDⓈ-M Vadeli İşlemler\" cüzdanının seçili olduğundan emin olun.**\n\n* ✅ Seçtiğiniz coin (BNB, ETH veya BTC) için **ikinci alt kategori seçeneğini** tercih edin.\n* ✅ BNFCR için ise **birinci alt kategori seçeneğini** tercih edin.\n\n---\n\nBu desteklenen varlıklara sahip olduğunuzda, onları **Spot Cüzdanınıza geri transfer edebilirsiniz**. ✅\n",
-    "updatedAt": "2026-01-06 20:17 UTC+0"
+    "id": 1765164170426
   },
   {
     "title": "System Feedback - EN",
     "language": "English",
     "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/35a09846ff73857b2a751883ba8879dd22ab5242/images/System%20Feedback%20-%20EN.jpg?raw=true",
-    "text": "To send the **System Feedback** from Binance Mobile App, please follow the steps in the screenshot:\n\n**1 -)** Click on the **Home**.\n\n**2 -)** Click on the **Menu**.\n\n**3 -)** Click on the **Settings**.\n\n**4 -)** Click on the **\"Help & Support\"** tab.\n\n**5 -)** Click on **\"System Feedback\"**.\n\n**6 -)** Click on **\"SEND\"**.\n\n**7 -)** Wait for the **\"Success\"** notification to pop-up.\n\nAfter you follow these steps, please let me know so I can inform the tech team that you have completed the System Feedback.",
+    "text": "To send the System Feedback from Binance Mobile App, please follow the steps on the screenshot: \n\n1 -) Click on the Home \n2 -) Click on the Menu \n3 -) Click on the Settings\n4 -) Click on ''Help & Support'' tab \n5 -) Click on ''System Feedback''\n6 -) Click on ''SEND'' \n7 -) Wait for Success notification to pop-ups. \n\nAfter you follow the related steps which I also provided as screenshot then please let me know so I can tell tech team that you completed the System Feedback.",
     "topic": "General",
-    "id": 1765164170427,
-    "text_tr": "Binance Mobil Uygulaması üzerinden **Sistem Geri Bildirimi** göndermek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) sekmesine tıklayın.\n\n**2 -)** **Menü** simgesine tıklayın.\n\n**3 -)** **Ayarlar** (Settings) simgesine tıklayın.\n\n**4 -)** **\"Yardım ve Destek\"** (Help & Support) sekmesine tıklayın.\n\n**5 -)** **\"Sistem Geri Bildirimi\"** (System Feedback) seçeneğine tıklayın.\n\n**6 -)** **\"GÖNDER\"** (SEND) butonuna tıklayın.\n\n**7 -)** **\"Başarılı\"** (Success) bildiriminin çıkmasını bekleyin.\n\nBu adımları tamamladıktan sonra lütfen bana bildirin, böylece teknik ekibimize Sistem Geri Bildirimini tamamladığınızı iletebilirim.",
-    "updatedAt": "2026-01-06 20:28 UTC+0"
+    "id": 1765164170427
   },
   {
     "title": "Futures Transaction History (Export) - EN",
@@ -751,11 +747,10 @@
     "title": "Clear Caches - EN",
     "language": "English",
     "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Clear%20Caches%20-%20EN.jpg?raw=true",
-    "text": "**1 -)** Click on **Home**.\n**2 -)** Click on **Menu**.\n**3 -)** Click on **Settings**.\n**4 -)** Click on the **Clear Cache** button.\n\n> This helps remove temporary files and makes your app run smoother!",
-    "text_tr": "**1 -)** **Ana Sayfa** (Home) sekmesine tıklayın.\n**2 -)** **Menü** simgesine tıklayın.\n**3 -)** **Ayarlar** (Settings) bölümüne tıklayın.\n**4 -)** **Önbelleği Temizle** (Clear Cache) butonuna tıklayın.\n\n> Bu işlem geçici dosyaları temizler ve uygulamanın daha hızlı çalışmasını sağlar!",
+    "text": "1 -) Click on Home\n2 -) Click on Menu\n3 -) Click on Settings\n4 -) Click on Clear Cache button\n\nThis helps remove temporary files and can make your app run faster and smoother!",
+    "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
     "topic": "General",
-    "id": 1765162670474,
-    "updatedAt": "2026-01-06 19:53 UTC+0"
+    "id": 1765162670474
   },
   {
     "title": "Transaction History - EN (WEB)",
@@ -918,15 +913,15 @@
     "updatedAt": "2026-01-02 16:28 UTC+0"
   },
   {
-    "title": "Token & Project Feedback - EN",
-    "text": "To submit feedback regarding a token or project, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **\"Chart\"** icon (candlestick icon).\n\n**3 -)** Click on the **\"Info\"** tab.\n\n**4 -)** Scroll down and click on **\"Submit Feedback\"**.\n\n**5 -)** Fill in the required fields:\n\n**6 -)** Click **\"Submit\"**.\n\n**7 -)** You can click on **\"My feedback history\"** to track your previous submissions.",
-    "text_tr": "Bir token veya proje hakkında geri bildirim göndermek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** **\"Grafik\"** simgesine (mum grafiği simgesi) tıklayın.\n\n**3 -)** **\"Info\"** (Bilgi) sekmesine tıklayın.\n\n**4 -)** Sayfayı aşağı kaydırın ve **\"Submit Feedback\"** (Geri Bildirim Gönder) seçeneğine tıklayın.\n\n**5 -)** Gerekli alanları doldurun:\n\n**6 -)** **\"Submit\"** (Gönder) butonuna tıklayın.\n\n**7 -)** Önceki gönderimlerinizi takip etmek için **\"My feedback history\"** (Geri bildirim geçmişim) kısmına tıklayabilirsiniz.",
-    "image": "screenshots/1767728047806_Token-Project-Feedback-EN.jpeg",
-    "topic": "General",
-    "language": "English",
+    "title": "PM Aggregate Funds PM归集资金 - CN",
+    "text": "如想要在统一账户划转资金到现货账户，您可以按照截图中的步骤操作：\n\n1）在页面下方点击【资产】\n2）点击【划转】\n3）点击【双箭头】图标，确认划转方向为“从【统一账户】到【现货账户】”\n4）点击【归集资金】\n5）弹窗提示资金已成功归集后，点击【好的】\n6）选择需要划转的资产\n7）输入您要转出的币种数量\n8）点击【确认划转】，即可完成操作",
+    "text_tr": "",
+    "image": "screenshots/1767731895002_PM-Aggregate-Funds.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1767728101722,
-    "updatedAt": "2026-01-06 19:35 UTC+0"
+    "id": 1767731966052,
+    "updatedAt": "2026-01-07 04:39 UTC+8"
   }
 ]
