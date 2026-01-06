@@ -1,5 +1,17 @@
 [
   {
+    "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
+    "text": "关于代币发行量信息，项目方团队问题及举报其他可疑行为等，您可以按照截图中的步骤操作：\n\n1）在页面下方点击【合约】\n2）在页面上方点击【K线】图标\n3）点击【信息】\n4）在页面下方选择【提交反馈】\n5）在反馈页面填写您要提交的内容\n6）点击【提交】，即可完成反馈\n7）如需查看历史反馈记录，可点击【我的反馈记录】\n\n币安始终重视您的声音，感谢您为社区安全与健康发展贡献力量。\n让我们携手共建更美好的社区",
+    "text_tr": "",
+    "image": "screenshots/1767721722254_Feedback-or-report-project.png",
+    "topic": "General",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767721746211,
+    "updatedAt": "2026-01-07 01:49 UTC+8"
+  },
+  {
     "title": "EC Max Loss 事件合约最大损失 - CN",
     "text": "如果您想要在事件合约设置单日最大损失金额，请按照截图中的步骤操作：\n\n1）事件合约页面右上角点击【...】\n2）点击【最大损失】\n3）输入您希望设置的单日最大亏损金额\n4）点击【确认】完成设置\n\n⚠️ 注意事项：\n当损失达到您设定的单日最大损失金额后，将无法继续提交订单。该限制将在下一个 UTC 日 00:00 自动重置。",
     "text_tr": "",
@@ -155,15 +167,16 @@
     "id": 1766676606420
   },
   {
-    "title": "PM Enable/Disable 如何开启/关闭统一账户 - CN",
-    "text": "在【经典交易】和【统一账户】之间切换，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【统一账户】\n3）在此页面中，您可以在【经典交易】和【统一账户】之间进行切换\n\n如需了解更多关于【统一账户】的信息，请参考以下详细指南：\nhttps://www.binance.com/zh-CN/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
+    "title": "PM Enable 如何开启统一账户 - CN",
+    "text": "如要开启【统一账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【统一账户】\n3）在此页面中，您选择【统一账户】\n4）点击【切换】完成操作\n\n如需了解更多关于【统一账户】的信息，请参考以下详细指南：\nhttps://www.binance.com/zh-CN/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
     "text_tr": "",
-    "image": "screenshots/1766616073148_PM-EnableDisable.png",
+    "image": "screenshots/1767725853182_PM-Enable.png",
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
     "newLanguageName": "",
-    "id": 1766598907265
+    "id": 1766598907265,
+    "updatedAt": "2026-01-07 02:57 UTC+8"
   },
   {
     "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
@@ -886,29 +899,5 @@
     "newLanguageName": "",
     "id": 1767371337539,
     "updatedAt": "2026-01-02 16:28 UTC+0"
-  },
-  {
-    "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
-    "text": "关于代币发行量信息，项目方团队问题及举报其他可疑行为等，您可以按照截图中的步骤操作：\n\n1）在页面下方点击【合约】\n2）在页面上方点击【K线】图标\n3）点击【信息】\n4）在页面下方选择【提交反馈】\n5）在反馈页面填写您要提交的内容\n6）点击【提交】，即可完成反馈\n7）如需查看历史反馈记录，可点击【我的反馈记录】\n\n币安始终重视您的声音，感谢您为社区安全与健康发展贡献力量。\n让我们携手共建更美好的社区",
-    "text_tr": "",
-    "image": "screenshots/1767721722254_Feedback-or-report-project.png",
-    "topic": "General",
-    "language": "Chinese",
-    "platform": "mobile",
-    "newLanguageName": "",
-    "id": 1767721746211,
-    "updatedAt": "2026-01-07 01:49 UTC+8"
-  },
-  {
-    "title": "Token & Project Feedback - EN",
-    "text": "To submit feedback regarding a token or project, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **\"Chart\"** icon (candlestick icon).\n\n**3 -)** Click on the **\"Info\"** tab.\n\n**4 -)** Scroll down and click on **\"Submit Feedback\"**.\n\n**5 -)** Fill in the required fields:\n\n**6 -)** Click **\"Submit\"**.\n\n**7 -)** You can click on **\"My feedback history\"** to track your previous submissions.",
-    "text_tr": "Bir token veya proje hakkında geri bildirim göndermek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** **\"Grafik\"** simgesine (mum grafiği simgesi) tıklayın.\n\n**3 -)** **\"Info\"** (Bilgi) sekmesine tıklayın.\n\n**4 -)** Sayfayı aşağı kaydırın ve **\"Submit Feedback\"** (Geri Bildirim Gönder) seçeneğine tıklayın.\n\n**5 -)** Gerekli alanları doldurun:\n\n**6 -)** **\"Submit\"** (Gönder) butonuna tıklayın.\n\n**7 -)** Önceki gönderimlerinizi takip etmek için **\"My feedback history\"** (Geri bildirim geçmişim) kısmına tıklayabilirsiniz.",
-    "image": "screenshots/1767724505295_Token-Project-Feedback-EN.jpeg",
-    "topic": "General",
-    "language": "English",
-    "platform": "mobile",
-    "newLanguageName": "",
-    "id": 1767724545403,
-    "updatedAt": "2026-01-06 18:42 UTC+0"
   }
 ]
