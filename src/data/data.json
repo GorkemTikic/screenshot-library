@@ -729,9 +729,12 @@
     "title": "Buy/Sell Tab Setting - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Buy%3ASell_Tab_Setting_-_EN.jpeg",
-    "text": "To Change Buy/Sell Tab Setting, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on ''Buy/Sell Tab Setting\n\n5 -) In this page you can either display or hide the Buy/Sell Tab \n\n - If you Display the Buy/Sell will be visible on top of the trading page. \n\n - If you Hide Buy/Sell will be visible on the bottom of the trading page.",
+    "text": "To change the **Buy/Sell Tab Setting**, please follow the steps in the screenshot:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon on the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on **\"Buy/Sell Tab Setting\"**.\n\n**5 -)** In this page, you can either **display** or **hide** the Buy/Sell Tab:\n\n* **Display Buy/Sell tab:** The buttons will be visible at the **top** of the trading page.\n* **Hide Buy/Sell tab:** The buttons will be visible at the **bottom** of the trading page.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170484
+    "id": 1765164170484,
+    "platform": "mobile",
+    "text_tr": "**Al/Sat Sekmesi Ayarını** (Buy/Sell Tab Setting) değiştirmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Al/Sat Sekmesi Ayarı\"** (Buy/Sell Tab Setting) seçeneğine tıklayın.\n\n**5 -)** Bu sayfada Al/Sat sekmesini **gösterebilir** veya **gizleyebilirsiniz**:\n\n* **Al/Sat sekmesini göster (Display):** Butonlar işlem sayfasının **üst kısmında** görünür.\n* **Al/Sat sekmesini gizle (Hide):** Butonlar işlem sayfasının **alt kısmında** görünür.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 22:56 UTC+0"
   },
   {
     "title": "CLOSE CHAT (CSAT) - EN",
