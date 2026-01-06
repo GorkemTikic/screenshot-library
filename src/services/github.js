@@ -117,7 +117,6 @@ export const githubService = {
             }
         } catch (e) {
             console.warn(`File ${path} may not exist yet, or fetch failed:`, e);
-            // If it's not a 404, we might want to rethrow, but here 404 is allowed for initial creation
         }
 
         // Step B: Commit Update
@@ -142,8 +141,65 @@ export const githubService = {
         return await putResponse.json();
     },
 
-    // Bridge for existing code
+    /**
+     * ATOMIC DATA UPDATE:
+     * Instead of replacing data.json with the local state, we:
+     * 1. Fetch the latest data.json from GitHub
+     * 2. Apply the specific change (add, update, or delete)
+     * 3. Save it back
+     * This prevents deleting work added by others while you were on the page.
+     */
+    atomicUpdateDataJson: async (action, item) => {
+        if (!githubService.isConfigured()) throw new Error("Config missing");
+        const path = 'src/data/data.json';
+        const { owner, repo } = githubService.getConfig();
+        const url = `${GITHUB_API_URL}/repos/${owner}/${repo}/contents/${path}`;
+
+        // A. Fetch current remote state
+        const response = await fetch(`${url}?t=${Date.now()}`, {
+            headers: githubService.getHeaders(),
+            cache: 'no-store'
+        });
+
+        if (!response.ok) throw new Error("Could not fetch remote data.json to sync changes.");
+        const fileData = await response.json();
+        const currentItems = JSON.parse(decodeURIComponent(escape(atob(fileData.content))));
+        const sha = fileData.sha;
+
+        // B. Apply change
+        let newItems;
+        if (action === 'ADD') {
+            newItems = [item, ...currentItems];
+        } else if (action === 'UPDATE') {
+            newItems = currentItems.map(i => i.id === item.id ? { ...i, ...item } : i);
+        } else if (action === 'DELETE') {
+            newItems = currentItems.filter(i => i.id !== item.id);
+        } else {
+            throw new Error("Invalid sync action");
+        }
+
+        // C. Save back
+        const content = btoa(unescape(encodeURIComponent(JSON.stringify(newItems, null, 2))));
+        const putResponse = await fetch(url, {
+            method: 'PUT',
+            headers: githubService.getHeaders(),
+            body: JSON.stringify({
+                message: `${action} [${item.title || item.id}] via Admin Panel`,
+                content: content,
+                sha: sha
+            })
+        });
+
+        if (!putResponse.ok) {
+            const err = await putResponse.json().catch(() => ({}));
+            throw new Error(`Sync conflict or failure: ${err.message || 'Unknown error'}`);
+        }
+
+        return newItems;
+    },
+
+    // Bridge for compatibility (Full overwrite - use sparingly)
     updateDataJson: async (newItems) => {
-        return githubService.updateJsonFile('src/data/data.json', newItems, "Update data.json via Admin Panel");
+        return githubService.updateJsonFile('src/data/data.json', newItems, "Full Data Sync via Admin Panel");
     }
 };

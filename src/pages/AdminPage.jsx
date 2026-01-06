@@ -90,17 +90,18 @@ export function AdminPage() {
     };
 
     const handleDelete = async (itemId) => {
-        if (window.confirm("Are you sure you want to delete this item?")) {
+        const itemToDelete = items.find(i => i.id === itemId);
+        if (window.confirm(`Are you sure you want to delete "${itemToDelete?.title || 'this item'}"?`)) {
             deleteItem(itemId);
-            const newItems = items.filter(i => i.id !== itemId);
             if (githubService.isConfigured()) {
                 const confirmSync = window.confirm("Deleted locally. Sync change to GitHub?");
                 if (confirmSync) {
                     try {
                         setSyncStatus('syncing');
-                        await githubService.updateDataJson(newItems);
+                        // Use atomic update
+                        await githubService.atomicUpdateDataJson('DELETE', { id: itemId });
                         setSyncStatus('success');
-                        alert("Successfully synced to GitHub!");
+                        alert("Successfully synced deletion to GitHub!");
                     } catch (err) {
                         setSyncStatus('error');
                         alert("Sync failed: " + err.message);
@@ -163,25 +164,25 @@ export function AdminPage() {
             finalData.language = 'English';
         }
 
-        let newItems;
         const updatedAt = formatDate(Date.now(), finalData.language);
+        let action = editingId ? 'UPDATE' : 'ADD';
+        let itemToSync;
 
         if (editingId) {
-            const updatedItem = { ...finalData, updatedAt };
-            updateItem(editingId, updatedItem);
-            newItems = items.map(i => i.id === editingId ? { ...i, ...updatedItem } : i);
+            itemToSync = { ...finalData, updatedAt, id: editingId };
+            updateItem(editingId, itemToSync);
         } else {
-            const newItem = { ...finalData, id: Date.now(), updatedAt };
-            addItem(newItem);
-            newItems = [...items, newItem];
+            itemToSync = { ...finalData, id: Date.now(), updatedAt };
+            addItem(itemToSync);
         }
 
         if (githubService.isConfigured()) {
-            const confirmSync = window.confirm("Saved locally. Do you want to push updates to GitHub?");
+            const confirmSync = window.confirm(`Saved locally. Do you want to push this ${action.toLowerCase()} to GitHub?`);
             if (confirmSync) {
                 try {
                     setSyncStatus('syncing');
-                    await githubService.updateDataJson(newItems);
+                    // Use atomic update to prevent overwriting other people's work
+                    await githubService.atomicUpdateDataJson(action, itemToSync);
                     setSyncStatus('success');
                     alert("Successfully synced to GitHub!");
                 } catch (err) {
