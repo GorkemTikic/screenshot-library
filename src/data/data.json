@@ -1,5 +1,17 @@
 [
   {
+    "title": "PM Disable (Back to Classic) 关闭统一账户 (回到经典交易账户) - CN",
+    "text": "如要回到【经典交易账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【回到经典交易账户】\n3）在此页面中，您选择【经典交易】\n4）点击【切换】完成操作",
+    "text_tr": "",
+    "image": "screenshots/1767726539779_PM-Disable.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767726601188,
+    "updatedAt": "2026-01-07 03:10 UTC+8"
+  },
+  {
     "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
     "text": "关于代币发行量信息，项目方团队问题及举报其他可疑行为等，您可以按照截图中的步骤操作：\n\n1）在页面下方点击【合约】\n2）在页面上方点击【K线】图标\n3）点击【信息】\n4）在页面下方选择【提交反馈】\n5）在反馈页面填写您要提交的内容\n6）点击【提交】，即可完成反馈\n7）如需查看历史反馈记录，可点击【我的反馈记录】\n\n币安始终重视您的声音，感谢您为社区安全与健康发展贡献力量。\n让我们携手共建更美好的社区",
     "text_tr": "",
@@ -167,7 +179,7 @@
     "id": 1766676606420
   },
   {
-    "title": "PM Enable 如何开启统一账户 - CN",
+    "title": "PM Enable 开启统一账户 - CN",
     "text": "如要开启【统一账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【统一账户】\n3）在此页面中，您选择【统一账户】\n4）点击【切换】完成操作\n\n如需了解更多关于【统一账户】的信息，请参考以下详细指南：\nhttps://www.binance.com/zh-CN/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
     "text_tr": "",
     "image": "screenshots/1767725853182_PM-Enable.png",
@@ -176,7 +188,7 @@
     "platform": "mobile",
     "newLanguageName": "",
     "id": 1766598907265,
-    "updatedAt": "2026-01-07 02:57 UTC+8"
+    "updatedAt": "2026-01-07 03:10 UTC+8"
   },
   {
     "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
@@ -899,17 +911,5 @@
     "newLanguageName": "",
     "id": 1767371337539,
     "updatedAt": "2026-01-02 16:28 UTC+0"
-  },
-  {
-    "title": "PM Disable (Back to Classic) 关闭统一账户 (回到经典交易账户) - CN",
-    "text": "如要回到【经典交易账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【回到经典交易账户】\n3）在此页面中，您选择【经典交易】\n4）点击【切换】完成操作",
-    "text_tr": "",
-    "image": "screenshots/1767726539779_PM-Disable.png",
-    "topic": "Futures Trading",
-    "language": "Chinese",
-    "platform": "mobile",
-    "newLanguageName": "",
-    "id": 1767726601188,
-    "updatedAt": "2026-01-07 03:10 UTC+8"
   }
 ]
