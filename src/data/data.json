@@ -899,5 +899,17 @@
     "newLanguageName": "",
     "id": 1767371337539,
     "updatedAt": "2026-01-02 16:28 UTC+0"
+  },
+  {
+    "title": "PM Disable (Back to Classic) 关闭统一账户 (回到经典交易账户) - CN",
+    "text": "如要回到【经典交易账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【回到经典交易账户】\n3）在此页面中，您选择【经典交易】\n4）点击【切换】完成操作",
+    "text_tr": "",
+    "image": "screenshots/1767726539779_PM-Disable.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767726601188,
+    "updatedAt": "2026-01-07 03:10 UTC+8"
   }
 ]
