@@ -531,9 +531,11 @@
     "title": "PNL Analysis Page (To see Fees) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/PNL_Analysis_Page_(Fees)_-_EN.jpeg",
-    "text": "To see your Futures PNL Analysis to check your Fees, please follow the steps in the screenshot: \n\n1 -) Tap \"Assets\".\n2 -) Tap \"Futures\".\n3 -) Select \"USDⓈ-M\".\n4 -) Tap the \"Today's Realized PnL\" button to open the Futures PnL Analysis page.\n5 -) Go to the \"Funding & Transaction\" tab.\n6 -) Enable \"Show Transaction Fee\".\n\n--What you’ll see:**\nYour total transaction fees and the funding fees you paid/received.\n\n**Tip:**\nUse the date filter to choose a custom range or quick options: 7D, 1M, 3M, or 1Y.",
+    "text": "To see your **Futures PNL Analysis** to check your fees, please follow the steps in the screenshot:\n\n**1 -)** Tap **\"Assets\"**.\n\n**2 -)** Tap **\"Futures\"**.\n\n**3 -)** Select **\"USDⓈ-M\"**.\n\n**4 -)** Tap the **\"Today's Realized PnL\"** button to open the Futures PnL Analysis page.\n\n**5 -)** Go to the **\"Funding & Transaction\"** tab.\n\n**6 -)** Enable **\"Show Transaction Fee\"**.\n\n---\n\n**What you’ll see:**\nYour total transaction fees and the funding fees you paid or received.\n\n**Tip:**\nUse the date filter to choose a custom range or quick options: 7D, 1M, 3M, or 1Y.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170460
+    "id": 1765164170460,
+    "text_tr": "Komisyonlarınızı kontrol etmek amacıyla **Vadeli İşlemler PNL Analizini** görmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine dokunun.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine dokunun.\n\n**3 -)** **\"USDⓈ-M\"** seçeneğini seçin.\n\n**4 -)** Vadeli İşlemler PNL Analizi sayfasını açmak için **\"Günlük Gerçekleşen PNL\"** (Today's Realized PnL) butonuna dokunun.\n\n**5 -)** **\"Fonlama ve İşlem\"** (Funding & Transaction) sekmesine gidin.\n\n**6 -)** **\"İşlem Ücretini Göster\"** (Show Transaction Fee) seçeneğini etkinleştirin.\n\n---\n\n**Neleri göreceksiniz:**\nToplam işlem komisyonlarınız ve ödediğiniz veya aldığınız fonlama ücretleri.\n\n**İpucu:**\nÖzel bir tarih aralığı veya hızlı seçenekleri (7G, 1A, 3A veya 1Y) seçmek için tarih filtresini kullanın.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 23:08 UTC+0"
   },
   {
     "title": "Futures Notification for TP/SL/Funding - EN",
