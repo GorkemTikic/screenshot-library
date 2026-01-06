@@ -69,7 +69,7 @@ To enable the **Save & Sync** feature in the Admin Panel:
 | **"not a git repository"** | You are in the wrong folder. Use the `cd` command above. |
 | **"merge conflict"** | This happens if you modified the same file locally and on GitHub. Usually, `git add .` and `git commit` followed by `git pull` will resolve it. |
 | **Changes not showing live** | Wait 1-2 minutes for GitHub Pages to refresh, then hard refresh your browser (Ctrl+F5). |
-| **Sync failed on Admin Page** | Check your GitHub Token and ensure you have an active internet connection. |
+| **Sync failed on Admin Page** | Check your GitHub Token. If it's a "Conflict (409)", someone else updated the data; refresh the page and try again. |
 
 ---
 *Senior Architecture Standard*

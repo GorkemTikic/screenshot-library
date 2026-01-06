@@ -5,18 +5,18 @@
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=github&logoColor=white)](https://pages.github.com/)
 [![License-MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Senior Technical Architecture Map | Version 1.5.0**  
-> A premium, high-performance dashboard for institutional screenshot management. Featuring glassmorphism aesthetics, automated GitHub synchronization, and advanced identity resolution.
+> **Senior Technical Architecture Map | Version 2.0.0**  
+> A premium, high-performance dashboard for institutional screenshot management. Featuring glassmorphism aesthetics, **Atomic GitHub Synchronization (Conflict-Resistant)**, and advanced identity resolution.
 
 ---
 
 ## ✨ Core Features
 
 *   **💎 Premium UI/UX**: Built with a "Modern Dark" aesthetic using glassmorphism, neon accents, and smooth Framer Motion animations.
-*   **🔄 Automated Sync**: Seamless integration with the GitHub REST API for real-time data updates and image uploads directly from the Admin Panel.
+*   **⚛️ Atomic Sync (v2.0)**: **New & Improved.** All CRUD operations now follow an atomic "Fetch-Modify-Commit" cycle, preventing data loss in collaborative environments.
 *   **🔍 Semantic Search**: Instant results powered by Fuse.js for high-performance fuzzy matching across titles and content.
 *   **📊 Insightful Analytics**: Interactive data visualization using Recharts, tracking trends in content distribution and user interactions.
-*   **🧠 Identity Resolution v7.0**: Advanced canvas fingerprinting and hardware telemetry to track unique physical devices across sessions.
+*   **🧠 Identity Resolution v8.0**: Advanced canvas fingerprinting and hardware telemetry to track unique physical devices across sessions.
 *   **🌍 Intelligent Localization**: Dynamic language handling with automated timezone offsets (e.g., UTC+8 for Chinese entries).
 
 ---
@@ -39,7 +39,7 @@ support-screenshot-library-main/
 │   ├── data/               # Persistent Storage
 │   │   └── data.json       # Centralized JSON Database
 │   ├── pages/              # View Layers (Home, Admin, Analytics)
-│   ├── services/           # Integration Layer (GitHub, Analytics)
+│   ├── services/           # Integration Layer (GitHub API, Analytics)
 │   └── utils/              # Helper Libraries (Time, Image, Language)
 ├── backfill.cjs            # Maintenance script for timestamp population
 ├── DEPLOYMENT.md           # Engineering Playbook for Production
@@ -50,21 +50,36 @@ support-screenshot-library-main/
 
 ## 🧠 Technical Architecture
 
-### 1. Dual-Source Synchronization Engine
-The platform implements a sophisticated data fetching strategy:
--   **Client Mode**: Pulls `data.json` from `raw.githubusercontent.com` leveraging the raw CDN for maximum speed and global availability.
--   **Admin Mode**: Switches to direct **GitHub API** calls to bypass CDN caching (approx. 5-minute TTL), ensuring that management actions are reflected immediately without ghosting.
+### 1. Atomic Synchronization Engine (v2.0)
+To prevent the "Lost Update" problem common in collaborative JSON management, the platform now enforces an atomic state transition:
 
-### 2. Identity Resolution Engine (v7.0)
-Beyond simple cookies, the system employs **Heuristic Fingerprinting**:
--   **Canvas Rendering**: Generates unique signatures based on GPU and internal browser rendering variations.
--   **Hardware Telemetry**: Incorporates screen specs, platform identifiers, and environment variables into a persistent `deviceHash`.
--   **Stability**: Successfully merges identities across different browsers on the same physical machine.
+```mermaid
+sequenceDiagram
+    participant UI as Admin Dashboard
+    participant API as GitHub REST API
+    participant DB as data.json (Remote)
 
-### 3. Automated Filename Sanitization
-To prevent filesystem conflicts on Windows environments, the **GitHub Service** automatically sanitizes all uploaded filenames:
--   Replaces illegal characters (`:`, `<`, `>`, etc.) with hyphens (`-`).
--   Ensures compatibility for all developers during `git pull` operations.
+    UI->>API: GET data.json (with Cache Busting)
+    API-->>UI: Returns Latest State + SHA
+    UI->>UI: Apply local change (ADD/UPDATE/DELETE)
+    UI->>API: PUT updated data.json (with strict SHA check)
+    alt SHA Match (Success)
+        API-->>UI: 200 OK (State Updated)
+        UI->>UI: Update Local Cache
+    else SHA Mismatch (Conflict)
+        API-->>UI: 409 Conflict (Someone else updated!)
+        UI->>UI: Alert user to refresh and retry
+    end
+```
+
+### 2. Dual-Source Data Strategy
+-   **Public Facing**: Pulls from GitHub Raw CDN for maximum speed, leveraging edge caching.
+-   **Admin Panel**: Pulls directly from the API with `?t=timestamp` param to bypass CDN lag, ensuring you always edit the most recent version.
+
+### 3. Hardware Fingerprinting (v8.0)
+The system employs **Heuristic Fingerprinting** to maintain session continuity:
+-   **Canvas/WebGL Rendering**: Deep device analysis via rendering variations.
+-   **Network Telemetry**: Incorporates environment-specific flags into a persistent `deviceHash`.
 
 ---
 
@@ -86,25 +101,25 @@ npm install
 npm run dev
 ```
 
-### GitHub Integration
+### GitHub Configuration
 To enable the **Admin Panel** sync features:
 1.  Generate a **GitHub Personal Access Token (Classic)** with `repo` scopes.
 2.  Navigate to **Admin > Settings** in the dashboard and input your token.
-3.  Changes will now commit directly to your repository.
+3.  All saves will now be handled atomically via the GitHub API.
 
 ---
 
 ## 🛠️ Maintenance & Deployment
 
 ### Data Backfilling
-After bulk importing or manual JSON edits, run the backfill utility to normalize timestamps:
+Run this after manual JSON edits to ensure all entries have proper ISO/Locale timestamps:
 ```bash
 node backfill.cjs
 ```
 
-### Production Build
+### Deployment Flow
 ```bash
-# Build & Deploy to GitHub Pages
+# Push logic updates to GitHub Pages
 npm run deploy
 ```
 
