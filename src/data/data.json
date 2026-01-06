@@ -370,9 +370,11 @@
     "title": "Change Asset Mode (Single,Multi) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Asset_Mode_(Single%2CMulti)_-_EN.jpg",
-    "text": "To change Asset Mode, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Asset Mode button.\n\n5 -) In this page you can change your asset mode.",
+    "text": "To change your **Asset Mode**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon on the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on the **Asset Mode** button.\n\n**5 -)** In this page, you can change your **Asset Mode**.\n\n---\n\nTo learn more about **Asset Modes**, you can check these official guides:\n\n* [How to Switch between Single-Asset and Multi-Assets Modes](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [What Is Multi-Assets Mode and Which Assets Are Supported?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170440
+    "id": 1765164170440,
+    "text_tr": "**Varlık Modunuzu** (Asset Mode) değiştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Varlık Modu\"** (Asset Mode) butonuna tıklayın.\n\n**5 -)** Bu sayfada **Varlık Modunuzu** değiştirebilirsiniz.\n\n---\n\n**Varlık Modları** hakkında daha fazla bilgi edinmek için bu resmi rehberlere göz atabilirsiniz:\n\n* [Tekli ve Çoklu Varlık Modu Arasında Değişim Nasıl Yapılır?](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [Çoklu Varlık Modu Nedir ve Hangi Varlıklar Desteklenir?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:21 UTC+0"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - EN",
