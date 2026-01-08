@@ -421,12 +421,15 @@
     "id": 1765164170446
   },
   {
-    "title": "Transfer From Futures USDS-M To Spot Wallet - EN",
+    "title": "Transfer From Futures USDⓈ-M To Spot Wallet - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Futures_USDS-M_To_Spot_Wallet_-_EN.jpg",
-    "text": "To Transfer assets from Futures USDS-M Wallet to Spot Wallet, please follow the steps in the screenshot:\n\n1 -) Click on ''Assets''\n\n2 -) Click on ''Futures''\n\n3 -) Click on ''USDS-M button''\n\n4 -) Click on ''Transfer'' \n\n5 -) Click on the arrows to change the path, the correct path is like in the next step:  \n\n 6 -) Correct Path: \n\nFrom: USDS-M Futures\nTo: Spot Wallet\n\n7 -) Select The Asset/Coin\n\nInput the amount of assets you want to transfer and confirm the transfer. \n\nThis is how you do transfers from Futures USDS-M to Spot Wallet.",
+    "text": "To transfer assets from your **USDⓈ-M Futures Wallet** to your **Spot Wallet**, please follow the steps in the screenshot:\n\n**1 -)** Click on **\"Assets\"**.\n\n**2 -)** Click on **\"Futures\"**.\n\n**3 -)** Click on the **\"USDⓈ-M\"** button.\n\n**4 -)** Click on **\"Transfer\"**.\n\n**5 -)** Click on the **arrows icon** to change the transfer path.\n\n**6 -)** Ensure the correct path matches the screenshot:\n\n* **From:** USDⓈ-M Futures\n* **To:** Spot Wallet\n\n**7 -)** **Select the Asset/Coin** you wish to transfer.\n\nInput the amount of assets you want to transfer and confirm the transfer. This is how you perform transfers from your USDⓈ-M Futures Wallet to your Spot Wallet.\n\n---\n\n**To learn more, you can check this official guide:**\n\n* [How to Transfer Funds to the Futures Wallet?](https://www.binance.com/support/faq/how-to-transfer-funds-to-the-futures-wallet-360033773532)\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "topic": "Futures Trading",
-    "id": 1765164170447
+    "id": 1765164170447,
+    "text_tr": "**USDⓈ-M Vadeli İşlemler** cüzdanınızdan **Spot cüzdanınıza** varlık transfer etmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**3 -)** **\"USDⓈ-M\"** butonuna tıklayın.\n\n**4 -)** **\"Transfer\"** seçeneğine tıklayın.\n\n**5 -)** Transfer yönünü değiştirmek için **ok simgesine** tıklayın.\n\n**6 -)** Doğru yolun ekran görüntüsündeki gibi olduğundan emin olun:\n\n* **Nereden:** USDⓈ-M Vadeli İşlemler (USDⓈ-M Futures)\n* **Nereye:** Spot Cüzdanı (Spot Wallet)\n\n**7 -)** Transfer etmek istediğiniz **Varlığı/Coin'i seçin**.\n\nTransfer etmek istediğiniz varlık miktarını girin ve transferi onaylayın. USDⓈ-M Vadeli İşlemler cüzdanınızdan Spot cüzdanınıza bu şekilde transfer yapabilirsiniz.\n\n---\n\n**Daha fazla bilgi edinmek için resmi rehberimize göz atabilirsiniz:**\n\n* [Vadeli İşlemler Cüzdanına Nasıl Fon Aktarılır?](https://www.binance.com/en/support/faq/how-to-transfer-funds-to-the-futures-wallet-360033773532)\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "platform": "mobile",
+    "updatedAt": "2026-01-08 15:26 UTC+0"
   },
   {
     "title": "Transfer From Spot Wallet to USDS-M Futures - EN",
