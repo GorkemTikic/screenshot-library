@@ -444,14 +444,6 @@
     "updatedAt": "2026-01-08 15:27 UTC+0"
   },
   {
-    "title": "How To Close The Grid Position When The Grid is Stop",
-    "language": "English",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/How_To_Close_The_Grid_Position_When_The_Grid_is_Stop.jpg",
-    "text": "To Close the open position in a stopped grid, please follow the steps in the screenshot: \n\n1 -) Click on Futures button\n\n2 -) Click on Bots button\n\n3 -) Click on ''All Orders'' on the right corner\n\n4 -) You will see ''Position'' button on your stopped grid. \n\n5 -) Then you will see a second ''Position'' button on running order detail page. \n\n6 -) In this page you can see the open positions to close by clicking Close buttons.",
-    "topic": "BOTS",
-    "id": 1765164170449
-  },
-  {
     "title": "Cross Margin Adjusted Entry Price - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Cross_Margin_Adjusted_Entry_Price_-_EN.jpg",
