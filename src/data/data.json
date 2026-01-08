@@ -411,9 +411,12 @@
     "title": "Loan Repayment (Borrowed Coin) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Borrowed_Coin)_-_EN.jpg",
-    "text": "There are two ways to repay an ongoing loan\n\nBorrowed Coin\nCollateral \n\nSo if you wish to repay an ongoing Loan with the borrowed coin, please follow the steps in the screenshot: \n\n1 -) Click on ''Ongoing Orders'' on Loan Orders Page\n2 -) Click on ''Repay'' \n3 -) Click on ''Borrowed Coin'' on upper menu\n\nEnter the amount you wish to repay and you will see the LTV after repayment and the amount of collateral will return after the repayment on the details as well. \n\nThis is how you repay an ongoing Loan with Borrowed Coin.",
+    "text": "There are two ways to repay an ongoing loan: using the **Borrowed Coin** or using **Collateral**. To repay an ongoing loan specifically with the borrowed coin, please follow the steps in the screenshot:\n\n**1 -)** Click on **\"Ongoing Orders\"** on the Loan Orders page.\n\n**2 -)** Click on **\"Repay\"**.\n\n**3 -)** Click on **\"Borrowed Coin\"** on the upper menu.\n\n**4 -)** Enter the amount you wish to repay.\n\nYou will see the **LTV after repayment** and the **amount of collateral** that will be returned to you in the details section. This is how you repay an ongoing loan with the borrowed coin.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "topic": "LOAN",
-    "id": 1765164170444
+    "id": 1765164170444,
+    "platform": "mobile",
+    "text_tr": "Devam eden bir krediyi geri ödemenin iki yolu vardır: **Ödünç Alınan Coin** (Borrowed Coin) veya **Teminat** (Collateral) kullanmak. Devam eden bir krediyi ödünç alınan coin ile geri ödemek istiyorsanız, lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Kredi Siparişleri (Loan Orders) sayfasındaki **\"Devam Eden Siparişler\"** (Ongoing Orders) sekmesine tıklayın.\n\n**2 -)** **\"Geri Öde\"** (Repay) butonuna tıklayın.\n\n**3 -)** Üst menüden **\"Ödünç Alınan Coin\"** (Borrowed Coin) seçeneğine tıklayın.\n\n**4 -)** Geri ödemek istediğiniz tutarı girin.\n\nDetaylar kısmında, **geri ödeme sonrası LTV** oranını ve iade edilecek **teminat miktarını** görebilirsiniz. Devam eden bir krediyi ödünç alınan coin ile bu şekilde geri ödeyebilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "updatedAt": "2026-01-08 15:36 UTC+0"
   },
   {
     "title": "Transfer From Futures USDⓈ-M To Spot Wallet - EN",
