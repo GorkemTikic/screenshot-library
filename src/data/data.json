@@ -1,5 +1,17 @@
 [
   {
+    "title": "Small Debt Convert History 小额负债转换历史记录 - CN",
+    "text": "如需查看小额负债转换历史记录，请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面上方选择【现货】\n3）进入【杠杆账户（全仓）】\n4）点击【负债转换】\n5）点击页面右上角的【历史订单】图标，即可查看相关记录",
+    "text_tr": "",
+    "image": "screenshots/1768249666028_Small-Debt-Convert-History.png",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768249753127,
+    "updatedAt": "2026-01-13 04:29 UTC+8"
+  },
+  {
     "title": "Small Debt Convert 小额负债转换 - CN",
     "text": "如果您暂时无法偿还小额负债，可将其转换为 USDT 或 USDC 稳定币。请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面上方选择【现货】\n3）选择【杠杆账户（全仓）】\n4）点击【负债转换】\n5）选择将负债转换为【USDT】或【USDC】\n6）勾选需要转换的负债币种\n7）点击【转换】\n8）确认订单信息无误后，点击【确认】完成操作\n\n温馨提示：\n\n- 若您同意将所选负债按当前显示金额统一兑换为 USDT/USDC，请直接点击【确认】。\n- 实际兑换汇率可能与负债币种的实时市场价格存在差异，请以页面显示为准。\n- 仅支持负债估值低于 10 USDT/USDC 的币种进行转换。\n- 6 小时内最多可进行 3 次负债转换操作。",
     "text_tr": "",
