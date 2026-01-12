@@ -1,5 +1,17 @@
 [
   {
+    "title": "Small Debt Convert 小额负债转换 - CN",
+    "text": "如果您暂时无法偿还小额负债，可将其转换为 USDT 或 USDC 稳定币。请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面上方选择【现货】\n3）选择【杠杆账户（全仓）】\n4）点击【负债转换】\n5）选择将负债转换为【USDT】或【USDC】\n6）勾选需要转换的负债币种\n7）点击【转换】\n8）确认订单信息无误后，点击【确认】完成操作\n\n温馨提示：\n\n- 若您同意将所选负债按当前显示金额统一兑换为 USDT/USDC，请直接点击【确认】。\n- 实际兑换汇率可能与负债币种的实时市场价格存在差异，请以页面显示为准。\n- 仅支持负债估值低于 10 USDT/USDC 的币种进行转换。\n- 6 小时内最多可进行 3 次负债转换操作。",
+    "text_tr": "",
+    "image": "screenshots/1768248689138_Small-Debt-Convert.png",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768248753899,
+    "updatedAt": "2026-01-13 04:12 UTC+8"
+  },
+  {
     "title": "Close Open Position on Stopped Grid - EN",
     "text": "To close an open position on a stopped Grid bot, please follow the steps in the provided screenshot:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on **\"Bots\"**.\n\n**3 -)** Click on **\"All Orders\"**.\n\n**4 -)** In the **\"Running\"** tab, locate the bot with the **\"Stopped - position open\"** status.\n\n**5 -)** Click on the **\"Position\"** button.\n\n**6 -)** You can choose **\"Close Position\"** to close a single position or click **\"Close All\"** to close all open positions related to that stopped grid.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "text_tr": "Durdurulmuş bir Grid botundaki açık pozisyonu kapatmak için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** **\"Botlar\"** (Bots) seçeneğine tıklayın.\n\n**3 -)** **\"Tüm Emirler\"** (All Orders) kısmına tıklayın.\n\n**4 -)** **\"Çalışıyor\"** (Running) sekmesinde, **\"Stopped - position open\"** (Durduruldu - pozisyon açık) durumundaki botu bulun.\n\n**5 -)** **\"Position\"** (Pozisyon) butonuna tıklayın.\n\n**6 -)** Tek bir pozisyonu kapatmak için **\"Close Position\"** (Pozisyonu Kapat) seçeneğini kullanabilir veya durdurulan grid ile ilgili tüm açık pozisyonları kapatmak için **\"Close All\"** (Tümünü Kapat) butonuna tıklayabilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
