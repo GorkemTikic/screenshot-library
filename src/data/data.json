@@ -1,5 +1,17 @@
 [
   {
+    "title": "TOP MOVER Page - EN",
+    "text": "To access the **Top Movers** page on Binance, please follow the steps shown in the screenshot:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **\"...\"** icon in the top right corner.\n\n**3 -)** Select the **\"Data\"** tab on the pop-up menu.\n\n**4 -)** Click on the **\"Top Movers\"** button.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
+    "text_tr": "Binance üzerinde **En Çok Hareket Edenler** (Top Movers) sayfasına erişmek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Veri\"** (Data) sekmesini seçin.\n\n**4 -)** **\"En Çok Hareket Edenler\"** (Top Movers) butonuna tıklayın.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "image": "screenshots/1768261796371_TOP-MOVER-Page-EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768261914295,
+    "updatedAt": "2026-01-12 23:51 UTC+0"
+  },
+  {
     "title": "Small Debt Convert History 小额负债转换历史记录 - CN",
     "text": "如需查看小额负债转换历史记录，请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面上方选择【现货】\n3）进入【杠杆账户（全仓）】\n4）点击【负债转换】\n5）点击页面右上角的【历史订单】图标，即可查看相关记录",
     "text_tr": "",
