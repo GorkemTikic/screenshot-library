@@ -1,5 +1,17 @@
 [
   {
+    "title": "Position/Order shows in K line K线图显示仓位/订单信息 - CN",
+    "text": "如需要在K线里添加【仓位/订单信息】，请按以下步骤操作：\n\n1）下方点击【合约】\n2）在页面右上角点击【K 线】图标\n3）在 K 线图页面右上角点击【设定】图标\n4）在设置中选择需要在 K 线图中显示的仓位或订单信息",
+    "text_tr": "",
+    "image": "screenshots/1768336690534_Position-Order-Shows-in-Kline.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768336734279,
+    "updatedAt": "2026-01-14 04:38 UTC+8"
+  },
+  {
     "title": "Top Movers 市场异动 - CN",
     "text": "如需查看【市场异动】，请按以下步骤操作：\n\n1）下方点击【合约】\n2）在页面右上角点击【…】\n3）选择【数据】\n4）点击【市场异动】，即可查看相关数据",
     "text_tr": "",
