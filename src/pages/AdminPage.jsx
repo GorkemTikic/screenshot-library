@@ -132,14 +132,14 @@ export function AdminPage() {
         }
 
         try {
-            setUploading(true);
-            const imageUrl = await githubService.uploadImage(file);
-            setFormData(prev => ({ ...prev, image: imageUrl }));
-            setUploading(false);
+            // Store the file locally in formData and create a temporary preview URL
+            setFormData(prev => ({
+                ...prev,
+                localImageFile: file,
+                image: URL.createObjectURL(file)
+            }));
         } catch (error) {
-            console.error(error);
-            alert("Upload failed: " + error.message);
-            setUploading(false);
+            alert("Local preview failed: " + error.message);
         }
     };
 
@@ -177,17 +177,26 @@ export function AdminPage() {
         }
 
         if (githubService.isConfigured()) {
-            const confirmSync = window.confirm(`Saved locally. Do you want to push this ${action.toLowerCase()} to GitHub?`);
+            const confirmSync = window.confirm(`Ready to push to GitHub? (This handles both image and data in one go)`);
             if (confirmSync) {
                 try {
                     setSyncStatus('syncing');
-                    // Use the bridge which updates local state too
-                    await performAtomicUpdate(action, itemToSync);
-                    setSyncStatus('success');
-                    alert("Successfully synced to GitHub!");
+                    // USE UNIFIED SYNC: Send the action, item, and the file we stored in handleFileUpload
+                    const newItems = await githubService.unifiedAtomicSync(
+                        action,
+                        itemToSync,
+                        formData.localImageFile
+                    );
+
+                    if (newItems) {
+                        setSyncStatus('success');
+                        alert("Successfully synced to GitHub!");
+                        // Optional: Refresh or update UI state more smoothly if needed
+                        window.location.reload();
+                    }
                 } catch (err) {
                     setSyncStatus('error');
-                    alert("GitHub Sync Failed: " + err.message);
+                    alert("Sync Failed: " + err.message);
                 }
             }
         }
