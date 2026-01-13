@@ -1,5 +1,17 @@
 [
   {
+    "title": "Futures Convert 合约兑换 - CN",
+    "text": "如需兑换其他币种，请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面顶部选择【合约】\n3）选择【U本位合约】或者【币本位合约】\n4）点击【兑换】\n5）选择需要兑换的币种及目标币种\n6）输入兑换数量，系统将自动显示实时汇率及预计到账数量\n7）确认信息无误后，点击【确认兑换】完成操作",
+    "text_tr": "",
+    "image": "screenshots/1768323748884_Futures-Convert.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768323763176,
+    "updatedAt": "2026-01-14 01:02 UTC+8"
+  },
+  {
     "title": "TOP MOVER Page - EN",
     "text": "To access the **Top Movers** page on Binance, please follow the steps shown in the screenshot:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **\"...\"** icon in the top right corner.\n\n**3 -)** Select the **\"Data\"** tab on the pop-up menu.\n\n**4 -)** Click on the **\"Top Movers\"** button.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "text_tr": "Binance üzerinde **En Çok Hareket Edenler** (Top Movers) sayfasına erişmek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Veri\"** (Data) sekmesini seçin.\n\n**4 -)** **\"En Çok Hareket Edenler\"** (Top Movers) butonuna tıklayın.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
