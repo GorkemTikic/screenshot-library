@@ -16,6 +16,7 @@ export function ScreenshotCard({ item, onClickImage }) {
     const currentText = (contentLang === 'tr' && hasTr) ? item.text_tr : item.text;
 
     const handleCopy = async (e) => {
+        e.preventDefault();
         e.stopPropagation();
 
         const textToCopy = currentText;
@@ -37,13 +38,22 @@ export function ScreenshotCard({ item, onClickImage }) {
                 const textArea = document.createElement("textarea");
                 textArea.value = textToCopy;
 
-                // Get current scroll position to prevent jumping
-                const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                // Positioning logic: use click coordinates if available
+                // This is the most robust way to prevent "scroll to top" in iframes
+                // even when window.pageYOffset is 0 (auto-resize iframes).
+                const clickX = e.clientX || 0;
+                const clickY = e.clientY || 0;
 
-                // Ensure it's not visible but exists near the current scroll position
                 textArea.style.position = "fixed";
-                textArea.style.left = "-9999px";
-                textArea.style.top = `${scrollY}px`; // Place it at current scroll height
+                textArea.style.left = `${clickX}px`;
+                textArea.style.top = `${clickY}px`;
+                textArea.style.width = "1px";
+                textArea.style.height = "1px";
+                textArea.style.padding = "0";
+                textArea.style.border = "none";
+                textArea.style.outline = "none";
+                textArea.style.boxShadow = "none";
+                textArea.style.background = "transparent";
                 textArea.style.opacity = "0";
                 textArea.style.pointerEvents = "none";
 
@@ -67,7 +77,7 @@ export function ScreenshotCard({ item, onClickImage }) {
             setTimeout(() => setCopied(false), 2000);
         }
 
-        // Log event regardless for analytics, but include success status if possible
+        // Log event
         logEvent('copy_text', {
             title: item.title,
             topic: item.topic,
