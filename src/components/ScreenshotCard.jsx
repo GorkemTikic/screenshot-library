@@ -37,13 +37,22 @@ export function ScreenshotCard({ item, onClickImage }) {
                 const textArea = document.createElement("textarea");
                 textArea.value = textToCopy;
 
-                // Ensure it's not visible but exists in DOM
+                // Get current scroll position to prevent jumping
+                const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Ensure it's not visible but exists near the current scroll position
                 textArea.style.position = "fixed";
-                textArea.style.left = "-999999px";
-                textArea.style.top = "-999999px";
+                textArea.style.left = "-9999px";
+                textArea.style.top = `${scrollY}px`; // Place it at current scroll height
+                textArea.style.opacity = "0";
+                textArea.style.pointerEvents = "none";
+
                 document.body.appendChild(textArea);
 
-                textArea.focus();
+                // Try to focus without scrolling
+                if (typeof textArea.focus === 'function') {
+                    textArea.focus({ preventScroll: true });
+                }
                 textArea.select();
 
                 successful = document.execCommand('copy');
