@@ -15,17 +15,56 @@ export function ScreenshotCard({ item, onClickImage }) {
     const hasTr = item.text_tr && item.text_tr.trim().length > 0;
     const currentText = (contentLang === 'tr' && hasTr) ? item.text_tr : item.text;
 
-    const handleCopy = (e) => {
+    const handleCopy = async (e) => {
         e.stopPropagation();
-        navigator.clipboard.writeText(currentText);
-        setCopied(true);
-        // Log event
+
+        const textToCopy = currentText;
+        let successful = false;
+
+        // Try modern Clipboard API first
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                successful = true;
+            } catch (err) {
+                console.error('Clipboard API failed, trying fallback...', err);
+            }
+        }
+
+        // Fallback: Create hidden textarea
+        if (!successful) {
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+
+                // Ensure it's not visible but exists in DOM
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                document.body.appendChild(textArea);
+
+                textArea.focus();
+                textArea.select();
+
+                successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+            }
+        }
+
+        if (successful) {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }
+
+        // Log event regardless for analytics, but include success status if possible
         logEvent('copy_text', {
             title: item.title,
             topic: item.topic,
-            language: contentLang
+            language: contentLang,
+            method: successful ? (navigator.clipboard ? 'api' : 'fallback') : 'failed'
         });
-        setTimeout(() => setCopied(false), 2000);
     };
 
     const handleToggleFavorite = (e) => {

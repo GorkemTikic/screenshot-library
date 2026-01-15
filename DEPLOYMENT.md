@@ -72,4 +72,15 @@ To enable the **Save & Sync** feature in the Admin Panel:
 | **Sync failed on Admin Page** | Check your GitHub Token. If it's a "Conflict (409)", someone else updated the data; refresh the page and try again. |
 
 ---
+
+## 🌐 Google Sites / Iframe Deployment
+
+If you are embedding this project inside **Google Sites** (or any iframe), the standard modern Copy functionality might be blocked by browser security.
+
+We have implemented a **Fallback Copy Mechanism** to resolve this. To ensure it works:
+1. **Always Deploy Latest:** Run `npm run deploy` after every change.
+2. **Hard Refresh:** After deploying, go to your Google Site and hit `Ctrl + F5` (or `Cmd + Shift + R` on Mac) to force the browser to load the new code.
+3. **Check Permissions:** In some cases, Google Sites might require external scripts to be allowed. Ensure the script source is trusted in your Google Sites settings.
+
+---
 *Senior Architecture Standard*
