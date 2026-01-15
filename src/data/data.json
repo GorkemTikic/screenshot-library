@@ -893,10 +893,12 @@
     "title": "Clear Caches - EN",
     "language": "English",
     "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Clear%20Caches%20-%20EN.jpg?raw=true",
-    "text": "1 -) Click on Home\n2 -) Click on Menu\n3 -) Click on Settings\n4 -) Click on Clear Cache button\n\nThis helps remove temporary files and can make your app run faster and smoother!",
-    "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
+    "text": "To clear your app cache, please follow the steps in the screenshot provided:\n\n**1 -)** Click on **\"Home\"**.\n\n**2 -)** Click on the **Menu** icon in the top left corner.\n\n**3 -)** Click on the **Settings** gear icon in the top right corner.\n\n**4 -)** Click on the **\"Clear Cache\"** button.\n\nThis helps remove temporary files and can make your app run faster and smoother!\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
+    "text_tr": "Uygulama önbelleğinizi temizlemek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Ana Sayfa\"** (Home) butonuna tıklayın.\n\n**2 -)** Sol üst köşedeki **Menü** simgesine tıklayın.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (çark simgesi) bölümüne tıklayın.\n\n**4 -)** **\"Önbelleği Temizle\"** (Clear Cache) butonuna tıklayın.\n\nBu işlem geçici dosyaları temizlemeye yardımcı olur ve uygulamanızın daha hızlı ve sorunsuz çalışmasını sağlayabilir!\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
     "topic": "General",
-    "id": 1765162670474
+    "id": 1765162670474,
+    "platform": "mobile",
+    "updatedAt": "2026-01-15 14:57 UTC+0"
   },
   {
     "title": "Transaction History - EN (WEB)",
