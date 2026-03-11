@@ -1,8 +1,328 @@
 [
   {
+    "title": "Position/Order shows in K line K线图显示仓位/订单信息 - CN",
+    "text": "如需要在K线里添加【仓位/订单信息】，请按以下步骤操作：\n\n1）下方点击【合约】\n2）在页面右上角点击【K 线】图标\n3）在 K 线图页面右上角点击【设定】图标\n4）在设置中选择需要在 K 线图中显示的仓位或订单信息",
+    "text_tr": "",
+    "image": "screenshots/1768336690534_Position-Order-Shows-in-Kline.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768336734279,
+    "updatedAt": "2026-01-14 04:38 UTC+8"
+  },
+  {
+    "title": "Top Movers 市场异动 - CN",
+    "text": "如需查看【市场异动】，请按以下步骤操作：\n\n1）下方点击【合约】\n2）在页面右上角点击【…】\n3）选择【数据】\n4）点击【市场异动】，即可查看相关数据",
+    "text_tr": "",
+    "image": "screenshots/1768324953795_Top-Movers.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768324962732,
+    "updatedAt": "2026-01-14 01:25 UTC+8"
+  },
+  {
+    "title": "Futures Convert 合约兑换 - CN",
+    "text": "如需兑换其他币种，请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面顶部选择【合约】\n3）选择【U本位合约】或者【币本位合约】\n4）点击【兑换】\n5）选择需要兑换的币种及目标币种\n6）输入兑换数量，系统将自动显示实时汇率及预计到账数量\n7）确认信息无误后，点击【确认兑换】完成操作",
+    "text_tr": "",
+    "image": "screenshots/1768324118717_Futures-Convert.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768323763176,
+    "updatedAt": "2026-01-14 01:08 UTC+8"
+  },
+  {
+    "title": "TOP MOVER Page - EN",
+    "text": "To access the **Top Movers** page on Binance, please follow the steps shown in the screenshot:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **\"...\"** icon in the top right corner.\n\n**3 -)** Select the **\"Data\"** tab on the pop-up menu.\n\n**4 -)** Click on the **\"Top Movers\"** button.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
+    "text_tr": "Binance üzerinde **En Çok Hareket Edenler** (Top Movers) sayfasına erişmek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Veri\"** (Data) sekmesini seçin.\n\n**4 -)** **\"En Çok Hareket Edenler\"** (Top Movers) butonuna tıklayın.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "image": "screenshots/1768261796371_TOP-MOVER-Page-EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768261914295,
+    "updatedAt": "2026-01-12 23:51 UTC+0"
+  },
+  {
+    "title": "Small Debt Convert History 小额负债转换历史记录 - CN",
+    "text": "如需查看小额负债转换历史记录，请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面上方选择【现货】\n3）进入【杠杆账户（全仓）】\n4）点击【负债转换】\n5）点击页面右上角的【历史订单】图标，即可查看相关记录",
+    "text_tr": "",
+    "image": "screenshots/1768249666028_Small-Debt-Convert-History.png",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768249753127,
+    "updatedAt": "2026-01-13 04:29 UTC+8"
+  },
+  {
+    "title": "Small Debt Convert 小额负债转换 - CN",
+    "text": "如果您暂时无法偿还小额负债，可将其转换为 USDT 或 USDC 稳定币。请按照以下步骤操作：\n\n1）点击右下角【资产】\n2）在页面上方选择【现货】\n3）选择【杠杆账户（全仓）】\n4）点击【负债转换】\n5）选择将负债转换为【USDT】或【USDC】\n6）勾选需要转换的负债币种\n7）点击【转换】\n8）确认订单信息无误后，点击【确认】完成操作\n\n温馨提示：\n\n- 若您同意将所选负债按当前显示金额统一兑换为 USDT/USDC，请直接点击【确认】。\n- 实际兑换汇率可能与负债币种的实时市场价格存在差异，请以页面显示为准。\n- 仅支持负债估值低于 10 USDT/USDC 的币种进行转换。\n- 6 小时内最多可进行 3 次负债转换操作。",
+    "text_tr": "",
+    "image": "screenshots/1768248689138_Small-Debt-Convert.png",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1768248753899,
+    "updatedAt": "2026-01-13 04:12 UTC+8"
+  },
+  {
+    "title": "Close Open Position on Stopped Grid - EN",
+    "text": "To close an open position on a stopped Grid bot, please follow the steps in the provided screenshot:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on **\"Bots\"**.\n\n**3 -)** Click on **\"All Orders\"**.\n\n**4 -)** In the **\"Running\"** tab, locate the bot with the **\"Stopped - position open\"** status.\n\n**5 -)** Click on the **\"Position\"** button.\n\n**6 -)** You can choose **\"Close Position\"** to close a single position or click **\"Close All\"** to close all open positions related to that stopped grid.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
+    "text_tr": "Durdurulmuş bir Grid botundaki açık pozisyonu kapatmak için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** **\"Botlar\"** (Bots) seçeneğine tıklayın.\n\n**3 -)** **\"Tüm Emirler\"** (All Orders) kısmına tıklayın.\n\n**4 -)** **\"Çalışıyor\"** (Running) sekmesinde, **\"Stopped - position open\"** (Durduruldu - pozisyon açık) durumundaki botu bulun.\n\n**5 -)** **\"Position\"** (Pozisyon) butonuna tıklayın.\n\n**6 -)** Tek bir pozisyonu kapatmak için **\"Close Position\"** (Pozisyonu Kapat) seçeneğini kullanabilir veya durdurulan grid ile ilgili tüm açık pozisyonları kapatmak için **\"Close All\"** (Tümünü Kapat) butonuna tıklayabilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "image": "screenshots/1767888927050_Close-Open-Position-on-Stopped-Grid-EN.jpeg",
+    "topic": "BOTS",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767888931446,
+    "updatedAt": "2026-01-08 16:15 UTC+0"
+  },
+  {
+    "title": "Token & Project Feedback - EN",
+    "text": "To submit feedback regarding a token or project, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **\"Chart\"** icon (candlestick icon).\n\n**3 -)** Click on the **\"Info\"** tab.\n\n**4 -)** Scroll down and click on **\"Submit Feedback\"**.\n\n**5 -)** Fill in the required fields:\n\n**6 -)** Click **\"Submit\"**.\n\n**7 -)** You can click on **\"My feedback history\"** to track your previous submissions.",
+    "text_tr": "Bir token veya proje hakkında geri bildirim göndermek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** **\"Grafik\"** simgesine (mum grafiği simgesi) tıklayın.\n\n**3 -)** **\"Info\"** (Bilgi) sekmesine tıklayın.\n\n**4 -)** Sayfayı aşağı kaydırın ve **\"Submit Feedback\"** (Geri Bildirim Gönder) seçeneğine tıklayın.\n\n**5 -)** Gerekli alanları doldurun:\n\n**6 -)** **\"Submit\"** (Gönder) butonuna tıklayın.\n\n**7 -)** Önceki gönderimlerinizi takip etmek için **\"My feedback history\"** (Geri bildirim geçmişim) kısmına tıklayabilirsiniz.",
+    "image": "screenshots/1767733027515_Token-Project-Feedback-EN.jpeg",
+    "topic": "General",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767733057149,
+    "updatedAt": "2026-01-06 20:57 UTC+0"
+  },
+  {
+    "title": "PM Disable (Back to Classic) 关闭统一账户 (回到经典交易账户) - CN",
+    "text": "如要回到【经典交易账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【回到经典交易账户】\n3）在此页面中，您选择【经典交易】\n4）点击【切换】完成操作",
+    "text_tr": "",
+    "image": "screenshots/1767726539779_PM-Disable.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767726601188,
+    "updatedAt": "2026-01-07 03:10 UTC+8"
+  },
+  {
+    "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
+    "text": "关于代币发行量信息，项目方团队问题及举报其他可疑行为等，您可以按照截图中的步骤操作：\n\n1）在页面下方点击【合约】\n2）在页面上方点击【K线】图标\n3）点击【信息】\n4）在页面下方选择【提交反馈】\n5）在反馈页面填写您要提交的内容\n6）点击【提交】，即可完成反馈\n7）如需查看历史反馈记录，可点击【我的反馈记录】\n\n币安始终重视您的反馈，感谢您为社区的安全与健康发展所做的贡献。\n让我们携手共创更加美好的社区未来！",
+    "text_tr": "",
+    "image": "screenshots/1767721722254_Feedback-or-report-project.png",
+    "topic": "General",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767721746211,
+    "updatedAt": "2026-01-08 00:06 UTC+8"
+  },
+  {
+    "title": "EC Max Loss 事件合约最大损失 - CN",
+    "text": "如果您想要在事件合约设置单日最大损失金额，请按照截图中的步骤操作：\n\n1）事件合约页面右上角点击【...】\n2）点击【最大损失】\n3）输入您希望设置的单日最大亏损金额\n4）点击【确认】完成设置\n\n⚠️ 注意事项：\n当损失达到您设定的单日最大损失金额后，将无法继续提交订单。该限制将在下一个 UTC 日 00:00 自动重置。",
+    "text_tr": "",
+    "image": "screenshots/1767121811463_EC-Max-Loss.png",
+    "topic": "Event Contract",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767121840986
+  },
+  {
+    "title": "EC Cooling Off Period 事件合约冷静期 - CN",
+    "text": "如果您想要开启事件合约冷静期，请按照截图中的步骤操作：\n\n1）事件合约页面右上角点击【...】\n2）点击【冷静期】\n3）打开禁用事件合约功能的选项\n4）选择您想要禁用的期限（1天，1周，1个月，无限期）\n5）点击【确认】完成设置\n\n⚠️ 重要提示：\n冷静期一旦开启，将无法取消或提前关闭，请确认后再操作。",
+    "text_tr": "",
+    "image": "screenshots/1767120913193_EC-Cooling-Off-Period.png",
+    "topic": "Event Contract",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767120924398
+  },
+  {
+    "title": "How to add/remove funds in portfolio 如何添加/移除项目里的资金 - CN",
+    "text": "如果您想要在带单项目里【添加/移除】资金，请按照截图中的步骤操作：\n\n1）在项目里点击【调整余额】\n2）选择【添加】或者【移除】\n3）币种可选择【USDT】或【BNB】\n注意⚠️：BNB仅限于抵扣手续费，无法作为带单项目的保证金\n4）输入您要添加/移除的数量\n5）点击【确认】完成操作",
+    "text_tr": "",
+    "image": "screenshots/1767122300440_How-to-add-or-remove-funds-in-portfolio.png",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767118627287
+  },
+  {
+    "title": "How to remove CT in portfolio 如何在带单项目里移除跟单员 - CN",
+    "text": "如果您想要在带单项目里移除跟单员，请按照截图中的步骤操作：\n\n1）在项目里点击【跟单员】\n2）在您想要移除的跟单员并点击【移除】\n3）点击【确认】\n",
+    "text_tr": "",
+    "image": "screenshots/1767117702784_How-to-remove-CT-in-Portfolio.png",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767117728709
+  },
+  {
+    "title": "Create Invitation Code (Private) 创建邀请码（私域）- CN",
+    "text": "如果您想要在私域带单里创建/获取邀请码，请按照截图中的步骤操作：\n\n1）在您的私域带单页面，点击【创建】\n2）输入您的邀请码最大可邀请人数\n3）点击【确认】\n4）创建成功后，再次点击【邀请】\n5）可以在项目邀请页面复制邀请码\n6）如果您还想要再次创建邀请码，可以在右上角点击【+】创建",
+    "text_tr": "",
+    "image": "screenshots/1767116492684_Create-Invitation-Code-(Private).png",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767116503784
+  },
+  {
+    "title": "Adjust Min Copy Amount (Private) 调整最小跟单金额（私域）- CN",
+    "text": "如果您想要在私域带单里调整最低跟单金额，请按照截图中的步骤操作：\n\n1）在您的私域带单页面，在【最小跟单金额(USDT)】右旁点击【⬆️】\n2）输入您想要调整的最低跟单金额\n3）点击【确认】",
+    "text_tr": "",
+    "image": "screenshots/1767115481935_Adjust-Min-Copy-Amount.jpeg",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767115486730
+  },
+  {
+    "title": "Enable Portfolio Margin - EN",
+    "text": "To Enable **Portfolio Margin** please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"Portfolio Margin\"** button on the pop-up menu.\n\n**4 -)** Select **\"Portfolio Margin\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\n---\n\nTo Learn more about Portfolio Margin, here are some detailed guides:\n\n* [Introduction to Binance Portfolio Margin Mode](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [How to View Portfolio Margin Information from Your Binance Account and Trading Interface?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nIf you have any additional questions, please don't hesitate to share them with me.",
+    "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkinleştirmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Portfolyo Marjin\"** (Portfolio Margin) butonuna tıklayın.\n\n**4 -)** **\"Portfolyo Marjin\"** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\n---\n\nPortfolyo Marjin hakkında daha fazla bilgi edinmek için, aşağıda detaylı rehberleri bulabilirsiniz:\n\n* [Binance Portfolyo Marjin Moduna Giriş](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [Binance Hesabınızdan ve Alım Satım Arayüzünden Portfolyo Marjin Bilgilerini Nasıl Görüntüleyebilirsiniz?](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.",
+    "image": "screenshots/1766691091776_Enable-Portfolio-Margin---EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766691181367
+  },
+  {
+    "title": "Loan Repay (Borrowed Coin) 借币还款（借贷币种）- CN",
+    "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【借贷币种】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【借贷币种】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
+    "text_tr": "",
+    "image": "screenshots/1766685500345_Loan-Repay-(Borrowed-Coin).png",
+    "topic": "LOAN",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766685510697
+  },
+  {
+    "title": "Loan Repay (Collateral) 借币还款（抵押物）- CN",
+    "text": "偿还进行中的借贷有两种方式：\n\n- 使用借贷币种还款\n- 使用抵押物还款\n\n如果您希望使用【抵押物】来偿还正在进行的借贷，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【还款】\n3）在上方菜单中点击【抵押物】\n\n输入您希望偿还的金额后，页面将显示：\n\n- 还款后的 LTV\n- 还款后返还的抵押资产数量（可在订单详情中查看）\n- 兑换汇率以及使用抵押物数量\n\n以上就是使用抵押物偿还进行中借贷的操作方法。",
+    "text_tr": "",
+    "image": "screenshots/1766684943856_Loan-Repay-Collateral.png",
+    "topic": "LOAN",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766684949490,
+    "updatedAt": "2025-12-31 03:31 UTC+8"
+  },
+  {
+    "title": "Loan Order History 借币订单历史 - CN",
+    "text": "要查看正在进行中的借币订单或借币/还款历史记录，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击【更多】\n3）在页面中向下滑动，在【金融业务】分类下找到【质押借币】\n4）点击右上角的【历史记录】\n\n在该页面中，您可以查看当前进行中的订单以及借币/还款历史记录。",
+    "text_tr": "",
+    "image": "screenshots/1766683861367_Loan-Order-History.png",
+    "topic": "LOAN",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766683877481
+  },
+  {
+    "title": "BNB Discount BNB折扣 - CN",
+    "text": "要在合约/杠杆交易手续费或杠杆利息中启用BNB折扣，请按照截图中的步骤操作：\n\n1）点击【首页】\n2）点击左上角【三条杠（菜单）】\n3）点击右上角【设置】\n4）点击【使用 BNB】\n5）在此页面中，您可以为合约/杠杆交易手续费和杠杆利息启用BNB折扣",
+    "text_tr": "",
+    "image": "screenshots/1766681669769_BNB-Discount.png",
+    "topic": "General",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766681686727
+  },
+  {
+    "title": "Add/Remove Margin in Isolated Position 增加/减少保证金（逐仓） - CN",
+    "text": "要在合约逐仓仓位中增加或减少保证金，请按照截图中的步骤操作：\n\n1）点击保证金旁边的 （+）图标\n2）选择【增加保证金】或【减少保证金】\n3）输入要增加或减少的【数量】\n4）点击【确认】以继续操作\n\n当前仓位保证金：\n这是您当前仓位中的保证金金额。\n\n最大可增加：\n这是您可以增加的最大保证金数额。\n\n调整后参考强平价：\n这是在您调整后保证金后显示的预计强平价格。\n\n如需了解更多详细信息，您也可以参考官方指南：\n\n如何在全仓 / 逐仓保证金模式下调整保证金余额？\nhttps://www.binance.com/zh-CN/support/faq/detail/360038447311\n",
+    "text_tr": "",
+    "image": "screenshots/1766679646400_Add-Remove-Margin-in-Position.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766679658205
+  },
+  {
+    "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率）- CN",
+    "text": "要设置合约通知设置，请按照截图中的步骤操作：\n\n1）点击右上角的【…】\n2）在弹出菜单中点击【偏好设置】\n3）点击【通知设置】\n4）在此页面中，您可以启用或关闭以下通知：\n\n止盈 / 止损触发：\n当任意止盈或止损被触发时接收通知。每日最多 25 条 通知。\n\n资金费率触发：\n设置资金费率阈值；当任一持仓的预计资金费率超过该比例时，您将收到提醒。\n\n合约交易：\n当合约订单成交时接收通知。\n\n追加保证金提醒：\n默认阈值为 80%。点击【编辑】可设置不同的保证金率；当您的仓位达到该比例时，您将收到通知。",
+    "text_tr": "",
+    "image": "screenshots/1766678571625_Notification-settings.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766678630969
+  },
+  {
+    "title": "Webhook Failed Signal Webhook失败信号 - CN",
+    "text": "要查看Webhook失败信号，请按照截图中的步骤操作：\n\n1）点击【机器人】\n2）点击【Webhook 信号交易】\n3）点击垃圾桶按钮旁边的 【历史记录】图标\n4）进入此页面后，您将看到【失败信号】，可在此查看信号失败的原因\n\n如何使用 TradingView 设置信号交易？\nhttps://www.binance.com/zh-CN/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
+    "text_tr": "",
+    "image": "screenshots/1766676587242_Webhook-Failed-Signal.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "web",
+    "newLanguageName": "",
+    "id": 1766676606420
+  },
+  {
+    "title": "PM Enable 开启统一账户 - CN",
+    "text": "如要开启【统一账户】，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【统一账户】\n3）在此页面中，您选择【统一账户】\n4）点击【切换】完成操作\n\n如需了解更多关于【统一账户】的信息，请参考以下详细指南：\nhttps://www.binance.com/zh-CN/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
+    "text_tr": "",
+    "image": "screenshots/1767725853182_PM-Enable.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766598907265,
+    "updatedAt": "2026-01-07 03:10 UTC+8"
+  },
+  {
+    "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
+    "text": "要更改资产模式，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出的菜单中点击 【偏好设置】\n3）点击【资产模式】\n4）在该页面中即可更改您的资产模式（单币保证金模式/联合保证金模式）",
+    "text_tr": "",
+    "image": "screenshots/1766597344203_change-asset-mode.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766597363030
+  },
+  {
+    "title": "Funding Fee History 资金费用历史 - CN",
+    "text": "在手机App上查看资金费用历史记录，请按照截图中的步骤操作：\n\n1）点击【合约】\n2）点击 【历史订单】图标\n3）在上方菜单中向右滑动，点击【资金费用】\n\n在该页面中，您可以查看自己收到或支付的资金费用明细。",
+    "text_tr": "",
+    "image": "screenshots/1766595036418_Funding-Fee-资金费用.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766595089163
+  },
+  {
+    "title": "Futures Transaction History (Export) 合约资金流水（导出）- CN",
+    "text": "1. 请点击 【合约】，然后点击我标记的 【订单历史】图标。\n2. 接着进入 【资金流水】 选项，并点击右上角的 【导出】 按钮。\n3. 进入导出页面后，在这里请进行以下选择：\n\n选择：【全部时间】\n\n时间范围最多只能选择 12 个月。如果你需要查看 过去 2–5 年 的记录，可以按年份分别导出交易历史，例如：\n\n- 2020-01-01 至 2020-12-31\n- 2021-01-01 至 2021-12-31\n- 2022-01-01 至 2022-12-31\n- 2023-01-01 至 2023-12-31\n- 2024-01-01 至 2024-12-31\n\n这样就可以分别生成每一年的交易历史文件。",
+    "text_tr": "",
+    "image": "screenshots/1766594296064_Futures-Transaction-History-(Export)-合约资金流水（导出）.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766594411291
+  },
+  {
     "title": "Copy Trading History - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Copy%20Trading%20History%20-%20EN.jpg?raw=true",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Copy%20Trading%20History%20-%20EN.jpg",
     "text": "1 -) Click on Futures\n2 -) Click on Copy button\n3 -) Click on Copy on right bottom corner\n4 -) You can see the 'Ongoing - Closed' Copy Portfolios in this page.",
     "topic": "Copy Trading",
     "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
@@ -11,31 +331,37 @@
   {
     "title": "Futures Swap Button (BNFCR) - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/35a09846ff73857b2a751883ba8879dd22ab5242/images/Futures%20Swap%20Button%20(Mostly%20for%20BNFCR)%20-%20EN.jpg?raw=true",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures%20Swap%20Button%20(Mostly%20for%20BNFCR)%20-%20EN.jpg",
     "text": "You **can't directly transfer** BNFCR back to spot wallet, so you need to **swap it to BNB, BTC, or ETH** first to transfer it back to spot wallet.\n\n### **Step-by-Step Process:**\n\n1 -) **Click on** `Assets`\n2 -) **Click on** `Futures`\n3 -) **Click on** `USDsM Futures`\n4 -) **Click on** `SWAP`\n\n---\n\n### **In the SWAP Page:**\n\n- **Select** BNFCR \n- **Swap it** to one of the supported coins *(ETH, BNB, or BTC)*\n\n---\n\n> **Please make sure to select** `USDsM Futures` **from both options**\n\n- ✅ **Choose the** *second sub-category option* **for your selected coin** (BNB, ETH, or BTC)\n- ✅ **Select the** *first sub-category option* **for BNFCR**\n\n---\n\nOnce you have these supported assets, you **can transfer them back to spot wallet** ✅",
     "topic": "Futures Trading",
-    "id": 1765164170426
+    "id": 1765164170426,
+    "text_tr": "BNFCR'yi doğrudan Spot Cüzdanınıza **transfer edemezsiniz**; bu nedenle, Spot Cüzdanınıza geri aktarmadan önce BNFCR'yi **BNB, BTC veya ETH'ye takas etmeniz (swap)** gerekir.\n\n### **Bunun için ilgili adımları takip edebilirsiniz:**\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**3 -)** **\"USDⓈ-M\"** bölümüne tıklayın.\n\n**4 -)** **\"Swap\"** (Takas) butonuna tıklayın.\n\n---\n\n### **Takas (SWAP) Sayfasında:**\n\n* **BNFCR** varlığını seçin.\n* BNFCR'yi desteklenen coinlerden birine *(ETH, BNB veya BTC)* **dönüştürün**.\n\n---\n\n> **Lütfen her iki seçenek için de \"USDⓈ-M Vadeli İşlemler\" cüzdanının seçili olduğundan emin olun.**\n\n* ✅ Seçtiğiniz coin (BNB, ETH veya BTC) için **ikinci alt kategori seçeneğini** tercih edin.\n* ✅ BNFCR için ise **birinci alt kategori seçeneğini** tercih edin.\n\n---\n\nBu desteklenen varlıklara sahip olduğunuzda, onları **Spot Cüzdanınıza geri transfer edebilirsiniz**. ✅",
+    "updatedAt": "2026-01-06 21:00 UTC+0"
   },
   {
     "title": "System Feedback - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/35a09846ff73857b2a751883ba8879dd22ab5242/images/System%20Feedback%20-%20EN.jpg?raw=true",
-    "text": "To send the System Feedback from Binance Mobile App, please follow the steps on the screenshot: \n\n1 -) Click on the Home \n2 -) Click on the Menu \n3 -) Click on the Settings\n4 -) Click on ''Help & Support'' tab \n5 -) Click on ''System Feedback''\n6 -) Click on ''SEND'' \n7 -) Wait for Success notification to pop-ups. \n\nAfter you follow the related steps which I also provided as screenshot then please let me know so I can tell tech team that you completed the System Feedback.",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/System%20Feedback%20-%20EN.jpg",
+    "text": "To send the **System Feedback** from Binance Mobile App, please follow the steps in the screenshot:\n\n**1 -)** Click on the **Home**.\n\n**2 -)** Click on the **Menu**.\n\n**3 -)** Click on the **Settings**.\n\n**4 -)** Click on the **\"Help & Support\"** tab.\n\n**5 -)** Click on **\"System Feedback\"**.\n\n**6 -)** Click on **\"SEND\"**.\n\n**7 -)** Wait for the **\"Success\"** notification to pop-up.\n\nAfter you follow these steps, please let me know so I can inform the tech team that you have completed the System Feedback.",
     "topic": "General",
-    "id": 1765164170427
+    "id": 1765164170427,
+    "text_tr": "Binance Mobil Uygulaması üzerinden **Sistem Geri Bildirimi** göndermek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) sekmesine tıklayın.\n\n**2 -)** **Menü** simgesine tıklayın.\n\n**3 -)** **Ayarlar** (Settings) simgesine tıklayın.\n\n**4 -)** **\"Yardım ve Destek\"** (Help & Support) sekmesine tıklayın.\n\n**5 -)** **\"Sistem Geri Bildirimi\"** (System Feedback) seçeneğine tıklayın.\n\n**6 -)** **\"GÖNDER\"** (SEND) butonuna tıklayın.\n\n**7 -)** **\"Başarılı\"** (Success) bildiriminin çıkmasını bekleyin.\n\nBu adımları tamamladıktan sonra lütfen bana bildirin, böylece teknik ekibimize Sistem Geri Bildirimini tamamladığınızı iletebilirim.",
+    "updatedAt": "2026-01-06 21:01 UTC+0"
   },
   {
     "title": "Futures Transaction History (Export) - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Futures%20Transaction%20History%20(Export)%20-%20EN.jpg?raw=true",
-    "text": "Please click on Futures and then the ''history icon'' like I marked. \n\nThen go to ''Transaction History'' tab an click on ''Export'' button on top right corner. \n\nYou will see the Export tab, in there: \n\n Select: Beyond 90 Days\n\nThe timeline can be 12 months only so if you are looking for the last 2-5 years, you can simply create yearly transaction history such as:\n\n2020-01-01 to 2020-12-31\n2021-01-01 to 2021-12-31\n2022-01-01 to 2022-12-31\n2023-01-01 to 2023-12-31\n2024-01-01 to 2024-12-31\n\nThis way you can create transaction history files for each year separately .",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures%20Transaction%20History%20(Export)%20-%20EN.jpg",
+    "text": "To export your **Futures Transaction History**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **History Icon**.\n\n**3 -)** Go to the **\"Transaction History\"** tab.\n\n**4 -)** Click on the **\"Export\"** button in the top right corner.\n\n**5 -)** In the Export tab, select: **Beyond 90 Days**.\n\n---\n\n**Important Note:** The timeline for each export is limited to **12 months**. If you need records for the last 2–5 years, you can create separate files for each year as follows:\n\n* 2020-01-01 to 2020-12-31\n* 2021-01-01 to 2021-12-31\n* 2022-01-01 to 2022-12-31\n* 2023-01-01 to 2023-12-31\n* 2024-01-01 to 2024-12-31\n\nThis way, you can generate transaction history files for each year separately.",
     "topic": "Futures Trading",
-    "id": 1765164170428
+    "id": 1765164170428,
+    "text_tr": "**Vadeli İşlemler İşlem Geçmişini** dışa aktarmak için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** **\"Geçmiş\"** (History) simgesine tıklayın.\n\n**3 -)** **\"İşlem Geçmişi\"** (Transaction History) sekmesine gidin.\n\n**4 -)** Sağ üst köşedeki **\"Dışa Aktar\"** (Export) butonuna tıklayın.\n\n**5 -)** Dışa aktarma sekmesinde **\"90 Günden Fazla\"** (Beyond 90 days) seçeneğini işaretleyin.\n\n---\n\n**Önemli Not:** Her bir dışa aktarma işlemi **12 ay** ile sınırlıdır. Son 2–5 yıla ait verileri almak istiyorsanız, her yıl için aşağıdaki gibi ayrı dosyalar oluşturabilirsiniz:\n\n* 2020-01-01 ile 2020-12-31 arası\n* 2021-01-01 ile 2021-12-31 arası\n* 2022-01-01 ile 2022-12-31 arası\n* 2023-01-01 ile 2023-12-31 arası\n* 2024-01-01 ile 2024-12-31 arası\n\nBu sayede her yıl için ayrı bir işlem geçmişi dosyası oluşturabilirsiniz.",
+    "updatedAt": "2026-01-06 21:12 UTC+0"
   },
   {
     "title": "Transfer From Cross Margin To Spot - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Transfer%20From%20Cross%20Margin%20To%20Spot%20-%20EN.jpg?raw=true",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer%20From%20Cross%20Margin%20To%20Spot%20-%20EN.jpg",
     "text": "1 -) Click on Asset\n2 -) Click on Spot\n3 -) Click on Cross Margin\n4 -) Click on Transfer\n\nYou will see the Transfer page like this... In here you need to click on the arrows on right. \n\n5 -) Click on Arrows\n\n6 -) Correct Pathway: \n\nFrom: Cross Margin\nTo: Spot Wallet\n\nSelect Your Coin, the amount and and confirm the transfer. \n\nWith this steps, you can transfer all your assets from Cross Margin to Spot Wallet.",
     "topic": "Margin Trading",
     "id": 1765164170429
@@ -43,15 +369,18 @@
   {
     "title": "Cooling-Off Period - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Cooling-Off%20Period%20-%20EN.jpg?raw=true",
-    "text": "You can disable your Futures Trading on your account. You have cooling off function for this: \n\n1 -) Please click on the ''...'' icon on Futures Trading page \n\n2 -) Click on ''Cooling-Off Period'' \n\n3 -) Click on the Enable button. \n\n4 -) Then you can select the cooling off period such as: \n\n1 Day\n1 Week \n1 Month\nIndefinite (This will restrict the futures trading forever) \n\nOnce you activate the cooling off period. You won't be able to trade Futures so you will disable the futures trading. \n\nPlease note that once you activated Cooling Off Period, we can't assist you to disable it. \n\nWhat Is the Cooling Period Function and How to Use It?\nhttps://www.binance.com/en/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc ",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Cooling-Off%20Period%20-%20EN.jpg",
+    "text": "To disable Futures Trading on your account, you can use the **Cooling-Off Period** function by following the steps in the screenshot provided:\n\n**1 -)** Click on the **\"...\"** icon on the Futures Trading page.\n\n**2 -)** Click on **\"Cooling-off Period\"**.\n\n**3 -)** Click on the **Enable** button.\n\n**4 -)** Select your preferred duration:\n\n* **1 Day**\n* **1 Week**\n* **1 Month**\n* **Indefinite** (This will restrict futures trading permanently)\n\nOnce you activate the Cooling-Off Period, you will be unable to trade Futures.\n\n> [!IMPORTANT]\n> Once activated, the Cooling-Off Period **cannot be disabled** by our support team until the chosen period has ended.\n\n---\n\n**To learn more, you can check this official guide:**\n\n* [What Is the Cooling Period Function and How to Use It?](https://www.binance.com/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc)\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "topic": "Futures Trading",
-    "id": 1765164170430
+    "id": 1765164170430,
+    "platform": "mobile",
+    "text_tr": "Hesabınızda Vadeli İşlemleri devre dışı bırakmak için ekran görüntüsünde belirtilen adımları takip ederek **Bekleme Süresi** (Cooling-Off Period) işlevini kullanabilirsiniz:\n\n**1 -)** Vadeli İşlemler sayfasındaki **\"...\"** simgesine tıklayın.\n\n**2 -)** **\"Bekleme Süresi\"** (Cooling-off Period) seçeneğine tıklayın.\n\n**3 -)** Etkinleştirme butonuna tıklayın.\n\n**4 -)** Tercih ettiğiniz süreyi seçin:\n\n* **1 Gün**\n* **1 Hafta**\n* **1 Ay**\n* **Süresiz** (Bu seçenek vadeli işlemleri kalıcı olarak kısıtlar)\n\nBekleme Süresi aktif hale getirildiğinde, Vadeli İşlemler yapamazsınız.\n\n> **Önemli Not:** Bekleme Süresi bir kez etkinleştirildiğinde, seçilen süre dolana kadar bu kısıtlama destek ekibimiz tarafından **kaldırılamaz**.\n\n---\n\n**Daha fazla bilgi edinmek için resmi rehberimize göz atabilirsiniz:**\n\n* [Bekleme Süresi İşlevi Nedir ve Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc)\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "updatedAt": "2026-01-08 15:34 UTC+0"
   },
   {
     "title": "Mark Price Chart - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Mark%20Price%20Chart%20-%20EN.jpg?raw=true",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Mark%20Price%20Chart%20-%20EN.jpg",
     "text": "To see the Mark Price chart, please follow the steps in the screenshot: \n\n1 -) Click On Futures \n\n2 -) Click On the Chart Icon\n\n3 -) Click on Last Price button above the chart\n\n4 -) Select Mark Price \n\nThis way you can see the real-time mark price chart.\n\nTo Learn More about the difference between Mark Price and Last Price, you can check this official guide as well: \n\nWhat Is the Difference Between a Futures Contract’s Last Price and Mark Price?\nhttps://www.binance.com/en/blog/futures/5704082076024731087 ",
     "topic": "Futures Trading",
     "id": 1765164170431,
@@ -60,7 +389,7 @@
   {
     "title": "Funding Fee History - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Funding%20Fee%20History%20-%20EN.jpg?raw=true",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Funding%20Fee%20History%20-%20EN.jpg",
     "text": "To see the Funding Fee History on your Mobile App, please follow the steps in the screenshot: \n\n1 -) Click On Futures\n\n2 -) Click on the History Icon\n\n3 -) Scroll on the right on upper menu and click on Funding Fee \n\nIn this page you can see how much funding fee you received or paid in details.",
     "topic": "Futures Trading",
     "id": 1765164170432,
@@ -70,9 +399,11 @@
     "title": "LOAN HISTORY (ONGOING LOANS) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/LOAN_HISTORY_(ONGOING_LOANS)_-_EN_.png",
-    "text": "To see your ongoing Loan orders or your Loan history, you can follow the steps in the screenshot: \n\n1 -) Click on Home button \n\n2 -) Click on ''More'' \n\n3 -) Scroll Down on that page and find ''Loans'' under Finance. \n\n4 -) Click on The History Icon on Top Right Corner\n\nIn that page you can see your ongoing Loans and your Loan history.",
-    "topic": "Binance LOAN",
-    "id": 1765164170433
+    "text": "To see your ongoing Loan orders or your Loan history, please follow the steps in the screenshot:\n\n**1 -)** Click on the **Home** button.\n\n**2 -)** Click on **\"More\"**.\n\n**3 -)** Scroll down on that page and find **\"Loans\"** under the Finance section.\n\n**4 -)** Click on **The History Icon** in the top right corner.\n\nIn that page, you can see your ongoing Loans and your Loan history.",
+    "topic": "LOAN",
+    "id": 1765164170433,
+    "text_tr": "Devam eden Borç/Kredi emirlerinizi veya geçmişinizi görmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) butonuna tıklayın.\n\n**2 -)** **\"Daha Fazla\"** (More) seçeneğine tıklayın.\n\n**3 -)** Sayfayı aşağı kaydırın ve Finans bölümü altındaki **\"Borç Alma\"** (Loans) seçeneğini bulun.\n\n**4 -)** Sağ üst köşedeki **Geçmiş İkonuna** tıklayın.\n\nBu sayfada devam eden kredilerinizi ve kredi geçmişinizi görebilirsiniz.",
+    "updatedAt": "2026-01-06 21:15 UTC+0"
   },
   {
     "title": "Transfer From Spot Wallet to Isolated Margin - EN",
@@ -126,81 +457,75 @@
     "title": "Change Asset Mode (Single,Multi) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Asset_Mode_(Single%2CMulti)_-_EN.jpg",
-    "text": "To change Asset Mode, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Asset Mode button.\n\n5 -) In this page you can change your asset mode.",
+    "text": "To change your **Asset Mode**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon on the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on the **Asset Mode** button.\n\n**5 -)** In this page, you can change your **Asset Mode**.\n\n---\n\nTo learn more about **Asset Modes**, you can check these official guides:\n\n* [How to Switch between Single-Asset and Multi-Assets Modes](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [What Is Multi-Assets Mode and Which Assets Are Supported?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170440
+    "id": 1765164170440,
+    "text_tr": "**Varlık Modunuzu** (Asset Mode) değiştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Varlık Modu\"** (Asset Mode) butonuna tıklayın.\n\n**5 -)** Bu sayfada **Varlık Modunuzu** değiştirebilirsiniz.\n\n---\n\n**Varlık Modları** hakkında daha fazla bilgi edinmek için bu resmi rehberlere göz atabilirsiniz:\n\n* [Tekli ve Çoklu Varlık Modu Arasında Değişim Nasıl Yapılır?](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [Çoklu Varlık Modu Nedir ve Hangi Varlıklar Desteklenir?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:21 UTC+0"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Position_Mode_(One-Way%2CMulti)_-_EN.jpg",
-    "text": "To Change Position Mode, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Position Mode button.\n\n5 -) In this page you can change your Position mode.",
+    "text": "To change your **Position Mode**, please follow the steps in the screenshot:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon on the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on the **Position Mode** button.\n\n**5 -)** In this page, you can change your **Position Mode**.\n\n---\n\nTo learn more about **Hedge Mode**, you can check these official guides:\n\n* [What Is Hedge Mode and How to Use It?](https://www.binance.com/support/faq/detail/360041513552)\n* [Managing Risks With Hedge Mode in Crypto Futures Trading](https://www.binance.com/blog/futures/3345275339961971082)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170441
+    "id": 1765164170441,
+    "text_tr": "**Pozisyon Modunuzu** (Position Mode) değiştirmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Pozisyon Modu\"** (Position Mode) butonuna tıklayın.\n\n**5 -)** Bu sayfada **Pozisyon Modunuzu** değiştirebilirsiniz.\n\n---\n\n**Hedge Modu** hakkında daha fazla bilgi edinmek için bu resmi rehberlere göz atabilirsiniz:\n\n* [Hedge Modu Nedir ve Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/360041513552)\n* [Kripto Vadeli İşlemler Alım Satımında Hedge Modu ile Risk Yönetimi](https://www.binance.com/blog/futures/3345275339961971082)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:26 UTC+0"
   },
   {
     "title": "Change Button Settings in Positions - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Button_Settings_in_Positions_-_EN.jpg",
-    "text": "To Change Asset Mode, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on Button Settings In Positions.\n\n5 -) In this page you can change your Button settings on the open positions. You can enable or the disable options you prefer.",
+    "text": "To change the **Button Settings in Positions**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon in the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on the **\"Button Settings in Positions\"** button.\n\n**5 -)** On this page, you can change your **Button settings** for open positions. You can enable or disable the options you prefer.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170442
+    "id": 1765164170442,
+    "text_tr": "**Pozisyonlardaki Buton Ayarlarını** (Button Settings in Positions) değiştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Pozisyonlardaki Buton Ayarları\"** (Button Settings in Positions) seçeneğine tıklayın.\n\n**5 -)** Bu sayfada açık pozisyonlarınız için **Buton ayarlarınızı** değiştirebilirsiniz. Tercih ettiğiniz seçenekleri etkinleştirebilir veya devre dışı bırakabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:30 UTC+0"
   },
   {
     "title": "Loan Repayment (Collateral) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Collateral)_-_EN.jpg",
-    "text": "There are two ways to repay an ongoing loan\n\nBorrowed Coin\nCollateral \n\nSo if you wish to repay an ongoing Loan with the collateral amount, please follow the steps in the screenshot: \n\n1 -) Click on ''Ongoing Orders'' on Loan Orders Page\n2 -) Click on ''Repay'' \n3 -) Click on ''Collateral'' on upper menu\n\nEnter the amount you wish to repay and you will see the LTV after repayment and the amount of collateral will return after the repayment on the details as well. \n\nThis is how you repay an ongoing Loan with Collateral.",
-    "topic": "Binance LOAN",
-    "id": 1765164170443
+    "text": "There are two ways to repay an ongoing loan: using the **Borrowed Coin** or using **Collateral**. To repay an ongoing loan with your collateral amount, please follow the steps in the screenshot provided:\n\n**1 -)** Click on **\"Ongoing Orders\"** on the Loan Orders page.\n\n**2 -)** Click on **\"Repay\"**.\n\n**3 -)** Click on **\"Collateral\"** on the upper menu.\n\n**4 -)** Enter the amount you wish to repay.\n\nIn the details section, you will see the **LTV after repayment** and the **amount of collateral** that will be returned to you after the process is complete. This is how you repay an ongoing loan with collateral.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
+    "topic": "LOAN",
+    "id": 1765164170443,
+    "platform": "mobile",
+    "text_tr": "Devam eden bir krediyi geri ödemenin iki yolu vardır: **Ödünç Alınan Coin** (Borrowed Coin) veya **Teminat** (Collateral) kullanmak. Devam eden bir krediyi teminat miktarınızla geri ödemek istiyorsanız, lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Kredi Siparişleri (Loan Orders) sayfasındaki **\"Devam Eden Siparişler\"** (Ongoing Orders) sekmesine tıklayın.\n\n**2 -)** **\"Geri Öde\"** (Repay) butonuna tıklayın.\n\n**3 -)** Üst menüden **\"Teminat\"** (Collateral) seçeneğine tıklayın.\n\n**4 -)** Geri ödemek istediğiniz tutarı girin.\n\nDetaylar kısmında, **geri ödeme sonrası LTV** oranını ve işlem tamamlandıktan sonra size iade edilecek **teminat miktarını** görebilirsiniz. Devam eden bir krediyi teminat ile bu şekilde geri ödeyebilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "updatedAt": "2026-01-08 15:39 UTC+0"
   },
   {
     "title": "Loan Repayment (Borrowed Coin) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Borrowed_Coin)_-_EN.jpg",
-    "text": "There are two ways to repay an ongoing loan\n\nBorrowed Coin\nCollateral \n\nSo if you wish to repay an ongoing Loan with the borrowed coin, please follow the steps in the screenshot: \n\n1 -) Click on ''Ongoing Orders'' on Loan Orders Page\n2 -) Click on ''Repay'' \n3 -) Click on ''Borrowed Coin'' on upper menu\n\nEnter the amount you wish to repay and you will see the LTV after repayment and the amount of collateral will return after the repayment on the details as well. \n\nThis is how you repay an ongoing Loan with Borrowed Coin.",
-    "topic": "Binance LOAN",
-    "id": 1765164170444
+    "text": "There are two ways to repay an ongoing loan: using the **Borrowed Coin** or using **Collateral**. To repay an ongoing loan specifically with the borrowed coin, please follow the steps in the screenshot:\n\n**1 -)** Click on **\"Ongoing Orders\"** on the Loan Orders page.\n\n**2 -)** Click on **\"Repay\"**.\n\n**3 -)** Click on **\"Borrowed Coin\"** on the upper menu.\n\n**4 -)** Enter the amount you wish to repay.\n\nYou will see the **LTV after repayment** and the **amount of collateral** that will be returned to you in the details section. This is how you repay an ongoing loan with the borrowed coin.\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
+    "topic": "LOAN",
+    "id": 1765164170444,
+    "platform": "mobile",
+    "text_tr": "Devam eden bir krediyi geri ödemenin iki yolu vardır: **Ödünç Alınan Coin** (Borrowed Coin) veya **Teminat** (Collateral) kullanmak. Devam eden bir krediyi ödünç alınan coin ile geri ödemek istiyorsanız, lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Kredi Siparişleri (Loan Orders) sayfasındaki **\"Devam Eden Siparişler\"** (Ongoing Orders) sekmesine tıklayın.\n\n**2 -)** **\"Geri Öde\"** (Repay) butonuna tıklayın.\n\n**3 -)** Üst menüden **\"Ödünç Alınan Coin\"** (Borrowed Coin) seçeneğine tıklayın.\n\n**4 -)** Geri ödemek istediğiniz tutarı girin.\n\nDetaylar kısmında, **geri ödeme sonrası LTV** oranını ve iade edilecek **teminat miktarını** görebilirsiniz. Devam eden bir krediyi ödünç alınan coin ile bu şekilde geri ödeyebilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "updatedAt": "2026-01-08 15:36 UTC+0"
   },
   {
-    "title": "Portfolio Margin (Enable,Disable) - EN",
-    "language": "English",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Portfolio_Margin_(Enable%2CDisable)_-_EN.jpg",
-    "text": "To change between Classic Trading and Portfolio Margin, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Portfolio Margin'' button on the pop-up menu.\n\n4 -) In this page you can change between Classic Trading and Portfolio Margin. \n\nTo Learn more about Portfolio Margin, here are some detailed guides: \nhttps://www.binance.com/en/support/faq/detail/bddd924496d74ecd8820a6d95585ccee",
-    "topic": "Futures Trading",
-    "id": 1765164170445
-  },
-  {
-    "title": "Futures Referral Page - EN",
-    "language": "English",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures_Referral_Page_-_EN.jpeg",
-    "text": "To create your Futures Referral Code, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on '' Futures Referral '' button.\n\n4 -) Click on ''Invite Now''\n\n5 -) In this page you can copy your Futures referral code, or change/customize your referral code. \n\nTo Learn More About the Futures Referral Rules: \nhttps://www.binance.com/en/support/faq/detail/d10f95a5ac8847bdb6f422a26921745d",
-    "topic": "Futures Trading",
-    "id": 1765164170446
-  },
-  {
-    "title": "Transfer From Futures USDS-M To Spot Wallet - EN",
+    "title": "Transfer From Futures USDⓈ-M To Spot Wallet - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Futures_USDS-M_To_Spot_Wallet_-_EN.jpg",
-    "text": "To Transfer assets from Futures USDS-M Wallet to Spot Wallet, please follow the steps in the screenshot:\n\n1 -) Click on ''Assets''\n\n2 -) Click on ''Futures''\n\n3 -) Click on ''USDS-M button''\n\n4 -) Click on ''Transfer'' \n\n5 -) Click on the arrows to change the path, the correct path is like in the next step:  \n\n 6 -) Correct Path: \n\nFrom: USDS-M Futures\nTo: Spot Wallet\n\n7 -) Select The Asset/Coin\n\nInput the amount of assets you want to transfer and confirm the transfer. \n\nThis is how you do transfers from Futures USDS-M to Spot Wallet.",
+    "text": "To transfer assets from your **USDⓈ-M Futures Wallet** to your **Spot Wallet**, please follow the steps in the screenshot:\n\n**1 -)** Click on **\"Assets\"**.\n\n**2 -)** Click on **\"Futures\"**.\n\n**3 -)** Click on the **\"USDⓈ-M\"** button.\n\n**4 -)** Click on **\"Transfer\"**.\n\n**5 -)** Click on the **arrows icon** to change the transfer path.\n\n**6 -)** Ensure the correct path matches the screenshot:\n\n* **From:** USDⓈ-M Futures\n* **To:** Spot Wallet\n\n**7 -)** **Select the Asset/Coin** you wish to transfer.\n\nInput the amount of assets you want to transfer and confirm the transfer. This is how you perform transfers from your USDⓈ-M Futures Wallet to your Spot Wallet.\n\n---\n\n**To learn more, you can check this official guide:**\n\n* [How to Transfer Funds to the Futures Wallet?](https://www.binance.com/support/faq/how-to-transfer-funds-to-the-futures-wallet-360033773532)\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "topic": "Futures Trading",
-    "id": 1765164170447
+    "id": 1765164170447,
+    "text_tr": "**USDⓈ-M Vadeli İşlemler** cüzdanınızdan **Spot cüzdanınıza** varlık transfer etmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**3 -)** **\"USDⓈ-M\"** butonuna tıklayın.\n\n**4 -)** **\"Transfer\"** seçeneğine tıklayın.\n\n**5 -)** Transfer yönünü değiştirmek için **ok simgesine** tıklayın.\n\n**6 -)** Doğru yolun ekran görüntüsündeki gibi olduğundan emin olun:\n\n* **Nereden:** USDⓈ-M Vadeli İşlemler (USDⓈ-M Futures)\n* **Nereye:** Spot Cüzdanı (Spot Wallet)\n\n**7 -)** Transfer etmek istediğiniz **Varlığı/Coin'i seçin**.\n\nTransfer etmek istediğiniz varlık miktarını girin ve transferi onaylayın. USDⓈ-M Vadeli İşlemler cüzdanınızdan Spot cüzdanınıza bu şekilde transfer yapabilirsiniz.\n\n---\n\n**Daha fazla bilgi edinmek için resmi rehberimize göz atabilirsiniz:**\n\n* [Vadeli İşlemler Cüzdanına Nasıl Fon Aktarılır?](https://www.binance.com/en/support/faq/how-to-transfer-funds-to-the-futures-wallet-360033773532)\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "platform": "mobile",
+    "updatedAt": "2026-01-08 15:26 UTC+0"
   },
   {
-    "title": "Transfer From Spot Wallet to USDS-M Futures - EN",
+    "title": "Transfer From Spot Wallet to USDⓈ-M Futures - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Spot_Wallet_to_USDS-M_Futures_-_EN.jpg",
-    "text": "To Transfer assets from Spot to Futures Wallet, please follow the steps in the screenshot:\n\n1 -) Click on ''Assets''\n\n2 -) Click on ''Futures''\n\n3 -) Click on ''USDS-M button''\n\n4 -) Click on ''Transfer'' \n\n5 -) Make sure the path is: \n\nFrom: Spot Wallet\nTo: USDS-M Futures\n\n6 -) Select The Asset/Coin\n\nInput the amount of assets you want to transfer and confirm the transfer. \n\nThis is how you do transfers from Spot to Futures USDS-M Wallet.",
+    "text": "To transfer assets from Spot to your USDⓈ-M Futures Wallet, please follow the steps in the screenshot:\n\n**1 -)** Click on **\"Assets\"**.\n\n**2 -)** Click on **\"Futures\"**.\n\n**3 -)** Click on the **\"USDⓈ-M\"** button.\n\n**4 -)** Click on **\"Transfer\"**.\n\n**5 -)** Ensure the path is set as follows:\n\n* **From**: Spot Wallet\n* **To**: USDⓈ-M Futures\n\n**6 -)** **Select the Asset/Coin** you wish to transfer.\n\nInput the amount of assets you want to transfer and confirm the transfer. This is how you perform transfers from Spot to your USDⓈ-M Futures Wallet.\n\n---\n\n**To learn more, you can check this official guide:**\n\n* [How to Transfer Funds to the Futures Wallet?](https://www.binance.com/support/faq/how-to-transfer-funds-to-the-futures-wallet-360033773532)\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "topic": "Futures Trading",
-    "id": 1765164170448
-  },
-  {
-    "title": "How To Close The Grid Position When The Grid is Stop",
-    "language": "English",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/How_To_Close_The_Grid_Position_When_The_Grid_is_Stop.jpg",
-    "text": "To Close the open position in a stopped grid, please follow the steps in the screenshot: \n\n1 -) Click on Futures button\n\n2 -) Click on Bots button\n\n3 -) Click on ''All Orders'' on the right corner\n\n4 -) You will see ''Position'' button on your stopped grid. \n\n5 -) Then you will see a second ''Position'' button on running order detail page. \n\n6 -) In this page you can see the open positions to close by clicking Close buttons.",
-    "topic": "Grid Bot",
-    "id": 1765164170449
+    "id": 1765164170448,
+    "platform": "mobile",
+    "text_tr": "Spot cüzdanınızdan Vadeli İşlemler (Futures) cüzdanınıza varlık transfer etmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine tıklayın.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**3 -)** **\"USDⓈ-M\"** butonuna tıklayın.\n\n**4 -)** **\"Transfer\"** seçeneğine tıklayın.\n\n**5 -)** Transfer yolunun şu şekilde olduğundan emin olun:\n\n* **Nereden**: Spot Cüzdanı (Spot Wallet)\n* **Nereye**: USDⓈ-M Vadeli İşlemler (USDⓈ-M Futures)\n\n**6 -)** Transfer etmek istediğiniz **Varlığı/Coin'i seçin**.\n\nTransfer etmek istediğiniz varlık miktarını girin ve transferi onaylayın. Spot cüzdanınızdan USDⓈ-M Vadeli İşlemler cüzdanınıza bu şekilde transfer yapabilirsiniz.\n\n---\n\n**Daha fazla bilgi edinmek için resmi rehberimize göz atabilirsiniz:**\n\n* [Vadeli İşlemler Cüzdanına Nasıl Fon Aktarılır?](https://www.binance.com/support/faq/how-to-transfer-funds-to-the-futures-wallet-360033773532)\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "updatedAt": "2026-01-08 15:27 UTC+0"
   },
   {
     "title": "Cross Margin Adjusted Entry Price - EN",
@@ -214,89 +539,116 @@
     "title": "BNB Discount (Futures,Margin Interest) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/BNB_Discount_(Futures%2CMargin_Interest)_-_EN.jpg",
-    "text": "To Enable BNB Discount on Futures or Margin Interest, please follow the steps in the screenshot: \n\n1 -) Click on the Home \n\n2 -) Click on the Menu \n\n3 -) Click on the Settings\n\n4 -) Click on ''Using BNB'' button \n\n5 -) You can enable the BNB discount on for Futures and Margin interests in this page",
+    "text": "To enable the **BNB Discount** for Futures or Margin interest, please follow the steps in the screenshot above:\n\n**1 -)** Click on the **Home** button.\n\n**2 -)** Click on the **Menu** icon in the top left corner.\n\n**3 -)** Click on the **Settings** gear icon in the top right corner.\n\n**4 -)** Click on the **\"Using BNB\"** button.\n\n**5 -)** On this page, you can **enable the BNB discount** for Futures and Margin interests.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "General",
-    "id": 1765164170451
+    "id": 1765164170451,
+    "text_tr": "Vadeli İşlemler veya Marjin faizlerinde **BNB İndirimini** (BNB Discount) etkinleştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) butonuna tıklayın.\n\n**2 -)** Sol üst köşedeki **Menü** simgesine tıklayın.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (çark simgesi) bölümüne tıklayın.\n\n**4 -)** **\"BNB Kullanımı\"** (Using BNB) butonuna tıklayın.\n\n**5 -)** Bu sayfada, Vadeli İşlemler ve Marjin faizleri için **BNB indirimini etkinleştirebilirsiniz**.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "platform": "mobile",
+    "updatedAt": "2026-01-06 23:46 UTC+0"
   },
   {
     "title": "SWAP LDUSDT to USDT - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/SWAP_LDUSDT_to_USDT_-_EN.jpg",
-    "text": "To Swap your LDUSDT to USDT and sent it back to Earn wallet, please follow the steps in the screenshot: \n\n1 -) Click on Assets\n2 -) Click on Futures \n3 -) Click on USDS-M Futures\n4 -) Click on LDUSDT Earning button\n5 -) Click on SWAP on new page\n\n6 -) Click on the arrow icon to change the path. \n\n7 -) The correct path as in this step on the screenshot:\n \nFrom: USDS-M Futures (LDUSDT)\nTo: Earn (USDT)\n\nInput the amount and click on Confirm. \n\nYou will see the USDT in your Earn wallet after you confirm. \n\nWhat is LDUSDT and How to Use it as Margin in Futures Trading?\nhttps://www.binance.com/en/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd",
+    "text": "To swap your **LDUSDT** to **USDT** and send it back to your Earn wallet, please follow the steps in the screenshot provided:\n\n**1 -)** Click on **Assets**.\n\n**2 -)** Click on **Futures**.\n\n**3 -)** Click on **USDⓈ-M**.\n\n**4 -)** Click on the **LDUSDT Earning** button.\n\n**5 -)** Click on **Swap** on the new page.\n\n**6 -)** Click on the **arrow icon** to change the transfer path.\n\n**7 -)** Ensure the correct path matches the screenshot:\n\n* **From:** USDⓈ-M Futures (LDUSDT)\n* **To:** Earn (USDT)\n\nInput the amount and click on **Confirm**. You will see the **USDT** in your Earn wallet after you confirm.\n\n---\n\n**To learn more, you can check this official guide:**\n\n* [What is LDUSDT and How to Use it as Margin in Futures Trading?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd)\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "topic": "Futures Trading",
-    "id": 1765164170452
+    "id": 1765164170452,
+    "text_tr": "**LDUSDT** varlığınızı **USDT**'ye takas edip Earn cüzdanınıza geri göndermek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Varlıklar** (Assets) sekmesine tıklayın.\n\n**2 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**3 -)** **USDⓈ-M** bölümüne tıklayın.\n\n**4 -)** **LDUSDT Earning** butonuna tıklayın.\n\n**5 -)** Yeni sayfada **Swap** (Takas) butonuna tıklayın.\n\n**6 -)** Transfer yönünü değiştirmek için **ok simgesine** tıklayın.\n\n**7 -)** Doğru yolun ekran görüntüsündeki gibi olduğundan emin olun:\n\n* **Nereden:** USDⓈ-M Vadeli İşlemler (LDUSDT)\n* **Nereye:** Earn (USDT)\n\nMiktarı girin ve **Confirm** (Onayla) butonuna tıklayın. Onayladıktan sonra **USDT**'yi Earn cüzdanınızda göreceksiniz.\n\n---\n\n**Daha fazla bilgi edinmek için resmi rehberimize göz atabilirsiniz:**\n\n* [LDUSDT Nedir ve Vadeli İşlemlerde Teminat Olarak Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd)\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "updatedAt": "2026-01-08 15:17 UTC+0"
   },
   {
     "title": "SWAP USDT to LDUSDT - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/SWAP_USDT_to_LDUSDT_-_EN.jpg",
-    "text": "By swapping your USDT to LDUSDT, you can use your USDT balance in Earn wallet as a margin in USDS-M Futures, to do this - please follow the steps in the screenshot: \n\n1 -) Click on Assets\n2 -) Click on Futures \n3 -) Click on USDS-M Futures\n4 -) Click on LDUSDT Earning button\n5 -) Click on SWAP on new page\n\n6 -) In this page make sure the path is the same in the screenshot: \n\nFrom: Earn (USDT)\nTo: USDS-M Futures (LDUSDT)\n\nInput the amount and click on Confirm. \n\nYou will see the LDUSDT as balance on Futures after you confirm.\n\nWhat is LDUSDT and How to Use it as Margin in Futures Trading?\nhttps://www.binance.com/en/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd",
+    "text": "By swapping your USDT to **LDUSDT**, you can use your USDT balance in your Earn wallet as margin in USDⓈ-M Futures. To do this, please follow the steps in the screenshot provided:\n\n**1 -)** Click on **Assets**.\n\n**2 -)** Click on **Futures**.\n\n**3 -)** Click on **USDⓈ-M Futures**.\n\n**4 -)** Click on the **LDUSDT Earning** button.\n\n**5 -)** Click on **Swap** on the new page.\n\n**6 -)** On this page, make sure the transfer path matches the screenshot:\n\n* **From:** Earn (USDT)\n* **To:** USDⓈ-M Futures (LDUSDT)\n\nInput the amount and click **Confirm**. You will see the LDUSDT as a balance in your Futures account after you confirm.\n\n---\n\n**To learn more, you can check this official guide:**\n\n* [What is LDUSDT and How to Use it as Margin in Futures Trading?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd)\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
     "topic": "Futures Trading",
-    "id": 1765164170453
+    "id": 1765164170453,
+    "text_tr": "USDT varlığınızı **LDUSDT**'ye takas ederek, Earn cüzdanınızdaki USDT bakiyenizi USDⓈ-M Vadeli İşlemlerinde teminat olarak kullanabilirsiniz. Bunun için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Varlıklar** (Assets) sekmesine tıklayın.\n\n**2 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**3 -)** **USDⓈ-M Vadeli İşlemler** bölümüne tıklayın.\n\n**4 -)** **LDUSDT Earning** butonuna tıklayın.\n\n**5 -)** Yeni sayfada **Swap** (Takas) butonuna tıklayın.\n\n**6 -)** Bu sayfada transfer yolunun ekran görüntüsündekiyle aynı olduğundan emin olun:\n\n* **Nereden:** Earn (USDT)\n* **Nereye:** USDⓈ-M Vadeli İşlemler (LDUSDT)\n\nMiktarı girin ve **Confirm** (Onayla) butonuna tıklayın. Onayladıktan sonra LDUSDT'yi Vadeli İşlemler hesabınızda bakiye olarak göreceksiniz.\n\n---\n\n**Daha fazla bilgi edinmek için resmi rehberimize göz atabilirsiniz:**\n\n* [LDUSDT Nedir ve Vadeli İşlemlerde Teminat Olarak Nasıl Kullanılır?](https://www.binance.com/en/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd)\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
+    "updatedAt": "2026-01-08 15:15 UTC+0"
   },
   {
     "title": "What Is Funding Rate? - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/What_Is_Funding_Rate.jpg",
-    "text": "The Funding Rate determines which traders pay or receive Funding Fees and what percentage of their positions is involved.\n\nOn Binance Futures, Funding Fees are exchanged regularly to keep the perpetual futures prices aligned with the spot price. Typically, funding occurs every 8 hours, precisely at 00:00 UTC, 08:00 UTC, and 16:00 UTC. However, during periods of significant price divergence between the spot market and the perpetual futures contract, Binance may adjust funding intervals to shorter periods, such as every 4 hours, 2 hours, or even 1 hour, to better manage market stability.\n\nWhen the market is in a state of contango, meaning that the futures prices are higher than the spot price, the Funding Rate will be positive. In this scenario, traders holding long positions in perpetual futures contracts will pay Funding Fees to traders holding short positions.\n\nOn the other hand, when the market is in a state of backwardation, meaning that the futures prices are lower than the spot price, the Funding Rate will be negative. In this scenario, traders holding short positions in perpetual futures contracts will pay Funding Fees to traders holding long positions.\n\nWhat Are Funding Fees in Binance Futures?\nhttps://www.binance.com/en/blog/futures/6595842576313788144\n\nIntroduction to Binance Futures Funding Rates\nhttps://www.binance.com/en/support/faq/detail/360033525031\n\nFor Further details you can refer to above articles as well.",
+    "text": "The Funding Rate determines which traders pay or receive Funding.\nOn Binance Futures, **Funding Fees** are exchanged regularly to keep perpetual futures prices aligned with the spot price. Typically, funding occurs **every 8 hours** (at 00:00, 08:00, and 16:00 UTC), though Binance may adjust this to every 4, 2, or 1 hour during periods of high price divergence.\n\n* **Positive Funding Rate (Contango):** This occurs when the **Futures Price > Spot Price**. In this scenario, traders holding **long positions** pay Funding Fees to those holding **short positions**.\n* **Negative Funding Rate (Backwardation):** This occurs when the **Futures Price < Spot Price**. In this scenario, traders holding **short positions** pay Funding Fees to those holding **long positions**.\n\n---\n\nFor further details, you can refer to these official articles:\n\n* [What Are Funding Fees in Binance Futures?](https://www.binance.com/blog/futures/6595842576313788144)\n* [Introduction to Binance Futures Funding Rates](https://www.binance.com/support/faq/detail/360033525031)\n\nIf you have any questions regarding this topic, please share them with us as we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170454
+    "id": 1765164170454,
+    "text_tr": "Binance Vadeli İşlemlerde **Fonlama Ücretleri**,  vadeli işlem fiyatlarının spot piyasa fiyatı ile uyumlu tutmak için düzenli olarak alınıp verilir. Fonlama genellikle **her 8 saatte bir** (TSİ 03.00, 11.00 ve 19.00) gerçekleşir; ancak yüksek fiyat farkı dönemlerinde Binance bu aralıkları 4, 2 veya 1 saate kadar düşürebilir.\n\n* **Pozitif Fonlama Oranı (Kontango):** **Vadeli İşlem Fiyatı > Spot Fiyat** olduğunda gerçekleşir. Bu durumda, **uzun (long) pozisyon** tutan yatırımcılar, **kısa (short) pozisyon** tutan yatırımcılara Fonlama Ücreti öder.\n* **Negatif Fonlama Oranı (Geriye Dönük Fiyatlama):** **Vadeli İşlem Fiyatı < Spot Fiyat** olduğunda gerçekleşir. Bu durumda, **kısa (short) pozisyon** tutan yatırımcılar, **uzun (long) pozisyon** tutan yatırımcılara Fonlama Ücreti öder.\n\n---\n\nDaha fazla ayrıntı için şu resmi makaleleri inceleyebilirsiniz:\n\n* [Binance Vadeli İşlemlerde Fonlama Ücretleri Nedir?](https://www.binance.com/blog/futures/6595842576313788144)\n* [Binance Vadeli İşlemler Fonlama Oranlarına Giriş](https://www.binance.com/support/faq/detail/360033525031)\n\nBu konuyla ilgili herhangi bir sorunuz olursa lütfen bizimle paylaşın, size destek olmak için buradayız!",
+    "platform": "mobile",
+    "updatedAt": "2026-01-06 23:44 UTC+0"
   },
   {
     "title": "Webhook Failed Signals WEB - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Webhook_Failed_Signals_WEB_-_EN.jpeg",
-    "text": "To check the failed signals of the Webhook Signal, please follow the steps in the screenshot: \n\n1 -) Click on ''Bots''\n\n2 -) Click on ''Webhook Signal Trading'' \n\n3 -) Click on the ''History Icon'' next to trash and pause button. \n\n4 -) On this page, you will see ''Failed Signals'' tab, you can see the reason of failed signals in here. \n\nHow to Set up Signal Trading With TradingView?\nhttps://www.binance.com/en/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3",
+    "text": "To check the failed signals of the **Webhook Signal**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Bots\"**.\n\n**2 -)** Click on **\"Webhook Signal Trading\"**.\n\n**3 -)** Click on the **\"History Icon\"** located next to the trash and pause buttons.\n\n**4 -)** On this page, you will see the **\"Failed Signals\"** tab, where you can view the reason for failed signals.\n\n---\n\nTo learn more about setting up signals, you can check this official guide:\n\n* [How to Set up Signal Trading With TradingView?](https://www.binance.com/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170455
+    "id": 1765164170455,
+    "platform": "web",
+    "text_tr": "**Webhook Sinyal İşlemlerindeki** başarısız sinyalleri kontrol etmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Botlar\"** (Bots) sekmesine tıklayın.\n\n**2 -)** **\"Webhook Sinyal İşlemleri\"** (Webhook Signal Trading) seçeneğine tıklayın.\n\n**3 -)** Çöp kutusu ve duraklat butonunun yanındaki **\"Geçmiş İkonuna\"** tıklayın.\n\n**4 -)** Bu sayfada **\"Başarısız Sinyaller\"** (Failed Signals) sekmesini göreceksiniz; sinyallerin başarısız olma nedenlerini buradan inceleyebilirsiniz.\n\n---\n\nSinyal kurulumu hakkında daha fazla bilgi edinmek için bu resmi rehbere göz atabilirsiniz:\n\n* [TradingView ile Sinyal İşlemleri Nasıl Kurulur?](https://www.binance.com/en/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:48 UTC+0"
   },
   {
     "title": "Check For Updates - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/WhatsApp_Image_2025-08-04_at_00.05.57.jpeg",
-    "text": "To update your app to the latest version, please follow the steps in the screenshot: \n\n1 -) Click on the Home \n\n2 -) Click on the Menu \n\n3 -) Click on the Settings\n\n4 -) Click on ''Check For Updates'' tab \n\nThis way, you can check if your app is up to date or not.",
+    "text": "To update your app to the latest version, please follow the steps in the screenshot provided:\n\n1. **Click on the Home button.**\n2. **Click on the Menu.**\n3. **Click on the Settings gear icon.**\n4. **Click on the \"Check for updates\" tab.**\n\nThis way, you can check if your app is up to date or not.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "General",
-    "id": 1765164170456
+    "id": 1765164170456,
+    "platform": "mobile",
+    "text_tr": "Uygulamanızı en son sürüme güncellemek için lütfen ekran görüntüsündeki adımları takip edin:\n\n1. **Ana Sayfa (Home) butonuna tıklayın.**\n2. **Menü (Menu) simgesine tıklayın.**\n3. **Ayarlar (Settings) çark simgesine tıklayın.**\n4. **\"Güncellemeleri denetle\" (Check for updates) sekmesine tıklayın.**\n\nBu sayede uygulamanızın güncel olup olmadığını kontrol edebilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 23:39 UTC+0"
   },
   {
     "title": "ADL Indicator/Explanation - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/ADL_Indicator%3AExplanation_-_EN.jpeg",
-    "text": "The red/green exclamation(s) you may have seen after the leverage of your position is relevant to the Auto-Deleveraging (ADL) on Binance. Four red exclamations indicate that you are at the top of the queue but even when all are illuminated, ADL happens extremely rarely. As you may know, when the profit-loss difference between long positions and short positions cannot be covered by the Insurance fund, the positions with the highest profit will be closed automatically. This process is called Auto Deleverage or Counterparty Liquidation. ADL is a different transaction from a normal liquidation, in case of ADL you take the current profit on your position and you have the chance to take the position again. You can liken this process to closing your position in profit.\n\nIn the simplified way, you can imagine that there is 1100 USDT to profit but only 1000 USDT in total loss due to the trader’s bankruptcy and of course, normally, Insurance funds will cover this difference. However, when this difference becomes too huge to be handled by Insurance Funds, the users with the most percentage of winnings start to get positions closed by ADL, they of course won’t lose anything and profit completely. The only thing is their positions have to be forcibly closed but they can continuously participate in market anytime after this procedure.\n\nIf possible, please spend a little time to have a closer look at this article:\nhttps://www.binance.com/support/faq/360033525471",
+    "text": "The indicator shown in the screenshot represents your position in the **Auto-Deleveraging (ADL)** queue. This is how the ADL works:\n\n* **What is ADL?**: When the profit-loss difference between long and short positions cannot be covered by the **Insurance Fund**, the positions with the highest profit are closed automatically to manage market risk.\n* **The Process**: This process is also known as **Counterparty Liquidation**. It is different from normal liquidation because you retain the current profit from your position and can re-enter the market immediately.\n* **Indicator Lights**: Your proximity to ADL is shown by four bars; four red exclamations indicate you are at the top of the queue.\n* **Rare Occurrence**: Even when all lights are lit, ADL happens extremely rarely. If all lights are lit, your position may be reduced in the event of a liquidation.\n* **How to Avoid**: To reduce the risk of ADL, you can decrease your position size or close and reopen your position.\n\nFor more details, please refer to the official article:\n\n* [Binance Auto-Deleveraging FAQ](https://www.binance.com/support/faq/360033525471)\n\nIf you have any further questions, please share them with us as we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170457
+    "id": 1765164170457,
+    "text_tr": "Ekran görüntüsünde görülen gösterge, **ADL** (Auto De-Leverage) sırasındaki durumunuzu ifade eder. Bu sistemin işleyişi şu şekildedir:\n\n* **ADL Nedir?**: Uzun ve kısa pozisyonlar arasındaki kâr-zarar farkı **Sigorta Fonu** tarafından karşılanamadığında, piyasa dengesini korumak için en yüksek kâra sahip pozisyonlar otomatik olarak kapatılır.\n* **İşleyiş**: Bu işleme **Counter-party Liquidation** (Karşı Taraf Likidasyonu) adı da verilir. ADL, normal likidasyondan farklıdır; bu durumda pozisyonunuzdaki mevcut kârı alırsınız ve sonrasında tekrar işlem yapma şansınız olur.\n* **Gösterge Işıkları**: **ADL** sırasındaki yeriniz 4 çubukla gösterilir; 4 kırmızı çubuk yandığında sırada en üstte olduğunuzu gösterir. 4 ışığın tamamı yanıyor olsa bile, **ADL** işlemi oldukça nadir gerçekleşen bir durumdur. Işıkların tamamı yandığında, bir likidasyon durumunda pozisyonunuz azaltılabilir.\n* **Kaçınma Yöntemleri**: **ADL** riskinden kaçınmak için pozisyon hacminizi küçültebilir ya da pozisyonu kapatıp yeniden açabilirsiniz.\n\nDaha fazla bilgi için resmi rehberimizi inceleyebilirsiniz:\n\n* [Binance ADL Hakkında Sıkça Sorulan Sorular](https://www.binance.com/support/faq/360033525471)\n\nHerhangi bir sorunuz olursa lütfen bizimle paylaşın, size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 23:36 UTC+0"
   },
   {
     "title": "Stop-Market & Stop-Limit Differences - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Stop-Market_%26_Stop-Limit_Differences_-_EN.png",
-    "text": "The difference between Stop-Market and Stop-Limit orders, based on the pros and cons of market and limit orders:\n\n**Stop-Market Order:**\n\nIt triggers a market order when the stop price is reached.\nYour order will execute immediately at the best available price.\nYou are guaranteed your order will be filled, but the exact price may be different from your stop price, especially in fast-moving markets.\nThis helps protect you from big losses by closing the position quickly but might cause some slippage (difference between expected and actual price).\n\n**Stop-Limit Order:**\n\nIt triggers a limit order when the stop price is reached.\nYour order will only execute at the limit price you set or better, so you control the execution price.\nHowever, your order might not get filled if the market price moves away from your limit price.\nThis gives you price certainty but no guarantee your order will be executed, which can be risky in volatile markets.\n\nIn short:\n\n**Stop-Market =** guaranteed execution, no price guarantee (better for quick exit).\n\n**Stop-Limit =** price guaranteed, no execution guarantee (better when you want to control trade price).\n\nTypes of Order on Binance Futures\nhttps://www.binance.com/en/support/faq/detail/360033779452\n\nChoose the type that matches your trading goal and risk management best!",
+    "text": "The difference between Stop-Market and Stop-Limit orders is based on the pros and cons of market and limit orders:\n\n**Stop-Market Order:**\n\n* It triggers a market order when the stop price is reached.\n* Your order will execute immediately at the best available price.\n* Exact price may differ from your stop price, especially in fast-moving markets.\n* This helps protect you from big losses by closing the position quickly, though it might cause some slippage.\n\n**Stop-Limit Order:**\n\n* It triggers a limit order when the stop price is reached.\n* Your order will only execute at the limit price you set or better, giving you control over the execution price.\n* However, your order might not be filled if the market price moves away from your limit price.\n* This provides price certainty but no certainty that your order will be executed, which can be risky in volatile markets.\n\n**In short:**\n\n* **Stop-Market =** No price certainty (better for a quick exit).\n* **Stop-Limit =** Price certainty, no execution certainty (better when you want to control the trade price).\n\n---\n\nTo learn more about order types, you can check this official guide:\n\n* [Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170458
+    "id": 1765164170458,
+    "text_tr": "Stop-Piyasa (Stop-Market) ve Stop-Limit emirleri arasındaki fark, piyasa ve limit emirlerinin avantaj ve dezavantajlarına dayanır:\n\n**Stop-Piyasa Emri:**\n\n* Durdurma fiyatına ulaşıldığında bir piyasa emrini tetikler.\n* Emriniz mevcut en iyi fiyattan anında gerçekleşir.\n* Özellikle hızlı hareket eden piyasalarda, gerçekleşen fiyat durdurma fiyatınızdan farklı olabilir.\n* Bu emir tipi, pozisyonu hızlıca kapatarak sizi büyük kayıplardan korumaya yardımcı olur, fakat bir miktar fiyat kaymasına (slippage) neden olabilir.\n\n**Stop-Limit Emri:**\n\n* Durdurma fiyatına ulaşıldığında bir limit emrini tetikler.\n* Emriniz yalnızca belirlediğiniz limit fiyatından veya daha iyisinden gerçekleşir; böylece gerçekleşme fiyatını kontrol edebilirsiniz.\n* Ancak, piyasa fiyatı belirlediğiniz limit fiyatından uzaklaşırsa emriniz dolmayabilir.\n* Bu emir tipi fiyat kesinliği sağlar, ancak işlemin gerçekleşeceğine dair bir kesinlik sunmaz; bu durum dalgalı piyasalarda riskli olabilir.\n\n**Özetle:**\n\n* **Stop-Market =** Fiyat kesinliği yok (hızlı çıkış için daha iyidir).\n* **Stop-Limit =** Fiyat kesinliği var, işlemin gerçekleşme kesinliği yok (işlem fiyatını kontrol etmek istediğinizde daha iyidir).\n\n---\n\nEmir türleri hakkında daha fazla bilgi edinmek için bu resmi rehbere göz atabilirsiniz:\n\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "platform": "mobile",
+    "updatedAt": "2026-01-06 23:25 UTC+0"
   },
   {
     "title": "DeviceID - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/DeviceID_-_EN.jpeg",
-    "text": "To Create and Share the Device ID, please folow the steps in the screenshot above\n\n1 -) Click on Home\n2 -) Click on Menu\n3 -) Click on Settings\n4 -) Click on ''About Us'' \n\n5 -) In this page, **rapidly click on the Binance Logo 5 times** back to back. \n\n6 -) After that you will see the Device ID appeared like the screenshot click on the copy button and copy the Device ID. \n\nPlease **paste the Device ID to the chat to** share with us so we can share it with our tech team.",
+    "text": "To create and share your **Device ID**, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Home\"**.\n\n**2 -)** Click on the **Menu** icon in the top left corner.\n\n**3 -)** Click on the **Settings** gear icon in the top right corner.\n\n**4 -)** Scroll down and click on the **\"About Us\"** tab.\n\n**5 -)** In this page, **rapidly click on the Binance Logo 5 times** back to back.\n\n**6 -)** After that, you will see the **DeviceID** appear; click on the **copy** button next to it.\n\nPlease **paste the Device ID into the chat** to share it with us so we can provide it to our tech team.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "General",
-    "id": 1765164170459
+    "id": 1765164170459,
+    "text_tr": "**Cihaz Kimliğini** (Device ID) oluşturmak ve paylaşmak için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Ana Sayfa\"** (Home) sekmesine tıklayın.\n\n**2 -)** Sol üst köşedeki **Menü** simgesine tıklayın.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (çark simgesi) bölümüne tıklayın.\n\n**4 -)** Sayfayı aşağı kaydırın ve **\"Hakkımızda\"** (About Us) sekmesine tıklayın.\n\n**5 -)** Bu sayfada, **Binance logosuna arka arkaya hızlıca 5 kez tıklayın**.\n\n**6 -)** Ardından **DeviceID** (Cihaz Kimliği) alanı görünecektir; yanındaki **kopyala** butonuna tıklayarak kimliği kopyalayın.\n\nLütfen teknik ekibimize iletebilmemiz için **Cihaz Kimliğini sohbet üzerinden bizimle paylaşın**.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 23:12 UTC+0"
   },
   {
     "title": "PNL Analysis Page (To see Fees) - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/PNL_Analysis_Page_(Fees)_-_EN.jpeg",
-    "text": "To see your Futures PNL Analysis to check your Fees, please follow the steps in the screenshot: \n\n1 -) Tap \"Assets\".\n2 -) Tap \"Futures\".\n3 -) Select \"USDⓈ-M\".\n4 -) Tap the \"Today's Realized PnL\" button to open the Futures PnL Analysis page.\n5 -) Go to the \"Funding & Transaction\" tab.\n6 -) Enable \"Show Transaction Fee\".\n\n--What you’ll see:**\nYour total transaction fees and the funding fees you paid/received.\n\n**Tip:**\nUse the date filter to choose a custom range or quick options: 7D, 1M, 3M, or 1Y.",
+    "text": "To see your **Futures PNL Analysis** to check your fees, please follow the steps in the screenshot:\n\n**1 -)** Tap **\"Assets\"**.\n\n**2 -)** Tap **\"Futures\"**.\n\n**3 -)** Select **\"USDⓈ-M\"**.\n\n**4 -)** Tap the **\"Today's Realized PnL\"** button to open the Futures PnL Analysis page.\n\n**5 -)** Go to the **\"Funding & Transaction\"** tab.\n\n**6 -)** Enable **\"Show Transaction Fee\"**.\n\n---\n\n**What you’ll see:**\nYour total transaction fees and the funding fees you paid or received.\n\n**Tip:**\nUse the date filter to choose a custom range or quick options: 7D, 1M, 3M, or 1Y.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170460
+    "id": 1765164170460,
+    "text_tr": "Komisyonlarınızı kontrol etmek amacıyla **Vadeli İşlemler PNL Analizini** görmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Varlıklar\"** (Assets) sekmesine dokunun.\n\n**2 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine dokunun.\n\n**3 -)** **\"USDⓈ-M\"** seçeneğini seçin.\n\n**4 -)** Vadeli İşlemler PNL Analizi sayfasını açmak için **\"Günlük Gerçekleşen PNL\"** (Today's Realized PnL) butonuna dokunun.\n\n**5 -)** **\"Fonlama ve İşlem\"** (Funding & Transaction) sekmesine gidin.\n\n**6 -)** **\"İşlem Ücretini Göster\"** (Show Transaction Fee) seçeneğini etkinleştirin.\n\n---\n\n**Neleri göreceksiniz:**\nToplam işlem komisyonlarınız ve ödediğiniz veya aldığınız fonlama ücretleri.\n\n**İpucu:**\nÖzel bir tarih aralığı veya hızlı seçenekleri (7G, 1A, 3A veya 1Y) seçmek için tarih filtresini kullanın.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 23:08 UTC+0"
   },
   {
     "title": "Futures Notification for TP/SL/Funding - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures_Notification_for_TP%3ASL%3AFunding_-_EN.jpeg",
-    "text": "To Adjust Futures Notification settings, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on ''Notification'' button\n\n5 -) In this page you enable or disable notifications for: \n\n**TP/SL Trigger:** Receive a notification when any Take-Profit or Stop-Loss is triggered. Limit: up to 25 notifications per day.\n\n**Funding Fee Trigger:** Set a funding rate threshold; you’ll be alerted if the expected funding rate for any open position exceeds that ratio.\n\n**Futures Trading:** Get a notification when a futures order is filled.\n\n**Margin Call Alert:** Default threshold is 80%. Tap “Edit” to set a different margin ratio; you’ll be notified when your position reaches it.",
+    "text": "To adjust your **Futures Notification** settings, please follow the steps in the screenshot:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon on the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on the **\"Notification\"** button.\n\n**5 -)** On this page, you can enable or disable notifications for:\n\n* **TP/SL Trigger:** Receive a notification when any Take-Profit or Stop-Loss is triggered. Limit: up to 25 notifications per day.\n\n* **Funding Fee Trigger:** Set a funding rate threshold; you’ll be alerted if the expected funding rate for any open position exceeds that ratio.\n\n* **Futures Trading:** Get a notification when a futures order is filled.\n\n* **Margin Call Alert:** Default threshold is 80%. Tap “Edit” to set a different margin ratio; you’ll be notified when your position reaches it.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170461
+    "id": 1765164170461,
+    "text_tr": "**Vadeli İşlemler Bildirim** ayarlarını düzenlemek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Bildirim\"** (Notification) butonuna tıklayın.\n\n**5 -)** Bu sayfada şu bildirimleri etkinleştirebilir veya devre dışı bırakabilirsiniz:\n\n* **Kar Al/Zarar Durdur (TP/SL) Tetikleyici:** Herhangi bir Kar Al veya Zarar Durdur emri tetiklendiğinde bildirim alın. Limit: Günlük 25 bildirime kadar.\n\n* **Fonlama Ücreti Tetikleyici:** Bir fonlama oranı eşiği belirleyin; herhangi bir açık pozisyon için beklenen fonlama oranı bu oranı aşarsa uyarılırsınız.\n\n* **Vadeli İşlemler Alım Satımı:** Bir vadeli işlemler emri gerçekleştiğinde bildirim alın.\n\n* **Teminat Tamamlama Çağrısı (Margin Call) Uyarısı:** Varsayılan eşik %80'dir. Farklı bir marjin oranı ayarlamak için “Düzenle”ye dokunun; pozisyonunuz bu orana ulaştığında size bildirilecektir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 22:04 UTC+0"
   },
   {
     "title": "How To Enable/Disable AUTO Borrow/Repay - EN",
@@ -344,7 +696,8 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Clear_Cache_CN.png",
     "text": "1 -) 点击【首页】\n2 -) 左上角点击【三条杠】\n3 -) 右上角点击【设置（⚙️）】\n4 -) 点击清除缓存\n\n这有助于清理临时文件，使您的应用运行得更快、更流畅！",
     "topic": "General",
-    "id": 1765164170467
+    "id": 1765164170467,
+    "platform": "mobile"
   },
   {
     "title": "System Feedback - AR",
@@ -423,7 +776,7 @@
     "language": "Arabic",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Borrowed_Coin)_-_AR.png",
     "text": "لذا إذا كنت ترغب في سداد قرض جاري باستخدام العملة المقترضة، يرجى اتباع الخطوات في لقطة الشاشة:\n\n1 -) انقر على \"الطلبات الجارية\" في صفحة طلبات القرض\n2 -) انقر على \"سداد\"\n3 -) انقر على \"العملة المقترضة\" في القائمة العلوية\n\nأدخل المبلغ الذي ترغب في سداده وسترى نسبة القرض إلى القيمة بعد السداد وسيرجع مبلغ الضمان بعد السداد ضمن التفاصيل أيضًا.\n\nهذه هي الطريقة التي تسدد بها قرضًا جاريًا باستخدام العملة المقترضة.",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "id": 1765164170477
   },
   {
@@ -431,7 +784,7 @@
     "language": "Arabic",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/LOAN_HISTORY_(ONGOING_LOANS)_-_AR.png",
     "text": "للاطلاع على طلبات القروض الجارية الخاصة بك أو تاريخ قرضك، يمكنك اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على صفحة الكسب\n\n2 -) انقر على زر الاقتراض\n\n3 -) ثم انقر على رمز التاريخ في الأعلى\n\nفي تلك الصفحة، يمكنك رؤية قروضك الجارية وتاريخ قروضك.\n\nLoans history - on going",
-    "topic": "Binance LOAN",
+    "topic": "LOAN",
     "id": 1765164170478
   },
   {
@@ -443,44 +796,52 @@
     "id": 1765164170479
   },
   {
-    "title": "Cooling Off Period Futures - CN",
+    "title": "Cooling Off Period Futures 合约冷静期 - CN",
     "language": "Chinese",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Cooling_Off_Period_Futures_-_CN.png",
     "text": "如果您想要禁用合约交易功能。您可以通过以下方式禁用合约交易：\n\n1 -) 请点击合约交易页面上的“...”图标\n\n2 -) 点击“冷静期”\n\n3 -) 点击“启用”按钮。\n\n4 -) 然后，您可以选择冷静期，例如：\n\n1 天\n1 周\n1 个月\n无限期\n\n5 -) 点击【确认】\n\n一旦您激活冷静期，您将无法进行合约交易，因此合约交易将被禁用。\n\n请注意，一旦您激活冷静期，我们将无法协助您解除冷静期。\n\n什么是冷静期功能以及如何使用它？\nhttps://www.binance.com/zh-CN/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc",
     "topic": "Futures Trading",
-    "id": 1765164170480
+    "id": 1765164170480,
+    "platform": "mobile"
   },
   {
-    "title": "Mark Price - CN",
+    "title": "Mark Price Chart 标记价格K线图 - CN",
     "language": "Chinese",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Mark_Price_-_CN.png",
     "text": "要查看标记价格K线图，请根据截图中的步骤进行操作：\n\n\n1 -) 点击图表图标\n\n2 -) 点击图表上方的“最新价格”按钮\n\n3 -) 选择“标记价格”\n\n这样您就可以查看实时标记价格K线图。\n\n要了解更多关于标记价格和最新价格之间的区别，您也可以查看以下官方指南：\n\n合约合约的最新价格和标记价格有什么区别？\nhttps://www.binance.com/zh-CN/blog/%E5%90%88%E7%BA%A6/5704082076024731087",
     "topic": "Futures Trading",
-    "id": 1765164170481
+    "id": 1765164170481,
+    "platform": "mobile"
   },
   {
-    "title": "Change Position Mode (One-Way,Hedge) - CN",
+    "title": "Change Position Mode (One-Way,Hedge) 仓位模式设置 - CN",
     "language": "Chinese",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Position_Mode_(One-Way%2CHedge)_-_CN.png",
     "text": "要切换仓位模式，请按照截图中的步骤操作：\n\n1 -) 点击右上角的“...”图标。\n\n2 -) 点击弹出菜单中的“偏好设置”。\n\n3 -) 点击“仓位模式”按钮。\n\n4 -) 您可以在此页面切换仓位模式。",
     "topic": "Futures Trading",
-    "id": 1765164170482
+    "id": 1765164170482,
+    "platform": "mobile"
   },
   {
     "title": "How To Add/Remove Margin to Isolated Position - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/How_To_Add_Margin_to_Isolated_Position_-_EN.jpeg",
-    "text": "To Add or Remove Margin on your Futures Isolated Positions, you can follow the steps in the screenshot: \n\n\n1 -) Click on the **(+)** icon on next the margin. \n\n2 -) Select Add Margin or Remove Margin \n\n3 -) Enter the Amount\n\n4 -) Click on Confirm to proceed. \n\n\n**Currently Assigned Margin:** This is the amount of margin in your current position. \n\n\n**Max Addable:** This is the maximum amount you can add. \n\n\n**Est. Liq.Price after increase:** This is the **estimated** liquidation price after you add the margin.\n\n\nIf you want to learn more details, you can refer to official guide as well: \n\n**How to Adjust Margin Balance in Cross/Isolated Margin Mode?** https://www.binance.com/en/support/faq/detail/360038447311",
+    "text": "To **Add or Remove Margin** on your Futures Isolated Positions, please follow the steps in the screenshot above:\n\n**1 -)** Click on the **(+)** icon next to the margin value.\n\n**2 -)** Select **Add Margin** or **Remove Margin**.\n\n**3 -)** Enter the **Amount**.\n\n**4 -)** Click on **Confirm** to proceed.\n\n---\n\n* **Currently Assigned Margin:** This is the amount of margin in your current position.\n* **Max Addable:** This is the maximum amount you can add.\n* **Est. Liq.Price after increase:** This is the **estimated** liquidation price after you add the margin.\n\n---\n\nTo learn more, you can refer to the official guide:\n\n* [How to Adjust Margin Balance in Cross/Isolated Margin Mode?](https://www.binance.com/support/faq/detail/360038447311)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170483
+    "id": 1765164170483,
+    "text_tr": "Vadeli İşlemler İzole pozisyonlarınızda **Teminat Ekleme veya Çıkarma** (Add/Remove Margin) işlemi yapmak için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Teminat miktarının yanındaki **(+)** simgesine tıklayın.\n\n**2 -)** **Teminat Ekle** (Add Margin) veya **Teminat Çıkar** (Remove Margin) sekmesini seçin.\n\n**3 -)** **Miktarı** girin.\n\n**4 -)** Devam etmek için **Onayla** (Confirm) butonuna tıklayın.\n\n---\n\n* **Atanmış Güncel Teminat:** Mevcut pozisyonunuzdaki teminat miktarıdır.\n* **Eklenebilir Maksimum Tutar:** Ekleyebileceğiniz maksimum teminat miktarıdır.\n* **Artış Sonrası Tahmini Likidasyon Fiyatı:** Teminat ekledikten sonraki **tahmini** likidasyon fiyatınızdır.\n\n---\n\nDaha fazla ayrıntı için resmi rehbere göz atabilirsiniz:\n\n* [Çapraz/İzole Marjin Modunda Teminat Bakiyesi Nasıl Ayarlanır?](https://www.binance.com/support/faq/detail/360038447311)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 23:01 UTC+0"
   },
   {
     "title": "Buy/Sell Tab Setting - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Buy%3ASell_Tab_Setting_-_EN.jpeg",
-    "text": "To Change Buy/Sell Tab Setting, please follow the steps in the screenshot: \n\n1 -) Click on Futures\n\n2 -) Click on the ''...'' Icon on top right corner.\n\n3 -) Click on ''Preferences'' on the pop-up menu.\n\n4 -) Click on ''Buy/Sell Tab Setting\n\n5 -) In this page you can either display or hide the Buy/Sell Tab \n\n - If you Display the Buy/Sell will be visible on top of the trading page. \n\n - If you Hide Buy/Sell will be visible on the bottom of the trading page.",
+    "text": "To change the **Buy/Sell Tab Setting**, please follow the steps in the screenshot:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** icon on the top right corner.\n\n**3 -)** Click on **\"Preferences\"** on the pop-up menu.\n\n**4 -)** Click on **\"Buy/Sell Tab Setting\"**.\n\n**5 -)** In this page, you can either **display** or **hide** the Buy/Sell Tab:\n\n* **Display Buy/Sell tab:** The buttons will be visible at the **top** of the trading page.\n* **Hide Buy/Sell tab:** The buttons will be visible at the **bottom** of the trading page.\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170484
+    "id": 1765164170484,
+    "platform": "mobile",
+    "text_tr": "**Al/Sat Sekmesi Ayarını** (Buy/Sell Tab Setting) değiştirmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Tercihler\"** (Preferences) seçeneğine tıklayın.\n\n**4 -)** **\"Al/Sat Sekmesi Ayarı\"** (Buy/Sell Tab Setting) seçeneğine tıklayın.\n\n**5 -)** Bu sayfada Al/Sat sekmesini **gösterebilir** veya **gizleyebilirsiniz**:\n\n* **Al/Sat sekmesini göster (Display):** Butonlar işlem sayfasının **üst kısmında** görünür.\n* **Al/Sat sekmesini gizle (Hide):** Butonlar işlem sayfasının **alt kısmında** görünür.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 22:56 UTC+0"
   },
   {
     "title": "CLOSE CHAT (CSAT) - EN",
@@ -494,17 +855,21 @@
     "title": "How To Change TP/SL to Stop-Limit - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/How_To_Change_TP%3ASL_to_Stop-Limit_-_EN.jpeg",
-    "text": "To Change Your TP/SL Order to a Stop-Limit order, please follow steps in the screenshot: \n\n\n1 -) Click on TP/SL button on the open position. \n\n\n2 -) Select TP/SL button on the upper menu. \n\n\n3 -) Click on ''Market'' button. \n\n\n4 -) You can choose ''Limit'' in this menu. \n\n\n5 -) Once you choose ''Limit'' your TP/SL order is now a Stop-Limit order. \n\nYou can enter both trigger and Limit price for your Stop-Limit order now.\n\n\nTo Learn More About the Order Types, I advise you to check the official guides below: \n\n\n[What Are Stop Orders in Binance Futures?](https://www.binance.com/blog/futures/2094497753519691034)  \n\n\n[Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)  \n\n\n[What Is a Stop-Limit Order?](https://academy.binance.com/articles/what-is-a-stop-limit-order)  \n\n\nHope this clarifies your queries 🙏 If you have any further questions, don’t hesitate to share them with me.",
+    "text": "To change your **TP/SL** order to a **Stop-Limit order**, please follow the steps in the screenshot:\n\n**1 -)** Click on the **TP/SL** button on the open position.\n\n**2 -)** Select the **TP/SL** button on the upper menu.\n\n**3 -)** Click on the **\"Market\"** button.\n\n**4 -)** You can choose **\"Limit\"** in this menu.\n\n**5 -)** Once you choose **\"Limit,\"** your TP/SL order is now a **Stop-Limit order**.\n\nYou can enter both a **trigger price** and a **limit price** for your Stop-Limit order now.\n\n---\n\nTo learn more about order types, you can check these official guides:\n\n* [What Are Stop Orders in Binance Futures?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)\n* [What Is a Stop-Limit Order?](https://academy.binance.com/articles/what-is-a-stop-limit-order)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170486
+    "id": 1765164170486,
+    "text_tr": "**TP/SL** emrinizi bir **Stop-Limit emrine** dönüştürmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Açık pozisyondaki **TP/SL** butonuna tıklayın.\n\n**2 -)** Üst menüden **TP/SL** butonunu seçin.\n\n**3 -)** **\"Market\"** (Piyasa) butonuna tıklayın.\n\n**4 -)** Bu menüden **\"Limit\"** seçeneğini seçebilirsiniz.\n\n**5 -)** **\"Limit\"** seçeneğini seçtiğinizde, TP/SL emriniz artık bir **Stop-Limit emridir**.\n\nArtık Stop-Limit emriniz için hem **tetikleme fiyatı** hem de **limit fiyatı** girebilirsiniz.\n\n---\n\nEmir türleri hakkında daha fazla bilgi edinmek için bu resmi rehberlere göz atabilirsiniz:\n\n* [Binance Vadeli İşlemlerde Durdurma Emirleri Nelerdir?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n* [Stop-Limit Emri Nedir?](https://academy.binance.com/articles/what-is-a-stop-limit-order)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:58 UTC+0"
   },
   {
     "title": "TP/SL Before Position - EN",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/TP%3ASL_Before_Position_-_EN.jpeg",
-    "text": "You can attach a TP/SL order to the order which you wish to open the position, to do this, please check the screenshots I provided: \n\n\n1 -) Click on TP/SL button on Trade Menu\n\n\n2 -) Click on ''Advanced'' \n\n\n3 -) In this menu by Default te Trigger Condition will be Mark Price for TP/SL and the order type will be ''Market'' so you will only enter a trigger price and if the price reaches your trigger condition, the Market order will be executed. \n\n\n4 -) If you click on ''Mark'' buttons, you can change the Trigger Condition between Last or Mark Price. \n\n\n5 -) If you click on ''Market'' button you can see the order type is changed to ''Stop-Limit'' the Limit buttons are active now, so you can enter both Trigger Price and Limit Price you want for that order. \n\n\nSo basically, you can change the Trigger Condition for the TP/SL order and change the order type from Stop-Market to Stop-Limit by following the steps above. \n\n\nIf you want to learn more details about the order types and Mark Price and Last Price Differences, I advise you to check the official guides below: \n\n\n\n[Mark Price vs. Last Price on Binance Futures – What’s the Difference?](https://www.binance.com/blog/futures/5704082076024731087)  \n\n\n[What Are Stop Orders in Binance Futures?](https://www.binance.com/blog/futures/2094497753519691034)  \n\n\n[Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)  \n\n\n[How to Place Stop Loss and Take Profit Orders on Binance Futures](https://www.binance.com/support/faq/detail/360040016512)  \n\n\n\nHope this clarifies your queries 🙏 If you have any further questions, don’t hesitate to share them with me.",
+    "text": "To attach a **TP/SL** (Take Profit/Stop Loss) order before opening a position, please follow the steps in the screenshots provided:\n\n**1 -)** Check the **TP/SL** button on the Trade Menu.\n\n**2 -)** Click on **\"Advanced\"**.\n\n**3 -)** In this menu, the default Trigger Condition is **Mark Price** and the order type is **\"Market\"**. You only need to enter a trigger price, and the Market order will execute once that condition is reached.\n\n**4 -)** Click on the **\"Mark\"** buttons to toggle the Trigger Condition between **Last Price** or **Mark Price**.\n\n**5 -)** Click on the **\"Market\"** button to change the order type to **\"Stop-Limit\"**. This activates the **Limit Price** fields, allowing you to enter both a Trigger Price and a Limit Price for that order.\n\n---\n\nTo learn more about order types and price differences, you can check these official guides:\n\n* [Mark Price vs. Last Price on Binance Futures – What’s the Difference?](https://www.binance.com/blog/futures/5704082076024731087)\n* [What Are Stop Orders in Binance Futures?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)\n* [How to Place Stop Loss and Take Profit Orders on Binance Futures](https://www.binance.com/support/faq/detail/360040016512)\n\nIf you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170487
+    "id": 1765164170487,
+    "text_tr": "Pozisyon açmadan önce **TP/SL** (Kar Al/Zarar Durdur) emri eklemek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** İşlem menüsündeki **TP/SL** kutucuğunu işaretleyin.\n\n**2 -)** **\"Advanced\"** (Gelişmiş) seçeneğine tıklayın.\n\n**3 -)** Bu menüde Tetikleme Koşulu varsayılan olarak **Mark Price** (Gösterge Fiyatı), emir türü ise **\"Market\"** (Piyasa) olarak ayarlıdır. Sadece bir tetikleme fiyatı girmeniz yeterlidir; fiyat bu seviyeye ulaştığında Piyasa emri gerçekleşir.\n\n**4 -)** **\"Mark\"** butonlarına tıklayarak Tetikleme Koşulunu **Last Price** (Son Fiyat) veya **Mark Price** (Gösterge Fiyatı) olarak değiştirebilirsiniz.\n\n**5 -)** **\"Market\"** butonuna tıklayarak emir türünü **\"Stop-Limit\"** olarak değiştirebilirsiniz. Bu işlem **Limit Fiyatı** alanlarını aktif hale getirerek hem Tetikleme hem de Limit fiyatı girmenize olanak tanır.\n\n---\n\nEmir türleri ve fiyat farkları hakkında daha fazla bilgi edinmek için bu resmi rehberlere göz atabilirsiniz:\n\n* [Binance Vadeli İşlemlerde Gösterge Fiyatı ve Son Fiyat – Aralarındaki Fark Nedir?](https://www.binance.com/blog/futures/5704082076024731087)\n* [Binance Vadeli İşlemlerde Durdurma Emirleri Nelerdir?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n* [Binance Vadeli İşlemlerde Zarar Durdur ve Kar Al Emirleri Nasıl Verilir?](https://www.binance.com/support/faq/detail/360040016512)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:55 UTC+0"
   },
   {
     "title": "Transfer From Cross Margin To Spot - AR",
@@ -518,18 +883,22 @@
     "title": "How To Clear Negative Balance - Futures (EN)",
     "language": "English",
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/negative_balance_clearing_(en).jpeg",
-    "text": "To Clear Negative Balance On Futures, you can use the ''Clear Negative Balance Button'' \n\n\nThis button will be visible on the sections which Marked in the screenshot above: \n\n\n1 -) If there is a negative position, it can't be closed due to negative balance, if you click on ''Clear Negative Balance'' the process will start to clear it. \n\n\n2 -) Futures Wallet section will show the ''Clear Negative Balance'' button, you can click that button to start the clearing process. \n\n\n3 -) If there is no open position but still a negative balance then the Positions tab will show that as well, you can click that button to start the clearing process. \n\n\n4 - ) Once the clearing process is activated you will see the button is grayed out. This process is expected to be resolved in 15 minutes, so do not transfer any amount to Futures Wallet before it is completed. \n\n\nIf you have more questions, don't hesitate to share with me.",
+    "text": "To **Clear Negative Balance On Futures**, please follow the steps in the screenshot above:\n\n**1 -)** If there is a negative position that cannot be closed due to a negative balance, click on the **\"Clear Negative Balance\"** button at the bottom.\n\n**2 -)** Alternatively, go to the **Futures Wallet** section and click the **\"Clear Negative Balance\"** button to start the clearing process.\n\n**3 -)** If you have no open positions but still have a negative balance, go to the **Positions** tab and click the **\"Clear Negative Balance\"** button.\n\n**4 -)** Once activated, the button will be grayed out and show **\"Negative balance processing\"**.\n\n---\n\n**Important Note:** This process is expected to be resolved within **15 minutes**. Please **do not transfer any funds** to your Futures Wallet until the process is completed.\n\nIf you have any additional questions, please don't hesitate to share them with me. If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!",
     "topic": "Futures Trading",
-    "id": 1765164170489
+    "id": 1765164170489,
+    "text_tr": "**Vadeli İşlemlerde Negatif Bakiyeyi Temizlemek** için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Negatif bakiye nedeniyle kapatılamayan negatif bir pozisyonunuz varsa, en altta bulunan **\"Clear Negative Balance\"** (Negatif Bakiyeyi Temizle) butonuna tıklayın.\n\n**2 -)** Alternatif olarak, **Vadeli İşlemler Cüzdanı** (Futures Wallet) bölümüne gidin ve temizleme işlemini başlatmak için **\"Clear Negative Balance\"** butonuna tıklayın.\n\n**3 -)** Açık pozisyonunuz yoksa ancak hala negatif bakiyeniz varsa, **Pozisyonlar** (Positions) sekmesine gidin ve **\"Clear Negative Balance\"** butonuna tıklayın.\n\n**4 -)** İşlem etkinleştirildiğinde buton grileşecek ve üzerinde **\"Negative balance processing\"** (Negatif bakiye işleniyor) ifadesi görünecektir.\n\n---\n\n**Önemli Not:** Bu işlemin yaklaşık **15 dakika** içinde tamamlanması beklenmektedir. İşlem tamamlanana kadar lütfen Vadeli İşlemler Cüzdanınıza **herhangi bir transfer yapmayın**.\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin. Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
+    "updatedAt": "2026-01-06 21:50 UTC+0"
   },
   {
     "title": "Clear Caches - EN",
     "language": "English",
-    "image": "https://github.com/GorkemTikic/support-screenshot-library/blob/main/images/Clear%20Caches%20-%20EN.jpg?raw=true",
-    "text": "1 -) Click on Home\n2 -) Click on Menu\n3 -) Click on Settings\n4 -) Click on Clear Cache button\n\nThis helps remove temporary files and can make your app run faster and smoother!",
-    "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
+    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Clear%20Caches%20-%20EN.jpg",
+    "text": "To clear your app cache, please follow the steps in the screenshot provided:\n\n**1 -)** Click on **\"Home\"**.\n\n**2 -)** Click on the **Menu** icon in the top left corner.\n\n**3 -)** Click on the **Settings** gear icon in the top right corner.\n\n**4 -)** Click on the **\"Clear Cache\"** button.\n\nThis helps remove temporary files and can make your app run faster and smoother!\n\n**If you are stuck at any step, please take a screenshot and share it with us; we are here to support you!**",
+    "text_tr": "Uygulama önbelleğinizi temizlemek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Ana Sayfa\"** (Home) butonuna tıklayın.\n\n**2 -)** Sol üst köşedeki **Menü** simgesine tıklayın.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (çark simgesi) bölümüne tıklayın.\n\n**4 -)** **\"Önbelleği Temizle\"** (Clear Cache) butonuna tıklayın.\n\nBu işlem geçici dosyaları temizlemeye yardımcı olur ve uygulamanızın daha hızlı ve sorunsuz çalışmasını sağlayabilir!\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
     "topic": "General",
-    "id": 1765162670474
+    "id": 1765162670474,
+    "platform": "mobile",
+    "updatedAt": "2026-01-15 14:57 UTC+0"
   },
   {
     "title": "Transaction History - EN (WEB)",
@@ -600,5 +969,107 @@
     "language": "English",
     "platform": "web",
     "id": 1766512912428
+  },
+  {
+    "title": "Copy Trading History 跟单组合历史 - CN",
+    "text": "1. 点击【合约】\n2. 点击【跟单】\n3. 点击右下角的【跟单】\n4.  您可以在此页面看到【进行中 / 已结束 / 模拟跟单】的跟单组合。",
+    "text_tr": "",
+    "image": "screenshots/1766591016206_Copy-Trading-History.png",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766591083794
+  },
+  {
+    "title": "EC Index Price History 事件合约指数价格历史数据 - CN",
+    "text": "1. 右上角点击【...】\n2. 指数历史数据\n3. 筛选想要查看的时间\n\n注意⚠️：该页面仅提供过去两天的数据",
+    "text_tr": "",
+    "image": "screenshots/1766592026888_EC-Index-Price-History.png",
+    "topic": "Event Contract",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766592070086
+  },
+  {
+    "title": "Change position button 仓位按钮设置 - CN",
+    "text": "更改仓位按钮设置，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【偏好设置】\n3）在布局管理中点击【仓位按钮设置】\n4）在此页面中，您可以更改持仓的按钮设置，根据个人偏好启用或关闭相关选项。",
+    "text_tr": "",
+    "image": "screenshots/1766598170504_Change-position-button.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766598202606
+  },
+  {
+    "title": "好评以及问题解决 - CN",
+    "text": "如果暂时没有其他问题，您方便的话，请您点击下右上角的【 ⏻ 】关机键后点击【已解决】和一张笑脸😊哦，这个对我非常的重要，也祝您盈利多多！天天开心哦！",
+    "text_tr": "",
+    "image": "screenshots/1766599548074_CSAT-CRR.png",
+    "topic": "General",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766599708483
+  },
+  {
+    "title": "PNL Analysis Page (To see Fees) 盈亏分析页面（查看费用）- CN",
+    "text": "要查看合约盈亏分析以检查您的资金费用与交易手续费，请按照截图中的步骤操作：\n\n1）点击【资产】\n2）点击【合约】\n3）选择【U本位合约】\n4）点击【今日已实现盈亏】，进入合约盈亏页面\n5）切换到【资金费用与交易手续费】\n6）开启【显示交易手续费\n\n您将看到的内容：\n\n- 您支付交易手续费总额\n\n- 您支付或获得的资金费用\n\n小提示：\n您可以使用日期筛选功能，选择自定义时间范围，或快速选项：7日 / 近1个月 / 近3个月 / 近1年",
+    "text_tr": "",
+    "image": "screenshots/1766677904613_PNL-Analysis-Page-(To-see-Fees).png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766677925281
+  },
+  {
+    "title": "Loan Adjust LTV 借贷订单调整质押率 - CN",
+    "text": "如果您希望在进行的借贷订单调整质押率，请按照截图中的步骤操作：\n\n1）在借贷订单页面点击【进行中订单】\n2）点击【调整质押率】\n3）您可以选择【增加】或【移除】，然后在此输入【调整质押率百分比】或【抵押金额】\n4）点击【增加抵押物/移除抵押物】即可",
+    "text_tr": "",
+    "image": "screenshots/1766686169762_Loan-Adjust-LTV.png",
+    "topic": "LOAN",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766686213796,
+    "updatedAt": "2026-01-01 08:12 UTC+8"
+  },
+  {
+    "title": "Disable Portfolio Margin (To Classic) - EN",
+    "text": "To disable **Portfolio Margin** and activate **Classic Trading**, please follow the steps in the screenshots above:\n\n**1 -)** Click on **Futures**.\n\n**2 -)** Click on the **\"...\"** Icon on the top right corner.\n\n**3 -)** Click on the **\"To Classic Trading\"** button on the pop-up menu.\n\n**4 -)** Select **\"Classic Trading\"**.\n\n**5 -)** Click on **\"Switch\"** and confirm.\n\nIf you have any additional questions, please don't hesitate to share them with me.",
+    "text_tr": "**Portfolyo Marjin**'i (Portfolio Margin) etkisiz hale getirip **Klasik Alım-Satımı** aktif etmek için lütfen yukarıdaki ekran görüntülerindeki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (Futures) sekmesine tıklayın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine tıklayın.\n\n**3 -)** Açılan menüden **\"Back to Classic Trading\"** (Klasik Alım-Satıma Dönüş) butonuna tıklayın.\n\n**4 -)** **\"Classic Trading\"** seçeneğini işaretleyin.\n\n**5 -)** **\"Geçiş Yap\"** (Switch) butonuna tıklayın ve onaylayın.\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin.",
+    "image": "screenshots/1766691211202_Disable-Portfolio-Margin-(To-Classic)---EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1766691251410
+  },
+  {
+    "title": "How To Change Order Size/Unit Preference to Initial Margin - EN.jpeg",
+    "text": "To change your order size unit preference, please follow the steps in the screenshot above:\n\n**1 -)** Click on **\"Futures\"**.\n\n**2 -)** Click on the **Asset Unit** (e.g., USDT) button located next to the amount input field.\n\n> The **\"Unit Preference\"** menu will appear at the bottom.\n\n**3 -)** **Symbol Selection:** If you want to input or view the order size in the specific token (e.g., BTC,BNB,RIVER), select the **Asset Name**.\n\n**4 -)** **USDT \"Order Size\":** If you select this, the amount entered will represent the **notional value** (the total value of the order including leverage).\n\n**5 -)** **USDT \"Initial Margin\":** If you select this, the amount you enter will be the **actual margin** you want to invest.\n\n* *Example:* If you enter **10 USDT**, the order will use **10 USDT** from your balance as margin for that position.\n\nIf you are stuck on any steps, take a screenshot and share it with me; I'll be happy to assist you further!",
+    "text_tr": "Birim tercihinizi değiştirmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (Futures) sekmesine tıklayın.\n\n**2 -)** Miktar giriş alanının yanında bulunan **Varlık Birimi** (örneğin USDT) butonuna tıklayın.\n\n> Ekranın alt kısmında **\"Birim Tercihi\"** (Unit Preference) menüsü açılacaktır.\n\n**3 -)** **Sembol Seçimi:** Emri ilgili token cinsinden (örneğin BTC,BNB,RIVER) girmek veya görüntülemek istiyorsanız, **Varlık Adını** seçin.\n\n**4 -)** **USDT \"Order Size\" (Emir Büyüklüğü):** Bu seçeneği işaretlerseniz, girdiğiniz tutar **itibari değeri** (kaldıraç dahil toplam emir büyüklüğünü) temsil eder.\n\n**5 -)** **USDT \"Initial Margin\" (Başlangıç Teminatı):** Bu seçeneği işaretlerseniz, girdiğiniz tutar o işleme yatırmak istediğiniz ** teminatı** temsil eder.\n\n* *Örnek:* Bu seçenek seçiliyken miktar kısmına **10 USDT** yazarsanız, işlem için bakiyenizden **10 USDT** teminat ayrılır.\n\nBu adımların herhangi birinde takılırsanız, lütfen bir ekran görüntüsü alıp benimle paylaşın; size yardımcı olmaktan mutluluk duyarım!",
+    "image": "screenshots/1767371197519_How-To-Change-Order-Size-Unit-Preference-to-Initial-Margin-EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767371337539,
+    "updatedAt": "2026-01-02 16:28 UTC+0"
+  },
+  {
+    "title": "PM Aggregate Funds PM归集资金 - CN",
+    "text": "如想要在统一账户划转资金到现货账户，您可以按照截图中的步骤操作：\n\n1）在页面下方点击【资产】\n2）点击【划转】\n3）点击【双箭头】图标，确认划转方向为“从【统一账户】到【现货账户】”\n4）点击【归集资金】\n5）弹窗提示资金已成功归集后，点击【好的】\n6）选择需要划转的资产\n7）输入您要转出的币种数量\n8）点击【确认划转】，即可完成操作",
+    "text_tr": "",
+    "image": "screenshots/1767731895002_PM-Aggregate-Funds.png",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "id": 1767731966052,
+    "updatedAt": "2026-01-07 04:39 UTC+8"
   }
 ]
