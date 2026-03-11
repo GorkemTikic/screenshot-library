@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useData } from '../contexts/DataContext';
-import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, MessageSquare, CheckCircle } from 'lucide-react';
+import { Plus, Search, Trash2, Edit2, X, Save, Settings as SettingsIcon, Github, Smartphone, Monitor, CheckCircle, Cloud } from 'lucide-react';
 import { githubService } from '../services/github';
+import { formatDate } from '../utils/langUtils';
+
 
 export function AdminPage() {
-    const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, feedbacks, resolveFeedback, syncData, syncFeedbacks } = useData();
+    const { items, addItem, updateItem, deleteItem, allTopics, allLanguages, performAtomicUpdate } = useData();
     const [searchTerm, setSearchTerm] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
@@ -12,8 +14,6 @@ export function AdminPage() {
     // Modals
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
-    const [feedbackTab, setFeedbackTab] = useState('active'); // 'active' or 'history'
 
     // Form State
     const [editingId, setEditingId] = useState(null);
@@ -39,28 +39,6 @@ export function AdminPage() {
         }
     }, []);
 
-    // Group feedbacks by item for the UI
-    const groupedFeedbacks = useMemo(() => {
-        if (!feedbacks) return [];
-        const targetStatus = feedbackTab === 'active' ? 'active' : 'resolved';
-        const currentList = feedbacks.filter(fb => fb.status === targetStatus);
-        const groups = {};
-
-        currentList.forEach(fb => {
-            if (!groups[fb.itemId]) {
-                const item = (items || []).find(i => i.id === fb.itemId);
-                groups[fb.itemId] = {
-                    item: item || { title: `Unknown Item (${fb.itemId})`, image: '', topic: 'N/A' },
-                    feedbacks: []
-                };
-            }
-            groups[fb.itemId].feedbacks.push(fb);
-        });
-
-        return Object.values(groups);
-    }, [feedbacks, feedbackTab, items]);
-
-    const feedbackCount = (feedbacks || []).filter(fb => fb.status === 'active').length;
 
     // Filtered Items
     const safeItems = items || [];
@@ -112,17 +90,18 @@ export function AdminPage() {
     };
 
     const handleDelete = async (itemId) => {
-        if (window.confirm("Are you sure you want to delete this item?")) {
+        const itemToDelete = items.find(i => i.id === itemId);
+        if (window.confirm(`Are you sure you want to delete "${itemToDelete?.title || 'this item'}"?`)) {
             deleteItem(itemId);
-            const newItems = items.filter(i => i.id !== itemId);
             if (githubService.isConfigured()) {
                 const confirmSync = window.confirm("Deleted locally. Sync change to GitHub?");
                 if (confirmSync) {
                     try {
                         setSyncStatus('syncing');
-                        await githubService.updateDataJson(newItems);
+                        // Use atomic update bridge
+                        await performAtomicUpdate('DELETE', { id: itemId });
                         setSyncStatus('success');
-                        alert("Successfully synced to GitHub!");
+                        alert("Successfully synced deletion to GitHub!");
                     } catch (err) {
                         setSyncStatus('error');
                         alert("Sync failed: " + err.message);
@@ -153,14 +132,14 @@ export function AdminPage() {
         }
 
         try {
-            setUploading(true);
-            const imageUrl = await githubService.uploadImage(file);
-            setFormData(prev => ({ ...prev, image: imageUrl }));
-            setUploading(false);
+            // Store the file locally in formData and create a temporary preview URL
+            setFormData(prev => ({
+                ...prev,
+                localImageFile: file,
+                image: URL.createObjectURL(file)
+            }));
         } catch (error) {
-            console.error(error);
-            alert("Upload failed: " + error.message);
-            setUploading(false);
+            alert("Local preview failed: " + error.message);
         }
     };
 
@@ -185,27 +164,39 @@ export function AdminPage() {
             finalData.language = 'English';
         }
 
-        let newItems;
+        const updatedAt = formatDate(Date.now(), finalData.language);
+        let action = editingId ? 'UPDATE' : 'ADD';
+        let itemToSync;
+
         if (editingId) {
-            updateItem(editingId, finalData);
-            newItems = items.map(i => i.id === editingId ? { ...i, ...finalData } : i);
+            itemToSync = { ...finalData, updatedAt, id: editingId };
+            updateItem(editingId, itemToSync);
         } else {
-            const newItem = { ...finalData, id: Date.now() };
-            addItem(newItem);
-            newItems = [...items, newItem];
+            itemToSync = { ...finalData, id: Date.now(), updatedAt };
+            addItem(itemToSync);
         }
 
         if (githubService.isConfigured()) {
-            const confirmSync = window.confirm("Saved locally. Do you want to push updates to GitHub?");
+            const confirmSync = window.confirm(`Ready to push to GitHub? (This handles both image and data in one go)`);
             if (confirmSync) {
                 try {
                     setSyncStatus('syncing');
-                    await githubService.updateDataJson(newItems);
-                    setSyncStatus('success');
-                    alert("Successfully synced to GitHub!");
+                    // USE UNIFIED SYNC: Send the action, item, and the file we stored in handleFileUpload
+                    const newItems = await githubService.unifiedAtomicSync(
+                        action,
+                        itemToSync,
+                        formData.localImageFile
+                    );
+
+                    if (newItems) {
+                        setSyncStatus('success');
+                        alert("Successfully synced to GitHub!");
+                        // Optional: Refresh or update UI state more smoothly if needed
+                        window.location.reload();
+                    }
                 } catch (err) {
                     setSyncStatus('error');
-                    alert("GitHub Sync Failed: " + err.message);
+                    alert("Sync Failed: " + err.message);
                 }
             }
         }
@@ -214,17 +205,6 @@ export function AdminPage() {
         resetForm();
     };
 
-    const handleResolveFeedback = async (feedbackId) => {
-        if (!window.confirm("Mark this feedback as resolved and sync to GitHub?")) return;
-
-        const updatedFeedbacks = resolveFeedback(feedbackId);
-
-        try {
-            await syncFeedbacks(updatedFeedbacks);
-        } catch (err) {
-            console.error("Resolution sync failed", err);
-        }
-    };
 
     return (
         <div className="admin-container animate-in">
@@ -234,10 +214,6 @@ export function AdminPage() {
                     <p className="text-muted">Manage your screenshots knowledge base</p>
                 </div>
                 <div className="header-actions">
-                    <button className={`btn btn-secondary ${feedbackCount > 0 ? 'pulse' : ''}`} onClick={() => setIsFeedbackModalOpen(true)}>
-                        <MessageSquare size={18} className="mr-2" />
-                        Feedbacks {feedbackCount > 0 && <span className="feedback-badge">{feedbackCount}</span>}
-                    </button>
                     <button className="btn btn-secondary" onClick={() => setIsSettingsOpen(true)}>
                         <Github size={18} className="mr-2" /> GitHub Settings
                     </button>
@@ -452,7 +428,7 @@ export function AdminPage() {
                                 </div>
 
                                 <div className="form-group">
-                                    <label>English Text (Content)</label>
+                                    <label>{formData.language} Text (Content)</label>
                                     <textarea
                                         className="form-textarea"
                                         required
@@ -482,85 +458,6 @@ export function AdminPage() {
                 </div>
             )}
 
-            {/* Feedbacks Modal */}
-            {isFeedbackModalOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-content" style={{ maxWidth: '800px' }}>
-                        <div className="modal-header">
-                            <h3>Active Feedbacks</h3>
-                            <button className="close-btn" onClick={() => setIsFeedbackModalOpen(false)}><X size={24} /></button>
-                        </div>
-                        <div className="modal-body">
-                            <div className="tabs-header mb-6">
-                                <button
-                                    className={`tab-btn ${feedbackTab === 'active' ? 'active' : ''}`}
-                                    onClick={() => setFeedbackTab('active')}
-                                >
-                                    Active Reports ({feedbackCount})
-                                </button>
-                                <button
-                                    className={`tab-btn ${feedbackTab === 'history' ? 'active' : ''}`}
-                                    onClick={() => setFeedbackTab('history')}
-                                >
-                                    Resolution History
-                                </button>
-                            </div>
-
-                            {groupedFeedbacks.length === 0 ? (
-                                <div className="text-center py-8 text-muted">
-                                    {feedbackTab === 'active' ? "No active feedbacks! Great job." : "No resolution history yet."}
-                                </div>
-                            ) : (
-                                <div className="feedback-list">
-                                    {groupedFeedbacks.map(group => (
-                                        <div key={group.item.id || Math.random()} className="feedback-item-group">
-                                            <div className="feedback-item-header">
-                                                <img src={group.item.image} alt="" className="feedback-thumb" />
-                                                <div className="flex-1">
-                                                    <h4 className="font-bold">{group.item.title}</h4>
-                                                    <p className="text-xs text-muted">ID: {group.item.id} | Topic: {group.item.topic}</p>
-                                                </div>
-                                            </div>
-                                            <div className="feedback-messages">
-                                                {group.feedbacks.map(fb => (
-                                                    <div key={fb.id} className="feedback-message-row">
-                                                        <div className="flex-1">
-                                                            <p className="feedback-text line-clamp-2" title={fb.message}>{fb.message}</p>
-                                                            <div className="flex justify-between items-center">
-                                                                <p className="text-xs text-muted">{new Date(fb.timestamp).toLocaleString()}</p>
-                                                                {fb.resolvedAt && (
-                                                                    <p className="text-xs text-green-600 font-semibold italic">
-                                                                        Resolved: {new Date(fb.resolvedAt).toLocaleString()}
-                                                                    </p>
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                        {fb.status === 'active' && (
-                                                            <button
-                                                                className="btn btn-xs btn-success ml-4"
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    handleResolveFeedback(fb.id);
-                                                                }}
-                                                                title="Mark as Fixed / Resolved"
-                                                            >
-                                                                <CheckCircle size={14} className="mr-1" /> Resolve
-                                                            </button>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                        <div className="modal-footer">
-                            <button className="btn btn-secondary" onClick={() => setIsFeedbackModalOpen(false)}>Close</button>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     );
 }

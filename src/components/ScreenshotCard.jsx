@@ -1,33 +1,89 @@
 import React, { useState } from 'react';
-import { Copy, Eye, Heart, Check, MessageSquare, Send } from 'lucide-react';
+import { Copy, Check, Heart, ExternalLink, Eye } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { logEvent } from '../services/analytics';
 
 import { resolveImageUrl } from '../utils/imageUtils';
+import { getLangCode, formatDate } from '../utils/langUtils';
 
 export function ScreenshotCard({ item, onClickImage }) {
-    const { isFavorite, toggleFavorite, addFeedback, syncFeedbacks, feedbacks } = useData();
+    const { isFavorite, toggleFavorite } = useData();
     const [copied, setCopied] = useState(false);
     const [showText, setShowText] = useState(false);
     const [contentLang, setContentLang] = useState('en'); // 'en' or 'tr'
-    const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
-    const [feedbackMessage, setFeedbackMessage] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const hasTr = item.text_tr && item.text_tr.trim().length > 0;
     const currentText = (contentLang === 'tr' && hasTr) ? item.text_tr : item.text;
 
-    const handleCopy = (e) => {
+    const handleCopy = async (e) => {
+        e.preventDefault();
         e.stopPropagation();
-        navigator.clipboard.writeText(currentText);
-        setCopied(true);
+
+        const textToCopy = currentText;
+        let successful = false;
+
+        // Try modern Clipboard API first
+        if (navigator.clipboard && window.isSecureContext) {
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                successful = true;
+            } catch (err) {
+                console.error('Clipboard API failed, trying fallback...', err);
+            }
+        }
+
+        // Fallback: Create hidden textarea
+        if (!successful) {
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+
+                // Positioning logic: use click coordinates if available
+                // This is the most robust way to prevent "scroll to top" in iframes
+                // even when window.pageYOffset is 0 (auto-resize iframes).
+                const clickX = e.clientX || 0;
+                const clickY = e.clientY || 0;
+
+                textArea.style.position = "fixed";
+                textArea.style.left = `${clickX}px`;
+                textArea.style.top = `${clickY}px`;
+                textArea.style.width = "1px";
+                textArea.style.height = "1px";
+                textArea.style.padding = "0";
+                textArea.style.border = "none";
+                textArea.style.outline = "none";
+                textArea.style.boxShadow = "none";
+                textArea.style.background = "transparent";
+                textArea.style.opacity = "0";
+                textArea.style.pointerEvents = "none";
+
+                document.body.appendChild(textArea);
+
+                // Try to focus without scrolling
+                if (typeof textArea.focus === 'function') {
+                    textArea.focus({ preventScroll: true });
+                }
+                textArea.select();
+
+                successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+            }
+        }
+
+        if (successful) {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        }
+
         // Log event
         logEvent('copy_text', {
             title: item.title,
             topic: item.topic,
-            language: contentLang
+            language: contentLang,
+            method: successful ? (navigator.clipboard ? 'api' : 'fallback') : 'failed'
         });
-        setTimeout(() => setCopied(false), 2000);
     };
 
     const handleToggleFavorite = (e) => {
@@ -39,6 +95,12 @@ export function ScreenshotCard({ item, onClickImage }) {
         }
     };
 
+    const handleLangSwitch = (e, lang) => {
+        e.stopPropagation();
+        setContentLang(lang);
+        logEvent('switch_lang', { title: item.title, topic: item.topic, language: lang });
+    };
+
     const handlePreviewToggle = (e) => {
         e.stopPropagation();
         const newState = !showText;
@@ -48,37 +110,15 @@ export function ScreenshotCard({ item, onClickImage }) {
         }
     };
 
-    const handleLangSwitch = (e, lang) => {
-        e.stopPropagation();
-        setContentLang(lang);
-        logEvent('switch_lang', { title: item.title, topic: item.topic, language: lang });
-    };
-
     const handleImageClick = () => {
         logEvent('view_image', { title: item.title, topic: item.topic });
         onClickImage(item);
     };
 
-    const handleFeedbackSubmit = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (!feedbackMessage.trim()) return;
-
-        setIsSubmitting(true);
-        const newFb = addFeedback(item.id, feedbackMessage);
-
-        logEvent('send_feedback', { title: item.title, topic: item.topic });
-
-        // Auto-sync: Send BOTH the new one and the existing ones to avoid stale state
-        syncFeedbacks([newFb, ...feedbacks]).catch(err => console.error("Auto-sync failed:", err));
-
-        // Small delay for UX
-        setTimeout(() => {
-            setFeedbackMessage('');
-            setIsFeedbackOpen(false);
-            setIsSubmitting(false);
-            alert('Feedback sent! Admin will review it.');
-        }, 600);
+    const handleContextMenu = (e) => {
+        // We don't preventDefault because users might want the actual context menu,
+        // but we want to log that they were interested enough to right-click (save, etc.)
+        logEvent('right_click_image', { title: item.title, topic: item.topic });
     };
 
     const getTopicClass = (t) => {
@@ -89,7 +129,7 @@ export function ScreenshotCard({ item, onClickImage }) {
     return (
         <div className="card">
             {/* Image Area */}
-            <div className="card-image-wrapper" onClick={handleImageClick}>
+            <div className="card-image-wrapper" onClick={handleImageClick} onContextMenu={handleContextMenu}>
                 <img
                     src={resolveImageUrl(item.image)}
                     alt={item.title}
@@ -159,7 +199,7 @@ export function ScreenshotCard({ item, onClickImage }) {
                         title="Copy Content"
                     >
                         {copied ? <Check size={16} /> : <Copy size={16} />}
-                        {copied ? 'Copied' : `Copy (${contentLang.toUpperCase()})`}
+                        {copied ? 'Copied' : `Copy (${contentLang === 'en' ? getLangCode(item.language) : 'TR'})`}
                     </button>
 
                     <button
@@ -167,49 +207,20 @@ export function ScreenshotCard({ item, onClickImage }) {
                         className="btn btn-icon"
                         title="Preview Text"
                     >
-                        {showText ? <Eye className="text-primary" size={20} /> : <Eye size={20} />}
+                        <Eye size={20} className={showText ? 'text-primary' : ''} />
                     </button>
 
-                    <button
-                        onClick={(e) => { e.stopPropagation(); setIsFeedbackOpen(!isFeedbackOpen); }}
-                        className={`btn btn-icon ${isFeedbackOpen ? 'active' : ''}`}
-                        title="Report Outdated / Give Feedback"
-                    >
-                        <MessageSquare size={18} className={isFeedbackOpen ? 'text-primary' : ''} />
+                    <button className="btn-icon" onClick={(e) => {
+                        e.stopPropagation();
+                        onClickImage();
+                    }} title="View Full">
+                        <ExternalLink size={18} />
                     </button>
                 </div>
 
-                {/* Feedback Popover */}
-                {isFeedbackOpen && (
-                    <div className="feedback-popover animate-in" onClick={e => e.stopPropagation()}>
-                        <form onSubmit={handleFeedbackSubmit} className="feedback-form">
-                            <textarea
-                                className="feedback-textarea"
-                                placeholder="What's outdated or wrong?"
-                                value={feedbackMessage}
-                                onChange={e => setFeedbackMessage(e.target.value)}
-                                autoFocus
-                                required
-                            />
-                            <div className="feedback-actions">
-                                <button
-                                    type="button"
-                                    className="btn btn-xs"
-                                    onClick={() => setIsFeedbackOpen(false)}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="btn btn-xs btn-primary"
-                                    disabled={isSubmitting || !feedbackMessage.trim()}
-                                >
-                                    {isSubmitting ? '...' : <><Send size={12} /> Send</>}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                )}
+                <div className="card-updated">
+                    Last Updated: {item.updatedAt || formatDate(item.id, item.language)}
+                </div>
 
                 {/* Text Preview */}
                 {showText && (

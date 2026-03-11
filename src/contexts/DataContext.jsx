@@ -4,12 +4,10 @@ import bundledData from '../data/data.json';
 const DataContext = createContext();
 const BASE_DATA_URL = 'https://raw.githubusercontent.com/GorkemTikic/screenshot-library/main/src/data';
 const DATA_URL = `${BASE_DATA_URL}/data.json`;
-const FEEDBACKS_URL = `${BASE_DATA_URL}/feedbacks.json`;
 import { githubService } from '../services/github';
 
 export function DataProvider({ children }) {
     const [items, setItems] = useState(bundledData); // Start with bundled data
-    const [feedbacks, setFeedbacks] = useState([]); // Separate feedback state
     const [isLoading, setIsLoading] = useState(true);
     const [fetchError, setFetchError] = useState(null);
 
@@ -24,83 +22,34 @@ export function DataProvider({ children }) {
     useEffect(() => {
         const loadLines = async () => {
             try {
-                // Fetch live data with cache busting ONLY in production
-                if (import.meta.env.DEV) {
-                    console.log("Development mode: Using local data");
-                    setIsLoading(false);
-                    return;
-                }
-                const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-                if (!response.ok) throw new Error('Failed to fetch live data');
-                const liveData = await response.json();
+                // --- PERSISTENCE LOAD ---
+                // Fetch live data with cache busting
+                // In DEV mode, we only fetch if GitHub is configured to avoid local-to-remote confusion
+                // unless we are explicitly trying to sync.
+                const shouldFetchRemote = !import.meta.env.DEV || githubService.isConfigured();
 
-                // Load feedbacks separately
-                let remoteFeedbacks = [];
-                try {
-                    // If we have GitHub configured, use API to get freshest data
-                    if (githubService.isConfigured()) {
-                        const { owner, repo } = githubService.getConfig();
-                        const url = `https://api.github.com/repos/${owner}/${repo}/contents/src/data/feedbacks.json?t=${Date.now()}`;
-                        const fbApiRes = await fetch(url, {
-                            headers: githubService.getHeaders(),
-                            cache: 'no-store'
-                        });
-                        if (fbApiRes.ok) {
-                            const fbFile = await fbApiRes.json();
-                            const decoded = decodeURIComponent(escape(atob(fbFile.content)));
-                            remoteFeedbacks = JSON.parse(decoded);
-                        }
-                    } else {
-                        // Public view: Use RAW URL with cache busting
-                        const fbResponse = await fetch(`${FEEDBACKS_URL}?t=${Date.now()}`);
-                        if (fbResponse.ok) {
-                            remoteFeedbacks = await fbResponse.json();
-                        }
-                    }
-                } catch (fbErr) {
-                    console.warn("Could not load feedbacks, starting fresh:", fbErr);
-                }
+                if (shouldFetchRemote) {
+                    const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
+                    if (!response.ok) throw new Error('Failed to fetch data');
+                    const liveData = await response.json();
 
-                // Sanitize data and migrate legacy feedbacks
-                let legacyFeedbacks = [];
-                const sanitizedData = liveData.map((item, index) => {
-                    const itemId = item.id || Date.now() + index;
-                    if (item.feedbacks && Array.isArray(item.feedbacks)) {
-                        const enriched = item.feedbacks.map(fb => ({
-                            ...fb,
-                            itemId: itemId,
-                            status: fb.status || 'active'
-                        }));
-                        legacyFeedbacks = [...legacyFeedbacks, ...enriched];
-                    }
-                    return {
+                    // Sanitize and set Items IMMEDIATELY to clear loading screen
+                    const sanitizedData = liveData.map((item, index) => ({
                         ...item,
-                        id: itemId,
-                        feedbacks: undefined // Clear legacy feedbacks from items
-                    };
-                });
+                        id: item.id || Date.now() + index
+                    }));
+                    setItems(sanitizedData);
+                } else {
+                    console.log("Development mode (unconfigured): Using bundled data.");
+                    setItems(bundledData);
+                }
+                setIsLoading(false);
 
-                // Final Merge: remote feedbacks + legacy ones
-                const mergedFeedbacks = [...(Array.isArray(remoteFeedbacks) ? remoteFeedbacks : [])];
-                const existingIds = new Set(mergedFeedbacks.map(f => f.id));
-                legacyFeedbacks.forEach(fb => {
-                    if (!existingIds.has(fb.id)) {
-                        mergedFeedbacks.push(fb);
-                    }
-                });
 
-                setFeedbacks(mergedFeedbacks);
-                setItems(sanitizedData);
-                console.log("Loaded data. Feedbacks count:", mergedFeedbacks.length);
             } catch (err) {
-                console.warn("Data fetch failed:", err);
+                console.warn("Critical data fetch failed:", err);
                 setFetchError(err.message);
-                // Fallback to bundled data
-                setItems(bundledData.map((item, index) => ({
-                    ...item,
-                    id: item.id || Date.now() + index
-                })));
-            } finally {
+                setItems(bundledData);
                 setIsLoading(false);
             }
         };
@@ -136,43 +85,19 @@ export function DataProvider({ children }) {
         setItems(prev => prev.filter(item => item.id !== id));
     };
 
-    const addFeedback = (itemId, message) => {
-        const feedbackId = Date.now();
-        const newFeedback = {
-            id: feedbackId,
-            itemId,
-            message,
-            status: 'active',
-            timestamp: new Date().toISOString()
-        };
-
-        setFeedbacks(prev => [newFeedback, ...prev]);
-        return newFeedback;
-    };
-
-    const resolveFeedback = (feedbackId) => {
-        const updated = feedbacks.map(fb =>
-            fb.id === feedbackId
-                ? { ...fb, status: 'resolved', resolvedAt: new Date().toISOString() }
-                : fb
-        );
-        setFeedbacks(updated);
-        return updated;
-    };
 
     const getJson = () => JSON.stringify(items, null, 2);
 
-    const syncData = async (itemsToSync = items) => {
-        if (!githubService.isConfigured()) return false;
-        await githubService.updateDataJson(itemsToSync);
-        return true;
+    // Atomic Update Bridge
+    const performAtomicUpdate = async (action, item) => {
+        if (!githubService.isConfigured()) return;
+        const newItems = await githubService.atomicUpdateDataJson(action, item);
+        if (newItems) {
+            setItems(newItems);
+        }
+        return newItems;
     };
 
-    const syncFeedbacks = async (feedbacksToSync = feedbacks) => {
-        if (!githubService.isConfigured()) return false;
-        await githubService.updateJsonFile('src/data/feedbacks.json', feedbacksToSync, "Update feedbacks.json via Admin Panel");
-        return true;
-    };
 
     // Derived lists
     const allTopics = useMemo(() => Array.from(new Set(items.map(i => i.topic).filter(Boolean))).sort(), [items]);
@@ -200,11 +125,7 @@ export function DataProvider({ children }) {
             addItem,
             updateItem,
             deleteItem,
-            feedbacks,
-            addFeedback,
-            resolveFeedback,
-            syncData,
-            syncFeedbacks,
+            performAtomicUpdate,
             getJson,
             isLoading // Export loading state too
         }}>
