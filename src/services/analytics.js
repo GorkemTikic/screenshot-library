@@ -87,6 +87,47 @@ export const logEvent = (eventType, data = {}) => {
         .catch(err => console.error("[Analytics] Error:", err));
 };
 
+// Screenshot request submission (new event type, additive)
+export const logScreenshotRequest = (payload = {}) => {
+    return new Promise((resolve, reject) => {
+        if (!TRACKING_URL) {
+            reject(new Error('Analytics endpoint not configured'));
+            return;
+        }
+
+        const deviceHash = getDeviceHash();
+        const submittedAt = new Date().toISOString();
+
+        const params = new URLSearchParams({
+            event: 'screenshot_request',
+            hash: deviceHash,
+            uid: getDeviceId(),
+            platform: navigator.platform,
+            ua: navigator.userAgent,
+            screen: `${screen.width}x${screen.height}`,
+            tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            lang: navigator.language,
+            req_topic: payload.topic || '',
+            req_language: payload.language || '',
+            req_platform: payload.platform || '',
+            req_description: payload.description || '',
+            req_context: payload.context || '',
+            req_search_terms: payload.search_terms || '',
+            req_submitted_at: submittedAt,
+        });
+
+        fetch(`${TRACKING_URL}?${params.toString()}`, { mode: 'no-cors' })
+            .then(() => {
+                console.log(`[Analytics] Sent (Hash: ${deviceHash}): screenshot_request`, payload);
+                resolve({ submittedAt, deviceHash });
+            })
+            .catch(err => {
+                console.error('[Analytics] Screenshot request error:', err);
+                reject(err);
+            });
+    });
+};
+
 export const fetchInteractionStats = async () => {
     if (!TRACKING_URL) return null;
     try {

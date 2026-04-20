@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link, useLocation, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
-import { Moon, Sun, ShieldCheck, Settings, BarChart2 } from 'lucide-react';
+import { useRequestModal } from '../contexts/RequestModalContext';
+import { Moon, Sun, ShieldCheck, Settings, BarChart2, MessageSquarePlus } from 'lucide-react';
 import { MarketTicker } from './MarketTicker';
+import { RequestScreenshotModal } from './RequestScreenshotModal';
 
 export function Layout() {
     const { theme, toggleTheme } = useTheme();
-    const location = useLocation();
+    const { open: openRequestModal, isOpen: requestModalOpen } = useRequestModal();
 
     return (
         <div className="app-layout">
@@ -19,6 +21,15 @@ export function Layout() {
                     </Link>
 
                     <div className="header-actions">
+                        <button
+                            onClick={() => openRequestModal()}
+                            className="btn btn-request"
+                            title="Request a screenshot"
+                        >
+                            <MessageSquarePlus size={16} />
+                            <span className="btn-request-label">Request Screenshot</span>
+                        </button>
+
                         <Link to="/analytics" className="theme-toggle" title="Analytics Dashboard">
                             <BarChart2 size={20} />
                         </Link>
@@ -50,6 +61,8 @@ export function Layout() {
             <footer className="app-footer">
                 <p>FD Screenshot Assistant – Internal Use Only</p>
             </footer>
+
+            {requestModalOpen && <RequestScreenshotModal />}
         </div>
     );
 }
