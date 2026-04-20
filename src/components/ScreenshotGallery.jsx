@@ -1,13 +1,15 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Filter, X } from 'lucide-react';
+import { Search, Filter, X, MessageSquarePlus } from 'lucide-react';
 import Fuse from 'fuse.js';
 import { useData } from '../contexts/DataContext';
+import { useRequestModal } from '../contexts/RequestModalContext';
 import { ScreenshotCard } from './ScreenshotCard';
 import { Lightbox } from './Lightbox';
 import { MobileIcon3D, WebIcon3D } from './PlatformIcons';
 
 export function ScreenshotGallery() {
     const { items, allTopics, allLanguages, favorites, isFavorite } = useData();
+    const { open: openRequestModal } = useRequestModal();
 
     const [search, setSearch] = useState('');
     const [selectedTopic, setSelectedTopic] = useState('All');
@@ -169,6 +171,19 @@ export function ScreenshotGallery() {
                     <Filter size={48} className="no-results-icon" />
                     <p className="no-results-text">No match found.</p>
                     <button className="clear-filters-link" onClick={() => { setSearch(''); setSelectedLang('All'); setSelectedTopic('All'); setSelectedPlatform('mobile'); }}>Clear Filters</button>
+
+                    {search.trim() && (
+                        <div className="request-prompt">
+                            <p className="request-prompt-text">Can't find what you need?</p>
+                            <button
+                                type="button"
+                                className="btn btn-primary request-prompt-btn"
+                                onClick={() => openRequestModal({ prefillSearch: search })}
+                            >
+                                <MessageSquarePlus size={16} /> Request it →
+                            </button>
+                        </div>
+                    )}
                 </div>
             )}
 
