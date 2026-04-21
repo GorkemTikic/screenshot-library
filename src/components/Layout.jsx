@@ -2,13 +2,16 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
-import { Moon, Sun, ShieldCheck, Settings, BarChart2, MessageSquarePlus } from 'lucide-react';
+import { useSurveyModal } from '../contexts/SurveyModalContext';
+import { Moon, Sun, ShieldCheck, Settings, BarChart2, MessageSquarePlus, ClipboardList } from 'lucide-react';
 import { MarketTicker } from './MarketTicker';
 import { RequestScreenshotModal } from './RequestScreenshotModal';
+import { SurveyModal } from './SurveyModal';
 
 export function Layout() {
     const { theme, toggleTheme } = useTheme();
     const { open: openRequestModal, isOpen: requestModalOpen } = useRequestModal();
+    const { open: openSurveyModal, isOpen: surveyModalOpen } = useSurveyModal();
 
     return (
         <div className="app-layout">
@@ -28,6 +31,15 @@ export function Layout() {
                         >
                             <MessageSquarePlus size={16} />
                             <span className="btn-request-label">Request Screenshot</span>
+                        </button>
+
+                        <button
+                            onClick={() => openSurveyModal()}
+                            className="btn btn-survey"
+                            title="Share your feedback"
+                        >
+                            <ClipboardList size={16} />
+                            <span className="btn-request-label">Feedback Survey</span>
                         </button>
 
                         <Link to="/analytics" className="theme-toggle" title="Analytics Dashboard">
@@ -63,6 +75,7 @@ export function Layout() {
             </footer>
 
             {requestModalOpen && <RequestScreenshotModal />}
+            {surveyModalOpen && <SurveyModal />}
         </div>
     );
 }
