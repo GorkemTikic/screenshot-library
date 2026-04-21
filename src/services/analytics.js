@@ -149,6 +149,19 @@ export const fetchInteractionStats = async () => {
     return null;
 };
 
+// Fetch screenshot requests from the dedicated sheet tab.
+// Requires the Apps Script to implement `?getRequests=true`.
+export const fetchScreenshotRequests = async () => {
+    if (!TRACKING_URL) throw new Error('Analytics endpoint not configured');
+    const response = await fetch(`${TRACKING_URL}?getRequests=true`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+        throw new Error('Apps Script needs the getRequests handler — see setup instructions.');
+    }
+    return data;
+};
+
 export const getLibraryStats = (items, interactionData = null) => {
     const totalItems = items.length;
 
