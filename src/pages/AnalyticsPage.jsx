@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useData } from '../contexts/DataContext';
-import { getLibraryStats, fetchInteractionStats, fetchScreenshotRequests } from '../services/analytics';
+import { getLibraryStats, fetchInteractionStats, fetchScreenshotRequests, fetchSurveyResponses } from '../services/analytics';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info, RefreshCw, AlertTriangle, Inbox } from 'lucide-react';
+import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info, RefreshCw, AlertTriangle, Inbox, ClipboardList, Star } from 'lucide-react';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658'];
 
@@ -19,6 +19,11 @@ export function AnalyticsPage() {
     const [requestsLoading, setRequestsLoading] = useState(false);
     const [requestsError, setRequestsError] = useState('');
     const [requestFilter, setRequestFilter] = useState('');
+
+    const [surveys, setSurveys] = useState([]);
+    const [surveysLoading, setSurveysLoading] = useState(false);
+    const [surveysError, setSurveysError] = useState('');
+    const [surveyFilter, setSurveyFilter] = useState('');
 
     useEffect(() => {
         const loadStats = async () => {
@@ -55,6 +60,30 @@ export function AnalyticsPage() {
         }
     }, [isAuthenticated, activeTab, requests.length, requestsError, loadRequests]);
 
+    const loadSurveys = useCallback(async () => {
+        setSurveysLoading(true);
+        setSurveysError('');
+        try {
+            const rows = await fetchSurveyResponses();
+            const sorted = [...rows].sort((a, b) => {
+                const ta = new Date(a.submitted_at || a.timestamp || 0).getTime();
+                const tb = new Date(b.submitted_at || b.timestamp || 0).getTime();
+                return tb - ta;
+            });
+            setSurveys(sorted);
+        } catch (err) {
+            setSurveysError(err.message || 'Failed to load survey responses');
+        } finally {
+            setSurveysLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (isAuthenticated && activeTab === 'surveys' && surveys.length === 0 && !surveysError) {
+            loadSurveys();
+        }
+    }, [isAuthenticated, activeTab, surveys.length, surveysError, loadSurveys]);
+
     const filteredRequests = useMemo(() => {
         if (!requestFilter.trim()) return requests;
         const q = requestFilter.trim().toLowerCase();
@@ -62,6 +91,48 @@ export function AnalyticsPage() {
             Object.values(r).some(v => String(v ?? '').toLowerCase().includes(q))
         );
     }, [requests, requestFilter]);
+
+    const filteredSurveys = useMemo(() => {
+        if (!surveyFilter.trim()) return surveys;
+        const q = surveyFilter.trim().toLowerCase();
+        return surveys.filter(r =>
+            Object.values(r).some(v => String(v ?? '').toLowerCase().includes(q))
+        );
+    }, [surveys, surveyFilter]);
+
+    const surveyAggregates = useMemo(() => {
+        if (surveys.length === 0) return null;
+        const toNum = (v) => {
+            const n = parseFloat(v);
+            return Number.isFinite(n) ? n : null;
+        };
+        const satVals = surveys.map(s => toNum(s.satisfaction)).filter(n => n !== null && n >= 1 && n <= 5);
+        const easeVals = surveys.map(s => toNum(s.search_ease)).filter(n => n !== null && n >= 1 && n <= 5);
+        const avg = (arr) => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length) : null;
+
+        const usageCounts = {};
+        surveys.forEach(s => {
+            const k = s.usage_frequency || 'Unknown';
+            usageCounts[k] = (usageCounts[k] || 0) + 1;
+        });
+
+        const langTally = {};
+        surveys.forEach(s => {
+            String(s.languages_needed || '')
+                .split(',')
+                .map(x => x.trim())
+                .filter(Boolean)
+                .forEach(code => { langTally[code] = (langTally[code] || 0) + 1; });
+        });
+
+        return {
+            total: surveys.length,
+            avgSatisfaction: avg(satVals),
+            avgSearchEase: avg(easeVals),
+            usageCounts,
+            langTally,
+        };
+    }, [surveys]);
 
     // Auth Check
     if (!isAuthenticated) {
@@ -132,6 +203,12 @@ export function AnalyticsPage() {
                     onClick={() => setActiveTab('requests')}
                 >
                     <MessageSquarePlus size={16} /> Screenshot Requests
+                </button>
+                <button
+                    className={`analytics-tab ${activeTab === 'surveys' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('surveys')}
+                >
+                    <ClipboardList size={16} /> Survey Responses
                 </button>
             </div>
 
@@ -368,6 +445,184 @@ export function AnalyticsPage() {
                         <div>
                             This tab reads directly from a dedicated <strong>Screenshot Requests</strong> tab in the spreadsheet.
                             Data is cross-device and available to any admin on any browser.
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {activeTab === 'surveys' && (
+                <div className="requests-panel">
+                    <div className="requests-toolbar">
+                        <div>
+                            <h3 className="requests-title">
+                                <ClipboardList size={20} /> Survey Responses
+                                {surveys.length > 0 && (
+                                    <span className="requests-count">{surveys.length}</span>
+                                )}
+                            </h3>
+                            <p className="text-muted requests-subtitle">
+                                10-question agent feedback — ratings, topics, languages, and open-ended ideas.
+                            </p>
+                        </div>
+                        <div className="requests-toolbar-actions">
+                            <input
+                                type="text"
+                                className="form-input requests-filter"
+                                placeholder="Filter responses..."
+                                value={surveyFilter}
+                                onChange={e => setSurveyFilter(e.target.value)}
+                            />
+                            <button
+                                className="btn btn-secondary"
+                                onClick={loadSurveys}
+                                disabled={surveysLoading}
+                                title="Refresh"
+                            >
+                                <RefreshCw size={16} className={surveysLoading ? 'spinning' : ''} />
+                                Refresh
+                            </button>
+                            <a
+                                href={REQUESTS_SHEET_URL}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="btn btn-secondary"
+                                title="Open the sheet directly"
+                            >
+                                <ExternalLink size={16} /> Sheet
+                            </a>
+                        </div>
+                    </div>
+
+                    {surveysLoading && surveys.length === 0 && (
+                        <div className="requests-state">
+                            <div className="spinner"></div>
+                            <p>Loading survey responses…</p>
+                        </div>
+                    )}
+
+                    {surveysError && (
+                        <div className="requests-error-card">
+                            <div className="requests-error-header">
+                                <AlertTriangle size={18} />
+                                <strong>Couldn't load survey responses</strong>
+                            </div>
+                            <p className="text-muted">{surveysError}</p>
+                            <details className="requests-setup">
+                                <summary>Setup: add the <code>getSurvey</code> endpoint to your Apps Script</summary>
+                                <ol>
+                                    <li>Open your Apps Script (linked from the sheet → <em>Extensions → Apps Script</em>).</li>
+                                    <li>Paste the v8.3 <code>Code.gs</code> provided in the PR description.</li>
+                                    <li>Run <code>createSurveySheetNow</code> once from the Apps Script editor.</li>
+                                    <li><strong>Deploy → Manage Deployments → Edit → New Version → Deploy.</strong></li>
+                                    <li>Come back and hit Refresh.</li>
+                                </ol>
+                            </details>
+                            <button className="btn btn-secondary" onClick={loadSurveys}>
+                                <RefreshCw size={16} /> Try again
+                            </button>
+                        </div>
+                    )}
+
+                    {!surveysLoading && !surveysError && surveys.length === 0 && (
+                        <div className="requests-state">
+                            <Inbox size={40} className="icon-muted" />
+                            <p>No responses yet.</p>
+                            <p className="text-muted">Click <strong>Feedback Survey</strong> in the header to submit the first one.</p>
+                        </div>
+                    )}
+
+                    {!surveysError && surveyAggregates && (
+                        <div className="survey-agg-grid">
+                            <div className="survey-agg-card">
+                                <p className="stat-label">Responses</p>
+                                <h3 className="stat-value">{surveyAggregates.total}</h3>
+                            </div>
+                            <div className="survey-agg-card">
+                                <p className="stat-label">Avg satisfaction</p>
+                                <h3 className="stat-value">
+                                    {surveyAggregates.avgSatisfaction !== null
+                                        ? <><Star size={18} className="inline-star" /> {surveyAggregates.avgSatisfaction.toFixed(1)} / 5</>
+                                        : '—'}
+                                </h3>
+                            </div>
+                            <div className="survey-agg-card">
+                                <p className="stat-label">Avg search ease</p>
+                                <h3 className="stat-value">
+                                    {surveyAggregates.avgSearchEase !== null
+                                        ? <><Star size={18} className="inline-star" /> {surveyAggregates.avgSearchEase.toFixed(1)} / 5</>
+                                        : '—'}
+                                </h3>
+                            </div>
+                            <div className="survey-agg-card survey-agg-langs">
+                                <p className="stat-label">Languages requested</p>
+                                <div className="survey-lang-list">
+                                    {Object.entries(surveyAggregates.langTally)
+                                        .sort((a, b) => b[1] - a[1])
+                                        .slice(0, 6)
+                                        .map(([code, count]) => (
+                                            <span key={code} className="req-pill">{code} · {count}</span>
+                                        ))}
+                                    {Object.keys(surveyAggregates.langTally).length === 0 && (
+                                        <span className="text-muted">—</span>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {!surveysError && filteredSurveys.length > 0 && (
+                        <div className="requests-table-wrap">
+                            <table className="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>When</th>
+                                        <th>Usage</th>
+                                        <th>Sat.</th>
+                                        <th>Search</th>
+                                        <th>Under-covered</th>
+                                        <th>Langs</th>
+                                        <th>Platform</th>
+                                        <th>Req. feature</th>
+                                        <th>Top feature idea</th>
+                                        <th>Biggest frustration</th>
+                                        <th>Other</th>
+                                        <th>Device</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredSurveys.map((r, idx) => (
+                                        <tr key={`${r.submitted_at || r.timestamp || idx}-${idx}`}>
+                                            <td className="col-when" title={r.submitted_at || r.timestamp}>
+                                                {formatRequestTime(r.submitted_at || r.timestamp)}
+                                            </td>
+                                            <td>{r.usage_frequency || '—'}</td>
+                                            <td><strong>{r.satisfaction || '—'}</strong></td>
+                                            <td><strong>{r.search_ease || '—'}</strong></td>
+                                            <td><span className="req-pill">{r.under_covered_topic || '—'}</span></td>
+                                            <td>{r.languages_needed || '—'}</td>
+                                            <td>{r.platform_preference || '—'}</td>
+                                            <td>{r.request_feature_experience || '—'}</td>
+                                            <td className="col-desc">{r.top_feature || '—'}</td>
+                                            <td className="col-desc">{r.biggest_frustration || '—'}</td>
+                                            <td className="col-ctx">{r.other_feedback || ''}</td>
+                                            <td className="col-device"><code>{(r.device_hash || r.hash || '').slice(0, 8)}</code></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+
+                    {!surveysError && surveys.length > 0 && filteredSurveys.length === 0 && (
+                        <div className="requests-state">
+                            <p className="text-muted">No responses match "{surveyFilter}".</p>
+                        </div>
+                    )}
+
+                    <div className="info-box">
+                        <div className="info-icon"><Info size={18} /></div>
+                        <div>
+                            Survey responses live in the <strong>DB_Survey_Responses</strong> tab. Each device is rate-limited to one submission per 24 hours to keep the data honest.
                         </div>
                     </div>
                 </div>

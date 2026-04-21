@@ -162,6 +162,67 @@ export const fetchScreenshotRequests = async () => {
     return data;
 };
 
+// Submit a feedback survey response. Uses the same Apps Script endpoint —
+// no PAT or admin credential required.
+export const logSurveyResponse = (payload = {}) => {
+    return new Promise((resolve, reject) => {
+        if (!TRACKING_URL) {
+            reject(new Error('Analytics endpoint not configured'));
+            return;
+        }
+
+        const deviceHash = getDeviceHash();
+        const submittedAt = new Date().toISOString();
+
+        const params = new URLSearchParams({
+            event: 'survey_response',
+            hash: deviceHash,
+            uid: getDeviceId(),
+            platform: navigator.platform,
+            ua: navigator.userAgent,
+            screen: `${screen.width}x${screen.height}`,
+            tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            lang: navigator.language,
+            title: `Survey: ${String(payload.top_feature || '').slice(0, 80)}`,
+            topic: 'Survey',
+            srv_usage_frequency: payload.usage_frequency || '',
+            srv_satisfaction: String(payload.satisfaction ?? ''),
+            srv_search_ease: String(payload.search_ease ?? ''),
+            srv_under_covered_topic: payload.under_covered_topic || '',
+            srv_languages_needed: payload.languages_needed || '',
+            srv_platform_preference: payload.platform_preference || '',
+            srv_request_feature_experience: payload.request_feature_experience || '',
+            srv_top_feature: payload.top_feature || '',
+            srv_biggest_frustration: payload.biggest_frustration || '',
+            srv_other_feedback: payload.other_feedback || '',
+            srv_submitted_at: submittedAt,
+        });
+
+        fetch(`${TRACKING_URL}?${params.toString()}`, { mode: 'no-cors' })
+            .then(() => {
+                console.log(`[Analytics] Sent (Hash: ${deviceHash}): survey_response`, payload);
+                resolve({ submittedAt, deviceHash });
+            })
+            .catch(err => {
+                console.error('[Analytics] Survey response error:', err);
+                reject(err);
+            });
+    });
+};
+
+// Fetch survey responses from the dedicated sheet tab.
+// Requires the Apps Script to implement `?getSurvey=true`.
+export const fetchSurveyResponses = async () => {
+    if (!TRACKING_URL) throw new Error('Analytics endpoint not configured');
+    const response = await fetch(`${TRACKING_URL}?getSurvey=true`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+        throw new Error('Apps Script needs the getSurvey handler — see setup instructions.');
+    }
+    return data;
+};
+
 export const getLibraryStats = (items, interactionData = null) => {
     const totalItems = items.length;
 

@@ -5,11 +5,11 @@
 [![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=github&logoColor=white)](https://pages.github.com/)
-[![Analytics-v8.2](https://img.shields.io/badge/Analytics-v8.2-FCD535?logo=google-analytics&logoColor=black)](https://script.google.com/)
+[![Analytics-v8.3](https://img.shields.io/badge/Analytics-v8.3-FCD535?logo=google-analytics&logoColor=black)](https://script.google.com/)
 [![License-MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Enterprise Screenshot Management & Behavioral Intelligence | Version 2.6.0**  
-> A premium, high-performance dashboard architected for institutional content libraries. Featuring glassmorphism aesthetics, **Atomic GitHub Synchronization**, **v8.2 Behavioral Analytics**, and a universal **Screenshot Request Pipeline**.
+> **Enterprise Screenshot Management & Behavioral Intelligence | Version 2.7.0**  
+> A premium, high-performance dashboard architected for institutional content libraries. Featuring glassmorphism aesthetics, **Atomic GitHub Synchronization**, **v8.3 Behavioral Analytics**, a universal **Screenshot Request Pipeline**, and an **Agent Feedback Survey** with live aggregation.
 
 ---
 
@@ -17,7 +17,8 @@
 
 *   **💎 Premium UI/UX**: Immersive "Modern Dark" aesthetic using glassmorphism, gold/neon accents, and interactive Recharts visualizations.
 *   **📊 Advanced Analytics (v8.2)**: Real-time interaction tracking with automated "Top Interaction" calculation, filtering out generic labels to focus on specific content engagement.
-*   **📮 Screenshot Request Pipeline**: **New.** Agents submit missing-screenshot requests straight from the header or a zero-results state — no PAT required. Requests stream into a dedicated `DB_Screenshot_Requests` tab and surface live in the Analytics dashboard.
+*   **📮 Screenshot Request Pipeline**: Agents submit missing-screenshot requests straight from the header or a zero-results state — no PAT required. Requests stream into a dedicated `DB_Screenshot_Requests` tab and surface live in the Analytics dashboard.
+*   **📝 Agent Feedback Survey**: **New.** A 10-question in-app survey (ratings + free-text) captures agent ideas, frustrations, and coverage gaps. Responses land in a dedicated `DB_Survey_Responses` tab and render in the Analytics dashboard with live averages, language demand, and a filterable table.
 *   **⚛️ Atomic Sync Engine**: Conflict-resistant CRUD operations via a "Fetch-Modify-Commit" cycle, ensuring data integrity in collaborative environments.
 *   **⏰ Temporal Enforcement**: Automatic `updatedAt` injection with intelligent timezone offsets (UTC+8 for Asia-region content, UTC+0 for global).
 *   **🔍 Semantic Search**: Instant-result fuzzy matching powered by Fuse.js across multi-language titles and technical content — now reused to surface duplicates during request submission.
@@ -39,14 +40,16 @@ support-screenshot-library-main/
 │   ├── components/         # Atomic UI Components
 │   │   ├── Layout.jsx      # Core Shell & Global State
 │   │   ├── ScreenshotCard.jsx       # Interaction Entry Point
-│   │   └── RequestScreenshotModal.jsx # Missing-screenshot submission form
+│   │   ├── RequestScreenshotModal.jsx # Missing-screenshot submission form
+│   │   └── SurveyModal.jsx          # 10-question agent feedback form
 │   ├── pages/
-│   │   └── AnalyticsPage.jsx        # v8.2 Insight Dashboard (Overview + Requests tab)
+│   │   └── AnalyticsPage.jsx        # v8.3 Insight Dashboard (Overview + Requests + Surveys)
 │   ├── services/           # External Modules
-│   │   ├── analytics.js    # Behavioral Tracking, Request Submission & Script Bridge
+│   │   ├── analytics.js    # Tracking, Request + Survey submission & Script Bridge
 │   │   └── github.js       # Atomic Sync & API Layer
 │   ├── contexts/           # Persistence & State
-│   │   └── RequestModalContext.jsx  # Cross-component modal controller
+│   │   ├── RequestModalContext.jsx  # Screenshot-request modal controller
+│   │   └── SurveyModalContext.jsx   # Feedback-survey modal controller
 │   └── data/               # Persistent Storage (data.json)
 ├── backfill.cjs            # Maintenance CLI for Data Normalization
 └── DEPLOYMENT.md           # Production DevOps Playbook
@@ -97,6 +100,25 @@ graph LR
 - **Server routing**: the `screenshot_request` event is written to both `DB_Logs` (for backward compatibility) and the dedicated `DB_Screenshot_Requests` tab. `getStats=true` continues to ignore request events so interaction metrics stay clean.
 - **Admin visibility**: Analytics dashboard now has an **Overview** + **Screenshot Requests** tab split. The Requests tab calls `?getRequests=true` and renders a live, filterable table with refresh and direct spreadsheet links.
 
+### 4. Agent Feedback Survey
+A 10-question in-app form captures structured satisfaction data plus free-text ideas. Same universal plumbing — no token, same Apps Script endpoint.
+
+```mermaid
+graph LR
+    A[Agent clicks Feedback Survey] --> B[SurveyModal]
+    B --> C[10 questions: 2 ratings, 4 choice, 3 free-text, 1 optional]
+    C --> D[logSurveyResponse]
+    D --> E[Apps Script doGet: event=survey_response]
+    E --> F[DB_Logs append]
+    E --> G[DB_Survey_Responses append]
+    G --> H[Analytics → Surveys tab: averages + table]
+```
+
+- **10 questions**: usage frequency, satisfaction (1–5), search ease (1–5), under-covered topic, languages needed (multi-select), platform preference, Request-Screenshot experience, top feature idea (free text), biggest frustration (free text), open feedback (optional free text).
+- **Client guardrails**: 24-hour per-device rate limit, rating/choice validation, 300/500-char limits on free-text, canvas-hash identity.
+- **Server routing**: `event=survey_response` is written to both `DB_Logs` and the dedicated `DB_Survey_Responses` tab. `getStats=true` ignores survey events so interaction metrics remain clean.
+- **Admin visibility**: new **Survey Responses** tab in Analytics with live averages (satisfaction, search ease), requested-language tally, and a full filterable response table.
+
 ---
 
 ## 🚀 Getting Started
@@ -120,13 +142,13 @@ To enable the **GitHub Sync** bridge:
 
 > **Note:** Screenshot requests do **not** require a PAT — they hit the shared Apps Script endpoint used by analytics. Only admins editing `data.json` need a token.
 
-### Apps Script (v8.2) Setup
-The Screenshot Request Pipeline is backed by the same Google Apps Script that powers analytics. When upgrading an existing deployment:
+### Apps Script (v8.3) Setup
+The Request Pipeline and Feedback Survey share the same Google Apps Script that powers analytics. When upgrading an existing deployment:
 
-1.  Paste the v8.2 `Code.gs` into the Apps Script editor.
-2.  Run `createRequestsSheetNow` once to initialize the `DB_Screenshot_Requests` tab.
+1.  Paste the v8.3 `Code.gs` into the Apps Script editor.
+2.  Run `createRequestsSheetNow` and `createSurveySheetNow` once each to initialize the `DB_Screenshot_Requests` and `DB_Survey_Responses` tabs.
 3.  **Deploy → Manage Deployments → ✏️ → New Version → Deploy** (critical — a simple save will not update the live Web App URL).
-4.  Verify `?getRequests=true` returns a JSON array, and confirm a test request appears in the Analytics → Screenshot Requests tab.
+4.  Verify `?getRequests=true` and `?getSurvey=true` both return JSON arrays, and confirm a test submission appears in the matching Analytics tab.
 
 ---
 
