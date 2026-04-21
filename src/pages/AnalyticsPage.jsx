@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useData } from '../contexts/DataContext';
-import { getLibraryStats, fetchInteractionStats } from '../services/analytics';
+import { getLibraryStats, fetchInteractionStats, fetchScreenshotRequests } from '../services/analytics';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info } from 'lucide-react';
+import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info, RefreshCw, AlertTriangle, Inbox } from 'lucide-react';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658'];
 
@@ -15,6 +15,11 @@ export function AnalyticsPage() {
     const [password, setPassword] = useState('');
     const [activeTab, setActiveTab] = useState('overview');
 
+    const [requests, setRequests] = useState([]);
+    const [requestsLoading, setRequestsLoading] = useState(false);
+    const [requestsError, setRequestsError] = useState('');
+    const [requestFilter, setRequestFilter] = useState('');
+
     useEffect(() => {
         const loadStats = async () => {
             if (items.length > 0) {
@@ -25,6 +30,38 @@ export function AnalyticsPage() {
         };
         loadStats();
     }, [items]);
+
+    const loadRequests = useCallback(async () => {
+        setRequestsLoading(true);
+        setRequestsError('');
+        try {
+            const rows = await fetchScreenshotRequests();
+            const sorted = [...rows].sort((a, b) => {
+                const ta = new Date(a.submitted_at || a.timestamp || 0).getTime();
+                const tb = new Date(b.submitted_at || b.timestamp || 0).getTime();
+                return tb - ta;
+            });
+            setRequests(sorted);
+        } catch (err) {
+            setRequestsError(err.message || 'Failed to load requests');
+        } finally {
+            setRequestsLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (isAuthenticated && activeTab === 'requests' && requests.length === 0 && !requestsError) {
+            loadRequests();
+        }
+    }, [isAuthenticated, activeTab, requests.length, requestsError, loadRequests]);
+
+    const filteredRequests = useMemo(() => {
+        if (!requestFilter.trim()) return requests;
+        const q = requestFilter.trim().toLowerCase();
+        return requests.filter(r =>
+            Object.values(r).some(v => String(v ?? '').toLowerCase().includes(q))
+        );
+    }, [requests, requestFilter]);
 
     // Auth Check
     if (!isAuthenticated) {
@@ -207,47 +244,150 @@ export function AnalyticsPage() {
 
             {activeTab === 'requests' && (
                 <div className="requests-panel">
-                    <div className="requests-hero">
-                        <div className="requests-hero-icon">
-                            <MessageSquarePlus size={28} />
-                        </div>
+                    <div className="requests-toolbar">
                         <div>
-                            <h3>Screenshot Requests</h3>
-                            <p className="text-muted">
-                                Every request submitted by any agent — from any device, with or without a GitHub token —
-                                is recorded in the shared Google Sheet. Open it below to review what agents are asking for.
+                            <h3 className="requests-title">
+                                <MessageSquarePlus size={20} /> Screenshot Requests
+                                {requests.length > 0 && (
+                                    <span className="requests-count">{requests.length}</span>
+                                )}
+                            </h3>
+                            <p className="text-muted requests-subtitle">
+                                Submitted by any agent, from any device, no token required.
                             </p>
+                        </div>
+                        <div className="requests-toolbar-actions">
+                            <input
+                                type="text"
+                                className="form-input requests-filter"
+                                placeholder="Filter requests..."
+                                value={requestFilter}
+                                onChange={e => setRequestFilter(e.target.value)}
+                            />
+                            <button
+                                className="btn btn-secondary"
+                                onClick={loadRequests}
+                                disabled={requestsLoading}
+                                title="Refresh"
+                            >
+                                <RefreshCw size={16} className={requestsLoading ? 'spinning' : ''} />
+                                Refresh
+                            </button>
+                            <a
+                                href={REQUESTS_SHEET_URL}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="btn btn-secondary"
+                                title="Open the sheet directly"
+                            >
+                                <ExternalLink size={16} /> Sheet
+                            </a>
                         </div>
                     </div>
 
-                    <div className="requests-cta-card">
-                        <div>
-                            <h4>All submitted requests</h4>
-                            <p className="text-muted">
-                                Filter the sheet by <code>event = screenshot_request</code> to see every request in one place.
-                                Newest rows are at the bottom.
-                            </p>
+                    {requestsLoading && requests.length === 0 && (
+                        <div className="requests-state">
+                            <div className="spinner"></div>
+                            <p>Loading requests…</p>
                         </div>
-                        <a
-                            href={REQUESTS_SHEET_URL}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="btn btn-primary"
-                        >
-                            <ExternalLink size={16} /> Open Requests Sheet
-                        </a>
-                    </div>
+                    )}
+
+                    {requestsError && (
+                        <div className="requests-error-card">
+                            <div className="requests-error-header">
+                                <AlertTriangle size={18} />
+                                <strong>Couldn't load requests</strong>
+                            </div>
+                            <p className="text-muted">{requestsError}</p>
+                            <details className="requests-setup">
+                                <summary>Setup: add the <code>getRequests</code> endpoint to your Apps Script</summary>
+                                <ol>
+                                    <li>Open your Apps Script (linked from the sheet → <em>Extensions → Apps Script</em>).</li>
+                                    <li>Paste the <code>handleScreenshotRequest</code> and <code>getRequests</code> helpers from the PR description.</li>
+                                    <li>Click <strong>Deploy → Manage Deployments → Edit → New Version → Deploy</strong>.</li>
+                                    <li>Come back and hit Refresh.</li>
+                                </ol>
+                            </details>
+                            <button className="btn btn-secondary" onClick={loadRequests}>
+                                <RefreshCw size={16} /> Try again
+                            </button>
+                        </div>
+                    )}
+
+                    {!requestsLoading && !requestsError && requests.length === 0 && (
+                        <div className="requests-state">
+                            <Inbox size={40} className="icon-muted" />
+                            <p>No requests yet.</p>
+                            <p className="text-muted">When an agent submits a request, it'll appear here.</p>
+                        </div>
+                    )}
+
+                    {!requestsError && filteredRequests.length > 0 && (
+                        <div className="requests-table-wrap">
+                            <table className="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>When</th>
+                                        <th>Topic</th>
+                                        <th>Lang</th>
+                                        <th>Platform</th>
+                                        <th>Description</th>
+                                        <th>Context</th>
+                                        <th>Searched</th>
+                                        <th>Device</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredRequests.map((r, idx) => (
+                                        <tr key={`${r.submitted_at || r.timestamp || idx}-${idx}`}>
+                                            <td className="col-when" title={r.submitted_at || r.timestamp}>
+                                                {formatRequestTime(r.submitted_at || r.timestamp)}
+                                            </td>
+                                            <td><span className="req-pill">{r.topic || '—'}</span></td>
+                                            <td>{r.language || r.req_language || '—'}</td>
+                                            <td>{r.platform || r.req_platform || '—'}</td>
+                                            <td className="col-desc">{r.description || r.req_description || '—'}</td>
+                                            <td className="col-ctx">{r.context || r.req_context || ''}</td>
+                                            <td className="col-search">{r.search_terms || r.req_search_terms || ''}</td>
+                                            <td className="col-device"><code>{(r.device_hash || r.hash || '').slice(0, 8)}</code></td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+
+                    {!requestsError && requests.length > 0 && filteredRequests.length === 0 && (
+                        <div className="requests-state">
+                            <p className="text-muted">No requests match "{requestFilter}".</p>
+                        </div>
+                    )}
 
                     <div className="info-box">
                         <div className="info-icon"><Info size={18} /></div>
                         <div>
-                            <strong>Want an in-app table instead of Sheets?</strong> We can upgrade this tab to pull requests
-                            live from the Apps Script. It's a ~10-line addition to your existing Google Apps Script
-                            (no new dependencies, no PAT required for agents). Ask and we'll wire it up.
+                            This tab reads directly from a dedicated <strong>Screenshot Requests</strong> tab in the spreadsheet.
+                            Data is cross-device and available to any admin on any browser.
                         </div>
                     </div>
                 </div>
             )}
         </div>
     );
+}
+
+function formatRequestTime(value) {
+    if (!value) return '—';
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return String(value);
+    const now = Date.now();
+    const diff = now - d.getTime();
+    const min = 60 * 1000;
+    const hr = 60 * min;
+    const day = 24 * hr;
+    if (diff < min) return 'just now';
+    if (diff < hr) return `${Math.floor(diff / min)}m ago`;
+    if (diff < day) return `${Math.floor(diff / hr)}h ago`;
+    if (diff < 7 * day) return `${Math.floor(diff / day)}d ago`;
+    return d.toLocaleString();
 }

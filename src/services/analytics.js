@@ -98,6 +98,15 @@ export const logScreenshotRequest = (payload = {}) => {
         const deviceHash = getDeviceHash();
         const submittedAt = new Date().toISOString();
 
+        // Map payload into the existing `title` and `topic` fields so it lands
+        // in the same sheet columns the other events populate.
+        const desc = (payload.description || '').trim();
+        const shortDesc = desc.length > 140 ? `${desc.slice(0, 140)}…` : desc;
+        const titleSummary = [
+            shortDesc,
+            `[${payload.language || '?'}/${payload.platform || 'Either'}]`,
+        ].filter(Boolean).join(' ');
+
         const params = new URLSearchParams({
             event: 'screenshot_request',
             hash: deviceHash,
@@ -107,10 +116,11 @@ export const logScreenshotRequest = (payload = {}) => {
             screen: `${screen.width}x${screen.height}`,
             tz: Intl.DateTimeFormat().resolvedOptions().timeZone,
             lang: navigator.language,
-            req_topic: payload.topic || '',
+            title: titleSummary,
+            topic: payload.topic || '',
             req_language: payload.language || '',
             req_platform: payload.platform || '',
-            req_description: payload.description || '',
+            req_description: desc,
             req_context: payload.context || '',
             req_search_terms: payload.search_terms || '',
             req_submitted_at: submittedAt,
@@ -137,6 +147,19 @@ export const fetchInteractionStats = async () => {
         console.warn("[Analytics] Stats fetch failed:", err);
     }
     return null;
+};
+
+// Fetch screenshot requests from the dedicated sheet tab.
+// Requires the Apps Script to implement `?getRequests=true`.
+export const fetchScreenshotRequests = async () => {
+    if (!TRACKING_URL) throw new Error('Analytics endpoint not configured');
+    const response = await fetch(`${TRACKING_URL}?getRequests=true`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+        throw new Error('Apps Script needs the getRequests handler — see setup instructions.');
+    }
+    return data;
 };
 
 export const getLibraryStats = (items, interactionData = null) => {
