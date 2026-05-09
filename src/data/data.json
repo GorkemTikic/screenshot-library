@@ -1,5 +1,18 @@
 [
   {
+    "title": "Realized PnL on Open Position - EN",
+    "text": "To view your **Realized PnL** on open positions, please follow the steps illustrated in the screenshot:\n\n1. **Click on the PNL area** (marked with 1) in your open position.\n\n2. In the menu that appears, ensure the **\"Display realized PNL in positions\"** toggle is enabled (marked with 2).\n\n3. Once enabled, your **Realized PNL** will be visible directly on your open position card (marked with 3).\n\n**Note:** This setting allows you to track your fees and profits in real-time without closing the position!\n\nIf you encounter any issues, feel free to share a screenshot with us for further assistance.",
+    "text_tr": "Açık pozisyonlarınızda **Gerçekleşmiş Kar/Zarar (Realized PnL)** durumunu görmek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n1. Açık pozisyonunuzdaki **PNL alanına** (1 numara ile işaretlenen kısım) tıklayın.\n\n2. Açılan menüde **\"Display realized PNL in positions\"** (Gerçekleşmiş PNL'i pozisyonlarda göster) seçeneğinin aktif olduğundan emin olun (2 numara).\n\n3. Bu seçenek etkinleştirildiğinde, **Gerçekleşmiş PNL** bilginizi doğrudan açık pozisyon kartınız üzerinde görebilirsiniz (3 numara).\n\n**Not:** Bu ayar sayesinde pozisyonunuzu kapatmadan işlem ücretlerini ve net kar/zarar durumunuzu anlık olarak takip edebilirsiniz!\n\nHerhangi bir adımda sorun yaşarsanız, size yardımcı olabilmemiz için lütfen bir ekran görüntüsü paylaşın.",
+    "image": "screenshots/1778343958175_Realized-PnL-on-Open-Position-EN.jpeg",
+    "topic": "Futures Trading",
+    "language": "English",
+    "platform": "mobile",
+    "newLanguageName": "",
+    "localImageFile": {},
+    "id": 1778343955327,
+    "updatedAt": "2026-05-09 16:25 UTC+0"
+  },
+  {
     "title": "Position/Order shows in K line K线图显示仓位/订单信息 - CN",
     "text": "如需要在K线里添加【仓位/订单信息】，请按以下步骤操作：\n\n1）下方点击【合约】\n2）在页面右上角点击【K 线】图标\n3）在 K 线图页面右上角点击【设定】图标\n4）在设置中选择需要在 K 线图中显示的仓位或订单信息",
     "text_tr": "",
