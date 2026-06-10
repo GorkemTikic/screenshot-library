@@ -4,11 +4,11 @@
     "text": "To help monitor your risk levels more closely, you can enable *Margin Call* alerts directly from your Futures settings.\n\nThese alerts can notify you when your margin ratio reaches certain thresholds, giving you additional time to review your positions and take action if necessary.\n\nYou can customize alerts at 50%, 60%, 70%, or 80% margin levels by following these steps:\n\n1-Go to the Futures trading page\n2-Click the ⋯ (Three Dots) menu\n3-Select Preferences\n4-Open the Notification section\n5-Enable Margin Call Alert and choose your preferred thresholds\n\nSetting these alerts can serve as an early risk warning, helping you monitor your positions more proactively during market movements.",
     "text_tr": "",
     "image": "screenshots/1781106824878_Setting-Up-Margin-Call-Alerts-EN.jpeg",
-    "topic": "Margin Trading",
+    "topic": "Futures Trading",
     "language": "English",
     "platform": "mobile",
     "id": 1781106821502,
-    "updatedAt": "2026-06-10 15:53 UTC+0"
+    "updatedAt": "2026-06-10 16:19 UTC+0"
   },
   {
     "title": "Realized PnL on Open Position - EN",
