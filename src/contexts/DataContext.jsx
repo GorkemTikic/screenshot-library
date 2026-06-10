@@ -2,8 +2,11 @@ import React, { createContext, useContext, useEffect, useState, useMemo } from '
 import bundledData from '../data/data.json';
 
 const DataContext = createContext();
-const BASE_DATA_URL = 'https://raw.githubusercontent.com/GorkemTikic/screenshot-library/main/src/data';
-const DATA_URL = `${BASE_DATA_URL}/data.json`;
+// Same-origin copy of src/data/data.json, placed in the build output by the
+// copy-live-data plugin in vite.config.js. The repo is PRIVATE (2026-06-11),
+// so raw.githubusercontent.com can no longer serve it — but the Pages site is
+// public and redeploys on every Admin Unified Sync push, so this stays fresh.
+const DATA_URL = `${import.meta.env.BASE_URL}data.json`;
 import { githubService } from '../services/github';
 
 export function DataProvider({ children }) {
