@@ -7,8 +7,6 @@
     "topic": "Margin Trading",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
-    "localImageFile": {},
     "id": 1781106821502,
     "updatedAt": "2026-06-10 15:53 UTC+0"
   },
@@ -20,8 +18,6 @@
     "topic": "Futures Trading",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
-    "localImageFile": {},
     "id": 1778343955327,
     "updatedAt": "2026-05-09 16:25 UTC+0"
   },
@@ -33,7 +29,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1768336734279,
     "updatedAt": "2026-01-14 04:38 UTC+8"
   },
@@ -45,7 +40,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1768324962732,
     "updatedAt": "2026-01-14 01:25 UTC+8"
   },
@@ -57,7 +51,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1768323763176,
     "updatedAt": "2026-01-14 01:08 UTC+8"
   },
@@ -69,7 +62,6 @@
     "topic": "Futures Trading",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1768261914295,
     "updatedAt": "2026-01-12 23:51 UTC+0"
   },
@@ -81,7 +73,6 @@
     "topic": "Margin Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1768249753127,
     "updatedAt": "2026-01-13 04:29 UTC+8"
   },
@@ -93,7 +84,6 @@
     "topic": "Margin Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1768248753899,
     "updatedAt": "2026-01-13 04:12 UTC+8"
   },
@@ -105,7 +95,6 @@
     "topic": "BOTS",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767888931446,
     "updatedAt": "2026-01-08 16:15 UTC+0"
   },
@@ -117,7 +106,6 @@
     "topic": "General",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767733057149,
     "updatedAt": "2026-01-06 20:57 UTC+0"
   },
@@ -129,7 +117,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767726601188,
     "updatedAt": "2026-01-07 03:10 UTC+8"
   },
@@ -141,7 +128,6 @@
     "topic": "General",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767721746211,
     "updatedAt": "2026-01-08 00:06 UTC+8"
   },
@@ -153,7 +139,6 @@
     "topic": "Event Contract",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767121840986
   },
   {
@@ -164,7 +149,6 @@
     "topic": "Event Contract",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767120924398
   },
   {
@@ -175,7 +159,6 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767118627287
   },
   {
@@ -186,7 +169,6 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767117728709
   },
   {
@@ -197,7 +179,6 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767116503784
   },
   {
@@ -208,7 +189,6 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767115486730
   },
   {
@@ -219,7 +199,6 @@
     "topic": "Futures Trading",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766691181367
   },
   {
@@ -230,7 +209,6 @@
     "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766685510697
   },
   {
@@ -241,7 +219,6 @@
     "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766684949490,
     "updatedAt": "2025-12-31 03:31 UTC+8"
   },
@@ -253,7 +230,6 @@
     "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766683877481
   },
   {
@@ -264,7 +240,6 @@
     "topic": "General",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766681686727
   },
   {
@@ -275,7 +250,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766679658205
   },
   {
@@ -286,7 +260,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766678630969
   },
   {
@@ -297,7 +270,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "web",
-    "newLanguageName": "",
     "id": 1766676606420
   },
   {
@@ -308,7 +280,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766598907265,
     "updatedAt": "2026-01-07 03:10 UTC+8"
   },
@@ -320,7 +291,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766597363030
   },
   {
@@ -331,7 +301,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766595089163
   },
   {
@@ -342,7 +311,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766594411291
   },
   {
@@ -1004,7 +972,6 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766591083794
   },
   {
@@ -1015,7 +982,6 @@
     "topic": "Event Contract",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766592070086
   },
   {
@@ -1026,7 +992,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766598202606
   },
   {
@@ -1037,7 +1002,6 @@
     "topic": "General",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766599708483
   },
   {
@@ -1048,7 +1012,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766677925281
   },
   {
@@ -1059,7 +1022,6 @@
     "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766686213796,
     "updatedAt": "2026-01-01 08:12 UTC+8"
   },
@@ -1071,7 +1033,6 @@
     "topic": "Futures Trading",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1766691251410
   },
   {
@@ -1082,7 +1043,6 @@
     "topic": "Futures Trading",
     "language": "English",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767371337539,
     "updatedAt": "2026-01-02 16:28 UTC+0"
   },
@@ -1094,7 +1054,6 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "newLanguageName": "",
     "id": 1767731966052,
     "updatedAt": "2026-01-07 04:39 UTC+8"
   }
