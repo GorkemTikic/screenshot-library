@@ -181,7 +181,14 @@ export const githubService = {
 
         // A. Handle Image if provided
         let finalItem = { ...item };
-        if (imageFile) {
+        // Strip transient/UI-only fields so they never get persisted into data.json.
+        // (A File stored in localImageFile serializes to {} and later breaks editing.)
+        delete finalItem.localImageFile;
+        delete finalItem.newTopicName;
+        delete finalItem.newLanguageName;
+        // Only treat imageFile as an upload when it's a real Blob/File. An empty {}
+        // (legacy serialized File) is truthy but not a Blob and crashes FileReader.
+        if (imageFile instanceof Blob) {
             const base64Content = await new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(imageFile);
@@ -230,6 +237,10 @@ export const githubService = {
         } else if (action === 'DELETE') {
             newItems = currentItems.filter(i => i.id !== finalItem.id);
         }
+
+        // Sanitize every item so transient UI-only fields are never persisted,
+        // including ones inherited from previously-corrupted records.
+        newItems = newItems.map(({ localImageFile, newTopicName, newLanguageName, ...rest }) => rest);
 
         // Add updated JSON to tree
         const jsonContent = JSON.stringify(newItems, null, 2);
