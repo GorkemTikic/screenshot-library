@@ -13,10 +13,12 @@ permissions:
   pages: write
   id-token: write
 
-# Prevent overlapping builds
+# Allow only one concurrent Pages deployment, but never cancel an in-progress
+# one: cancelling a Pages deployment mid-creation corrupts the backend and
+# causes subsequent runs to fail with 401 "Requires authentication".
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
