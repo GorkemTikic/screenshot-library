@@ -223,6 +223,20 @@ export const fetchSurveyResponses = async () => {
     return data;
 };
 
+// Fetch per-owner usage stats from the dedicated "Owner" sheet tab.
+// Requires the Apps Script to implement `?getOwnerStats=true`
+// (see apps-script/owner-analytics.gs).
+export const fetchOwnerStats = async () => {
+    if (!TRACKING_URL) throw new Error('Analytics endpoint not configured');
+    const response = await fetch(`${TRACKING_URL}?getOwnerStats=true`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+        throw new Error('Apps Script needs the getOwnerStats handler — see apps-script/owner-analytics.gs.');
+    }
+    return data;
+};
+
 export const getLibraryStats = (items, interactionData = null) => {
     const totalItems = items.length;
 

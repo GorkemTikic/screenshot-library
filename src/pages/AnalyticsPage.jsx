@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useData } from '../contexts/DataContext';
-import { getLibraryStats, fetchInteractionStats, fetchScreenshotRequests, fetchSurveyResponses } from '../services/analytics';
+import { getLibraryStats, fetchInteractionStats, fetchScreenshotRequests, fetchSurveyResponses, fetchOwnerStats } from '../services/analytics';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info, RefreshCw, AlertTriangle, Inbox, ClipboardList, Star } from 'lucide-react';
+import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info, RefreshCw, AlertTriangle, Inbox, ClipboardList, Star, Award } from 'lucide-react';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658'];
 
@@ -24,6 +24,11 @@ export function AnalyticsPage() {
     const [surveysLoading, setSurveysLoading] = useState(false);
     const [surveysError, setSurveysError] = useState('');
     const [surveyFilter, setSurveyFilter] = useState('');
+
+    const [owners, setOwners] = useState([]);
+    const [ownersLoading, setOwnersLoading] = useState(false);
+    const [ownersError, setOwnersError] = useState('');
+    const [ownerFilter, setOwnerFilter] = useState('');
 
     useEffect(() => {
         const loadStats = async () => {
@@ -84,6 +89,26 @@ export function AnalyticsPage() {
         }
     }, [isAuthenticated, activeTab, surveys.length, surveysError, loadSurveys]);
 
+    const loadOwners = useCallback(async () => {
+        setOwnersLoading(true);
+        setOwnersError('');
+        try {
+            const rows = await fetchOwnerStats();
+            const sorted = [...rows].sort((a, b) => (Number(b.total) || 0) - (Number(a.total) || 0));
+            setOwners(sorted);
+        } catch (err) {
+            setOwnersError(err.message || 'Failed to load owner stats');
+        } finally {
+            setOwnersLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (isAuthenticated && activeTab === 'owners' && owners.length === 0 && !ownersError) {
+            loadOwners();
+        }
+    }, [isAuthenticated, activeTab, owners.length, ownersError, loadOwners]);
+
     const filteredRequests = useMemo(() => {
         if (!requestFilter.trim()) return requests;
         const q = requestFilter.trim().toLowerCase();
@@ -99,6 +124,12 @@ export function AnalyticsPage() {
             Object.values(r).some(v => String(v ?? '').toLowerCase().includes(q))
         );
     }, [surveys, surveyFilter]);
+
+    const filteredOwners = useMemo(() => {
+        if (!ownerFilter.trim()) return owners;
+        const q = ownerFilter.trim().toLowerCase();
+        return owners.filter(r => String(r.owner ?? '').toLowerCase().includes(q));
+    }, [owners, ownerFilter]);
 
     const surveyAggregates = useMemo(() => {
         if (surveys.length === 0) return null;
@@ -209,6 +240,12 @@ export function AnalyticsPage() {
                     onClick={() => setActiveTab('surveys')}
                 >
                     <ClipboardList size={16} /> Survey Responses
+                </button>
+                <button
+                    className={`analytics-tab ${activeTab === 'owners' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('owners')}
+                >
+                    <Award size={16} /> Owners
                 </button>
             </div>
 
@@ -623,6 +660,112 @@ export function AnalyticsPage() {
                         <div className="info-icon"><Info size={18} /></div>
                         <div>
                             Survey responses live in the <strong>DB_Survey_Responses</strong> tab. Each device is rate-limited to one submission per 24 hours to keep the data honest.
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {activeTab === 'owners' && (
+                <div className="requests-panel">
+                    <div className="requests-toolbar">
+                        <div>
+                            <h3 className="requests-title">
+                                Screenshot Owners
+                                {owners.length > 0 && (
+                                    <span className="requests-count">{owners.length}</span>
+                                )}
+                            </h3>
+                            <p className="text-muted requests-subtitle">
+                                How often each contributor's screenshots have been used by agents.
+                            </p>
+                        </div>
+                        <div className="requests-toolbar-actions">
+                            <input
+                                type="text"
+                                className="search-input"
+                                placeholder="Filter by owner..."
+                                value={ownerFilter}
+                                onChange={(e) => setOwnerFilter(e.target.value)}
+                                style={{ maxWidth: '220px' }}
+                            />
+                            <button className="btn btn-secondary" onClick={loadOwners} disabled={ownersLoading}>
+                                <RefreshCw size={16} className={ownersLoading ? 'spinning' : ''} /> Refresh
+                            </button>
+                            <a href={REQUESTS_SHEET_URL} target="_blank" rel="noreferrer" className="btn btn-success">
+                                <Database size={16} className="mr-2" /> Open "Owner" Tab
+                            </a>
+                        </div>
+                    </div>
+
+                    {ownersLoading && (
+                        <div className="requests-state">
+                            <RefreshCw size={20} className="spinning" />
+                            <p className="text-muted">Loading owner stats…</p>
+                        </div>
+                    )}
+
+                    {!ownersLoading && ownersError && (
+                        <div className="requests-state error">
+                            <AlertTriangle size={20} />
+                            <p>{ownersError}</p>
+                            <p className="text-muted" style={{ fontSize: '0.85rem' }}>
+                                The Apps Script needs the <code>getOwnerStats</code> handler and the "Owner" tab.
+                                See <code>apps-script/owner-analytics.gs</code>.
+                            </p>
+                        </div>
+                    )}
+
+                    {!ownersLoading && !ownersError && owners.length === 0 && (
+                        <div className="requests-state">
+                            <Inbox size={24} />
+                            <p className="text-muted">No owner usage recorded yet.</p>
+                        </div>
+                    )}
+
+                    {!ownersError && filteredOwners.length > 0 && (
+                        <div className="requests-table-wrap">
+                            <table className="requests-table">
+                                <thead>
+                                    <tr>
+                                        <th>Owner</th>
+                                        <th>Total Uses</th>
+                                        <th>Copies</th>
+                                        <th>Views</th>
+                                        <th>Screenshots Used</th>
+                                        <th>Distinct Agents</th>
+                                        <th>Last Used</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredOwners.map((r, idx) => (
+                                        <tr key={`${r.owner || idx}-${idx}`}>
+                                            <td><strong>{r.owner || '—'}</strong></td>
+                                            <td><strong>{r.total ?? 0}</strong></td>
+                                            <td>{r.copies ?? 0}</td>
+                                            <td>{r.views ?? 0}</td>
+                                            <td>{r.screenshots ?? 0}</td>
+                                            <td>{r.agents ?? 0}</td>
+                                            <td className="col-when" title={r.last}>{formatRequestTime(r.last)}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+
+                    {!ownersError && owners.length > 0 && filteredOwners.length === 0 && (
+                        <div className="requests-state">
+                            <p className="text-muted">No owners match "{ownerFilter}".</p>
+                        </div>
+                    )}
+
+                    <div className="info-box">
+                        <div className="info-icon"><Info size={18} /></div>
+                        <div>
+                            The <strong>Owner</strong> tab credits the volunteers who prepare screenshots. Counts are
+                            built by matching logged interactions to each screenshot's <code>owner</code> in the live
+                            catalog, so they include historical clicks. "Uses" = copies, views, previews, language
+                            switches, favorites, and right-clicks.
                         </div>
                     </div>
                 </div>

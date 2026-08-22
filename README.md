@@ -18,7 +18,8 @@
 *   **💎 Premium UI/UX**: Immersive "Modern Dark" aesthetic using glassmorphism, gold/neon accents, and interactive Recharts visualizations.
 *   **📊 Advanced Analytics (v8.2)**: Real-time interaction tracking with automated "Top Interaction" calculation, filtering out generic labels to focus on specific content engagement.
 *   **📮 Screenshot Request Pipeline**: Agents submit missing-screenshot requests straight from the header or a zero-results state — no PAT required. Requests stream into a dedicated `DB_Screenshot_Requests` tab and surface live in the Analytics dashboard.
-*   **📝 Agent Feedback Survey**: **New.** A 10-question in-app survey (ratings + free-text) captures agent ideas, frustrations, and coverage gaps. Responses land in a dedicated `DB_Survey_Responses` tab and render in the Analytics dashboard with live averages, language demand, and a filterable table.
+*   **📝 Agent Feedback Survey**: A 10-question in-app survey (ratings + free-text) captures agent ideas, frustrations, and coverage gaps. Responses land in a dedicated `DB_Survey_Responses` tab and render in the Analytics dashboard with live averages, language demand, and a filterable table.
+*   **🏅 Owner Attribution**: **New.** Screenshots can credit the volunteer who prepared them (e.g. *CS VERA*). The owner shows on each card next to the EN/TR toggle, is editable in the Admin form, and rolls up in an **Owner** analytics tab (spreadsheet + dashboard) showing how often each contributor's screenshots are used by agents.
 *   **⚛️ Atomic Sync Engine**: Conflict-resistant CRUD operations via a "Fetch-Modify-Commit" cycle, ensuring data integrity in collaborative environments.
 *   **⏰ Temporal Enforcement**: Automatic `updatedAt` injection with intelligent timezone offsets (UTC+8 for Asia-region content, UTC+0 for global).
 *   **🔍 Semantic Search**: Instant-result fuzzy matching powered by Fuse.js across multi-language titles and technical content — now reused to surface duplicates during request submission.
@@ -149,6 +150,16 @@ The Request Pipeline and Feedback Survey share the same Google Apps Script that 
 2.  Run `createRequestsSheetNow` and `createSurveySheetNow` once each to initialize the `DB_Screenshot_Requests` and `DB_Survey_Responses` tabs.
 3.  **Deploy → Manage Deployments → ✏️ → New Version → Deploy** (critical — a simple save will not update the live Web App URL).
 4.  Verify `?getRequests=true` and `?getSurvey=true` both return JSON arrays, and confirm a test submission appears in the matching Analytics tab.
+
+### Owner Analytics tab (spreadsheet)
+The **Owner** tab is additive and self-contained — see [`apps-script/owner-analytics.gs`](apps-script/owner-analytics.gs):
+
+1.  Paste `owner-analytics.gs` into the Apps Script project (new file or appended to `Code.gs`).
+2.  Add the `getOwnerStats` branch to your `doGet(e)` (snippet is in the file header).
+3.  Run `createOwnerSheetNow()` once to create + fill the **Owner** tab.
+4.  **Deploy → New Version** as above, then verify `?getOwnerStats=true` returns a JSON array.
+
+It builds counts by joining the click log (`DB_Logs`) to each screenshot's `owner` in the published `data.json`, so it covers **historical** clicks and needs no client change. Optionally run `installOwnerDailyTrigger()` to auto-refresh daily.
 
 ---
 
