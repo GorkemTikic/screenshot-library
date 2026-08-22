@@ -20,7 +20,8 @@
     "platform": "mobile",
     "id": 1781106821502,
     "updatedAt": "2026-08-22 00:00 UTC+0",
-    "owner": "CS VERA"
+    "owner": "CS VERA",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "Realized PnL on Open Position - EN",
@@ -32,7 +33,8 @@
     "platform": "mobile",
     "id": 1778343955327,
     "updatedAt": "2026-08-22 00:00 UTC+0",
-    "owner": "CS VERA"
+    "owner": "CS VERA",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "Position/Order shows in K line K线图显示仓位/订单信息 - CN",
@@ -214,7 +216,8 @@
     "platform": "mobile",
     "id": 1766691181367,
     "owner": "CS VERA",
-    "updatedAt": "2026-08-22 00:00 UTC+0"
+    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "Loan Repay (Borrowed Coin) 借币还款（借贷币种）- CN",
@@ -471,7 +474,8 @@
     "id": 1765164170440,
     "text_tr": "USDⓈ-M Vadeli İşlemler için **Varlık Modunuzu** (**Asset Mode**) değiştirmek üzere aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **\"Tercihler\"** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **\"Varlık Modu\"** (**Asset Mode**) seçeneğine dokunun.\n\n**5 -)** Tercihinize göre **\"Tek Varlık Modu\"** (**Single-Asset Mode**) veya **\"Çoklu Varlık Modu\"** (**Multi-Assets Mode**) seçeneğini seçin.\n\nDaha fazla bilgi için aşağıdaki rehberlere göz atabilirsiniz:\n\n* [Tek Varlık ve Çoklu Varlık Modları Arasında Nasıl Geçiş Yapılır?](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [Çoklu Varlık Modu Nedir ve Hangi Varlıklar Desteklenir?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-08-22 00:00 UTC+0",
-    "owner": "CS VERA"
+    "owner": "CS VERA",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - EN",
@@ -492,7 +496,8 @@
     "id": 1765164170442,
     "text_tr": "Açık Vadeli İşlemler pozisyonlarınızda gösterilen işlem butonlarını özelleştirmek için aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **\"Tercihler\"** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **\"Düzen\"** (**Layout**) sekmesini açın.\n\n**5 -)** **\"Pozisyonlar\"** (**Positions**) seçeneğini seçin.\n\n**6 -)** **\"Pozisyon Butonu Ayarları\"** (**Positions Button Settings**) altında, **\"Kaldıracı Ayarla\"** (**Adjust Leverage**), **\"Kar Al ve Zarar Durdur\"** (**Stop Profit & Loss**), **\"Pozisyonu Kapat\"** (**Close Position**) ve **\"Piyasa Fiyatından Kapat\"** (**Market Close**) gibi seçenekleri göstermek veya gizlemek için anahtarları kullanın. Görüntülenme sırasını değiştirmek için seçeneğin yanındaki tutamacı sürükleyebilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-08-22 00:00 UTC+0",
-    "owner": "CS VERA"
+    "owner": "CS VERA",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "Loan Repayment (Collateral) - EN",
@@ -671,7 +676,8 @@
     "id": 1765164170462,
     "text_tr": "Marjin işlemleri için **Otomatik Borç Alma** (**Auto Borrow**) ve **Otomatik Geri Ödeme** (**Auto Repay**) özelliklerini etkinleştirmek veya devre dışı bırakmak için aşağıdaki adımları takip edin:\n\n**1 -)** **\"İşlem\"** (**Trade**) sayfasını açın.\n\n**2 -)** Emir panelinin üst kısmındaki anahtarı kullanarak **\"Marjin\"** (**Margin**) işlemlerini etkinleştirin.\n\n**3 -)** Emir kontrollerinin yanındaki **\"Auto B\"** seçeneğine dokunun.\n\n**4 -)** **\"Borç Alma ve Geri Ödeme\"** (**Borrow & Repay**) sayfasında **\"Otomatik\"** (**Auto**) sekmesini açın.\n\n**5 -)** **\"Otomatik Borç Alma\"** (**Auto Borrow**) ve **\"Otomatik Geri Ödeme\"** (**Auto Repay**) özelliklerini etkinleştirmek veya devre dışı bırakmak için anahtarları kullanın.\n\n**Otomatik Borç Alma**, kullanılabilir bakiyeniz yetersiz olduğunda emir verirken gerekli varlığı borç alır. **Otomatik Geri Ödeme** ise işlem sonrasında alınan varlıkları aynı marjin hesabındaki ilgili borcu geri ödemek için kullanır.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "updatedAt": "2026-08-22 00:00 UTC+0"
+    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "Clear Cache - AR",
@@ -885,7 +891,8 @@
     "id": 1765164170487,
     "text_tr": "Vadeli İşlemler pozisyonu açmadan önce **TP/SL** emri ayarlamak için aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasındaki emir panelinde **\"TP/SL\"** kutucuğunu işaretleyin.\n\n**2 -)** **\"Gelişmiş\"** (**Advanced**) seçeneğine dokunun.\n\n**3 -)** Hem **\"Kar Al\"** (**Take Profit**) hem de **\"Zarar Durdur\"** (**Stop Loss**) için tetikleme fiyatı türünü seçin. Kullanılabilir seçenekler **\"Gösterge Fiyatı\"** (**Mark Price**) ve **\"Son Fiyat\"** (**Last Price**) seçenekleridir.\n\n**4 -)** **\"Kar Al\"** ve/veya **\"Zarar Durdur\"** emriniz için tetikleme fiyatını girin.\n\n**5 -)** Tetikleme fiyatına ulaşıldığında emrin piyasa emri olarak verilmesini istiyorsanız **\"Piyasa\"** (**Market**) seçeneğini seçili bırakın. Bunun yerine **\"Limit\"** seçeneğine geçmek ve limit fiyatı girmek için **\"Piyasa\"** (**Market**) seçeneğine dokunun.\n\nDaha fazla bilgi için aşağıdaki rehberlere göz atabilirsiniz:\n\n* [Binance Vadeli İşlemlerde Gösterge Fiyatı ve Son Fiyat Arasındaki Fark Nedir?](https://www.binance.com/blog/futures/5704082076024731087)\n* [Binance Vadeli İşlemlerde Durdurma Emirleri Nelerdir?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n* [Binance Vadeli İşlemlerde Zarar Durdur ve Kar Al Emirleri Nasıl Verilir?](https://www.binance.com/support/faq/detail/360040016512)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-08-22 00:00 UTC+0",
-    "owner": "CS VERA"
+    "owner": "CS VERA",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "Transfer From Cross Margin To Spot - AR",
@@ -1057,7 +1064,8 @@
     "platform": "mobile",
     "id": 1766691251410,
     "owner": "CS VERA",
-    "updatedAt": "2026-08-22 00:00 UTC+0"
+    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "ownerSince": "2026-08-22"
   },
   {
     "title": "How To Change Order Size/Unit Preference to Initial Margin - EN.jpeg",

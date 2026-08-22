@@ -159,7 +159,7 @@ The **Owner** tab is additive and self-contained — see [`apps-script/owner-ana
 3.  Run `createOwnerSheetNow()` once to create + fill the **Owner** tab.
 4.  **Deploy → New Version** as above, then verify `?getOwnerStats=true` returns a JSON array.
 
-It builds counts by joining the click log (`DB_Logs`) to each screenshot's `owner` in the published `data.json`, so it covers **historical** clicks and needs no client change. Optionally run `installOwnerDailyTrigger()` to auto-refresh daily.
+It builds counts by joining the click log (`DB_Logs`) to each screenshot's `owner` in the published `data.json`, and only counts clicks logged **on/after** that screenshot's `ownerSince` date — so each owner's numbers reflect usage **after they contributed** ("since ownership"). Screenshots with no `ownerSince` count all-time. Needs no client change. Optionally run `installOwnerDailyTrigger()` to auto-refresh daily.
 
 ---
 

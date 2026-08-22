@@ -45,7 +45,12 @@ var OWNER_USAGE_EVENTS = [
   'favorite_add', 'right_click_image'
 ];
 
-/** Build a { title -> owner } map from the live catalog. */
+/**
+ * Build a { title -> { owner, since } } map from the live catalog.
+ * `since` is the epoch-ms of the screenshot's ownerSince date (when the owner
+ * took it over), or null if not set. Clicks logged before `since` are NOT counted
+ * toward that owner ("since ownership" model).
+ */
 function _ownerMap_() {
   var res = UrlFetchApp.fetch(OWNER_DATA_URL, { muteHttpExceptions: true });
   if (res.getResponseCode() !== 200) {
@@ -55,10 +60,25 @@ function _ownerMap_() {
   var map = {};
   (data || []).forEach(function (it) {
     if (it && it.title && it.owner) {
-      map[String(it.title).trim()] = String(it.owner).trim();
+      map[String(it.title).trim()] = {
+        owner: String(it.owner).trim(),
+        since: _toMs_(it.ownerSince)  // null when ownerSince absent -> count all-time
+      };
     }
   });
   return map;
+}
+
+/** Best-effort parse of a cell/date value into epoch-ms; null if not parseable. */
+function _toMs_(v) {
+  if (v == null || v === '') return null;
+  if (v instanceof Date) return v.getTime();
+  if (typeof v === 'number') return v > 1e11 ? v : null; // epoch-ms only; ignore sheet serials
+  var s = String(v).trim();
+  // Plain YYYY-MM-DD -> treat as UTC midnight so the whole day counts.
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) s = s + 'T00:00:00Z';
+  var t = Date.parse(s);
+  return isNaN(t) ? null : t;
 }
 
 /** Case-insensitive header lookup; returns first matching column index or -1. */
@@ -101,8 +121,17 @@ function rebuildOwnerStats() {
     if (OWNER_USAGE_EVENTS.indexOf(ev) < 0) continue;
 
     var title = String(row[cTitle] || '').trim();
-    var owner = map[title];
-    if (!owner) continue; // screenshot has no Owner, or title no longer in catalog
+    var info = map[title];
+    if (!info) continue; // screenshot has no Owner, or title no longer in catalog
+    var owner = info.owner;
+
+    // "Since ownership": if this screenshot has an ownerSince date, only count
+    // clicks logged on/after it. Rows we cannot time-stamp are skipped when a
+    // cutoff exists (conservative); with no cutoff, everything counts.
+    var rowMs = (cTime >= 0) ? _toMs_(row[cTime]) : null;
+    if (info.since != null) {
+      if (rowMs == null || rowMs < info.since) continue;
+    }
 
     var a = agg[owner] || (agg[owner] = {
       owner: owner, total: 0, copies: 0, views: 0,

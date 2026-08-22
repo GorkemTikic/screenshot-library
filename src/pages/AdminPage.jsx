@@ -26,6 +26,7 @@ export function AdminPage() {
         language: 'English',
         platform: 'mobile',
         owner: '',
+        ownerSince: '',
         newLanguageName: ''
     });
 
@@ -79,7 +80,7 @@ export function AdminPage() {
     }
 
     const resetForm = () => {
-        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'English', platform: 'mobile', owner: '', newLanguageName: '' });
+        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'English', platform: 'mobile', owner: '', ownerSince: '', newLanguageName: '' });
         setEditingId(null);
         setSyncStatus('');
     };
@@ -163,6 +164,16 @@ export function AdminPage() {
         // Final normalization to prevent EN/English split
         if (finalData.language === 'EN') {
             finalData.language = 'English';
+        }
+
+        // Stamp ownerSince the first time an owner is credited so the Owner
+        // analytics ("since ownership") has a start date. Clear it if owner removed.
+        if (finalData.owner && String(finalData.owner).trim()) {
+            if (!finalData.ownerSince) {
+                finalData.ownerSince = new Date().toISOString().slice(0, 10);
+            }
+        } else {
+            delete finalData.ownerSince;
         }
 
         const updatedAt = formatDate(Date.now(), finalData.language);
