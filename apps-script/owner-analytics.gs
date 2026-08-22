@@ -5,39 +5,50 @@
  * each screenshot Owner's content has been used by agents.
  *
  * Design: it JOINS the click log (DB_Logs) to the live catalog by screenshot
- * title, reading the `owner` field from the published data.json. This means it
- * works on ALL existing history (no need to change the client or wait for new
- * clicks), and needs no change to how DB_Logs is written.
+ * title, reading `owner` + `ownerSince` from the published data.json. Each click
+ * is counted toward the screenshot's owner only if it was logged on/after that
+ * screenshot's ownerSince date ("since ownership"; entries without ownerSince
+ * count all-time). Needs no client change and no change to how DB_Logs is written.
+ * Produces two tabs: "Owner" (summary) and "Owner Details" (per screenshot).
  *
  * HOW TO INSTALL (mirrors the v8.3 request/survey setup):
  *   1. Open the bound Apps Script project for the tracking spreadsheet
  *      (Extensions → Apps Script).
  *   2. Paste this whole file in as a new script file (e.g. "OwnerAnalytics.gs")
  *      or append it to Code.gs.
- *   3. In your existing doGet(e), add this near the top (before other branches):
+ *   3. In your existing doGet(e), add this as the VERY FIRST lines inside the
+ *      function — it MUST come before the code that logs events / returns
+ *      "Ignored (...)", otherwise the dashboard gets that text instead of JSON:
  *
- *        if (e.parameter.getOwnerStats) {
- *          return ContentService
- *            .createTextOutput(JSON.stringify(rebuildOwnerStats()))
- *            .setMimeType(ContentService.MimeType.JSON);
+ *        function doGet(e) {
+ *          if (e && e.parameter && e.parameter.getOwnerStats) {
+ *            return ContentService
+ *              .createTextOutput(JSON.stringify(rebuildOwnerStats()))
+ *              .setMimeType(ContentService.MimeType.JSON);
+ *          }
+ *          // ...your existing getStats / getRequests / getSurvey / logging code...
  *        }
  *
  *   4. Run createOwnerSheetNow() once (authorize when prompted) to create and
- *      fill the "Owner" tab.
- *   5. Deploy → Manage Deployments → ✏️ → New Version → Deploy  (a plain save
+ *      fill the "Owner" and "Owner Details" tabs.
+ *   5. Run installOwnerLiveTrigger() once so the tabs auto-refresh every 5 min.
+ *   6. Deploy → Manage Deployments → ✏️ → New Version → Deploy  (a plain save
  *      does NOT update the live Web App URL).
- *   6. Verify: open the Web App URL with ?getOwnerStats=true — it should return
- *      a JSON array, and the "Owner" tab should be populated.
+ *   7. Verify: open the Web App URL with ?getOwnerStats=true — it should return
+ *      a JSON array (not the text "Ignored ..."), and both tabs should populate.
  *
- * Optional: run installOwnerDailyTrigger() once to auto-refresh the tab daily.
+ * Auto-refresh: installOwnerLiveTrigger() rebuilds every 5 minutes; each
+ * dashboard open/refresh rebuilds instantly. (Apps Script cannot run on every
+ * single click, so "live" = every 5 min + on dashboard view.)
  ******************************************************************************/
 
 // Published catalog (same file the app loads). Change if your Pages URL differs.
 var OWNER_DATA_URL = 'https://gorkemtikic.github.io/screenshot-library/data.json';
 
 // Sheet names.
-var OWNER_SHEET   = 'Owner';
-var OWNER_LOGS_SHEET = 'DB_Logs';
+var OWNER_SHEET         = 'Owner';          // per-owner summary
+var OWNER_DETAILS_SHEET = 'Owner Details';  // per-owner × per-screenshot breakdown
+var OWNER_LOGS_SHEET    = 'DB_Logs';
 
 // Which logged events count as "using" a screenshot.
 var OWNER_USAGE_EVENTS = [
@@ -133,6 +144,9 @@ function rebuildOwnerStats() {
       if (rowMs == null || rowMs < info.since) continue;
     }
 
+    var iso = (rowMs != null) ? new Date(rowMs).toISOString() : '';
+    var h = (cHash >= 0) ? String(row[cHash] || '').trim() : '';
+
     var a = agg[owner] || (agg[owner] = {
       owner: owner, total: 0, copies: 0, views: 0,
       titles: {}, agents: {}, last: ''
@@ -140,29 +154,48 @@ function rebuildOwnerStats() {
     a.total++;
     if (ev === 'copy_text') a.copies++;
     if (ev === 'view_image') a.views++;
-    a.titles[title] = (a.titles[title] || 0) + 1;
-    if (cHash >= 0) { var h = String(row[cHash] || '').trim(); if (h) a.agents[h] = 1; }
-    if (cTime >= 0 && row[cTime]) {
-      var t = row[cTime];
-      var ts = (t instanceof Date) ? t.toISOString() : String(t);
-      if (ts > a.last) a.last = ts;
-    }
+    if (h) a.agents[h] = 1;
+    if (iso > a.last) a.last = iso;
+
+    // per-screenshot detail
+    var ti = a.titles[title] || (a.titles[title] = {
+      title: title, total: 0, copies: 0, views: 0, agents: {}, last: ''
+    });
+    ti.total++;
+    if (ev === 'copy_text') ti.copies++;
+    if (ev === 'view_image') ti.views++;
+    if (h) ti.agents[h] = 1;
+    if (iso > ti.last) ti.last = iso;
   }
 
   var rows = Object.keys(agg).map(function (o) {
     var a = agg[o];
+    var items = Object.keys(a.titles).map(function (t) {
+      var ti = a.titles[t];
+      return {
+        title: ti.title,
+        total: ti.total,
+        copies: ti.copies,
+        views: ti.views,
+        agents: Object.keys(ti.agents).length,
+        last: ti.last
+      };
+    }).sort(function (x, y) { return y.total - x.total; });
+
     return {
       owner: a.owner,
       total: a.total,
       copies: a.copies,
       views: a.views,
-      screenshots: Object.keys(a.titles).length,
+      screenshots: items.length,
       agents: Object.keys(a.agents).length,
-      last: a.last
+      last: a.last,
+      items: items
     };
   }).sort(function (x, y) { return y.total - x.total; });
 
   _writeOwnerSheet_(rows);
+  _writeOwnerDetailsSheet_(rows);
   return rows;
 }
 
@@ -186,12 +219,47 @@ function _writeOwnerSheet_(rows) {
   sh.autoResizeColumns(1, header.length);
 }
 
-/** One-time: create + fill the Owner tab. */
+/** Write the per-screenshot breakdown into the "Owner Details" tab. */
+function _writeOwnerDetailsSheet_(rows) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(OWNER_DETAILS_SHEET) || ss.insertSheet(OWNER_DETAILS_SHEET);
+  sh.clear();
+
+  var header = ['Owner', 'Screenshot', 'Total Uses', 'Copies', 'Views', 'Distinct Agents', 'Last Used (UTC)'];
+  sh.getRange(1, 1, 1, header.length).setValues([header]).setFontWeight('bold');
+
+  var body = [];
+  rows.forEach(function (r) {
+    (r.items || []).forEach(function (it) {
+      body.push([r.owner, it.title, it.total, it.copies, it.views, it.agents, it.last]);
+    });
+  });
+  if (body.length) {
+    sh.getRange(2, 1, body.length, header.length).setValues(body);
+  }
+  sh.setFrozenRows(1);
+  sh.autoResizeColumns(1, header.length);
+}
+
+/** One-time: create + fill the Owner + Owner Details tabs. */
 function createOwnerSheetNow() {
   return rebuildOwnerStats();
 }
 
-/** Optional: refresh the Owner tab automatically once a day. */
+/**
+ * Recommended: keep the Owner tabs fresh automatically. Apps Script cannot fire
+ * on every single click, but this rebuilds every 5 minutes — near-live. Also,
+ * every dashboard open/refresh (?getOwnerStats=true) rebuilds instantly.
+ * Run this ONCE.
+ */
+function installOwnerLiveTrigger() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === 'rebuildOwnerStats') ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger('rebuildOwnerStats').timeBased().everyMinutes(5).create();
+}
+
+/** Optional: daily instead of every 5 minutes (run once; removes other rebuild triggers). */
 function installOwnerDailyTrigger() {
   ScriptApp.getProjectTriggers().forEach(function (t) {
     if (t.getHandlerFunction() === 'rebuildOwnerStats') ScriptApp.deleteTrigger(t);

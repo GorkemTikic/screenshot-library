@@ -151,15 +151,16 @@ The Request Pipeline and Feedback Survey share the same Google Apps Script that 
 3.  **Deploy → Manage Deployments → ✏️ → New Version → Deploy** (critical — a simple save will not update the live Web App URL).
 4.  Verify `?getRequests=true` and `?getSurvey=true` both return JSON arrays, and confirm a test submission appears in the matching Analytics tab.
 
-### Owner Analytics tab (spreadsheet)
-The **Owner** tab is additive and self-contained — see [`apps-script/owner-analytics.gs`](apps-script/owner-analytics.gs):
+### Owner Analytics tabs (spreadsheet)
+Additive and self-contained — see [`apps-script/owner-analytics.gs`](apps-script/owner-analytics.gs). Produces two tabs: **Owner** (per-owner summary) and **Owner Details** (per-owner × per-screenshot).
 
 1.  Paste `owner-analytics.gs` into the Apps Script project (new file or appended to `Code.gs`).
-2.  Add the `getOwnerStats` branch to your `doGet(e)` (snippet is in the file header).
-3.  Run `createOwnerSheetNow()` once to create + fill the **Owner** tab.
-4.  **Deploy → New Version** as above, then verify `?getOwnerStats=true` returns a JSON array.
+2.  Add the `getOwnerStats` branch as the **very first lines inside `doGet(e)`** — before any event-logging / "Ignored" fallback, or the dashboard receives that text instead of JSON (snippet in the file header).
+3.  Run `createOwnerSheetNow()` once to create + fill both tabs.
+4.  Run `installOwnerLiveTrigger()` once so the tabs auto-refresh every 5 minutes.
+5.  **Deploy → New Version** as above, then verify `?getOwnerStats=true` returns a JSON array (not `Ignored ...`).
 
-It builds counts by joining the click log (`DB_Logs`) to each screenshot's `owner` in the published `data.json`, and only counts clicks logged **on/after** that screenshot's `ownerSince` date — so each owner's numbers reflect usage **after they contributed** ("since ownership"). Screenshots with no `ownerSince` count all-time. Needs no client change. Optionally run `installOwnerDailyTrigger()` to auto-refresh daily.
+Counts join the click log (`DB_Logs`) to each screenshot's `owner` in the published `data.json`, counting a click only **on/after** that screenshot's `ownerSince` date — so each owner's numbers reflect usage **after they contributed** ("since ownership"; entries with no `ownerSince` count all-time). The tabs refresh every 5 minutes via the trigger, and instantly whenever the in-app Analytics **Owners** tab is opened/refreshed (Apps Script can't fire on every individual click).
 
 ---
 

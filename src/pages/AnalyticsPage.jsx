@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useData } from '../contexts/DataContext';
 import { getLibraryStats, fetchInteractionStats, fetchScreenshotRequests, fetchSurveyResponses, fetchOwnerStats } from '../services/analytics';
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info, RefreshCw, AlertTriangle, Inbox, ClipboardList, Star, Award } from 'lucide-react';
+import { BarChart2, PieChart as PieIcon, Globe, Image as ImageIcon, Database, Users, MousePointer2, MessageSquarePlus, ExternalLink, Info, RefreshCw, AlertTriangle, Inbox, ClipboardList, Star, Award, ChevronRight, ChevronDown } from 'lucide-react';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658'];
 
@@ -29,6 +29,7 @@ export function AnalyticsPage() {
     const [ownersLoading, setOwnersLoading] = useState(false);
     const [ownersError, setOwnersError] = useState('');
     const [ownerFilter, setOwnerFilter] = useState('');
+    const [expandedOwner, setExpandedOwner] = useState(null);
 
     useEffect(() => {
         const loadStats = async () => {
@@ -737,17 +738,66 @@ export function AnalyticsPage() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {filteredOwners.map((r, idx) => (
-                                        <tr key={`${r.owner || idx}-${idx}`}>
-                                            <td><strong>{r.owner || '—'}</strong></td>
-                                            <td><strong>{r.total ?? 0}</strong></td>
-                                            <td>{r.copies ?? 0}</td>
-                                            <td>{r.views ?? 0}</td>
-                                            <td>{r.screenshots ?? 0}</td>
-                                            <td>{r.agents ?? 0}</td>
-                                            <td className="col-when" title={r.last}>{formatRequestTime(r.last)}</td>
-                                        </tr>
-                                    ))}
+                                    {filteredOwners.map((r, idx) => {
+                                        const key = `${r.owner || idx}-${idx}`;
+                                        const isOpen = expandedOwner === key;
+                                        const items = r.items || [];
+                                        return (
+                                            <React.Fragment key={key}>
+                                                <tr
+                                                    className="owner-row"
+                                                    style={{ cursor: items.length ? 'pointer' : 'default' }}
+                                                    onClick={() => items.length && setExpandedOwner(isOpen ? null : key)}
+                                                >
+                                                    <td>
+                                                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                                                            {items.length ? (isOpen ? <ChevronDown size={14} /> : <ChevronRight size={14} />) : <span style={{ width: 14 }} />}
+                                                            <strong>{r.owner || '—'}</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td><strong>{r.total ?? 0}</strong></td>
+                                                    <td>{r.copies ?? 0}</td>
+                                                    <td>{r.views ?? 0}</td>
+                                                    <td>{r.screenshots ?? 0}</td>
+                                                    <td>{r.agents ?? 0}</td>
+                                                    <td className="col-when" title={r.last}>{formatRequestTime(r.last)}</td>
+                                                </tr>
+                                                {isOpen && (
+                                                    <tr className="owner-detail-row">
+                                                        <td colSpan={7} style={{ padding: 0, background: 'var(--bg-color)' }}>
+                                                            <table className="requests-table" style={{ margin: 0 }}>
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style={{ paddingLeft: '2.5rem' }}>Screenshot</th>
+                                                                        <th>Uses</th>
+                                                                        <th>Copies</th>
+                                                                        <th>Views</th>
+                                                                        <th>Distinct Agents</th>
+                                                                        <th>Last Used</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {items.map((it, j) => (
+                                                                        <tr key={`${key}-item-${j}`}>
+                                                                            <td className="col-desc" style={{ paddingLeft: '2.5rem' }} title={it.title}>{it.title}</td>
+                                                                            <td><strong>{it.total ?? 0}</strong></td>
+                                                                            <td>{it.copies ?? 0}</td>
+                                                                            <td>{it.views ?? 0}</td>
+                                                                            <td>{it.agents ?? 0}</td>
+                                                                            <td className="col-when" title={it.last}>{formatRequestTime(it.last)}</td>
+                                                                        </tr>
+                                                                    ))}
+                                                                    {items.length === 0 && (
+                                                                        <tr><td colSpan={6} className="text-muted" style={{ paddingLeft: '2.5rem' }}>No per-screenshot detail.</td></tr>
+                                                                    )}
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                )}
+                                            </React.Fragment>
+                                        );
+                                    })}
                                 </tbody>
                             </table>
                         </div>
@@ -762,9 +812,10 @@ export function AnalyticsPage() {
                     <div className="info-box">
                         <div className="info-icon"><Info size={18} /></div>
                         <div>
-                            The <strong>Owner</strong> tab credits the volunteers who prepare screenshots. Counts are
-                            built by matching logged interactions to each screenshot's <code>owner</code> in the live
-                            catalog, so they include historical clicks. "Uses" = copies, views, previews, language
+                            The <strong>Owner</strong> tab credits the volunteers who prepare screenshots. Counts match
+                            logged interactions to each screenshot's <code>owner</code> in the live catalog, counting a
+                            click only from that screenshot's <code>ownerSince</code> date onward ("since ownership").
+                            Click a row to see the per-screenshot breakdown. "Uses" = copies, views, previews, language
                             switches, favorites, and right-clicks.
                         </div>
                     </div>
