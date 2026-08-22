@@ -661,6 +661,45 @@ body.dark .tag-loan {
   border: 1px solid var(--border-color);
 }
 
+/* Row that holds the EN/TR toggle and the Owner attribution side by side */
+.card-subrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.card-subrow .lang-switch-container {
+  margin-bottom: 0;
+}
+
+/* Owner attribution badge — credits the volunteer who prepared the screenshot */
+.owner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+}
+
+.owner-badge .owner-label {
+  color: #888;
+  font-weight: 500;
+}
+
+body.dark .owner-badge {
+  color: var(--primary);
+  background: rgba(252, 213, 53, 0.1);
+  border-color: rgba(252, 213, 53, 0.25);
+}
+
 .lang-switch-btn {
   background: none;
   border: none;

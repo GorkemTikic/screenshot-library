@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Check, Heart, ExternalLink, Eye } from 'lucide-react';
+import { Copy, Check, Heart, ExternalLink, Eye, User } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { logEvent } from '../services/analytics';
 
@@ -172,22 +172,35 @@ export function ScreenshotCard({ item, onClickImage }) {
                     {item.title}
                 </h3>
 
-                {/* Language Toggle */}
-                {hasTr && (
-                    <div className="lang-switch-container">
-                        <button
-                            className={`lang-switch-btn ${contentLang === 'en' ? 'active' : ''}`}
-                            onClick={(e) => handleLangSwitch(e, 'en')}
-                        >
-                            EN
-                        </button>
-                        <span className="lang-divider">|</span>
-                        <button
-                            className={`lang-switch-btn ${contentLang === 'tr' ? 'active' : ''}`}
-                            onClick={(e) => handleLangSwitch(e, 'tr')}
-                        >
-                            TR
-                        </button>
+                {/* Language Toggle + Owner attribution */}
+                {(hasTr || item.owner) && (
+                    <div className="card-subrow">
+                        {hasTr && (
+                            <div className="lang-switch-container">
+                                <button
+                                    className={`lang-switch-btn ${contentLang === 'en' ? 'active' : ''}`}
+                                    onClick={(e) => handleLangSwitch(e, 'en')}
+                                >
+                                    EN
+                                </button>
+                                <span className="lang-divider">|</span>
+                                <button
+                                    className={`lang-switch-btn ${contentLang === 'tr' ? 'active' : ''}`}
+                                    onClick={(e) => handleLangSwitch(e, 'tr')}
+                                >
+                                    TR
+                                </button>
+                            </div>
+                        )}
+                        {item.owner && (
+                            <span
+                                className="owner-badge"
+                                title={`Screenshot prepared by ${item.owner}`}
+                            >
+                                <User size={12} />
+                                <span className="owner-label">Owner:</span>&nbsp;{item.owner}
+                            </span>
+                        )}
                     </div>
                 )}
 

@@ -25,6 +25,7 @@ export function AdminPage() {
         topic: '',
         language: 'English',
         platform: 'mobile',
+        owner: '',
         newLanguageName: ''
     });
 
@@ -78,7 +79,7 @@ export function AdminPage() {
     }
 
     const resetForm = () => {
-        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'English', platform: 'mobile', newLanguageName: '' });
+        setFormData({ title: '', text: '', text_tr: '', image: '', topic: '', language: 'English', platform: 'mobile', owner: '', newLanguageName: '' });
         setEditingId(null);
         setSyncStatus('');
     };
@@ -345,6 +346,18 @@ export function AdminPage() {
                                         value={formData.title}
                                         onChange={e => setFormData({ ...formData, title: e.target.value })}
                                     />
+                                </div>
+
+                                <div className="form-group">
+                                    <label>Owner (Prepared by)</label>
+                                    <input
+                                        type="text"
+                                        className="form-input"
+                                        placeholder="e.g. CS VERA — the volunteer who prepared this screenshot"
+                                        value={formData.owner || ''}
+                                        onChange={e => setFormData({ ...formData, owner: e.target.value })}
+                                    />
+                                    <small className="text-muted">Shown on the main page next to the EN/TR toggle to credit the preparer. Leave blank if unknown.</small>
                                 </div>
 
                                 <div className="form-group">
