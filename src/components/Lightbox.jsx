@@ -3,15 +3,18 @@ import { X } from 'lucide-react';
 import { resolveImageUrl } from '../utils/imageUtils';
 
 export function Lightbox({ src, onClose }) {
-    if (!src) return null;
-
+    // Hooks must run on every render (before any early return), so the hook
+    // order stays stable when `src` toggles between null (closed) and a value.
     useEffect(() => {
+        if (!src) return;
         const handleEsc = (e) => {
             if (e.key === 'Escape') onClose();
         };
         window.addEventListener('keydown', handleEsc);
         return () => window.removeEventListener('keydown', handleEsc);
-    }, [onClose]);
+    }, [src, onClose]);
+
+    if (!src) return null;
 
     return (
         <div

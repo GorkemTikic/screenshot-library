@@ -225,7 +225,7 @@ export function ScreenshotCard({ item, onClickImage }) {
 
                     <button className="btn-icon" onClick={(e) => {
                         e.stopPropagation();
-                        onClickImage();
+                        onClickImage(item);
                     }} title="View Full">
                         <ExternalLink size={18} />
                     </button>
