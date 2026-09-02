@@ -19,9 +19,9 @@
     "language": "English",
     "platform": "mobile",
     "id": 1781106821502,
-    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-22"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Realized PnL on Open Position - EN",
@@ -32,9 +32,9 @@
     "language": "English",
     "platform": "mobile",
     "id": 1778343955327,
-    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-22"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Position/Order shows in K line K线图显示仓位/订单信息 - CN",
@@ -122,9 +122,9 @@
     "language": "English",
     "platform": "mobile",
     "id": 1767733057149,
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "PM Disable (Back to Classic) 关闭统一账户 (回到经典交易账户) - CN",
@@ -218,8 +218,8 @@
     "platform": "mobile",
     "id": 1766691181367,
     "owner": "CS VERA",
-    "updatedAt": "2026-08-22 00:00 UTC+0",
-    "ownerSince": "2026-08-22"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Loan Repay (Borrowed Coin) 借币还款（借贷币种）- CN",
@@ -350,9 +350,9 @@
     "topic": "Futures Trading",
     "id": 1765164170426,
     "text_tr": "USDⓈ-M Vadeli İşlemler hesabınızdaki uygun bir varlığı takas etmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** **Takas**a (**Swap**) dokunun.\n\n**5 -)** **Alıcı** (**To**) alanından almak istediğiniz varlığı seçin.\n\n**6 -)** **Gönderen** (**From**) alanından dönüştürmek istediğiniz varlığı seçin.\n\n**7 -)** Tutarı girin, gerçek zamanlı oranı inceleyin ve **Takası Onayla**ya (**Confirm Swap**) dokunun.\n\nKullanılabilir dönüştürme varlıkları, oran ve azami tutar onaylamadan önce Takas sayfasında gösterilir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "System Feedback - EN",
@@ -362,9 +362,9 @@
     "topic": "General",
     "id": 1765164170427,
     "text_tr": "Binance uygulamasından Sistem Geri Bildirimi göndermek için aşağıdaki adımları takip edin:\n\n**1 -)** **Ana Sayfa**yı (**Home**) açın.\n\n**2 -)** Sol üst köşedeki **Profil/Menü** simgesine dokunun.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (**Settings**) simgesine dokunun.\n\n**4 -)** **Yardım ve Destek**i (**Help & Support**) seçin.\n\n**5 -)** **Sistem Geri Bildirimi**ne (**System Feedback**) dokunun.\n\n**6 -)** Mesajı inceleyin ve **Gönder**e (**Send**) dokunun.\n\n**7 -)** **Başarılı** (**Success**) mesajının göründüğünü doğrulayın.\n\nSistem Geri Bildirimi istemi, bir sorunun belirlenmesine yardımcı olmak için uygulama hata günlüklerini içerebilir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Futures Transaction History (Export) - EN",
@@ -374,9 +374,9 @@
     "topic": "Futures Trading",
     "id": 1765164170428,
     "text_tr": "Vadeli İşlemler işlem geçmişinizi dışa aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** **Geçmiş** (**History**) simgesine dokunun.\n\n**3 -)** **İşlem Geçmişi** (**Transaction History**) sekmesini seçin.\n\n**4 -)** Sağ üst köşedeki **Dışa Aktar** (**Export**) simgesine dokunun.\n\n**5 -)** Gerekli **Zaman Aralığı**nı (**Time Range**) seçin ve **Profil Biçimi** (**Profile Format**) altında **PDF**, **Excel** veya **CSV** seçin.\n\n**6 -)** Belirli bir tarih aralığı kullanmak için **Özelleştir**i (**Customize**) seçin, başlangıç ve bitiş tarihlerini belirleyin, ardından **Onayla**ya (**Confirm**) dokunun.\n\n**7 -)** Dışa aktarma dosyasını oluşturmak için **Oluştur**a (**Generate**) dokunun.\n\nTek bir dışa aktarma için seçilebilecek en uzun zaman aralığı 12 aydır. Daha uzun bir geçmişe ihtiyacınız varsa farklı dönemler için ayrı dışa aktarmalar oluşturun.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Transfer From Cross Margin To Spot - EN",
@@ -387,8 +387,8 @@
     "id": 1765164170429,
     "text_tr": "Çapraz Marjinden Spot hesaba varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **Çapraz Marjin**i (**Cross Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Çapraz Marjin** (**Cross Margin**), **Alıcı**yı (**To**) **Spot** olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nAktarılabilir tutar, Çapraz Marjin hesap durumunuza ve marjin seviyenize bağlıdır.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23",
-    "updatedAt": "2026-08-23 00:00 UTC+0"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "updatedAt": "2026-09-02 19:36 UTC+0"
   },
   {
     "title": "Cooling-Off Period - EN",
@@ -399,9 +399,9 @@
     "id": 1765164170430,
     "platform": "mobile",
     "text_tr": "Vadeli İşlemler için bekleme süresini etkinleştirmek üzere aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasında **\"...\"** simgesine dokunun.\n\n**2 -)** **Bekleme Süresi**ni (**Cooling-off Period**) seçin.\n\n**3 -)** **Vadeli İşlemler İşlevini Devre Dışı Bırak** (**Disable Futures Trading Function**) seçeneğini etkinleştirin.\n\n**4 -)** **1 Gün** (**1 Day**), **1 Hafta** (**1 Week**), **1 Ay** (**1 Month**) veya **Süresiz** (**Indefinite**) seçeneklerinden birini seçin.\n\n**5 -)** **Onayla**ya (**Confirm**) dokunun.\n\nOnaylamadan önce uygulamada gösterilen uyarıyı inceleyin. Bu ayarı etkinleştirmeden önce açık emirlerinizi kapatmanız gerekir ve seçilen süre boyunca Vadeli İşlemler kullanılamaz.\n\nAyrıntılar için [Bekleme Süresi İşlevi Nedir ve Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Mark Price Chart - EN",
@@ -412,8 +412,8 @@
     "id": 1765164170431,
     "text_tr": "Bir Vadeli İşlemler sembolü için Gösterge Fiyatı grafiğini görüntülemek üzere aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** İşlem çiftinin yanındaki **Grafik** (**Chart**) simgesine dokunun.\n\n**3 -)** Grafiğin üzerindeki **Son Fiyat** (**Last Price**) seçicisine dokunun.\n\n**4 -)** **Gösterge Fiyatı**nı (**Mark Price**) seçin.\n\nFiyat seçicisinde ayrıca **Son Fiyat** (**Last Price**) ve **Endeks Fiyatı** (**Index Price**) seçenekleri de bulunur.\n\nAyrıntılar için [Bir Vadeli İşlemler Sözleşmesinin Son Fiyatı ile Gösterge Fiyatı Arasındaki Fark Nedir?](https://www.binance.com/blog/futures/5704082076024731087) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23",
-    "updatedAt": "2026-08-23 00:00 UTC+0"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "updatedAt": "2026-09-02 19:36 UTC+0"
   },
   {
     "title": "Funding Fee History - EN",
@@ -424,8 +424,8 @@
     "id": 1765164170432,
     "text_tr": "Vadeli İşlemler fonlama ücreti geçmişinizi görüntülemek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Emir bölümünün üzerindeki **Geçmiş** (**History**) simgesine dokunun.\n\n**3 -)** Sekmeler arasında kaydırın ve **Fonlama Ücreti**ni (**Funding Fee**) seçin.\n\nKayıtları varlığa veya zaman aralığına göre daraltmak için mevcut filtreleri kullanın. Sayfa, seçilen Vadeli İşlemler hesabı için ödenen ve alınan fonlama ücretlerini gösterir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23",
-    "updatedAt": "2026-08-23 00:00 UTC+0"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "updatedAt": "2026-09-02 19:36 UTC+0"
   },
   {
     "title": "LOAN HISTORY (ONGOING LOANS) - EN",
@@ -446,8 +446,8 @@
     "id": 1765164170434,
     "text_tr": "Spot hesaptan İzole Marjine varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **İzole Marjin**i (**Isolated Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Spot**, **Alıcı**yı (**To**) **İzole Marjin** (**Isolated Margin**) olarak ayarlayın ve ilgili marjin çiftini seçin.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nVarlığın, seçilen izole marjin çifti tarafından desteklenmesi gerekir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23",
-    "updatedAt": "2026-08-23 00:00 UTC+0"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "updatedAt": "2026-09-02 19:36 UTC+0"
   },
   {
     "title": "Transfer From Isolated Margin to Spot Wallet - EN",
@@ -458,8 +458,8 @@
     "id": 1765164170435,
     "text_tr": "İzole Marjinden Spot hesaba varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **İzole Marjin**i (**Isolated Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **İzole Marjin** (**Isolated Margin**) olarak ayarlayın, ilgili marjin çiftini seçin ve **Alıcı**yı (**To**) **Spot** olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nAktarılabilir tutar, seçilen izole marjin çiftine ve bu çiftin marjin seviyesine bağlıdır.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23",
-    "updatedAt": "2026-08-23 00:00 UTC+0"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "updatedAt": "2026-09-02 19:36 UTC+0"
   },
   {
     "title": "Transfer From Spot Wallet to Cross Margin - EN",
@@ -470,8 +470,8 @@
     "id": 1765164170436,
     "text_tr": "Spot hesaptan Çapraz Marjine varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **Çapraz Marjin**i (**Cross Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Spot**, **Alıcı**yı (**To**) **Çapraz Marjin** (**Cross Margin**) olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nOnaylamadan önce Transfer sayfasında gösterilen kullanılabilir bakiyeyi kontrol edin.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23",
-    "updatedAt": "2026-08-23 00:00 UTC+0"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "updatedAt": "2026-09-02 19:36 UTC+0"
   },
   {
     "title": "Mark Price Chart - RU",
@@ -505,9 +505,9 @@
     "topic": "Futures Trading",
     "id": 1765164170440,
     "text_tr": "USDⓈ-M Vadeli İşlemler için **Varlık Modunuzu** (**Asset Mode**) değiştirmek üzere aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **\"Tercihler\"** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **\"Varlık Modu\"** (**Asset Mode**) seçeneğine dokunun.\n\n**5 -)** Tercihinize göre **\"Tek Varlık Modu\"** (**Single-Asset Mode**) veya **\"Çoklu Varlık Modu\"** (**Multi-Assets Mode**) seçeneğini seçin.\n\nDaha fazla bilgi için aşağıdaki rehberlere göz atabilirsiniz:\n\n* [Tek Varlık ve Çoklu Varlık Modları Arasında Nasıl Geçiş Yapılır?](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [Çoklu Varlık Modu Nedir ve Hangi Varlıklar Desteklenir?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-22"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - EN",
@@ -517,9 +517,9 @@
     "topic": "Futures Trading",
     "id": 1765164170441,
     "text_tr": "Vadeli İşlemler pozisyon modunuzu değiştirmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **Tercihler** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **Pozisyon Ayarları**na (**Position Settings**) dokunun.\n\n**5 -)** **Tek Yön Modu**nu (**One-way Mode**) veya **Hedge Modu**nu (**Hedge Mode**) seçin.\n\nUSDⓈ-M veya COIN-M Vadeli İşlemlerde açık pozisyonlarınız ya da açık emirleriniz varken pozisyon modunu değiştiremezsiniz. Bu ayar USDⓈ-M ve COIN-M Vadeli İşlemler için geçerlidir.\n\nDaha fazla bilgi için [Hedge Modu Nedir ve Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/360041513552) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Change Button Settings in Positions - EN",
@@ -529,9 +529,9 @@
     "topic": "Futures Trading",
     "id": 1765164170442,
     "text_tr": "Açık Vadeli İşlemler pozisyonlarınızda gösterilen işlem butonlarını özelleştirmek için aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **\"Tercihler\"** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **\"Düzen\"** (**Layout**) sekmesini açın.\n\n**5 -)** **\"Pozisyonlar\"** (**Positions**) seçeneğini seçin.\n\n**6 -)** **\"Pozisyon Butonu Ayarları\"** (**Positions Button Settings**) altında, **\"Kaldıracı Ayarla\"** (**Adjust Leverage**), **\"Kar Al ve Zarar Durdur\"** (**Stop Profit & Loss**), **\"Pozisyonu Kapat\"** (**Close Position**) ve **\"Piyasa Fiyatından Kapat\"** (**Market Close**) gibi seçenekleri göstermek veya gizlemek için anahtarları kullanın. Görüntülenme sırasını değiştirmek için seçeneğin yanındaki tutamacı sürükleyebilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-22"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Loan Repayment (Collateral) - EN",
@@ -564,9 +564,9 @@
     "id": 1765164170447,
     "text_tr": "USDⓈ-M Vadeli İşlemlerden Spot hesaba varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **USDⓈ-M Vadeli İşlemler** (**USDⓈ-M Futures**), **Alıcı**yı (**To**) **Spot** olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nTransferi onaylamadan önce görüntülenen kullanılabilir bakiyeyi kontrol edin.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "platform": "mobile",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Transfer From Spot Wallet to USDⓈ-M Futures - EN",
@@ -577,9 +577,9 @@
     "id": 1765164170448,
     "platform": "mobile",
     "text_tr": "Spot hesaptan USDⓈ-M Vadeli İşlemlere varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Spot**, **Alıcı**yı (**To**) **USDⓈ-M Vadeli İşlemler** (**USDⓈ-M Futures**) olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nTransferi onaylamadan önce görüntülenen kullanılabilir bakiyeyi kontrol edin.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Cross Margin Adjusted Entry Price - EN",
@@ -599,9 +599,9 @@
     "id": 1765164170451,
     "text_tr": "BNB ile ücret ve faiz indirimlerini yönetmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Ana Sayfa**yı (**Home**) açın.\n\n**2 -)** Sol üst köşedeki **Profil/Menü** simgesine dokunun.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (**Settings**) simgesine dokunun.\n\n**4 -)** **BNB Kullanımı** (**Using BNB**) seçeneğini seçin.\n\n**5 -)** Tercihinize göre **Ücretleri ödemek için BNB kullan** (**Use BNB to pay fees**), **Marjin faizlerini ödemek için BNB kullan** (**Use BNB to pay Margin interests**) ve **USDⓈ-M Vadeli İşlemler ücretlerini ödemek için BNB kullan** (**Use BNB to pay USDⓈ-M Futures fees**) anahtarlarını kullanın.\n\nUygulamada gösterilen indirim oranı, ürüne ve hesap uygunluğuna göre değişebilir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "platform": "mobile",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "SWAP LDUSDT to USDT - EN",
@@ -611,9 +611,9 @@
     "topic": "Futures Trading",
     "id": 1765164170452,
     "text_tr": "USDⓈ-M Vadeli İşlemlerdeki LDUSDT'yi Earn hesabınızdaki USDT'ye dönüştürmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** Varlık listesinden **LDUSDT** seçeneğine dokunun.\n\n**5 -)** **Takas**a (**Swap**) dokunun.\n\n**6 -)** Gerekirse dönüştürme yönünü ayarlamak için yön simgesine dokunun.\n\n**7 -)** **Gönderen**in (**From**) **USDⓈ-M Vadeli İşlemler - LDUSDT**, **Alıcı**nın (**To**) ise **Earn - USDT** olduğunu doğrulayın. Tutarı girin ve **Onayla**ya (**Confirm**) dokunun.\n\nOnaylamadan önce görüntülenen dönüştürme oranını ve alacağınız tutarı inceleyin.\n\nDaha fazla bilgi için [LDUSDT Nedir ve Vadeli İşlemlerde Teminat Olarak Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "SWAP USDT to LDUSDT - EN",
@@ -623,9 +623,9 @@
     "topic": "Futures Trading",
     "id": 1765164170453,
     "text_tr": "Earn hesabınızdaki USDT'yi USDⓈ-M Vadeli İşlemlerdeki LDUSDT'ye dönüştürmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** Varlık listesinden **LDUSDT** seçeneğine dokunun.\n\n**5 -)** **Takas**a (**Swap**) dokunun.\n\n**6 -)** Gerekirse dönüştürme yönünü ayarlamak için yön simgesine dokunun.\n\n**7 -)** **Gönderen**in (**From**) **Earn - USDT**, **Alıcı**nın (**To**) ise **USDⓈ-M Vadeli İşlemler - LDUSDT** olduğunu doğrulayın. Tutarı girin ve **Onayla**ya (**Confirm**) dokunun.\n\nOnaylamadan önce görüntülenen dönüştürme oranını ve alacağınız tutarı inceleyin.\n\nDaha fazla bilgi için [LDUSDT Nedir ve Vadeli İşlemlerde Teminat Olarak Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "What Is Funding Rate? - EN",
@@ -658,9 +658,9 @@
     "id": 1765164170456,
     "platform": "mobile",
     "text_tr": "Binance uygulamasının daha yeni bir sürümünün mevcut olup olmadığını kontrol etmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Ana Sayfa**yı (**Home**) açın.\n\n**2 -)** Sol üst köşedeki **Profil/Menü** simgesine dokunun.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (**Settings**) simgesine dokunun.\n\n**4 -)** **Güncellemeleri kontrol et** (**Check for updates**) seçeneğini seçin.\n\nBu sayfada mevcut uygulama sürümünüz gösterilir ve güncelleme varsa ilgili seçenek görünür.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "ADL Indicator/Explanation - EN",
@@ -691,9 +691,9 @@
     "topic": "General",
     "id": 1765164170459,
     "text_tr": "Cihaz Kimliğinizi bulmak ve kopyalamak için aşağıdaki adımları takip edin:\n\n**1 -)** **Ana Sayfa**yı (**Home**) açın.\n\n**2 -)** Sol üst köşedeki **Profil/Menü** simgesine dokunun.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (**Settings**) simgesine dokunun.\n\n**4 -)** Sayfayı aşağı kaydırın ve **Hakkımızda** (**About Us**) seçeneğini seçin.\n\n**5 -)** Binance logosuna hızlıca beş kez dokunun.\n\n**6 -)** **Cihaz Kimliği** (**Device ID**) göründüğünde, yanındaki **Kopyala** (**Copy**) simgesine dokunun.\n\nKopyaladığınız Cihaz Kimliğini, yalnızca sorun giderme amacıyla istenirse ilgili destek görüşmesinde paylaşın.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "PNL Analysis Page (To see Fees) - EN",
@@ -703,9 +703,9 @@
     "topic": "Futures Trading",
     "id": 1765164170460,
     "text_tr": "PNL Analizinde Vadeli İşlemler fonlama ve işlem ücretlerini incelemek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** **Bugünün Gerçekleşmiş PNL'i**ne (**Today's Realized PNL**) dokunun.\n\n**5 -)** **Fonlama ve İşlem** (**Funding & Transaction**) sekmesini açın.\n\n**6 -)** **İşlem Ücretini Göster**i (**Show Transaction Fee**) etkinleştirin.\n\nAnalizde gösterilen dönemi seçmek için **7G** (**7D**), **1A** (**1M**), **3A** (**3M**), **1Y** veya **Özelleştir** (**Customize**) seçeneklerini kullanın.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Futures Notification for TP/SL/Funding - EN",
@@ -715,9 +715,9 @@
     "topic": "Futures Trading",
     "id": 1765164170461,
     "text_tr": "Vadeli İşlemler bildirimlerini yönetmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **Tercihler** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **Bildirimler** (**Notifications**) sekmesini açın.\n\n**5 -)** **İşlem Bildirimleri**ne (**Trade Notifications**) dokunun.\n\n**6 -)** **TP/SL Tetikleyicisi** (**TP/SL Trigger**), **Fonlama Ücreti Tetikleyicisi** (**Funding Fee Trigger**) ve **Vadeli İşlemler** (**Futures Trading**) anahtarlarını kullanın. İlgili eşiği ayarlamak için **Fonlama Ücreti Tetikleyicisi** veya **Teminat Tamamlama Çağrısı Uyarısı** (**Margin Call Alert**) yanındaki **Düzenle**ye (**Edit**) dokunun.\n\nUygulamada gösterilen **TP/SL Tetikleyicisi** bildirim sınırı günde en fazla 25 bildirimdir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "How To Enable/Disable AUTO Borrow/Repay - EN",
@@ -728,8 +728,8 @@
     "id": 1765164170462,
     "text_tr": "Marjin işlemleri için **Otomatik Borç Alma** (**Auto Borrow**) ve **Otomatik Geri Ödeme** (**Auto Repay**) özelliklerini etkinleştirmek veya devre dışı bırakmak için aşağıdaki adımları takip edin:\n\n**1 -)** **\"İşlem\"** (**Trade**) sayfasını açın.\n\n**2 -)** Emir panelinin üst kısmındaki anahtarı kullanarak **\"Marjin\"** (**Margin**) işlemlerini etkinleştirin.\n\n**3 -)** Emir kontrollerinin yanındaki **\"Auto B\"** seçeneğine dokunun.\n\n**4 -)** **\"Borç Alma ve Geri Ödeme\"** (**Borrow & Repay**) sayfasında **\"Otomatik\"** (**Auto**) sekmesini açın.\n\n**5 -)** **\"Otomatik Borç Alma\"** (**Auto Borrow**) ve **\"Otomatik Geri Ödeme\"** (**Auto Repay**) özelliklerini etkinleştirmek veya devre dışı bırakmak için anahtarları kullanın.\n\n**Otomatik Borç Alma**, kullanılabilir bakiyeniz yetersiz olduğunda emir verirken gerekli varlığı borç alır. **Otomatik Geri Ödeme** ise işlem sonrasında alınan varlıkları aynı marjin hesabındaki ilgili borcu geri ödemek için kullanır.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "updatedAt": "2026-08-22 00:00 UTC+0",
-    "ownerSince": "2026-08-22"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Clear Cache - AR",
@@ -869,8 +869,8 @@
     "id": 1765164170479,
     "text_tr": "Marjin faiz geçmişini görüntülemek için aşağıdaki adımları takip edin:\n\n**1 -)** **İşlem** (**Trade**) sayfasını açın.\n\n**2 -)** **Marjin** (**Margin**) işlemlerini etkinleştirin.\n\n**3 -)** **Geçmiş** (**History**) simgesine dokunun.\n\n**4 -)** **İşlemlerim** (**My Trades**) menüsünden **Çapraz Marjin** (**Cross Margin**) veya **İzole Marjin** (**Isolated Margin**) gibi ilgili hesabı seçin.\n\n**5 -)** **Borç Geçmişi**ni (**Debt History**) açın.\n\n**6 -)** **Faiz**i (**Interest**) seçin.\n\nGerekli faiz kayıtlarını bulmak için **Coin** ve **Tür** (**Type**) filtrelerini kullanabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23",
-    "updatedAt": "2026-08-23 00:00 UTC+0"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "updatedAt": "2026-09-02 19:36 UTC+0"
   },
   {
     "title": "Cooling Off Period Futures 合约冷静期 - CN",
@@ -918,9 +918,9 @@
     "id": 1765164170484,
     "platform": "mobile",
     "text_tr": "Vadeli İşlemler işlem sayfasındaki Al/Sat sekmesi düzenini değiştirmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **Tercihler** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **Düzen** (**Layout**) sekmesini açın.\n\n**5 -)** **İşlem Paneli**ni (**Trade Panel**) seçin.\n\n**6 -)** **Al/Sat Sekmesi Ayarı** (**Buy/Sell Tab Setting**) altında **Al/Sat sekmesini göster** (**Display Buy/Sell tab**) veya **Al/Sat sekmesini gizle** (**Hide Buy/Sell tab**) seçeneğini seçin.\n\nSeçtiğiniz seçenek, Al/Sat kontrollerinin işlem panelinde gösterilme biçimini değiştirir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "CLOSE CHAT (CSAT) - EN",
@@ -948,9 +948,9 @@
     "topic": "Futures Trading",
     "id": 1765164170487,
     "text_tr": "Vadeli İşlemler pozisyonu açmadan önce **TP/SL** emri ayarlamak için aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasındaki emir panelinde **\"TP/SL\"** kutucuğunu işaretleyin.\n\n**2 -)** **\"Gelişmiş\"** (**Advanced**) seçeneğine dokunun.\n\n**3 -)** Hem **\"Kar Al\"** (**Take Profit**) hem de **\"Zarar Durdur\"** (**Stop Loss**) için tetikleme fiyatı türünü seçin. Kullanılabilir seçenekler **\"Gösterge Fiyatı\"** (**Mark Price**) ve **\"Son Fiyat\"** (**Last Price**) seçenekleridir.\n\n**4 -)** **\"Kar Al\"** ve/veya **\"Zarar Durdur\"** emriniz için tetikleme fiyatını girin.\n\n**5 -)** Tetikleme fiyatına ulaşıldığında emrin piyasa emri olarak verilmesini istiyorsanız **\"Piyasa\"** (**Market**) seçeneğini seçili bırakın. Bunun yerine **\"Limit\"** seçeneğine geçmek ve limit fiyatı girmek için **\"Piyasa\"** (**Market**) seçeneğine dokunun.\n\nDaha fazla bilgi için aşağıdaki rehberlere göz atabilirsiniz:\n\n* [Binance Vadeli İşlemlerde Gösterge Fiyatı ve Son Fiyat Arasındaki Fark Nedir?](https://www.binance.com/blog/futures/5704082076024731087)\n* [Binance Vadeli İşlemlerde Durdurma Emirleri Nelerdir?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n* [Binance Vadeli İşlemlerde Zarar Durdur ve Kar Al Emirleri Nasıl Verilir?](https://www.binance.com/support/faq/detail/360040016512)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-08-22 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-22"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Transfer From Cross Margin To Spot - AR",
@@ -979,9 +979,9 @@
     "topic": "General",
     "id": 1765162670474,
     "platform": "mobile",
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "Transaction History - EN (WEB)",
@@ -1124,8 +1124,8 @@
     "platform": "mobile",
     "id": 1766691251410,
     "owner": "CS VERA",
-    "updatedAt": "2026-08-22 00:00 UTC+0",
-    "ownerSince": "2026-08-22"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "How To Change Order Size/Unit Preference to Initial Margin - EN.jpeg",
@@ -1136,9 +1136,9 @@
     "language": "English",
     "platform": "mobile",
     "id": 1767371337539,
-    "updatedAt": "2026-08-23 00:00 UTC+0",
+    "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-08-23"
+    "ownerSince": "2026-09-02T19:36:27.182Z"
   },
   {
     "title": "PM Aggregate Funds PM归集资金 - CN",
