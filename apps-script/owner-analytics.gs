@@ -111,61 +111,70 @@ function rebuildOwnerStats() {
   var logs = ss.getSheetByName(OWNER_LOGS_SHEET);
   if (!logs) throw new Error('Sheet "' + OWNER_LOGS_SHEET + '" not found');
 
-  var values = logs.getDataRange().getValues();
-  if (values.length < 2) { _writeOwnerSheet_([]); return []; }
-
-  var header = values[0];
-  var cEvent = _ownerCol_(header, ['event', 'event_type', 'type']);
-  var cTitle = _ownerCol_(header, ['title', 'screenshot', 'name']);
-  var cHash  = _ownerCol_(header, ['hash', 'deviceHash', 'device_hash', 'device', 'uid', 'device_id']);
-  var cTime  = _ownerCol_(header, ['timestamp', 'time', 'date', 'datetime', 'created', 'createdAt']);
-  if (cEvent < 0 || cTitle < 0) {
-    throw new Error('DB_Logs needs at least "event" and "title" columns (found headers: ' + header.join(', ') + ')');
-  }
-
   var map = _ownerMap_();
+
+  // Seed every owner from the catalog so they appear even with 0 recent uses,
+  // and record how many screenshots each owner has in the library ("owned").
   var agg = {}; // owner -> stats
-
-  for (var r = 1; r < values.length; r++) {
-    var row = values[r];
-    var ev = String(row[cEvent] || '').trim();
-    if (OWNER_USAGE_EVENTS.indexOf(ev) < 0) continue;
-
-    var title = String(row[cTitle] || '').trim();
-    var info = map[title];
-    if (!info) continue; // screenshot has no Owner, or title no longer in catalog
-    var owner = info.owner;
-
-    // "Since ownership": if this screenshot has an ownerSince date, only count
-    // clicks logged on/after it. Rows we cannot time-stamp are skipped when a
-    // cutoff exists (conservative); with no cutoff, everything counts.
-    var rowMs = (cTime >= 0) ? _toMs_(row[cTime]) : null;
-    if (info.since != null) {
-      if (rowMs == null || rowMs < info.since) continue;
-    }
-
-    var iso = (rowMs != null) ? new Date(rowMs).toISOString() : '';
-    var h = (cHash >= 0) ? String(row[cHash] || '').trim() : '';
-
+  Object.keys(map).forEach(function (title) {
+    var owner = map[title].owner;
     var a = agg[owner] || (agg[owner] = {
-      owner: owner, total: 0, copies: 0, views: 0,
+      owner: owner, owned: 0, total: 0, copies: 0, views: 0,
       titles: {}, agents: {}, last: ''
     });
-    a.total++;
-    if (ev === 'copy_text') a.copies++;
-    if (ev === 'view_image') a.views++;
-    if (h) a.agents[h] = 1;
-    if (iso > a.last) a.last = iso;
+    a.owned++;
+  });
 
-    // per-screenshot detail
-    var ti = a.titles[title] || (a.titles[title] = {
-      title: title, total: 0, copies: 0, views: 0, agents: {}, last: ''
-    });
-    ti.total++;
-    if (ev === 'copy_text') ti.copies++;
-    if (ev === 'view_image') ti.views++;
-    if (h) ti.agents[h] = 1;
-    if (iso > ti.last) ti.last = iso;
+  // Add usage from the click log (only clicks on/after each screenshot's ownerSince).
+  var values = logs.getDataRange().getValues();
+  if (values.length >= 2) {
+    var header = values[0];
+    var cEvent = _ownerCol_(header, ['event', 'event_type', 'type']);
+    var cTitle = _ownerCol_(header, ['title', 'screenshot', 'name']);
+    var cHash  = _ownerCol_(header, ['hash', 'deviceHash', 'device_hash', 'device', 'uid', 'device_id']);
+    var cTime  = _ownerCol_(header, ['timestamp', 'time', 'date', 'datetime', 'created', 'createdAt']);
+    if (cEvent < 0 || cTitle < 0) {
+      throw new Error('DB_Logs needs at least "event" and "title" columns (found headers: ' + header.join(', ') + ')');
+    }
+
+    for (var r = 1; r < values.length; r++) {
+      var row = values[r];
+      var ev = String(row[cEvent] || '').trim();
+      if (OWNER_USAGE_EVENTS.indexOf(ev) < 0) continue;
+
+      var title = String(row[cTitle] || '').trim();
+      var info = map[title];
+      if (!info) continue; // screenshot has no Owner, or title no longer in catalog
+      var owner = info.owner;
+
+      // "Since ownership": only count clicks logged on/after the screenshot's
+      // ownerSince. Rows we cannot time-stamp are skipped when a cutoff exists.
+      var rowMs = (cTime >= 0) ? _toMs_(row[cTime]) : null;
+      if (info.since != null) {
+        if (rowMs == null || rowMs < info.since) continue;
+      }
+
+      var iso = (rowMs != null) ? new Date(rowMs).toISOString() : '';
+      var h = (cHash >= 0) ? String(row[cHash] || '').trim() : '';
+
+      var a = agg[owner];
+      if (!a) continue; // owner not in catalog (shouldn't happen)
+      a.total++;
+      if (ev === 'copy_text') a.copies++;
+      if (ev === 'view_image') a.views++;
+      if (h) a.agents[h] = 1;
+      if (iso > a.last) a.last = iso;
+
+      // per-screenshot detail
+      var ti = a.titles[title] || (a.titles[title] = {
+        title: title, total: 0, copies: 0, views: 0, agents: {}, last: ''
+      });
+      ti.total++;
+      if (ev === 'copy_text') ti.copies++;
+      if (ev === 'view_image') ti.views++;
+      if (h) ti.agents[h] = 1;
+      if (iso > ti.last) ti.last = iso;
+    }
   }
 
   var rows = Object.keys(agg).map(function (o) {
@@ -184,6 +193,7 @@ function rebuildOwnerStats() {
 
     return {
       owner: a.owner,
+      owned: a.owned,
       total: a.total,
       copies: a.copies,
       views: a.views,
@@ -192,7 +202,7 @@ function rebuildOwnerStats() {
       last: a.last,
       items: items
     };
-  }).sort(function (x, y) { return y.total - x.total; });
+  }).sort(function (x, y) { return (y.total - x.total) || (y.owned - x.owned); });
 
   _writeOwnerSheet_(rows);
   _writeOwnerDetailsSheet_(rows);
@@ -205,13 +215,13 @@ function _writeOwnerSheet_(rows) {
   var sh = ss.getSheetByName(OWNER_SHEET) || ss.insertSheet(OWNER_SHEET);
   sh.clear();
 
-  var header = ['Owner', 'Total Uses', 'Copies', 'Views', 'Screenshots Used', 'Distinct Agents', 'Last Used (UTC)', 'Refreshed (UTC)'];
+  var header = ['Owner', 'Screenshots Owned', 'Total Uses', 'Copies', 'Views', 'Screenshots Used', 'Distinct Agents', 'Last Used (UTC)', 'Refreshed (UTC)'];
   sh.getRange(1, 1, 1, header.length).setValues([header]).setFontWeight('bold');
 
   var now = new Date().toISOString();
   if (rows.length) {
     var body = rows.map(function (r) {
-      return [r.owner, r.total, r.copies, r.views, r.screenshots, r.agents, r.last, now];
+      return [r.owner, r.owned, r.total, r.copies, r.views, r.screenshots, r.agents, r.last, now];
     });
     sh.getRange(2, 1, body.length, header.length).setValues(body);
   }

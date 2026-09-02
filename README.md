@@ -152,7 +152,7 @@ The Request Pipeline and Feedback Survey share the same Google Apps Script that 
 4.  Verify `?getRequests=true` and `?getSurvey=true` both return JSON arrays, and confirm a test submission appears in the matching Analytics tab.
 
 ### Owner Analytics tabs (spreadsheet)
-Additive and self-contained — see [`apps-script/owner-analytics.gs`](apps-script/owner-analytics.gs). Produces two tabs: **Owner** (per-owner summary) and **Owner Details** (per-owner × per-screenshot).
+Additive and self-contained — see [`apps-script/owner-analytics.gs`](apps-script/owner-analytics.gs). Produces two tabs: **Owner** (per-owner summary, including **Screenshots Owned** = how many the person has in the catalog, so owners show up even with 0 recent uses) and **Owner Details** (per-owner × per-screenshot).
 
 1.  Paste `owner-analytics.gs` into the Apps Script project (new file or appended to `Code.gs`).
 2.  Add the `getOwnerStats` branch as the **very first lines inside `doGet(e)`** — before any event-logging / "Ignored" fallback, or the dashboard receives that text instead of JSON (snippet in the file header).

@@ -729,6 +729,7 @@ export function AnalyticsPage() {
                                 <thead>
                                     <tr>
                                         <th>Owner</th>
+                                        <th>Screenshots Owned</th>
                                         <th>Total Uses</th>
                                         <th>Copies</th>
                                         <th>Views</th>
@@ -755,6 +756,7 @@ export function AnalyticsPage() {
                                                             <strong>{r.owner || '—'}</strong>
                                                         </span>
                                                     </td>
+                                                    <td>{r.owned ?? 0}</td>
                                                     <td><strong>{r.total ?? 0}</strong></td>
                                                     <td>{r.copies ?? 0}</td>
                                                     <td>{r.views ?? 0}</td>
@@ -764,7 +766,7 @@ export function AnalyticsPage() {
                                                 </tr>
                                                 {isOpen && (
                                                     <tr className="owner-detail-row">
-                                                        <td colSpan={7} style={{ padding: 0, background: 'var(--bg-color)' }}>
+                                                        <td colSpan={8} style={{ padding: 0, background: 'var(--bg-color)' }}>
                                                             <table className="requests-table" style={{ margin: 0 }}>
                                                                 <thead>
                                                                     <tr>
