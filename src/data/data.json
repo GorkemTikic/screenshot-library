@@ -1399,25 +1399,36 @@
   {
     "title": "ADL Indicator/Explanation - EN",
     "language": "English",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/ADL_Indicator%3AExplanation_-_EN.jpeg",
+    "image": "screenshots/1789247679048_1.jpg",
     "text": "The indicator shown in the screenshot represents your position in the **Auto-Deleveraging (ADL)** queue. This is how the ADL works:\n\n* **What is ADL?**: When the profit-loss difference between long and short positions cannot be covered by the **Insurance Fund**, the positions with the highest profit are closed automatically to manage market risk.\n* **The Process**: This process is also known as **Counterparty Liquidation**. It is different from normal liquidation because you retain the current profit from your position and can re-enter the market immediately.\n* **Indicator Lights**: Your proximity to ADL is shown by four bars; four red exclamations indicate you are at the top of the queue.\n* **Rare Occurrence**: Even when all lights are lit, ADL happens extremely rarely. If all lights are lit, your position may be reduced in the event of a liquidation.\n* **How to Avoid**: To reduce the risk of ADL, you can decrease your position size or close and reopen your position.\n\nFor more details, please refer to the official article:\n\n* [Binance Auto-Deleveraging FAQ](https://www.binance.com/support/faq/360033525471)\n\nIf you have any further questions, please share them with us as we are here to support you!",
     "topic": "Futures Trading",
     "id": 1765164170457,
     "text_tr": "Ekran görüntüsünde görülen gösterge, **ADL** (Auto De-Leverage) sırasındaki durumunuzu ifade eder. Bu sistemin işleyişi şu şekildedir:\n\n* **ADL Nedir?**: Uzun ve kısa pozisyonlar arasındaki kâr-zarar farkı **Sigorta Fonu** tarafından karşılanamadığında, piyasa dengesini korumak için en yüksek kâra sahip pozisyonlar otomatik olarak kapatılır.\n* **İşleyiş**: Bu işleme **Counter-party Liquidation** (Karşı Taraf Likidasyonu) adı da verilir. ADL, normal likidasyondan farklıdır; bu durumda pozisyonunuzdaki mevcut kârı alırsınız ve sonrasında tekrar işlem yapma şansınız olur.\n* **Gösterge Işıkları**: **ADL** sırasındaki yeriniz 4 çubukla gösterilir; 4 kırmızı çubuk yandığında sırada en üstte olduğunuzu gösterir. 4 ışığın tamamı yanıyor olsa bile, **ADL** işlemi oldukça nadir gerçekleşen bir durumdur. Işıkların tamamı yandığında, bir likidasyon durumunda pozisyonunuz azaltılabilir.\n* **Kaçınma Yöntemleri**: **ADL** riskinden kaçınmak için pozisyon hacminizi küçültebilir ya da pozisyonu kapatıp yeniden açabilirsiniz.\n\nDaha fazla bilgi için resmi rehberimizi inceleyebilirsiniz:\n\n* [Binance ADL Hakkında Sıkça Sorulan Sorular](https://www.binance.com/support/faq/360033525471)\n\nHerhangi bir sorunuz olursa lütfen bizimle paylaşın, size destek olmak için buradayız!",
-    "updatedAt": "2026-01-06 23:36 UTC+0",
-    "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.457Z",
-    "ownerKey": "cs-gorkem-t",
+    "updatedAt": "2026-09-12T21:14:39.048Z",
+    "owner": "CS Saltuk",
+    "ownerSince": "2026-09-12T21:14:39.048Z",
+    "ownerKey": "contributor-cs-saltuk-266ddc",
     "ownerHistory": [
       {
         "ownerKey": "cs-gorkem-t",
         "owner": "CS Gorkem T",
         "from": null,
-        "to": null,
+        "to": "2026-09-12T21:14:39.048Z",
         "reason": "initial-attribution",
         "changedBy": "migration"
+      },
+      {
+        "ownerKey": "contributor-cs-saltuk-266ddc",
+        "owner": "CS Saltuk",
+        "from": "2026-09-12T21:14:39.048Z",
+        "to": null,
+        "reason": "image-replaced",
+        "changedBy": "CS Saltuk"
       }
-    ]
+    ],
+    "platform": "mobile",
+    "updatedBy": "CS Saltuk",
+    "version": "a6724b27-c76a-49b5-a179-a2a4bd17f49d"
   },
   {
     "title": "Stop-Market & Stop-Limit Differences - EN",
