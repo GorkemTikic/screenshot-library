@@ -1,5 +1,19 @@
 # FD Screenshot Library API
 
+This Worker is dedicated to FD Screenshot Library. It is intentionally separate from FD Macro Generator.
+
+## Request workflow
+
+Apply both D1 migrations before starting a new local database:
+
+```powershell
+npx wrangler d1 migrations apply fd-screenshot-library --local --config worker/wrangler.toml
+```
+
+Set `REQUESTS_SOURCE_URL` to the deployed Apps Script `?getRequests=true` URL when the owner is ready to run the one-time historical import. Request state is live in D1 and serialized by `RequestWriter`; `src/data/requests.json` is the repository fallback snapshot.
+
+Authenticated contributors can read and update `/requests`. Only owners can call `/requests/import` and `/requests/resync`. Public users may only create a sanitized request through `POST /requests`.
+
 This directory is an independent Cloudflare Worker project for FD Screenshot Library. It must not share the FD Macro Generator Worker, D1 database, secrets, or Durable Object namespace.
 
 ## Architecture

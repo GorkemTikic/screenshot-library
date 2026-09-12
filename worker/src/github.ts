@@ -3,9 +3,12 @@ import type { Env } from './types';
 
 const API = 'https://api.github.com';
 
-interface RepoState {
+export interface RepoHead {
   commitSha: string;
   treeSha: string;
+}
+
+interface RepoState extends RepoHead {
   items: CatalogItem[];
 }
 
@@ -50,14 +53,20 @@ function encodeBytes(bytes: Uint8Array): string {
   return btoa(binary);
 }
 
-export async function readRepoState(env: Env): Promise<RepoState> {
+export async function readRepoHead(env: Env): Promise<RepoHead> {
   const repo = `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`;
   const ref = await github<{ object: { sha: string } }>(env, `${repo}/git/ref/heads/${env.GITHUB_BRANCH}`);
   const commit = await github<{ tree: { sha: string } }>(env, `${repo}/git/commits/${ref.object.sha}`);
-  const data = await github<{ content: string }>(env, `${repo}/contents/src/data/data.json?ref=${ref.object.sha}`);
+  return { commitSha: ref.object.sha, treeSha: commit.tree.sha };
+}
+
+export async function readRepoState(env: Env): Promise<RepoState> {
+  const head = await readRepoHead(env);
+  const repo = `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`;
+  const data = await github<{ content: string }>(env, `${repo}/contents/src/data/data.json?ref=${head.commitSha}`);
   const parsed = JSON.parse(decodeFile(data.content));
   if (!Array.isArray(parsed)) throw new Error('Remote catalog is not an array.');
-  return { commitSha: ref.object.sha, treeSha: commit.tree.sha, items: parsed as CatalogItem[] };
+  return { ...head, items: parsed as CatalogItem[] };
 }
 
 export async function createImageBlob(env: Env, bytes: Uint8Array): Promise<string> {
@@ -69,7 +78,7 @@ export async function createImageBlob(env: Env, bytes: Uint8Array): Promise<stri
   return blob.sha;
 }
 
-export async function createCommit(env: Env, state: RepoState, entries: TreeEntry[], message: string): Promise<string> {
+export async function createCommit(env: Env, state: RepoHead, entries: TreeEntry[], message: string): Promise<string> {
   const repo = `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`;
   const tree = await github<{ sha: string }>(env, `${repo}/git/trees`, {
     method: 'POST',
@@ -98,6 +107,10 @@ export async function advanceBranch(env: Env, commitSha: string): Promise<boolea
 
 export function dataTreeEntry(items: CatalogItem[]): TreeEntry {
   return { path: 'src/data/data.json', mode: '100644', type: 'blob', content: `${JSON.stringify(items, null, 2)}\n` };
+}
+
+export function requestsTreeEntry(requests: unknown[]): TreeEntry {
+  return { path: 'src/data/requests.json', mode: '100644', type: 'blob', content: `${JSON.stringify(requests, null, 2)}\n` };
 }
 
 export function imageTreeEntry(path: string, sha: string): TreeEntry {

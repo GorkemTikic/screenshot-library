@@ -35,6 +35,12 @@ export async function listContributors(env: Env) {
   return { contributors: result.results.map(publicContributor) };
 }
 
+export async function listRequestAssignees(env: Env) {
+  const result = await env.DB.prepare("SELECT id, display_name, role FROM contributors WHERE status = 'active' ORDER BY display_name ASC")
+    .all<{ id: string; display_name: string; role: string }>();
+  return { contributors: result.results.map((row) => ({ id: row.id, displayName: row.display_name, role: row.role })) };
+}
+
 export async function createContributor(env: Env, input: ContributorInput) {
   const { displayName, role } = validateContributorInput(input);
   const id = contributorIdFromName(displayName);

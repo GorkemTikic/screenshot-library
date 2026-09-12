@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
+  RequestConflictError,
+  applyRequestTransition,
   normalizeRequestInput,
   normalizeSheetRow,
   requestRowToJson,
@@ -37,5 +39,39 @@ describe('request workflow domain', () => {
       status: 'new', assignee_contributor_id: null, assignee_name: null, resolution_note: null, linked_record_id: null,
       version: 1, updated_by_contributor_id: null, updated_by_name: null, updated_at: '2026-09-01', sync_state: 'synced',
     }, [{ id: 'E1', action: 'created' }])).toMatchObject({ id: 'REQ-1', source: 'sheet_import', requestedLanguage: 'EN', status: 'new', version: 1, history: [{ id: 'E1', action: 'created' }] });
+  });
+
+  it('applies a versioned transition and emits immutable before/after history', () => {
+    const before = {
+      id: 'REQ-1', source: 'worker' as const, source_key: 'REQ-1', created_at: '2026-09-01', requester_hash: null,
+      topic: 'General', requested_language: 'EN', requested_platform: 'Either', description: 'Missing screenshot', context: '', search_terms: '',
+      status: 'new' as const, assignee_contributor_id: null, resolution_note: null, linked_record_id: null,
+      version: 1, updated_by_contributor_id: null, updated_at: '2026-09-01', sync_state: 'synced' as const,
+    };
+    const result = applyRequestTransition(before, { status: 'in_progress', assigneeContributorId: 'enzo' }, {
+      actorId: 'owner', actorName: 'CS Gorkem T', now: '2026-09-12T12:00:00Z', idempotencyKey: 'operation-key-1234', eventId: 'E1',
+    }, 1);
+    expect(result.row).toMatchObject({ status: 'in_progress', assignee_contributor_id: 'enzo', version: 2, sync_state: 'pending' });
+    expect(result.event).toMatchObject({ id: 'E1', request_id: 'REQ-1', action: 'status_changed', request_idempotency_key: 'operation-key-1234' });
+    expect(JSON.parse(result.event.before_json!)).toMatchObject({ status: 'new', version: 1 });
+    expect(JSON.parse(result.event.after_json)).toMatchObject({ status: 'in_progress', version: 2 });
+    expect(before.status).toBe('new');
+  });
+
+  it('returns the latest row through a structured conflict error', () => {
+    const latest = {
+      id: 'REQ-1', source: 'worker' as const, source_key: 'REQ-1', created_at: '2026-09-01', requester_hash: null,
+      topic: 'General', requested_language: 'EN', requested_platform: 'Either', description: 'Missing screenshot', context: '', search_terms: '',
+      status: 'new' as const, assignee_contributor_id: null, resolution_note: null, linked_record_id: null,
+      version: 3, updated_by_contributor_id: null, updated_at: '2026-09-01', sync_state: 'synced' as const,
+    };
+    expect(() => applyRequestTransition(latest, { status: 'in_progress' }, {
+      actorId: 'owner', actorName: 'CS Gorkem T', now: '2026-09-12', idempotencyKey: 'operation-key-1234', eventId: 'E1',
+    }, 2)).toThrow(RequestConflictError);
+    try {
+      applyRequestTransition(latest, { status: 'in_progress' }, { actorId: 'owner', actorName: 'CS Gorkem T', now: '2026-09-12', idempotencyKey: 'operation-key-1234', eventId: 'E1' }, 2);
+    } catch (error) {
+      expect((error as RequestConflictError).latest.version).toBe(3);
+    }
   });
 });

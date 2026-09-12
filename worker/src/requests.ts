@@ -46,6 +46,23 @@ export interface RequestPatch {
   linkedRecordId: string;
 }
 
+export interface RequestEventRow {
+  id: string;
+  request_id: string;
+  actor_contributor_id: string | null;
+  action: string;
+  before_json: string | null;
+  after_json: string;
+  created_at: string;
+  request_idempotency_key: string;
+}
+
+export class RequestConflictError extends Error {
+  constructor(public latest: RequestRow) {
+    super('This request changed while you were editing.');
+  }
+}
+
 const clean = (value: unknown, max = 500): string => String(value ?? '').trim().slice(0, max);
 
 export function normalizeRequestInput(input: Record<string, unknown>): RequestInput {
@@ -119,4 +136,39 @@ export function requestRowToJson(row: RequestRow, history: unknown[] = []): Reco
 
 export function requestSnapshot(rows: RequestRow[]): Record<string, unknown>[] {
   return rows.map((row) => requestRowToJson(row));
+}
+
+export function applyRequestTransition(
+  before: RequestRow,
+  input: Record<string, unknown>,
+  metadata: { actorId: string; actorName: string; now: string; idempotencyKey: string; eventId: string },
+  baseVersion: number,
+): { row: RequestRow; event: RequestEventRow } {
+  if (baseVersion !== before.version) throw new RequestConflictError(before);
+  const patch = validateRequestUpdate(input, before.version, baseVersion);
+  const row: RequestRow = {
+    ...before,
+    status: patch.status,
+    assignee_contributor_id: patch.assigneeContributorId,
+    resolution_note: patch.resolutionNote || null,
+    linked_record_id: patch.linkedRecordId || null,
+    version: before.version + 1,
+    updated_by_contributor_id: metadata.actorId,
+    updated_by_name: metadata.actorName,
+    updated_at: metadata.now,
+    sync_state: 'pending',
+  };
+  return {
+    row,
+    event: {
+      id: metadata.eventId,
+      request_id: before.id,
+      actor_contributor_id: metadata.actorId,
+      action: before.status === row.status ? 'updated' : 'status_changed',
+      before_json: JSON.stringify(before),
+      after_json: JSON.stringify(row),
+      created_at: metadata.now,
+      request_idempotency_key: metadata.idempotencyKey,
+    },
+  };
 }

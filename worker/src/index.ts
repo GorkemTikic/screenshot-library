@@ -1,9 +1,12 @@
 import { authenticate, login, logout, requireOwner } from './auth';
-import { createContributor, listAudit, listContributors, rotateContributorCode, updateContributor } from './contributors';
+import { createContributor, listAudit, listContributors, listRequestAssignees, rotateContributorCode, updateContributor } from './contributors';
+import { sha256 } from './crypto';
 import { allowedOrigin, ApiError, corsHeaders, json } from './http';
+import { listWorkflowRequests } from './request-writer';
 import type { Env } from './types';
 
 export { CatalogWriter } from './publisher';
+export { RequestWriter } from './request-writer';
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -33,6 +36,34 @@ export default {
         const { readRepoState } = await import('./github');
         const state = await readRepoState(env);
         return json({ items: state.items, version: state.commitSha }, 200, requestId, origin);
+      }
+      if (request.method === 'GET' && url.pathname === '/requests') {
+        await authenticate(request, env);
+        return json({ requests: await listWorkflowRequests(env) }, 200, requestId, origin);
+      }
+      if (request.method === 'GET' && url.pathname === '/request-assignees') {
+        await authenticate(request, env);
+        return json(await listRequestAssignees(env), 200, requestId, origin);
+      }
+      const requestMutation = (request.method === 'POST' && ['/requests', '/requests/import', '/requests/resync'].includes(url.pathname))
+        || (request.method === 'PATCH' && /^\/requests\/[^/]+$/.test(url.pathname));
+      if (requestMutation) {
+        const publicCreate = request.method === 'POST' && url.pathname === '/requests';
+        const principal = publicCreate ? null : await authenticate(request, env);
+        if (principal && ['/requests/import', '/requests/resync'].includes(url.pathname)) requireOwner(principal);
+        const body = await request.arrayBuffer();
+        const headers = new Headers(request.headers);
+        headers.set('X-Request-Id', requestId);
+        if (principal) headers.set('X-FDSL-Principal', JSON.stringify(principal));
+        else {
+          const identity = `${request.headers.get('CF-Connecting-IP') || 'local'}|${request.headers.get('User-Agent') || ''}|${env.SESSION_SECRET}`;
+          headers.set('X-FDSL-Public-Hash', await sha256(identity));
+        }
+        const writerId = env.REQUEST_WRITER.idFromName('request-writer');
+        const response = await env.REQUEST_WRITER.get(writerId).fetch(new Request(`https://writer${url.pathname}`, { method: request.method, headers, body }));
+        const responseHeaders = corsHeaders(origin);
+        response.headers.forEach((value, key) => responseHeaders.set(key, value));
+        return new Response(response.body, { status: response.status, headers: responseHeaders });
       }
       if (url.pathname === '/contributors' && request.method === 'GET') {
         const principal = await authenticate(request, env); requireOwner(principal);
