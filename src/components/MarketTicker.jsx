@@ -14,12 +14,9 @@ export function MarketTicker() {
             controller.abort();
             controller = new AbortController();
             try {
-                const [priceRes, newsRes] = await Promise.all([
-                    fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true', { signal: controller.signal }),
-                    fetch('https://min-api.cryptocompare.com/data/v2/news/?lang=EN', { signal: controller.signal }),
-                ]);
-                if (!priceRes.ok || !newsRes.ok) throw new Error('Market source unavailable');
-                const items = buildTickerItems(await priceRes.json(), await newsRes.json());
+                const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true', { signal: controller.signal });
+                if (!priceRes.ok) throw new Error('Market source unavailable');
+                const items = buildTickerItems(await priceRes.json());
                 if (!items.length) throw new Error('No market items returned');
                 if (alive) {
                     setTickerItems(items);

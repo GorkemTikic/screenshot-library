@@ -28,3 +28,8 @@ vault/
 
 # Local isolated feature worktrees
 .worktrees/
+
+# Local browser QA and Cloudflare development state
+.playwright-cli/
+output/
+worker/.wrangler/

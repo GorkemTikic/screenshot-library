@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { copyFileSync } from 'node:fs'
+import { copyFileSync, readFileSync } from 'node:fs'
 
 // Copies the live catalog into the built site so the app can fetch it
 // same-origin (<base>/data.json). Required since the repo went private
@@ -9,6 +9,15 @@ import { copyFileSync } from 'node:fs'
 // triggers a redeploy, so the served data.json is always current.
 const copyLiveData = {
   name: 'copy-live-data',
+  configureServer(server) {
+    server.middlewares.use((request, response, next) => {
+      const pathname = new URL(request.url, 'http://local').pathname
+      if (pathname !== '/screenshot-library/data.json' && pathname !== '/data.json') return next()
+      response.setHeader('Content-Type', 'application/json; charset=utf-8')
+      response.setHeader('Cache-Control', 'no-store')
+      response.end(readFileSync('src/data/data.json'))
+    })
+  },
   closeBundle() {
     copyFileSync('src/data/data.json', 'dist/data.json')
   },

@@ -1,181 +1,79 @@
-# 📸 FD Screenshot Assistant
+# FD Screenshot Library
 
-![FD Hero Branding](public/hero-branding.png)
+FD Screenshot Library is the editorial reference catalog for support teams. The application combines fast screenshot discovery, EN/TR copy-ready guidance, contributor attribution, screenshot requests, feedback surveys, and a protected Content Studio.
 
-[![React](https://img.shields.io/badge/React-19.0-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
-[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub_Pages-222222?logo=github&logoColor=white)](https://pages.github.com/)
-[![Analytics-v8.3](https://img.shields.io/badge/Analytics-v8.3-FCD535?logo=google-analytics&logoColor=black)](https://script.google.com/)
-[![License-MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+The visual system belongs to the same product family as FD Macro Generator—shared typography, color tokens, surface language, and interaction rhythm—while the gallery keeps its own wider editorial navigation, category rail, and image-first inspector.
 
-> **Enterprise Screenshot Management & Behavioral Intelligence | Version 2.7.0**  
-> A premium, high-performance dashboard architected for institutional content libraries. Featuring glassmorphism aesthetics, **Atomic GitHub Synchronization**, **v8.3 Behavioral Analytics**, a universal **Screenshot Request Pipeline**, and an **Agent Feedback Survey** with live aggregation.
+## What is included
 
----
+- Searchable screenshot gallery with animated search, category filters, language signals, owner credits, copy actions, and a focused inspector.
+- Responsive light/dark interface for desktop and mobile.
+- Screenshot Request and multi-step Survey flows with validation, duplicate hints, drafts, and analytics routing.
+- Owner-only Analytics and Owner attribution views.
+- Content Studio for creating, editing, replacing, archiving, and restoring screenshot entries.
+- Personal contributor access codes, role controls, code rotation/revocation, and audit history.
+- A separate Cloudflare Worker that serializes catalog writes and performs conflict-aware GitHub commits.
 
-## ✨ Core Features
+## Local development
 
-*   **💎 Premium UI/UX**: Immersive "Modern Dark" aesthetic using glassmorphism, gold/neon accents, and interactive Recharts visualizations.
-*   **📊 Advanced Analytics (v8.2)**: Real-time interaction tracking with automated "Top Interaction" calculation, filtering out generic labels to focus on specific content engagement.
-*   **📮 Screenshot Request Pipeline**: Agents submit missing-screenshot requests straight from the header or a zero-results state — no PAT required. Requests stream into a dedicated `DB_Screenshot_Requests` tab and surface live in the Analytics dashboard.
-*   **📝 Agent Feedback Survey**: A 10-question in-app survey (ratings + free-text) captures agent ideas, frustrations, and coverage gaps. Responses land in a dedicated `DB_Survey_Responses` tab and render in the Analytics dashboard with live averages, language demand, and a filterable table.
-*   **🏅 Owner Attribution**: **New.** Screenshots can credit the volunteer who prepared them (e.g. *CS VERA*). The owner shows on each card next to the EN/TR toggle, is editable in the Admin form, and rolls up in an **Owner** analytics tab (spreadsheet + dashboard) showing how often each contributor's screenshots are used by agents.
-*   **⚛️ Atomic Sync Engine**: Conflict-resistant CRUD operations via a "Fetch-Modify-Commit" cycle, ensuring data integrity in collaborative environments.
-*   **⏰ Temporal Enforcement**: Automatic `updatedAt` injection with intelligent timezone offsets (UTC+8 for Asia-region content, UTC+0 for global).
-*   **🔍 Semantic Search**: Instant-result fuzzy matching powered by Fuse.js across multi-language titles and technical content — now reused to surface duplicates during request submission.
-*   **🌍 Intelligent Localization**: Robust support for EN, CN, TR, AR, RU, and VI, including dynamic UI label resolution based on content context.
-*   **🧠 Identity Resolution v8.1**: Advanced canvas fingerprinting and hardware telemetry to resolve unique devices without intrusive tracking.
+Requirements: Node.js 20+ and npm.
 
----
-
-## 🗺️ Engineering Architecture
-
-```text
-support-screenshot-library-main/
-├── .github/                # CI/CD Workflows & Deployment Logic
-├── public/                 # Production Assets
-│   ├── screenshots/        # Auto-synced Image Repository
-│   ├── hero-branding.png   # Project Visual Identity
-│   └── fd-logo.svg         # Platform Branding
-├── src/                    # Application Source
-│   ├── components/         # Atomic UI Components
-│   │   ├── Layout.jsx      # Core Shell & Global State
-│   │   ├── ScreenshotCard.jsx       # Interaction Entry Point
-│   │   ├── RequestScreenshotModal.jsx # Missing-screenshot submission form
-│   │   └── SurveyModal.jsx          # 10-question agent feedback form
-│   ├── pages/
-│   │   └── AnalyticsPage.jsx        # v8.3 Insight Dashboard (Overview + Requests + Surveys)
-│   ├── services/           # External Modules
-│   │   ├── analytics.js    # Tracking, Request + Survey submission & Script Bridge
-│   │   └── github.js       # Atomic Sync & API Layer
-│   ├── contexts/           # Persistence & State
-│   │   ├── RequestModalContext.jsx  # Screenshot-request modal controller
-│   │   └── SurveyModalContext.jsx   # Feedback-survey modal controller
-│   └── data/               # Persistent Storage (data.json)
-├── backfill.cjs            # Maintenance CLI for Data Normalization
-└── DEPLOYMENT.md           # Production DevOps Playbook
-```
-
----
-
-## 🧠 Technical Deep Dive
-
-### 1. Interaction Tracking Logic (v8.1)
-The analytics engine now distinguishes between "Metadata" (languages, topics) and "Interactions" (clicks, copies, views).
-
-```mermaid
-graph LR
-    A[User Action] --> B{Event Type?}
-    B -->|view_image| C[Log Interaction]
-    B -->|copy_text| C
-    B -->|favorite_add| C
-    C --> D[Google Script Engine]
-    D --> E[Filter: Title != 'English']
-    E --> F[Calculate Most Recurrent Title]
-    F --> G[Dashboard Stats: Top Interaction]
-```
-
-### 2. Atomic Synchronization Engine
-To prevent data loss, the platform uses a strict SHA-verified commit flow:
-
-1.  **Poll**: Fetch current `data.json` and its unique SHA from GitHub.
-2.  **Mutate**: Apply local changes (Add/Edit/Delete) to the fresh state.
-3.  **Commit**: Send the update back to GitHub. If the SHA has changed remotely since the Poll, the commit is rejected to prevent overwriting peer work.
-
-### 3. Screenshot Request Pipeline
-Any agent can flag a missing screenshot without credentials. The submission fans out through the same Apps Script endpoint that powers analytics:
-
-```mermaid
-graph LR
-    A[Agent clicks Request Screenshot] --> B[RequestScreenshotModal]
-    B --> C{Fuse.js duplicate check}
-    C -->|Match found| D[Suggest existing screenshot]
-    C -->|No match| E[logScreenshotRequest]
-    E --> F[Apps Script doGet]
-    F --> G[DB_Logs append]
-    F --> H[DB_Screenshot_Requests append]
-    H --> I[Analytics → Requests tab live table]
-```
-
-- **Client guardrails**: 10–500 char description, optional 300-char context, 60s per-device rate limit, canvas-hash identity, and inline duplicate detection via the existing Fuse index (`threshold: 0.3`).
-- **Server routing**: the `screenshot_request` event is written to both `DB_Logs` (for backward compatibility) and the dedicated `DB_Screenshot_Requests` tab. `getStats=true` continues to ignore request events so interaction metrics stay clean.
-- **Admin visibility**: Analytics dashboard now has an **Overview** + **Screenshot Requests** tab split. The Requests tab calls `?getRequests=true` and renders a live, filterable table with refresh and direct spreadsheet links.
-
-### 4. Agent Feedback Survey
-A 10-question in-app form captures structured satisfaction data plus free-text ideas. Same universal plumbing — no token, same Apps Script endpoint.
-
-```mermaid
-graph LR
-    A[Agent clicks Feedback Survey] --> B[SurveyModal]
-    B --> C[10 questions: 2 ratings, 4 choice, 3 free-text, 1 optional]
-    C --> D[logSurveyResponse]
-    D --> E[Apps Script doGet: event=survey_response]
-    E --> F[DB_Logs append]
-    E --> G[DB_Survey_Responses append]
-    G --> H[Analytics → Surveys tab: averages + table]
-```
-
-- **10 questions**: usage frequency, satisfaction (1–5), search ease (1–5), under-covered topic, languages needed (multi-select), platform preference, Request-Screenshot experience, top feature idea (free text), biggest frustration (free text), open feedback (optional free text).
-- **Client guardrails**: 24-hour per-device rate limit, rating/choice validation, 300/500-char limits on free-text, canvas-hash identity.
-- **Server routing**: `event=survey_response` is written to both `DB_Logs` and the dedicated `DB_Survey_Responses` tab. `getStats=true` ignores survey events so interaction metrics remain clean.
-- **Admin visibility**: new **Survey Responses** tab in Analytics with live averages (satisfaction, search ease), requested-language tally, and a full filterable response table.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v18+)
-- npm / pnpm
-
-### Quick Install
 ```bash
-git clone https://github.com/GorkemTikic/screenshot-library.git
-cd screenshot-library
 npm install
+copy .env.example .env.local
 npm run dev
 ```
 
-### Admin Configuration
-To enable the **GitHub Sync** bridge:
-1.  Obtain a **GitHub PAT (Personal Access Token)** with `repo` scopes.
-2.  Enter the token in the **Admin Settings** to authorize atomic commits.
+The frontend opens at `http://localhost:5173/screenshot-library/`. Set `VITE_CONTENT_API_URL` in `.env.local` to the separately running Worker URL.
 
-> **Note:** Screenshot requests do **not** require a PAT — they hit the shared Apps Script endpoint used by analytics. Only admins editing `data.json` need a token.
-
-### Apps Script (v8.3) Setup
-The Request Pipeline and Feedback Survey share the same Google Apps Script that powers analytics. When upgrading an existing deployment:
-
-1.  Paste the v8.3 `Code.gs` into the Apps Script editor.
-2.  Run `createRequestsSheetNow` and `createSurveySheetNow` once each to initialize the `DB_Screenshot_Requests` and `DB_Survey_Responses` tabs.
-3.  **Deploy → Manage Deployments → ✏️ → New Version → Deploy** (critical — a simple save will not update the live Web App URL).
-4.  Verify `?getRequests=true` and `?getSurvey=true` both return JSON arrays, and confirm a test submission appears in the matching Analytics tab.
-
-### Owner Analytics tabs (spreadsheet)
-Additive and self-contained — see [`apps-script/owner-analytics.gs`](apps-script/owner-analytics.gs). Produces two tabs: **Owner** (per-owner summary, including **Screenshots Owned** = how many the person has in the catalog, so owners show up even with 0 recent uses) and **Owner Details** (per-owner × per-screenshot).
-
-1.  Paste `owner-analytics.gs` into the Apps Script project (new file or appended to `Code.gs`).
-2.  Add the `getOwnerStats` branch as the **very first lines inside `doGet(e)`** — before any event-logging / "Ignored" fallback, or the dashboard receives that text instead of JSON (snippet in the file header).
-3.  Run `createOwnerSheetNow()` once to create + fill both tabs.
-4.  Run `installOwnerLiveTrigger()` once so the tabs auto-refresh every 5 minutes.
-5.  **Deploy → New Version** as above, then verify `?getOwnerStats=true` returns a JSON array (not `Ignored ...`).
-
-Counts join the click log (`DB_Logs`) to each screenshot's `owner` in the published `data.json`, counting a click only **on/after** that screenshot's `ownerSince` date — so each owner's numbers reflect usage **after they contributed** ("since ownership"; entries with no `ownerSince` count all-time). The tabs refresh every 5 minutes via the trigger, and instantly whenever the in-app Analytics **Owners** tab is opened/refreshed (Apps Script can't fire on every individual click).
-
----
-
-## 🛠️ Maintenance & CLI
-
-**Data Backfilling**: Ensure all entries have valid timestamps and timezone resolution.
 ```bash
-node backfill.cjs
-```
-
-**Production Build**:
-```bash
+npm test
+npm run lint
 npm run build
-npm run deploy  # Automated GitHub Pages Deployment
 ```
 
----
-*Documented with excellence by Antigravity for the FD Ecosystem 🚀*
+The production bundle is written to `dist/`.
+
+## Content Studio
+
+Open `/admin` and sign in with a personal contributor code. Tokens and GitHub credentials are never requested or stored by the browser.
+
+Contributors can:
+
+- create a new screenshot record;
+- edit EN/TR titles and response text;
+- replace an existing image while keeping the record identity;
+- resolve field-level conflicts when another contributor edited the same record;
+- view their recent audit trail.
+
+Owners can additionally create, rotate, disable, and re-enable contributor access; inspect all audit events; archive content; and restore a previous catalog version.
+
+Worker setup, security, D1 migrations, and production configuration are documented in [`worker/README.md`](worker/README.md).
+
+## Safe concurrent publishing
+
+Every mutation is sent with an idempotency key and the revision the editor started from. A Durable Object serializes writes, reads the latest repository state inside the queue, merges non-overlapping field changes, and returns an explicit `409` payload for overlapping changes. The image and `data.json` update are committed together, so replacing an image cannot leave a half-published catalog state.
+
+## Ownership rules
+
+The catalog migration assigns uncredited EN, AR, RU, and VI screenshots to **CS Gorkem T**; CN screenshots to **CS Enzo**; and preserves existing **CS VERA** ownership. Run the idempotent migration with:
+
+```bash
+node scripts/migrate-owners.mjs
+```
+
+## Requests, surveys, and analytics
+
+Public request and survey submissions continue through the existing Google Apps Script endpoint. The Analytics workspace reads its request, survey, and interaction views from that service. The Worker is intentionally responsible only for authenticated catalog publishing and contributor management.
+
+For Apps Script installation details, see [`apps-script/owner-analytics.gs`](apps-script/owner-analytics.gs) and the comments in the existing analytics service.
+
+## Deployment boundary
+
+The frontend and Worker are independent deployments:
+
+1. Deploy `worker/` as the dedicated `fd-screenshot-library-api` Cloudflare project.
+2. Build the frontend with `VITE_CONTENT_API_URL` set to that Worker URL.
+3. Publish the frontend through its existing GitHub Pages workflow.
+
+Do not reuse FD Macro Generator's Worker, D1 database, secrets, or Durable Object namespace.
