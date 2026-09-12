@@ -1,134 +1,79 @@
 import React, { useEffect, useState } from 'react';
-import { TrendingUp, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { buildTickerItems, formatTickerPrice } from '../domain/ticker';
 
 export function MarketTicker() {
     const [tickerItems, setTickerItems] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [status, setStatus] = useState('loading');
 
     useEffect(() => {
+        let alive = true;
+        let controller = new AbortController();
+
         const fetchData = async () => {
+            controller.abort();
+            controller = new AbortController();
             try {
-                // 1. Fetch Prices (CoinGecko is good for simple prices)
-                const priceRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,ripple&vs_currencies=usd&include_24hr_change=true');
-                const priceData = await priceRes.json();
-
-                const prices = [
-                    { type: 'price', name: 'BTC', price: priceData.bitcoin?.usd, change: priceData.bitcoin?.usd_24h_change },
-                    { type: 'price', name: 'ETH', price: priceData.ethereum?.usd, change: priceData.ethereum?.usd_24h_change },
-                    { type: 'price', name: 'SOL', price: priceData.solana?.usd, change: priceData.solana?.usd_24h_change },
-                ];
-
-                // 2. Fetch News (CryptoCompare is more reliable for valid links)
-                // Use a proxy or direct if CORS allows. CryptoCompare typically allows direct browser calls.
-                const newsRes = await fetch('https://min-api.cryptocompare.com/data/v2/news/?lang=EN');
-                const newsData = await newsRes.json();
-
-                const headlines = [];
-                if (newsData.Data && Array.isArray(newsData.Data)) {
-                    // Filter for trusted sources to ensure high quality links
-                    const safeSources = ['CoinTelegraph', 'CoinDesk', 'Decrypt', 'The Daily Hodl', 'Bitcoin.com', 'CryptoPotato', 'U.Today'];
-
-                    const filteredNews = newsData.Data.filter(item =>
-                        // If source is in our safe list OR it generally looks valid
-                        item.url && item.url.startsWith('http') && item.title.length > 20
-                    );
-
-                    filteredNews.slice(0, 5).forEach(item => {
-                        headlines.push({
-                            type: 'news',
-                            text: item.title,
-                            url: item.url,
-                            source: item.source_info?.name || 'CryptoNews'
-                        });
-                    });
+                const [priceRes, newsRes] = await Promise.all([
+                    fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=usd&include_24hr_change=true', { signal: controller.signal }),
+                    fetch('https://min-api.cryptocompare.com/data/v2/news/?lang=EN', { signal: controller.signal }),
+                ]);
+                if (!priceRes.ok || !newsRes.ok) throw new Error('Market source unavailable');
+                const items = buildTickerItems(await priceRes.json(), await newsRes.json());
+                if (!items.length) throw new Error('No market items returned');
+                if (alive) {
+                    setTickerItems(items);
+                    setStatus('ready');
                 }
-
-                // Interleave
-                const mixed = [];
-                const maxLength = Math.max(prices.length, headlines.length);
-                for (let i = 0; i < maxLength; i++) {
-                    if (prices[i]) mixed.push(prices[i]);
-                    if (headlines[i]) mixed.push(headlines[i]);
-                }
-
-                setTickerItems(mixed.length > 0 ? mixed : getDefaultFallback());
-                setLoading(false);
-
-            } catch (err) {
-                console.warn("Ticker API failed:", err);
-                setTickerItems(getDefaultFallback());
-                setLoading(false);
+            } catch (error) {
+                if (error.name !== 'AbortError' && alive) setStatus('error');
             }
         };
 
         fetchData();
-        const interval = setInterval(fetchData, 300000); // 5 mins
-        return () => clearInterval(interval);
+        const interval = window.setInterval(fetchData, 300000);
+        return () => {
+            alive = false;
+            controller.abort();
+            window.clearInterval(interval);
+        };
     }, []);
 
-    const getDefaultFallback = () => [
-        { type: 'price', name: 'BTC', price: 97350, change: 1.5 },
-        {
-            type: 'news',
-            text: 'Market Analysis: Bitcoin approaches $100k',
-            url: 'https://cointelegraph.com/category/market-news',
-            source: 'CoinTelegraph'
-        },
-        { type: 'price', name: 'SOL', price: 215, change: 2.1 },
-        {
-            type: 'news',
-            text: 'Latest Regulatory Updates in Crypto',
-            url: 'https://www.coindesk.com/policy/',
-            source: 'CoinDesk'
-        }
-    ];
-
-    if (loading) return null;
-
     return (
-        <div className="ticker-container">
-            <div className="ticker-label">
-                <TrendingUp size={16} className="mr-2 text-yellow-400" />
-                <span>Market Updates</span>
-            </div>
-
-            <div className="ticker-wrapper">
-                <div className="ticker-track">
-                    {[1, 2].map((iteration) => (
-                        <div key={iteration} className="ticker-content">
-                            {tickerItems.map((item, idx) => {
-                                if (item.type === 'price') {
-                                    return (
-                                        <div key={`${iteration}-p-${idx}`} className="ticker-item price-item">
-                                            <span className="font-bold text-yellow-500">{item.name}</span>
-                                            <span className="ml-1">${item.price?.toLocaleString()}</span>
-                                            <span className={`ml-1 text-xs ${item.change >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                                                {item.change >= 0 ? '▲' : '▼'} {Math.abs(item.change).toFixed(1)}%
-                                            </span>
-                                        </div>
-                                    );
-                                } else {
-                                    return (
-                                        <a
-                                            key={`${iteration}-n-${idx}`}
-                                            href={item.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            onClick={(e) => e.stopPropagation()}
-                                            className="ticker-item news-item hover:text-white transition-colors"
-                                            style={{ textDecoration: 'none', cursor: 'pointer' }}
-                                        >
-                                            <span className="news-tag">{item.source}</span>
-                                            <span className="news-text">{item.text}</span>
-                                            <ExternalLink size={12} className="ml-1 opacity-50" />
-                                        </a>
-                                    );
-                                }
-                            })}
-                        </div>
-                    ))}
+        <section className="market-band" aria-label="Market updates">
+            <div className="shell market-band-inner">
+                <div className="market-label">
+                    <span className={`market-live-dot ${status}`} />
+                    <span>Market desk</span>
                 </div>
+                {status === 'loading' && <div className="ticker-message">Connecting to market sources…</div>}
+                {status === 'error' && <div className="ticker-message">Market data unavailable · Library remains fully available</div>}
+                {status === 'ready' && (
+                    <div className="ticker-viewport" tabIndex="0">
+                        <div className="ticker-track">
+                            {[0, 1].map((iteration) => (
+                                <div className="ticker-set" key={iteration} aria-hidden={iteration === 1}>
+                                    {tickerItems.map((item, index) => item.type === 'price' ? (
+                                        <span className="ticker-item ticker-price" key={`${iteration}-${index}`}>
+                                            <strong>{item.name}</strong>
+                                            <span>{formatTickerPrice(item.price)}</span>
+                                            <span className={item.change >= 0 ? 'positive' : 'negative'}>
+                                                {item.change >= 0 ? '↗' : '↘'} {Math.abs(item.change).toFixed(1)}%
+                                            </span>
+                                        </span>
+                                    ) : (
+                                        <a className="ticker-item ticker-news" href={item.url} target="_blank" rel="noreferrer" key={`${iteration}-${index}`}>
+                                            <small>{item.source}</small>
+                                            <span>{item.text}</span>
+                                            <ExternalLink size={12} />
+                                        </a>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
-        </div>
+        </section>
     );
 }

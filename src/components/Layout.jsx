@@ -1,77 +1,93 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
 import { useSurveyModal } from '../contexts/SurveyModalContext';
-import { Moon, Sun, ShieldCheck, Settings, BarChart2, MessageSquarePlus, ClipboardList } from 'lucide-react';
+import { AppIcon } from './AppIcon';
 import { MarketTicker } from './MarketTicker';
 import { RequestScreenshotModal } from './RequestScreenshotModal';
 import { SurveyModal } from './SurveyModal';
+
+const navigation = [
+    { to: '/', label: 'Library', end: true },
+    { to: '/analytics', label: 'Analytics' },
+    { to: '/owners', label: 'Owners' },
+];
 
 export function Layout() {
     const { theme, toggleTheme } = useTheme();
     const { open: openRequestModal, isOpen: requestModalOpen } = useRequestModal();
     const { open: openSurveyModal, isOpen: surveyModalOpen } = useSurveyModal();
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <div className="app-layout">
-            {/* Header */}
             <header className="app-header">
-                <div className="container header-content">
-                    <Link to="/" className="brand" style={{ textDecoration: 'none' }}>
-                        <ShieldCheck className="brand-icon" size={24} />
-                        <h1 className="brand-title">FD Screenshot Assistant</h1>
-                    </Link>
+                <div className="shell header-content">
+                    <NavLink to="/" className="brand" onClick={() => setMenuOpen(false)}>
+                        <span className="brand-mark">FD</span>
+                        <span className="brand-copy">
+                            <strong>Screenshot Library</strong>
+                            <small>Financial Derivatives · Support workspace</small>
+                        </span>
+                    </NavLink>
 
-                    <div className="header-actions">
-                        <button
-                            onClick={() => openRequestModal()}
-                            className="btn btn-request"
-                            title="Request a screenshot"
-                        >
-                            <MessageSquarePlus size={16} />
-                            <span className="btn-request-label">Request Screenshot</span>
-                        </button>
+                    <button
+                        type="button"
+                        className="icon-button mobile-menu-button"
+                        aria-label="Toggle navigation"
+                        aria-expanded={menuOpen}
+                        onClick={() => setMenuOpen((open) => !open)}
+                    >
+                        <AppIcon name={menuOpen ? 'X' : 'Menu'} />
+                    </button>
 
-                        <button
-                            onClick={() => openSurveyModal()}
-                            className="btn btn-survey"
-                            title="Share your feedback"
-                        >
-                            <ClipboardList size={16} />
-                            <span className="btn-request-label">Feedback Survey</span>
-                        </button>
+                    <div className={`header-panel ${menuOpen ? 'is-open' : ''}`}>
+                        <nav className="primary-nav" aria-label="Primary navigation">
+                            {navigation.map((item) => (
+                                <NavLink
+                                    key={item.to}
+                                    to={item.to}
+                                    end={item.end}
+                                    className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                                    onClick={() => setMenuOpen(false)}
+                                >
+                                    {item.label}
+                                </NavLink>
+                            ))}
+                        </nav>
 
-                        <Link to="/analytics" className="theme-toggle" title="Analytics Dashboard">
-                            <BarChart2 size={20} />
-                        </Link>
-
-                        <Link to="/admin" className="theme-toggle" title="Admin Panel">
-                            <Settings size={20} />
-                        </Link>
-
-                        <button
-                            onClick={toggleTheme}
-                            className="theme-toggle"
-                            title="Toggle Theme"
-                        >
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
+                        <div className="header-actions">
+                            <button type="button" className="button button-quiet" onClick={() => openSurveyModal()}>
+                                <AppIcon name="ClipboardList" size={16} />
+                                <span>Feedback</span>
+                            </button>
+                            <button type="button" className="button button-primary" onClick={() => openRequestModal()}>
+                                <AppIcon name="MessageSquarePlus" size={16} />
+                                <span>Request screenshot</span>
+                            </button>
+                            <NavLink to="/admin" className="icon-button" aria-label="Open Content Studio" title="Content Studio">
+                                <AppIcon name="Settings2" />
+                            </NavLink>
+                            <button type="button" className="icon-button" onClick={toggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
+                                <AppIcon name={theme === 'dark' ? 'Sun' : 'Moon'} />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </header>
 
-            {/* Market Ticker */}
             <MarketTicker />
 
-            {/* Main Content */}
-            <main className="container main-content">
+            <main className="shell main-content">
                 <Outlet />
             </main>
 
-            {/* Footer */}
             <footer className="app-footer">
-                <p>FD Screenshot Assistant – Internal Use Only</p>
+                <div className="shell footer-content">
+                    <span className="footer-brand"><span className="status-dot" /> FD Screenshot Library</span>
+                    <span>Internal support workspace</span>
+                </div>
             </footer>
 
             {requestModalOpen && <RequestScreenshotModal />}
