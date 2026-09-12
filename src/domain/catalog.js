@@ -70,21 +70,34 @@ export function aggregateOwners(items = [], interactionRows = []) {
     for (const item of visibleCatalog(items)) {
         const owner = String(item.owner || '').trim();
         if (!owner) continue;
-        const current = grouped.get(owner) || { owner, guides: 0, languages: new Set(), topics: new Set(), latest: '' };
+        const current = grouped.get(owner) || { owner, guides: 0, lifetimeIds: new Set(), languages: new Set(), topics: new Set(), latest: '' };
         current.guides += 1;
+        current.lifetimeIds.add(String(item.id));
         if (item.language) current.languages.add(item.language);
         if (item.topic) current.topics.add(item.topic);
         if (String(item.updatedAt || '') > current.latest) current.latest = String(item.updatedAt || '');
         grouped.set(owner, current);
+        for (const interval of Array.isArray(item.ownerHistory) ? item.ownerHistory : []) {
+            const historicalOwner = String(interval.owner || '').trim();
+            if (!historicalOwner) continue;
+            const historical = grouped.get(historicalOwner) || { owner: historicalOwner, guides: 0, lifetimeIds: new Set(), languages: new Set(), topics: new Set(), latest: '' };
+            historical.lifetimeIds.add(String(item.id));
+            if (item.language) historical.languages.add(item.language);
+            if (item.topic) historical.topics.add(item.topic);
+            if (String(interval.from || '') > historical.latest) historical.latest = String(interval.from || '');
+            grouped.set(historicalOwner, historical);
+        }
     }
     return [...grouped.values()].map((entry) => {
         const interactions = interactionMap.get(entry.owner.toLowerCase()) || {};
         return {
             owner: entry.owner,
             guides: entry.guides,
+            lifetime: Number(interactions.lifetime) || entry.lifetimeIds.size || entry.guides,
             interactions: Number(interactions.total ?? interactions.interactions) || 0,
             copies: Number(interactions.copies ?? interactions.copy_count) || 0,
             views: Number(interactions.views ?? interactions.view_count) || 0,
+            skippedCollisions: Number(interactions.skippedCollisions) || 0,
             languages: [...entry.languages].sort(),
             topics: [...entry.topics].sort(),
             latest: entry.latest,

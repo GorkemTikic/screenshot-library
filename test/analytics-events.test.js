@@ -6,17 +6,21 @@ import { discoveryEvent, screenshotEvent } from '../src/domain/analyticsEvents.j
 test('screenshotEvent includes stable analysis dimensions', () => {
   assert.deepEqual(
     screenshotEvent({
+      id: 42,
       title: 'Guide',
       topic: 'LOAN',
       language: 'English',
       owner: 'CS Gorkem T',
+      ownerKey: 'cs-gorkem-t',
       platform: 'mobile',
     }, { source: 'card' }),
     {
       title: 'Guide',
+      recordId: '42',
       topic: 'LOAN',
       contentLanguage: 'English',
       owner: 'CS Gorkem T',
+      ownerKey: 'cs-gorkem-t',
       contentPlatform: 'mobile',
       source: 'card',
     },
@@ -26,9 +30,11 @@ test('screenshotEvent includes stable analysis dimensions', () => {
 test('screenshotEvent normalizes missing and legacy platform fields', () => {
   assert.deepEqual(screenshotEvent({ title: 'Legacy' }), {
     title: 'Legacy',
+    recordId: '',
     topic: '',
     contentLanguage: '',
     owner: '',
+    ownerKey: '',
     contentPlatform: 'mobile',
   });
 });

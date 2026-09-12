@@ -679,7 +679,7 @@ img { max-width: 100%; }
 .owner-profile-hero { display: flex; align-items: center; gap: 13px; }
 .owner-profile-hero h2 { margin: 4px 0 2px; font-size: 21px; letter-spacing: -.03em; }
 .owner-profile-hero p { margin: 0; color: var(--text-3); font-size: 9.5px; }
-.owner-profile-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: 18px 0; overflow: hidden; border: 1px solid var(--line-1); border-radius: 9px; background: var(--line-1); }
+.owner-profile-metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; margin: 18px 0; overflow: hidden; border: 1px solid var(--line-1); border-radius: 9px; background: var(--line-1); }
 .owner-profile-metrics div { display: grid; padding: 11px; background: var(--bg-raised); }
 .owner-profile-metrics strong { font-size: 18px; letter-spacing: -.03em; }
 .owner-profile-metrics span { color: var(--text-3); font-size: 8px; text-transform: uppercase; letter-spacing: .05em; }
