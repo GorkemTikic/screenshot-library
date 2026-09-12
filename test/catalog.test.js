@@ -7,6 +7,7 @@ import {
   buildPatch,
   filterCatalog,
   normalizePlatform,
+  ownerHue,
   ownerInitials,
   recordVersion,
   visibleCatalog,
@@ -38,6 +39,14 @@ test('ownerInitials removes CS prefix and returns two initials', () => {
   assert.equal(ownerInitials('CS Gorkem T'), 'GT');
   assert.equal(ownerInitials('CS Enzo'), 'E');
   assert.equal(ownerInitials(''), '—');
+});
+
+test('approved owners have stable distinct brand hues', () => {
+  assert.equal(ownerHue('CS Gorkem T'), 18);
+  assert.equal(ownerHue('CS Enzo'), 215);
+  assert.equal(ownerHue('CS VERA'), 275);
+  assert.equal(ownerHue('New Person'), ownerHue('New Person'));
+  assert.equal(new Set(['CS Gorkem T', 'CS Enzo', 'CS VERA'].map(ownerHue)).size, 3);
 });
 
 test('buildPatch includes only changed fields', () => {

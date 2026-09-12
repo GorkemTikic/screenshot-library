@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { TOPIC_META, normalizePlatform, ownerHue, ownerInitials } from '../domain/catalog';
+import React, { useEffect, useRef, useState } from 'react';
+import { TOPIC_META, normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
@@ -12,7 +12,7 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
     const hasTr = Boolean(item.text_tr?.trim());
     const currentText = contentLang === 'tr' && hasTr ? item.text_tr : item.text;
     const topic = TOPIC_META[item.topic] || TOPIC_META.General;
-    const avatarStyle = useMemo(() => ({ '--avatar-hue': ownerHue(item.owner) }), [item.owner]);
+    const avatarStyle = ownerColorStyle(item.owner);
 
     useEffect(() => {
         const previouslyFocused = document.activeElement;

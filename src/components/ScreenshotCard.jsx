@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { useData } from '../contexts/DataContext';
-import { TOPIC_META, normalizePlatform, ownerHue, ownerInitials } from '../domain/catalog';
+import { TOPIC_META, normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
@@ -21,7 +21,7 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
     const hasTr = Boolean(item.text_tr?.trim());
     const currentText = contentLang === 'tr' && hasTr ? item.text_tr : item.text;
     const topic = TOPIC_META[item.topic] || TOPIC_META.General;
-    const avatarStyle = useMemo(() => ({ '--avatar-hue': ownerHue(item.owner) }), [item.owner]);
+    const avatarStyle = ownerColorStyle(item.owner);
 
     const handleCopy = async (event) => {
         event.stopPropagation();

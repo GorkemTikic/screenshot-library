@@ -45,11 +45,24 @@ export function latestCatalogUpdate(items = []) {
     return new Date(timestamps.length ? Math.max(...timestamps) : 0);
 }
 
+const OWNER_HUES = new Map([
+    ['cs gorkem t', 18],
+    ['cs enzo', 215],
+    ['cs vera', 275],
+]);
+
 export function ownerHue(name = '') {
+    const normalized = String(name).trim().toLowerCase();
+    if (OWNER_HUES.has(normalized)) return OWNER_HUES.get(normalized);
     let hash = 0;
-    for (const character of name) hash = ((hash << 5) - hash + character.charCodeAt(0)) | 0;
+    for (const character of normalized) hash = ((hash << 5) - hash + character.charCodeAt(0)) | 0;
     return ((hash % 360) + 360) % 360;
 }
+
+export const ownerColorStyle = (name = '') => {
+    const hue = `${ownerHue(name)}deg`;
+    return { '--avatar-hue': hue, '--owner-hue': hue };
+};
 
 export function aggregateOwners(items = [], interactionRows = []) {
     const interactionMap = new Map(interactionRows.map((row) => [String(row.owner || row.name || '').trim().toLowerCase(), row]));

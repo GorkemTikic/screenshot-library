@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { AppIcon } from '../AppIcon';
-import { normalizePlatform, ownerInitials, visibleCatalog } from '../../domain/catalog';
+import { normalizePlatform, ownerColorStyle, ownerInitials, visibleCatalog } from '../../domain/catalog';
 
 const imageUrl = (value) => /^(https?:|data:)/.test(value || '') ? value : `${import.meta.env.BASE_URL}${value || ''}`;
 
@@ -28,7 +28,7 @@ export function ContentList({ items, onEdit, onCreate, onRefresh, loading }) {
                 <div className="studio-record-body">
                     <div className="studio-record-kicker"><span>{item.topic}</span><span>{normalizePlatform(item.platform)}</span></div>
                     <h3>{item.title}</h3>
-                    <div className="studio-record-footer"><span className="owner-mini"><i style={{ '--owner-hue': `${(String(item.owner || '').length * 47) % 360}deg` }}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)}>Edit</button></div>
+                    <div className="studio-record-footer"><span className="owner-mini"><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)}>Edit</button></div>
                 </div>
             </article>)}
         </div>
