@@ -80,10 +80,11 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
                 <div className="owner-row">
                     <span className="owner-avatar" style={avatarStyle}>{ownerInitials(item.owner)}</span>
                     <span className="owner-copy"><small>Prepared by</small><strong>{item.owner || 'Unassigned'}</strong></span>
+                    <span className="card-updated"><AppIcon name="Clock3" size={11} /> {item.updatedAt || formatDate(item.id, item.language)}</span>
                 </div>
 
-                <div className="card-action-row">
-                    {hasTr && (
+                {hasTr && (
+                    <div className="card-action-row">
                         <div className="lang-switch-container" aria-label="Response language">
                             {['en', 'tr'].map((language) => (
                                 <button
@@ -100,9 +101,8 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
                                 </button>
                             ))}
                         </div>
-                    )}
-                    <span className="card-updated"><AppIcon name="Clock3" size={11} /> {item.updatedAt || formatDate(item.id, item.language)}</span>
-                </div>
+                    </div>
+                )}
 
                 <div className="card-actions">
                     <button type="button" onClick={handleCopy} className={`btn btn-copy ${copied ? 'copied' : ''}`}>

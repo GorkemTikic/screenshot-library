@@ -43,3 +43,10 @@ test('home hero uses the approved three-beat message and compact pulse', async (
   assert.doesNotMatch(source, /FD knowledge workspace/);
   assert.doesNotMatch(source, /hero-metrics/);
 });
+
+test('screenshot cards use the compact information-dense grid', async () => {
+  const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
+  assert.match(css, /\.gallery-grid\s*\{[^}]*minmax\(255px,\s*1fr\)[^}]*gap:\s*13px/s);
+  assert.match(css, /\.card-content\s*\{[^}]*padding:\s*12px/s);
+  assert.match(css, /\.card-actions \.btn, \.card-actions \.btn-icon\s*\{[^}]*min-height:\s*36px/s);
+});
