@@ -1,0 +1,22 @@
+name = "fd-screenshot-library-api"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+[vars]
+GITHUB_OWNER = "GorkemTikic"
+GITHUB_REPO = "screenshot-library"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGINS = "http://localhost:5173,https://gorkemtikic.github.io"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fd-screenshot-library"
+database_id = "00000000-0000-0000-0000-000000000000"
+
+[[durable_objects.bindings]]
+name = "CATALOG_WRITER"
+class_name = "CatalogWriter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CatalogWriter"]
