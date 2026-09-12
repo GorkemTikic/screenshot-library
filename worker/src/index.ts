@@ -2,6 +2,7 @@ import { authenticate, login, logout, requireOwner } from './auth';
 import { createContributor, listAudit, listContributors, listRequestAssignees, rotateContributorCode, updateContributor } from './contributors';
 import { sha256 } from './crypto';
 import { allowedOrigin, ApiError, corsHeaders, json } from './http';
+import { consumeRateLimit, LOGIN_RATE_LIMIT, rateLimitKey } from './rate-limit';
 import { listWorkflowRequests } from './request-writer';
 import type { Env } from './types';
 
@@ -21,6 +22,8 @@ export default {
       if (request.method === 'POST' && url.pathname === '/auth/login') {
         const input = await request.json<{ code?: string }>();
         if (!input.code) throw new ApiError(400, 'Access code is required.', 'CODE_REQUIRED');
+        const loginSubject = request.headers.get('CF-Connecting-IP') || 'unknown';
+        await consumeRateLimit(env, await rateLimitKey('login', loginSubject), LOGIN_RATE_LIMIT);
         return json(await login(env, input.code), 200, requestId, origin);
       }
       if (request.method === 'POST' && url.pathname === '/auth/logout') {

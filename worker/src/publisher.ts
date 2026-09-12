@@ -1,6 +1,7 @@
-import { applyCatalogMutation, buildRollbackRecord, CatalogConflictError, imageTypeFromSignature, safeImageName, transferImageOwnership, type CatalogItem, type CatalogMutation } from './catalog';
-import { advanceBranch, createCommit, createImageBlob, dataTreeEntry, deleteTreeEntry, imageTreeEntry, readRepoState } from './github';
-import { json } from './http';
+import { applyCatalogMutation, assertImageReplacementIsCurrent, buildRollbackRecord, CatalogConflictError, imageTypeFromSignature, safeImageName, transferImageOwnership, type CatalogItem, type CatalogMutation } from './catalog';
+import { advanceBranch, createCommit, createImageBlob, dataTreeEntry, deleteTreeEntry, imageTreeEntry, readHistoricalImageBlobSha, readRepoState } from './github';
+import { ApiError, json } from './http';
+import { consumeRateLimit, PUBLISH_RATE_LIMIT, rateLimitKey } from './rate-limit';
 import type { Env, Principal } from './types';
 
 const MAX_IMAGE_BYTES = 12 * 1024 * 1024;
@@ -65,6 +66,7 @@ export class CatalogWriter {
     if (!claim.meta.changes) return json({ error: 'This publish request is already processing.', code: 'PUBLISH_IN_PROGRESS' }, 409, requestId);
 
     try {
+      await consumeRateLimit(this.env, await rateLimitKey('publish', principal.id), PUBLISH_RATE_LIMIT);
       const { payload, image } = await parseMutation(request);
       requireOwner(principal, payload.action);
       const result = await this.publish(payload, image, principal, requestId);
@@ -74,6 +76,7 @@ export class CatalogWriter {
     } catch (error) {
       await this.env.DB.prepare('DELETE FROM idempotency_keys WHERE key = ? AND status = ?').bind(idempotencyKey, 'processing').run();
       if (error instanceof CatalogConflictError) return json({ error: error.message, code: 'EDIT_CONFLICT', conflicts: error.conflicts, latest: error.latest }, 409, requestId);
+      if (error instanceof ApiError) return json({ error: error.message, code: error.code }, error.status, requestId);
       const message = error instanceof Error ? error.message : 'Publishing failed.';
       const status = message.includes('Owner access') ? 403 : message.includes('not found') ? 404 : 400;
       return json({ error: message, code: 'PUBLISH_FAILED' }, status, requestId);
@@ -93,16 +96,25 @@ export class CatalogWriter {
       const state = await readRepoState(this.env);
       const now = new Date().toISOString();
       let mutationResult: ReturnType<typeof applyCatalogMutation>;
+      let rollbackImageEntry: ReturnType<typeof imageTreeEntry> | null = null;
 
       if (payload.action === 'rollback') {
-        const audit = await this.env.DB.prepare('SELECT before_json FROM audit_events WHERE record_id = ? AND before_json IS NOT NULL ORDER BY created_at DESC LIMIT 1')
-          .bind(String(payload.recordId)).first<{ before_json: string }>();
+        const audit = await this.env.DB.prepare('SELECT before_json, commit_sha FROM audit_events WHERE record_id = ? AND before_json IS NOT NULL ORDER BY created_at DESC LIMIT 1')
+          .bind(String(payload.recordId)).first<{ before_json: string; commit_sha: string }>();
         if (!audit?.before_json) throw new Error('No rollback snapshot was found.');
         const prior = JSON.parse(audit.before_json) as CatalogItem;
         const index = state.items.findIndex((item) => item.id === payload.recordId);
         if (index < 0) throw new Error('Screenshot record was not found.');
         const before = state.items[index]!;
-        const record = buildRollbackRecord(before, prior, principal.displayName, now, crypto.randomUUID());
+        if (payload.baseRecord && payload.baseRecord.version !== before.version) {
+          throw new CatalogConflictError({ version: { base: payload.baseRecord.version, latest: before.version, mine: 'rollback' } }, before);
+        }
+        const priorImage = String(prior.image || '');
+        if (priorImage && priorImage !== String(before.image || '')) {
+          const historicalBlobSha = await readHistoricalImageBlobSha(this.env, audit.commit_sha, priorImage);
+          rollbackImageEntry = imageTreeEntry(priorImage, historicalBlobSha);
+        }
+        const record = buildRollbackRecord(before, prior, principal.displayName, principal.ownerKey, now, crypto.randomUUID());
         const items = [...state.items];
         items[index] = record;
         mutationResult = { items, record, before, changedFields: Object.keys(record) };
@@ -110,17 +122,25 @@ export class CatalogWriter {
         mutationResult = applyCatalogMutation(state.items, payload, {
           now,
           contributor: principal.displayName,
+          contributorKey: principal.ownerKey,
           nextId: Date.now(),
           version: crypto.randomUUID(),
         });
       }
 
       const entries = [];
+      if (rollbackImageEntry) {
+        const priorImage = String(mutationResult.record.image || '');
+        entries.push(rollbackImageEntry);
+        const removable = oldImageCanBeRemoved(mutationResult.before, mutationResult.items, priorImage);
+        if (removable) entries.push(deleteTreeEntry(removable));
+      }
       if (imageBytes && imageMime && image) {
+        if (mutationResult.before) assertImageReplacementIsCurrent(payload.baseRecord, mutationResult.before);
         const imagePath = safeImageName(image.name, imageMime, Date.now());
         const blobSha = await createImageBlob(this.env, imageBytes);
         mutationResult.record.image = imagePath;
-        transferImageOwnership(mutationResult.record, mutationResult.before || mutationResult.record, principal.displayName, now);
+        transferImageOwnership(mutationResult.record, mutationResult.before || mutationResult.record, principal.displayName, principal.ownerKey, now);
         entries.push(imageTreeEntry(imagePath, blobSha));
         const removable = oldImageCanBeRemoved(mutationResult.before, mutationResult.items, imagePath);
         if (removable) entries.push(deleteTreeEntry(removable));

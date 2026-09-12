@@ -33,6 +33,7 @@ export interface CatalogMutation {
 export interface MutationMetadata {
   now: string;
   contributor: string;
+  contributorKey: string;
   nextId: number;
   version: string;
 }
@@ -68,6 +69,11 @@ export function detectConflicts(base: CatalogItem, latest: CatalogItem, patch: R
   return conflicts;
 }
 
+export function assertImageReplacementIsCurrent(base: CatalogItem | undefined, latest: CatalogItem): void {
+  if (!base || equal(base.image, latest.image)) return;
+  throw new CatalogConflictError({ image: { base: base.image, latest: latest.image, mine: 'replacement-upload' } }, latest);
+}
+
 export function validateCatalogRecord(item: CatalogItem): void {
   if (!String(item.title || '').trim()) throw new Error('Title is required.');
   if (!String(item.text || '').trim()) throw new Error('English/source response text is required.');
@@ -86,7 +92,7 @@ export function applyCatalogMutation(items: CatalogItem[], mutation: CatalogMuta
 } {
   const patch = sanitizePatch(mutation.patch || {});
   if (mutation.action === 'create') {
-    const key = ownerKeyFromName(metadata.contributor);
+    const key = metadata.contributorKey;
     const record: CatalogItem = {
       ...patch,
       id: metadata.nextId,
@@ -132,9 +138,9 @@ export function applyCatalogMutation(items: CatalogItem[], mutation: CatalogMuta
   };
 }
 
-export function transferImageOwnership(record: CatalogItem, before: CatalogItem, contributor: string, now: string): void {
+export function transferImageOwnership(record: CatalogItem, before: CatalogItem, contributor: string, contributorKey: string, now: string): void {
   if (String(record.image || '') === String(before.image || '')) return;
-  const nextKey = ownerKeyFromName(contributor);
+  const nextKey = contributorKey;
   const currentKey = String(before.ownerKey || ownerKeyFromName(String(before.owner || '')));
   const history = ownerIntervals(before);
   if (currentKey === nextKey) {
@@ -156,7 +162,7 @@ export function transferImageOwnership(record: CatalogItem, before: CatalogItem,
   record.ownerHistory = history;
 }
 
-export function buildRollbackRecord(before: CatalogItem, prior: CatalogItem, contributor: string, now: string, version: string): CatalogItem {
+export function buildRollbackRecord(before: CatalogItem, prior: CatalogItem, contributor: string, contributorKey: string, now: string, version: string): CatalogItem {
   const record: CatalogItem = {
     ...prior,
     id: before.id,
@@ -168,7 +174,7 @@ export function buildRollbackRecord(before: CatalogItem, prior: CatalogItem, con
     updatedBy: contributor,
     version,
   };
-  transferImageOwnership(record, before, contributor, now);
+  transferImageOwnership(record, before, contributor, contributorKey, now);
   return record;
 }
 

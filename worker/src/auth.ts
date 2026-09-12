@@ -14,8 +14,8 @@ async function ensureBootstrapOwner(env: Env, code: string): Promise<Contributor
   const salt = randomBytes(16);
   const hash = await hashAccessCode(code, salt);
   await env.DB.prepare(`
-    INSERT INTO contributors (id, display_name, role, code_hash, code_salt, status, code_version, created_at, updated_at)
-    VALUES ('owner-bootstrap', 'CS Gorkem T', 'owner', ?, ?, 'active', 1, ?, ?)
+    INSERT INTO contributors (id, owner_key, display_name, role, code_hash, code_salt, status, code_version, created_at, updated_at)
+    VALUES ('owner-bootstrap', 'cs-gorkem-t', 'CS Gorkem T', 'owner', ?, ?, 'active', 1, ?, ?)
     ON CONFLICT(id) DO UPDATE SET display_name = excluded.display_name, role = 'owner', status = 'active', updated_at = excluded.updated_at
   `).bind(hash, base64urlEncode(salt), now, now).run();
   return contributorById(env, 'owner-bootstrap');
@@ -46,7 +46,7 @@ export async function login(env: Env, code: string): Promise<{ token: string; pr
   ]);
   return {
     token,
-    principal: { id: contributor.id, displayName: contributor.display_name, role: contributor.role, sessionId: payload.jti, codeVersion: contributor.code_version },
+    principal: { id: contributor.id, ownerKey: contributor.owner_key, displayName: contributor.display_name, role: contributor.role, sessionId: payload.jti, codeVersion: contributor.code_version },
     expiresAt: new Date(payload.exp).toISOString(),
   };
 }
@@ -65,7 +65,7 @@ export async function authenticate(request: Request, env: Env): Promise<Principa
   if (!row || row.revoked_at || row.status !== 'active' || row.code_version !== payload.codeVersion || Date.parse(row.expires_at) <= Date.now()) {
     throw new ApiError(401, 'Your session is no longer active.', 'SESSION_REVOKED');
   }
-  return { id: row.id, displayName: row.display_name, role: row.role, sessionId: row.session_id, codeVersion: row.code_version };
+  return { id: row.id, ownerKey: row.owner_key, displayName: row.display_name, role: row.role, sessionId: row.session_id, codeVersion: row.code_version };
 }
 
 export async function logout(request: Request, env: Env): Promise<void> {

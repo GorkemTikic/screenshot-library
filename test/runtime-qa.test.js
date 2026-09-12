@@ -89,3 +89,32 @@ test('the production Worker binds a real dedicated D1 database', async () => {
   const config = await readFile(new URL('../worker/wrangler.toml', import.meta.url), 'utf8');
   assert.doesNotMatch(config, /database_id\s*=\s*"00000000-0000-0000-0000-000000000000"/);
 });
+
+test('catalog publishing protects image conflicts and restores historical blobs', async () => {
+  const publisher = await readFile(new URL('../worker/src/publisher.ts', import.meta.url), 'utf8');
+  assert.match(publisher, /assertImageReplacementIsCurrent/);
+  assert.match(publisher, /readHistoricalImageBlobSha/);
+  assert.match(publisher, /imageTreeEntry\(priorImage, historicalBlobSha\)/);
+});
+
+test('production login and catalog publishing are rate limited server-side', async () => {
+  const index = await readFile(new URL('../worker/src/index.ts', import.meta.url), 'utf8');
+  const publisher = await readFile(new URL('../worker/src/publisher.ts', import.meta.url), 'utf8');
+  assert.match(index, /consumeRateLimit[\s\S]+LOGIN_RATE_LIMIT/);
+  assert.match(publisher, /consumeRateLimit[\s\S]+PUBLISH_RATE_LIMIT/);
+});
+
+test('owners can expose archived records and initiate recovery in Content Studio', async () => {
+  const list = await readFile(new URL('../src/components/admin/ContentList.jsx', import.meta.url), 'utf8');
+  const editor = await readFile(new URL('../src/components/admin/ContentEditor.jsx', import.meta.url), 'utf8');
+  assert.match(list, /Show archived/);
+  assert.match(editor, /action:\s*'rollback'/);
+  assert.match(editor, /Restore to library|Restore previous version/);
+});
+
+test('the production migration stores immutable owner keys and rate-limit buckets', async () => {
+  const migration = await readFile(new URL('../worker/migrations/0003_production_safety.sql', import.meta.url), 'utf8');
+  assert.match(migration, /owner_key/);
+  assert.match(migration, /CREATE UNIQUE INDEX contributors_owner_key_idx/);
+  assert.match(migration, /CREATE TABLE rate_limits/);
+});

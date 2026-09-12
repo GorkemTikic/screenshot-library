@@ -78,6 +78,18 @@ export async function createImageBlob(env: Env, bytes: Uint8Array): Promise<stri
   return blob.sha;
 }
 
+export async function readHistoricalImageBlobSha(env: Env, mutationCommitSha: string, imagePath: string): Promise<string> {
+  if (!imagePath.startsWith('screenshots/')) throw new Error('Historical image path is invalid.');
+  const repo = `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`;
+  const commit = await github<{ parents: Array<{ sha: string }> }>(env, `${repo}/git/commits/${encodeURIComponent(mutationCommitSha)}`);
+  const parentSha = commit.parents[0]?.sha;
+  if (!parentSha) throw new Error('The rollback commit has no parent snapshot.');
+  const publicPath = ['public', ...imagePath.split('/')].map(encodeURIComponent).join('/');
+  const file = await github<{ sha: string; type: string }>(env, `${repo}/contents/${publicPath}?ref=${encodeURIComponent(parentSha)}`);
+  if (file.type !== 'file' || !file.sha) throw new Error('The historical screenshot asset was not found.');
+  return file.sha;
+}
+
 export async function createCommit(env: Env, state: RepoHead, entries: TreeEntry[], message: string): Promise<string> {
   const repo = `/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`;
   const tree = await github<{ sha: string }>(env, `${repo}/git/trees`, {

@@ -4,13 +4,14 @@ import { normalizePlatform, ownerColorStyle, ownerInitials, visibleCatalog } fro
 
 const imageUrl = (value) => /^(https?:|data:)/.test(value || '') ? value : `${import.meta.env.BASE_URL}${value || ''}`;
 
-export function ContentList({ items, onEdit, onCreate, onRefresh, loading }) {
+export function ContentList({ items, onEdit, onCreate, onRefresh, loading, canRecover = false }) {
     const [query, setQuery] = useState('');
     const [platform, setPlatform] = useState('all');
-    const filtered = useMemo(() => visibleCatalog(items).filter((item) => {
+    const [showArchived, setShowArchived] = useState(false);
+    const filtered = useMemo(() => (showArchived ? items.filter((item) => item.archivedAt) : visibleCatalog(items)).filter((item) => {
         const matchesQuery = !query || [item.title, item.text, item.text_tr, item.owner, item.topic].some((value) => String(value || '').toLowerCase().includes(query.toLowerCase()));
         return matchesQuery && (platform === 'all' || normalizePlatform(item.platform) === platform);
-    }), [items, platform, query]);
+    }), [items, platform, query, showArchived]);
 
     return <section className="studio-content">
         <div className="studio-toolbar">
@@ -19,6 +20,7 @@ export function ContentList({ items, onEdit, onCreate, onRefresh, loading }) {
                 {['all', 'mobile', 'web'].map((value) => <button type="button" key={value} className={platform === value ? 'platform-button active' : 'platform-button'} onClick={() => setPlatform(value)}>{value === 'mobile' && <AppIcon name="Smartphone" size={14} />}{value === 'web' && <AppIcon name="Monitor" size={14} />}{value === 'all' ? 'All' : value}</button>)}
             </div>
             <button type="button" className="icon-button" onClick={onRefresh} aria-label="Refresh published content" title="Refresh"><AppIcon name="RefreshCw" size={17} /></button>
+            {canRecover && <button type="button" className="button button-quiet" onClick={() => setShowArchived((value) => !value)}><AppIcon name="RotateCcw" size={15} />{showArchived ? 'Show published' : 'Show archived'}</button>}
             <button type="button" className="button button-primary" onClick={onCreate}><AppIcon name="Plus" size={16} /> New screenshot</button>
         </div>
         <div className="studio-list-summary"><span><strong>{filtered.length}</strong> published guides</span><span>{loading ? 'Fetching latest version…' : 'Live repository version'}</span></div>
@@ -26,9 +28,9 @@ export function ContentList({ items, onEdit, onCreate, onRefresh, loading }) {
             {filtered.map((item) => <article className="studio-record-card" key={item.id}>
                 <button type="button" className="studio-record-image" onClick={() => onEdit(item)}><img src={imageUrl(item.image)} alt="" loading="lazy" /><span className="studio-edit-reveal"><AppIcon name="Pencil" size={15} /> Edit & replace</span></button>
                 <div className="studio-record-body">
-                    <div className="studio-record-kicker"><span>{item.topic}</span><span>{normalizePlatform(item.platform)}</span></div>
+                    <div className="studio-record-kicker"><span>{item.archivedAt ? 'Archived' : item.topic}</span><span>{normalizePlatform(item.platform)}</span></div>
                     <h3>{item.title}</h3>
-                    <div className="studio-record-footer"><span className="owner-mini"><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)}>Edit</button></div>
+                    <div className="studio-record-footer"><span className="owner-mini"><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)}>{item.archivedAt ? 'Recover' : 'Edit'}</button></div>
                 </div>
             </article>)}
         </div>

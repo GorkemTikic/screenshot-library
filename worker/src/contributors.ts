@@ -9,6 +9,10 @@ export function contributorIdFromName(displayName: string, suffix = crypto.rando
   return `${slug}-${suffix.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 12)}`;
 }
 
+export function ownerKeyForContributor(id: string): string {
+  return id === 'owner-bootstrap' ? 'cs-gorkem-t' : `contributor-${id}`;
+}
+
 export function validateContributorInput(input: ContributorInput): { displayName: string; role: 'owner' | 'contributor' } {
   const displayName = String(input.displayName || '').trim().replace(/\s+/g, ' ');
   const role = input.role || 'contributor';
@@ -20,6 +24,7 @@ export function validateContributorInput(input: ContributorInput): { displayName
 function publicContributor(row: ContributorRow) {
   return {
     id: row.id,
+    ownerKey: row.owner_key,
     displayName: row.display_name,
     role: row.role,
     status: row.status,
@@ -44,15 +49,16 @@ export async function listRequestAssignees(env: Env) {
 export async function createContributor(env: Env, input: ContributorInput) {
   const { displayName, role } = validateContributorInput(input);
   const id = contributorIdFromName(displayName);
+  const ownerKey = ownerKeyForContributor(id);
   const accessCode = createAccessCode(id);
   const salt = randomBytes(16);
   const codeHash = await hashAccessCode(accessCode, salt);
   const now = new Date().toISOString();
   try {
     await env.DB.prepare(`INSERT INTO contributors
-      (id, display_name, role, code_hash, code_salt, status, code_version, created_at, updated_at)
-      VALUES (?, ?, ?, ?, ?, 'active', 1, ?, ?)`)
-      .bind(id, displayName, role, codeHash, base64urlEncode(salt), now, now).run();
+      (id, owner_key, display_name, role, code_hash, code_salt, status, code_version, created_at, updated_at)
+      VALUES (?, ?, ?, ?, ?, ?, 'active', 1, ?, ?)`)
+      .bind(id, ownerKey, displayName, role, codeHash, base64urlEncode(salt), now, now).run();
   } catch {
     throw new ApiError(409, 'A contributor with this name already exists.', 'CONTRIBUTOR_EXISTS');
   }

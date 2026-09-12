@@ -39,7 +39,7 @@ function ContentStudio() {
         <header className="studio-page-header"><div><span className="eyebrow"><AppIcon name="Sparkles" size={13} /> FD editorial operations</span><h1>Content Studio</h1><p>Add guides, replace outdated screenshots, and edit EN/TR copy without touching the repository.</p></div><div className="studio-identity"><span className="status-dot" /><div><strong>{auth.principal.displayName}</strong><small>{auth.principal.role} session</small></div></div></header>
         <nav className="studio-tabs" aria-label="Content Studio sections">{TABS.filter((tab) => !tab.ownerOnly || auth.isOwner).map((tab) => <button type="button" key={tab.id} onClick={() => setActiveTab(tab.id)} className={activeTab === tab.id ? 'active' : ''}><AppIcon name={tab.icon} size={15} />{tab.label}</button>)}</nav>
         {notice && <div className="studio-notice"><AppIcon name="CheckCircle2" size={15} />{notice}<button type="button" onClick={() => setNotice('')} aria-label="Dismiss"><AppIcon name="X" size={13} /></button></div>}
-        {activeTab === 'content' && <ContentList items={items} onEdit={openEditor} onCreate={() => openEditor(null)} onRefresh={refresh} loading={loading} />}
+        {activeTab === 'content' && <ContentList items={items} onEdit={openEditor} onCreate={() => openEditor(null)} onRefresh={refresh} loading={loading} canRecover={auth.isOwner} />}
         {activeTab === 'access' && auth.isOwner && <AccessManagement />}
         {activeTab === 'audit' && auth.isOwner && <AuditLog />}
         {editorOpen && <ContentEditor item={editingItem} onClose={() => setEditorOpen(false)} onPublished={published} />}

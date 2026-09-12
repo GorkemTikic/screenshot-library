@@ -4,7 +4,7 @@ This Worker is dedicated to FD Screenshot Library. It is intentionally separate 
 
 ## Request workflow
 
-Apply both D1 migrations before starting a new local database:
+Apply all D1 migrations before starting a new local database:
 
 ```powershell
 npx wrangler d1 migrations apply fd-screenshot-library --local --config worker/wrangler.toml

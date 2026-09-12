@@ -16,6 +16,7 @@ export interface Env {
 
 export interface ContributorRow {
   id: string;
+  owner_key: string;
   display_name: string;
   role: SessionRole;
   code_hash: string;
@@ -29,6 +30,7 @@ export interface ContributorRow {
 
 export interface Principal {
   id: string;
+  ownerKey: string;
   displayName: string;
   role: SessionRole;
   sessionId: string;

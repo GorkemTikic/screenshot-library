@@ -31,7 +31,7 @@ export function ContentEditor({ item, onClose, onPublished }) {
     const update = (field, value) => setDraft((current) => ({ ...current, [field]: value }));
     const close = () => { if (!dirty || window.confirm('Discard your unpublished changes?')) onClose(); };
 
-    const publish = async (override = null) => {
+    const publish = async (override = null, imageOverride = image) => {
         if (!draft.title.trim() || !draft.text.trim() || !draft.topic || !draft.language) return setStatus({ state: 'error', message: 'Title, source response, topic and language are required.' });
         if (!item && !image) return setStatus({ state: 'error', message: 'Choose a screenshot image before publishing.' });
         setStatus({ state: 'publishing', message: 'Validating and publishing…' });
@@ -42,7 +42,7 @@ export function ContentEditor({ item, onClose, onPublished }) {
             patch: item ? patch : draft,
         };
         try {
-            const result = await contentApi.publish(payload, image);
+            const result = await contentApi.publish(payload, imageOverride);
             setBase(result.record);
             setStatus({ state: 'success', message: 'Published safely. The Library is now using this version.' });
             onPublished(result.record);
@@ -60,7 +60,7 @@ export function ContentEditor({ item, onClose, onPublished }) {
         Object.entries(choices).forEach(([field, choice]) => { if (choice === 'latest') resolvedDraft[field] = latest[field] || ''; });
         const resolvedPatch = buildPatch(latest, resolvedDraft, FIELDS);
         setDraft(resolvedDraft); setBase(latest); setConflict(null);
-        publish({ action: 'resolve-conflict', recordId: item.id, baseRecord: latest, patch: resolvedPatch });
+        publish({ action: 'resolve-conflict', recordId: item.id, baseRecord: latest, patch: resolvedPatch }, choices.image === 'latest' ? null : image);
     };
 
     const archive = async () => {
@@ -68,6 +68,16 @@ export function ContentEditor({ item, onClose, onPublished }) {
         setStatus({ state: 'publishing', message: 'Archiving…' });
         try {
             const result = await contentApi.publish({ action: 'archive', recordId: item.id, baseRecord: base, patch: {} });
+            onPublished(result.record); onClose();
+        } catch (error) { setStatus({ state: 'error', message: error.message }); }
+    };
+
+    const rollback = async () => {
+        const label = item.archivedAt ? 'Restore this screenshot to the public Library?' : 'Restore the previous published version of this screenshot?';
+        if (!window.confirm(label)) return;
+        setStatus({ state: 'publishing', message: item.archivedAt ? 'Restoring to the Library…' : 'Restoring previous version…' });
+        try {
+            const result = await contentApi.publish({ action: 'rollback', recordId: item.id, baseRecord: base, patch: {} });
             onPublished(result.record); onClose();
         } catch (error) { setStatus({ state: 'error', message: error.message }); }
     };
@@ -93,7 +103,7 @@ export function ContentEditor({ item, onClose, onPublished }) {
                     </aside>
                 </div>
                 {status.message && <div className={`editor-status ${status.state}`}><AppIcon name={status.state === 'success' ? 'CheckCircle2' : 'Activity'} size={15} />{status.message}</div>}
-                <footer className="studio-editor-footer"><div>{item && auth.isOwner && <button type="button" className="button button-danger" onClick={archive} disabled={status.state === 'publishing'}><AppIcon name="Archive" size={15} /> Archive</button>}</div><div><button type="button" className="button button-quiet" onClick={close}>Cancel</button><button type="button" className="button button-primary" onClick={() => publish()} disabled={status.state === 'publishing' || !dirty}><AppIcon name="Save" size={15} />{status.state === 'publishing' ? 'Publishing…' : item ? 'Publish update' : 'Publish screenshot'}</button></div></footer>
+                <footer className="studio-editor-footer"><div>{item && auth.isOwner && <><button type="button" className="button button-quiet" onClick={rollback} disabled={status.state === 'publishing'}><AppIcon name="RotateCcw" size={15} />{item.archivedAt ? 'Restore to library' : 'Restore previous version'}</button>{!item.archivedAt && <button type="button" className="button button-danger" onClick={archive} disabled={status.state === 'publishing'}><AppIcon name="Archive" size={15} /> Archive</button>}</>}</div><div><button type="button" className="button button-quiet" onClick={close}>Cancel</button><button type="button" className="button button-primary" onClick={() => publish()} disabled={status.state === 'publishing' || !dirty}><AppIcon name="Save" size={15} />{status.state === 'publishing' ? 'Publishing…' : item ? 'Publish update' : 'Publish screenshot'}</button></div></footer>
             </section>
         </div>
         {conflict && <ConflictResolver conflict={conflict} onResolve={resolve} onCancel={() => setConflict(null)} />}
