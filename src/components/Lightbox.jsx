@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { TOPIC_META, normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
+import { screenshotEvent } from '../domain/analyticsEvents';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
@@ -39,7 +40,7 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
             setCopied(true);
             window.setTimeout(() => setCopied(false), 1400);
         }
-        logEvent('copy_text', { title: item.title, topic: item.topic, language: contentLang, method: successful ? 'inspector' : 'failed' });
+        logEvent('copy_text', screenshotEvent(item, { responseLanguage: contentLang, source: 'inspector', method: successful ? 'clipboard' : 'failed' }));
     };
 
     return (
@@ -73,7 +74,7 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
                             <span>Response language</span>
                             <div className="lang-switch-container">
                                 {['en', 'tr'].map((language) => (
-                                    <button type="button" key={language} className={`lang-switch-btn ${contentLang === language ? 'active' : ''}`} onClick={() => setContentLang(language)}>{language.toUpperCase()}</button>
+                                    <button type="button" key={language} className={`lang-switch-btn ${contentLang === language ? 'active' : ''}`} onClick={() => { setContentLang(language); logEvent('switch_lang', screenshotEvent(item, { responseLanguage: language, source: 'inspector' })); }}>{language.toUpperCase()}</button>
                                 ))}
                             </div>
                         </div>

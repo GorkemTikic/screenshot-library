@@ -15,10 +15,8 @@ function doGet(e) {
   const logSheet  = ss.getSheetByName("DB_Logs")  || ss.insertSheet("DB_Logs");
   const userSheet = ss.getSheetByName("DB_Users") || ss.insertSheet("DB_Users");
 
-  // 2. FORCE HEADERS (unchanged)
-  if (logSheet.getLastRow() === 0) {
-    logSheet.appendRow(["Timestamp", "Device_ID", "Event", "Title", "Topic", "Screen", "TZ", "User_Agent"]);
-  }
+  // 2. Keep legacy columns and add discovery-analysis dimensions.
+  ensureLogHeaders_(logSheet);
   if (userSheet.getLastRow() === 0) {
     userSheet.appendRow(["Unique_Device_ID", "IP", "OS", "First_Seen", "Last_Seen", "Browser_History", "Total_Events"]);
   }
@@ -118,8 +116,25 @@ function doGet(e) {
     userSheet.appendRow([deviceId, ip, os, ts, ts, ua.split(' ')[0], 1]);
   }
 
-  // 6. Append Raw Log (unchanged) — screenshot_request and survey_response still show up here too
-  logSheet.appendRow([ts, deviceId, params.event, params.title || "N/A", params.topic || "N/A", screen, tz, ua]);
+  // 6. Append Raw Log — the first eight legacy columns stay in the same order.
+  logSheet.appendRow([
+    ts,
+    deviceId,
+    params.event,
+    params.title || "N/A",
+    params.topic || "N/A",
+    screen,
+    tz,
+    ua,
+    params.value || "",
+    params.resultCount || "",
+    params.owner || "",
+    params.contentLanguage || "",
+    params.responseLanguage || "",
+    params.contentPlatform || "",
+    params.source || "",
+    params.direction || ""
+  ]);
 
   // v8.2: additionally record screenshot_request in its dedicated tab
   if (params.event === 'screenshot_request') {
@@ -132,6 +147,23 @@ function doGet(e) {
   }
 
   return ContentService.createTextOutput("Success").setMimeType(ContentService.MimeType.TEXT);
+}
+
+const LOG_HEADERS = [
+  "Timestamp", "Device_ID", "Event", "Title", "Topic", "Screen", "TZ", "User_Agent",
+  "Value", "Result_Count", "Owner", "Content_Language", "Response_Language", "Content_Platform", "Source", "Direction"
+];
+
+function ensureLogHeaders_(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(LOG_HEADERS);
+    return;
+  }
+  const width = Math.max(sheet.getLastColumn(), LOG_HEADERS.length);
+  const current = sheet.getRange(1, 1, 1, width).getValues()[0];
+  LOG_HEADERS.forEach(function(header, index) {
+    if (current[index] !== header) sheet.getRange(1, index + 1).setValue(header);
+  });
 }
 
 // ---------- v8.2 helpers: Screenshot Requests tab (unchanged) ----------

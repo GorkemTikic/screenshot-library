@@ -1,9 +1,11 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import { useData } from '../contexts/DataContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
 import { filterCatalog, normalizePlatform, TOPIC_META, topicCounts } from '../domain/catalog';
+import { discoveryEvent, screenshotEvent } from '../domain/analyticsEvents';
 import { useSearchShortcut } from '../hooks/useKeyboardShortcut';
+import { logEvent } from '../services/analytics';
 import { AppIcon } from './AppIcon';
 import { ScreenshotCard } from './ScreenshotCard';
 import { Lightbox } from './Lightbox';
@@ -39,6 +41,30 @@ export function ScreenshotGallery() {
         favoriteTitles: favorites,
     }), [items, matchedIds, selectedPlatform, selectedTopic, selectedLang, showFavoritesOnly, favorites]);
 
+    const resultCountFor = useCallback((overrides = {}) => filterCatalog(items, {
+        matchedIds,
+        platform: selectedPlatform,
+        topic: selectedTopic,
+        language: selectedLang,
+        favoritesOnly: showFavoritesOnly,
+        favoriteTitles: favorites,
+        ...overrides,
+    }).length, [favorites, items, matchedIds, selectedLang, selectedPlatform, selectedTopic, showFavoritesOnly]);
+
+    useEffect(() => {
+        const query = search.trim();
+        if (query.length < 2) return undefined;
+        const timer = window.setTimeout(() => {
+            logEvent('search_commit', {
+                ...discoveryEvent(query, filteredItems.length),
+                filterPlatform: selectedPlatform,
+                filterTopic: selectedTopic,
+                filterLanguage: selectedLang,
+            });
+        }, 600);
+        return () => window.clearTimeout(timer);
+    }, [filteredItems.length, search, selectedLang, selectedPlatform, selectedTopic]);
+
     const counts = useMemo(() => topicCounts(items, selectedPlatform), [items, selectedPlatform]);
     const platformTotal = useMemo(() => items.filter((item) => !item.archivedAt && normalizePlatform(item.platform) === selectedPlatform).length, [items, selectedPlatform]);
     const clearFilters = () => {
@@ -47,6 +73,7 @@ export function ScreenshotGallery() {
         setSelectedTopic('All');
         setSelectedPlatform('mobile');
         setShowFavoritesOnly(false);
+        logEvent('filters_reset', discoveryEvent('all', resultCountFor({ platform: 'mobile', topic: 'All', language: 'All', favoritesOnly: false })));
     };
 
     const activeFilters = [
@@ -69,7 +96,10 @@ export function ScreenshotGallery() {
                                 key={platform.value}
                                 className={`platform-button ${selectedPlatform === platform.value ? 'active' : ''}`}
                                 aria-pressed={selectedPlatform === platform.value}
-                                onClick={() => setSelectedPlatform(platform.value)}
+                                onClick={() => {
+                                    logEvent('filter_platform', discoveryEvent(platform.value, resultCountFor({ platform: platform.value })));
+                                    setSelectedPlatform(platform.value);
+                                }}
                             >
                                 <AppIcon name={platform.icon} size={16} /> {platform.label}
                             </button>
@@ -101,7 +131,11 @@ export function ScreenshotGallery() {
                     </div>
 
                     <div className="filters-row">
-                        <select className="filter-select" value={selectedLang} onChange={(event) => setSelectedLang(event.target.value)} aria-label="Language">
+                        <select className="filter-select" value={selectedLang} onChange={(event) => {
+                            const value = event.target.value;
+                            logEvent('filter_language', discoveryEvent(value, resultCountFor({ language: value })));
+                            setSelectedLang(value);
+                        }} aria-label="Language">
                             <option value="All">All languages</option>
                             {allLanguages.map((language) => <option key={language} value={language}>{language}</option>)}
                         </select>
@@ -109,7 +143,11 @@ export function ScreenshotGallery() {
                             type="button"
                             className={`filter-btn ${showFavoritesOnly ? 'active' : ''}`}
                             aria-pressed={showFavoritesOnly}
-                            onClick={() => setShowFavoritesOnly((value) => !value)}
+                            onClick={() => {
+                                const next = !showFavoritesOnly;
+                                logEvent('filter_favorites', discoveryEvent(next ? 'on' : 'off', resultCountFor({ favoritesOnly: next })));
+                                setShowFavoritesOnly(next);
+                            }}
                         >
                             <AppIcon name="Heart" size={15} /> Favorites
                         </button>
@@ -118,12 +156,12 @@ export function ScreenshotGallery() {
             </div>
 
             <div className="category-rail" aria-label="Topics">
-                <button type="button" className={`category-button ${selectedTopic === 'All' ? 'active' : ''}`} onClick={() => setSelectedTopic('All')}>
+                <button type="button" className={`category-button ${selectedTopic === 'All' ? 'active' : ''}`} onClick={() => { logEvent('filter_topic', discoveryEvent('All', resultCountFor({ topic: 'All' }))); setSelectedTopic('All'); }}>
                     <span className="category-icon"><AppIcon name="LayoutGrid" size={17} /></span>
                     <span className="category-copy"><strong>All topics</strong><small>{platformTotal} guides</small></span>
                 </button>
                 {Object.entries(TOPIC_META).map(([topic, meta]) => (
-                    <button type="button" key={topic} className={`category-button tone-${meta.tone} ${selectedTopic === topic ? 'active' : ''}`} onClick={() => setSelectedTopic(topic)}>
+                    <button type="button" key={topic} className={`category-button tone-${meta.tone} ${selectedTopic === topic ? 'active' : ''}`} onClick={() => { logEvent('filter_topic', discoveryEvent(topic, resultCountFor({ topic }))); setSelectedTopic(topic); }}>
                         <span className="category-icon"><AppIcon name={meta.icon} size={17} /></span>
                         <span className="category-copy"><strong>{topic}</strong><small>{counts[topic] || 0} guides</small></span>
                     </button>
@@ -166,7 +204,11 @@ export function ScreenshotGallery() {
                     position={inspectorIndex}
                     total={filteredItems.length}
                     onClose={() => setInspectorIndex(null)}
-                    onNavigate={(direction) => setInspectorIndex((index) => (index + direction + filteredItems.length) % filteredItems.length)}
+                    onNavigate={(direction) => setInspectorIndex((index) => {
+                        const next = (index + direction + filteredItems.length) % filteredItems.length;
+                        logEvent('inspector_navigate', screenshotEvent(filteredItems[next], { source: 'inspector', direction: direction < 0 ? 'previous' : 'next' }));
+                        return next;
+                    })}
                 />
             )}
         </section>

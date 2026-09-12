@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useData } from '../contexts/DataContext';
 import { TOPIC_META, normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
+import { screenshotEvent } from '../domain/analyticsEvents';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
@@ -30,17 +31,17 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
             setCopied(true);
             window.setTimeout(() => setCopied(false), 1400);
         }
-        logEvent('copy_text', { title: item.title, topic: item.topic, language: contentLang, method: successful ? 'clipboard' : 'failed' });
+        logEvent('copy_text', screenshotEvent(item, { responseLanguage: contentLang, source: 'card', method: successful ? 'clipboard' : 'failed' }));
     };
 
     const inspect = () => {
-        logEvent('view_image', { title: item.title, topic: item.topic });
+        logEvent('view_image', screenshotEvent(item, { source: 'card' }));
         onInspect();
     };
 
     return (
         <article className="card">
-            <div className="card-image-wrapper" onClick={inspect} onContextMenu={() => logEvent('right_click_image', { title: item.title, topic: item.topic })}>
+            <div className="card-image-wrapper" onClick={inspect} onContextMenu={() => logEvent('right_click_image', screenshotEvent(item, { source: 'card' }))}>
                 <img
                     src={resolveImageUrl(item.image)}
                     alt={item.title}
@@ -61,7 +62,7 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
                             event.stopPropagation();
                             const adding = !isFavorite(item.title);
                             toggleFavorite(item.title);
-                            if (adding) logEvent('favorite_add', { title: item.title, topic: item.topic });
+                            logEvent(adding ? 'favorite_add' : 'favorite_remove', screenshotEvent(item, { source: 'card' }));
                         }}
                     >
                         <AppIcon name="Heart" size={15} fill={isFavorite(item.title) ? 'currentColor' : 'none'} />
@@ -94,7 +95,7 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
                                     aria-pressed={contentLang === language}
                                     onClick={() => {
                                         setContentLang(language);
-                                        logEvent('switch_lang', { title: item.title, topic: item.topic, language });
+                                        logEvent('switch_lang', screenshotEvent(item, { responseLanguage: language, source: 'card' }));
                                     }}
                                 >
                                     {language.toUpperCase()}
