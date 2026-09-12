@@ -31,11 +31,12 @@ export function createContentApi({
         return payload;
     };
 
-    const request = async (path, { method = 'GET', body, auth = true } = {}) => {
+    const request = async (path, { method = 'GET', body, auth = true, idempotency = false } = {}) => {
         if (!base) throw new ContentApiError('Content Studio API is not configured for this build.', { status: 0, code: 'API_UNAVAILABLE' });
         const headers = { Accept: 'application/json' };
         if (body !== undefined) headers['Content-Type'] = 'application/json';
         if (auth && token()) headers.Authorization = `Bearer ${token()}`;
+        if (idempotency) headers['Idempotency-Key'] = uuid();
         return parseResponse(await fetchImpl(`${base}${path}`, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) }));
     };
 
@@ -55,6 +56,12 @@ export function createContentApi({
         content: () => request('/content'),
         contributors: () => request('/contributors'),
         audit: () => request('/audit'),
+        requests: () => request('/requests'),
+        requestAssignees: () => request('/request-assignees'),
+        createRequest: (input) => request('/requests', { method: 'POST', body: input, auth: false, idempotency: true }),
+        updateRequest: (id, input) => request(`/requests/${encodeURIComponent(id)}`, { method: 'PATCH', body: input, idempotency: true }),
+        importRequests: () => request('/requests/import', { method: 'POST', body: {}, idempotency: true }),
+        resyncRequests: () => request('/requests/resync', { method: 'POST', body: {}, idempotency: true }),
         createContributor: (displayName, role = 'contributor') => request('/contributors', { method: 'POST', body: { displayName, role } }),
         updateContributor: (id, patch) => request(`/contributors/${encodeURIComponent(id)}`, { method: 'PATCH', body: patch }),
         rotateContributorCode: (id) => request(`/contributors/${encodeURIComponent(id)}/rotate-code`, { method: 'POST' }),

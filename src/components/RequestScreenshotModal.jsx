@@ -2,8 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import { useData } from '../contexts/DataContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
-import { createRequestReference } from '../domain/survey';
-import { logScreenshotRequest } from '../services/analytics';
+import { contentApi } from '../services/contentApi';
 import { resolveImageUrl } from '../utils/imageUtils';
 import { AppIcon } from './AppIcon';
 
@@ -67,16 +66,16 @@ export function RequestScreenshotModal() {
         setError('');
         setSubmitting(true);
         try {
-            await logScreenshotRequest({
+            const result = await contentApi.createRequest({
                 topic: resolvedTopic,
-                language: form.language,
-                platform: form.platform,
+                requestedLanguage: form.language,
+                requestedPlatform: form.platform,
                 description: form.description.trim(),
                 context: form.context.trim(),
-                search_terms: form.searchTerms.trim(),
+                searchTerms: form.searchTerms.trim(),
             });
             try { localStorage.setItem(RATE_LIMIT_KEY, String(Date.now())); } catch { /* private browsing */ }
-            setReference(createRequestReference());
+            setReference(result.request?.id || 'Request recorded');
         } catch (requestError) {
             setError(requestError.message || 'The request could not be sent. Your text is still here; please retry.');
         } finally {
