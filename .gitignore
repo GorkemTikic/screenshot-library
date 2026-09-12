@@ -25,3 +25,6 @@ dist-ssr
 
 # Obsidian knowledge vault — LOCAL-ONLY, never committed
 vault/
+
+# Local isolated feature worktrees
+.worktrees/
