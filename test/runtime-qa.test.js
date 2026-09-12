@@ -79,3 +79,13 @@ test('the owner import is connected to the existing read-only Sheet endpoint', a
   const config = await readFile(new URL('../worker/wrangler.toml', import.meta.url), 'utf8');
   assert.match(config, /REQUESTS_SOURCE_URL\s*=\s*"https:\/\/script\.google\.com\/macros\/s\/[^"]+\/exec\?getRequests=true"/);
 });
+
+test('the Pages build receives the deployed Screenshot Library Worker URL', async () => {
+  const workflow = await readFile(new URL('../.github/workflows/deploy.yml', import.meta.url), 'utf8');
+  assert.match(workflow, /VITE_CONTENT_API_URL:\s*\$\{\{\s*vars\.VITE_CONTENT_API_URL\s*\}\}/);
+});
+
+test('the production Worker binds a real dedicated D1 database', async () => {
+  const config = await readFile(new URL('../worker/wrangler.toml', import.meta.url), 'utf8');
+  assert.doesNotMatch(config, /database_id\s*=\s*"00000000-0000-0000-0000-000000000000"/);
+});

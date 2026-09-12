@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   createAccessCode,
   createSessionToken,
@@ -22,6 +22,17 @@ describe('contributor access codes', () => {
     const hash = await hashAccessCode(code, salt, 1000);
     await expect(verifyAccessCode(code, salt, hash, 1000)).resolves.toBe(true);
     await expect(verifyAccessCode(`${code}x`, salt, hash, 1000)).resolves.toBe(false);
+  });
+
+  it('keeps the default PBKDF2 work factor within the Workers Web Crypto limit', async () => {
+    const deriveBits = vi.spyOn(crypto.subtle, 'deriveBits');
+    await hashAccessCode('fdsl_test_default-work-factor', new Uint8Array(16).fill(4));
+    expect(deriveBits).toHaveBeenCalledWith(
+      expect.objectContaining({ iterations: 100_000 }),
+      expect.anything(),
+      256,
+    );
+    deriveBits.mockRestore();
   });
 });
 

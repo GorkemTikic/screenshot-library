@@ -12,7 +12,7 @@ REQUESTS_SOURCE_URL = "https://script.google.com/macros/s/AKfycbyiUai5inAW3TCAOX
 [[d1_databases]]
 binding = "DB"
 database_name = "fd-screenshot-library"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "0e06f7dc-6855-4c96-95d9-8cb42af559f1"
 
 [[durable_objects.bindings]]
 name = "CATALOG_WRITER"

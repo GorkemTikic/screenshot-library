@@ -35,7 +35,9 @@ export function parseAccessCode(code: string): { contributorId: string; secret: 
   return match?.[1] && match[2] ? { contributorId: match[1], secret: match[2] } : null;
 }
 
-export async function hashAccessCode(code: string, salt: Uint8Array, iterations = 210_000): Promise<string> {
+// Workers Web Crypto rejects PBKDF2 calls above 100,000 iterations. Access
+// codes are high-entropy random values, so use the platform maximum here.
+export async function hashAccessCode(code: string, salt: Uint8Array, iterations = 100_000): Promise<string> {
   const key = await crypto.subtle.importKey('raw', encoder.encode(code), 'PBKDF2', false, ['deriveBits']);
   const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: salt as BufferSource, iterations }, key, 256);
   return base64urlEncode(new Uint8Array(bits));
@@ -50,7 +52,7 @@ export function timingSafeEqual(left: string, right: string): boolean {
   return mismatch === 0;
 }
 
-export async function verifyAccessCode(code: string, salt: Uint8Array, expectedHash: string, iterations = 210_000): Promise<boolean> {
+export async function verifyAccessCode(code: string, salt: Uint8Array, expectedHash: string, iterations = 100_000): Promise<boolean> {
   const actualHash = await hashAccessCode(code, salt, iterations);
   return timingSafeEqual(actualHash, expectedHash);
 }
