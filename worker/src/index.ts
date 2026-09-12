@@ -1,4 +1,5 @@
-import { authenticate, login, logout } from './auth';
+import { authenticate, login, logout, requireOwner } from './auth';
+import { createContributor, listAudit, listContributors, rotateContributorCode, updateContributor } from './contributors';
 import { allowedOrigin, ApiError, corsHeaders, json } from './http';
 import type { Env } from './types';
 
@@ -32,6 +33,28 @@ export default {
         const { readRepoState } = await import('./github');
         const state = await readRepoState(env);
         return json({ items: state.items, version: state.commitSha }, 200, requestId, origin);
+      }
+      if (url.pathname === '/contributors' && request.method === 'GET') {
+        const principal = await authenticate(request, env); requireOwner(principal);
+        return json(await listContributors(env), 200, requestId, origin);
+      }
+      if (url.pathname === '/contributors' && request.method === 'POST') {
+        const principal = await authenticate(request, env); requireOwner(principal);
+        return json(await createContributor(env, await request.json()), 201, requestId, origin);
+      }
+      const contributorMatch = /^\/contributors\/([^/]+)$/.exec(url.pathname);
+      if (contributorMatch && request.method === 'PATCH') {
+        const principal = await authenticate(request, env); requireOwner(principal);
+        return json(await updateContributor(env, principal, decodeURIComponent(contributorMatch[1]!), await request.json<Record<string, unknown>>()), 200, requestId, origin);
+      }
+      const rotateMatch = /^\/contributors\/([^/]+)\/rotate-code$/.exec(url.pathname);
+      if (rotateMatch && request.method === 'POST') {
+        const principal = await authenticate(request, env); requireOwner(principal);
+        return json(await rotateContributorCode(env, decodeURIComponent(rotateMatch[1]!)), 200, requestId, origin);
+      }
+      if (url.pathname === '/audit' && request.method === 'GET') {
+        const principal = await authenticate(request, env); requireOwner(principal);
+        return json(await listAudit(env, Number(url.searchParams.get('limit')) || 100), 200, requestId, origin);
       }
       if (['POST', 'PATCH'].includes(request.method) && url.pathname.startsWith('/content')) {
         const principal = await authenticate(request, env);

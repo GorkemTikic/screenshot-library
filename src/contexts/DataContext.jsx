@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+import React, { createContext, useCallback, useContext, useEffect, useState, useMemo } from 'react';
 import bundledData from '../data/data.json';
 
 const DataContext = createContext();
@@ -7,12 +8,10 @@ const DataContext = createContext();
 // so raw.githubusercontent.com can no longer serve it — but the Pages site is
 // public and redeploys on every Admin Unified Sync push, so this stays fresh.
 const DATA_URL = `${import.meta.env.BASE_URL}data.json`;
-import { githubService } from '../services/github';
 
 export function DataProvider({ children }) {
     const [items, setItems] = useState(bundledData); // Start with bundled data
     const [isLoading, setIsLoading] = useState(true);
-    const [fetchError, setFetchError] = useState(null);
 
     const [favorites, setFavorites] = useState(() => {
         try {
@@ -25,33 +24,15 @@ export function DataProvider({ children }) {
     useEffect(() => {
         const loadLines = async () => {
             try {
-                // --- PERSISTENCE LOAD ---
-                // Fetch live data with cache busting
-                // In DEV mode, we only fetch if GitHub is configured to avoid local-to-remote confusion
-                // unless we are explicitly trying to sync.
-                const shouldFetchRemote = !import.meta.env.DEV || githubService.isConfigured();
-
-                if (shouldFetchRemote) {
-                    const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
-                    if (!response.ok) throw new Error('Failed to fetch data');
-                    const liveData = await response.json();
-
-                    // Sanitize and set Items IMMEDIATELY to clear loading screen
-                    const sanitizedData = liveData.map((item, index) => ({
-                        ...item,
-                        id: item.id || Date.now() + index
-                    }));
-                    setItems(sanitizedData);
-                } else {
-                    console.log("Development mode (unconfigured): Using bundled data.");
-                    setItems(bundledData);
-                }
+                const response = await fetch(`${DATA_URL}?t=${Date.now()}`);
+                if (!response.ok) throw new Error('Failed to fetch data');
+                const liveData = await response.json();
+                setItems(liveData.map((item, index) => ({ ...item, id: item.id || Date.now() + index })));
                 setIsLoading(false);
 
 
             } catch (err) {
                 console.warn("Critical data fetch failed:", err);
-                setFetchError(err.message);
                 setItems(bundledData);
                 setIsLoading(false);
             }
@@ -91,15 +72,11 @@ export function DataProvider({ children }) {
 
     const getJson = () => JSON.stringify(items, null, 2);
 
-    // Atomic Update Bridge
-    const performAtomicUpdate = async (action, item) => {
-        if (!githubService.isConfigured()) return;
-        const newItems = await githubService.atomicUpdateDataJson(action, item);
-        if (newItems) {
-            setItems(newItems);
-        }
-        return newItems;
-    };
+    const replaceItems = useCallback((nextItems) => setItems(Array.isArray(nextItems) ? nextItems : []), []);
+    const upsertCanonicalItem = useCallback((item) => setItems((current) => {
+        const exists = current.some((entry) => String(entry.id) === String(item.id));
+        return exists ? current.map((entry) => String(entry.id) === String(item.id) ? item : entry) : [item, ...current];
+    }), []);
 
 
     // Derived lists
@@ -128,7 +105,8 @@ export function DataProvider({ children }) {
             addItem,
             updateItem,
             deleteItem,
-            performAtomicUpdate,
+            replaceItems,
+            upsertCanonicalItem,
             getJson,
             isLoading // Export loading state too
         }}>
