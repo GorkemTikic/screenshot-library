@@ -148,6 +148,11 @@ test('existing screenshot picker makes replacement selection searchable and expl
   assert.match(picker, /normalizePlatform\(item\.platform\)/);
   assert.match(picker, /item\.owner/);
   assert.match(picker, /Select \$\{item\.title\} to replace/);
+  assert.match(picker, /loading="lazy"/);
+  assert.match(picker, /previouslyFocused/);
+  assert.match(picker, /querySelectorAll/);
+  assert.match(picker, /event\.key === 'Tab'/);
+  assert.match(picker, /previouslyFocused\?\.focus/);
 });
 
 test('Content Studio separates create and replace flows and recovers from the wrong entry point', async () => {
@@ -172,6 +177,9 @@ test('Content Studio separates create and replace flows and recovers from the wr
   assert.match(imageField, /currentImage\s*\?/);
   assert.match(imageField, /validated before publishing/);
   assert.match(imageField, /previous image is removed/);
+  const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
+  assert.doesNotMatch(css, /\.image-upload-button input\s*\{[^}]*display:\s*none/);
+  assert.match(css, /\.image-upload-button:focus-within/);
   assert.match(await readFile(new URL('../src/components/admin/ExistingScreenshotPicker.jsx', import.meta.url), 'utf8'), /results\.length === 1 \? '' : 's'/);
 });
 

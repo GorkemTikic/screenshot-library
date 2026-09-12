@@ -499,9 +499,10 @@ img { max-width: 100%; }
 .studio-image-previews img, .image-placeholder { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; border: 1px solid var(--line-1); border-radius: 9px; background: var(--bg-inset); }
 .studio-image-field .image-placeholder { display: grid; place-content: center; justify-items: center; gap: 6px; color: var(--text-3); font-size: 10px; }
 .has-new-image img { border-color: var(--positive); box-shadow: 0 0 0 2px var(--positive-soft); }
-.image-upload-button { width: fit-content; min-height: 34px; display: flex; align-items: center; gap: 7px; margin-top: 9px; padding: 7px 10px; border: 1px solid var(--line-2); border-radius: 8px; color: var(--text-2); font-weight: 650; cursor: pointer; }
+.image-upload-button { position: relative; width: fit-content; min-height: 34px; display: flex; align-items: center; gap: 7px; margin-top: 9px; padding: 7px 10px; border: 1px solid var(--line-2); border-radius: 8px; color: var(--text-2); font-weight: 650; cursor: pointer; }
 .image-upload-button:hover { border-color: var(--accent); color: var(--accent); }
-.image-upload-button input { display: none; }
+.image-upload-button:focus-within { border-color: var(--accent); color: var(--accent); box-shadow: var(--ring); }
+.image-upload-button input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
 .field-hint, .field-error { margin: 7px 0 0; color: var(--text-3); font-size: 9.5px; line-height: 1.5; }
 .field-error { color: var(--negative); }
 .language-editor-tabs { display: flex !important; gap: 3px !important; padding: 3px; border: 1px solid var(--line-1); border-radius: 8px; background: var(--bg-inset); }
