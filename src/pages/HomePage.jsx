@@ -8,6 +8,10 @@ export function HomePage() {
     const { items } = useData();
     const publicItems = useMemo(() => visibleCatalog(items), [items]);
     const latest = useMemo(() => latestCatalogUpdate(items), [items]);
+    const languageCount = useMemo(
+        () => new Set(publicItems.map((item) => item.language).filter(Boolean)).size,
+        [publicItems],
+    );
     const latestLabel = latest.getTime() > 0
         ? new Intl.DateTimeFormat('en', { month: 'short', day: 'numeric', year: 'numeric' }).format(latest)
         : 'Not available';
@@ -15,22 +19,33 @@ export function HomePage() {
     return (
         <>
             <section className="library-hero animate-in">
-                <div>
-                    <span className="eyebrow"><AppIcon name="Sparkles" size={14} /> FD knowledge workspace</span>
-                    <h1>Find the right screenshot, instantly.</h1>
-                    <p>
-                        Search the operational screenshot library, switch between EN and TR responses,
-                        and copy a ready-to-send explanation without leaving your support flow.
-                    </p>
+                <div className="hero-copy">
+                    <h1 className="hero-flow">
+                        <span className="hero-beat beat-find">Find the Shot</span>
+                        <span className="hero-arrow" aria-hidden="true">→</span>
+                        <span className="hero-beat beat-copy">Copy It</span>
+                        <span className="hero-arrow" aria-hidden="true">→</span>
+                        <span className="hero-beat beat-send">Paste It in Chat.</span>
+                    </h1>
+                    <p>The right visual, the ready response, and one-click copy—without breaking your support flow.</p>
                 </div>
-                <div className="hero-metrics" aria-label="Library summary">
-                    <div className="hero-metric">
+                <div className="library-pulse" aria-label="Library summary">
+                    <div className="pulse-item">
+                        <AppIcon name="FileImage" size={14} />
                         <strong>{publicItems.length}</strong>
-                        <span>Verified guides</span>
+                        <span>guides</span>
                     </div>
-                    <div className="hero-metric">
+                    <i className="pulse-divider" aria-hidden="true" />
+                    <div className="pulse-item">
+                        <AppIcon name="Languages" size={14} />
+                        <strong>{languageCount}</strong>
+                        <span>languages</span>
+                    </div>
+                    <i className="pulse-divider" aria-hidden="true" />
+                    <div className="pulse-item pulse-update">
+                        <AppIcon name="Clock3" size={14} />
+                        <span>updated</span>
                         <strong>{latestLabel}</strong>
-                        <span>Latest update</span>
                     </div>
                 </div>
             </section>

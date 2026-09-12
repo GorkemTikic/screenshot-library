@@ -33,3 +33,13 @@ test('analytics charts declare zero-safe responsive dimensions', async () => {
     assert.match(container, /minHeight=\{0\}/);
   });
 });
+
+test('home hero uses the approved three-beat message and compact pulse', async () => {
+  const source = await readFile(new URL('../src/pages/HomePage.jsx', import.meta.url), 'utf8');
+  assert.match(source, /Find the Shot/);
+  assert.match(source, /Copy It/);
+  assert.match(source, /Paste It in Chat/);
+  assert.match(source, /library-pulse/);
+  assert.doesNotMatch(source, /FD knowledge workspace/);
+  assert.doesNotMatch(source, /hero-metrics/);
+});
