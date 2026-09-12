@@ -642,6 +642,10 @@ img { max-width: 100%; }
 .request-context p { margin: 5px 0 0; color: var(--text-2); font-size: 10px; line-height: 1.5; }
 .request-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
 .request-linked-guide, .request-resolution { grid-column: 1 / -1; }
+.request-linked-search { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-soft); color: var(--ink-muted); }
+.request-linked-search:focus-within { border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 11%, transparent); }
+.request-linked-search input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 13px; }
+.request-linked-search input::placeholder { color: var(--ink-faint); }
 .request-resolution textarea { min-height: 86px; }
 .request-savebar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 10px 0 16px; border-bottom: 1px solid var(--line-1); }
 .request-savebar > span { color: var(--text-3); font-size: 8.5px; }

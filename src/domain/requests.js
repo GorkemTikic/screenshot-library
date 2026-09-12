@@ -35,6 +35,21 @@ export function normalizeRequest(input = {}) {
     };
 }
 
+export function requestDraft(request = {}) {
+    return {
+        requestId: text(request.id),
+        status: REQUEST_STATUSES.includes(request.status) ? request.status : 'new',
+        assigneeContributorId: text(request.assigneeContributorId),
+        resolutionNote: text(request.resolutionNote),
+        linkedRecordId: text(request.linkedRecordId),
+        baseVersion: Math.max(1, Number(request.version) || 1),
+    };
+}
+
+export function mergeConflictDraft(draft = {}, latest = {}) {
+    return { ...draft, baseVersion: Math.max(1, Number(latest.version) || 1) };
+}
+
 export function validateRequestResolution(request = {}) {
     if (['done', 'already_exists'].includes(request.status) && !text(request.linkedRecordId)) return 'Select a published screenshot.';
     if (request.status === 'cannot_be_done' && text(request.resolutionNote).length < 10) return 'Add a resolution note of at least 10 characters.';
@@ -53,7 +68,8 @@ export function filterRequests(requests = [], filters = {}) {
         if (filters.status && filters.status !== 'all' && request.status !== filters.status) return false;
         if (filters.topic && filters.topic !== 'all' && request.topic !== filters.topic) return false;
         if (filters.language && filters.language !== 'all' && request.requestedLanguage !== filters.language) return false;
-        if (filters.assignee && filters.assignee !== 'all' && request.assigneeContributorId !== filters.assignee) return false;
+        if (filters.assignee === 'unassigned' && request.assigneeContributorId) return false;
+        if (filters.assignee && !['all', 'unassigned'].includes(filters.assignee) && request.assigneeContributorId !== filters.assignee) return false;
         if (!query) return true;
         return [request.id, request.description, request.context, request.searchTerms, request.topic, request.assigneeName]
             .some((value) => text(value).toLowerCase().includes(query));

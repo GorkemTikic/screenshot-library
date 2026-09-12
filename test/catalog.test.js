@@ -100,3 +100,19 @@ test('aggregateOwners combines catalog coverage and interaction rows', () => {
   assert.equal(result[1].owner, 'CS Enzo');
   assert.equal(result[1].lifetime, 1);
 });
+
+test('aggregateOwners preserves lifetime credit for archived screenshots', () => {
+  const result = aggregateOwners([{
+    id: 9,
+    owner: 'CS Gorkem T',
+    archivedAt: '2026-09-10',
+    ownerHistory: [
+      { owner: 'CS VERA', from: '2026-01-01', to: '2026-06-01' },
+      { owner: 'CS Gorkem T', from: '2026-06-01', to: null },
+    ],
+  }]);
+  assert.deepEqual(result.map(({ owner, guides, lifetime }) => ({ owner, guides, lifetime })), [
+    { owner: 'CS Gorkem T', guides: 0, lifetime: 1 },
+    { owner: 'CS VERA', guides: 0, lifetime: 1 },
+  ]);
+});

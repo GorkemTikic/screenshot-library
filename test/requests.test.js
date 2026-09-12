@@ -5,7 +5,9 @@ import {
   REQUEST_STATUSES,
   countRequestsByStatus,
   filterRequests,
+  mergeConflictDraft,
   normalizeRequest,
+  requestDraft,
   validateRequestResolution,
 } from '../src/domain/requests.js';
 
@@ -41,4 +43,13 @@ test('request filtering intersects query, status, topic, language, and assignee'
     normalizeRequest({ id: '2', status: 'done', topic: 'LOAN', requestedLanguage: 'CN', assigneeContributorId: 'vera', description: 'Repayment' }),
   ];
   assert.deepEqual(filterRequests(rows, { query: 'margin', status: 'in_progress', topic: 'Futures', language: 'EN', assignee: 'enzo' }).map((row) => row.id), ['1']);
+  assert.deepEqual(filterRequests(rows, { assignee: 'unassigned' }).map((row) => row.id), []);
+  assert.deepEqual(filterRequests([...rows, normalizeRequest({ id: '3', description: 'Unowned' })], { assignee: 'unassigned' }).map((row) => row.id), ['3']);
+});
+
+test('conflict rebasing preserves the contributor draft while advancing its version', () => {
+  const original = requestDraft(normalizeRequest({ id: 'REQ-1', status: 'new', version: 2 }));
+  const edited = { ...original, status: 'in_progress', resolutionNote: 'My unsaved handoff note' };
+  const rebased = mergeConflictDraft(edited, normalizeRequest({ id: 'REQ-1', status: 'done', version: 3, linkedRecordId: '42' }));
+  assert.deepEqual(rebased, { ...edited, baseVersion: 3 });
 });

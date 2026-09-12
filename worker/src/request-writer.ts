@@ -21,13 +21,15 @@ function principalFromRequest(request: Request): Principal | null {
 }
 
 function historyJson(row: Record<string, unknown>): Record<string, unknown> {
+  const before = row.before_json ? requestRowToJson(JSON.parse(String(row.before_json)) as RequestRow) : null;
+  const after = requestRowToJson(JSON.parse(String(row.after_json || '{}')) as RequestRow);
   return {
     id: row.id,
     action: row.action,
     actorContributorId: row.actor_contributor_id || '',
     actorName: row.actor_name || 'Public requester',
-    before: row.before_json ? JSON.parse(String(row.before_json)) : null,
-    after: JSON.parse(String(row.after_json || '{}')),
+    before,
+    after,
     createdAt: row.created_at,
   };
 }
@@ -196,8 +198,8 @@ export class RequestWriter {
       throw new RequestConflictError(latest || before);
     }
     const sync = await publishSnapshot(this.env);
-    const latest = { ...transition.row, sync_state: sync.synced ? 'synced' as const : 'pending' as const };
-    return { ok: true, request: requestRowToJson(latest), sync };
+    const hydrated = (await listWorkflowRequests(this.env)).find((row) => row.id === id);
+    return { ok: true, request: hydrated || requestRowToJson({ ...transition.row, sync_state: sync.synced ? 'synced' as const : 'pending' as const }), sync };
   }
 
   private async importSheet(principal: Principal, idempotencyKey: string): Promise<Record<string, unknown>> {

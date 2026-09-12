@@ -33,12 +33,16 @@ describe('request workflow domain', () => {
   });
 
   it('serializes database rows and parsed history for the frontend', () => {
-    expect(requestRowToJson({
-      id: 'REQ-1', source: 'sheet_import', source_key: 'x', created_at: '2026-09-01', requester_hash: null,
+    const row = {
+      id: 'REQ-1', source: 'sheet_import' as const, source_key: 'x', created_at: '2026-09-01', requester_hash: null,
       topic: 'General', requested_language: 'EN', requested_platform: 'Either', description: 'Missing', context: '', search_terms: '',
-      status: 'new', assignee_contributor_id: null, assignee_name: null, resolution_note: null, linked_record_id: null,
-      version: 1, updated_by_contributor_id: null, updated_by_name: null, updated_at: '2026-09-01', sync_state: 'synced',
-    }, [{ id: 'E1', action: 'created' }])).toMatchObject({ id: 'REQ-1', source: 'sheet_import', requestedLanguage: 'EN', status: 'new', version: 1, history: [{ id: 'E1', action: 'created' }] });
+      status: 'new' as const, assignee_contributor_id: null, assignee_name: null, resolution_note: null, linked_record_id: null,
+      version: 1, updated_by_contributor_id: null, updated_by_name: null, updated_at: '2026-09-01', sync_state: 'synced' as const,
+    };
+    const serialized = requestRowToJson({ ...row, requester_hash: 'private-requester-fingerprint' }, [{ id: 'E1', action: 'created' }]);
+    expect(serialized).toMatchObject({ id: 'REQ-1', source: 'sheet_import', requestedLanguage: 'EN', status: 'new', version: 1, history: [{ id: 'E1', action: 'created' }] });
+    expect(serialized).not.toHaveProperty('requester_hash');
+    expect(serialized).not.toHaveProperty('requesterHash');
   });
 
   it('applies a versioned transition and emits immutable before/after history', () => {

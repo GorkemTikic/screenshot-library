@@ -2,6 +2,13 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { copyFileSync, readFileSync } from 'node:fs'
 
+const liveDataFiles = new Map([
+  ['/data.json', 'data.json'],
+  ['/screenshot-library/data.json', 'data.json'],
+  ['/requests.json', 'requests.json'],
+  ['/screenshot-library/requests.json', 'requests.json'],
+])
+
 // Copies the live catalog into the built site so the app can fetch it
 // same-origin (<base>/data.json). Required since the repo went private
 // (2026-06-11): raw.githubusercontent.com URLs need auth on private repos,
@@ -12,7 +19,7 @@ const copyLiveData = {
   configureServer(server) {
     server.middlewares.use((request, response, next) => {
       const pathname = new URL(request.url, 'http://local').pathname
-      const fileName = pathname.endsWith('/requests.json') ? 'requests.json' : pathname.endsWith('/data.json') ? 'data.json' : ''
+      const fileName = liveDataFiles.get(pathname)
       if (!fileName) return next()
       response.setHeader('Content-Type', 'application/json; charset=utf-8')
       response.setHeader('Cache-Control', 'no-store')

@@ -67,16 +67,18 @@ export const ownerColorStyle = (name = '') => {
 export function aggregateOwners(items = [], interactionRows = []) {
     const interactionMap = new Map(interactionRows.map((row) => [String(row.owner || row.name || '').trim().toLowerCase(), row]));
     const grouped = new Map();
-    for (const item of visibleCatalog(items)) {
+    for (const item of items) {
+        const isVisible = !item.archivedAt;
         const owner = String(item.owner || '').trim();
-        if (!owner) continue;
-        const current = grouped.get(owner) || { owner, guides: 0, lifetimeIds: new Set(), languages: new Set(), topics: new Set(), latest: '' };
-        current.guides += 1;
-        current.lifetimeIds.add(String(item.id));
-        if (item.language) current.languages.add(item.language);
-        if (item.topic) current.topics.add(item.topic);
-        if (String(item.updatedAt || '') > current.latest) current.latest = String(item.updatedAt || '');
-        grouped.set(owner, current);
+        if (owner) {
+            const current = grouped.get(owner) || { owner, guides: 0, lifetimeIds: new Set(), languages: new Set(), topics: new Set(), latest: '' };
+            if (isVisible) current.guides += 1;
+            current.lifetimeIds.add(String(item.id));
+            if (item.language) current.languages.add(item.language);
+            if (item.topic) current.topics.add(item.topic);
+            if (String(item.updatedAt || '') > current.latest) current.latest = String(item.updatedAt || '');
+            grouped.set(owner, current);
+        }
         for (const interval of Array.isArray(item.ownerHistory) ? item.ownerHistory : []) {
             const historicalOwner = String(interval.owner || '').trim();
             if (!historicalOwner) continue;

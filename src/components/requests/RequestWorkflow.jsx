@@ -7,7 +7,9 @@ import {
     REQUEST_STATUS_META,
     countRequestsByStatus,
     filterRequests,
+    mergeConflictDraft,
     normalizeRequest,
+    requestDraft,
     validateRequestResolution,
 } from '../../domain/requests';
 import { contentApi, ContentApiError } from '../../services/contentApi';
@@ -41,6 +43,7 @@ export function RequestWorkflow() {
     const [notice, setNotice] = useState({ tone: '', text: '' });
     const [draft, setDraft] = useState(null);
     const [saving, setSaving] = useState(false);
+    const [linkedQuery, setLinkedQuery] = useState('');
 
     const load = useCallback(async () => {
         setLoading(true); setNotice({ tone: '', text: '' });
@@ -59,19 +62,21 @@ export function RequestWorkflow() {
     const selected = requests.find((request) => request.id === selectedId) || null;
     useEffect(() => {
         if (!selected) { setDraft(null); return; }
-        setDraft({
-            status: selected.status,
-            assigneeContributorId: selected.assigneeContributorId,
-            resolutionNote: selected.resolutionNote,
-            linkedRecordId: selected.linkedRecordId,
-            baseVersion: selected.version,
-        });
+        setDraft((current) => current?.requestId === selected.id ? current : requestDraft(selected));
     }, [selected]);
 
     const counts = useMemo(() => countRequestsByStatus(requests), [requests]);
     const topics = useMemo(() => [...new Set(requests.map((row) => row.topic).filter(Boolean))].sort(), [requests]);
     const languages = useMemo(() => [...new Set(requests.map((row) => row.requestedLanguage).filter(Boolean))].sort(), [requests]);
     const filtered = useMemo(() => filterRequests(requests, filters), [filters, requests]);
+    const linkedItems = useMemo(() => {
+        const query = linkedQuery.trim().toLowerCase();
+        return items.filter((item) => !item.archivedAt && (
+            String(item.id) === draft?.linkedRecordId
+            || !query
+            || [item.title, item.topic, item.language].some((value) => String(value || '').toLowerCase().includes(query))
+        ));
+    }, [draft?.linkedRecordId, items, linkedQuery]);
 
     const save = async () => {
         const validation = validateRequestResolution(draft || {});
@@ -81,12 +86,13 @@ export function RequestWorkflow() {
             const result = await contentApi.updateRequest(selected.id, draft);
             const next = normalizeRequest(result.request);
             setRequests((current) => current.map((row) => row.id === next.id ? next : row));
+            setDraft(requestDraft(next));
             setNotice({ tone: next.syncState === 'pending' ? 'warning' : 'success', text: next.syncState === 'pending' ? 'Update accepted. Repository snapshot is pending and can be retried by an owner.' : 'Request updated for everyone.' });
         } catch (error) {
             if (error instanceof ContentApiError && error.code === 'REQUEST_CONFLICT' && error.latest) {
                 const latest = normalizeRequest(error.latest);
                 setRequests((current) => current.map((row) => row.id === latest.id ? latest : row));
-                setDraft((current) => ({ ...current, baseVersion: latest.version }));
+                setDraft((current) => mergeConflictDraft(current, latest));
                 setNotice({ tone: 'warning', text: `A newer edit by ${latest.updatedByName || 'another contributor'} was loaded. Your choices are preserved; review and save again.` });
             } else setNotice({ tone: 'error', text: error.message });
         } finally { setSaving(false); }
@@ -96,8 +102,8 @@ export function RequestWorkflow() {
         setSaving(true);
         try {
             const result = await contentApi.importRequests();
-            setNotice({ tone: result.sync?.synced ? 'success' : 'warning', text: `Sheet import: ${result.inserted} added, ${result.existing} already present, ${result.invalid} invalid.` });
             await load();
+            setNotice({ tone: result.sync?.synced ? 'success' : 'warning', text: `Sheet import: ${result.inserted} added, ${result.existing} already present, ${result.invalid} invalid.` });
         } catch (error) { setNotice({ tone: 'error', text: error.message }); }
         finally { setSaving(false); }
     };
@@ -106,8 +112,8 @@ export function RequestWorkflow() {
         setSaving(true);
         try {
             const result = await contentApi.resyncRequests();
-            setNotice({ tone: result.ok ? 'success' : 'error', text: result.ok ? 'Repository request snapshot synchronized.' : result.sync?.error || 'Snapshot sync failed.' });
             await load();
+            setNotice({ tone: result.ok ? 'success' : 'error', text: result.ok ? 'Repository request snapshot synchronized.' : result.sync?.error || 'Snapshot sync failed.' });
         } catch (error) { setNotice({ tone: 'error', text: error.message }); }
         finally { setSaving(false); }
     };
@@ -129,13 +135,13 @@ export function RequestWorkflow() {
             <label className="studio-search"><AppIcon name="Search" size={15} /><input value={filters.query} onChange={(event) => setFilter('query', event.target.value)} placeholder="Search request, topic or ID…" /></label>
             <select className="form-select" aria-label="Request topic" value={filters.topic} onChange={(event) => setFilter('topic', event.target.value)}><option value={ALL}>All topics</option>{topics.map((value) => <option key={value}>{value}</option>)}</select>
             <select className="form-select" aria-label="Request language" value={filters.language} onChange={(event) => setFilter('language', event.target.value)}><option value={ALL}>All languages</option>{languages.map((value) => <option key={value}>{value}</option>)}</select>
-            <select className="form-select" aria-label="Request assignee" value={filters.assignee} onChange={(event) => setFilter('assignee', event.target.value)}><option value={ALL}>All assignees</option><option value="">Unassigned</option>{assignees.map((person) => <option key={person.id} value={person.id}>{person.displayName}</option>)}</select>
+            <select className="form-select" aria-label="Request assignee" value={filters.assignee} onChange={(event) => setFilter('assignee', event.target.value)}><option value={ALL}>All assignees</option><option value="unassigned">Unassigned</option>{assignees.map((person) => <option key={person.id} value={person.id}>{person.displayName}</option>)}</select>
         </div>
 
         {notice.text && <div className={`request-workflow-notice ${notice.tone}`}><AppIcon name={notice.tone === 'success' ? 'CheckCircle2' : 'Activity'} size={15} /><span>{notice.text}</span><button type="button" onClick={() => setNotice({ tone: '', text: '' })} aria-label="Dismiss notice"><AppIcon name="X" size={13} /></button></div>}
 
         <div className="request-workspace-grid">
-            <div className="workflow-request-list">{loading && !requests.length ? <div className="insight-state"><span className="spinner" /><p>Loading shared requests…</p></div> : filtered.length ? filtered.map((request) => <RequestCard key={request.id} request={request} active={selectedId === request.id} onOpen={() => setSelectedId(request.id)} />) : <div className="insight-state"><AppIcon name="SearchX" size={24} /><p>No requests match these filters.</p></div>}</div>
+            <div className="workflow-request-list">{loading && !requests.length ? <div className="insight-state"><span className="spinner" /><p>Loading shared requests…</p></div> : filtered.length ? filtered.map((request) => <RequestCard key={request.id} request={request} active={selectedId === request.id} onOpen={() => { setSelectedId(request.id); setDraft(requestDraft(request)); setLinkedQuery(''); }} />) : <div className="insight-state"><AppIcon name="SearchX" size={24} /><p>No requests match these filters.</p></div>}</div>
             <aside className="request-detail-drawer">
                 {selected && draft ? <>
                     <div className="request-detail-heading"><div><StatusChip status={selected.status} /><h3>{selected.description}</h3><p>{selected.id} · submitted {dateLabel(selected.createdAt)}</p></div>{selected.syncState === 'pending' && <span className="status-pill warning">Sync pending</span>}</div>
@@ -145,7 +151,7 @@ export function RequestWorkflow() {
                     <div className="request-edit-grid">
                         <label className="form-group"><span>Status</span><select className="form-select" value={draft.status} onChange={(event) => setDraftField('status', event.target.value)}>{REQUEST_STATUSES.map((status) => <option key={status} value={status}>{REQUEST_STATUS_META[status].label}</option>)}</select></label>
                         <label className="form-group"><span>Assignee</span><select className="form-select" value={draft.assigneeContributorId} onChange={(event) => setDraftField('assigneeContributorId', event.target.value)}><option value="">Unassigned</option>{assignees.map((person) => <option key={person.id} value={person.id}>{person.displayName}</option>)}</select></label>
-                        <label className="form-group request-linked-guide"><span>Linked published screenshot {['done', 'already_exists'].includes(draft.status) ? '*' : ''}</span><select className="form-select" value={draft.linkedRecordId} onChange={(event) => setDraftField('linkedRecordId', event.target.value)}><option value="">No linked screenshot</option>{items.filter((item) => !item.archivedAt).map((item) => <option key={item.id} value={String(item.id)}>{item.title}</option>)}</select></label>
+                        <label className="form-group request-linked-guide"><span>Linked published screenshot {['done', 'already_exists'].includes(draft.status) ? '*' : ''}</span><span className="request-linked-search"><AppIcon name="Search" size={14} /><input value={linkedQuery} onChange={(event) => setLinkedQuery(event.target.value)} placeholder="Search published screenshots" /></span><select className="form-select" value={draft.linkedRecordId} onChange={(event) => setDraftField('linkedRecordId', event.target.value)}><option value="">No linked screenshot</option>{linkedItems.map((item) => <option key={item.id} value={String(item.id)}>{item.title}</option>)}</select></label>
                         <label className="form-group request-resolution"><span>Resolution / update note {draft.status === 'cannot_be_done' ? '*' : ''}</span><textarea className="form-textarea short" value={draft.resolutionNote} onChange={(event) => setDraftField('resolutionNote', event.target.value)} placeholder="Explain the outcome or leave a useful handoff note…" /></label>
                     </div>
                     <div className="request-savebar"><span>Version {selected.version} · {selected.updatedByName ? `last edited by ${selected.updatedByName}` : 'not edited yet'}</span><button type="button" className="button button-primary" disabled={saving} onClick={save}><AppIcon name="Save" size={15} />{saving ? 'Saving…' : 'Save update'}</button></div>

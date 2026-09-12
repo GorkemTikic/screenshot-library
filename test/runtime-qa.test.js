@@ -11,6 +11,8 @@ test('the development server exposes the same live catalog URL as production', a
   const config = await readFile(new URL('../vite.config.js', import.meta.url), 'utf8');
   assert.match(config, /configureServer/);
   assert.match(config, /data\.json/);
+  assert.match(config, /liveDataFiles\.get\(pathname\)/);
+  assert.doesNotMatch(config, /pathname\.endsWith/);
 });
 
 test('market ticker does not call a browser-blocked news endpoint', async () => {
@@ -31,6 +33,7 @@ test('analytics charts declare zero-safe responsive dimensions', async () => {
   containers.forEach((container) => {
     assert.match(container, /minWidth=\{0\}/);
     assert.match(container, /minHeight=\{0\}/);
+    assert.match(container, /initialDimension=\{\{ width: 480, height: 300 \}\}/);
   });
 });
 
@@ -62,4 +65,12 @@ test('inspector media can shrink and contains the complete image on both axes', 
   assert.match(image, /min-width:\s*0/);
   assert.match(image, /min-height:\s*0/);
   assert.match(image, /object-fit:\s*contain/);
+});
+
+test('request updates return hydrated metadata and the catalog link picker is searchable', async () => {
+  const worker = await readFile(new URL('../worker/src/request-writer.ts', import.meta.url), 'utf8');
+  const workflow = await readFile(new URL('../src/components/requests/RequestWorkflow.jsx', import.meta.url), 'utf8');
+  assert.match(worker, /listWorkflowRequests\(this\.env\)/);
+  assert.match(workflow, /Search published screenshots/);
+  assert.match(workflow, /mergeConflictDraft/);
 });
