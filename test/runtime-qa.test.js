@@ -77,5 +77,5 @@ test('request updates return hydrated metadata and the catalog link picker is se
 
 test('the owner import is connected to the existing read-only Sheet endpoint', async () => {
   const config = await readFile(new URL('../worker/wrangler.toml', import.meta.url), 'utf8');
-  assert.match(config, /REQUESTS_SOURCE_URL\s*=\s*"https:\/\/script\.google\.com\/macros\/s\/[^\"]+\/exec\?getRequests=true"/);
+  assert.match(config, /REQUESTS_SOURCE_URL\s*=\s*"https:\/\/script\.google\.com\/macros\/s\/[^"]+\/exec\?getRequests=true"/);
 });

@@ -204,4 +204,3 @@ npx wrangler deploy --dry-run --config worker/wrangler.toml
 - [ ] Run browser QA for owner tabs, contributor Requests-only access, status update/history, request submission, owner metrics, desktop/mobile inspector fit, and console errors.
 - [ ] Review the complete diff against the approved spec; confirm no GitHub credentials entered the frontend and no deployment/push occurred.
 - [ ] Commit any verification-only fixes in focused commits, then keep the branch/worktree intact for user review.
-
