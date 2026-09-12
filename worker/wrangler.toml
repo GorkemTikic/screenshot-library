@@ -7,6 +7,7 @@ GITHUB_OWNER = "GorkemTikic"
 GITHUB_REPO = "screenshot-library"
 GITHUB_BRANCH = "main"
 ALLOWED_ORIGINS = "http://localhost:5173,https://gorkemtikic.github.io"
+REQUESTS_SOURCE_URL = ""
 
 [[d1_databases]]
 binding = "DB"
@@ -17,6 +18,14 @@ database_id = "00000000-0000-0000-0000-000000000000"
 name = "CATALOG_WRITER"
 class_name = "CatalogWriter"
 
+[[durable_objects.bindings]]
+name = "REQUEST_WRITER"
+class_name = "RequestWriter"
+
 [[migrations]]
 tag = "v1"
 new_sqlite_classes = ["CatalogWriter"]
+
+[[migrations]]
+tag = "v2"
+new_sqlite_classes = ["RequestWriter"]

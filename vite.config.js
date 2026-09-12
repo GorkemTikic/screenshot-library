@@ -12,14 +12,16 @@ const copyLiveData = {
   configureServer(server) {
     server.middlewares.use((request, response, next) => {
       const pathname = new URL(request.url, 'http://local').pathname
-      if (pathname !== '/screenshot-library/data.json' && pathname !== '/data.json') return next()
+      const fileName = pathname.endsWith('/requests.json') ? 'requests.json' : pathname.endsWith('/data.json') ? 'data.json' : ''
+      if (!fileName) return next()
       response.setHeader('Content-Type', 'application/json; charset=utf-8')
       response.setHeader('Cache-Control', 'no-store')
-      response.end(readFileSync('src/data/data.json'))
+      response.end(readFileSync(`src/data/${fileName}`))
     })
   },
   closeBundle() {
     copyFileSync('src/data/data.json', 'dist/data.json')
+    copyFileSync('src/data/requests.json', 'dist/requests.json')
   },
 }
 

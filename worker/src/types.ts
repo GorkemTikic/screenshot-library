@@ -3,6 +3,7 @@ import type { SessionRole } from './crypto';
 export interface Env {
   DB: D1Database;
   CATALOG_WRITER: DurableObjectNamespace;
+  REQUEST_WRITER: DurableObjectNamespace;
   GITHUB_TOKEN: string;
   GITHUB_OWNER: string;
   GITHUB_REPO: string;
@@ -10,6 +11,7 @@ export interface Env {
   SESSION_SECRET: string;
   OWNER_BOOTSTRAP_CODE: string;
   ALLOWED_ORIGINS: string;
+  REQUESTS_SOURCE_URL: string;
 }
 
 export interface ContributorRow {
