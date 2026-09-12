@@ -1,7 +1,27 @@
 export type CatalogValue = string | number | boolean | null | undefined;
-export type CatalogItem = Record<string, CatalogValue> & { id: number; title?: string; version?: string };
+export type CatalogItem = Record<string, unknown> & { id: number; title?: string; version?: string };
 
-const EDITABLE_FIELDS = new Set(['title', 'text', 'text_tr', 'topic', 'language', 'platform', 'owner', 'ownerSince']);
+const EDITABLE_FIELDS = new Set(['title', 'text', 'text_tr', 'topic', 'language', 'platform']);
+
+export interface OwnerInterval {
+  ownerKey: string;
+  owner: string;
+  from: string | null;
+  to: string | null;
+  reason: string;
+  changedBy: string;
+}
+
+export function ownerKeyFromName(name = ''): string {
+  return String(name).normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+function ownerIntervals(item: CatalogItem): OwnerInterval[] {
+  if (Array.isArray(item.ownerHistory)) return structuredClone(item.ownerHistory) as OwnerInterval[];
+  const owner = String(item.owner || '').trim();
+  return owner ? [{ ownerKey: ownerKeyFromName(owner), owner, from: item.ownerSince ? String(item.ownerSince) : null, to: null, reason: 'legacy-attribution', changedBy: 'migration' }] : [];
+}
 
 export interface CatalogMutation {
   action: 'create' | 'update' | 'replace-image' | 'archive' | 'rollback' | 'resolve-conflict';
@@ -66,12 +86,15 @@ export function applyCatalogMutation(items: CatalogItem[], mutation: CatalogMuta
 } {
   const patch = sanitizePatch(mutation.patch || {});
   if (mutation.action === 'create') {
+    const key = ownerKeyFromName(metadata.contributor);
     const record: CatalogItem = {
       ...patch,
       id: metadata.nextId,
       platform: patch.platform || 'mobile',
-      owner: patch.owner || metadata.contributor,
-      ownerSince: patch.ownerSince || metadata.now,
+      owner: metadata.contributor,
+      ownerKey: key,
+      ownerSince: metadata.now,
+      ownerHistory: [{ ownerKey: key, owner: metadata.contributor, from: metadata.now, to: null, reason: 'created', changedBy: metadata.contributor }],
       updatedAt: metadata.now,
       updatedBy: metadata.contributor,
       version: metadata.version,
@@ -107,6 +130,46 @@ export function applyCatalogMutation(items: CatalogItem[], mutation: CatalogMuta
     before,
     changedFields: [...Object.keys(serverPatch), 'updatedAt', 'updatedBy', 'version'],
   };
+}
+
+export function transferImageOwnership(record: CatalogItem, before: CatalogItem, contributor: string, now: string): void {
+  if (String(record.image || '') === String(before.image || '')) return;
+  const nextKey = ownerKeyFromName(contributor);
+  const currentKey = String(before.ownerKey || ownerKeyFromName(String(before.owner || '')));
+  const history = ownerIntervals(before);
+  if (currentKey === nextKey) {
+    record.owner = contributor;
+    record.ownerKey = nextKey;
+    record.ownerSince = before.ownerSince || now;
+    record.ownerHistory = history;
+    return;
+  }
+  let openIndex = -1;
+  for (let index = history.length - 1; index >= 0; index -= 1) {
+    if (history[index]!.to == null) { openIndex = index; break; }
+  }
+  if (openIndex >= 0) history[openIndex] = { ...history[openIndex]!, to: now };
+  history.push({ ownerKey: nextKey, owner: contributor, from: now, to: null, reason: 'image-replaced', changedBy: contributor });
+  record.owner = contributor;
+  record.ownerKey = nextKey;
+  record.ownerSince = now;
+  record.ownerHistory = history;
+}
+
+export function buildRollbackRecord(before: CatalogItem, prior: CatalogItem, contributor: string, now: string, version: string): CatalogItem {
+  const record: CatalogItem = {
+    ...prior,
+    id: before.id,
+    owner: before.owner,
+    ownerKey: before.ownerKey,
+    ownerSince: before.ownerSince,
+    ownerHistory: ownerIntervals(before),
+    updatedAt: now,
+    updatedBy: contributor,
+    version,
+  };
+  transferImageOwnership(record, before, contributor, now);
+  return record;
 }
 
 export function imageTypeFromSignature(bytes: Uint8Array): 'image/png' | 'image/jpeg' | 'image/webp' | null {

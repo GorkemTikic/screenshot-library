@@ -1,4 +1,4 @@
-import { applyCatalogMutation, CatalogConflictError, imageTypeFromSignature, safeImageName, type CatalogItem, type CatalogMutation } from './catalog';
+import { applyCatalogMutation, buildRollbackRecord, CatalogConflictError, imageTypeFromSignature, safeImageName, transferImageOwnership, type CatalogItem, type CatalogMutation } from './catalog';
 import { advanceBranch, createCommit, createImageBlob, dataTreeEntry, deleteTreeEntry, imageTreeEntry, readRepoState } from './github';
 import { json } from './http';
 import type { Env, Principal } from './types';
@@ -102,7 +102,7 @@ export class CatalogWriter {
         const index = state.items.findIndex((item) => item.id === payload.recordId);
         if (index < 0) throw new Error('Screenshot record was not found.');
         const before = state.items[index]!;
-        const record: CatalogItem = { ...prior, updatedAt: now, updatedBy: principal.displayName, version: crypto.randomUUID() };
+        const record = buildRollbackRecord(before, prior, principal.displayName, now, crypto.randomUUID());
         const items = [...state.items];
         items[index] = record;
         mutationResult = { items, record, before, changedFields: Object.keys(record) };
@@ -120,6 +120,7 @@ export class CatalogWriter {
         const imagePath = safeImageName(image.name, imageMime, Date.now());
         const blobSha = await createImageBlob(this.env, imageBytes);
         mutationResult.record.image = imagePath;
+        transferImageOwnership(mutationResult.record, mutationResult.before || mutationResult.record, principal.displayName, now);
         entries.push(imageTreeEntry(imagePath, blobSha));
         const removable = oldImageCanBeRemoved(mutationResult.before, mutationResult.items, imagePath);
         if (removable) entries.push(deleteTreeEntry(removable));

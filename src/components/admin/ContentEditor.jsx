@@ -7,24 +7,24 @@ import { useUnsavedChanges } from '../../hooks/useUnsavedChanges';
 import { ConflictResolver } from '../ConflictResolver';
 import { ImageReplaceField } from './ImageReplaceField';
 
-const FIELDS = ['title', 'text', 'text_tr', 'topic', 'language', 'platform', 'owner', 'ownerSince'];
+const FIELDS = ['title', 'text', 'text_tr', 'topic', 'language', 'platform'];
 const LANGUAGES = ['English', 'Chinese', 'Arabic', 'Russian', 'Vietnamese', 'Multi-Language'];
 
-function initialDraft(item, owner) {
+function initialDraft(item) {
     return item ? Object.fromEntries(FIELDS.map((field) => [field, item[field] || (field === 'platform' ? 'mobile' : '')])) : {
-        title: '', text: '', text_tr: '', topic: 'General', language: 'English', platform: 'mobile', owner: owner || '', ownerSince: new Date().toISOString().slice(0, 10),
+        title: '', text: '', text_tr: '', topic: 'General', language: 'English', platform: 'mobile',
     };
 }
 
 export function ContentEditor({ item, onClose, onPublished }) {
     const auth = useAuth();
     const [base, setBase] = useState(item || null);
-    const [draft, setDraft] = useState(() => initialDraft(item, auth.principal?.displayName));
+    const [draft, setDraft] = useState(() => initialDraft(item));
     const [image, setImage] = useState(null);
     const [languageTab, setLanguageTab] = useState('source');
     const [status, setStatus] = useState({ state: 'idle', message: '' });
     const [conflict, setConflict] = useState(null);
-    const patch = useMemo(() => buildPatch(base || initialDraft(null, ''), draft, FIELDS), [base, draft]);
+    const patch = useMemo(() => buildPatch(base || initialDraft(null), draft, FIELDS), [base, draft]);
     const dirty = Boolean(image) || Object.keys(patch).length > 0;
     useUnsavedChanges(dirty);
 
@@ -88,8 +88,7 @@ export function ContentEditor({ item, onClose, onPublished }) {
                         <label className="form-group"><span>Title *</span><input className="form-input" value={draft.title} onChange={(event) => update('title', event.target.value)} maxLength={240} /></label>
                         <div className="form-row"><label className="form-group"><span>Topic *</span><select className="form-select" value={draft.topic} onChange={(event) => update('topic', event.target.value)}>{Object.keys(TOPIC_META).map((topic) => <option key={topic}>{topic}</option>)}</select></label><label className="form-group"><span>Language *</span><select className="form-select" value={draft.language} onChange={(event) => update('language', event.target.value)}>{LANGUAGES.map((language) => <option key={language}>{language}</option>)}</select></label></div>
                         <div className="form-group"><span>Platform *</span><div className="editor-segments">{['mobile', 'web'].map((value) => <button type="button" key={value} className={draft.platform === value ? 'active' : ''} onClick={() => update('platform', value)}><AppIcon name={value === 'mobile' ? 'Smartphone' : 'Monitor'} size={15} />{value === 'mobile' ? 'Mobile app' : 'Web desktop'}</button>)}</div></div>
-                        <label className="form-group"><span>Prepared by</span><input className="form-input" value={draft.owner} onChange={(event) => update('owner', event.target.value)} /></label>
-                        <label className="form-group"><span>Ownership since</span><input type="date" className="form-input" value={String(draft.ownerSince || '').slice(0, 10)} onChange={(event) => update('ownerSince', event.target.value)} /></label>
+                        {item && <div className="publish-summary"><div><AppIcon name="UserRound" size={16} /><span><strong>{item.owner}</strong><small>Ownership transfers only when the screenshot image is replaced.</small></span></div></div>}
                         <div className="publish-summary"><div><AppIcon name="ShieldCheck" size={16} /><span><strong>Atomic publishing</strong><small>Your text and image become one version. Concurrent edits are merged when safe.</small></span></div><div><AppIcon name="UserRound" size={16} /><span><strong>{auth.principal.displayName}</strong><small>Will be recorded in the audit trail</small></span></div></div>
                     </aside>
                 </div>

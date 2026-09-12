@@ -10,7 +10,18 @@
     "id": 1782488649538,
     "updatedAt": "2026-06-26 15:44 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2026-06-26T15:44:09.538Z"
+    "ownerSince": "2026-06-26T15:44:09.538Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Setting Up Margin Call Alerts - EN",
@@ -23,7 +34,18 @@
     "id": 1781106821502,
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Realized PnL on Open Position - EN",
@@ -36,7 +58,18 @@
     "id": 1778343955327,
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Position/Order shows in K line K线图显示仓位/订单信息 - CN",
@@ -49,7 +82,18 @@
     "id": 1768336734279,
     "updatedAt": "2026-01-14 04:38 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-13T20:38:54.279Z"
+    "ownerSince": "2026-01-13T20:38:54.279Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Top Movers 市场异动 - CN",
@@ -62,7 +106,18 @@
     "id": 1768324962732,
     "updatedAt": "2026-01-14 01:25 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-13T17:22:42.732Z"
+    "ownerSince": "2026-01-13T17:22:42.732Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Convert 合约兑换 - CN",
@@ -75,7 +130,18 @@
     "id": 1768323763176,
     "updatedAt": "2026-01-14 01:08 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-13T17:02:43.176Z"
+    "ownerSince": "2026-01-13T17:02:43.176Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "TOP MOVER Page - EN",
@@ -88,7 +154,18 @@
     "id": 1768261914295,
     "updatedAt": "2026-01-12 23:51 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2026-01-12T23:51:54.295Z"
+    "ownerSince": "2026-01-12T23:51:54.295Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Small Debt Convert History 小额负债转换历史记录 - CN",
@@ -101,7 +178,18 @@
     "id": 1768249753127,
     "updatedAt": "2026-01-13 04:29 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-12T20:29:13.127Z"
+    "ownerSince": "2026-01-12T20:29:13.127Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Small Debt Convert 小额负债转换 - CN",
@@ -114,7 +202,18 @@
     "id": 1768248753899,
     "updatedAt": "2026-01-13 04:12 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-12T20:12:33.899Z"
+    "ownerSince": "2026-01-12T20:12:33.899Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Close Open Position on Stopped Grid - EN",
@@ -127,7 +226,18 @@
     "id": 1767888931446,
     "updatedAt": "2026-01-08 16:15 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2026-01-08T16:15:31.446Z"
+    "ownerSince": "2026-01-08T16:15:31.446Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Token & Project Feedback - EN",
@@ -140,7 +250,18 @@
     "id": 1767733057149,
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "PM Disable (Back to Classic) 关闭统一账户 (回到经典交易账户) - CN",
@@ -153,7 +274,18 @@
     "id": 1767726601188,
     "updatedAt": "2026-01-07 03:10 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-06T19:10:01.188Z"
+    "ownerSince": "2026-01-06T19:10:01.188Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
@@ -166,7 +298,18 @@
     "id": 1767721746211,
     "updatedAt": "2026-01-08 00:06 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-06T17:49:06.211Z"
+    "ownerSince": "2026-01-06T17:49:06.211Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "EC Max Loss 事件合约最大损失 - CN",
@@ -178,7 +321,18 @@
     "platform": "mobile",
     "id": 1767121840986,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-30T19:10:40.986Z"
+    "ownerSince": "2025-12-30T19:10:40.986Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "EC Cooling Off Period 事件合约冷静期 - CN",
@@ -190,7 +344,18 @@
     "platform": "mobile",
     "id": 1767120924398,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-30T18:55:24.398Z"
+    "ownerSince": "2025-12-30T18:55:24.398Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How to add/remove funds in portfolio 如何添加/移除项目里的资金 - CN",
@@ -202,7 +367,18 @@
     "platform": "mobile",
     "id": 1767118627287,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-30T18:17:07.287Z"
+    "ownerSince": "2025-12-30T18:17:07.287Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How to remove CT in portfolio 如何在带单项目里移除跟单员 - CN",
@@ -214,7 +390,18 @@
     "platform": "mobile",
     "id": 1767117728709,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-30T18:02:08.709Z"
+    "ownerSince": "2025-12-30T18:02:08.709Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Create Invitation Code (Private) 创建邀请码（私域）- CN",
@@ -226,7 +413,18 @@
     "platform": "mobile",
     "id": 1767116503784,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-30T17:41:43.784Z"
+    "ownerSince": "2025-12-30T17:41:43.784Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Adjust Min Copy Amount (Private) 调整最小跟单金额（私域）- CN",
@@ -238,7 +436,18 @@
     "platform": "mobile",
     "id": 1767115486730,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-30T17:24:46.730Z"
+    "ownerSince": "2025-12-30T17:24:46.730Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Enable Portfolio Margin - EN",
@@ -251,7 +460,18 @@
     "id": 1766691181367,
     "owner": "CS VERA",
     "updatedAt": "2026-09-02 19:36 UTC+0",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Loan Repay (Borrowed Coin) 借币还款（借贷币种）- CN",
@@ -263,7 +483,18 @@
     "platform": "mobile",
     "id": 1766685510697,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T17:58:30.697Z"
+    "ownerSince": "2025-12-25T17:58:30.697Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Loan Repay (Collateral) 借币还款（抵押物）- CN",
@@ -276,7 +507,18 @@
     "id": 1766684949490,
     "updatedAt": "2025-12-31 03:31 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T17:49:09.490Z"
+    "ownerSince": "2025-12-25T17:49:09.490Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Loan Order History 借币订单历史 - CN",
@@ -288,7 +530,18 @@
     "platform": "mobile",
     "id": 1766683877481,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T17:31:17.481Z"
+    "ownerSince": "2025-12-25T17:31:17.481Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "BNB Discount BNB折扣 - CN",
@@ -300,7 +553,18 @@
     "platform": "mobile",
     "id": 1766681686727,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T16:54:46.727Z"
+    "ownerSince": "2025-12-25T16:54:46.727Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Add/Remove Margin in Isolated Position 增加/减少保证金（逐仓） - CN",
@@ -312,7 +576,18 @@
     "platform": "mobile",
     "id": 1766679658205,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T16:20:58.205Z"
+    "ownerSince": "2025-12-25T16:20:58.205Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率）- CN",
@@ -324,7 +599,18 @@
     "platform": "mobile",
     "id": 1766678630969,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T16:03:50.969Z"
+    "ownerSince": "2025-12-25T16:03:50.969Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Webhook Failed Signal Webhook失败信号 - CN",
@@ -336,7 +622,18 @@
     "platform": "web",
     "id": 1766676606420,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T15:30:06.420Z"
+    "ownerSince": "2025-12-25T15:30:06.420Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "PM Enable 开启统一账户 - CN",
@@ -349,7 +646,18 @@
     "id": 1766598907265,
     "updatedAt": "2026-01-07 03:10 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T17:55:07.265Z"
+    "ownerSince": "2025-12-24T17:55:07.265Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
@@ -361,7 +669,18 @@
     "platform": "mobile",
     "id": 1766597363030,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T17:29:23.030Z"
+    "ownerSince": "2025-12-24T17:29:23.030Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Funding Fee History 资金费用历史 - CN",
@@ -373,7 +692,18 @@
     "platform": "mobile",
     "id": 1766595089163,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T16:51:29.163Z"
+    "ownerSince": "2025-12-24T16:51:29.163Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Transaction History (Export) 合约资金流水（导出）- CN",
@@ -385,7 +715,18 @@
     "platform": "mobile",
     "id": 1766594411291,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T16:40:11.291Z"
+    "ownerSince": "2025-12-24T16:40:11.291Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Copy Trading History - EN",
@@ -396,7 +737,18 @@
     "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
     "id": 1765162649314,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T02:57:29.314Z"
+    "ownerSince": "2025-12-08T02:57:29.314Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Swap Button (BNFCR) - EN",
@@ -408,7 +760,18 @@
     "text_tr": "USDⓈ-M Vadeli İşlemler hesabınızdaki uygun bir varlığı takas etmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** **Takas**a (**Swap**) dokunun.\n\n**5 -)** **Alıcı** (**To**) alanından almak istediğiniz varlığı seçin.\n\n**6 -)** **Gönderen** (**From**) alanından dönüştürmek istediğiniz varlığı seçin.\n\n**7 -)** Tutarı girin, gerçek zamanlı oranı inceleyin ve **Takası Onayla**ya (**Confirm Swap**) dokunun.\n\nKullanılabilir dönüştürme varlıkları, oran ve azami tutar onaylamadan önce Takas sayfasında gösterilir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "System Feedback - EN",
@@ -420,7 +783,18 @@
     "text_tr": "Binance uygulamasından Sistem Geri Bildirimi göndermek için aşağıdaki adımları takip edin:\n\n**1 -)** **Ana Sayfa**yı (**Home**) açın.\n\n**2 -)** Sol üst köşedeki **Profil/Menü** simgesine dokunun.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (**Settings**) simgesine dokunun.\n\n**4 -)** **Yardım ve Destek**i (**Help & Support**) seçin.\n\n**5 -)** **Sistem Geri Bildirimi**ne (**System Feedback**) dokunun.\n\n**6 -)** Mesajı inceleyin ve **Gönder**e (**Send**) dokunun.\n\n**7 -)** **Başarılı** (**Success**) mesajının göründüğünü doğrulayın.\n\nSistem Geri Bildirimi istemi, bir sorunun belirlenmesine yardımcı olmak için uygulama hata günlüklerini içerebilir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Transaction History (Export) - EN",
@@ -432,7 +806,18 @@
     "text_tr": "Vadeli İşlemler işlem geçmişinizi dışa aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** **Geçmiş** (**History**) simgesine dokunun.\n\n**3 -)** **İşlem Geçmişi** (**Transaction History**) sekmesini seçin.\n\n**4 -)** Sağ üst köşedeki **Dışa Aktar** (**Export**) simgesine dokunun.\n\n**5 -)** Gerekli **Zaman Aralığı**nı (**Time Range**) seçin ve **Profil Biçimi** (**Profile Format**) altında **PDF**, **Excel** veya **CSV** seçin.\n\n**6 -)** Belirli bir tarih aralığı kullanmak için **Özelleştir**i (**Customize**) seçin, başlangıç ve bitiş tarihlerini belirleyin, ardından **Onayla**ya (**Confirm**) dokunun.\n\n**7 -)** Dışa aktarma dosyasını oluşturmak için **Oluştur**a (**Generate**) dokunun.\n\nTek bir dışa aktarma için seçilebilecek en uzun zaman aralığı 12 aydır. Daha uzun bir geçmişe ihtiyacınız varsa farklı dönemler için ayrı dışa aktarmalar oluşturun.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Cross Margin To Spot - EN",
@@ -444,7 +829,18 @@
     "text_tr": "Çapraz Marjinden Spot hesaba varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **Çapraz Marjin**i (**Cross Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Çapraz Marjin** (**Cross Margin**), **Alıcı**yı (**To**) **Spot** olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nAktarılabilir tutar, Çapraz Marjin hesap durumunuza ve marjin seviyenize bağlıdır.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "ownerSince": "2026-09-02T19:36:27.182Z",
-    "updatedAt": "2026-09-02 19:36 UTC+0"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Cooling-Off Period - EN",
@@ -457,7 +853,18 @@
     "text_tr": "Vadeli İşlemler için bekleme süresini etkinleştirmek üzere aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasında **\"...\"** simgesine dokunun.\n\n**2 -)** **Bekleme Süresi**ni (**Cooling-off Period**) seçin.\n\n**3 -)** **Vadeli İşlemler İşlevini Devre Dışı Bırak** (**Disable Futures Trading Function**) seçeneğini etkinleştirin.\n\n**4 -)** **1 Gün** (**1 Day**), **1 Hafta** (**1 Week**), **1 Ay** (**1 Month**) veya **Süresiz** (**Indefinite**) seçeneklerinden birini seçin.\n\n**5 -)** **Onayla**ya (**Confirm**) dokunun.\n\nOnaylamadan önce uygulamada gösterilen uyarıyı inceleyin. Bu ayarı etkinleştirmeden önce açık emirlerinizi kapatmanız gerekir ve seçilen süre boyunca Vadeli İşlemler kullanılamaz.\n\nAyrıntılar için [Bekleme Süresi İşlevi Nedir ve Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Mark Price Chart - EN",
@@ -469,7 +876,18 @@
     "text_tr": "Bir Vadeli İşlemler sembolü için Gösterge Fiyatı grafiğini görüntülemek üzere aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** İşlem çiftinin yanındaki **Grafik** (**Chart**) simgesine dokunun.\n\n**3 -)** Grafiğin üzerindeki **Son Fiyat** (**Last Price**) seçicisine dokunun.\n\n**4 -)** **Gösterge Fiyatı**nı (**Mark Price**) seçin.\n\nFiyat seçicisinde ayrıca **Son Fiyat** (**Last Price**) ve **Endeks Fiyatı** (**Index Price**) seçenekleri de bulunur.\n\nAyrıntılar için [Bir Vadeli İşlemler Sözleşmesinin Son Fiyatı ile Gösterge Fiyatı Arasındaki Fark Nedir?](https://www.binance.com/blog/futures/5704082076024731087) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "ownerSince": "2026-09-02T19:36:27.182Z",
-    "updatedAt": "2026-09-02 19:36 UTC+0"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Funding Fee History - EN",
@@ -481,7 +899,18 @@
     "text_tr": "Vadeli İşlemler fonlama ücreti geçmişinizi görüntülemek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Emir bölümünün üzerindeki **Geçmiş** (**History**) simgesine dokunun.\n\n**3 -)** Sekmeler arasında kaydırın ve **Fonlama Ücreti**ni (**Funding Fee**) seçin.\n\nKayıtları varlığa veya zaman aralığına göre daraltmak için mevcut filtreleri kullanın. Sayfa, seçilen Vadeli İşlemler hesabı için ödenen ve alınan fonlama ücretlerini gösterir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "ownerSince": "2026-09-02T19:36:27.182Z",
-    "updatedAt": "2026-09-02 19:36 UTC+0"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "LOAN HISTORY (ONGOING LOANS) - EN",
@@ -493,7 +922,18 @@
     "text_tr": "Devam eden Borç/Kredi emirlerinizi veya geçmişinizi görmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) butonuna tıklayın.\n\n**2 -)** **\"Daha Fazla\"** (More) seçeneğine tıklayın.\n\n**3 -)** Sayfayı aşağı kaydırın ve Finans bölümü altındaki **\"Borç Alma\"** (Loans) seçeneğini bulun.\n\n**4 -)** Sağ üst köşedeki **Geçmiş İkonuna** tıklayın.\n\nBu sayfada devam eden kredilerinizi ve kredi geçmişinizi görebilirsiniz.",
     "updatedAt": "2026-01-06 21:15 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.433Z"
+    "ownerSince": "2025-12-08T03:22:50.433Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Spot Wallet to Isolated Margin - EN",
@@ -505,7 +945,18 @@
     "text_tr": "Spot hesaptan İzole Marjine varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **İzole Marjin**i (**Isolated Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Spot**, **Alıcı**yı (**To**) **İzole Marjin** (**Isolated Margin**) olarak ayarlayın ve ilgili marjin çiftini seçin.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nVarlığın, seçilen izole marjin çifti tarafından desteklenmesi gerekir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "ownerSince": "2026-09-02T19:36:27.182Z",
-    "updatedAt": "2026-09-02 19:36 UTC+0"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Isolated Margin to Spot Wallet - EN",
@@ -517,7 +968,18 @@
     "text_tr": "İzole Marjinden Spot hesaba varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **İzole Marjin**i (**Isolated Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **İzole Marjin** (**Isolated Margin**) olarak ayarlayın, ilgili marjin çiftini seçin ve **Alıcı**yı (**To**) **Spot** olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nAktarılabilir tutar, seçilen izole marjin çiftine ve bu çiftin marjin seviyesine bağlıdır.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "ownerSince": "2026-09-02T19:36:27.182Z",
-    "updatedAt": "2026-09-02 19:36 UTC+0"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Spot Wallet to Cross Margin - EN",
@@ -529,7 +991,18 @@
     "text_tr": "Spot hesaptan Çapraz Marjine varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Spot** seçeneğini seçin.\n\n**3 -)** **Çapraz Marjin**i (**Cross Margin**) açın.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Spot**, **Alıcı**yı (**To**) **Çapraz Marjin** (**Cross Margin**) olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nOnaylamadan önce Transfer sayfasında gösterilen kullanılabilir bakiyeyi kontrol edin.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "ownerSince": "2026-09-02T19:36:27.182Z",
-    "updatedAt": "2026-09-02 19:36 UTC+0"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Mark Price Chart - RU",
@@ -539,7 +1012,18 @@
     "topic": "Futures Trading",
     "id": 1765164170437,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.437Z"
+    "ownerSince": "2025-12-08T03:22:50.437Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Mark Price Chart - VI",
@@ -549,7 +1033,18 @@
     "topic": "Futures Trading",
     "id": 1765164170438,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.438Z"
+    "ownerSince": "2025-12-08T03:22:50.438Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Mark Price Chart - AR",
@@ -559,7 +1054,18 @@
     "topic": "Futures Trading",
     "id": 1765164170439,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.439Z"
+    "ownerSince": "2025-12-08T03:22:50.439Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change Asset Mode (Single,Multi) - EN",
@@ -571,7 +1077,18 @@
     "text_tr": "USDⓈ-M Vadeli İşlemler için **Varlık Modunuzu** (**Asset Mode**) değiştirmek üzere aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **\"Tercihler\"** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **\"Varlık Modu\"** (**Asset Mode**) seçeneğine dokunun.\n\n**5 -)** Tercihinize göre **\"Tek Varlık Modu\"** (**Single-Asset Mode**) veya **\"Çoklu Varlık Modu\"** (**Multi-Assets Mode**) seçeneğini seçin.\n\nDaha fazla bilgi için aşağıdaki rehberlere göz atabilirsiniz:\n\n* [Tek Varlık ve Çoklu Varlık Modları Arasında Nasıl Geçiş Yapılır?](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [Çoklu Varlık Modu Nedir ve Hangi Varlıklar Desteklenir?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - EN",
@@ -583,7 +1100,18 @@
     "text_tr": "Vadeli İşlemler pozisyon modunuzu değiştirmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **Tercihler** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **Pozisyon Ayarları**na (**Position Settings**) dokunun.\n\n**5 -)** **Tek Yön Modu**nu (**One-way Mode**) veya **Hedge Modu**nu (**Hedge Mode**) seçin.\n\nUSDⓈ-M veya COIN-M Vadeli İşlemlerde açık pozisyonlarınız ya da açık emirleriniz varken pozisyon modunu değiştiremezsiniz. Bu ayar USDⓈ-M ve COIN-M Vadeli İşlemler için geçerlidir.\n\nDaha fazla bilgi için [Hedge Modu Nedir ve Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/360041513552) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change Button Settings in Positions - EN",
@@ -595,7 +1123,18 @@
     "text_tr": "Açık Vadeli İşlemler pozisyonlarınızda gösterilen işlem butonlarını özelleştirmek için aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **\"Tercihler\"** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **\"Düzen\"** (**Layout**) sekmesini açın.\n\n**5 -)** **\"Pozisyonlar\"** (**Positions**) seçeneğini seçin.\n\n**6 -)** **\"Pozisyon Butonu Ayarları\"** (**Positions Button Settings**) altında, **\"Kaldıracı Ayarla\"** (**Adjust Leverage**), **\"Kar Al ve Zarar Durdur\"** (**Stop Profit & Loss**), **\"Pozisyonu Kapat\"** (**Close Position**) ve **\"Piyasa Fiyatından Kapat\"** (**Market Close**) gibi seçenekleri göstermek veya gizlemek için anahtarları kullanın. Görüntülenme sırasını değiştirmek için seçeneğin yanındaki tutamacı sürükleyebilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Loan Repayment (Collateral) - EN",
@@ -608,7 +1147,18 @@
     "text_tr": "Devam eden bir krediyi geri ödemenin iki yolu vardır: **Ödünç Alınan Coin** (Borrowed Coin) veya **Teminat** (Collateral) kullanmak. Devam eden bir krediyi teminat miktarınızla geri ödemek istiyorsanız, lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Kredi Siparişleri (Loan Orders) sayfasındaki **\"Devam Eden Siparişler\"** (Ongoing Orders) sekmesine tıklayın.\n\n**2 -)** **\"Geri Öde\"** (Repay) butonuna tıklayın.\n\n**3 -)** Üst menüden **\"Teminat\"** (Collateral) seçeneğine tıklayın.\n\n**4 -)** Geri ödemek istediğiniz tutarı girin.\n\nDetaylar kısmında, **geri ödeme sonrası LTV** oranını ve işlem tamamlandıktan sonra size iade edilecek **teminat miktarını** görebilirsiniz. Devam eden bir krediyi teminat ile bu şekilde geri ödeyebilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
     "updatedAt": "2026-01-08 15:39 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.443Z"
+    "ownerSince": "2025-12-08T03:22:50.443Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Loan Repayment (Borrowed Coin) - EN",
@@ -621,7 +1171,18 @@
     "text_tr": "Devam eden bir krediyi geri ödemenin iki yolu vardır: **Ödünç Alınan Coin** (Borrowed Coin) veya **Teminat** (Collateral) kullanmak. Devam eden bir krediyi ödünç alınan coin ile geri ödemek istiyorsanız, lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Kredi Siparişleri (Loan Orders) sayfasındaki **\"Devam Eden Siparişler\"** (Ongoing Orders) sekmesine tıklayın.\n\n**2 -)** **\"Geri Öde\"** (Repay) butonuna tıklayın.\n\n**3 -)** Üst menüden **\"Ödünç Alınan Coin\"** (Borrowed Coin) seçeneğine tıklayın.\n\n**4 -)** Geri ödemek istediğiniz tutarı girin.\n\nDetaylar kısmında, **geri ödeme sonrası LTV** oranını ve iade edilecek **teminat miktarını** görebilirsiniz. Devam eden bir krediyi ödünç alınan coin ile bu şekilde geri ödeyebilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
     "updatedAt": "2026-01-08 15:36 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.444Z"
+    "ownerSince": "2025-12-08T03:22:50.444Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Futures USDⓈ-M To Spot Wallet - EN",
@@ -634,7 +1195,18 @@
     "platform": "mobile",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Spot Wallet to USDⓈ-M Futures - EN",
@@ -647,7 +1219,18 @@
     "text_tr": "Spot hesaptan USDⓈ-M Vadeli İşlemlere varlık aktarmak için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** **Transfer**e dokunun.\n\n**5 -)** **Gönderen**i (**From**) **Spot**, **Alıcı**yı (**To**) **USDⓈ-M Vadeli İşlemler** (**USDⓈ-M Futures**) olarak ayarlayın.\n\n**6 -)** Varlığı seçin, tutarı girin ve **Transferi Onayla**ya (**Confirm Transfer**) dokunun.\n\nTransferi onaylamadan önce görüntülenen kullanılabilir bakiyeyi kontrol edin.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Cross Margin Adjusted Entry Price - EN",
@@ -658,7 +1241,18 @@
     "id": 1765164170450,
     "updatedAt": "2026-06-10 16:31 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.450Z"
+    "ownerSince": "2025-12-08T03:22:50.450Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "BNB Discount (Futures,Margin Interest) - EN",
@@ -671,7 +1265,18 @@
     "platform": "mobile",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "SWAP LDUSDT to USDT - EN",
@@ -683,7 +1288,18 @@
     "text_tr": "USDⓈ-M Vadeli İşlemlerdeki LDUSDT'yi Earn hesabınızdaki USDT'ye dönüştürmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** Varlık listesinden **LDUSDT** seçeneğine dokunun.\n\n**5 -)** **Takas**a (**Swap**) dokunun.\n\n**6 -)** Gerekirse dönüştürme yönünü ayarlamak için yön simgesine dokunun.\n\n**7 -)** **Gönderen**in (**From**) **USDⓈ-M Vadeli İşlemler - LDUSDT**, **Alıcı**nın (**To**) ise **Earn - USDT** olduğunu doğrulayın. Tutarı girin ve **Onayla**ya (**Confirm**) dokunun.\n\nOnaylamadan önce görüntülenen dönüştürme oranını ve alacağınız tutarı inceleyin.\n\nDaha fazla bilgi için [LDUSDT Nedir ve Vadeli İşlemlerde Teminat Olarak Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "SWAP USDT to LDUSDT - EN",
@@ -695,7 +1311,18 @@
     "text_tr": "Earn hesabınızdaki USDT'yi USDⓈ-M Vadeli İşlemlerdeki LDUSDT'ye dönüştürmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** Varlık listesinden **LDUSDT** seçeneğine dokunun.\n\n**5 -)** **Takas**a (**Swap**) dokunun.\n\n**6 -)** Gerekirse dönüştürme yönünü ayarlamak için yön simgesine dokunun.\n\n**7 -)** **Gönderen**in (**From**) **Earn - USDT**, **Alıcı**nın (**To**) ise **USDⓈ-M Vadeli İşlemler - LDUSDT** olduğunu doğrulayın. Tutarı girin ve **Onayla**ya (**Confirm**) dokunun.\n\nOnaylamadan önce görüntülenen dönüştürme oranını ve alacağınız tutarı inceleyin.\n\nDaha fazla bilgi için [LDUSDT Nedir ve Vadeli İşlemlerde Teminat Olarak Nasıl Kullanılır?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd) rehberine göz atabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "What Is Funding Rate? - EN",
@@ -708,7 +1335,18 @@
     "platform": "mobile",
     "updatedAt": "2026-01-06 23:44 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.454Z"
+    "ownerSince": "2025-12-08T03:22:50.454Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Webhook Failed Signals WEB - EN",
@@ -721,7 +1359,18 @@
     "text_tr": "**Webhook Sinyal İşlemlerindeki** başarısız sinyalleri kontrol etmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Botlar\"** (Bots) sekmesine tıklayın.\n\n**2 -)** **\"Webhook Sinyal İşlemleri\"** (Webhook Signal Trading) seçeneğine tıklayın.\n\n**3 -)** Çöp kutusu ve duraklat butonunun yanındaki **\"Geçmiş İkonuna\"** tıklayın.\n\n**4 -)** Bu sayfada **\"Başarısız Sinyaller\"** (Failed Signals) sekmesini göreceksiniz; sinyallerin başarısız olma nedenlerini buradan inceleyebilirsiniz.\n\n---\n\nSinyal kurulumu hakkında daha fazla bilgi edinmek için bu resmi rehbere göz atabilirsiniz:\n\n* [TradingView ile Sinyal İşlemleri Nasıl Kurulur?](https://www.binance.com/en/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-01-06 21:48 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.455Z"
+    "ownerSince": "2025-12-08T03:22:50.455Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Check For Updates - EN",
@@ -734,7 +1383,18 @@
     "text_tr": "Binance uygulamasının daha yeni bir sürümünün mevcut olup olmadığını kontrol etmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Ana Sayfa**yı (**Home**) açın.\n\n**2 -)** Sol üst köşedeki **Profil/Menü** simgesine dokunun.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (**Settings**) simgesine dokunun.\n\n**4 -)** **Güncellemeleri kontrol et** (**Check for updates**) seçeneğini seçin.\n\nBu sayfada mevcut uygulama sürümünüz gösterilir ve güncelleme varsa ilgili seçenek görünür.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "ADL Indicator/Explanation - EN",
@@ -746,7 +1406,18 @@
     "text_tr": "Ekran görüntüsünde görülen gösterge, **ADL** (Auto De-Leverage) sırasındaki durumunuzu ifade eder. Bu sistemin işleyişi şu şekildedir:\n\n* **ADL Nedir?**: Uzun ve kısa pozisyonlar arasındaki kâr-zarar farkı **Sigorta Fonu** tarafından karşılanamadığında, piyasa dengesini korumak için en yüksek kâra sahip pozisyonlar otomatik olarak kapatılır.\n* **İşleyiş**: Bu işleme **Counter-party Liquidation** (Karşı Taraf Likidasyonu) adı da verilir. ADL, normal likidasyondan farklıdır; bu durumda pozisyonunuzdaki mevcut kârı alırsınız ve sonrasında tekrar işlem yapma şansınız olur.\n* **Gösterge Işıkları**: **ADL** sırasındaki yeriniz 4 çubukla gösterilir; 4 kırmızı çubuk yandığında sırada en üstte olduğunuzu gösterir. 4 ışığın tamamı yanıyor olsa bile, **ADL** işlemi oldukça nadir gerçekleşen bir durumdur. Işıkların tamamı yandığında, bir likidasyon durumunda pozisyonunuz azaltılabilir.\n* **Kaçınma Yöntemleri**: **ADL** riskinden kaçınmak için pozisyon hacminizi küçültebilir ya da pozisyonu kapatıp yeniden açabilirsiniz.\n\nDaha fazla bilgi için resmi rehberimizi inceleyebilirsiniz:\n\n* [Binance ADL Hakkında Sıkça Sorulan Sorular](https://www.binance.com/support/faq/360033525471)\n\nHerhangi bir sorunuz olursa lütfen bizimle paylaşın, size destek olmak için buradayız!",
     "updatedAt": "2026-01-06 23:36 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.457Z"
+    "ownerSince": "2025-12-08T03:22:50.457Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Stop-Market & Stop-Limit Differences - EN",
@@ -759,7 +1430,18 @@
     "platform": "mobile",
     "updatedAt": "2026-01-06 23:25 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.458Z"
+    "ownerSince": "2025-12-08T03:22:50.458Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "DeviceID - EN",
@@ -771,7 +1453,18 @@
     "text_tr": "Cihaz Kimliğinizi bulmak ve kopyalamak için aşağıdaki adımları takip edin:\n\n**1 -)** **Ana Sayfa**yı (**Home**) açın.\n\n**2 -)** Sol üst köşedeki **Profil/Menü** simgesine dokunun.\n\n**3 -)** Sağ üst köşedeki **Ayarlar** (**Settings**) simgesine dokunun.\n\n**4 -)** Sayfayı aşağı kaydırın ve **Hakkımızda** (**About Us**) seçeneğini seçin.\n\n**5 -)** Binance logosuna hızlıca beş kez dokunun.\n\n**6 -)** **Cihaz Kimliği** (**Device ID**) göründüğünde, yanındaki **Kopyala** (**Copy**) simgesine dokunun.\n\nKopyaladığınız Cihaz Kimliğini, yalnızca sorun giderme amacıyla istenirse ilgili destek görüşmesinde paylaşın.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "PNL Analysis Page (To see Fees) - EN",
@@ -783,7 +1476,18 @@
     "text_tr": "PNL Analizinde Vadeli İşlemler fonlama ve işlem ücretlerini incelemek için aşağıdaki adımları takip edin:\n\n**1 -)** **Varlıklar**ı (**Assets**) açın.\n\n**2 -)** **Vadeli İşlemler**i (**Futures**) seçin.\n\n**3 -)** **USDⓈ-M** seçeneğini seçin.\n\n**4 -)** **Bugünün Gerçekleşmiş PNL'i**ne (**Today's Realized PNL**) dokunun.\n\n**5 -)** **Fonlama ve İşlem** (**Funding & Transaction**) sekmesini açın.\n\n**6 -)** **İşlem Ücretini Göster**i (**Show Transaction Fee**) etkinleştirin.\n\nAnalizde gösterilen dönemi seçmek için **7G** (**7D**), **1A** (**1M**), **3A** (**3M**), **1Y** veya **Özelleştir** (**Customize**) seçeneklerini kullanın.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Notification for TP/SL/Funding - EN",
@@ -795,7 +1499,18 @@
     "text_tr": "Vadeli İşlemler bildirimlerini yönetmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **Tercihler** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **Bildirimler** (**Notifications**) sekmesini açın.\n\n**5 -)** **İşlem Bildirimleri**ne (**Trade Notifications**) dokunun.\n\n**6 -)** **TP/SL Tetikleyicisi** (**TP/SL Trigger**), **Fonlama Ücreti Tetikleyicisi** (**Funding Fee Trigger**) ve **Vadeli İşlemler** (**Futures Trading**) anahtarlarını kullanın. İlgili eşiği ayarlamak için **Fonlama Ücreti Tetikleyicisi** veya **Teminat Tamamlama Çağrısı Uyarısı** (**Margin Call Alert**) yanındaki **Düzenle**ye (**Edit**) dokunun.\n\nUygulamada gösterilen **TP/SL Tetikleyicisi** bildirim sınırı günde en fazla 25 bildirimdir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How To Enable/Disable AUTO Borrow/Repay - EN",
@@ -807,7 +1522,18 @@
     "text_tr": "Marjin işlemleri için **Otomatik Borç Alma** (**Auto Borrow**) ve **Otomatik Geri Ödeme** (**Auto Repay**) özelliklerini etkinleştirmek veya devre dışı bırakmak için aşağıdaki adımları takip edin:\n\n**1 -)** **\"İşlem\"** (**Trade**) sayfasını açın.\n\n**2 -)** Emir panelinin üst kısmındaki anahtarı kullanarak **\"Marjin\"** (**Margin**) işlemlerini etkinleştirin.\n\n**3 -)** Emir kontrollerinin yanındaki **\"Auto B\"** seçeneğine dokunun.\n\n**4 -)** **\"Borç Alma ve Geri Ödeme\"** (**Borrow & Repay**) sayfasında **\"Otomatik\"** (**Auto**) sekmesini açın.\n\n**5 -)** **\"Otomatik Borç Alma\"** (**Auto Borrow**) ve **\"Otomatik Geri Ödeme\"** (**Auto Repay**) özelliklerini etkinleştirmek veya devre dışı bırakmak için anahtarları kullanın.\n\n**Otomatik Borç Alma**, kullanılabilir bakiyeniz yetersiz olduğunda emir verirken gerekli varlığı borç alır. **Otomatik Geri Ödeme** ise işlem sonrasında alınan varlıkları aynı marjin hesabındaki ilgili borcu geri ödemek için kullanır.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "updatedAt": "2026-09-02 19:36 UTC+0",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Clear Cache - AR",
@@ -817,7 +1543,18 @@
     "topic": "General",
     "id": 1765164170463,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.463Z"
+    "ownerSince": "2025-12-08T03:22:50.463Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Copy Order History - AR",
@@ -827,7 +1564,18 @@
     "topic": "Copy Trading",
     "id": 1765164170464,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.464Z"
+    "ownerSince": "2025-12-08T03:22:50.464Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Transaction History (Export) - AR",
@@ -837,7 +1585,18 @@
     "topic": "Futures Trading",
     "id": 1765164170465,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.465Z"
+    "ownerSince": "2025-12-08T03:22:50.465Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "System Feedback 系统反馈 - CN",
@@ -847,7 +1606,18 @@
     "topic": "General",
     "id": 1765164170466,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-08T03:22:50.466Z"
+    "ownerSince": "2025-12-08T03:22:50.466Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Clear Cache 清除缓存 - CN",
@@ -858,7 +1628,18 @@
     "id": 1765164170467,
     "platform": "mobile",
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-08T03:22:50.467Z"
+    "ownerSince": "2025-12-08T03:22:50.467Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "System Feedback - AR",
@@ -868,7 +1649,18 @@
     "topic": "General",
     "id": 1765164170468,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.468Z"
+    "ownerSince": "2025-12-08T03:22:50.468Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "PNL Analysis Page (To see Fees) - AR",
@@ -878,7 +1670,18 @@
     "topic": "Futures Trading",
     "id": 1765164170469,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.469Z"
+    "ownerSince": "2025-12-08T03:22:50.469Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "BNB Discount (Futures,Margin Interest) - AR",
@@ -888,7 +1691,18 @@
     "topic": "General",
     "id": 1765164170470,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.470Z"
+    "ownerSince": "2025-12-08T03:22:50.470Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Futures USDS-M To Spot Wallet - AR",
@@ -898,7 +1712,18 @@
     "topic": "Futures Trading",
     "id": 1765164170471,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.471Z"
+    "ownerSince": "2025-12-08T03:22:50.471Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change Button Settings in Positions - AR",
@@ -908,7 +1733,18 @@
     "topic": "Futures Trading",
     "id": 1765164170472,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.472Z"
+    "ownerSince": "2025-12-08T03:22:50.472Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - AR",
@@ -918,7 +1754,18 @@
     "topic": "Futures Trading",
     "id": 1765164170473,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.473Z"
+    "ownerSince": "2025-12-08T03:22:50.473Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Spot Wallet to USDS-M Futures - AR",
@@ -928,7 +1775,18 @@
     "topic": "Futures Trading",
     "id": 1765164170474,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.474Z"
+    "ownerSince": "2025-12-08T03:22:50.474Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Isolated Margin to Spot Wallet - AR",
@@ -938,7 +1796,18 @@
     "topic": "Margin Trading",
     "id": 1765164170475,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.475Z"
+    "ownerSince": "2025-12-08T03:22:50.475Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Notification for TP/SL/Funding - AR",
@@ -948,7 +1817,18 @@
     "topic": "Futures Trading",
     "id": 1765164170476,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.476Z"
+    "ownerSince": "2025-12-08T03:22:50.476Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Loan Repayment (Borrowed Coin) - AR",
@@ -958,7 +1838,18 @@
     "topic": "LOAN",
     "id": 1765164170477,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.477Z"
+    "ownerSince": "2025-12-08T03:22:50.477Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "LOAN HISTORY (ONGOING LOANS) - AR",
@@ -968,7 +1859,18 @@
     "topic": "LOAN",
     "id": 1765164170478,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.478Z"
+    "ownerSince": "2025-12-08T03:22:50.478Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Margin Interest History - EN",
@@ -980,7 +1882,18 @@
     "text_tr": "Marjin faiz geçmişini görüntülemek için aşağıdaki adımları takip edin:\n\n**1 -)** **İşlem** (**Trade**) sayfasını açın.\n\n**2 -)** **Marjin** (**Margin**) işlemlerini etkinleştirin.\n\n**3 -)** **Geçmiş** (**History**) simgesine dokunun.\n\n**4 -)** **İşlemlerim** (**My Trades**) menüsünden **Çapraz Marjin** (**Cross Margin**) veya **İzole Marjin** (**Isolated Margin**) gibi ilgili hesabı seçin.\n\n**5 -)** **Borç Geçmişi**ni (**Debt History**) açın.\n\n**6 -)** **Faiz**i (**Interest**) seçin.\n\nGerekli faiz kayıtlarını bulmak için **Coin** ve **Tür** (**Type**) filtrelerini kullanabilirsiniz.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "owner": "CS VERA",
     "ownerSince": "2026-09-02T19:36:27.182Z",
-    "updatedAt": "2026-09-02 19:36 UTC+0"
+    "updatedAt": "2026-09-02 19:36 UTC+0",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Cooling Off Period Futures 合约冷静期 - CN",
@@ -991,7 +1904,18 @@
     "id": 1765164170480,
     "platform": "mobile",
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-08T03:22:50.480Z"
+    "ownerSince": "2025-12-08T03:22:50.480Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Mark Price Chart 标记价格K线图 - CN",
@@ -1002,7 +1926,18 @@
     "id": 1765164170481,
     "platform": "mobile",
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-08T03:22:50.481Z"
+    "ownerSince": "2025-12-08T03:22:50.481Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) 仓位模式设置 - CN",
@@ -1013,7 +1948,18 @@
     "id": 1765164170482,
     "platform": "mobile",
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-08T03:22:50.482Z"
+    "ownerSince": "2025-12-08T03:22:50.482Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How To Add/Remove Margin to Isolated Position - EN",
@@ -1025,7 +1971,18 @@
     "text_tr": "Vadeli İşlemler İzole pozisyonlarınızda **Teminat Ekleme veya Çıkarma** (Add/Remove Margin) işlemi yapmak için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Teminat miktarının yanındaki **(+)** simgesine tıklayın.\n\n**2 -)** **Teminat Ekle** (Add Margin) veya **Teminat Çıkar** (Remove Margin) sekmesini seçin.\n\n**3 -)** **Miktarı** girin.\n\n**4 -)** Devam etmek için **Onayla** (Confirm) butonuna tıklayın.\n\n---\n\n* **Atanmış Güncel Teminat:** Mevcut pozisyonunuzdaki teminat miktarıdır.\n* **Eklenebilir Maksimum Tutar:** Ekleyebileceğiniz maksimum teminat miktarıdır.\n* **Artış Sonrası Tahmini Likidasyon Fiyatı:** Teminat ekledikten sonraki **tahmini** likidasyon fiyatınızdır.\n\n---\n\nDaha fazla ayrıntı için resmi rehbere göz atabilirsiniz:\n\n* [Çapraz/İzole Marjin Modunda Teminat Bakiyesi Nasıl Ayarlanır?](https://www.binance.com/support/faq/detail/360038447311)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-01-06 23:01 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.483Z"
+    "ownerSince": "2025-12-08T03:22:50.483Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Buy/Sell Tab Setting - EN",
@@ -1038,7 +1995,18 @@
     "text_tr": "Vadeli İşlemler işlem sayfasındaki Al/Sat sekmesi düzenini değiştirmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** Sağ üst köşedeki **\"...\"** simgesine dokunun.\n\n**3 -)** **Tercihler** (**Preferences**) seçeneğini seçin.\n\n**4 -)** **Düzen** (**Layout**) sekmesini açın.\n\n**5 -)** **İşlem Paneli**ni (**Trade Panel**) seçin.\n\n**6 -)** **Al/Sat Sekmesi Ayarı** (**Buy/Sell Tab Setting**) altında **Al/Sat sekmesini göster** (**Display Buy/Sell tab**) veya **Al/Sat sekmesini gizle** (**Hide Buy/Sell tab**) seçeneğini seçin.\n\nSeçtiğiniz seçenek, Al/Sat kontrollerinin işlem panelinde gösterilme biçimini değiştirir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "CLOSE CHAT (CSAT) - EN",
@@ -1048,7 +2016,18 @@
     "topic": "General",
     "id": 1765164170485,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.485Z"
+    "ownerSince": "2025-12-08T03:22:50.485Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How To Change TP/SL to Stop-Limit - EN",
@@ -1060,7 +2039,18 @@
     "text_tr": "Bir **TP/SL** emrini **Stop-Limit** (limit) emrine dönüştürmek için aşağıdaki adımları takip edin:\n\n**1 -)** **Vadeli İşlemler** (**Futures**) işlem sayfasını açın.\n\n**2 -)** **Pozisyonlar** (**Positions**) sekmesini seçin.\n\n**3 -)** İlgili pozisyonda **TP/SL** seçeneğine dokunun.\n\n**4 -)** **TP/SL** sekmesini açın. Bu, varsayılan olarak bir **TP/SL Piyasa Emri**dir (**TP/SL Market Order**) — **Kâr Al** (**Take Profit**) ve **Zarar Durdur** (**Stop Loss**) satırlarında tetikleme fiyatı türü (**Son** (**Last**) veya **Gösterge** (**Mark**)) görünür.\n\n**5 -)** **Kâr Al** ve/veya **Zarar Durdur** yanındaki **Limit Emri** (**Limit Order**) kutucuğunu işaretleyin. Bu işlem, emri bir **TP/SL Limit Emri**ne (**TP/SL Limit Order**) dönüştürür ve **TP Limit** ile **SL Limit** fiyat alanlarını gösterir — limit fiyatınızı girin (veya en iyi alış/satış fiyatını kullanmak için **BBO**'ya dokunun). Ardından **Miktar** (**Amount**) belirleyin ve **Onayla** (**Confirm**) düğmesine dokunun.\n\nTetikleme fiyatı türü **Son** (**Last**) veya **Gösterge** (**Mark**) fiyat olarak ayarlanabilir. Hızlı hareket eden bir piyasada, zarar durdur tetikleme fiyatını likidasyon fiyatına çok yakın ayarlamak emrin gerçekleşmemesine neden olabilir.\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-11 18:34 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-11T18:34:10.668Z"
+    "ownerSince": "2026-09-11T18:34:10.668Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-11T18:34:10.668Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "TP/SL Before Position - EN",
@@ -1072,7 +2062,18 @@
     "text_tr": "Vadeli İşlemler pozisyonu açmadan önce **TP/SL** emri ayarlamak için aşağıdaki adımları takip edin:\n\n**1 -)** **\"Vadeli İşlemler\"** (**Futures**) işlem sayfasındaki emir panelinde **\"TP/SL\"** kutucuğunu işaretleyin.\n\n**2 -)** **\"Gelişmiş\"** (**Advanced**) seçeneğine dokunun.\n\n**3 -)** Hem **\"Kar Al\"** (**Take Profit**) hem de **\"Zarar Durdur\"** (**Stop Loss**) için tetikleme fiyatı türünü seçin. Kullanılabilir seçenekler **\"Gösterge Fiyatı\"** (**Mark Price**) ve **\"Son Fiyat\"** (**Last Price**) seçenekleridir.\n\n**4 -)** **\"Kar Al\"** ve/veya **\"Zarar Durdur\"** emriniz için tetikleme fiyatını girin.\n\n**5 -)** Tetikleme fiyatına ulaşıldığında emrin piyasa emri olarak verilmesini istiyorsanız **\"Piyasa\"** (**Market**) seçeneğini seçili bırakın. Bunun yerine **\"Limit\"** seçeneğine geçmek ve limit fiyatı girmek için **\"Piyasa\"** (**Market**) seçeneğine dokunun.\n\nDaha fazla bilgi için aşağıdaki rehberlere göz atabilirsiniz:\n\n* [Binance Vadeli İşlemlerde Gösterge Fiyatı ve Son Fiyat Arasındaki Fark Nedir?](https://www.binance.com/blog/futures/5704082076024731087)\n* [Binance Vadeli İşlemlerde Durdurma Emirleri Nelerdir?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n* [Binance Vadeli İşlemlerde Zarar Durdur ve Kar Al Emirleri Nasıl Verilir?](https://www.binance.com/support/faq/detail/360040016512)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transfer From Cross Margin To Spot - AR",
@@ -1082,7 +2083,18 @@
     "topic": "Margin Trading",
     "id": 1765164170488,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.488Z"
+    "ownerSince": "2025-12-08T03:22:50.488Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How To Clear Negative Balance - Futures (EN)",
@@ -1094,7 +2106,18 @@
     "text_tr": "**Vadeli İşlemlerde Negatif Bakiyeyi Temizlemek** için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Negatif bakiye nedeniyle kapatılamayan negatif bir pozisyonunuz varsa, en altta bulunan **\"Clear Negative Balance\"** (Negatif Bakiyeyi Temizle) butonuna tıklayın.\n\n**2 -)** Alternatif olarak, **Vadeli İşlemler Cüzdanı** (Futures Wallet) bölümüne gidin ve temizleme işlemini başlatmak için **\"Clear Negative Balance\"** butonuna tıklayın.\n\n**3 -)** Açık pozisyonunuz yoksa ancak hala negatif bakiyeniz varsa, **Pozisyonlar** (Positions) sekmesine gidin ve **\"Clear Negative Balance\"** butonuna tıklayın.\n\n**4 -)** İşlem etkinleştirildiğinde buton grileşecek ve üzerinde **\"Negative balance processing\"** (Negatif bakiye işleniyor) ifadesi görünecektir.\n\n---\n\n**Önemli Not:** Bu işlemin yaklaşık **15 dakika** içinde tamamlanması beklenmektedir. İşlem tamamlanana kadar lütfen Vadeli İşlemler Cüzdanınıza **herhangi bir transfer yapmayın**.\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin. Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "updatedAt": "2026-01-06 21:50 UTC+0",
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-08T03:22:50.489Z"
+    "ownerSince": "2025-12-08T03:22:50.489Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Clear Caches - EN",
@@ -1107,7 +2130,18 @@
     "platform": "mobile",
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Transaction History - EN (WEB)",
@@ -1119,7 +2153,18 @@
     "platform": "web",
     "id": 1765248176196,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-09T02:42:56.196Z"
+    "ownerSince": "2025-12-09T02:42:56.196Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How to REPAY ALL on Cross Margin - EN",
@@ -1131,7 +2176,18 @@
     "platform": "mobile",
     "id": 1765663660921,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-13T22:07:40.921Z"
+    "ownerSince": "2025-12-13T22:07:40.921Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How to CLOSE ALL on Cross Margin - EN",
@@ -1143,7 +2199,18 @@
     "platform": "mobile",
     "id": 1765665369791,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-13T22:36:09.791Z"
+    "ownerSince": "2025-12-13T22:36:09.791Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How to CLOSE POSITON on Cross Margin - EN",
@@ -1155,7 +2222,18 @@
     "platform": "mobile",
     "id": 1765667355877,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-13T23:09:15.877Z"
+    "ownerSince": "2025-12-13T23:09:15.877Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How to REPAY ALL SYMBOLS on Isolated Margin - EN",
@@ -1167,7 +2245,18 @@
     "platform": "mobile",
     "id": 1765676605718,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-14T01:43:25.718Z"
+    "ownerSince": "2025-12-14T01:43:25.718Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How to CLOSE POSITION on Isolated Margin - EN",
@@ -1179,7 +2268,18 @@
     "platform": "mobile",
     "id": 1765679311039,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-14T02:28:31.039Z"
+    "ownerSince": "2025-12-14T02:28:31.039Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Futures Margin Transfer History (Isolated Position) - EN (Web)",
@@ -1191,7 +2291,18 @@
     "platform": "web",
     "id": 1766512912428,
     "owner": "CS Gorkem T",
-    "ownerSince": "2025-12-23T18:01:52.428Z"
+    "ownerSince": "2025-12-23T18:01:52.428Z",
+    "ownerKey": "cs-gorkem-t",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Copy Trading History 跟单组合历史 - CN",
@@ -1203,7 +2314,18 @@
     "platform": "mobile",
     "id": 1766591083794,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T15:44:43.794Z"
+    "ownerSince": "2025-12-24T15:44:43.794Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "EC Index Price History 事件合约指数价格历史数据 - CN",
@@ -1215,7 +2337,18 @@
     "platform": "mobile",
     "id": 1766592070086,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T16:01:10.086Z"
+    "ownerSince": "2025-12-24T16:01:10.086Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Change position button 仓位按钮设置 - CN",
@@ -1227,7 +2360,18 @@
     "platform": "mobile",
     "id": 1766598202606,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T17:43:22.606Z"
+    "ownerSince": "2025-12-24T17:43:22.606Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "好评以及问题解决 - CN",
@@ -1239,7 +2383,18 @@
     "platform": "mobile",
     "id": 1766599708483,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-24T18:08:28.483Z"
+    "ownerSince": "2025-12-24T18:08:28.483Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "PNL Analysis Page (To see Fees) 盈亏分析页面（查看费用）- CN",
@@ -1251,7 +2406,18 @@
     "platform": "mobile",
     "id": 1766677925281,
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T15:52:05.281Z"
+    "ownerSince": "2025-12-25T15:52:05.281Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Loan Adjust LTV 借贷订单调整质押率 - CN",
@@ -1264,7 +2430,18 @@
     "id": 1766686213796,
     "updatedAt": "2026-01-01 08:12 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2025-12-25T18:10:13.796Z"
+    "ownerSince": "2025-12-25T18:10:13.796Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "Disable Portfolio Margin (To Classic) - EN",
@@ -1277,7 +2454,18 @@
     "id": 1766691251410,
     "owner": "CS VERA",
     "updatedAt": "2026-09-02 19:36 UTC+0",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "How To Change Order Size/Unit Preference to Initial Margin - EN.jpeg",
@@ -1290,7 +2478,18 @@
     "id": 1767371337539,
     "updatedAt": "2026-09-02 19:36 UTC+0",
     "owner": "CS VERA",
-    "ownerSince": "2026-09-02T19:36:27.182Z"
+    "ownerSince": "2026-09-02T19:36:27.182Z",
+    "ownerKey": "cs-vera",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-vera",
+        "owner": "CS VERA",
+        "from": "2026-09-02T19:36:27.182Z",
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   },
   {
     "title": "PM Aggregate Funds PM归集资金 - CN",
@@ -1303,6 +2502,17 @@
     "id": 1767731966052,
     "updatedAt": "2026-01-07 04:39 UTC+8",
     "owner": "CS Enzo",
-    "ownerSince": "2026-01-06T20:39:26.052Z"
+    "ownerSince": "2026-01-06T20:39:26.052Z",
+    "ownerKey": "cs-enzo",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-enzo",
+        "owner": "CS Enzo",
+        "from": null,
+        "to": null,
+        "reason": "initial-attribution",
+        "changedBy": "migration"
+      }
+    ]
   }
 ]
