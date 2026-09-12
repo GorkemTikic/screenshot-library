@@ -2,6 +2,8 @@ import { authenticate, login, logout } from './auth';
 import { allowedOrigin, ApiError, corsHeaders, json } from './http';
 import type { Env } from './types';
 
+export { CatalogWriter } from './publisher';
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const requestId = request.headers.get('X-Request-Id') || crypto.randomUUID();
@@ -24,6 +26,24 @@ export default {
       if (request.method === 'GET' && url.pathname === '/auth/me') {
         const principal = await authenticate(request, env);
         return json({ principal }, 200, requestId, origin);
+      }
+      if (request.method === 'GET' && url.pathname === '/content') {
+        await authenticate(request, env);
+        const { readRepoState } = await import('./github');
+        const state = await readRepoState(env);
+        return json({ items: state.items, version: state.commitSha }, 200, requestId, origin);
+      }
+      if (['POST', 'PATCH'].includes(request.method) && url.pathname.startsWith('/content')) {
+        const principal = await authenticate(request, env);
+        const body = await request.arrayBuffer();
+        const headers = new Headers(request.headers);
+        headers.set('X-FDSL-Principal', JSON.stringify(principal));
+        headers.set('X-Request-Id', requestId);
+        const writerId = env.CATALOG_WRITER.idFromName('repository-writer');
+        const response = await env.CATALOG_WRITER.get(writerId).fetch(new Request(`https://writer${url.pathname}`, { method: request.method, headers, body }));
+        const responseHeaders = corsHeaders(origin);
+        response.headers.forEach((value, key) => responseHeaders.set(key, value));
+        return new Response(response.body, { status: response.status, headers: responseHeaders });
       }
       return json({ error: 'Route not found.', code: 'NOT_FOUND' }, 404, requestId, origin);
     } catch (error) {
