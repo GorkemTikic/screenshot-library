@@ -21,7 +21,7 @@ export function ExistingScreenshotPicker({ items, onSelect, onClose }) {
     return <div className="modal-overlay replace-picker-overlay" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
         <section className="replace-picker" role="dialog" aria-modal="true" aria-labelledby="replace-picker-title">
             <header className="replace-picker-header">
-                <div><span className="eyebrow"><AppIcon name="RefreshCw" size={13} /> Replace existing</span><h2 id="replace-picker-title">Choose a screenshot to replace</h2><p>Select the published record first so its history, analytics, and ownership stay connected.</p></div>
+                <div><span className="eyebrow"><AppIcon name="ImagePlus" size={13} /> Replace existing</span><h2 id="replace-picker-title">Choose a screenshot to replace</h2><p>Select the published record first so its history, analytics, and ownership stay connected.</p></div>
                 <button type="button" className="icon-button" onClick={onClose} aria-label="Close screenshot picker"><AppIcon name="X" /></button>
             </header>
             <div className="replace-picker-controls">
@@ -30,12 +30,12 @@ export function ExistingScreenshotPicker({ items, onSelect, onClose }) {
                     {['all', 'mobile', 'web'].map((value) => <button type="button" key={value} className={platform === value ? 'platform-button active' : 'platform-button'} onClick={() => setPlatform(value)}>{value === 'all' ? 'All' : value}</button>)}
                 </div>
             </div>
-            <div className="replace-picker-summary"><strong>{results.length}</strong> published screenshots</div>
+            <div className="replace-picker-summary"><strong>{results.length}</strong> published screenshot{results.length === 1 ? '' : 's'}</div>
             <div className="replace-picker-results">
                 {results.map((item) => <button type="button" className="replace-picker-item" key={item.id} onClick={() => onSelect(item)} aria-label={`Select ${item.title} to replace`}>
                     <img src={imageUrl(item.image)} alt="" />
                     <span className="replace-picker-item-copy"><small>{item.topic} · {item.language} · {normalizePlatform(item.platform)}</small><strong>{item.title}</strong><span><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span></span>
-                    <AppIcon name="ChevronRight" size={17} />
+                    <AppIcon name="ArrowRight" size={17} />
                 </button>)}
             </div>
             {!results.length && <div className="studio-empty"><AppIcon name="SearchX" size={28} /><h3>No published screenshots match</h3><p>Try a title, owner, topic, language, or another platform.</p></div>}

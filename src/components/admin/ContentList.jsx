@@ -20,18 +20,18 @@ export function ContentList({ items, onEdit, onCreate, onReplace, onRefresh, loa
             <button type="button" className="icon-button" onClick={onRefresh} aria-label="Refresh published content" title="Refresh"><AppIcon name="RefreshCw" size={17} /></button>
             {canRecover && <button type="button" className="button button-quiet" onClick={() => setShowArchived((value) => !value)}><AppIcon name="RotateCcw" size={15} />{showArchived ? 'Show published' : 'Show archived'}</button>}
             <div className="studio-create-actions">
-                <button type="button" className="button button-quiet" onClick={onReplace}><AppIcon name="RefreshCw" size={16} /> Replace existing</button>
-                <button type="button" className="button button-primary" onClick={onCreate}><AppIcon name="Plus" size={16} /> Create new</button>
+                <button type="button" className="button button-primary" onClick={onReplace}><AppIcon name="ImagePlus" size={16} /> Replace existing</button>
+                <button type="button" className="button button-quiet" onClick={onCreate}><AppIcon name="Plus" size={16} /> Create new</button>
             </div>
         </div>
         <div className="studio-list-summary"><span>{studioCountLabel(filtered.length, showArchived)}</span><span>{loading ? 'Fetching latest version…' : 'Live repository version'}</span></div>
         <div className="studio-card-grid">
             {filtered.map((item) => <article className="studio-record-card" key={item.id}>
-                <button type="button" className="studio-record-image" onClick={() => onEdit(item)}><img src={imageUrl(item.image)} alt="" loading="lazy" /><span className="studio-edit-reveal"><AppIcon name="Pencil" size={15} /> Edit & replace</span></button>
+                <button type="button" className="studio-record-image" onClick={() => onEdit(item)} aria-label={item.archivedAt ? `Recover ${item.title}` : `Replace or edit ${item.title}`}><img src={imageUrl(item.image)} alt="" loading="lazy" /><span className="studio-edit-reveal"><AppIcon name="Pencil" size={15} /> {item.archivedAt ? 'Recover' : 'Replace / edit'}</span></button>
                 <div className="studio-record-body">
                     <div className="studio-record-kicker"><span>{item.archivedAt ? 'Archived' : item.topic}</span><span>{normalizePlatform(item.platform)}</span></div>
                     <h3>{item.title}</h3>
-                    <div className="studio-record-footer"><span className="owner-mini"><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)}>{item.archivedAt ? 'Recover' : 'Replace / edit'}</button></div>
+                    <div className="studio-record-footer"><span className="owner-mini"><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)} aria-label={item.archivedAt ? `Recover ${item.title}` : `Replace or edit ${item.title}`}>{item.archivedAt ? 'Recover' : 'Replace / edit'}</button></div>
                 </div>
             </article>)}
         </div>

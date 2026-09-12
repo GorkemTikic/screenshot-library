@@ -184,12 +184,15 @@ Content Studio is the protected catalog workspace. It shows the live catalog, qu
 
 Contributors can:
 
-- create a screenshot record;
+- use **Replace existing** to search the catalog by title, owner, topic, language, or platform before opening an update;
+- use **Create new** for a genuinely new screenshot record, without a misleading empty current-image panel;
 - edit titles, categories, descriptions, and EN/TR guidance;
-- replace the image while keeping the stable record identity;
+- compare the selected current image and replacement preview side by side while keeping the stable record identity;
 - see the exact ownership consequence before publishing;
 - resolve field-level conflicts;
 - inspect their own recent audit activity.
+
+If **Create new** was opened by mistake, **Choose existing** switches directly to the published screenshot selector. Selecting the original record preserves its record ID, analytics history, conflict version, and ownership timeline.
 
 ![Content editor and image replacement](.github/assets/content-editor.png)
 
@@ -428,7 +431,7 @@ npm run typecheck --prefix worker
 npx wrangler deploy --dry-run --config worker/wrangler.toml
 ```
 
-The verified baseline is 65 frontend tests and 27 Worker tests, plus lint, production build, Worker typecheck, and Wrangler dry-run.
+The verified baseline is 71 frontend tests and 27 Worker tests, plus lint, production build, Worker typecheck, and Wrangler dry-run.
 
 ### 5. Run data migrations safely
 
@@ -518,12 +521,13 @@ The Vite base is `/screenshot-library/`; `vite.config.js` copies the canonical c
 ### Replace an outdated screenshot
 
 1. Sign in to Content Studio with a personal contributor code.
-2. Search for the existing record; do not create a duplicate.
-3. Open **Edit** and choose **Replace image**.
-4. Confirm titles, category, platform, language, and response copy.
-5. Review the ownership-transfer notice.
-6. Publish and wait for the success/sync state.
-7. Open the public inspector and confirm the complete new asset is visible.
+2. Choose **Replace existing**; do not use **Create new** for an updated version of a published guide.
+3. Search by title, owner, topic, language, or platform and select the existing record.
+4. Verify the current owner, then choose **Choose replacement image**.
+5. Compare the current and replacement previews side by side.
+6. Confirm titles, category, platform, language, and response copy.
+7. Review the ownership-transfer notice and publish the changes.
+8. Open the public inspector and confirm the complete new asset is visible.
 
 ### Make a text-only correction
 

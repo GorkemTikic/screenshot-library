@@ -22,7 +22,7 @@ export function ImageReplaceField({ currentImage, file, onChange }) {
             <figure className={preview ? 'has-new-image' : ''}><figcaption>{currentImage ? 'Replacement' : 'New image'}</figcaption>{preview ? <img src={preview} alt={currentImage ? 'Replacement screenshot preview' : 'New screenshot preview'} /> : <div className="image-placeholder"><AppIcon name="ImagePlus" /><span>{currentImage ? 'Choose a replacement to compare' : 'Choose a file to preview'}</span></div>}</figure>
         </div>
         <label className="image-upload-button"><AppIcon name="UploadCloud" size={16} /><span>{currentImage ? 'Choose replacement image' : 'Choose screenshot'}</span><input type="file" accept="image/png,image/jpeg,image/webp" onChange={(event) => select(event.target.files?.[0])} /></label>
-        <p className="field-hint">PNG, JPEG or WebP · maximum 12 MB. The old image is removed only after the new version publishes successfully.</p>
+        <p className="field-hint">{currentImage ? 'PNG, JPEG or WebP · maximum 12 MB. The previous image is removed only after the replacement publishes successfully.' : 'PNG, JPEG or WebP · maximum 12 MB. The image is validated before publishing.'}</p>
         {error && <p className="field-error">{error}</p>}
     </div>;
 }

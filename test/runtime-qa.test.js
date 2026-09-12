@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 
 test('image placeholder styles remain scoped to their component', async () => {
   const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
@@ -125,6 +125,19 @@ test('owners can expose archived records and initiate recovery in Content Studio
   assert.match(editor, /Restore to library|Restore previous version/);
 });
 
+test('every literal AppIcon name is registered instead of silently falling back', async () => {
+  const sourceRoot = new URL('../src/', import.meta.url);
+  const files = (await readdir(sourceRoot, { recursive: true })).filter((file) => file.endsWith('.jsx'));
+  const used = new Set();
+  for (const file of files) {
+    const source = await readFile(new URL(file.replaceAll('\\', '/'), sourceRoot), 'utf8');
+    for (const match of source.matchAll(/<AppIcon\s+[^>]*name="([^"]+)"/g)) used.add(match[1]);
+  }
+  const registry = await readFile(new URL('../src/components/AppIcon.jsx', import.meta.url), 'utf8');
+  const registered = registry.match(/const ICONS = \{([\s\S]*?)\};/)?.[1] || '';
+  for (const icon of used) assert.match(registered, new RegExp(`\\b${icon}\\b`), `${icon} must be registered in AppIcon`);
+});
+
 test('existing screenshot picker makes replacement selection searchable and explicit', async () => {
   const picker = await readFile(new URL('../src/components/admin/ExistingScreenshotPicker.jsx', import.meta.url), 'utf8');
   assert.match(picker, /Choose a screenshot to replace/);
@@ -147,12 +160,19 @@ test('Content Studio separates create and replace flows and recovers from the wr
   assert.match(list, /Replace existing/);
   assert.match(list, /Create new/);
   assert.match(list, /studioCountLabel/);
+  assert.match(list, /button button-primary[^>]+onClick=\{onReplace\}/);
+  assert.match(list, /Replace or edit \$\{item\.title\}/);
+  assert.doesNotMatch(list, /Edit & replace/);
   assert.match(editor, /Choose existing/);
   assert.match(editor, /Updating something already published/);
   assert.match(editor, /Publish new screenshot/);
   assert.match(editor, /Publish changes/);
   assert.match(imageField, /currentImage\s*&&\s*<figure/);
   assert.match(imageField, /studio-image-previews \$\{currentImage \? '' : 'is-create'\}/);
+  assert.match(imageField, /currentImage\s*\?/);
+  assert.match(imageField, /validated before publishing/);
+  assert.match(imageField, /previous image is removed/);
+  assert.match(await readFile(new URL('../src/components/admin/ExistingScreenshotPicker.jsx', import.meta.url), 'utf8'), /results\.length === 1 \? '' : 's'/);
 });
 
 test('the production migration stores immutable owner keys and rate-limit buckets', async () => {
