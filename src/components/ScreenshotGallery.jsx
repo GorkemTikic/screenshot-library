@@ -1,193 +1,174 @@
-import React, { useState, useMemo } from 'react';
-import { Search, Filter, X, MessageSquarePlus } from 'lucide-react';
+import React, { useMemo, useRef, useState } from 'react';
 import Fuse from 'fuse.js';
 import { useData } from '../contexts/DataContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
+import { filterCatalog, normalizePlatform, TOPIC_META, topicCounts } from '../domain/catalog';
+import { useSearchShortcut } from '../hooks/useKeyboardShortcut';
+import { AppIcon } from './AppIcon';
 import { ScreenshotCard } from './ScreenshotCard';
 import { Lightbox } from './Lightbox';
-import { MobileIcon3D, WebIcon3D } from './PlatformIcons';
 
 export function ScreenshotGallery() {
-    const { items, allTopics, allLanguages, favorites, isFavorite } = useData();
+    const { items, allLanguages, favorites } = useData();
     const { open: openRequestModal } = useRequestModal();
-
+    const searchRef = useRef(null);
     const [search, setSearch] = useState('');
     const [selectedTopic, setSelectedTopic] = useState('All');
     const [selectedLang, setSelectedLang] = useState('All');
+    const [selectedPlatform, setSelectedPlatform] = useState('mobile');
     const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
-    const [selectedPlatform, setSelectedPlatform] = useState('mobile'); // 'mobile' | 'web'
+    const [inspectorIndex, setInspectorIndex] = useState(null);
+    useSearchShortcut(searchRef);
 
-    const [lightboxSrc, setLightboxSrc] = useState(null);
+    const fuse = useMemo(() => new Fuse(items, {
+        keys: ['title', 'text', 'text_tr', 'topic', 'language', 'owner', 'platform'],
+        threshold: 0.3,
+        ignoreLocation: true,
+    }), [items]);
 
-    const fuse = useMemo(() => {
-        return new Fuse(items, {
-            keys: ['title', 'text', 'topic'],
-            threshold: 0.3,
-        });
-    }, [items]);
+    const matchedIds = useMemo(() => search.trim()
+        ? new Set(fuse.search(search.trim()).map((result) => result.item.id))
+        : null, [fuse, search]);
 
-    const filteredItems = useMemo(() => {
-        let result = items;
+    const filteredItems = useMemo(() => filterCatalog(items, {
+        matchedIds,
+        platform: selectedPlatform,
+        topic: selectedTopic,
+        language: selectedLang,
+        favoritesOnly: showFavoritesOnly,
+        favoriteTitles: favorites,
+    }), [items, matchedIds, selectedPlatform, selectedTopic, selectedLang, showFavoritesOnly, favorites]);
 
-        // 1. Platform Filter (Default to mobile if undefined)
-        result = result.filter(i => {
-            const itemPlatform = i.platform || 'mobile';
-            return itemPlatform === selectedPlatform;
-        });
+    const counts = useMemo(() => topicCounts(items, selectedPlatform), [items, selectedPlatform]);
+    const platformTotal = useMemo(() => items.filter((item) => !item.archivedAt && normalizePlatform(item.platform) === selectedPlatform).length, [items, selectedPlatform]);
+    const clearFilters = () => {
+        setSearch('');
+        setSelectedLang('All');
+        setSelectedTopic('All');
+        setSelectedPlatform('mobile');
+        setShowFavoritesOnly(false);
+    };
 
-        // 2. Search
-        if (search.trim()) {
-            const fuseResult = fuse.search(search);
-            // Fuse returns matching items from the full list. We need to intersect this with our platform-filtered result.
-            // A simpler way is to check if the platform-filtered items are in the fuse result.
-            const searchIds = new Set(fuseResult.map(r => r.item.id));
-            result = result.filter(i => searchIds.has(i.id));
-        }
-
-        // 3. Filters
-        if (selectedTopic !== 'All') {
-            result = result.filter(i => i.topic === selectedTopic);
-        }
-        if (selectedLang !== 'All') {
-            result = result.filter(i => i.language === selectedLang);
-        }
-        if (showFavoritesOnly) {
-            result = result.filter(i => isFavorite(i.title));
-        }
-
-        // 4. Sort by ID descending (newest first)
-        // We Use ID because it's set once as Date.now() when created, 
-        // so it represents the addition time rather than the update time.
-        return [...result].sort((a, b) => (b.id || 0) - (a.id || 0));
-    }, [items, search, selectedTopic, selectedLang, fuse, showFavoritesOnly, favorites, isFavorite, selectedPlatform]);
+    const activeFilters = [
+        selectedTopic !== 'All' && { label: selectedTopic, clear: () => setSelectedTopic('All') },
+        selectedLang !== 'All' && { label: selectedLang, clear: () => setSelectedLang('All') },
+        showFavoritesOnly && { label: 'Favorites', clear: () => setShowFavoritesOnly(false) },
+    ].filter(Boolean);
 
     return (
-        <div className="gallery-container">
-            {/* Controls */}
+        <section className="gallery-container" aria-label="Screenshot library">
             <div className="gallery-controls">
                 <div className="controls-inner">
-
-                    {/* Platform Toggle */}
-                    <div className="flex gap-4 mr-8">
-                        <button
-                            onClick={() => setSelectedPlatform('mobile')}
-                            className={`group relative flex flex-col items-center justify-center transition-all duration-200 ${selectedPlatform === 'mobile' ? 'transform scale-110' : 'opacity-70 hover:opacity-100'
-                                }`}
-                        >
-                            <div className="w-16 h-16 drop-shadow-xl filter transition-all duration-300">
-                                <MobileIcon3D className="w-full h-full" />
-                            </div>
-
-                            {/* Active Indicator */}
-                            {selectedPlatform === 'mobile' && (
-                                <span className="absolute -bottom-2 w-12 h-1 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></span>
-                            )}
-                        </button>
-
-                        <button
-                            onClick={() => setSelectedPlatform('web')}
-                            className={`group relative flex flex-col items-center justify-center transition-all duration-200 ${selectedPlatform === 'web' ? 'transform scale-110' : 'opacity-70 hover:opacity-100'
-                                }`}
-                        >
-                            <div className="w-16 h-16 drop-shadow-xl filter transition-all duration-300">
-                                <WebIcon3D className="w-full h-full" />
-                            </div>
-
-                            {/* Active Indicator */}
-                            {selectedPlatform === 'web' && (
-                                <span className="absolute -bottom-2 w-12 h-1 rounded-full bg-purple-500 shadow-[0_0_10px_rgba(168,85,247,0.5)]"></span>
-                            )}
-                        </button>
+                    <div className="platform-switch" role="group" aria-label="Platform">
+                        {[
+                            { value: 'mobile', label: 'Mobile', icon: 'Smartphone' },
+                            { value: 'web', label: 'Web', icon: 'Monitor' },
+                        ].map((platform) => (
+                            <button
+                                type="button"
+                                key={platform.value}
+                                className={`platform-button ${selectedPlatform === platform.value ? 'active' : ''}`}
+                                aria-pressed={selectedPlatform === platform.value}
+                                onClick={() => setSelectedPlatform(platform.value)}
+                            >
+                                <AppIcon name={platform.icon} size={16} /> {platform.label}
+                            </button>
+                        ))}
                     </div>
 
-                    {/* Search */}
-                    <div className="search-wrapper">
-                        <Search className="search-icon" size={20} />
+                    <div className="search-wrapper command-search">
+                        <AppIcon name="Search" size={19} className="search-icon" />
                         <input
-                            type="text"
-                            placeholder="Search..."
+                            ref={searchRef}
+                            type="search"
+                            placeholder="Search title, response, topic or owner…"
                             className="search-input"
                             value={search}
-                            onChange={e => setSearch(e.target.value)}
+                            onChange={(event) => setSearch(event.target.value)}
+                            onKeyDown={(event) => {
+                                if (event.key === 'Escape') {
+                                    setSearch('');
+                                    event.currentTarget.blur();
+                                }
+                            }}
                         />
+                        {!search && <kbd className="search-shortcut">⌘ K</kbd>}
                         {search && (
-                            <button
-                                onClick={() => setSearch('')}
-                                className="clear-search"
-                            >
-                                <X size={16} />
+                            <button type="button" onClick={() => setSearch('')} className="clear-search" aria-label="Clear search">
+                                <AppIcon name="X" size={15} />
                             </button>
                         )}
                     </div>
 
-                    {/* Filters */}
                     <div className="filters-row">
-                        <select
-                            className="filter-select"
-                            value={selectedLang}
-                            onChange={e => setSelectedLang(e.target.value)}
-                        >
-                            <option value="All">All Languages</option>
-                            {allLanguages.map(l => <option key={l} value={l}>{l}</option>)}
+                        <select className="filter-select" value={selectedLang} onChange={(event) => setSelectedLang(event.target.value)} aria-label="Language">
+                            <option value="All">All languages</option>
+                            {allLanguages.map((language) => <option key={language} value={language}>{language}</option>)}
                         </select>
-
-                        <select
-                            className="filter-select"
-                            value={selectedTopic}
-                            onChange={e => setSelectedTopic(e.target.value)}
-                        >
-                            <option value="All">All Topics</option>
-                            {allTopics.map(t => <option key={t} value={t}>{t}</option>)}
-                        </select>
-
                         <button
+                            type="button"
                             className={`filter-btn ${showFavoritesOnly ? 'active' : ''}`}
-                            onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                            aria-pressed={showFavoritesOnly}
+                            onClick={() => setShowFavoritesOnly((value) => !value)}
                         >
-                            {showFavoritesOnly ? '★ Favorites Only' : '☆ Favorites'}
+                            <AppIcon name="Heart" size={15} /> Favorites
                         </button>
                     </div>
                 </div>
             </div>
 
-            {/* Results Info */}
-            <div className="results-info">
-                Showing {filteredItems.length} result{filteredItems.length !== 1 && 's'}
+            <div className="category-rail" aria-label="Topics">
+                <button type="button" className={`category-button ${selectedTopic === 'All' ? 'active' : ''}`} onClick={() => setSelectedTopic('All')}>
+                    <span className="category-icon"><AppIcon name="LayoutGrid" size={17} /></span>
+                    <span className="category-copy"><strong>All topics</strong><small>{platformTotal} guides</small></span>
+                </button>
+                {Object.entries(TOPIC_META).map(([topic, meta]) => (
+                    <button type="button" key={topic} className={`category-button tone-${meta.tone} ${selectedTopic === topic ? 'active' : ''}`} onClick={() => setSelectedTopic(topic)}>
+                        <span className="category-icon"><AppIcon name={meta.icon} size={17} /></span>
+                        <span className="category-copy"><strong>{topic}</strong><small>{counts[topic] || 0} guides</small></span>
+                    </button>
+                ))}
             </div>
 
-            {/* Grid */}
-            {filteredItems.length > 0 ? (
+            <div className="results-info" aria-live="polite">
+                <span><strong>{filteredItems.length}</strong> of {platformTotal} screenshots</span>
+                <div className="active-filter-list">
+                    {activeFilters.map((filter) => (
+                        <button type="button" className="active-filter-chip" key={filter.label} onClick={filter.clear}>
+                            {filter.label} <AppIcon name="X" size={12} />
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {filteredItems.length ? (
                 <div className="gallery-grid">
-                    {filteredItems.map((item, idx) => (
-                        <ScreenshotCard
-                            key={`${item.title}-${idx}`}
-                            item={item}
-                            onClickImage={(i) => setLightboxSrc(i.image)}
-                        />
+                    {filteredItems.map((item, index) => (
+                        <ScreenshotCard key={item.id} item={item} search={search} onInspect={() => setInspectorIndex(index)} />
                     ))}
                 </div>
             ) : (
                 <div className="no-results">
-                    <Filter size={48} className="no-results-icon" />
-                    <p className="no-results-text">No match found.</p>
-                    <button className="clear-filters-link" onClick={() => { setSearch(''); setSelectedLang('All'); setSelectedTopic('All'); setSelectedPlatform('mobile'); }}>Clear Filters</button>
-
-                    {search.trim() && (
-                        <div className="request-prompt">
-                            <p className="request-prompt-text">Can't find what you need?</p>
-                            <button
-                                type="button"
-                                className="btn btn-primary request-prompt-btn"
-                                onClick={() => openRequestModal({ prefillSearch: search })}
-                            >
-                                <MessageSquarePlus size={16} /> Request it →
-                            </button>
-                        </div>
-                    )}
+                    <AppIcon name="SearchX" size={42} className="no-results-icon" />
+                    <p className="no-results-text">No matching screenshot</p>
+                    <p className="text-muted">Try a broader term, switch platform, or ask the team for a new guide.</p>
+                    <div className="empty-actions">
+                        <button type="button" className="button button-quiet" onClick={clearFilters}><AppIcon name="RotateCcw" size={15} /> Reset filters</button>
+                        <button type="button" className="button button-primary" onClick={() => openRequestModal({ prefillSearch: search })}><AppIcon name="MessageSquarePlus" size={15} /> Request screenshot</button>
+                    </div>
                 </div>
             )}
 
-            <Lightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />
-        </div>
+            {inspectorIndex !== null && filteredItems[inspectorIndex] && (
+                <Lightbox
+                    key={filteredItems[inspectorIndex].id}
+                    item={filteredItems[inspectorIndex]}
+                    position={inspectorIndex}
+                    total={filteredItems.length}
+                    onClose={() => setInspectorIndex(null)}
+                    onNavigate={(direction) => setInspectorIndex((index) => (index + direction + filteredItems.length) % filteredItems.length)}
+                />
+            )}
+        </section>
     );
 }

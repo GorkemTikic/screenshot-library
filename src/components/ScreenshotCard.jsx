@@ -1,247 +1,117 @@
-import React, { useState } from 'react';
-import { Copy, Check, Heart, ExternalLink, Eye, User } from 'lucide-react';
+import React, { useMemo, useState } from 'react';
 import { useData } from '../contexts/DataContext';
+import { TOPIC_META, normalizePlatform, ownerHue, ownerInitials } from '../domain/catalog';
 import { logEvent } from '../services/analytics';
-
+import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
-import { getLangCode, formatDate } from '../utils/langUtils';
+import { formatDate, getLangCode } from '../utils/langUtils';
+import { AppIcon } from './AppIcon';
 
-export function ScreenshotCard({ item, onClickImage }) {
+function Highlight({ children, query }) {
+    const text = String(children || '');
+    const index = query ? text.toLowerCase().indexOf(query.toLowerCase()) : -1;
+    if (index < 0) return text;
+    return <>{text.slice(0, index)}<mark>{text.slice(index, index + query.length)}</mark>{text.slice(index + query.length)}</>;
+}
+
+export function ScreenshotCard({ item, onInspect, search = '' }) {
     const { isFavorite, toggleFavorite } = useData();
     const [copied, setCopied] = useState(false);
-    const [showText, setShowText] = useState(false);
-    const [contentLang, setContentLang] = useState('en'); // 'en' or 'tr'
+    const [contentLang, setContentLang] = useState('en');
+    const hasTr = Boolean(item.text_tr?.trim());
+    const currentText = contentLang === 'tr' && hasTr ? item.text_tr : item.text;
+    const topic = TOPIC_META[item.topic] || TOPIC_META.General;
+    const avatarStyle = useMemo(() => ({ '--avatar-hue': ownerHue(item.owner) }), [item.owner]);
 
-    const hasTr = item.text_tr && item.text_tr.trim().length > 0;
-    const currentText = (contentLang === 'tr' && hasTr) ? item.text_tr : item.text;
-
-    const handleCopy = async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const textToCopy = currentText;
-        let successful = false;
-
-        // Try modern Clipboard API first
-        if (navigator.clipboard && window.isSecureContext) {
-            try {
-                await navigator.clipboard.writeText(textToCopy);
-                successful = true;
-            } catch (err) {
-                console.error('Clipboard API failed, trying fallback...', err);
-            }
-        }
-
-        // Fallback: Create hidden textarea
-        if (!successful) {
-            try {
-                const textArea = document.createElement("textarea");
-                textArea.value = textToCopy;
-
-                // Positioning logic: use click coordinates if available
-                // This is the most robust way to prevent "scroll to top" in iframes
-                // even when window.pageYOffset is 0 (auto-resize iframes).
-                const clickX = e.clientX || 0;
-                const clickY = e.clientY || 0;
-
-                textArea.style.position = "fixed";
-                textArea.style.left = `${clickX}px`;
-                textArea.style.top = `${clickY}px`;
-                textArea.style.width = "1px";
-                textArea.style.height = "1px";
-                textArea.style.padding = "0";
-                textArea.style.border = "none";
-                textArea.style.outline = "none";
-                textArea.style.boxShadow = "none";
-                textArea.style.background = "transparent";
-                textArea.style.opacity = "0";
-                textArea.style.pointerEvents = "none";
-
-                document.body.appendChild(textArea);
-
-                // Try to focus without scrolling
-                if (typeof textArea.focus === 'function') {
-                    textArea.focus({ preventScroll: true });
-                }
-                textArea.select();
-
-                successful = document.execCommand('copy');
-                document.body.removeChild(textArea);
-            } catch (err) {
-                console.error('Fallback copy failed:', err);
-            }
-        }
-
+    const handleCopy = async (event) => {
+        event.stopPropagation();
+        const successful = await copyPlainText(currentText || '');
         if (successful) {
             setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            window.setTimeout(() => setCopied(false), 1400);
         }
-
-        // Log event
-        logEvent('copy_text', {
-            title: item.title,
-            topic: item.topic,
-            language: contentLang,
-            method: successful ? (navigator.clipboard ? 'api' : 'fallback') : 'failed'
-        });
+        logEvent('copy_text', { title: item.title, topic: item.topic, language: contentLang, method: successful ? 'clipboard' : 'failed' });
     };
 
-    const handleToggleFavorite = (e) => {
-        e.stopPropagation();
-        toggleFavorite(item.title);
-        // Log if adding favorite
-        if (!isFavorite(item.title)) {
-            logEvent('favorite_add', { title: item.title, topic: item.topic });
-        }
-    };
-
-    const handleLangSwitch = (e, lang) => {
-        e.stopPropagation();
-        setContentLang(lang);
-        logEvent('switch_lang', { title: item.title, topic: item.topic, language: lang });
-    };
-
-    const handlePreviewToggle = (e) => {
-        e.stopPropagation();
-        const newState = !showText;
-        setShowText(newState);
-        if (newState) {
-            logEvent('preview_text', { title: item.title, topic: item.topic });
-        }
-    };
-
-    const handleImageClick = () => {
+    const inspect = () => {
         logEvent('view_image', { title: item.title, topic: item.topic });
-        onClickImage(item);
-    };
-
-    const handleContextMenu = (e) => {
-        // We don't preventDefault because users might want the actual context menu,
-        // but we want to log that they were interested enough to right-click (save, etc.)
-        logEvent('right_click_image', { title: item.title, topic: item.topic });
-    };
-
-    const getTopicClass = (t) => {
-        const clean = (t || 'General').replace(/\s+/g, '-').toLowerCase();
-        return `tag tag-${clean}`;
+        onInspect();
     };
 
     return (
-        <div className="card">
-            {/* Image Area */}
-            <div className="card-image-wrapper" onClick={handleImageClick} onContextMenu={handleContextMenu}>
+        <article className="card">
+            <div className="card-image-wrapper" onClick={inspect} onContextMenu={() => logEvent('right_click_image', { title: item.title, topic: item.topic })}>
                 <img
                     src={resolveImageUrl(item.image)}
                     alt={item.title}
                     className="card-image"
-                    onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.parentNode.classList.add('image-error');
-                        console.error('Image failed to load:', resolveImageUrl(item.image));
+                    loading="lazy"
+                    onError={(event) => {
+                        event.currentTarget.hidden = true;
+                        event.currentTarget.parentElement.classList.add('image-error');
                     }}
                 />
-                <div className="image-placeholder">
-                    <span>Image N/A</span>
-                    <span style={{ fontSize: '0.6rem', padding: '0 10px', textAlign: 'center', marginTop: '5px' }}>
-                        {resolveImageUrl(item.image)}
-                    </span>
-                </div>
+                <div className="image-placeholder"><AppIcon name="FileImage" size={26} /><span>Preview unavailable</span></div>
                 <div className="card-overlay">
                     <button
-                        onClick={handleToggleFavorite}
+                        type="button"
                         className={`fav-btn ${isFavorite(item.title) ? 'active' : ''}`}
-                        title={isFavorite(item.title) ? "Remove from Favorites" : "Add to Favorites"}
+                        aria-label={isFavorite(item.title) ? 'Remove from favorites' : 'Add to favorites'}
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            const adding = !isFavorite(item.title);
+                            toggleFavorite(item.title);
+                            if (adding) logEvent('favorite_add', { title: item.title, topic: item.topic });
+                        }}
                     >
-                        <Heart size={16} fill={isFavorite(item.title) ? "currentColor" : "none"} />
+                        <AppIcon name="Heart" size={15} fill={isFavorite(item.title) ? 'currentColor' : 'none'} />
                     </button>
                 </div>
             </div>
 
-            {/* Content */}
             <div className="card-content">
                 <div className="card-meta">
-                    <span className={getTopicClass(item.topic)}>
-                        {item.topic || 'General'}
-                    </span>
-                    <span className="lang-badge">
-                        {item.language}
-                    </span>
+                    <span className="tag"><AppIcon name={topic.icon} size={12} /> {item.topic || 'General'}</span>
+                    <span className="metadata-pair"><AppIcon name={normalizePlatform(item.platform) === 'web' ? 'Monitor' : 'Smartphone'} size={12} /> {item.language}</span>
                 </div>
 
-                <h3 className="card-title" title={item.title}>
-                    {item.title}
-                </h3>
+                <h2 className="card-title" title={item.title}><Highlight query={search}>{item.title}</Highlight></h2>
 
-                {/* Language Toggle + Owner attribution */}
-                {(hasTr || item.owner) && (
-                    <div className="card-subrow">
-                        {hasTr && (
-                            <div className="lang-switch-container">
-                                <button
-                                    className={`lang-switch-btn ${contentLang === 'en' ? 'active' : ''}`}
-                                    onClick={(e) => handleLangSwitch(e, 'en')}
-                                >
-                                    EN
-                                </button>
-                                <span className="lang-divider">|</span>
-                                <button
-                                    className={`lang-switch-btn ${contentLang === 'tr' ? 'active' : ''}`}
-                                    onClick={(e) => handleLangSwitch(e, 'tr')}
-                                >
-                                    TR
-                                </button>
-                            </div>
-                        )}
-                        {item.owner && (
-                            <span
-                                className="owner-badge"
-                                title={`Screenshot prepared by ${item.owner}`}
-                            >
-                                <User size={12} />
-                                <span className="owner-label">Owner:</span>&nbsp;{item.owner}
-                            </span>
-                        )}
-                    </div>
-                )}
+                <div className="owner-row">
+                    <span className="owner-avatar" style={avatarStyle}>{ownerInitials(item.owner)}</span>
+                    <span className="owner-copy"><small>Prepared by</small><strong>{item.owner || 'Unassigned'}</strong></span>
+                </div>
 
-                {/* Actions */}
+                <div className="card-action-row">
+                    {hasTr && (
+                        <div className="lang-switch-container" aria-label="Response language">
+                            {['en', 'tr'].map((language) => (
+                                <button
+                                    type="button"
+                                    key={language}
+                                    className={`lang-switch-btn ${contentLang === language ? 'active' : ''}`}
+                                    aria-pressed={contentLang === language}
+                                    onClick={() => {
+                                        setContentLang(language);
+                                        logEvent('switch_lang', { title: item.title, topic: item.topic, language });
+                                    }}
+                                >
+                                    {language.toUpperCase()}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                    <span className="card-updated"><AppIcon name="Clock3" size={11} /> {item.updatedAt || formatDate(item.id, item.language)}</span>
+                </div>
+
                 <div className="card-actions">
-                    <button
-                        onClick={handleCopy}
-                        className={`btn btn-copy ${copied ? 'copied' : ''}`}
-                        title="Copy Content"
-                    >
-                        {copied ? <Check size={16} /> : <Copy size={16} />}
-                        {copied ? 'Copied' : `Copy (${contentLang === 'en' ? getLangCode(item.language) : 'TR'})`}
+                    <button type="button" onClick={handleCopy} className={`btn btn-copy ${copied ? 'copied' : ''}`}>
+                        <AppIcon name={copied ? 'Check' : 'Copy'} size={15} />
+                        {copied ? 'Copied' : `Copy ${contentLang === 'tr' ? 'TR' : getLangCode(item.language)}`}
                     </button>
-
-                    <button
-                        onClick={handlePreviewToggle}
-                        className="btn btn-icon"
-                        title="Preview Text"
-                    >
-                        <Eye size={20} className={showText ? 'text-primary' : ''} />
-                    </button>
-
-                    <button className="btn-icon" onClick={(e) => {
-                        e.stopPropagation();
-                        onClickImage(item);
-                    }} title="View Full">
-                        <ExternalLink size={18} />
-                    </button>
+                    <button type="button" className="btn-icon" onClick={inspect} aria-label="Inspect screenshot"><AppIcon name="Eye" size={17} /></button>
                 </div>
-
-                <div className="card-updated">
-                    Last Updated: {item.updatedAt || formatDate(item.id, item.language)}
-                </div>
-
-                {/* Text Preview */}
-                {showText && (
-                    <div className="text-preview">
-                        {currentText}
-                    </div>
-                )}
             </div>
-        </div>
+        </article>
     );
 }

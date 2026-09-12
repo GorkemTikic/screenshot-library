@@ -29,6 +29,28 @@ export const buildPatch = (base, draft, fields) => Object.fromEntries(
 
 export const recordVersion = (item) => item?.version || item?.updatedAt || String(item?.id || '');
 
+export function topicCounts(items = [], platform = 'mobile') {
+    return visibleCatalog(items).reduce((counts, item) => {
+        if (normalizePlatform(item.platform) !== platform || !item.topic) return counts;
+        counts[item.topic] = (counts[item.topic] || 0) + 1;
+        return counts;
+    }, {});
+}
+
+export function latestCatalogUpdate(items = []) {
+    const timestamps = visibleCatalog(items).map((item) => {
+        const updated = Date.parse(item.updatedAt || '');
+        return Number.isNaN(updated) ? Number(item.id) || 0 : updated;
+    });
+    return new Date(timestamps.length ? Math.max(...timestamps) : 0);
+}
+
+export function ownerHue(name = '') {
+    let hash = 0;
+    for (const character of name) hash = ((hash << 5) - hash + character.charCodeAt(0)) | 0;
+    return ((hash % 360) + 360) % 360;
+}
+
 export function filterCatalog(items = [], filters = {}) {
     const {
         matchedIds = null,

@@ -1,16 +1,18 @@
 import React from 'react';
 import {
-    Activity, Archive, BarChart3, Bot, CandlestickChart, Check, ChevronDown,
-    ClipboardList, CopyCheck, FileImage, HandCoins, Heart, ImagePlus, LayoutGrid,
-    LockKeyhole, Menu, MessageSquarePlus, Moon, PanelTop, Scale, Search, Settings2,
-    ShieldCheck, Smartphone, Sparkles, Sun, TicketCheck, UserRound, UsersRound, X,
+    Activity, Archive, ArrowLeft, ArrowRight, BarChart3, Bot, CandlestickChart, Check,
+    ChevronDown, ClipboardList, Clock3, Copy, CopyCheck, ExternalLink, Eye, FileImage,
+    HandCoins, Heart, ImagePlus, Languages, LayoutGrid, LockKeyhole, Menu, MessageSquarePlus,
+    Monitor, Moon, PanelTop, RotateCcw, Scale, Search, SearchX, Settings2, ShieldCheck,
+    SlidersHorizontal, Smartphone, Sparkles, Sun, TicketCheck, UserRound, UsersRound, X,
 } from 'lucide-react';
 
 const ICONS = {
-    Activity, Archive, BarChart3, Bot, CandlestickChart, Check, ChevronDown,
-    ClipboardList, CopyCheck, FileImage, HandCoins, Heart, ImagePlus, LayoutGrid,
-    LockKeyhole, Menu, MessageSquarePlus, Moon, PanelTop, Scale, Search, Settings2,
-    ShieldCheck, Smartphone, Sparkles, Sun, TicketCheck, UserRound, UsersRound, X,
+    Activity, Archive, ArrowLeft, ArrowRight, BarChart3, Bot, CandlestickChart, Check,
+    ChevronDown, ClipboardList, Clock3, Copy, CopyCheck, ExternalLink, Eye, FileImage,
+    HandCoins, Heart, ImagePlus, Languages, LayoutGrid, LockKeyhole, Menu, MessageSquarePlus,
+    Monitor, Moon, PanelTop, RotateCcw, Scale, Search, SearchX, Settings2, ShieldCheck,
+    SlidersHorizontal, Smartphone, Sparkles, Sun, TicketCheck, UserRound, UsersRound, X,
 };
 
 export function AppIcon({ name, size = 18, strokeWidth = 1.8, ...props }) {
