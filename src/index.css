@@ -381,6 +381,25 @@ img { max-width: 100%; }
 .auth-icon-wrapper { width: 44px; height: 44px; display: grid; place-items: center; margin: 0 auto 14px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); }
 .auth-title { margin: 0; font-size: 22px; }
 .auth-subtitle { margin: 6px 0 18px; color: var(--text-3); }
+.auth-loading { display: grid; justify-items: center; gap: 10px; }
+.access-card { text-align: left; }
+.access-card .auth-icon-wrapper, .access-card .eyebrow, .access-card .auth-title, .access-card .auth-subtitle, .access-card .access-privacy { text-align: center; }
+.access-code-field { margin: 20px 0 12px; }
+.access-code-field > span { display: block; margin-bottom: 6px; color: var(--text-2); font-size: 11px; font-weight: 650; }
+.access-privacy { margin: 12px 0 0; color: var(--text-3); font-size: 10.5px; line-height: 1.5; }
+.setup-note { margin-top: 16px; padding: 11px; border-radius: 8px; background: var(--accent-soft); color: var(--text-2); font-size: 11px; line-height: 1.5; }
+.full-width { width: 100%; justify-content: center; }
+.contributor-chip { min-height: 34px; display: grid; align-content: center; padding: 4px 9px; border: 1px solid var(--line-1); border-radius: 8px; background: var(--bg-raised); color: var(--text-1); text-align: left; cursor: pointer; }
+.contributor-chip span { max-width: 110px; overflow: hidden; font-size: 10.5px; font-weight: 670; text-overflow: ellipsis; white-space: nowrap; }
+.contributor-chip small { color: var(--text-3); font-size: 8.5px; text-transform: uppercase; letter-spacing: .06em; }
+.conflict-overlay { z-index: 450; }
+.conflict-dialog { width: min(620px, 100%); }
+.conflict-field { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 16px 0 0; padding: 0; border: 0; }
+.conflict-field legend { grid-column: 1 / -1; margin-bottom: 2px; color: var(--text-3); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.conflict-field label { display: flex; gap: 8px; padding: 10px; border: 1px solid var(--line-1); border-radius: 9px; background: var(--bg-raised); cursor: pointer; }
+.conflict-field label.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.conflict-field label span { min-width: 0; display: grid; gap: 5px; }
+.conflict-field code { max-height: 70px; overflow: auto; color: var(--text-3); font-size: 10px; white-space: pre-wrap; }
 .admin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
 .admin-card { overflow: hidden; }
 .admin-card-img { position: relative; aspect-ratio: 16/9; background: var(--bg-inset); overflow: hidden; }

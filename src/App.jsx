@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { DataProvider } from './contexts/DataContext';
+import { AuthProvider } from './contexts/AuthContext';
 import { RequestModalProvider } from './contexts/RequestModalContext';
 import { SurveyModalProvider } from './contexts/SurveyModalContext';
 import { HomePage } from './pages/HomePage';
@@ -13,19 +14,21 @@ function App() {
   return (
     <ThemeProvider>
       <DataProvider>
-        <RequestModalProvider>
-          <SurveyModalProvider>
-            <HashRouter>
-              <Routes>
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<HomePage />} />
-                  <Route path="admin" element={<AdminPage />} />
-                  <Route path="analytics" element={<AnalyticsPage />} />
-                </Route>
-              </Routes>
-            </HashRouter>
-          </SurveyModalProvider>
-        </RequestModalProvider>
+        <AuthProvider>
+          <RequestModalProvider>
+            <SurveyModalProvider>
+              <HashRouter>
+                <Routes>
+                  <Route path="/" element={<Layout />}>
+                    <Route index element={<HomePage />} />
+                    <Route path="admin" element={<AdminPage />} />
+                    <Route path="analytics" element={<AnalyticsPage />} />
+                  </Route>
+                </Routes>
+              </HashRouter>
+            </SurveyModalProvider>
+          </RequestModalProvider>
+        </AuthProvider>
       </DataProvider>
     </ThemeProvider>
   );

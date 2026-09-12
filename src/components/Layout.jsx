@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
 import { useSurveyModal } from '../contexts/SurveyModalContext';
+import { useAuth } from '../contexts/AuthContext';
 import { AppIcon } from './AppIcon';
 import { MarketTicker } from './MarketTicker';
 import { RequestScreenshotModal } from './RequestScreenshotModal';
@@ -18,6 +19,7 @@ export function Layout() {
     const { theme, toggleTheme } = useTheme();
     const { open: openRequestModal, isOpen: requestModalOpen } = useRequestModal();
     const { open: openSurveyModal, isOpen: surveyModalOpen } = useSurveyModal();
+    const auth = useAuth();
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
@@ -69,6 +71,12 @@ export function Layout() {
                             <NavLink to="/admin" className="icon-button" aria-label="Open Content Studio" title="Content Studio">
                                 <AppIcon name="Settings2" />
                             </NavLink>
+                            {auth.status === 'authenticated' && (
+                                <button type="button" className="contributor-chip" onClick={() => auth.logout()} title="Sign out">
+                                    <span>{auth.principal.displayName}</span>
+                                    <small>{auth.principal.role}</small>
+                                </button>
+                            )}
                             <button type="button" className="icon-button" onClick={toggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
                                 <AppIcon name={theme === 'dark' ? 'Sun' : 'Moon'} />
                             </button>
