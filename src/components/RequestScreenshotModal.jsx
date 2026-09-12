@@ -1,309 +1,192 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { X, Send, CheckCircle, AlertTriangle, Image as ImageIcon } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Fuse from 'fuse.js';
 import { useData } from '../contexts/DataContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
+import { createRequestReference } from '../domain/survey';
 import { logScreenshotRequest } from '../services/analytics';
+import { resolveImageUrl } from '../utils/imageUtils';
+import { AppIcon } from './AppIcon';
 
-const TOPIC_OPTIONS = [
-    'Futures Trading',
-    'Margin Trading',
-    'Copy Trading',
-    'LOAN',
-    'BOTS',
-    'Grid Bot',
-    'Event Contract',
-    'General',
-    'Binance LOAN',
-];
-
+const TOPIC_OPTIONS = ['Futures Trading', 'Margin Trading', 'Copy Trading', 'LOAN', 'BOTS', 'Grid Bot', 'Event Contract', 'General', 'Binance LOAN'];
 const LANGUAGE_OPTIONS = [
-    { code: 'EN', label: 'English' },
-    { code: 'CN', label: 'Chinese' },
-    { code: 'TR', label: 'Turkish' },
-    { code: 'AR', label: 'Arabic' },
-    { code: 'RU', label: 'Russian' },
-    { code: 'VI', label: 'Vietnamese' },
+    ['EN', 'English'], ['CN', 'Chinese'], ['TR', 'Turkish'], ['AR', 'Arabic'], ['RU', 'Russian'], ['VI', 'Vietnamese'],
 ];
-
 const RATE_LIMIT_MS = 60 * 1000;
 const RATE_LIMIT_KEY = 'fd_last_request_at';
 
 export function RequestScreenshotModal() {
     const { prefillSearch, close } = useRequestModal();
     const { items, allTopics } = useData();
-
-    const [topic, setTopic] = useState('');
-    const [customTopic, setCustomTopic] = useState('');
-    const [language, setLanguage] = useState('EN');
-    const [platform, setPlatform] = useState('Either');
-    const [description, setDescription] = useState('');
-    const [context, setContext] = useState('');
-    const [searchTerms, setSearchTerms] = useState(prefillSearch || '');
-
+    const [form, setForm] = useState({ topic: '', customTopic: '', language: 'EN', platform: 'Either', description: '', context: '', searchTerms: prefillSearch || '' });
     const [submitting, setSubmitting] = useState(false);
-    const [submitError, setSubmitError] = useState('');
-    const [submitSuccess, setSubmitSuccess] = useState(false);
-    const [rateLimitMsg, setRateLimitMsg] = useState('');
+    const [error, setError] = useState('');
+    const [reference, setReference] = useState('');
     const [dismissedDuplicates, setDismissedDuplicates] = useState(false);
+    const [confirmClose, setConfirmClose] = useState(false);
+    const dirty = Object.entries(form).some(([key, value]) => key !== 'language' && key !== 'platform' && Boolean(value));
 
-    const effectiveTopicOptions = useMemo(() => {
-        const merged = new Set([...TOPIC_OPTIONS, ...(allTopics || [])]);
-        return Array.from(merged).sort();
-    }, [allTopics]);
+    const setField = (field, value) => setForm((current) => ({ ...current, [field]: value }));
+    const resolvedTopic = form.topic === 'Other' ? form.customTopic.trim() : form.topic;
+    const topicOptions = useMemo(() => Array.from(new Set([...TOPIC_OPTIONS, ...allTopics])).sort(), [allTopics]);
+    const duplicateFuse = useMemo(() => new Fuse(items, { keys: ['title', 'text', 'text_tr', 'topic'], threshold: 0.3, includeScore: true, ignoreLocation: true }), [items]);
+    const duplicates = useMemo(() => {
+        if (form.description.trim().length < 10 || dismissedDuplicates) return [];
+        return duplicateFuse.search(form.description.trim()).filter((result) => result.score < 0.3).slice(0, 3);
+    }, [dismissedDuplicates, duplicateFuse, form.description]);
 
-    const duplicateFuse = useMemo(() => {
-        if (!items || items.length === 0) return null;
-        return new Fuse(items, { keys: ['title', 'text', 'topic'], threshold: 0.3, includeScore: true });
-    }, [items]);
-
-    const duplicateMatches = useMemo(() => {
-        if (!duplicateFuse || description.trim().length < 10 || dismissedDuplicates) return [];
-        const results = duplicateFuse.search(description.trim()).slice(0, 3);
-        return results.filter(r => r.score !== undefined && r.score < 0.3);
-    }, [duplicateFuse, description, dismissedDuplicates]);
+    const requestClose = () => {
+        if (!submitting && dirty && !reference) setConfirmClose(true);
+        else if (!submitting) close();
+    };
 
     useEffect(() => {
-        const onKey = (e) => { if (e.key === 'Escape' && !submitting) close(); };
+        const onKey = (event) => { if (event.key === 'Escape') requestClose(); };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
-    }, [submitting, close]);
-
-    const resolvedTopic = topic === 'Other' ? customTopic.trim() : topic;
-    const descLen = description.trim().length;
+    });
 
     const validate = () => {
-        if (!resolvedTopic) return 'Please pick a topic.';
-        if (!language) return 'Please pick a language.';
-        if (descLen < 10) return 'Description needs at least 10 characters.';
-        if (descLen > 500) return 'Description must be 500 characters or fewer.';
-        if (context && context.length > 300) return 'Context must be 300 characters or fewer.';
+        if (!resolvedTopic) return 'Choose a topic so the request reaches the right owner.';
+        if (form.description.trim().length < 10) return 'Describe the screenshot using at least 10 characters.';
+        if (form.context.length > 300) return 'Additional context must be 300 characters or fewer.';
         return '';
     };
 
     const checkRateLimit = () => {
         try {
-            const last = parseInt(localStorage.getItem(RATE_LIMIT_KEY) || '0', 10);
-            const elapsed = Date.now() - last;
-            if (last && elapsed < RATE_LIMIT_MS) {
-                const seconds = Math.ceil((RATE_LIMIT_MS - elapsed) / 1000);
-                return `Please wait ${seconds}s before sending another request.`;
-            }
-        } catch { /* ignore */ }
-        return '';
+            const last = Number(localStorage.getItem(RATE_LIMIT_KEY) || 0);
+            const remaining = RATE_LIMIT_MS - (Date.now() - last);
+            return last && remaining > 0 ? `Please wait ${Math.ceil(remaining / 1000)} seconds before sending another request.` : '';
+        } catch { return ''; }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setSubmitError('');
-
-        const validation = validate();
-        if (validation) {
-            setSubmitError(validation);
-            return;
-        }
-
-        const rate = checkRateLimit();
-        if (rate) {
-            setRateLimitMsg(rate);
-            return;
-        }
-
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const validation = validate() || checkRateLimit();
+        if (validation) { setError(validation); return; }
+        setError('');
         setSubmitting(true);
         try {
             await logScreenshotRequest({
                 topic: resolvedTopic,
-                language,
-                platform,
-                description: description.trim(),
-                context: context.trim(),
-                search_terms: searchTerms.trim(),
+                language: form.language,
+                platform: form.platform,
+                description: form.description.trim(),
+                context: form.context.trim(),
+                search_terms: form.searchTerms.trim(),
             });
-            localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
-            setSubmitSuccess(true);
-            setTimeout(() => {
-                close();
-            }, 1800);
-        } catch (err) {
-            setSubmitError(err.message || 'Something went wrong. Please try again.');
+            try { localStorage.setItem(RATE_LIMIT_KEY, String(Date.now())); } catch { /* private browsing */ }
+            setReference(createRequestReference());
+        } catch (requestError) {
+            setError(requestError.message || 'The request could not be sent. Your text is still here; please retry.');
+        } finally {
             setSubmitting(false);
         }
     };
 
     return (
-        <div className="modal-overlay" onClick={() => !submitting && close()}>
-            <div className="modal-content request-modal" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
-                    <h3 className="modal-title">Request a Screenshot</h3>
-                    <button className="close-btn modal-close" onClick={close} disabled={submitting} aria-label="Close">
-                        <X size={22} />
-                    </button>
+        <div className="modal-overlay sheet-overlay" onMouseDown={(event) => event.target === event.currentTarget && requestClose()}>
+            <section className="modal-content request-modal request-sheet" role="dialog" aria-modal="true" aria-labelledby="request-title">
+                <div className="modal-header request-sheet-head">
+                    <div>
+                        <span className="eyebrow"><AppIcon name="ImagePlus" size={13} /> Library request</span>
+                        <h2 className="modal-title" id="request-title">Request a screenshot</h2>
+                        <p className="survey-subtitle">Tell us what is missing. We will route it with your search context.</p>
+                    </div>
+                    <button type="button" className="close-btn" onClick={requestClose} disabled={submitting} aria-label="Close request"><AppIcon name="X" /></button>
                 </div>
 
-                {submitSuccess ? (
+                {reference ? (
                     <div className="request-success">
-                        <div className="request-success-icon">
-                            <CheckCircle size={48} />
-                        </div>
-                        <h4>Request sent</h4>
-                        <p>Thanks for flagging this. We'll add it to the library.</p>
+                        <div className="request-success-icon"><AppIcon name="Check" size={34} /></div>
+                        <span className="eyebrow">Request recorded</span>
+                        <h4>Thanks for flagging the gap.</h4>
+                        <p>Your request is in the content queue. Keep this reference if you need to follow up.</p>
+                        <code className="request-reference">{reference}</code>
+                        <button type="button" className="button button-primary" onClick={close}>Back to library</button>
                     </div>
                 ) : (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="sheet-form">
                         <div className="modal-body">
-                            {duplicateMatches.length > 0 && (
-                                <div className="dup-panel">
-                                    <div className="dup-header">
-                                        <ImageIcon size={18} />
-                                        <strong>Did you mean one of these existing screenshots?</strong>
-                                    </div>
-                                    <ul className="dup-list">
-                                        {duplicateMatches.map(({ item }) => (
-                                            <li key={item.id} className="dup-item">
-                                                {item.image && (
-                                                    <img src={item.image} alt={item.title} className="dup-thumb" loading="lazy" />
-                                                )}
-                                                <div className="dup-meta">
-                                                    <div className="dup-title">{item.title}</div>
-                                                    <div className="dup-sub">
-                                                        <span>{item.topic || 'General'}</span>
-                                                        <span>•</span>
-                                                        <span>{item.language}</span>
-                                                    </div>
-                                                </div>
-                                                <button type="button" className="btn dup-dismiss" onClick={close}>
-                                                    Use this
-                                                </button>
+                            {duplicates.length > 0 && (
+                                <div className="duplicate-warning">
+                                    <div className="duplicate-heading"><AppIcon name="Search" size={16} /><strong>Check these existing guides first</strong></div>
+                                    <p>We found close matches while you typed.</p>
+                                    <ul className="duplicate-list">
+                                        {duplicates.map(({ item }) => (
+                                            <li key={item.id} className="duplicate-item">
+                                                <img src={resolveImageUrl(item.image)} alt="" loading="lazy" />
+                                                <span><strong>{item.title}</strong><small>{item.topic} · {item.language}</small></span>
+                                                <button type="button" className="dup-use-btn" onClick={close}>Use this</button>
                                             </li>
                                         ))}
                                     </ul>
-                                    <button type="button" className="dup-override" onClick={() => setDismissedDuplicates(true)}>
-                                        None of these — send my request anyway
-                                    </button>
+                                    <button type="button" className="dup-override" onClick={() => setDismissedDuplicates(true)}>None match — continue my request</button>
                                 </div>
                             )}
 
-                            <div className="form-row">
+                            <div className="form-section">
+                                <div className="form-section-title"><span>01</span><div><strong>Classify the request</strong><small>Helps the right content owner find it quickly.</small></div></div>
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <label>Topic <span className="req-star">Required</span></label>
+                                        <select className="form-select" value={form.topic} onChange={(event) => setField('topic', event.target.value)}>
+                                            <option value="">Choose topic</option>
+                                            {topicOptions.map((topic) => <option value={topic} key={topic}>{topic}</option>)}
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        {form.topic === 'Other' && <input className="form-input" value={form.customTopic} maxLength={60} onChange={(event) => setField('customTopic', event.target.value)} placeholder="New topic name" />}
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Language</label>
+                                        <select className="form-select" value={form.language} onChange={(event) => setField('language', event.target.value)}>
+                                            {LANGUAGE_OPTIONS.map(([code, label]) => <option value={code} key={code}>{label} ({code})</option>)}
+                                        </select>
+                                    </div>
+                                </div>
                                 <div className="form-group">
-                                    <label>Topic <span className="req-star">*</span></label>
-                                    <select
-                                        className="form-select"
-                                        value={topic}
-                                        onChange={(e) => setTopic(e.target.value)}
-                                        required
-                                    >
-                                        <option value="">Select a topic...</option>
-                                        {effectiveTopicOptions.map(t => (
-                                            <option key={t} value={t}>{t}</option>
-                                        ))}
-                                        <option value="Other">Other…</option>
-                                    </select>
-                                    {topic === 'Other' && (
-                                        <input
-                                            type="text"
-                                            className="form-input mt-2"
-                                            placeholder="Enter topic"
-                                            value={customTopic}
-                                            onChange={(e) => setCustomTopic(e.target.value)}
-                                            maxLength={60}
-                                        />
-                                    )}
+                                    <label>Platform</label>
+                                    <div className="seg-control request-segments">
+                                        {['Web', 'Mobile', 'Either'].map((platform) => <button type="button" key={platform} className={`seg-btn ${form.platform === platform ? 'active' : ''}`} onClick={() => setField('platform', platform)}>{platform}</button>)}
+                                    </div>
                                 </div>
+                            </div>
 
+                            <div className="form-section">
+                                <div className="form-section-title"><span>02</span><div><strong>Describe the missing guide</strong><small>Specific pathways are easier to capture accurately.</small></div></div>
                                 <div className="form-group">
-                                    <label>Language <span className="req-star">*</span></label>
-                                    <select
-                                        className="form-select"
-                                        value={language}
-                                        onChange={(e) => setLanguage(e.target.value)}
-                                        required
-                                    >
-                                        {LANGUAGE_OPTIONS.map(l => (
-                                            <option key={l.code} value={l.code}>{l.label} ({l.code})</option>
-                                        ))}
-                                    </select>
+                                    <label>What should the screenshot show? <span className="char-count">{form.description.trim().length}/500</span></label>
+                                    <textarea className="form-textarea" value={form.description} maxLength={500} onChange={(event) => setField('description', event.target.value)} placeholder="Example: Show the new mobile pathway for enabling BNB fee discount…" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Why do you need it? <span className="char-count">{form.context.length}/300</span></label>
+                                    <textarea className="form-textarea short" value={form.context} maxLength={300} onChange={(event) => setField('context', event.target.value)} placeholder="Optional frequency or customer context" />
+                                </div>
+                                <div className="form-group">
+                                    <label>Terms you already searched</label>
+                                    <input className="form-input" value={form.searchTerms} onChange={(event) => setField('searchTerms', event.target.value)} placeholder="Your Library search terms" />
                                 </div>
                             </div>
 
-                            <div className="form-group">
-                                <label>Platform</label>
-                                <div className="seg-control">
-                                    {['Web', 'Mobile', 'Either'].map(opt => (
-                                        <button
-                                            type="button"
-                                            key={opt}
-                                            className={`seg-btn ${platform === opt ? 'active' : ''}`}
-                                            onClick={() => setPlatform(opt)}
-                                        >
-                                            {opt}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="form-group">
-                                <label>
-                                    What should the screenshot show? <span className="req-star">*</span>
-                                    <span className="char-count">{descLen}/500</span>
-                                </label>
-                                <textarea
-                                    className="form-textarea short"
-                                    placeholder="e.g., how to enable the BNB discount on the mobile app settings page"
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                    maxLength={500}
-                                    required
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>
-                                    Why you need it / how often you hit this
-                                    <span className="char-count">{context.length}/300</span>
-                                </label>
-                                <textarea
-                                    className="form-textarea short"
-                                    placeholder="e.g., I get this question 2-3 times per shift and there's no existing screenshot for the new UI"
-                                    value={context}
-                                    onChange={(e) => setContext(e.target.value)}
-                                    maxLength={300}
-                                />
-                            </div>
-
-                            <div className="form-group">
-                                <label>Your current search terms</label>
-                                <input
-                                    type="text"
-                                    className="form-input"
-                                    placeholder="What did you search for?"
-                                    value={searchTerms}
-                                    onChange={(e) => setSearchTerms(e.target.value)}
-                                />
-                            </div>
-
-                            {(submitError || rateLimitMsg) && (
-                                <div className="request-error">
-                                    <AlertTriangle size={16} />
-                                    <span>{submitError || rateLimitMsg}</span>
-                                </div>
-                            )}
+                            {error && <div className="request-error"><AppIcon name="Activity" size={16} /><span>{error}</span></div>}
                         </div>
-
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" onClick={close} disabled={submitting}>
-                                Cancel
-                            </button>
-                            <button type="submit" className="btn btn-primary" disabled={submitting}>
-                                {submitting ? (
-                                    <>Sending…</>
-                                ) : (
-                                    <><Send size={16} /> Send Request</>
-                                )}
-                            </button>
+                            <span className="footer-hint">Public request · no publishing access</span>
+                            <div className="footer-actions">
+                                <button type="button" className="button button-quiet" onClick={requestClose} disabled={submitting}>Cancel</button>
+                                <button type="submit" className="button button-primary" disabled={submitting}><AppIcon name="MessageSquarePlus" size={15} /> {submitting ? 'Sending…' : 'Send request'}</button>
+                            </div>
                         </div>
                     </form>
                 )}
-            </div>
+
+                {confirmClose && (
+                    <div className="discard-banner" role="alertdialog" aria-label="Discard request draft">
+                        <div><strong>Discard this request?</strong><span>Your entered details will be lost.</span></div>
+                        <div><button type="button" className="button button-quiet" onClick={() => setConfirmClose(false)}>Keep editing</button><button type="button" className="button button-danger" onClick={close}>Discard</button></div>
+                    </div>
+                )}
+            </section>
         </div>
     );
 }

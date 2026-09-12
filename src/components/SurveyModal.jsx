@@ -1,64 +1,39 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { X, Send, CheckCircle, AlertTriangle, ClipboardList, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { useSurveyModal } from '../contexts/SurveyModalContext';
+import { emptySurvey, sanitizeSurveyDraft, validateSurveySection } from '../domain/survey';
 import { logSurveyResponse } from '../services/analytics';
+import { AppIcon } from './AppIcon';
 
-const USAGE_OPTIONS = [
-    'Never',
-    'Rarely (a few times a month)',
-    '1–5 times per shift',
-    '6–20 times per shift',
-    '20+ times per shift',
-];
-
-const PLATFORM_PREF_OPTIONS = ['Web', 'Mobile', 'Both equally'];
-
-const REQUEST_EXPERIENCE_OPTIONS = [
-    { value: 'used_worked',          label: 'Yes — I used it and it worked' },
-    { value: 'used_did_not_work',    label: "Yes — I used it but it didn't work well" },
-    { value: 'did_not_know',         label: "No — I didn't know the feature existed" },
-    { value: 'did_not_need',         label: "No — I haven't needed it yet" },
-];
-
-const LANGUAGE_OPTIONS = [
-    { code: 'EN', label: 'English' },
-    { code: 'CN', label: 'Chinese' },
-    { code: 'TR', label: 'Turkish' },
-    { code: 'AR', label: 'Arabic' },
-    { code: 'RU', label: 'Russian' },
-    { code: 'VI', label: 'Vietnamese' },
-];
-
-const BUILT_IN_TOPICS = [
-    'Futures Trading',
-    'Margin Trading',
-    'Copy Trading',
-    'LOAN',
-    'BOTS',
-    'Grid Bot',
-    'Event Contract',
-    'General',
-    'Binance LOAN',
-];
-
-const RATE_LIMIT_MS = 24 * 60 * 60 * 1000;
+const DRAFT_KEY = 'fd_survey_draft_v1';
 const RATE_LIMIT_KEY = 'fd_last_survey_at';
+const RATE_LIMIT_MS = 24 * 60 * 60 * 1000;
+const USAGE_OPTIONS = ['Never', 'Rarely (a few times a month)', '1–5 times per shift', '6–20 times per shift', '20+ times per shift'];
+const PLATFORM_OPTIONS = ['Web', 'Mobile', 'Both equally'];
+const REQUEST_OPTIONS = [
+    ['used_worked', 'Used it — worked well'],
+    ['used_did_not_work', 'Used it — needs improvement'],
+    ['did_not_know', 'I did not know it existed'],
+    ['did_not_need', 'I have not needed it'],
+];
+const LANGUAGE_OPTIONS = [['EN', 'English'], ['CN', 'Chinese'], ['TR', 'Turkish'], ['AR', 'Arabic'], ['RU', 'Russian'], ['VI', 'Vietnamese']];
+const BUILT_IN_TOPICS = ['Futures Trading', 'Margin Trading', 'Copy Trading', 'LOAN', 'BOTS', 'Grid Bot', 'Event Contract', 'General', 'Binance LOAN'];
+const STEP_TITLES = ['Usage & satisfaction', 'Coverage needs', 'Ideas & friction', 'Review'];
 
-function RatingStars({ value, onChange, ariaLabel }) {
+function loadDraft() {
+    try { return sanitizeSurveyDraft(JSON.parse(localStorage.getItem(DRAFT_KEY) || '{}')); }
+    catch { return { ...emptySurvey }; }
+}
+
+function RatingScale({ label, value, onChange }) {
     return (
-        <div className="rating-stars" role="radiogroup" aria-label={ariaLabel}>
-            {[1, 2, 3, 4, 5].map(n => (
-                <button
-                    type="button"
-                    key={n}
-                    role="radio"
-                    aria-checked={value === n}
-                    className={`rating-star ${value >= n ? 'filled' : ''}`}
-                    onClick={() => onChange(n)}
-                    title={`${n} star${n > 1 ? 's' : ''}`}
-                >
-                    <Star size={22} />
+        <div className="rating-scale" role="radiogroup" aria-label={label}>
+            {[1, 2, 3, 4, 5].map((rating) => (
+                <button type="button" key={rating} role="radio" aria-checked={value === rating} className={`rating-card ${value === rating ? 'active' : ''}`} onClick={() => onChange(rating)}>
+                    <Star size={17} fill={value >= rating ? 'currentColor' : 'none'} />
+                    <strong>{rating}</strong>
+                    <small>{rating === 1 ? 'Low' : rating === 5 ? 'Excellent' : ''}</small>
                 </button>
             ))}
         </div>
@@ -68,338 +43,184 @@ function RatingStars({ value, onChange, ariaLabel }) {
 export function SurveyModal() {
     const { close } = useSurveyModal();
     const { allTopics } = useData();
-
-    const [usageFrequency, setUsageFrequency] = useState('');
-    const [satisfaction, setSatisfaction] = useState(0);
-    const [searchEase, setSearchEase] = useState(0);
-    const [underCoveredTopic, setUnderCoveredTopic] = useState('');
-    const [customTopic, setCustomTopic] = useState('');
-    const [languagesNeeded, setLanguagesNeeded] = useState([]);
-    const [platformPreference, setPlatformPreference] = useState('');
-    const [requestExperience, setRequestExperience] = useState('');
-    const [topFeature, setTopFeature] = useState('');
-    const [biggestFrustration, setBiggestFrustration] = useState('');
-    const [otherFeedback, setOtherFeedback] = useState('');
-
+    const [survey, setSurvey] = useState(loadDraft);
+    const [step, setStep] = useState(0);
+    const [error, setError] = useState('');
     const [submitting, setSubmitting] = useState(false);
-    const [submitError, setSubmitError] = useState('');
-    const [submitSuccess, setSubmitSuccess] = useState(false);
-    const [rateLimitMsg, setRateLimitMsg] = useState('');
-
-    const effectiveTopicOptions = useMemo(() => {
-        const merged = new Set([...BUILT_IN_TOPICS, ...(allTopics || [])]);
-        return Array.from(merged).sort();
-    }, [allTopics]);
+    const [success, setSuccess] = useState(false);
+    const [confirmClose, setConfirmClose] = useState(false);
+    const topicOptions = useMemo(() => Array.from(new Set([...BUILT_IN_TOPICS, ...allTopics])).sort(), [allTopics]);
+    const dirty = JSON.stringify(survey) !== JSON.stringify(emptySurvey);
+    const setField = (field, value) => setSurvey((current) => ({ ...current, [field]: value }));
+    const resolvedTopic = survey.underCoveredTopic === 'Other' ? survey.customTopic.trim() : survey.underCoveredTopic;
 
     useEffect(() => {
-        const onKey = (e) => { if (e.key === 'Escape' && !submitting) close(); };
+        if (!success) {
+            try { localStorage.setItem(DRAFT_KEY, JSON.stringify(survey)); } catch { /* private browsing */ }
+        }
+    }, [success, survey]);
+
+    const requestClose = () => {
+        if (!submitting && dirty && !success) setConfirmClose(true);
+        else if (!submitting) close();
+    };
+
+    useEffect(() => {
+        const onKey = (event) => { if (event.key === 'Escape') requestClose(); };
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
-    }, [submitting, close]);
+    });
 
-    const resolvedTopic = underCoveredTopic === 'Other' ? customTopic.trim() : underCoveredTopic;
-
-    const toggleLanguage = (code) => {
-        setLanguagesNeeded(prev =>
-            prev.includes(code) ? prev.filter(c => c !== code) : [...prev, code]
-        );
+    const next = () => {
+        const validation = validateSurveySection(step, survey);
+        if (validation) { setError(validation); return; }
+        setError('');
+        setStep((current) => Math.min(3, current + 1));
     };
 
-    const validate = () => {
-        if (!usageFrequency) return 'Please answer Q1 — how often you use it.';
-        if (!satisfaction) return 'Please rate Q2 — your satisfaction.';
-        if (!searchEase) return 'Please rate Q3 — search ease.';
-        if (!resolvedTopic) return 'Please pick the most under-covered topic in Q4.';
-        if (languagesNeeded.length === 0) return 'Please pick at least one language in Q5.';
-        if (!platformPreference) return 'Please answer Q6 — platform preference.';
-        if (!requestExperience) return 'Please answer Q7 — Request Screenshot experience.';
-        if (topFeature.trim().length < 3) return 'Please tell us your top feature idea in Q8 (at least 3 characters).';
-        if (topFeature.length > 300) return 'Q8 must be 300 characters or fewer.';
-        if (biggestFrustration.trim().length < 3) return 'Please share your biggest frustration in Q9 (at least 3 characters).';
-        if (biggestFrustration.length > 300) return 'Q9 must be 300 characters or fewer.';
-        if (otherFeedback.length > 500) return 'Q10 must be 500 characters or fewer.';
-        return '';
-    };
+    const toggleLanguage = (code) => setField('languagesNeeded', survey.languagesNeeded.includes(code)
+        ? survey.languagesNeeded.filter((value) => value !== code)
+        : [...survey.languagesNeeded, code]);
 
     const checkRateLimit = () => {
         try {
-            const last = parseInt(localStorage.getItem(RATE_LIMIT_KEY) || '0', 10);
-            const elapsed = Date.now() - last;
-            if (last && elapsed < RATE_LIMIT_MS) {
-                const hours = Math.ceil((RATE_LIMIT_MS - elapsed) / (60 * 60 * 1000));
-                return `You already submitted a survey recently. Please wait about ${hours}h before submitting again.`;
-            }
-        } catch { /* ignore */ }
-        return '';
+            const last = Number(localStorage.getItem(RATE_LIMIT_KEY) || 0);
+            const remaining = RATE_LIMIT_MS - (Date.now() - last);
+            return last && remaining > 0 ? `You already submitted recently. Please wait about ${Math.ceil(remaining / 3600000)} hours.` : '';
+        } catch { return ''; }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setSubmitError('');
-        setRateLimitMsg('');
-
-        const validation = validate();
-        if (validation) {
-            setSubmitError(validation);
-            return;
-        }
-
-        const rate = checkRateLimit();
-        if (rate) {
-            setRateLimitMsg(rate);
-            return;
-        }
-
+    const submit = async () => {
+        const sectionError = validateSurveySection(2, survey) || checkRateLimit();
+        if (sectionError) { setError(sectionError); setStep(2); return; }
+        setError('');
         setSubmitting(true);
         try {
             await logSurveyResponse({
-                usage_frequency: usageFrequency,
-                satisfaction,
-                search_ease: searchEase,
+                usage_frequency: survey.usageFrequency,
+                satisfaction: survey.satisfaction,
+                search_ease: survey.searchEase,
                 under_covered_topic: resolvedTopic,
-                languages_needed: languagesNeeded.join(','),
-                platform_preference: platformPreference,
-                request_feature_experience: requestExperience,
-                top_feature: topFeature.trim(),
-                biggest_frustration: biggestFrustration.trim(),
-                other_feedback: otherFeedback.trim(),
+                languages_needed: survey.languagesNeeded.join(','),
+                platform_preference: survey.platformPreference,
+                request_feature_experience: survey.requestExperience,
+                top_feature: survey.topFeature.trim(),
+                biggest_frustration: survey.biggestFrustration.trim(),
+                other_feedback: survey.otherFeedback.trim(),
             });
             localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
-            setSubmitSuccess(true);
-            setTimeout(() => {
-                close();
-            }, 2000);
-        } catch (err) {
-            setSubmitError(err.message || 'Something went wrong. Please try again.');
+            localStorage.removeItem(DRAFT_KEY);
+            setSuccess(true);
+        } catch (submitError) {
+            setError(submitError.message || 'The survey could not be submitted. Your draft remains saved.');
+        } finally {
             setSubmitting(false);
         }
     };
 
     return (
-        <div className="modal-overlay" onClick={() => !submitting && close()}>
-            <div className="modal-content survey-modal" onClick={(e) => e.stopPropagation()}>
-                <div className="modal-header">
-                    <div className="survey-header-title">
-                        <ClipboardList size={20} className="survey-header-icon" />
-                        <div>
-                            <h3 className="modal-title">Agent Feedback Survey</h3>
-                            <p className="survey-subtitle">10 quick questions — takes about 3 minutes.</p>
-                        </div>
+        <div className="modal-overlay survey-overlay" onMouseDown={(event) => event.target === event.currentTarget && requestClose()}>
+            <section className="modal-content survey-modal survey-workspace" role="dialog" aria-modal="true" aria-labelledby="survey-title">
+                <header className="modal-header survey-workspace-head">
+                    <div>
+                        <span className="eyebrow"><AppIcon name="ClipboardList" size={13} /> Agent voice</span>
+                        <h2 className="modal-title" id="survey-title">Feedback survey</h2>
+                        <p className="survey-subtitle">Ten focused questions · draft saved automatically</p>
                     </div>
-                    <button className="close-btn modal-close" onClick={close} disabled={submitting} aria-label="Close">
-                        <X size={22} />
-                    </button>
-                </div>
+                    <button type="button" className="close-btn" onClick={requestClose} disabled={submitting} aria-label="Close survey"><AppIcon name="X" /></button>
+                </header>
 
-                {submitSuccess ? (
+                {success ? (
                     <div className="request-success">
-                        <div className="request-success-icon">
-                            <CheckCircle size={48} />
-                        </div>
-                        <h4>Thanks for the feedback!</h4>
-                        <p>Your answers have been recorded. This helps shape what we build next.</p>
+                        <div className="request-success-icon"><AppIcon name="Check" size={34} /></div>
+                        <span className="eyebrow">Feedback received</span>
+                        <h4>Thank you for shaping the library.</h4>
+                        <p>Your responses were recorded successfully and your local draft was cleared.</p>
+                        <button type="button" className="button button-primary" onClick={close}>Return to library</button>
                     </div>
                 ) : (
-                    <form onSubmit={handleSubmit}>
-                        <div className="modal-body survey-body">
-                            {/* Q1 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q1</span>
-                                    How often do you use the Screenshot Assistant during your shift?
-                                </label>
-                                <div className="survey-options">
-                                    {USAGE_OPTIONS.map(opt => (
-                                        <button
-                                            type="button"
-                                            key={opt}
-                                            className={`survey-chip ${usageFrequency === opt ? 'active' : ''}`}
-                                            onClick={() => setUsageFrequency(opt)}
-                                        >
-                                            {opt}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
+                    <>
+                        <nav className="survey-progress" aria-label="Survey progress">
+                            {STEP_TITLES.map((title, index) => (
+                                <button type="button" key={title} className={`${index === step ? 'active' : ''} ${index < step ? 'complete' : ''}`} onClick={() => index < step && setStep(index)} disabled={index > step}>
+                                    <span>{index < step ? <AppIcon name="Check" size={12} /> : index + 1}</span>
+                                    <strong>{title}</strong>
+                                </button>
+                            ))}
+                        </nav>
 
-                            {/* Q2 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q2</span>
-                                    How satisfied are you with the current library?
-                                </label>
-                                <RatingStars value={satisfaction} onChange={setSatisfaction} ariaLabel="Satisfaction rating" />
-                            </div>
-
-                            {/* Q3 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q3</span>
-                                    How easy is it to find the screenshot you need via search?
-                                </label>
-                                <RatingStars value={searchEase} onChange={setSearchEase} ariaLabel="Search ease rating" />
-                            </div>
-
-                            {/* Q4 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q4</span>
-                                    Which topic area feels <strong>most under-covered</strong>?
-                                </label>
-                                <select
-                                    className="form-select"
-                                    value={underCoveredTopic}
-                                    onChange={(e) => setUnderCoveredTopic(e.target.value)}
-                                >
-                                    <option value="">Select a topic...</option>
-                                    {effectiveTopicOptions.map(t => (
-                                        <option key={t} value={t}>{t}</option>
-                                    ))}
-                                    <option value="Other">Other…</option>
-                                </select>
-                                {underCoveredTopic === 'Other' && (
-                                    <input
-                                        type="text"
-                                        className="form-input mt-2"
-                                        placeholder="Enter topic"
-                                        value={customTopic}
-                                        onChange={(e) => setCustomTopic(e.target.value)}
-                                        maxLength={60}
-                                    />
-                                )}
-                            </div>
-
-                            {/* Q5 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q5</span>
-                                    Which languages need more coverage? <span className="survey-hint">(select all that apply)</span>
-                                </label>
-                                <div className="survey-options">
-                                    {LANGUAGE_OPTIONS.map(l => (
-                                        <button
-                                            type="button"
-                                            key={l.code}
-                                            className={`survey-chip ${languagesNeeded.includes(l.code) ? 'active' : ''}`}
-                                            onClick={() => toggleLanguage(l.code)}
-                                        >
-                                            {l.label} ({l.code})
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Q6 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q6</span>
-                                    Do you prefer Web, Mobile, or both for screenshots?
-                                </label>
-                                <div className="seg-control">
-                                    {PLATFORM_PREF_OPTIONS.map(opt => (
-                                        <button
-                                            type="button"
-                                            key={opt}
-                                            className={`seg-btn ${platformPreference === opt ? 'active' : ''}`}
-                                            onClick={() => setPlatformPreference(opt)}
-                                        >
-                                            {opt}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Q7 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q7</span>
-                                    Have you used the <strong>Request Screenshot</strong> feature?
-                                </label>
-                                <div className="survey-options survey-options-stack">
-                                    {REQUEST_EXPERIENCE_OPTIONS.map(opt => (
-                                        <button
-                                            type="button"
-                                            key={opt.value}
-                                            className={`survey-chip ${requestExperience === opt.value ? 'active' : ''}`}
-                                            onClick={() => setRequestExperience(opt.value)}
-                                        >
-                                            {opt.label}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Q8 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q8</span>
-                                    What's the #1 feature you'd add?
-                                    <span className="char-count">{topFeature.length}/300</span>
-                                </label>
-                                <textarea
-                                    className="form-textarea short"
-                                    placeholder="e.g., bulk download, annotations, shortcut keys…"
-                                    value={topFeature}
-                                    onChange={(e) => setTopFeature(e.target.value)}
-                                    maxLength={300}
-                                />
-                            </div>
-
-                            {/* Q9 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q9</span>
-                                    What frustrates you most today?
-                                    <span className="char-count">{biggestFrustration.length}/300</span>
-                                </label>
-                                <textarea
-                                    className="form-textarea short"
-                                    placeholder="e.g., search doesn't find X, mobile screenshots are missing for Y…"
-                                    value={biggestFrustration}
-                                    onChange={(e) => setBiggestFrustration(e.target.value)}
-                                    maxLength={300}
-                                />
-                            </div>
-
-                            {/* Q10 */}
-                            <div className="survey-q">
-                                <label className="survey-q-label">
-                                    <span className="survey-q-num">Q10</span>
-                                    Any other ideas or feedback? <span className="survey-hint">(optional)</span>
-                                    <span className="char-count">{otherFeedback.length}/500</span>
-                                </label>
-                                <textarea
-                                    className="form-textarea short"
-                                    placeholder="Anything else you want us to know?"
-                                    value={otherFeedback}
-                                    onChange={(e) => setOtherFeedback(e.target.value)}
-                                    maxLength={500}
-                                />
-                            </div>
-
-                            {(submitError || rateLimitMsg) && (
-                                <div className="request-error">
-                                    <AlertTriangle size={16} />
-                                    <span>{submitError || rateLimitMsg}</span>
-                                </div>
+                        <div className="modal-body survey-step-body">
+                            {step === 0 && (
+                                <section className="survey-step animate-in">
+                                    <div className="step-heading"><span>01</span><div><h3>How does the library fit your shift?</h3><p>Help us understand frequency and everyday usability.</p></div></div>
+                                    <div className="survey-q">
+                                        <label className="survey-q-label">How often do you use Screenshot Library?</label>
+                                        <div className="survey-options">{USAGE_OPTIONS.map((option) => <button type="button" key={option} className={`survey-chip ${survey.usageFrequency === option ? 'active' : ''}`} onClick={() => setField('usageFrequency', option)}>{option}</button>)}</div>
+                                    </div>
+                                    <div className="survey-q"><label className="survey-q-label">Overall satisfaction</label><RatingScale label="Overall satisfaction" value={survey.satisfaction} onChange={(value) => setField('satisfaction', value)} /></div>
+                                    <div className="survey-q"><label className="survey-q-label">How easy is it to find the right screenshot?</label><RatingScale label="Search ease" value={survey.searchEase} onChange={(value) => setField('searchEase', value)} /></div>
+                                </section>
                             )}
+
+                            {step === 1 && (
+                                <section className="survey-step animate-in">
+                                    <div className="step-heading"><span>02</span><div><h3>Where are the coverage gaps?</h3><p>Tell content owners what to prioritize next.</p></div></div>
+                                    <div className="survey-q form-group">
+                                        <label>Most under-covered topic</label>
+                                        <select className="form-select" value={survey.underCoveredTopic} onChange={(event) => setField('underCoveredTopic', event.target.value)}><option value="">Choose topic</option>{topicOptions.map((topic) => <option key={topic}>{topic}</option>)}<option value="Other">Other</option></select>
+                                        {survey.underCoveredTopic === 'Other' && <input className="form-input" maxLength={60} value={survey.customTopic} onChange={(event) => setField('customTopic', event.target.value)} placeholder="Topic name" />}
+                                    </div>
+                                    <div className="survey-q"><label className="survey-q-label">Languages that need more coverage</label><div className="survey-options">{LANGUAGE_OPTIONS.map(([code, label]) => <button type="button" key={code} className={`survey-chip ${survey.languagesNeeded.includes(code) ? 'active' : ''}`} onClick={() => toggleLanguage(code)}>{label} <small>{code}</small></button>)}</div></div>
+                                    <div className="survey-q"><label className="survey-q-label">Preferred screenshot platform</label><div className="seg-control wide-segments">{PLATFORM_OPTIONS.map((option) => <button type="button" key={option} className={`seg-btn ${survey.platformPreference === option ? 'active' : ''}`} onClick={() => setField('platformPreference', option)}>{option}</button>)}</div></div>
+                                    <div className="survey-q"><label className="survey-q-label">Request Screenshot experience</label><div className="survey-options survey-options-stack">{REQUEST_OPTIONS.map(([value, label]) => <button type="button" key={value} className={`survey-chip ${survey.requestExperience === value ? 'active' : ''}`} onClick={() => setField('requestExperience', value)}>{label}</button>)}</div></div>
+                                </section>
+                            )}
+
+                            {step === 2 && (
+                                <section className="survey-step animate-in">
+                                    <div className="step-heading"><span>03</span><div><h3>What would make it meaningfully better?</h3><p>Concrete examples are the most useful input.</p></div></div>
+                                    <div className="survey-q form-group"><label>Your number-one feature idea <span className="char-count">{survey.topFeature.length}/300</span></label><textarea className="form-textarea short" maxLength={300} value={survey.topFeature} onChange={(event) => setField('topFeature', event.target.value)} placeholder="The single improvement that would save you the most time" /></div>
+                                    <div className="survey-q form-group"><label>Biggest frustration today <span className="char-count">{survey.biggestFrustration.length}/300</span></label><textarea className="form-textarea short" maxLength={300} value={survey.biggestFrustration} onChange={(event) => setField('biggestFrustration', event.target.value)} placeholder="A search, content, or workflow problem you repeatedly hit" /></div>
+                                    <div className="survey-q form-group"><label>Anything else <span className="char-count">{survey.otherFeedback.length}/500</span></label><textarea className="form-textarea short" maxLength={500} value={survey.otherFeedback} onChange={(event) => setField('otherFeedback', event.target.value)} placeholder="Optional additional feedback" /></div>
+                                </section>
+                            )}
+
+                            {step === 3 && (
+                                <section className="survey-step animate-in">
+                                    <div className="step-heading"><span>04</span><div><h3>Review before sending</h3><p>Confirm that this summary reflects your experience.</p></div></div>
+                                    <dl className="survey-review">
+                                        <div><dt>Usage</dt><dd>{survey.usageFrequency}</dd></div>
+                                        <div><dt>Ratings</dt><dd>Satisfaction {survey.satisfaction}/5 · Search {survey.searchEase}/5</dd></div>
+                                        <div><dt>Coverage</dt><dd>{resolvedTopic} · {survey.languagesNeeded.join(', ')}</dd></div>
+                                        <div><dt>Platform</dt><dd>{survey.platformPreference}</dd></div>
+                                        <div><dt>Top idea</dt><dd>{survey.topFeature}</dd></div>
+                                        <div><dt>Friction</dt><dd>{survey.biggestFrustration}</dd></div>
+                                    </dl>
+                                </section>
+                            )}
+
+                            {error && <div className="request-error"><AppIcon name="Activity" size={16} /><span>{error}</span></div>}
                         </div>
 
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" onClick={close} disabled={submitting}>
-                                Cancel
-                            </button>
-                            <button type="submit" className="btn btn-primary" disabled={submitting}>
-                                {submitting ? (
-                                    <>Sending…</>
-                                ) : (
-                                    <><Send size={16} /> Submit Survey</>
-                                )}
-                            </button>
-                        </div>
-                    </form>
+                        <footer className="modal-footer survey-footer">
+                            <span className="footer-hint">Step {step + 1} of 4</span>
+                            <div className="footer-actions">
+                                {step > 0 && <button type="button" className="button button-quiet" onClick={() => { setError(''); setStep((current) => current - 1); }} disabled={submitting}>Back</button>}
+                                {step < 3
+                                    ? <button type="button" className="button button-primary" onClick={next}>Continue <AppIcon name="ArrowRight" size={14} /></button>
+                                    : <button type="button" className="button button-primary" onClick={submit} disabled={submitting}><AppIcon name="ClipboardList" size={14} /> {submitting ? 'Submitting…' : 'Submit feedback'}</button>}
+                            </div>
+                        </footer>
+                    </>
                 )}
-            </div>
+
+                {confirmClose && (
+                    <div className="discard-banner" role="alertdialog" aria-label="Discard survey draft">
+                        <div><strong>Leave the survey?</strong><span>Your draft is saved on this device.</span></div>
+                        <div><button type="button" className="button button-quiet" onClick={() => setConfirmClose(false)}>Keep editing</button><button type="button" className="button button-danger" onClick={close}>Leave</button></div>
+                    </div>
+                )}
+            </section>
         </div>
     );
 }
