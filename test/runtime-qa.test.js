@@ -125,6 +125,18 @@ test('owners can expose archived records and initiate recovery in Content Studio
   assert.match(editor, /Restore to library|Restore previous version/);
 });
 
+test('existing screenshot picker makes replacement selection searchable and explicit', async () => {
+  const picker = await readFile(new URL('../src/components/admin/ExistingScreenshotPicker.jsx', import.meta.url), 'utf8');
+  assert.match(picker, /Choose a screenshot to replace/);
+  assert.match(picker, /filterStudioItems/);
+  assert.match(picker, /title, owner, topic, language or platform/i);
+  assert.match(picker, /item\.topic/);
+  assert.match(picker, /item\.language/);
+  assert.match(picker, /normalizePlatform\(item\.platform\)/);
+  assert.match(picker, /item\.owner/);
+  assert.match(picker, /Select \$\{item\.title\} to replace/);
+});
+
 test('the production migration stores immutable owner keys and rate-limit buckets', async () => {
   const migration = await readFile(new URL('../worker/migrations/0003_production_safety.sql', import.meta.url), 'utf8');
   assert.match(migration, /owner_key/);
