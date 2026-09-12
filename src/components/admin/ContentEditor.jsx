@@ -16,7 +16,7 @@ function initialDraft(item) {
     };
 }
 
-export function ContentEditor({ item, onClose, onPublished }) {
+export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) {
     const auth = useAuth();
     const [base, setBase] = useState(item || null);
     const [draft, setDraft] = useState(() => initialDraft(item));
@@ -26,10 +26,15 @@ export function ContentEditor({ item, onClose, onPublished }) {
     const [conflict, setConflict] = useState(null);
     const patch = useMemo(() => buildPatch(base || initialDraft(null), draft, FIELDS), [base, draft]);
     const dirty = Boolean(image) || Object.keys(patch).length > 0;
+    const isExisting = Boolean(item);
     useUnsavedChanges(dirty);
 
     const update = (field, value) => setDraft((current) => ({ ...current, [field]: value }));
     const close = () => { if (!dirty || window.confirm('Discard your unpublished changes?')) onClose(); };
+    const chooseExisting = () => {
+        if (dirty && !window.confirm('Discard this new guide draft and choose an existing screenshot?')) return;
+        onChooseExisting();
+    };
 
     const publish = async (override = null, imageOverride = image) => {
         if (!draft.title.trim() || !draft.text.trim() || !draft.topic || !draft.language) return setStatus({ state: 'error', message: 'Title, source response, topic and language are required.' });
@@ -85,10 +90,11 @@ export function ContentEditor({ item, onClose, onPublished }) {
     return <>
         <div className="modal-overlay editor-overlay" onMouseDown={(event) => event.target === event.currentTarget && close()}>
             <section className="studio-editor" role="dialog" aria-modal="true" aria-labelledby="editor-title">
-                <header className="studio-editor-header"><div><span className="eyebrow">{item ? `Screenshot · ${item.id}` : 'New catalog entry'}</span><h2 id="editor-title">{item ? 'Edit published guide' : 'Create screenshot guide'}</h2></div><button type="button" className="icon-button" onClick={close} aria-label="Close editor"><AppIcon name="X" /></button></header>
+                <header className="studio-editor-header"><div><span className="eyebrow">{isExisting ? `Editing screenshot · ${item.id}` : 'New catalog entry'}</span><h2 id="editor-title">{isExisting ? 'Replace image or edit guide' : 'Create screenshot guide'}</h2></div><button type="button" className="icon-button" onClick={close} aria-label="Close editor"><AppIcon name="X" /></button></header>
+                {!isExisting && <div className="editor-existing-switch"><span><AppIcon name="RefreshCw" size={17} /><span><strong>Updating something already published?</strong><small>Choose the existing screenshot first so its history and ownership stay connected.</small></span></span><button type="button" className="button button-quiet" onClick={chooseExisting}>Choose existing</button></div>}
                 <div className="studio-editor-body">
                     <section className="editor-column editor-main">
-                        <div className="editor-section-heading"><div><strong>Screenshot asset</strong><span>Replace safely without exposing GitHub credentials</span></div>{image && <span className="status-pill positive"><AppIcon name="Check" size={12} /> Ready</span>}</div>
+                        <div className="editor-section-heading"><div><strong>Screenshot asset</strong><span>{isExisting ? 'Compare the published image with your replacement before publishing.' : 'Upload the image for this new catalog entry.'}</span></div>{image && <span className="status-pill positive"><AppIcon name="Check" size={12} /> Ready</span>}</div>
                         <ImageReplaceField currentImage={item?.image} file={image} onChange={setImage} />
                         <div className="editor-section-heading"><div><strong>Response copy</strong><span>Edit both service languages in one place</span></div><div className="language-editor-tabs"><button type="button" className={languageTab === 'source' ? 'active' : ''} onClick={() => setLanguageTab('source')}>EN / Source</button><button type="button" className={languageTab === 'tr' ? 'active' : ''} onClick={() => setLanguageTab('tr')}>TR</button></div></div>
                         {languageTab === 'source' ? <label className="form-group"><span>Source response *</span><textarea className="form-textarea editor-copy" value={draft.text} onChange={(event) => update('text', event.target.value)} placeholder="Step-by-step response shown when the user copies EN…" /></label> : <label className="form-group"><span>Turkish response</span><textarea className="form-textarea editor-copy" value={draft.text_tr} onChange={(event) => update('text_tr', event.target.value)} placeholder="Türkçe yanıt metni…" /></label>}
@@ -103,7 +109,7 @@ export function ContentEditor({ item, onClose, onPublished }) {
                     </aside>
                 </div>
                 {status.message && <div className={`editor-status ${status.state}`}><AppIcon name={status.state === 'success' ? 'CheckCircle2' : 'Activity'} size={15} />{status.message}</div>}
-                <footer className="studio-editor-footer"><div>{item && auth.isOwner && <><button type="button" className="button button-quiet" onClick={rollback} disabled={status.state === 'publishing'}><AppIcon name="RotateCcw" size={15} />{item.archivedAt ? 'Restore to library' : 'Restore previous version'}</button>{!item.archivedAt && <button type="button" className="button button-danger" onClick={archive} disabled={status.state === 'publishing'}><AppIcon name="Archive" size={15} /> Archive</button>}</>}</div><div><button type="button" className="button button-quiet" onClick={close}>Cancel</button><button type="button" className="button button-primary" onClick={() => publish()} disabled={status.state === 'publishing' || !dirty}><AppIcon name="Save" size={15} />{status.state === 'publishing' ? 'Publishing…' : item ? 'Publish update' : 'Publish screenshot'}</button></div></footer>
+                <footer className="studio-editor-footer"><div>{item && auth.isOwner && <><button type="button" className="button button-quiet" onClick={rollback} disabled={status.state === 'publishing'}><AppIcon name="RotateCcw" size={15} />{item.archivedAt ? 'Restore to library' : 'Restore previous version'}</button>{!item.archivedAt && <button type="button" className="button button-danger" onClick={archive} disabled={status.state === 'publishing'}><AppIcon name="Archive" size={15} /> Archive</button>}</>}</div><div><button type="button" className="button button-quiet" onClick={close}>Cancel</button><button type="button" className="button button-primary" onClick={() => publish()} disabled={status.state === 'publishing' || !dirty}><AppIcon name="Save" size={15} />{status.state === 'publishing' ? 'Publishing…' : isExisting ? 'Publish changes' : 'Publish new screenshot'}</button></div></footer>
             </section>
         </div>
         {conflict && <ConflictResolver conflict={conflict} onResolve={resolve} onCancel={() => setConflict(null)} />}

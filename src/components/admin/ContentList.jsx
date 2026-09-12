@@ -1,17 +1,15 @@
 import React, { useMemo, useState } from 'react';
 import { AppIcon } from '../AppIcon';
-import { normalizePlatform, ownerColorStyle, ownerInitials, visibleCatalog } from '../../domain/catalog';
+import { normalizePlatform, ownerColorStyle, ownerInitials } from '../../domain/catalog';
+import { filterStudioItems, studioCountLabel } from '../../domain/contentStudio';
 
 const imageUrl = (value) => /^(https?:|data:)/.test(value || '') ? value : `${import.meta.env.BASE_URL}${value || ''}`;
 
-export function ContentList({ items, onEdit, onCreate, onRefresh, loading, canRecover = false }) {
+export function ContentList({ items, onEdit, onCreate, onReplace, onRefresh, loading, canRecover = false }) {
     const [query, setQuery] = useState('');
     const [platform, setPlatform] = useState('all');
     const [showArchived, setShowArchived] = useState(false);
-    const filtered = useMemo(() => (showArchived ? items.filter((item) => item.archivedAt) : visibleCatalog(items)).filter((item) => {
-        const matchesQuery = !query || [item.title, item.text, item.text_tr, item.owner, item.topic].some((value) => String(value || '').toLowerCase().includes(query.toLowerCase()));
-        return matchesQuery && (platform === 'all' || normalizePlatform(item.platform) === platform);
-    }), [items, platform, query, showArchived]);
+    const filtered = useMemo(() => filterStudioItems(items, { query, platform, archiveMode: showArchived }), [items, platform, query, showArchived]);
 
     return <section className="studio-content">
         <div className="studio-toolbar">
@@ -21,19 +19,22 @@ export function ContentList({ items, onEdit, onCreate, onRefresh, loading, canRe
             </div>
             <button type="button" className="icon-button" onClick={onRefresh} aria-label="Refresh published content" title="Refresh"><AppIcon name="RefreshCw" size={17} /></button>
             {canRecover && <button type="button" className="button button-quiet" onClick={() => setShowArchived((value) => !value)}><AppIcon name="RotateCcw" size={15} />{showArchived ? 'Show published' : 'Show archived'}</button>}
-            <button type="button" className="button button-primary" onClick={onCreate}><AppIcon name="Plus" size={16} /> New screenshot</button>
+            <div className="studio-create-actions">
+                <button type="button" className="button button-quiet" onClick={onReplace}><AppIcon name="RefreshCw" size={16} /> Replace existing</button>
+                <button type="button" className="button button-primary" onClick={onCreate}><AppIcon name="Plus" size={16} /> Create new</button>
+            </div>
         </div>
-        <div className="studio-list-summary"><span><strong>{filtered.length}</strong> published guides</span><span>{loading ? 'Fetching latest version…' : 'Live repository version'}</span></div>
+        <div className="studio-list-summary"><span>{studioCountLabel(filtered.length, showArchived)}</span><span>{loading ? 'Fetching latest version…' : 'Live repository version'}</span></div>
         <div className="studio-card-grid">
             {filtered.map((item) => <article className="studio-record-card" key={item.id}>
                 <button type="button" className="studio-record-image" onClick={() => onEdit(item)}><img src={imageUrl(item.image)} alt="" loading="lazy" /><span className="studio-edit-reveal"><AppIcon name="Pencil" size={15} /> Edit & replace</span></button>
                 <div className="studio-record-body">
                     <div className="studio-record-kicker"><span>{item.archivedAt ? 'Archived' : item.topic}</span><span>{normalizePlatform(item.platform)}</span></div>
                     <h3>{item.title}</h3>
-                    <div className="studio-record-footer"><span className="owner-mini"><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)}>{item.archivedAt ? 'Recover' : 'Edit'}</button></div>
+                    <div className="studio-record-footer"><span className="owner-mini"><i style={ownerColorStyle(item.owner)}>{ownerInitials(item.owner)}</i>{item.owner}</span><button type="button" className="button button-quiet button-small" onClick={() => onEdit(item)}>{item.archivedAt ? 'Recover' : 'Replace / edit'}</button></div>
                 </div>
             </article>)}
         </div>
-        {!filtered.length && <div className="studio-empty"><AppIcon name="SearchX" size={28} /><h3>No matching screenshots</h3><p>Adjust the filters or create a new guide.</p></div>}
+        {!filtered.length && <div className="studio-empty"><AppIcon name="SearchX" size={28} /><h3>{showArchived ? 'No matching archived screenshots' : 'No matching published screenshots'}</h3><p>Adjust the filters or create a new guide.</p></div>}
     </section>;
 }

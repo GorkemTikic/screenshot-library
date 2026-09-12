@@ -137,6 +137,24 @@ test('existing screenshot picker makes replacement selection searchable and expl
   assert.match(picker, /Select \$\{item\.title\} to replace/);
 });
 
+test('Content Studio separates create and replace flows and recovers from the wrong entry point', async () => {
+  const page = await readFile(new URL('../src/pages/AdminPage.jsx', import.meta.url), 'utf8');
+  const list = await readFile(new URL('../src/components/admin/ContentList.jsx', import.meta.url), 'utf8');
+  const editor = await readFile(new URL('../src/components/admin/ContentEditor.jsx', import.meta.url), 'utf8');
+  const imageField = await readFile(new URL('../src/components/admin/ImageReplaceField.jsx', import.meta.url), 'utf8');
+  assert.match(page, /ExistingScreenshotPicker/);
+  assert.match(page, /onReplace=\{openReplace\}/);
+  assert.match(list, /Replace existing/);
+  assert.match(list, /Create new/);
+  assert.match(list, /studioCountLabel/);
+  assert.match(editor, /Choose existing/);
+  assert.match(editor, /Updating something already published/);
+  assert.match(editor, /Publish new screenshot/);
+  assert.match(editor, /Publish changes/);
+  assert.match(imageField, /currentImage\s*&&\s*<figure/);
+  assert.match(imageField, /studio-image-previews \$\{currentImage \? '' : 'is-create'\}/);
+});
+
 test('the production migration stores immutable owner keys and rate-limit buckets', async () => {
   const migration = await readFile(new URL('../worker/migrations/0003_production_safety.sql', import.meta.url), 'utf8');
   assert.match(migration, /owner_key/);
