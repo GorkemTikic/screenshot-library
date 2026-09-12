@@ -8,7 +8,9 @@
     "language": "English",
     "platform": "mobile",
     "id": 1782488649538,
-    "updatedAt": "2026-06-26 15:44 UTC+0"
+    "updatedAt": "2026-06-26 15:44 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2026-06-26T15:44:09.538Z"
   },
   {
     "title": "Setting Up Margin Call Alerts - EN",
@@ -45,7 +47,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1768336734279,
-    "updatedAt": "2026-01-14 04:38 UTC+8"
+    "updatedAt": "2026-01-14 04:38 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-13T20:38:54.279Z"
   },
   {
     "title": "Top Movers 市场异动 - CN",
@@ -56,7 +60,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1768324962732,
-    "updatedAt": "2026-01-14 01:25 UTC+8"
+    "updatedAt": "2026-01-14 01:25 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-13T17:22:42.732Z"
   },
   {
     "title": "Futures Convert 合约兑换 - CN",
@@ -67,7 +73,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1768323763176,
-    "updatedAt": "2026-01-14 01:08 UTC+8"
+    "updatedAt": "2026-01-14 01:08 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-13T17:02:43.176Z"
   },
   {
     "title": "TOP MOVER Page - EN",
@@ -78,7 +86,9 @@
     "language": "English",
     "platform": "mobile",
     "id": 1768261914295,
-    "updatedAt": "2026-01-12 23:51 UTC+0"
+    "updatedAt": "2026-01-12 23:51 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2026-01-12T23:51:54.295Z"
   },
   {
     "title": "Small Debt Convert History 小额负债转换历史记录 - CN",
@@ -89,7 +99,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1768249753127,
-    "updatedAt": "2026-01-13 04:29 UTC+8"
+    "updatedAt": "2026-01-13 04:29 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-12T20:29:13.127Z"
   },
   {
     "title": "Small Debt Convert 小额负债转换 - CN",
@@ -100,7 +112,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1768248753899,
-    "updatedAt": "2026-01-13 04:12 UTC+8"
+    "updatedAt": "2026-01-13 04:12 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-12T20:12:33.899Z"
   },
   {
     "title": "Close Open Position on Stopped Grid - EN",
@@ -111,7 +125,9 @@
     "language": "English",
     "platform": "mobile",
     "id": 1767888931446,
-    "updatedAt": "2026-01-08 16:15 UTC+0"
+    "updatedAt": "2026-01-08 16:15 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2026-01-08T16:15:31.446Z"
   },
   {
     "title": "Token & Project Feedback - EN",
@@ -135,7 +151,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1767726601188,
-    "updatedAt": "2026-01-07 03:10 UTC+8"
+    "updatedAt": "2026-01-07 03:10 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-06T19:10:01.188Z"
   },
   {
     "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
@@ -146,7 +164,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1767721746211,
-    "updatedAt": "2026-01-08 00:06 UTC+8"
+    "updatedAt": "2026-01-08 00:06 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-06T17:49:06.211Z"
   },
   {
     "title": "EC Max Loss 事件合约最大损失 - CN",
@@ -156,7 +176,9 @@
     "topic": "Event Contract",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1767121840986
+    "id": 1767121840986,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-30T19:10:40.986Z"
   },
   {
     "title": "EC Cooling Off Period 事件合约冷静期 - CN",
@@ -166,7 +188,9 @@
     "topic": "Event Contract",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1767120924398
+    "id": 1767120924398,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-30T18:55:24.398Z"
   },
   {
     "title": "How to add/remove funds in portfolio 如何添加/移除项目里的资金 - CN",
@@ -176,7 +200,9 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1767118627287
+    "id": 1767118627287,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-30T18:17:07.287Z"
   },
   {
     "title": "How to remove CT in portfolio 如何在带单项目里移除跟单员 - CN",
@@ -186,7 +212,9 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1767117728709
+    "id": 1767117728709,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-30T18:02:08.709Z"
   },
   {
     "title": "Create Invitation Code (Private) 创建邀请码（私域）- CN",
@@ -196,7 +224,9 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1767116503784
+    "id": 1767116503784,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-30T17:41:43.784Z"
   },
   {
     "title": "Adjust Min Copy Amount (Private) 调整最小跟单金额（私域）- CN",
@@ -206,7 +236,9 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1767115486730
+    "id": 1767115486730,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-30T17:24:46.730Z"
   },
   {
     "title": "Enable Portfolio Margin - EN",
@@ -229,7 +261,9 @@
     "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766685510697
+    "id": 1766685510697,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T17:58:30.697Z"
   },
   {
     "title": "Loan Repay (Collateral) 借币还款（抵押物）- CN",
@@ -240,7 +274,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1766684949490,
-    "updatedAt": "2025-12-31 03:31 UTC+8"
+    "updatedAt": "2025-12-31 03:31 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T17:49:09.490Z"
   },
   {
     "title": "Loan Order History 借币订单历史 - CN",
@@ -250,7 +286,9 @@
     "topic": "LOAN",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766683877481
+    "id": 1766683877481,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T17:31:17.481Z"
   },
   {
     "title": "BNB Discount BNB折扣 - CN",
@@ -260,7 +298,9 @@
     "topic": "General",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766681686727
+    "id": 1766681686727,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T16:54:46.727Z"
   },
   {
     "title": "Add/Remove Margin in Isolated Position 增加/减少保证金（逐仓） - CN",
@@ -270,7 +310,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766679658205
+    "id": 1766679658205,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T16:20:58.205Z"
   },
   {
     "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率）- CN",
@@ -280,7 +322,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766678630969
+    "id": 1766678630969,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T16:03:50.969Z"
   },
   {
     "title": "Webhook Failed Signal Webhook失败信号 - CN",
@@ -290,7 +334,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "web",
-    "id": 1766676606420
+    "id": 1766676606420,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T15:30:06.420Z"
   },
   {
     "title": "PM Enable 开启统一账户 - CN",
@@ -301,7 +347,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1766598907265,
-    "updatedAt": "2026-01-07 03:10 UTC+8"
+    "updatedAt": "2026-01-07 03:10 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T17:55:07.265Z"
   },
   {
     "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
@@ -311,7 +359,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766597363030
+    "id": 1766597363030,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T17:29:23.030Z"
   },
   {
     "title": "Funding Fee History 资金费用历史 - CN",
@@ -321,7 +371,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766595089163
+    "id": 1766595089163,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T16:51:29.163Z"
   },
   {
     "title": "Futures Transaction History (Export) 合约资金流水（导出）- CN",
@@ -331,7 +383,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766594411291
+    "id": 1766594411291,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T16:40:11.291Z"
   },
   {
     "title": "Copy Trading History - EN",
@@ -340,7 +394,9 @@
     "text": "1 -) Click on Futures\n2 -) Click on Copy button\n3 -) Click on Copy on right bottom corner\n4 -) You can see the 'Ongoing - Closed' Copy Portfolios in this page.",
     "topic": "Copy Trading",
     "text_tr": "1 -) Futures Butonuna Tıklayın\n2 -) ''Copy'' Butonuna Tıklayın \n3 -) Sağ alt köşedeki ''Copy'' butonuna tıklayın\n4 -) Bu sayfada ''Ongoing/Devam Eden'' ve ''Closed/Kapanmış'' kopya portföylerini görebilirsiniz. ",
-    "id": 1765162649314
+    "id": 1765162649314,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T02:57:29.314Z"
   },
   {
     "title": "Futures Swap Button (BNFCR) - EN",
@@ -435,7 +491,9 @@
     "topic": "LOAN",
     "id": 1765164170433,
     "text_tr": "Devam eden Borç/Kredi emirlerinizi veya geçmişinizi görmek için lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **Ana Sayfa** (Home) butonuna tıklayın.\n\n**2 -)** **\"Daha Fazla\"** (More) seçeneğine tıklayın.\n\n**3 -)** Sayfayı aşağı kaydırın ve Finans bölümü altındaki **\"Borç Alma\"** (Loans) seçeneğini bulun.\n\n**4 -)** Sağ üst köşedeki **Geçmiş İkonuna** tıklayın.\n\nBu sayfada devam eden kredilerinizi ve kredi geçmişinizi görebilirsiniz.",
-    "updatedAt": "2026-01-06 21:15 UTC+0"
+    "updatedAt": "2026-01-06 21:15 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.433Z"
   },
   {
     "title": "Transfer From Spot Wallet to Isolated Margin - EN",
@@ -479,7 +537,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Mark_Price_Chart_-_RU.jpg",
     "text": "Чтобы изменить вид графика цен с Последняя цена на Цена маркировки, выполните следующие действия, изображённые на снимке экрана:\n\n1) Нажмите на «Фьючерсы»\n\n2) Нажмите на значок «График»\n\n3) Нажмите на кнопку «Последняя цена» над графиком\n\n4) В меню ниже нажмите на «Цена маркировки»\n\nВот как изменить вид графика на «Цена маркировки», чтобы увидеть график Цена маркировки.",
     "topic": "Futures Trading",
-    "id": 1765164170437
+    "id": 1765164170437,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.437Z"
   },
   {
     "title": "Mark Price Chart - VI",
@@ -487,7 +547,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Mark_Price_Chart_-_VI.jpg",
     "text": "Để thay đổi biểu đồ giá từ '' Giá gàn nhất '' sang '' Giá đánh dấu '', vui lòng làm theo các bước trong ảnh chụp màn hình:\n\n1 -) Nhấp vào '' Futures ''\n\n2 -) Nhấp vào ''Biểu tượng biểu đồ''\n\n3 -) Nhấp vào nút '' Giá gàn nhất\n '' phía trên biểu đồ\n\n4 -) Trong menu bật lên bên dưới, nhấp vào '' Giá đánh dấu ''\n\nĐây là cách bạn thay đổi biểu đồ thành '' Giá đánh dấu '' để xem biểu đồ Giá đánh dấu.",
     "topic": "Futures Trading",
-    "id": 1765164170438
+    "id": 1765164170438,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.438Z"
   },
   {
     "title": "Mark Price Chart - AR",
@@ -495,7 +557,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Mark_Price_Chart_-_AR.jpg",
     "text": "لتغيير مخطط أسعارك من اخر سعر إلى السعر العادل، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n‎1-)‎ انقر على \"العقود الآجلة\"\n\n‎2-)‎ انقر على \"أيقونة المخطط\"\n\n‎3-)‎ انقر على زر \"اخر سعر\" أعلى المخطط.\n\n‎4-)‎ من القائمة المنبثقة أدناه، انقر على \"السعر العادل\".\n\nهكذا يمكنك تغيير مخططك إلى \"السعر العادل\" لعرض مخطط السعر العادل.",
     "topic": "Futures Trading",
-    "id": 1765164170439
+    "id": 1765164170439,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.439Z"
   },
   {
     "title": "Change Asset Mode (Single,Multi) - EN",
@@ -542,7 +606,9 @@
     "id": 1765164170443,
     "platform": "mobile",
     "text_tr": "Devam eden bir krediyi geri ödemenin iki yolu vardır: **Ödünç Alınan Coin** (Borrowed Coin) veya **Teminat** (Collateral) kullanmak. Devam eden bir krediyi teminat miktarınızla geri ödemek istiyorsanız, lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Kredi Siparişleri (Loan Orders) sayfasındaki **\"Devam Eden Siparişler\"** (Ongoing Orders) sekmesine tıklayın.\n\n**2 -)** **\"Geri Öde\"** (Repay) butonuna tıklayın.\n\n**3 -)** Üst menüden **\"Teminat\"** (Collateral) seçeneğine tıklayın.\n\n**4 -)** Geri ödemek istediğiniz tutarı girin.\n\nDetaylar kısmında, **geri ödeme sonrası LTV** oranını ve işlem tamamlandıktan sonra size iade edilecek **teminat miktarını** görebilirsiniz. Devam eden bir krediyi teminat ile bu şekilde geri ödeyebilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
-    "updatedAt": "2026-01-08 15:39 UTC+0"
+    "updatedAt": "2026-01-08 15:39 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.443Z"
   },
   {
     "title": "Loan Repayment (Borrowed Coin) - EN",
@@ -553,7 +619,9 @@
     "id": 1765164170444,
     "platform": "mobile",
     "text_tr": "Devam eden bir krediyi geri ödemenin iki yolu vardır: **Ödünç Alınan Coin** (Borrowed Coin) veya **Teminat** (Collateral) kullanmak. Devam eden bir krediyi ödünç alınan coin ile geri ödemek istiyorsanız, lütfen ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Kredi Siparişleri (Loan Orders) sayfasındaki **\"Devam Eden Siparişler\"** (Ongoing Orders) sekmesine tıklayın.\n\n**2 -)** **\"Geri Öde\"** (Repay) butonuna tıklayın.\n\n**3 -)** Üst menüden **\"Ödünç Alınan Coin\"** (Borrowed Coin) seçeneğine tıklayın.\n\n**4 -)** Geri ödemek istediğiniz tutarı girin.\n\nDetaylar kısmında, **geri ödeme sonrası LTV** oranını ve iade edilecek **teminat miktarını** görebilirsiniz. Devam eden bir krediyi ödünç alınan coin ile bu şekilde geri ödeyebilirsiniz.\n\n**Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!**",
-    "updatedAt": "2026-01-08 15:36 UTC+0"
+    "updatedAt": "2026-01-08 15:36 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.444Z"
   },
   {
     "title": "Transfer From Futures USDⓈ-M To Spot Wallet - EN",
@@ -588,7 +656,9 @@
     "text": "Firstly, it is important to note that the entry price and the PnL you see on the cross margin position page is just for reference, **and it is not used to calculate how much you actually profit/lose with a trade.**\n\nThe entry price displayed in the positions page is the weighted average price of assets in your Margin account, which include assets that were transferred in and assets that were purchased, and this is why the displayed entry price does not mirror the exact prices of your individual trades.\n\nWhere:\nThe cost of the transferred assets is based on the market closing price in USDT or BTC at the time of the transfer;\n\nThe cost of assets bought /sold is the average filled price.\n\nFor cross margin, we also offer the option to see the Adjusted entry price, which consists of the cost price of the position after taking into account the profit and loss. Tradings, transfer-ins and transfer-outs will be included in the cost price calculation. The profit or loss of the buy or sell will be amortized over or under the breakeven price and there may be a negative cost price, and here is the calculation for it:\n\nAdjusted Entry Price = (Total amount of buys and transfer-ins - Total amount of sells and transfer-outs) / Positions\n\n**You can switch to view between Entry Price and Adjusted Entry Price in the Positions tab.**\n\nNow, the PnL considers the Position size x (Index Price - Entry Price or Adjusted Entry Price), and as such, since the entry price considers more than just the trades, this indicator also will reflect that.\n\nThe crucial point is this displayed entry price **does not** influence the actual profit or loss of your trades. The actual profit or loss is calculated exclusively from the filled order prices and size of your entry and exit orders. The discrepancy in the entry price you see has no impact on your trading results.\n\nYou can read more on this here:\nhttps://www.binance.com/en/support/faq/introduction-to-margin-position-parameters-5410fa1449c5455d81e11955cc432729\n\nPlease be assured that our team is aware of this, and they are working on improving the feature, but for now, please check your order history/capital flow history for accurate information on your margin trades.\n",
     "topic": "Margin Trading",
     "id": 1765164170450,
-    "updatedAt": "2026-06-10 16:31 UTC+0"
+    "updatedAt": "2026-06-10 16:31 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.450Z"
   },
   {
     "title": "BNB Discount (Futures,Margin Interest) - EN",
@@ -636,7 +706,9 @@
     "id": 1765164170454,
     "text_tr": "Binance Vadeli İşlemlerde **Fonlama Ücretleri**,  vadeli işlem fiyatlarının spot piyasa fiyatı ile uyumlu tutmak için düzenli olarak alınıp verilir. Fonlama genellikle **her 8 saatte bir** (TSİ 03.00, 11.00 ve 19.00) gerçekleşir; ancak yüksek fiyat farkı dönemlerinde Binance bu aralıkları 4, 2 veya 1 saate kadar düşürebilir.\n\n* **Pozitif Fonlama Oranı (Kontango):** **Vadeli İşlem Fiyatı > Spot Fiyat** olduğunda gerçekleşir. Bu durumda, **uzun (long) pozisyon** tutan yatırımcılar, **kısa (short) pozisyon** tutan yatırımcılara Fonlama Ücreti öder.\n* **Negatif Fonlama Oranı (Geriye Dönük Fiyatlama):** **Vadeli İşlem Fiyatı < Spot Fiyat** olduğunda gerçekleşir. Bu durumda, **kısa (short) pozisyon** tutan yatırımcılar, **uzun (long) pozisyon** tutan yatırımcılara Fonlama Ücreti öder.\n\n---\n\nDaha fazla ayrıntı için şu resmi makaleleri inceleyebilirsiniz:\n\n* [Binance Vadeli İşlemlerde Fonlama Ücretleri Nedir?](https://www.binance.com/blog/futures/6595842576313788144)\n* [Binance Vadeli İşlemler Fonlama Oranlarına Giriş](https://www.binance.com/support/faq/detail/360033525031)\n\nBu konuyla ilgili herhangi bir sorunuz olursa lütfen bizimle paylaşın, size destek olmak için buradayız!",
     "platform": "mobile",
-    "updatedAt": "2026-01-06 23:44 UTC+0"
+    "updatedAt": "2026-01-06 23:44 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.454Z"
   },
   {
     "title": "Webhook Failed Signals WEB - EN",
@@ -647,7 +719,9 @@
     "id": 1765164170455,
     "platform": "web",
     "text_tr": "**Webhook Sinyal İşlemlerindeki** başarısız sinyalleri kontrol etmek için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** **\"Botlar\"** (Bots) sekmesine tıklayın.\n\n**2 -)** **\"Webhook Sinyal İşlemleri\"** (Webhook Signal Trading) seçeneğine tıklayın.\n\n**3 -)** Çöp kutusu ve duraklat butonunun yanındaki **\"Geçmiş İkonuna\"** tıklayın.\n\n**4 -)** Bu sayfada **\"Başarısız Sinyaller\"** (Failed Signals) sekmesini göreceksiniz; sinyallerin başarısız olma nedenlerini buradan inceleyebilirsiniz.\n\n---\n\nSinyal kurulumu hakkında daha fazla bilgi edinmek için bu resmi rehbere göz atabilirsiniz:\n\n* [TradingView ile Sinyal İşlemleri Nasıl Kurulur?](https://www.binance.com/en/support/faq/detail/3f57291b56474f5e900cc4b754f61ff3)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-01-06 21:48 UTC+0"
+    "updatedAt": "2026-01-06 21:48 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.455Z"
   },
   {
     "title": "Check For Updates - EN",
@@ -670,7 +744,9 @@
     "topic": "Futures Trading",
     "id": 1765164170457,
     "text_tr": "Ekran görüntüsünde görülen gösterge, **ADL** (Auto De-Leverage) sırasındaki durumunuzu ifade eder. Bu sistemin işleyişi şu şekildedir:\n\n* **ADL Nedir?**: Uzun ve kısa pozisyonlar arasındaki kâr-zarar farkı **Sigorta Fonu** tarafından karşılanamadığında, piyasa dengesini korumak için en yüksek kâra sahip pozisyonlar otomatik olarak kapatılır.\n* **İşleyiş**: Bu işleme **Counter-party Liquidation** (Karşı Taraf Likidasyonu) adı da verilir. ADL, normal likidasyondan farklıdır; bu durumda pozisyonunuzdaki mevcut kârı alırsınız ve sonrasında tekrar işlem yapma şansınız olur.\n* **Gösterge Işıkları**: **ADL** sırasındaki yeriniz 4 çubukla gösterilir; 4 kırmızı çubuk yandığında sırada en üstte olduğunuzu gösterir. 4 ışığın tamamı yanıyor olsa bile, **ADL** işlemi oldukça nadir gerçekleşen bir durumdur. Işıkların tamamı yandığında, bir likidasyon durumunda pozisyonunuz azaltılabilir.\n* **Kaçınma Yöntemleri**: **ADL** riskinden kaçınmak için pozisyon hacminizi küçültebilir ya da pozisyonu kapatıp yeniden açabilirsiniz.\n\nDaha fazla bilgi için resmi rehberimizi inceleyebilirsiniz:\n\n* [Binance ADL Hakkında Sıkça Sorulan Sorular](https://www.binance.com/support/faq/360033525471)\n\nHerhangi bir sorunuz olursa lütfen bizimle paylaşın, size destek olmak için buradayız!",
-    "updatedAt": "2026-01-06 23:36 UTC+0"
+    "updatedAt": "2026-01-06 23:36 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.457Z"
   },
   {
     "title": "Stop-Market & Stop-Limit Differences - EN",
@@ -681,7 +757,9 @@
     "id": 1765164170458,
     "text_tr": "Stop-Piyasa (Stop-Market) ve Stop-Limit emirleri arasındaki fark, piyasa ve limit emirlerinin avantaj ve dezavantajlarına dayanır:\n\n**Stop-Piyasa Emri:**\n\n* Durdurma fiyatına ulaşıldığında bir piyasa emrini tetikler.\n* Emriniz mevcut en iyi fiyattan anında gerçekleşir.\n* Özellikle hızlı hareket eden piyasalarda, gerçekleşen fiyat durdurma fiyatınızdan farklı olabilir.\n* Bu emir tipi, pozisyonu hızlıca kapatarak sizi büyük kayıplardan korumaya yardımcı olur, fakat bir miktar fiyat kaymasına (slippage) neden olabilir.\n\n**Stop-Limit Emri:**\n\n* Durdurma fiyatına ulaşıldığında bir limit emrini tetikler.\n* Emriniz yalnızca belirlediğiniz limit fiyatından veya daha iyisinden gerçekleşir; böylece gerçekleşme fiyatını kontrol edebilirsiniz.\n* Ancak, piyasa fiyatı belirlediğiniz limit fiyatından uzaklaşırsa emriniz dolmayabilir.\n* Bu emir tipi fiyat kesinliği sağlar, ancak işlemin gerçekleşeceğine dair bir kesinlik sunmaz; bu durum dalgalı piyasalarda riskli olabilir.\n\n**Özetle:**\n\n* **Stop-Market =** Fiyat kesinliği yok (hızlı çıkış için daha iyidir).\n* **Stop-Limit =** Fiyat kesinliği var, işlemin gerçekleşme kesinliği yok (işlem fiyatını kontrol etmek istediğinizde daha iyidir).\n\n---\n\nEmir türleri hakkında daha fazla bilgi edinmek için bu resmi rehbere göz atabilirsiniz:\n\n* [Binance Vadeli İşlemlerde Emir Türleri](https://www.binance.com/en/support/faq/detail/360033779452)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
     "platform": "mobile",
-    "updatedAt": "2026-01-06 23:25 UTC+0"
+    "updatedAt": "2026-01-06 23:25 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.458Z"
   },
   {
     "title": "DeviceID - EN",
@@ -737,7 +815,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Clear_Cache_-_AR.png",
     "text": "1 -) اضغط على الصفحة الرئيسية  \n2 -) اضغط على القائمة  \n3 -) اضغط على الإعدادات  \n4 -) اضغط على زر مسح الذاكرة المؤقتة  \n\nهذا يساعد على إزالة الملفات المؤقتة وقد يجعل تطبيقك يعمل بشكل أسرع وأكثر سلاسة!",
     "topic": "General",
-    "id": 1765164170463
+    "id": 1765164170463,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.463Z"
   },
   {
     "title": "Copy Order History - AR",
@@ -745,7 +825,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Copy_Order_History_-_AR_.png",
     "text": "1 -) اضغط على \" عقود الآجلة\"\n\n2 -) اضغط على زر \"نسخ\"\n\n3 -) اضغط على \"نسخ\" في الزاوية السفلية اليمنى\n\n4 -) تقدر تشوف \"المحافظ المنسوخة - المغلقة\" في الصفحة دي",
     "topic": "Copy Trading",
-    "id": 1765164170464
+    "id": 1765164170464,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.464Z"
   },
   {
     "title": "Futures Transaction History (Export) - AR",
@@ -753,7 +835,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures_Transaction_History_(Export)_-_AR.png",
     "text": "يرجى الضغط على \"عقود الآجلة\" ثم أيقونة \"التاريخ\" مثلما حددت. \n\nبعدها، اذهب إلى علامة \"سجل المعاملات\" واضغط على زر \"تصدير\" في الزاوية العليا اليمنى. \n\nسترى علامة التصدير، وهنا: \n\nاختر: كل الوقت \nيمكنك تصدير سنة بسنة، مثلاً إذا تبغى تصدر بيانات 3 سنوات \nممكن تصدر من 2020-01-01 إلى 2020-12-31 \nلين توصل للسنة اللي تبيها",
     "topic": "Futures Trading",
-    "id": 1765164170465
+    "id": 1765164170465,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.465Z"
   },
   {
     "title": "System Feedback 系统反馈 - CN",
@@ -761,7 +845,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/System_Feedback_CN.png",
     "text": "要通过币安手机应用发送系统反馈，请按照截图中的步骤操作：\n\n1 -) 点击【首页】\n2 -) 左上角点击【三条杠】\n3 -) 右上角点击【设置（⚙️）】\n4 -) 点击【帮助中心】\n5 -) 点击【反馈】\n6 -) 点击【发送】\n7 -) 等待【成功】通知弹出\n\n请您按照上述步骤操作（我也提供了截图），完成系统反馈后请告知我，以便我通知技术团队您已完成系统反馈。",
     "topic": "General",
-    "id": 1765164170466
+    "id": 1765164170466,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-08T03:22:50.466Z"
   },
   {
     "title": "Clear Cache 清除缓存 - CN",
@@ -770,7 +856,9 @@
     "text": "1 -) 点击【首页】\n2 -) 左上角点击【三条杠】\n3 -) 右上角点击【设置（⚙️）】\n4 -) 点击清除缓存\n\n这有助于清理临时文件，使您的应用运行得更快、更流畅！",
     "topic": "General",
     "id": 1765164170467,
-    "platform": "mobile"
+    "platform": "mobile",
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-08T03:22:50.467Z"
   },
   {
     "title": "System Feedback - AR",
@@ -778,7 +866,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/System_Feedback_-_AR.png",
     "text": "لإرسال ملاحظات النظام من تطبيق Binance للهاتف المحمول، يرجى اتباع الخطوات الموضحة في الصورة:\n\n1 -) انقر على الصفحة الرئيسية\n2 -) انقر على القائمة\n3 -) انقر على الإعدادات\n4 -) انقر على علامة التبويب ''المساعدة والدعم''\n5 -) انقر على ''ملاحظات النظام''\n6 -) انقر على ''إرسال''\n7 -) انتظر حتى تظهر إشعار النجاح.\n\nبعد أن تتبع الخطوات المتعلقة التي قدمتها أيضاً في الصورة، يرجى إخباري لأتمكن من إعلام الفريق الفني بأنك اكملت ملاحظات النظام.",
     "topic": "General",
-    "id": 1765164170468
+    "id": 1765164170468,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.468Z"
   },
   {
     "title": "PNL Analysis Page (To see Fees) - AR",
@@ -786,7 +876,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/PNL_Analysis_Page_(To_see_Fees)_-_AR.png",
     "text": "لرؤية تحليل الربح والخسارة الخاص بعقود المستقبلية للتحقق من الرسوم الخاصة بك، يرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) اضغط على \"الأصول\".\n2 -) اضغط على \"عقود المستقبل\".\n3 -) اختر \"USDⓈ-M\".\n4 -) اضغط على زر \"الربح والخسارة المحققة اليوم\" لفتح صفحة تحليل الربح والخسارة لعقود المستقبل.\n5 -) انتقل إلى علامة التبويب \"التمويل والمعاملات\".\n6 -) قم بتمكين \"عرض رسوم المعاملات\".\n\n--ماذا سترى:**\nإجمالي رسوم المعاملات ورسوم التمويل التي دفعتها/استلمتها.\n\n**نصيحة:**\nاستخدم فلتر التاريخ لاختيار نطاق مخصص أو الخيارات السريعة: 7 أيام، 1 شهر، 3 أشهر، أو 1 سنة.",
     "topic": "Futures Trading",
-    "id": 1765164170469
+    "id": 1765164170469,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.469Z"
   },
   {
     "title": "BNB Discount (Futures,Margin Interest) - AR",
@@ -794,7 +886,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/BNB_Discount_(Futures%2CMargin_Interest)_-_AR.png",
     "text": "لتمكين خصم BNB على العقود الآجلة أو فوائد الهامش، يُرجى اتباع الخطوات المعروضة في لقطة الشاشة:\n\n1 -) انقر على الصفحة الرئيسية\n\n2 -) انقر على القائمة\n\n3 -) انقر على الإعدادات\n\n4 -) انقر على زر \"استخدام BNB\"\n\n5 -) يمكنك تمكين خصم BNB على العقود الآجلة وفوائد الهامش في هذه الصفحة.",
     "topic": "General",
-    "id": 1765164170470
+    "id": 1765164170470,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.470Z"
   },
   {
     "title": "Transfer From Futures USDS-M To Spot Wallet - AR",
@@ -802,7 +896,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Futures_USDS-M_To_Spot_Wallet_-_AR_.png",
     "text": "لتحويل الأصول من محفظة العقود الآجلة USDS-M إلى محفظة التداول الفوري، يرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على \"الأصول\"\n\n2 -) انقر على \"العقود الآجلة\"\n\n3 -) انقر على \"زر USDS-M\"\n\n4 -) انقر على \"تحويل\"\n\n5 -) انقر على الأسهم لتغيير المسار، المسار الصحيح كما في الخطوة التالية:\n\n6 -) المسار الصحيح:\n\nمن: USDS-M العقود الآجلة\nإلى: محفظة التداول الفوري\n\n7 -) اختر الأصل/العملة\n\nأدخل كمية الأصول التي ترغب في تحويلها وبارك التحويل.\n\nهكذا تقوم بإجراء التحويلات من USDS-M العقود الآجلة إلى محفظة التداول الفوري.",
     "topic": "Futures Trading",
-    "id": 1765164170471
+    "id": 1765164170471,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.471Z"
   },
   {
     "title": "Change Button Settings in Positions - AR",
@@ -810,7 +906,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Button_Settings_in_Positions_-_AR.png",
     "text": "لتغيير وضع الأصول، يرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على \"العقود الآجلة\"\n\n2 -) انقر على أيقونة \"...\" في الزاوية العلوية اليمنى.\n\n3 -) انقر على \"التفضيلات\" من القائمة المنبثقة.\n\n4 -) انقر على إعدادات الأزرار في الصفقات المفتوحة.\n\n5 -) في هذه الصفحة يمكنك تغيير إعدادات الأزرار الخاصة بك على الصفقات المفتوحة. يمكنك تفعيل أو تعطيل الخيارات التي تفضلها.",
     "topic": "Futures Trading",
-    "id": 1765164170472
+    "id": 1765164170472,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.472Z"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - AR",
@@ -818,7 +916,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Position_Mode_(One-Way%2CHedge)_-_AR.png",
     "text": "1 -) انقر على \"عقود المستقبل\".\n\n2 -) انقر على أيقونة ''...'' في الزاوية العليا اليمنى.\n\n3 -) انقر على ''التفضيلات'' في القائمة المنبثقة.\n\n4 -) انقر على زر \"وضعية المركز\".\n\n5 -) في هذه الصفحة يمكنك تغيير وضعية مركزك.",
     "topic": "Futures Trading",
-    "id": 1765164170473
+    "id": 1765164170473,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.473Z"
   },
   {
     "title": "Transfer From Spot Wallet to USDS-M Futures - AR",
@@ -826,7 +926,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Spot_Wallet_to_USDS-M_Futures_-_AR.png",
     "text": "لتحويل الأصول من محفظة \"سبوت\" إلى محفظة \"فيوتشرز\"، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) اضغط على \"الأصول\"\n\n2 -) اضغط على \"فيوتشرز\"\n\n3 -) اضغط على زر \"USDS-M\"\n\n4 -) اضغط على \"تحويل\"\n\n5 -) تأكد أن المسار هو:\n\nمن: محفظة سبوت\nإلى: محفظة فيوتشرز USDS-M\n\n6 -) اختر الأصل/العملة\n\nادخل كمية الأصول التي ترغب في تحويلها ووافق على عملية التحويل.\n\nهذه هي الطريقة التي يمكنك من خلالها إجراء التحويلات من محفظة \"سبوت\" إلى محفظة \"فيوتشرز\" USDS-M.",
     "topic": "Futures Trading",
-    "id": 1765164170474
+    "id": 1765164170474,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.474Z"
   },
   {
     "title": "Transfer From Isolated Margin to Spot Wallet - AR",
@@ -834,7 +936,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Isolated_Margin_to_Spot_Wallet_-_AR.png",
     "text": "لنقل الأصول من الاقتراض المعزول إلى المحفظة الفورية، يرجى اتباع الخطوات في لقطة الشاشة أعلاه:\n\n1 -) انقر على \"الأصول\"\n2 -) انقر على \"الفورية\"\n3 -) انقر على \"الاقتراض المعزول\"\n4 -) انقر على \"نقل\"\n5 -) انقر على الأسهم لتغيير المسار، المسار الصحيح هو:\n\nمن: الاقتراض المعزول\nإلى: المحفظة الفورية\n\n6 -) اختر الزوج الذي ترغب في النقل إليه عن طريق النقر على اسم الزوج.\n\n7 -) انقر على الأصل الذي ترغب في نقله\n\nحدد المبلغ وقدم تأكيد النقل.\n\nهذه هي طريقة النقل من الاقتراض المعزول إلى المحفظة الفورية.",
     "topic": "Margin Trading",
-    "id": 1765164170475
+    "id": 1765164170475,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.475Z"
   },
   {
     "title": "Futures Notification for TP/SL/Funding - AR",
@@ -842,7 +946,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures_Notification_for_TP%3ASL%3AFunding_-_AR.png",
     "text": "لضبط إعدادات إشعارات العقود الآجلة، يرجى اتباع الخطوات الموضحة في لقطات الشاشة:\n\n1 -) انقر على \"العقود الآجلة\"\n\n2 -) انقر على أيقونة \"...\" في الزاوية العلوية اليمنى.\n\n3 -) انقر على \"التفضيلات\" في القائمة المنبثقة.\n\n4 -) انقر على زر \"الإشعارات\"\n\n5 -) في هذه الصفحة يمكنك تفعيل أو تعطيل الإشعارات لـ:\n\n**تنبيه TP/SL:** استقبل إشعارًا عند تفعيل أي مستوى جني ربح أو وقف خسارة. الحد الأقصى: 25 إشعارًا في اليوم.\n\n**تنبيه رسوم التمويل:** حدد حدًا لمعدل التمويل؛ ستتلقى تنبيهًا إذا تجاوز معدل التمويل المتوقع لأي مركز مفتوح هذا النسبة.\n\n**تداول العقود الآجلة:** احصل على إشعار عند تنفيذ أمر عقود آجلة.\n\n**تنبيه استدعاء الهامش:** الحد الافتراضي هو 80%. اضغط على \"تحرير\" لتعيين نسبة هامش مختلفة؛ ستتلقى إشعارًا عندما يصل مركزك إلى هذه النسبة.",
     "topic": "Futures Trading",
-    "id": 1765164170476
+    "id": 1765164170476,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.476Z"
   },
   {
     "title": "Loan Repayment (Borrowed Coin) - AR",
@@ -850,7 +956,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Borrowed_Coin)_-_AR.png",
     "text": "لذا إذا كنت ترغب في سداد قرض جاري باستخدام العملة المقترضة، يرجى اتباع الخطوات في لقطة الشاشة:\n\n1 -) انقر على \"الطلبات الجارية\" في صفحة طلبات القرض\n2 -) انقر على \"سداد\"\n3 -) انقر على \"العملة المقترضة\" في القائمة العلوية\n\nأدخل المبلغ الذي ترغب في سداده وسترى نسبة القرض إلى القيمة بعد السداد وسيرجع مبلغ الضمان بعد السداد ضمن التفاصيل أيضًا.\n\nهذه هي الطريقة التي تسدد بها قرضًا جاريًا باستخدام العملة المقترضة.",
     "topic": "LOAN",
-    "id": 1765164170477
+    "id": 1765164170477,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.477Z"
   },
   {
     "title": "LOAN HISTORY (ONGOING LOANS) - AR",
@@ -858,7 +966,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/LOAN_HISTORY_(ONGOING_LOANS)_-_AR.png",
     "text": "للاطلاع على طلبات القروض الجارية الخاصة بك أو تاريخ قرضك، يمكنك اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على صفحة الكسب\n\n2 -) انقر على زر الاقتراض\n\n3 -) ثم انقر على رمز التاريخ في الأعلى\n\nفي تلك الصفحة، يمكنك رؤية قروضك الجارية وتاريخ قروضك.\n\nLoans history - on going",
     "topic": "LOAN",
-    "id": 1765164170478
+    "id": 1765164170478,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.478Z"
   },
   {
     "title": "Margin Interest History - EN",
@@ -879,7 +989,9 @@
     "text": "如果您想要禁用合约交易功能。您可以通过以下方式禁用合约交易：\n\n1 -) 请点击合约交易页面上的“...”图标\n\n2 -) 点击“冷静期”\n\n3 -) 点击“启用”按钮。\n\n4 -) 然后，您可以选择冷静期，例如：\n\n1 天\n1 周\n1 个月\n无限期\n\n5 -) 点击【确认】\n\n一旦您激活冷静期，您将无法进行合约交易，因此合约交易将被禁用。\n\n请注意，一旦您激活冷静期，我们将无法协助您解除冷静期。\n\n什么是冷静期功能以及如何使用它？\nhttps://www.binance.com/zh-CN/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc",
     "topic": "Futures Trading",
     "id": 1765164170480,
-    "platform": "mobile"
+    "platform": "mobile",
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-08T03:22:50.480Z"
   },
   {
     "title": "Mark Price Chart 标记价格K线图 - CN",
@@ -888,7 +1000,9 @@
     "text": "要查看标记价格K线图，请根据截图中的步骤进行操作：\n\n\n1 -) 点击图表图标\n\n2 -) 点击图表上方的“最新价格”按钮\n\n3 -) 选择“标记价格”\n\n这样您就可以查看实时标记价格K线图。\n\n要了解更多关于标记价格和最新价格之间的区别，您也可以查看以下官方指南：\n\n合约合约的最新价格和标记价格有什么区别？\nhttps://www.binance.com/zh-CN/blog/%E5%90%88%E7%BA%A6/5704082076024731087",
     "topic": "Futures Trading",
     "id": 1765164170481,
-    "platform": "mobile"
+    "platform": "mobile",
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-08T03:22:50.481Z"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) 仓位模式设置 - CN",
@@ -897,7 +1011,9 @@
     "text": "要切换仓位模式，请按照截图中的步骤操作：\n\n1 -) 点击右上角的“...”图标。\n\n2 -) 点击弹出菜单中的“偏好设置”。\n\n3 -) 点击“仓位模式”按钮。\n\n4 -) 您可以在此页面切换仓位模式。",
     "topic": "Futures Trading",
     "id": 1765164170482,
-    "platform": "mobile"
+    "platform": "mobile",
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-08T03:22:50.482Z"
   },
   {
     "title": "How To Add/Remove Margin to Isolated Position - EN",
@@ -907,7 +1023,9 @@
     "topic": "Futures Trading",
     "id": 1765164170483,
     "text_tr": "Vadeli İşlemler İzole pozisyonlarınızda **Teminat Ekleme veya Çıkarma** (Add/Remove Margin) işlemi yapmak için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Teminat miktarının yanındaki **(+)** simgesine tıklayın.\n\n**2 -)** **Teminat Ekle** (Add Margin) veya **Teminat Çıkar** (Remove Margin) sekmesini seçin.\n\n**3 -)** **Miktarı** girin.\n\n**4 -)** Devam etmek için **Onayla** (Confirm) butonuna tıklayın.\n\n---\n\n* **Atanmış Güncel Teminat:** Mevcut pozisyonunuzdaki teminat miktarıdır.\n* **Eklenebilir Maksimum Tutar:** Ekleyebileceğiniz maksimum teminat miktarıdır.\n* **Artış Sonrası Tahmini Likidasyon Fiyatı:** Teminat ekledikten sonraki **tahmini** likidasyon fiyatınızdır.\n\n---\n\nDaha fazla ayrıntı için resmi rehbere göz atabilirsiniz:\n\n* [Çapraz/İzole Marjin Modunda Teminat Bakiyesi Nasıl Ayarlanır?](https://www.binance.com/support/faq/detail/360038447311)\n\nEğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-01-06 23:01 UTC+0"
+    "updatedAt": "2026-01-06 23:01 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.483Z"
   },
   {
     "title": "Buy/Sell Tab Setting - EN",
@@ -928,7 +1046,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/CLOSE_CHAT_(CSAT).png",
     "text": "If we’ve covered everything, you can wrap things up from your side by following these quick steps:\n\n1️⃣ Click the ⎋ button to close the chat.\n2️⃣ Select “Thanks! Issue solved. Close chat.”\n3️⃣ If you feel that your concern was addressed on this chat, please provide a confirmation rating 👍\n4️⃣ Additionally, select an emoji  to share your feedback about the experience 😊\n\n💡 Tip: Save this Chat ID #.xxxx so when you return, the next agent can pick up exactly where we left off.\n\n📝 Closing the chat means our support work is complete for now: we have taken all of the necessary actions, an provided final resolution. \nWishing you and your loved ones the very best.",
     "topic": "General",
-    "id": 1765164170485
+    "id": 1765164170485,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.485Z"
   },
   {
     "title": "How To Change TP/SL to Stop-Limit - EN",
@@ -960,7 +1080,9 @@
     "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Cross_Margin_To_Spot_-_AR.png",
     "text": "1 -) اضغط على الأصول  \n2 -) اضغط على السوق  \n3 -) اضغط على تداول المشتقات المتبادلة  \n4 -) اضغط على التحويل  \n\nتأكد إن المعايير مثل التالية:  \n\nمن: الهامش المتبادل  \nإلى: محفظة فورية \n\nاختر عملتك، والمبلغ، ووافق على التحويل.  \n\nمع هالخطوات، تقدر تنقل كل أصولك من الهامش المتبادَل إلى محفظة فورية",
     "topic": "Margin Trading",
-    "id": 1765164170488
+    "id": 1765164170488,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.488Z"
   },
   {
     "title": "How To Clear Negative Balance - Futures (EN)",
@@ -970,7 +1092,9 @@
     "topic": "Futures Trading",
     "id": 1765164170489,
     "text_tr": "**Vadeli İşlemlerde Negatif Bakiyeyi Temizlemek** için lütfen yukarıdaki ekran görüntüsündeki adımları takip edin:\n\n**1 -)** Negatif bakiye nedeniyle kapatılamayan negatif bir pozisyonunuz varsa, en altta bulunan **\"Clear Negative Balance\"** (Negatif Bakiyeyi Temizle) butonuna tıklayın.\n\n**2 -)** Alternatif olarak, **Vadeli İşlemler Cüzdanı** (Futures Wallet) bölümüne gidin ve temizleme işlemini başlatmak için **\"Clear Negative Balance\"** butonuna tıklayın.\n\n**3 -)** Açık pozisyonunuz yoksa ancak hala negatif bakiyeniz varsa, **Pozisyonlar** (Positions) sekmesine gidin ve **\"Clear Negative Balance\"** butonuna tıklayın.\n\n**4 -)** İşlem etkinleştirildiğinde buton grileşecek ve üzerinde **\"Negative balance processing\"** (Negatif bakiye işleniyor) ifadesi görünecektir.\n\n---\n\n**Önemli Not:** Bu işlemin yaklaşık **15 dakika** içinde tamamlanması beklenmektedir. İşlem tamamlanana kadar lütfen Vadeli İşlemler Cüzdanınıza **herhangi bir transfer yapmayın**.\n\nHerhangi bir ek sorunuz varsa, lütfen benimle paylaşmaktan çekinmeyin. Eğer herhangi bir adımda takılırsanız, lütfen bir ekran görüntüsü alıp bizimle paylaşın; size destek olmak için buradayız!",
-    "updatedAt": "2026-01-06 21:50 UTC+0"
+    "updatedAt": "2026-01-06 21:50 UTC+0",
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-08T03:22:50.489Z"
   },
   {
     "title": "Clear Caches - EN",
@@ -993,7 +1117,9 @@
     "topic": "Futures Trading",
     "language": "English",
     "platform": "web",
-    "id": 1765248176196
+    "id": 1765248176196,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-09T02:42:56.196Z"
   },
   {
     "title": "How to REPAY ALL on Cross Margin - EN",
@@ -1003,7 +1129,9 @@
     "topic": "Margin Trading",
     "language": "English",
     "platform": "mobile",
-    "id": 1765663660921
+    "id": 1765663660921,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-13T22:07:40.921Z"
   },
   {
     "title": "How to CLOSE ALL on Cross Margin - EN",
@@ -1013,7 +1141,9 @@
     "topic": "Margin Trading",
     "language": "English",
     "platform": "mobile",
-    "id": 1765665369791
+    "id": 1765665369791,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-13T22:36:09.791Z"
   },
   {
     "title": "How to CLOSE POSITON on Cross Margin - EN",
@@ -1023,7 +1153,9 @@
     "topic": "Margin Trading",
     "language": "English",
     "platform": "mobile",
-    "id": 1765667355877
+    "id": 1765667355877,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-13T23:09:15.877Z"
   },
   {
     "title": "How to REPAY ALL SYMBOLS on Isolated Margin - EN",
@@ -1033,7 +1165,9 @@
     "topic": "Margin Trading",
     "language": "English",
     "platform": "mobile",
-    "id": 1765676605718
+    "id": 1765676605718,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-14T01:43:25.718Z"
   },
   {
     "title": "How to CLOSE POSITION on Isolated Margin - EN",
@@ -1043,7 +1177,9 @@
     "topic": "Margin Trading",
     "language": "English",
     "platform": "mobile",
-    "id": 1765679311039
+    "id": 1765679311039,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-14T02:28:31.039Z"
   },
   {
     "title": "Futures Margin Transfer History (Isolated Position) - EN (Web)",
@@ -1053,7 +1189,9 @@
     "topic": "Futures Trading",
     "language": "English",
     "platform": "web",
-    "id": 1766512912428
+    "id": 1766512912428,
+    "owner": "CS Gorkem T",
+    "ownerSince": "2025-12-23T18:01:52.428Z"
   },
   {
     "title": "Copy Trading History 跟单组合历史 - CN",
@@ -1063,7 +1201,9 @@
     "topic": "Copy Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766591083794
+    "id": 1766591083794,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T15:44:43.794Z"
   },
   {
     "title": "EC Index Price History 事件合约指数价格历史数据 - CN",
@@ -1073,7 +1213,9 @@
     "topic": "Event Contract",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766592070086
+    "id": 1766592070086,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T16:01:10.086Z"
   },
   {
     "title": "Change position button 仓位按钮设置 - CN",
@@ -1083,7 +1225,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766598202606
+    "id": 1766598202606,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T17:43:22.606Z"
   },
   {
     "title": "好评以及问题解决 - CN",
@@ -1093,7 +1237,9 @@
     "topic": "General",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766599708483
+    "id": 1766599708483,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-24T18:08:28.483Z"
   },
   {
     "title": "PNL Analysis Page (To see Fees) 盈亏分析页面（查看费用）- CN",
@@ -1103,7 +1249,9 @@
     "topic": "Futures Trading",
     "language": "Chinese",
     "platform": "mobile",
-    "id": 1766677925281
+    "id": 1766677925281,
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T15:52:05.281Z"
   },
   {
     "title": "Loan Adjust LTV 借贷订单调整质押率 - CN",
@@ -1114,7 +1262,9 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1766686213796,
-    "updatedAt": "2026-01-01 08:12 UTC+8"
+    "updatedAt": "2026-01-01 08:12 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2025-12-25T18:10:13.796Z"
   },
   {
     "title": "Disable Portfolio Margin (To Classic) - EN",
@@ -1151,6 +1301,8 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1767731966052,
-    "updatedAt": "2026-01-07 04:39 UTC+8"
+    "updatedAt": "2026-01-07 04:39 UTC+8",
+    "owner": "CS Enzo",
+    "ownerSince": "2026-01-06T20:39:26.052Z"
   }
 ]
