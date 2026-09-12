@@ -9,6 +9,7 @@ import { SurveyModalProvider } from './contexts/SurveyModalContext';
 import { HomePage } from './pages/HomePage';
 import { AdminPage } from './pages/AdminPage';
 import { AnalyticsPage } from './pages/AnalyticsPage';
+import { OwnersPage } from './pages/OwnersPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                     <Route index element={<HomePage />} />
                     <Route path="admin" element={<AdminPage />} />
                     <Route path="analytics" element={<AnalyticsPage />} />
+                    <Route path="owners" element={<OwnersPage />} />
                   </Route>
                 </Routes>
               </HashRouter>

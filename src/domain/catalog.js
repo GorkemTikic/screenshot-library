@@ -51,6 +51,34 @@ export function ownerHue(name = '') {
     return ((hash % 360) + 360) % 360;
 }
 
+export function aggregateOwners(items = [], interactionRows = []) {
+    const interactionMap = new Map(interactionRows.map((row) => [String(row.owner || row.name || '').trim().toLowerCase(), row]));
+    const grouped = new Map();
+    for (const item of visibleCatalog(items)) {
+        const owner = String(item.owner || '').trim();
+        if (!owner) continue;
+        const current = grouped.get(owner) || { owner, guides: 0, languages: new Set(), topics: new Set(), latest: '' };
+        current.guides += 1;
+        if (item.language) current.languages.add(item.language);
+        if (item.topic) current.topics.add(item.topic);
+        if (String(item.updatedAt || '') > current.latest) current.latest = String(item.updatedAt || '');
+        grouped.set(owner, current);
+    }
+    return [...grouped.values()].map((entry) => {
+        const interactions = interactionMap.get(entry.owner.toLowerCase()) || {};
+        return {
+            owner: entry.owner,
+            guides: entry.guides,
+            interactions: Number(interactions.total ?? interactions.interactions) || 0,
+            copies: Number(interactions.copies ?? interactions.copy_count) || 0,
+            views: Number(interactions.views ?? interactions.view_count) || 0,
+            languages: [...entry.languages].sort(),
+            topics: [...entry.topics].sort(),
+            latest: entry.latest,
+        };
+    }).sort((a, b) => b.guides - a.guides || a.owner.localeCompare(b.owner));
+}
+
 export function filterCatalog(items = [], filters = {}) {
     const {
         matchedIds = null,

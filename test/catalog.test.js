@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 
 import {
   TOPIC_META,
+  aggregateOwners,
   buildPatch,
   filterCatalog,
   normalizePlatform,
@@ -74,4 +75,18 @@ test('filterCatalog supports web, topic and language', () => {
     favoriteTitles: [],
   });
   assert.deepEqual(result.map((item) => item.id), [3]);
+});
+
+test('aggregateOwners combines catalog coverage and interaction rows', () => {
+  const result = aggregateOwners([
+    { id: 3, owner: 'CS Gorkem T', language: 'English', topic: 'General', updatedAt: '2026-09-01' },
+    { id: 2, owner: 'CS Gorkem T', language: 'Chinese', topic: 'BOTS', updatedAt: '2026-08-01' },
+    { id: 1, owner: 'CS Enzo', language: 'Chinese', topic: 'General', updatedAt: '2026-07-01' },
+  ], [{ owner: 'CS Gorkem T', total: '9', copies: '4', views: '5' }]);
+  assert.deepEqual({ ...result[0], latest: undefined }, {
+    owner: 'CS Gorkem T', guides: 2, interactions: 9, copies: 4, views: 5,
+    languages: ['Chinese', 'English'], topics: ['BOTS', 'General'], latest: undefined,
+  });
+  assert.equal(result[0].latest, '2026-09-01');
+  assert.equal(result[1].owner, 'CS Enzo');
 });
