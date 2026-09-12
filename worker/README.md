@@ -10,7 +10,7 @@ Apply both D1 migrations before starting a new local database:
 npx wrangler d1 migrations apply fd-screenshot-library --local --config worker/wrangler.toml
 ```
 
-Set `REQUESTS_SOURCE_URL` to the deployed Apps Script `?getRequests=true` URL when the owner is ready to run the one-time historical import. Request state is live in D1 and serialized by `RequestWriter`; `src/data/requests.json` is the repository fallback snapshot.
+`REQUESTS_SOURCE_URL` points to the deployed Apps Script `?getRequests=true` read endpoint for the owner-only historical import. Request state is live in D1 and serialized by `RequestWriter`; `src/data/requests.json` is the repository fallback snapshot.
 
 Authenticated contributors can read and update `/requests`. Only owners can call `/requests/import` and `/requests/resync`. Public users may only create a sanitized request through `POST /requests`.
 

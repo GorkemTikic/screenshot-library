@@ -7,7 +7,7 @@ GITHUB_OWNER = "GorkemTikic"
 GITHUB_REPO = "screenshot-library"
 GITHUB_BRANCH = "main"
 ALLOWED_ORIGINS = "http://localhost:5173,https://gorkemtikic.github.io"
-REQUESTS_SOURCE_URL = ""
+REQUESTS_SOURCE_URL = "https://script.google.com/macros/s/AKfycbyiUai5inAW3TCAOXjBdyJiG4fV9NHroDp4XWFJEmGoDoenXc5fXhNd61sUcgKg_VyL/exec?getRequests=true"
 
 [[d1_databases]]
 binding = "DB"
