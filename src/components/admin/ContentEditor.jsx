@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AppIcon } from '../AppIcon';
 import { buildPatch, TOPIC_META } from '../../domain/catalog';
 import { contentApi, ContentApiError } from '../../services/contentApi';
@@ -18,6 +18,10 @@ function initialDraft(item) {
 
 export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) {
     const auth = useAuth();
+    const dialogRef = useRef(null);
+    const closeButtonRef = useRef(null);
+    const closeActionRef = useRef(null);
+    const conflictOpenRef = useRef(false);
     const [base, setBase] = useState(item || null);
     const [draft, setDraft] = useState(() => initialDraft(item));
     const [image, setImage] = useState(null);
@@ -30,7 +34,45 @@ export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) 
     useUnsavedChanges(dirty);
 
     const update = (field, value) => setDraft((current) => ({ ...current, [field]: value }));
-    const close = () => { if (!dirty || window.confirm('Discard your unpublished changes?')) onClose(); };
+    const close = useCallback(() => { if (!dirty || window.confirm('Discard your unpublished changes?')) onClose(); }, [dirty, onClose]);
+
+    useEffect(() => {
+        closeActionRef.current = close;
+        conflictOpenRef.current = Boolean(conflict);
+    }, [close, conflict]);
+
+    useEffect(() => {
+        const previouslyFocused = document.activeElement;
+        closeButtonRef.current?.focus();
+        const handleDialogKeyDown = (event) => {
+            if (conflictOpenRef.current) return;
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeActionRef.current?.();
+                return;
+            }
+            if (event.key === 'Tab') {
+                const focusable = [...(dialogRef.current?.querySelectorAll('button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])') || [])]
+                    .filter((element) => element.getClientRects().length > 0);
+                const first = focusable[0];
+                const last = focusable.at(-1);
+                if (!first || !last) return;
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        };
+        window.addEventListener('keydown', handleDialogKeyDown);
+        return () => {
+            window.removeEventListener('keydown', handleDialogKeyDown);
+            previouslyFocused?.focus?.({ preventScroll: true });
+        };
+    }, []);
+
     const chooseExisting = () => {
         if (dirty && !window.confirm('Discard this new guide draft and choose an existing screenshot?')) return;
         onChooseExisting();
@@ -89,8 +131,8 @@ export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) 
 
     return <>
         <div className="modal-overlay editor-overlay" onMouseDown={(event) => event.target === event.currentTarget && close()}>
-            <section className="studio-editor" role="dialog" aria-modal="true" aria-labelledby="editor-title">
-                <header className="studio-editor-header"><div><span className="eyebrow">{isExisting ? `Editing screenshot · ${item.id}` : 'New catalog entry'}</span><h2 id="editor-title">{isExisting ? 'Replace image or edit guide' : 'Create screenshot guide'}</h2></div><button type="button" className="icon-button" onClick={close} aria-label="Close editor"><AppIcon name="X" /></button></header>
+            <section ref={dialogRef} className="studio-editor" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+                <header className="studio-editor-header"><div><span className="eyebrow">{isExisting ? `Editing screenshot · ${item.id}` : 'New catalog entry'}</span><h2 id="editor-title">{isExisting ? 'Replace image or edit guide' : 'Create screenshot guide'}</h2></div><button ref={closeButtonRef} type="button" className="icon-button" onClick={close} aria-label="Close editor"><AppIcon name="X" /></button></header>
                 {!isExisting && <div className="editor-existing-switch"><span><AppIcon name="ImagePlus" size={17} /><span><strong>Updating something already published?</strong><small>Choose the existing screenshot first so its history and ownership stay connected.</small></span></span><button type="button" className="button button-quiet" onClick={chooseExisting}>Choose existing</button></div>}
                 <div className="studio-editor-body">
                     <section className="editor-column editor-main">

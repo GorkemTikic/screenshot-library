@@ -172,6 +172,10 @@ test('Content Studio separates create and replace flows and recovers from the wr
   assert.match(editor, /Updating something already published/);
   assert.match(editor, /Publish new screenshot/);
   assert.match(editor, /Publish changes/);
+  assert.match(editor, /closeButtonRef/);
+  assert.match(editor, /dialogRef/);
+  assert.match(editor, /event\.key === 'Tab'/);
+  assert.match(editor, /previouslyFocused\?\.focus/);
   assert.match(imageField, /currentImage\s*&&\s*<figure/);
   assert.match(imageField, /studio-image-previews \$\{currentImage \? '' : 'is-create'\}/);
   assert.match(imageField, /currentImage\s*\?/);
