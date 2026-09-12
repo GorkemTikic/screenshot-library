@@ -50,3 +50,16 @@ test('screenshot cards use the compact information-dense grid', async () => {
   assert.match(css, /\.card-content\s*\{[^}]*padding:\s*12px/s);
   assert.match(css, /\.card-actions \.btn, \.card-actions \.btn-icon\s*\{[^}]*min-height:\s*36px/s);
 });
+
+test('inspector media can shrink and contains the complete image on both axes', async () => {
+  const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
+  const media = css.match(/\.inspector-media\s*\{[^}]+\}/)?.[0] || '';
+  const image = css.match(/\.inspector-media img\s*\{[^}]+\}/)?.[0] || '';
+  assert.match(media, /min-height:\s*0/);
+  assert.match(media, /overflow:\s*hidden/);
+  assert.match(image, /width:\s*100%/);
+  assert.match(image, /height:\s*100%/);
+  assert.match(image, /min-width:\s*0/);
+  assert.match(image, /min-height:\s*0/);
+  assert.match(image, /object-fit:\s*contain/);
+});
