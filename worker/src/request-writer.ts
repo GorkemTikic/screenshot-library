@@ -1,5 +1,6 @@
 import { advanceBranch, createCommit, readRepoHead, readRepoState, requestsTreeEntry } from './github';
-import { json } from './http';
+import { ApiError, json } from './http';
+import { consumeRateLimit, PUBLISH_RATE_LIMIT, rateLimitKey } from './rate-limit';
 import {
   RequestConflictError,
   applyRequestTransition,
@@ -126,6 +127,7 @@ export class RequestWriter {
     if (!claim.meta.changes) return json({ error: 'This request operation is already processing.', code: 'REQUEST_IN_PROGRESS' }, 409, requestId);
 
     try {
+      if (principal) await consumeRateLimit(this.env, await rateLimitKey('publish', principal.id), PUBLISH_RATE_LIMIT);
       const url = new URL(request.url);
       let result: Record<string, unknown>;
       if (request.method === 'POST' && url.pathname === '/requests') result = await this.create(await request.json(), publicHash, idempotencyKey);
@@ -141,6 +143,7 @@ export class RequestWriter {
     } catch (error) {
       await this.env.DB.prepare("DELETE FROM request_operations WHERE key = ? AND status = 'processing'").bind(idempotencyKey).run();
       if (error instanceof RequestConflictError) return json({ error: error.message, code: 'REQUEST_CONFLICT', latest: requestRowToJson(error.latest) }, 409, requestId);
+      if (error instanceof ApiError) return json({ error: error.message, code: error.code }, error.status, requestId);
       const message = error instanceof Error ? error.message : 'Request operation failed.';
       const status = message.includes('not found') ? 404 : message.includes('rate limit') ? 429 : 400;
       return json({ error: message, code: 'REQUEST_OPERATION_FAILED' }, status, requestId);

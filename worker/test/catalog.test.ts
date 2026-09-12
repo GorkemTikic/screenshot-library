@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   applyCatalogMutation,
-  assertImageReplacementIsCurrent,
+  assertCatalogMutationIsCurrent,
   buildRollbackRecord,
   detectConflicts,
   imageTypeFromSignature,
@@ -68,11 +68,21 @@ describe('catalog patch safety', () => {
     expect((rollback.ownerHistory as Array<Record<string, unknown>>)).toHaveLength(2);
   });
 
-  it('rejects a replacement when the image changed after the editor opened', () => {
+  it('collects text and image conflicts together for a combined replacement', () => {
     const opened = { ...base, image: 'screenshots/original.png' };
-    const latest = { ...base, image: 'screenshots/someone-elses-replacement.png', version: 'v2' };
-    expect(() => assertImageReplacementIsCurrent(opened, latest)).toThrow('changed while you were editing');
-    expect(() => assertImageReplacementIsCurrent(opened, opened)).not.toThrow();
+    const latest = { ...base, text: 'Remote text', image: 'screenshots/someone-elses-replacement.png', version: 'v2' };
+    try {
+      assertCatalogMutationIsCurrent(opened, latest, { text: 'My text' }, true);
+      throw new Error('Expected a catalog conflict.');
+    } catch (error) {
+      expect(error).toMatchObject({
+        conflicts: {
+          text: { base: 'Text', latest: 'Remote text', mine: 'My text' },
+          image: { base: 'screenshots/original.png', latest: 'screenshots/someone-elses-replacement.png', mine: 'replacement-upload' },
+        },
+      });
+    }
+    expect(() => assertCatalogMutationIsCurrent(opened, opened, { text: 'My text' }, true)).not.toThrow();
   });
 });
 

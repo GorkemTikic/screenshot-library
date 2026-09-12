@@ -12,7 +12,10 @@ describe('contributor management', () => {
   });
 
   it('derives an immutable owner key from contributor identity rather than display name', () => {
-    expect(ownerKeyForContributor('owner-bootstrap')).toBe('cs-gorkem-t');
-    expect(ownerKeyForContributor('cs-ada-abc123')).toBe('contributor-cs-ada-abc123');
+    expect(ownerKeyForContributor('owner-bootstrap', 'CS Gorkem T')).toBe('cs-gorkem-t');
+    expect(ownerKeyForContributor('enzo-account', 'CS Enzo')).toBe('cs-enzo');
+    expect(ownerKeyForContributor('vera-account', 'CS VERA')).toBe('cs-vera');
+    expect(ownerKeyForContributor('gorkem-account', 'CS Görkem T')).toBe('cs-gorkem-t');
+    expect(ownerKeyForContributor('cs-ada-abc123', 'CS Ada')).toBe('contributor-cs-ada-abc123');
   });
 });

@@ -92,7 +92,7 @@ test('the production Worker binds a real dedicated D1 database', async () => {
 
 test('catalog publishing protects image conflicts and restores historical blobs', async () => {
   const publisher = await readFile(new URL('../worker/src/publisher.ts', import.meta.url), 'utf8');
-  assert.match(publisher, /assertImageReplacementIsCurrent/);
+  assert.match(publisher, /assertCatalogMutationIsCurrent/);
   assert.match(publisher, /readHistoricalImageBlobSha/);
   assert.match(publisher, /imageTreeEntry\(priorImage, historicalBlobSha\)/);
 });
@@ -102,6 +102,19 @@ test('production login and catalog publishing are rate limited server-side', asy
   const publisher = await readFile(new URL('../worker/src/publisher.ts', import.meta.url), 'utf8');
   assert.match(index, /consumeRateLimit[\s\S]+LOGIN_RATE_LIMIT/);
   assert.match(publisher, /consumeRateLimit[\s\S]+PUBLISH_RATE_LIMIT/);
+});
+
+test('authenticated request workflow publishing uses the contributor publish limit', async () => {
+  const worker = await readFile(new URL('../worker/src/request-writer.ts', import.meta.url), 'utf8');
+  assert.match(worker, /consumeRateLimit[\s\S]*PUBLISH_RATE_LIMIT/);
+  assert.match(worker, /rateLimitKey\(['"]publish['"], principal\.id\)/);
+});
+
+test('established owner identities are linked by a follow-up production migration', async () => {
+  const migration = await readFile(new URL('../worker/migrations/0004_owner_identity_links.sql', import.meta.url), 'utf8');
+  assert.match(migration, /cs-gorkem-t/);
+  assert.match(migration, /cs-enzo/);
+  assert.match(migration, /cs-vera/);
 });
 
 test('owners can expose archived records and initiate recovery in Content Studio', async () => {

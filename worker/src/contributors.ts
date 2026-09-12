@@ -9,8 +9,20 @@ export function contributorIdFromName(displayName: string, suffix = crypto.rando
   return `${slug}-${suffix.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 12)}`;
 }
 
-export function ownerKeyForContributor(id: string): string {
-  return id === 'owner-bootstrap' ? 'cs-gorkem-t' : `contributor-${id}`;
+const ESTABLISHED_OWNER_KEYS = new Map([
+  ['cs gorkem t', 'cs-gorkem-t'],
+  ['cs enzo', 'cs-enzo'],
+  ['cs vera', 'cs-vera'],
+]);
+
+function normalizedOwnerName(displayName: string): string {
+  return displayName.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
+}
+
+export function ownerKeyForContributor(id: string, displayName = ''): string {
+  if (id === 'owner-bootstrap') return 'cs-gorkem-t';
+  return ESTABLISHED_OWNER_KEYS.get(normalizedOwnerName(displayName)) || `contributor-${id}`;
 }
 
 export function validateContributorInput(input: ContributorInput): { displayName: string; role: 'owner' | 'contributor' } {
@@ -49,7 +61,7 @@ export async function listRequestAssignees(env: Env) {
 export async function createContributor(env: Env, input: ContributorInput) {
   const { displayName, role } = validateContributorInput(input);
   const id = contributorIdFromName(displayName);
-  const ownerKey = ownerKeyForContributor(id);
+  const ownerKey = ownerKeyForContributor(id, displayName);
   const accessCode = createAccessCode(id);
   const salt = randomBytes(16);
   const codeHash = await hashAccessCode(accessCode, salt);

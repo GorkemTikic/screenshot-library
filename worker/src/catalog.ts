@@ -69,9 +69,18 @@ export function detectConflicts(base: CatalogItem, latest: CatalogItem, patch: R
   return conflicts;
 }
 
-export function assertImageReplacementIsCurrent(base: CatalogItem | undefined, latest: CatalogItem): void {
-  if (!base || equal(base.image, latest.image)) return;
-  throw new CatalogConflictError({ image: { base: base.image, latest: latest.image, mine: 'replacement-upload' } }, latest);
+export function assertCatalogMutationIsCurrent(
+  base: CatalogItem | undefined,
+  latest: CatalogItem,
+  patch: Record<string, unknown>,
+  replacingImage: boolean,
+): void {
+  if (!base) return;
+  const conflicts = detectConflicts(base, latest, sanitizePatch(patch));
+  if (replacingImage && !equal(base.image, latest.image)) {
+    conflicts.image = { base: base.image, latest: latest.image, mine: 'replacement-upload' };
+  }
+  if (Object.keys(conflicts).length) throw new CatalogConflictError(conflicts, latest);
 }
 
 export function validateCatalogRecord(item: CatalogItem): void {

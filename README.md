@@ -428,7 +428,7 @@ npm run typecheck --prefix worker
 npx wrangler deploy --dry-run --config worker/wrangler.toml
 ```
 
-The verified baseline is 63 frontend tests and 27 Worker tests, plus lint, production build, Worker typecheck, and Wrangler dry-run.
+The verified baseline is 65 frontend tests and 27 Worker tests, plus lint, production build, Worker typecheck, and Wrangler dry-run.
 
 ### 5. Run data migrations safely
 
@@ -560,7 +560,7 @@ The Vite base is `/screenshot-library/`; `vite.config.js` copies the canonical c
 - Contributor codes are individually revocable and attributable.
 - Role checks are enforced by the Worker, not only hidden in the interface.
 - Public requests cannot choose assignees, completion state, resolution, or sync state.
-- Login attempts are limited per hashed IP bucket; catalog publishing is limited per contributor.
+- Login attempts are limited per hashed IP bucket; catalog and authenticated request-workflow publishing share a per-contributor limit.
 - Mutations are validated server-side, idempotent, versioned, and audited.
 - Contributor deletion/disablement never destroys historical authorship.
 - Requester identity is stored as a hash where applicable.
