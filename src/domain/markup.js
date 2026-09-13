@@ -5,11 +5,14 @@ const snapshot = (state) => ({ crop: state.crop, operations: state.operations })
 
 function rectangle(start, end) {
   const span = (from, to) => Math.max(0.001, Number(Math.abs(to - from).toFixed(6)));
+  const width = span(start.x, end.x);
+  const height = span(start.y, end.y);
+  const origin = (from, to, size) => Number(Math.max(0, Math.min(from, to, 1 - size)).toFixed(6));
   return {
-    x: Math.min(start.x, end.x),
-    y: Math.min(start.y, end.y),
-    width: span(start.x, end.x),
-    height: span(start.y, end.y),
+    x: origin(start.x, end.x, width),
+    y: origin(start.y, end.y, height),
+    width,
+    height,
   };
 }
 
@@ -40,7 +43,10 @@ function commit(state, raw) {
 }
 
 export function markupReducer(state, action) {
-  if (action.type === 'select-tool') return { ...state, activeTool: action.tool || null };
+  if (action.type === 'select-tool') {
+    if (action.tool === null) return { ...state, activeTool: null };
+    return TOOLS.has(action.tool) ? { ...state, activeTool: action.tool } : state;
+  }
   if (action.type === 'commit') return commit(state, action.operation);
   if (action.type === 'reset' && isMarkupDirty(state)) {
     return { ...state, crop: null, operations: [], past: [...state.past, snapshot(state)], future: [] };

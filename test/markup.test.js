@@ -31,6 +31,22 @@ test('crop replaces the prior crop and remains undoable', () => {
   assert.deepEqual(markupReducer(second, { type: 'undo' }).crop, { x: 0.1, y: 0.2, width: 0.7, height: 0.5 });
 });
 
+test('a zero-size crop at the lower-right edge expands inward', () => {
+  const state = markupReducer(createMarkupSession(), {
+    type: 'commit', operation: drag('crop', { x: 1, y: 1 }, { x: 1, y: 1 }),
+  });
+  assert.deepEqual(state.crop, { x: 0.999, y: 0.999, width: 0.001, height: 0.001 });
+});
+
+test('a near-edge crop keeps its minimum rectangle inside normalized bounds', () => {
+  const state = markupReducer(createMarkupSession(), {
+    type: 'commit', operation: drag('crop', { x: 0.9998, y: 0.9996 }, { x: 1, y: 1 }),
+  });
+  assert.deepEqual(state.crop, { x: 0.999, y: 0.999, width: 0.001, height: 0.001 });
+  assert.ok(state.crop.x + state.crop.width <= 1);
+  assert.ok(state.crop.y + state.crop.height <= 1);
+});
+
 test('undo, redo, and branching preserve deterministic history', () => {
   const arrow = markupReducer(createMarkupSession(), { type: 'commit', operation: drag('arrow') });
   const highlighted = markupReducer(arrow, { type: 'commit', operation: drag('highlight') });
@@ -48,4 +64,12 @@ test('number markers reuse the next visible sequence after undo and reset', () =
   assert.deepEqual(two.operations.map((item) => item.number), [1, 2]);
   assert.equal(nextMarkerNumber(markupReducer(two, { type: 'undo' })), 2);
   assert.equal(nextMarkerNumber(markupReducer(two, { type: 'reset' })), 1);
+});
+
+test('tool selection rejects unsupported tools and permits null deselection', () => {
+  const selected = markupReducer(createMarkupSession(), { type: 'select-tool', tool: 'arrow' });
+  const unsupported = markupReducer(selected, { type: 'select-tool', tool: 'eraser' });
+  assert.equal(unsupported, selected);
+  assert.equal(unsupported.activeTool, 'arrow');
+  assert.equal(markupReducer(unsupported, { type: 'select-tool', tool: null }).activeTool, null);
 });
