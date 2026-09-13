@@ -135,7 +135,11 @@ function doGet(e) {
     params.source || "",
     params.direction || "",
     params.recordId || "",
-    params.ownerKey || ""
+    params.ownerKey || "",
+    params.edited || "",
+    params.toolsUsed || "",
+    params.success || "",
+    params.failureReason || ""
   ]);
 
   // v8.2: additionally record screenshot_request in its dedicated tab
@@ -154,7 +158,7 @@ function doGet(e) {
 const LOG_HEADERS = [
   "Timestamp", "Device_ID", "Event", "Title", "Topic", "Screen", "TZ", "User_Agent",
   "Value", "Result_Count", "Owner", "Content_Language", "Response_Language", "Content_Platform", "Source", "Direction",
-  "Record_ID", "Owner_Key"
+  "Record_ID", "Owner_Key", "Edited", "Tools_Used", "Success", "Failure_Reason"
 ];
 
 function ensureLogHeaders_(sheet) {

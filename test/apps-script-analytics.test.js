@@ -21,3 +21,20 @@ test('owner analytics resolves record ids before title fallback and reads owner 
   assert.match(source, /ambiguous/i);
   assert.match(source, /lifetime/i);
 });
+
+test('Apps Script stores image-copy outcome dimensions', async () => {
+  const source = await readFile(new URL('../apps-script/Code.gs', import.meta.url), 'utf8');
+  for (const header of ['Edited', 'Tools_Used', 'Success', 'Failure_Reason']) assert.match(source, new RegExp(`"${header}"`));
+  for (const parameter of ['params.edited', 'params.toolsUsed', 'params.success', 'params.failureReason']) {
+    assert.match(source, new RegExp(parameter.replace('.', '\\.')));
+  }
+});
+
+test('owner analytics separates successful image and response copies', async () => {
+  const source = await readFile(new URL('../apps-script/owner-analytics.gs', import.meta.url), 'utf8');
+  assert.match(source, /copy_image/);
+  assert.match(source, /imageCopies/);
+  assert.match(source, /editedImageCopies/);
+  assert.match(source, /responseCopies/);
+  assert.match(source, /cSuccess/);
+});
