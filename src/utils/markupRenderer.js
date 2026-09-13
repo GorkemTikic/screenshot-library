@@ -18,11 +18,20 @@ export function sourceRectangle(operation, width, height) {
 
 export function outputGeometry(width, height, crop) {
   if (!crop) return { x: 0, y: 0, width, height };
+
+  const axisGeometry = (size, origin, span) => {
+    const start = Math.max(0, Math.min(size - 1, px(origin, size)));
+    const end = Math.max(start + 1, Math.min(size, px(origin + span, size)));
+    return { start, size: end - start };
+  };
+  const horizontal = axisGeometry(width, crop.x, crop.width);
+  const vertical = axisGeometry(height, crop.y, crop.height);
+
   return {
-    x: px(crop.x, width),
-    y: px(crop.y, height),
-    width: Math.max(1, px(crop.width, width)),
-    height: Math.max(1, px(crop.height, height)),
+    x: horizontal.start,
+    y: vertical.start,
+    width: horizontal.size,
+    height: vertical.size,
   };
 }
 
