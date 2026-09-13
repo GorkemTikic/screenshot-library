@@ -31,7 +31,12 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
             setCopied(true);
             window.setTimeout(() => setCopied(false), 1400);
         }
-        logEvent('copy_text', screenshotEvent(item, { responseLanguage: contentLang, source: 'card', method: successful ? 'clipboard' : 'failed' }));
+        logEvent('copy_text', screenshotEvent(item, {
+            responseLanguage: contentLang,
+            source: 'card',
+            method: successful ? 'clipboard' : 'failed',
+            success: String(successful),
+        }));
     };
 
     const inspect = () => {

@@ -137,7 +137,9 @@ function rebuildOwnerStats() {
       var row = values[rowIndex];
       var eventName = String(row[cEvent] || '').trim();
       if (OWNER_USAGE_EVENTS.indexOf(eventName) < 0) continue;
-      if (eventName === 'copy_image' && cSuccess >= 0 && String(row[cSuccess]).toLowerCase() !== 'true') continue;
+      var copySuccess = cSuccess >= 0 ? String(row[cSuccess] || '').trim().toLowerCase() : '';
+      if (eventName === 'copy_text' && copySuccess === 'false') continue;
+      if (eventName === 'copy_image' && cSuccess >= 0 && copySuccess !== 'true') continue;
       var recordId = cRecordId >= 0 ? String(row[cRecordId] || '').trim() : '';
       var record = recordId ? catalog.byId[recordId] : null;
       if (!record) {

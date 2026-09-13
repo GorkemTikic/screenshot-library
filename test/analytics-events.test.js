@@ -63,3 +63,15 @@ test('imageCopyEvent records a bounded failure category', () => {
   assert.equal(payload.failureReason, 'permission');
   assert.equal(payload.edited, 'false');
 });
+
+test('imageCopyEvent allowlists its source and markup tools', () => {
+  const payload = imageCopyEvent({ title: 'Guide' }, {
+    source: 'untrusted-dialog',
+    ok: true,
+    edited: true,
+    toolsUsed: ['arrow', 'coordinates', 'blur', 'arrow', 'crop', 'number', 'highlight', 'raw-image'],
+  });
+  assert.equal(payload.source, 'card');
+  assert.equal(payload.toolsUsed, 'arrow,blur,crop,number,highlight');
+  assert.equal(payload.failureReason, '');
+});

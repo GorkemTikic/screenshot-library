@@ -10,6 +10,7 @@
 function doGet(e) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const params = (e && e.parameter) || {};
+  const outcomeDimensions = analyticsOutcomeDimensions_(params);
 
   // 1. Initialize Relational Tabs (unchanged)
   const logSheet  = ss.getSheetByName("DB_Logs")  || ss.insertSheet("DB_Logs");
@@ -132,14 +133,14 @@ function doGet(e) {
     params.contentLanguage || "",
     params.responseLanguage || "",
     params.contentPlatform || "",
-    params.source || "",
+    outcomeDimensions.source,
     params.direction || "",
     params.recordId || "",
     params.ownerKey || "",
-    params.edited || "",
-    params.toolsUsed || "",
-    params.success || "",
-    params.failureReason || ""
+    outcomeDimensions.edited,
+    outcomeDimensions.toolsUsed,
+    outcomeDimensions.success,
+    outcomeDimensions.failureReason
   ]);
 
   // v8.2: additionally record screenshot_request in its dedicated tab
@@ -160,6 +161,41 @@ const LOG_HEADERS = [
   "Value", "Result_Count", "Owner", "Content_Language", "Response_Language", "Content_Platform", "Source", "Direction",
   "Record_ID", "Owner_Key", "Edited", "Tools_Used", "Success", "Failure_Reason"
 ];
+
+function analyticsOutcomeDimensions_(params) {
+  const raw = params || {};
+  if (String(raw.event || '') !== 'copy_image') {
+    return {
+      source: raw.source || '',
+      edited: raw.edited || '',
+      toolsUsed: raw.toolsUsed || '',
+      success: raw.success || '',
+      failureReason: raw.failureReason || ''
+    };
+  }
+
+  const source = ['card', 'inspector'].indexOf(String(raw.source || '').trim().toLowerCase()) >= 0
+    ? String(raw.source).trim().toLowerCase()
+    : 'card';
+  const edited = String(raw.edited || '').trim().toLowerCase() === 'true' ? 'true' : 'false';
+  const success = String(raw.success || '').trim().toLowerCase() === 'true' ? 'true' : 'false';
+  const allowedTools = ['crop', 'arrow', 'number', 'highlight', 'blur'];
+  const seenTools = {};
+  const toolsUsed = String(raw.toolsUsed || '').split(',').map(function(value) {
+    return String(value).trim().toLowerCase();
+  }).filter(function(tool) {
+    if (allowedTools.indexOf(tool) < 0 || seenTools[tool]) return false;
+    seenTools[tool] = true;
+    return true;
+  }).slice(0, allowedTools.length).join(',');
+  const rawReason = String(raw.failureReason || '').trim().toLowerCase();
+  const allowedReasons = ['permission', 'unsupported', 'decode', 'encode', 'write'];
+  const failureReason = success === 'true'
+    ? ''
+    : (allowedReasons.indexOf(rawReason) >= 0 ? rawReason : 'write');
+
+  return { source: source, edited: edited, toolsUsed: toolsUsed, success: success, failureReason: failureReason };
+}
 
 function ensureLogHeaders_(sheet) {
   if (sheet.getLastRow() === 0) {

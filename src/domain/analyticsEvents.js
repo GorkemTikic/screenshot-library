@@ -15,12 +15,22 @@ export const discoveryEvent = (value, resultCount) => ({
 });
 
 const COPY_FAILURES = new Set(['permission', 'unsupported', 'decode', 'encode', 'write']);
+const COPY_SOURCES = new Set(['card', 'inspector']);
+const MARKUP_TOOLS = new Set(['crop', 'arrow', 'number', 'highlight', 'blur']);
 
-export const imageCopyEvent = (item = {}, outcome = {}) => ({
-    ...screenshotEvent(item, { source: outcome.source || 'card' }),
-    method: outcome.ok ? 'clipboard' : 'failed',
-    success: outcome.ok ? 'true' : 'false',
-    edited: outcome.edited ? 'true' : 'false',
-    toolsUsed: [...new Set(outcome.toolsUsed || [])].filter(Boolean).slice(0, 5).join(','),
-    failureReason: outcome.ok ? '' : (COPY_FAILURES.has(outcome.reason) ? outcome.reason : 'write'),
-});
+export const imageCopyEvent = (item = {}, outcome = {}) => {
+    const source = COPY_SOURCES.has(outcome.source) ? outcome.source : 'card';
+    const tools = Array.isArray(outcome.toolsUsed) ? outcome.toolsUsed : [];
+    const toolsUsed = [...new Set(tools)]
+        .filter((tool) => MARKUP_TOOLS.has(tool))
+        .slice(0, MARKUP_TOOLS.size)
+        .join(',');
+    return {
+        ...screenshotEvent(item, { source }),
+        method: outcome.ok ? 'clipboard' : 'failed',
+        success: outcome.ok ? 'true' : 'false',
+        edited: outcome.edited ? 'true' : 'false',
+        toolsUsed,
+        failureReason: outcome.ok ? '' : (COPY_FAILURES.has(outcome.reason) ? outcome.reason : 'write'),
+    };
+};
