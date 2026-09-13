@@ -74,6 +74,15 @@ test('rerendering for a new item aborts and clears a pending screenshot copy', a
   assert.equal(textContent(renderer.root.findByProps({ role: 'status' })), '');
 
   await act(async () => {
+    renderer.update(renderButton(item('old')));
+  });
+
+  button = renderer.root.findByType('button');
+  assert.equal(button.props.disabled, false);
+  assert.equal(textContent(button), 'Copy Screenshot');
+  assert.equal(textContent(renderer.root.findByProps({ role: 'status' })), '');
+
+  await act(async () => {
     resolveOldCopy({ ok: true, method: 'clipboard' });
     await pendingCopy;
   });

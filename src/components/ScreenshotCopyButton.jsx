@@ -34,7 +34,11 @@ export function ScreenshotCopyButton({
 }) {
     const itemKey = String(item.id ?? '');
     const [storedState, setState] = useState(() => idleState(itemKey));
-    const state = storedState.itemKey === itemKey ? storedState : idleState(itemKey);
+    let state = storedState;
+    if (storedState.itemKey !== itemKey) {
+        state = idleState(itemKey);
+        setState(state);
+    }
     const activeRun = useRef(null);
     const resetTimer = useRef(null);
     const edited = Boolean(session && isMarkupDirty(session));
