@@ -15,41 +15,69 @@ const ERROR_COPY = {
     write: 'The screenshot could not be copied.',
 };
 
-export function ScreenshotCopyButton({ item, source, session, image, className = '' }) {
-    const [state, setState] = useState({ status: 'idle', message: '' });
+const idleState = (itemKey) => ({ itemKey, status: 'idle', message: '' });
+
+function clearCopyTimer(timerRef) {
+    if (timerRef.current === null) return;
+    window.clearTimeout(timerRef.current);
+    timerRef.current = null;
+}
+
+export function ScreenshotCopyButton({
+    item,
+    source,
+    session,
+    image,
+    className = '',
+    copyScreenshotFn = copyScreenshot,
+    logEventFn = logEvent,
+}) {
+    const itemKey = String(item.id ?? '');
+    const [storedState, setState] = useState(() => idleState(itemKey));
+    const state = storedState.itemKey === itemKey ? storedState : idleState(itemKey);
     const activeRun = useRef(null);
+    const resetTimer = useRef(null);
     const edited = Boolean(session && isMarkupDirty(session));
+
+    useEffect(() => {
+        invalidateCopyRun(activeRun.current);
+        activeRun.current = null;
+        clearCopyTimer(resetTimer);
+    }, [itemKey]);
 
     useEffect(() => () => {
         invalidateCopyRun(activeRun.current);
         activeRun.current = null;
-    }, [item.id]);
+        clearCopyTimer(resetTimer);
+    }, []);
 
     const handleCopy = async () => {
         if (state.status === 'pending') return;
-        const run = beginCopyRun(activeRun.current, item.id);
+        clearCopyTimer(resetTimer);
+        const run = beginCopyRun(activeRun.current, itemKey);
         activeRun.current = run;
-        setState({ status: 'pending', message: 'Preparing screenshot…' });
-        const outcome = await copyScreenshot(resolveImageUrl(item.image), {
+        setState({ itemKey, status: 'pending', message: 'Preparing screenshot…' });
+        const outcome = await copyScreenshotFn(resolveImageUrl(item.image), {
             session,
             image,
             signal: run.controller.signal,
         });
 
-        commitCopyOutcome(run, activeRun.current, item.id, {
+        commitCopyOutcome(run, activeRun.current, itemKey, {
             present: () => {
                 if (outcome.ok) {
-                    setState({ status: 'success', message: 'Paste it on chat' });
-                    window.setTimeout(() => {
-                        commitCopyOutcome(run, activeRun.current, item.id, {
-                            present: () => setState({ status: 'idle', message: '' }),
+                    setState({ itemKey, status: 'success', message: 'Paste it on chat' });
+                    resetTimer.current = window.setTimeout(() => {
+                        resetTimer.current = null;
+                        commitCopyOutcome(run, activeRun.current, itemKey, {
+                            present: () => setState(idleState(itemKey)),
                         });
                     }, 1800);
                 } else {
-                    setState({ status: 'error', message: ERROR_COPY[outcome.reason] || ERROR_COPY.write });
+                    setState({ itemKey, status: 'error', message: ERROR_COPY[outcome.reason] || ERROR_COPY.write });
                 }
             },
-            report: () => logEvent('copy_image', imageCopyEvent(item, {
+            report: () => logEventFn('copy_image', imageCopyEvent(item, {
                 source,
                 ...outcome,
                 edited,
