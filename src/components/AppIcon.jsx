@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Activity, Archive, ArrowLeft, ArrowRight, BarChart3, Bot, CandlestickChart, Check, CheckCircle2,
     ChevronDown, CircleSlash2, ClipboardList, Clock3, Copy, CopyCheck, ExternalLink, Eye, FileImage,
-    HandCoins, Heart, ImagePlus, Languages, LayoutGrid, LockKeyhole, Menu, MessageSquarePlus,
+    HandCoins, Heart, ImagePlus, Images, Languages, LayoutGrid, LockKeyhole, Menu, MessageSquarePlus,
     LoaderCircle, Monitor, Moon, PanelRightOpen, PanelTop, Pencil, Plus, RefreshCw, RotateCcw, Save, Scale, Search, SearchX, Settings2, ShieldCheck,
     SlidersHorizontal, Smartphone, Sparkles, Sun, TicketCheck, Trash2, UploadCloud, UserRound, UsersRound, X,
 } from 'lucide-react';
@@ -10,7 +10,7 @@ import {
 const ICONS = {
     Activity, Archive, ArrowLeft, ArrowRight, BarChart3, Bot, CandlestickChart, Check, CheckCircle2,
     ChevronDown, CircleSlash2, ClipboardList, Clock3, Copy, CopyCheck, ExternalLink, Eye, FileImage,
-    HandCoins, Heart, ImagePlus, Languages, LayoutGrid, LockKeyhole, Menu, MessageSquarePlus,
+    HandCoins, Heart, ImagePlus, Images, Languages, LayoutGrid, LockKeyhole, Menu, MessageSquarePlus,
     LoaderCircle, Monitor, Moon, PanelRightOpen, PanelTop, Pencil, Plus, RefreshCw, RotateCcw, Save, Scale, Search, SearchX, Settings2, ShieldCheck,
     SlidersHorizontal, Smartphone, Sparkles, Sun, TicketCheck, Trash2, UploadCloud, UserRound, UsersRound, X,
 };

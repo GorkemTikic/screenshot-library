@@ -7,6 +7,7 @@ import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
 import { formatDate, getLangCode } from '../utils/langUtils';
 import { AppIcon } from './AppIcon';
+import { ScreenshotCopyButton } from './ScreenshotCopyButton';
 
 function Highlight({ children, query }) {
     const text = String(children || '');
@@ -111,6 +112,7 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
                 )}
 
                 <div className="card-actions">
+                    <ScreenshotCopyButton item={item} source="card" />
                     <button type="button" onClick={handleCopy} className={`btn btn-copy ${copied ? 'copied' : ''}`}>
                         <AppIcon name={copied ? 'Check' : 'Copy'} size={15} />
                         {copied ? 'Copied' : `Copy ${contentLang === 'tr' ? 'TR' : getLangCode(item.language)}`}

@@ -193,3 +193,17 @@ test('the production migration stores immutable owner keys and rate-limit bucket
   assert.match(migration, /CREATE UNIQUE INDEX contributors_owner_key_idx/);
   assert.match(migration, /CREATE TABLE rate_limits/);
 });
+
+test('cards and inspector expose screenshot copy beside response copy', async () => {
+  const button = await readFile(new URL('../src/components/ScreenshotCopyButton.jsx', import.meta.url), 'utf8');
+  const card = await readFile(new URL('../src/components/ScreenshotCard.jsx', import.meta.url), 'utf8');
+  const lightbox = await readFile(new URL('../src/components/Lightbox.jsx', import.meta.url), 'utf8');
+  assert.match(button, /copyScreenshot/);
+  assert.match(button, /copy_image/);
+  assert.match(button, /Screenshot copied/);
+  assert.match(button, /Paste it on chat/);
+  assert.match(card, /ScreenshotCopyButton/);
+  assert.match(lightbox, /ScreenshotCopyButton/);
+  assert.match(lightbox, /handleCopy/);
+  assert.doesNotMatch(button, /download/i);
+});
