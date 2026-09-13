@@ -205,5 +205,7 @@ test('cards and inspector expose screenshot copy beside response copy', async ()
   assert.match(card, /ScreenshotCopyButton/);
   assert.match(lightbox, /ScreenshotCopyButton/);
   assert.match(lightbox, /handleCopy/);
+  assert.match(lightbox, /Copy \$\{contentLang === 'tr' \? 'TR' : getLangCode\(item\.language\)\}/);
+  assert.doesNotMatch(lightbox, />Copy response</);
   assert.doesNotMatch(button, /download/i);
 });

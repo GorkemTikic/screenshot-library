@@ -8,6 +8,33 @@ export function classifyClipboardError(error) {
   return 'write';
 }
 
+function abortError() {
+  if (typeof DOMException === 'function') return new DOMException('Screenshot copy cancelled', 'AbortError');
+  return Object.assign(new Error('Screenshot copy cancelled'), { name: 'AbortError' });
+}
+
+function abortableBlob(createBlob, signal) {
+  if (!signal) return Promise.resolve().then(createBlob);
+  if (signal.aborted) return Promise.reject(abortError());
+
+  return new Promise((resolve, reject) => {
+    const onAbort = () => reject(abortError());
+    signal.addEventListener('abort', onAbort, { once: true });
+
+    Promise.resolve()
+      .then(() => {
+        if (signal.aborted) throw abortError();
+        return createBlob();
+      })
+      .then((blob) => {
+        if (signal.aborted) throw abortError();
+        resolve(blob);
+      })
+      .catch(reject)
+      .finally(() => signal.removeEventListener('abort', onAbort));
+  });
+}
+
 export async function writePngToClipboard(createBlob, environment = {}) {
   const clipboard = environment.clipboard ?? globalThis.navigator?.clipboard;
   const ClipboardItemClass = environment.ClipboardItem ?? globalThis.ClipboardItem;
@@ -18,7 +45,7 @@ export async function writePngToClipboard(createBlob, environment = {}) {
   }
 
   try {
-    const blobPromise = Promise.resolve().then(createBlob);
+    const blobPromise = abortableBlob(createBlob, environment.signal);
     await clipboard.write([new ClipboardItemClass({ 'image/png': blobPromise })]);
     return { ok: true, method: 'clipboard' };
   } catch (error) {
@@ -49,5 +76,5 @@ export async function copyScreenshot(url, options = {}) {
   return writePngToClipboard(async () => {
     const image = options.image || await loadScreenshotImage(url, options.environment);
     return render(image, options.session || createMarkupSession(), options.environment?.document);
-  }, options.environment);
+  }, { ...options.environment, signal: options.signal });
 }

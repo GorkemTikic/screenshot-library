@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { isMarkupDirty, markupToolsUsed } from '../domain/markup';
 import { imageCopyEvent } from '../domain/analyticsEvents';
+import { beginCopyRun, commitCopyOutcome, invalidateCopyRun } from '../domain/copyRun';
 import { logEvent } from '../services/analytics';
 import { copyScreenshot } from '../utils/imageClipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
@@ -16,35 +17,45 @@ const ERROR_COPY = {
 
 export function ScreenshotCopyButton({ item, source, session, image, className = '' }) {
     const [state, setState] = useState({ status: 'idle', message: '' });
-    const runId = useRef(0);
+    const activeRun = useRef(null);
     const edited = Boolean(session && isMarkupDirty(session));
 
     useEffect(() => () => {
-        runId.current += 1;
+        invalidateCopyRun(activeRun.current);
+        activeRun.current = null;
     }, [item.id]);
 
     const handleCopy = async () => {
         if (state.status === 'pending') return;
-        const currentRun = ++runId.current;
+        const run = beginCopyRun(activeRun.current, item.id);
+        activeRun.current = run;
         setState({ status: 'pending', message: 'Preparing screenshot…' });
-        const outcome = await copyScreenshot(resolveImageUrl(item.image), { session, image });
-        if (currentRun !== runId.current) return;
+        const outcome = await copyScreenshot(resolveImageUrl(item.image), {
+            session,
+            image,
+            signal: run.controller.signal,
+        });
 
-        logEvent('copy_image', imageCopyEvent(item, {
-            source,
-            ...outcome,
-            edited,
-            toolsUsed: edited ? markupToolsUsed(session) : [],
-        }));
-
-        if (outcome.ok) {
-            setState({ status: 'success', message: 'Paste it on chat' });
-            window.setTimeout(() => {
-                if (currentRun === runId.current) setState({ status: 'idle', message: '' });
-            }, 1800);
-        } else {
-            setState({ status: 'error', message: ERROR_COPY[outcome.reason] || ERROR_COPY.write });
-        }
+        commitCopyOutcome(run, activeRun.current, item.id, {
+            present: () => {
+                if (outcome.ok) {
+                    setState({ status: 'success', message: 'Paste it on chat' });
+                    window.setTimeout(() => {
+                        commitCopyOutcome(run, activeRun.current, item.id, {
+                            present: () => setState({ status: 'idle', message: '' }),
+                        });
+                    }, 1800);
+                } else {
+                    setState({ status: 'error', message: ERROR_COPY[outcome.reason] || ERROR_COPY.write });
+                }
+            },
+            report: () => logEvent('copy_image', imageCopyEvent(item, {
+                source,
+                ...outcome,
+                edited,
+                toolsUsed: edited ? markupToolsUsed(session) : [],
+            })),
+        });
     };
 
     const label = state.status === 'pending'

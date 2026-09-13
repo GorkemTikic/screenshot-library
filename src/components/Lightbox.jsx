@@ -4,6 +4,7 @@ import { screenshotEvent } from '../domain/analyticsEvents';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
+import { getLangCode } from '../utils/langUtils';
 import { AppIcon } from './AppIcon';
 import { ScreenshotCopyButton } from './ScreenshotCopyButton';
 
@@ -88,7 +89,7 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
                     <div className="inspector-response">{currentText || 'No response text is available for this screenshot.'}</div>
                     <div className="inspector-actions">
                         <ScreenshotCopyButton item={item} source="inspector" />
-                        <button type="button" className={`button button-quiet inspector-response-copy ${copied ? 'is-success' : ''}`} onClick={handleCopy}><AppIcon name={copied ? 'Check' : 'Copy'} size={15} /> {copied ? 'Copied' : 'Copy response'}</button>
+                        <button type="button" className={`button button-quiet inspector-response-copy ${copied ? 'is-success' : ''}`} onClick={handleCopy}><AppIcon name={copied ? 'Check' : 'Copy'} size={15} /> {copied ? 'Copied' : `Copy ${contentLang === 'tr' ? 'TR' : getLangCode(item.language)}`}</button>
                         <a className="button button-quiet" href={resolveImageUrl(item.image)} target="_blank" rel="noreferrer"><AppIcon name="ExternalLink" size={15} /> Open image</a>
                     </div>
                 </aside>

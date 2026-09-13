@@ -34,6 +34,41 @@ test('starts the clipboard write before asynchronous PNG rendering', async () =>
   assert.deepEqual(sequence, ['write', 'render']);
 });
 
+test('an aborted pending render rejects before the stale image can be committed', async () => {
+  let finishRendering;
+  let committed = false;
+  let rejection;
+  const controller = new AbortController();
+  class ClipboardItemMock { constructor(value) { this.value = value; } }
+  const resultPromise = writePngToClipboard(
+    () => new Promise((resolve) => { finishRendering = resolve; }),
+    {
+      clipboard: {
+        write: async (items) => {
+          try {
+            await items[0].value['image/png'];
+            committed = true;
+          } catch (error) {
+            rejection = error;
+            throw error;
+          }
+        },
+      },
+      ClipboardItem: ClipboardItemMock,
+      isSecureContext: true,
+      signal: controller.signal,
+    },
+  );
+
+  await Promise.resolve();
+  controller.abort();
+  finishRendering(new Blob(['stale'], { type: 'image/png' }));
+
+  assert.deepEqual(await resultPromise, { ok: false, method: 'failed', reason: 'write' });
+  assert.equal(committed, false);
+  assert.equal(rejection?.name, 'AbortError');
+});
+
 test('returns unsupported without a download fallback', async () => {
   let rendered = false;
   const result = await writePngToClipboard(() => { rendered = true; return Promise.resolve(new Blob()); }, { clipboard: null, ClipboardItem: null, isSecureContext: true });
