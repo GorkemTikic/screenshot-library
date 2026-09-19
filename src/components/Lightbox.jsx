@@ -1,17 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { TOPIC_META, normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
 import { screenshotEvent } from '../domain/analyticsEvents';
+import { createMarkupSession, isMarkupDirty, markupReducer } from '../domain/markup';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
 import { getLangCode } from '../utils/langUtils';
 import { AppIcon } from './AppIcon';
+import { QuickMarkupEditor } from './QuickMarkupEditor';
 import { ScreenshotCopyButton } from './ScreenshotCopyButton';
 
 export function Lightbox({ item, position, total, onClose, onNavigate }) {
     const closeRef = useRef(null);
     const [contentLang, setContentLang] = useState('en');
     const [copied, setCopied] = useState(false);
+    const [markup, dispatchMarkup] = useReducer(markupReducer, undefined, createMarkupSession);
+    const [markupImage, setMarkupImage] = useState(null);
+    const markupLogged = useRef(false);
+    const handleImageReady = useCallback((image) => setMarkupImage(image), []);
     const hasTr = Boolean(item.text_tr?.trim());
     const currentText = contentLang === 'tr' && hasTr ? item.text_tr : item.text;
     const topic = TOPIC_META[item.topic] || TOPIC_META.General;
@@ -36,6 +42,12 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
         };
     }, [onClose, onNavigate, total]);
 
+    useEffect(() => {
+        if (!isMarkupDirty(markup) || markupLogged.current) return;
+        markupLogged.current = true;
+        logEvent('markup_opened', screenshotEvent(item, { source: 'inspector' }));
+    }, [item, markup]);
+
     const handleCopy = async () => {
         const successful = await copyPlainText(currentText || '');
         if (successful) {
@@ -54,7 +66,7 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
         <div className="lightbox-overlay inspector-overlay" role="dialog" aria-modal="true" aria-labelledby="inspector-title" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
             <div className="inspector-shell">
                 <div className="inspector-media">
-                    <img src={resolveImageUrl(item.image)} alt={item.title} />
+                    <QuickMarkupEditor imageUrl={resolveImageUrl(item.image)} session={markup} dispatch={dispatchMarkup} onImageReady={handleImageReady} />
                     {total > 1 && (
                         <>
                             <button type="button" className="inspector-nav previous" onClick={() => onNavigate(-1)} aria-label="Previous screenshot"><AppIcon name="ArrowLeft" /></button>
@@ -88,7 +100,7 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
                     )}
                     <div className="inspector-response">{currentText || 'No response text is available for this screenshot.'}</div>
                     <div className="inspector-actions">
-                        <ScreenshotCopyButton item={item} source="inspector" />
+                        <ScreenshotCopyButton item={item} source="inspector" session={markup} image={markupImage} />
                         <button type="button" className={`button button-quiet inspector-response-copy ${copied ? 'is-success' : ''}`} onClick={handleCopy}><AppIcon name={copied ? 'Check' : 'Copy'} size={15} /> {copied ? 'Copied' : `Copy ${contentLang === 'tr' ? 'TR' : getLangCode(item.language)}`}</button>
                         <a className="button button-quiet" href={resolveImageUrl(item.image)} target="_blank" rel="noreferrer"><AppIcon name="ExternalLink" size={15} /> Open image</a>
                     </div>

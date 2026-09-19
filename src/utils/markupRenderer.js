@@ -123,6 +123,25 @@ export function paintMarkup(context, image, session) {
   }
 }
 
+export function paintMarkupPreview(context, image, session) {
+  paintMarkup(context, image, session);
+  if (!session.crop) return;
+  const width = image.naturalWidth || image.width;
+  const height = image.naturalHeight || image.height;
+  const crop = outputGeometry(width, height, session.crop);
+  context.save();
+  context.fillStyle = 'rgba(5, 6, 8, 0.55)';
+  context.fillRect(0, 0, width, crop.y);
+  context.fillRect(0, crop.y + crop.height, width, height - crop.y - crop.height);
+  context.fillRect(0, crop.y, crop.x, crop.height);
+  context.fillRect(crop.x + crop.width, crop.y, width - crop.x - crop.width, crop.height);
+  context.strokeStyle = '#ffffff';
+  context.lineWidth = Math.max(3, Math.round(Math.min(width, height) * 0.004));
+  context.setLineDash([context.lineWidth * 2, context.lineWidth * 1.5]);
+  context.strokeRect(crop.x, crop.y, crop.width, crop.height);
+  context.restore();
+}
+
 const canvasBlob = (canvas) => new Promise((resolve, reject) => canvas.toBlob(
   (blob) => blob
     ? resolve(blob)

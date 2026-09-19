@@ -209,3 +209,21 @@ test('cards and inspector expose screenshot copy beside response copy', async ()
   assert.doesNotMatch(lightbox, />Copy response</);
   assert.doesNotMatch(button, /download/i);
 });
+
+test('the inspector hosts ephemeral accessible quick markup tools', async () => {
+  const editor = await readFile(new URL('../src/components/QuickMarkupEditor.jsx', import.meta.url), 'utf8');
+  const lightbox = await readFile(new URL('../src/components/Lightbox.jsx', import.meta.url), 'utf8');
+  for (const label of ['Crop', 'Arrow', 'Number', 'Highlight', 'Blur', 'Undo', 'Redo', 'Reset']) {
+    assert.match(editor, new RegExp(`["']${label}["']`));
+  }
+  assert.match(editor, /aria-label=\{label\}/);
+  assert.match(editor, /onPointerDown/);
+  assert.match(editor, /onPointerMove/);
+  assert.match(editor, /onPointerUp/);
+  assert.match(editor, /metaKey/);
+  assert.match(lightbox, /createMarkupSession/);
+  assert.match(lightbox, /markupReducer/);
+  assert.match(lightbox, /QuickMarkupEditor/);
+  assert.match(lightbox, /session=\{markup\}/);
+  assert.match(lightbox, /markup_opened/);
+});
