@@ -51,3 +51,24 @@ export function cropOperationForPoint(gesture, rawPoint) {
   }
   return { type: 'crop', start: gesture.origin, end: current };
 }
+
+export function gestureMovedEnough(start, end, threshold = 4) {
+  return Math.hypot(Number(end.x) - Number(start.x), Number(end.y) - Number(start.y)) >= threshold;
+}
+
+function cropFromOperation(operation) {
+  const start = point(operation.start);
+  const end = point(operation.end);
+  return {
+    x: Math.min(start.x, end.x),
+    y: Math.min(start.y, end.y),
+    width: Math.abs(end.x - start.x),
+    height: Math.abs(end.y - start.y),
+  };
+}
+
+export function cropOperationChangesCrop(crop, operation, epsilon = 0.000001) {
+  if (!crop) return true;
+  const next = cropFromOperation(operation);
+  return ['x', 'y', 'width', 'height'].some((key) => Math.abs(next[key] - crop[key]) > epsilon);
+}

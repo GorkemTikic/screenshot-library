@@ -35,6 +35,24 @@ export function outputGeometry(width, height, crop) {
   };
 }
 
+export function previewCanvasGeometry(sourceWidth, sourceHeight, stageWidth, stageHeight, devicePixelRatio = 1) {
+  const safeSourceWidth = Math.max(1, Number(sourceWidth) || 1);
+  const safeSourceHeight = Math.max(1, Number(sourceHeight) || 1);
+  const safeStageWidth = Math.max(1, Number(stageWidth) || 1);
+  const safeStageHeight = Math.max(1, Number(stageHeight) || 1);
+  const scale = Math.min(safeStageWidth / safeSourceWidth, safeStageHeight / safeSourceHeight);
+  const cssWidth = Math.max(1, Math.round(safeSourceWidth * scale));
+  const cssHeight = Math.max(1, Math.round(safeSourceHeight * scale));
+  const pixelRatio = Math.max(1, Math.min(2, Number(devicePixelRatio) || 1));
+  return {
+    cssWidth,
+    cssHeight,
+    width: Math.max(1, Math.round(cssWidth * pixelRatio)),
+    height: Math.max(1, Math.round(cssHeight * pixelRatio)),
+    pixelRatio,
+  };
+}
+
 function drawArrow(context, operation, width, height) {
   const start = sourcePoint(operation.start, width, height);
   const end = sourcePoint(operation.end, width, height);
@@ -107,9 +125,9 @@ function drawBlur(context, image, operation, width, height) {
   context.restore();
 }
 
-export function paintMarkup(context, image, session) {
-  const width = image.naturalWidth || image.width;
-  const height = image.naturalHeight || image.height;
+export function paintMarkup(context, image, session, dimensions = {}) {
+  const width = dimensions.width || image.naturalWidth || image.width;
+  const height = dimensions.height || image.naturalHeight || image.height;
 
   context.clearRect(0, 0, width, height);
   context.drawImage(image, 0, 0, width, height);
@@ -123,11 +141,11 @@ export function paintMarkup(context, image, session) {
   }
 }
 
-export function paintMarkupPreview(context, image, session) {
-  paintMarkup(context, image, session);
+export function paintMarkupPreview(context, image, session, dimensions = {}) {
+  const width = dimensions.width || image.naturalWidth || image.width;
+  const height = dimensions.height || image.naturalHeight || image.height;
+  paintMarkup(context, image, session, { width, height });
   if (!session.crop) return;
-  const width = image.naturalWidth || image.width;
-  const height = image.naturalHeight || image.height;
   const crop = outputGeometry(width, height, session.crop);
   context.save();
   context.fillStyle = 'rgba(5, 6, 8, 0.55)';

@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { outputGeometry, paintMarkupPreview, sourcePoint, sourceRectangle } from '../src/utils/markupRenderer.js';
+import {
+  outputGeometry, paintMarkupPreview, previewCanvasGeometry, sourcePoint, sourceRectangle,
+} from '../src/utils/markupRenderer.js';
 
 test('full output keeps intrinsic dimensions', () => {
   assert.deepEqual(outputGeometry(1920, 1080, null), { x: 0, y: 0, width: 1920, height: 1080 });
@@ -46,4 +48,21 @@ test('crop preview paints four visible corner handles around the crop bounds', (
   assert.equal(strokeRects.length, 5, 'one crop boundary and four handle outlines are visible');
   assert.equal(fillRects.length, 8, 'four mask rectangles and four crop handles are painted');
   assert.deepEqual(strokeRects[0], [200, 50, 500, 300]);
+});
+
+test('preview canvas fits the stage at a capped device-pixel ratio', () => {
+  assert.deepEqual(previewCanvasGeometry(2000, 1000, 600, 400, 3), {
+    cssWidth: 600,
+    cssHeight: 300,
+    width: 1200,
+    height: 600,
+    pixelRatio: 2,
+  });
+  assert.deepEqual(previewCanvasGeometry(8000, 4000, 0, 0, 2), {
+    cssWidth: 1,
+    cssHeight: 1,
+    width: 2,
+    height: 2,
+    pixelRatio: 2,
+  });
 });

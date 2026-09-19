@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { beginCropGesture, cropOperationForPoint, cropTargetAtPoint } from '../src/domain/cropInteraction.js';
+import {
+  beginCropGesture, cropOperationChangesCrop, cropOperationForPoint, cropTargetAtPoint, gestureMovedEnough,
+} from '../src/domain/cropInteraction.js';
 
 const crop = { x: 0.2, y: 0.25, width: 0.5, height: 0.4 };
 const tolerance = { x: 0.03, y: 0.04 };
@@ -39,4 +41,15 @@ test('dragging outside an existing crop creates a replacement crop', () => {
     start: { x: 0.05, y: 0.1 },
     end: { x: 0.6, y: 0.8 },
   });
+});
+
+test('gesture movement uses display pixels and crop no-op comparison ignores direction', () => {
+  assert.equal(gestureMovedEnough({ x: 10, y: 10 }, { x: 12, y: 12 }), false);
+  assert.equal(gestureMovedEnough({ x: 10, y: 10 }, { x: 14, y: 10 }), true);
+  assert.equal(cropOperationChangesCrop(crop, {
+    type: 'crop', start: { x: 0.7, y: 0.65 }, end: { x: 0.2, y: 0.25 },
+  }), false);
+  assert.equal(cropOperationChangesCrop(crop, {
+    type: 'crop', start: { x: 0.25, y: 0.25 }, end: { x: 0.7, y: 0.65 },
+  }), true);
 });

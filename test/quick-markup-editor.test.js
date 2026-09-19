@@ -77,10 +77,10 @@ test('markup tools require a decoded image and crop movement commits once on poi
     pointerId: 1, clientX: 40, clientY: 40, currentTarget: canvas,
   }));
   markupCanvas = renderer.root.findByProps({ 'aria-label': 'Screenshot markup canvas' });
-  await act(async () => markupCanvas.props.onPointerMove({ clientX: 60, clientY: 60, currentTarget: canvas }));
+  await act(async () => markupCanvas.props.onPointerMove({ pointerId: 1, clientX: 60, clientY: 60, currentTarget: canvas }));
   assert.equal(actions.length, 0, 'crop previews do not create reducer history entries');
   markupCanvas = renderer.root.findByProps({ 'aria-label': 'Screenshot markup canvas' });
-  await act(async () => markupCanvas.props.onPointerUp({ clientX: 60, clientY: 60, currentTarget: canvas }));
+  await act(async () => markupCanvas.props.onPointerUp({ pointerId: 1, clientX: 60, clientY: 60, currentTarget: canvas }));
   assert.deepEqual(actions, [{
     type: 'commit',
     operation: { type: 'crop', start: { x: 0.4, y: 0.4 }, end: { x: 0.9, y: 0.9 } },

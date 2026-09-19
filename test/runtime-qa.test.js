@@ -224,6 +224,9 @@ test('the inspector hosts ephemeral accessible quick markup tools', async () => 
   assert.match(editor, /beginCropGesture/);
   assert.match(editor, /cropOperationForPoint/);
   assert.match(editor, /disabled=\{!imageReady\}/);
+  assert.match(editor, /requestAnimationFrame/);
+  assert.match(editor, /cancelAnimationFrame/);
+  assert.match(editor, /previewCanvasGeometry/);
   assert.match(lightbox, /createMarkupSession/);
   assert.match(lightbox, /markupReducer/);
   assert.match(lightbox, /QuickMarkupEditor/);

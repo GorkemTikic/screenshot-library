@@ -10,7 +10,7 @@ import { AppIcon } from './AppIcon';
 import { QuickMarkupEditor } from './QuickMarkupEditor';
 import { ScreenshotCopyButton } from './ScreenshotCopyButton';
 
-export function Lightbox({ item, position, total, onClose, onNavigate }) {
+export function Lightbox({ item, position, total, onClose, onNavigate, markupLogEventFn = logEvent }) {
     const closeRef = useRef(null);
     const [contentLang, setContentLang] = useState('en');
     const [copied, setCopied] = useState(false);
@@ -45,8 +45,8 @@ export function Lightbox({ item, position, total, onClose, onNavigate }) {
     useEffect(() => {
         if (!isMarkupDirty(markup) || markupLogged.current) return;
         markupLogged.current = true;
-        logEvent('markup_opened', screenshotEvent(item, { source: 'inspector' }));
-    }, [item, markup]);
+        markupLogEventFn('markup_opened', screenshotEvent(item, { source: 'inspector' }));
+    }, [item, markup, markupLogEventFn]);
 
     const handleCopy = async () => {
         const successful = await copyPlainText(currentText || '');
