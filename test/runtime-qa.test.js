@@ -251,6 +251,19 @@ test('compact inspector keeps copy actions reachable with a vertically scrollabl
   const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
   const compact = css.match(/@media \(max-width:\s*760px\)([\s\S]*?)@media \(max-width:\s*520px\)/)?.[1] || '';
   const panel = compact.match(/\.inspector-panel\s*\{[^}]+\}/)?.[0] || '';
+  const shell = compact.match(/\.inspector-shell\s*\{[^}]+\}/)?.[0] || '';
   assert.match(panel, /min-height:\s*0/);
   assert.match(panel, /overflow-y:\s*auto/);
+  assert.match(shell, /grid-template-rows:\s*clamp\(180px,\s*55vh,\s*300px\)\s+minmax\(0,\s*1fr\)/);
+  assert.match(compact, /\.inspector-actions\s*>\s*a\.button-quiet\s*\{[^}]*grid-column:\s*1\s*\/\s*-1/);
+  assert.doesNotMatch(compact, /\.inspector-actions\s+\.button-quiet\s*\{[^}]*grid-column/);
+});
+
+test('owner workspace preserves catalog metrics while distinguishing remote readiness', async () => {
+  const owners = await readFile(new URL('../src/pages/OwnersPage.jsx', import.meta.url), 'utf8');
+  assert.match(owners, /useState\(null\)/);
+  assert.match(owners, /aggregateOwners\(items,\s*remote\s*\|\|\s*\[\]\)/);
+  assert.match(owners, /remoteReady\s*=\s*remote\s*!==\s*null/);
+  assert.match(owners, /formatRemoteMetric\(active\.imageCopies,\s*remoteReady\)/);
+  assert.match(owners, /<strong>\{active\.guides\}<\/strong><span>Current<\/span>/);
 });

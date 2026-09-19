@@ -843,14 +843,14 @@ img { max-width: 100%; }
   .discard-banner { align-items: stretch; flex-direction: column; }
   .discard-banner > div:last-child { justify-content: flex-end; }
   .inspector-overlay { padding: 0; }
-  .inspector-shell { width: 100%; height: 100%; grid-template-columns: 1fr; grid-template-rows: minmax(300px, 55vh) minmax(0, 1fr); border: 0; border-radius: 0; }
+  .inspector-shell { width: 100%; height: 100%; grid-template-columns: 1fr; grid-template-rows: clamp(180px, 55vh, 300px) minmax(0, 1fr); border: 0; border-radius: 0; }
   .inspector-media { padding: 10px; }
   .inspector-panel { min-height: 0; padding: 15px; overflow-y: auto; }
   .inspector-panel h2 { margin: 11px 0; font-size: 20px; }
   .inspector-response { min-height: 120px; }
   .markup-toolbar button span { display: none; }
   .inspector-actions { display: grid; grid-template-columns: 1fr 1fr; }
-  .inspector-actions .button-quiet { grid-column: 1 / -1; }
+  .inspector-actions > a.button-quiet { grid-column: 1 / -1; }
   .inspector-actions .button { flex: 1; }
   .toast { left: 12px; right: 12px; bottom: 12px; justify-content: center; }
   .analytics-header, .admin-header, .requests-toolbar { align-items: stretch; flex-direction: column; }

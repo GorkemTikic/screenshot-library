@@ -6,6 +6,7 @@ import {
   aggregateOwners,
   buildPatch,
   filterCatalog,
+  formatRemoteMetric,
   normalizePlatform,
   ownerHue,
   ownerInitials,
@@ -103,6 +104,13 @@ test('aggregateOwners combines catalog coverage and interaction rows', () => {
   assert.equal(result[0].latest, '2026-09-01');
   assert.equal(result[1].owner, 'CS Enzo');
   assert.equal(result[1].lifetime, 1);
+});
+
+test('remote owner metrics distinguish a loaded zero from unavailable data', () => {
+  assert.equal(formatRemoteMetric(0, true), 0);
+  assert.equal(formatRemoteMetric('7', true), 7);
+  assert.equal(formatRemoteMetric(undefined, true), 0);
+  assert.equal(formatRemoteMetric(0, false), '—');
 });
 
 test('aggregateOwners treats the legacy copies field as response copies', () => {

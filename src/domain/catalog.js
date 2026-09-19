@@ -64,6 +64,12 @@ export const ownerColorStyle = (name = '') => {
     return { '--avatar-hue': hue, '--owner-hue': hue };
 };
 
+export const formatRemoteMetric = (value, ready) => {
+    if (!ready) return '—';
+    const numeric = Number(value);
+    return Number.isFinite(numeric) ? numeric : 0;
+};
+
 export function aggregateOwners(items = [], interactionRows = []) {
     const interactionMap = new Map(interactionRows.map((row) => [String(row.owner || row.name || '').trim().toLowerCase(), row]));
     const grouped = new Map();
