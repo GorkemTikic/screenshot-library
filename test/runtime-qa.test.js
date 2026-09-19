@@ -233,3 +233,16 @@ test('the inspector hosts ephemeral accessible quick markup tools', async () => 
   assert.match(lightbox, /session=\{markup\}/);
   assert.match(lightbox, /markup_opened/);
 });
+
+test('send mode and quick markup have responsive accessible presentation styles', async () => {
+  const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
+  const owners = await readFile(new URL('../src/pages/OwnersPage.jsx', import.meta.url), 'utf8');
+  assert.match(css, /\.btn-screenshot-copy/);
+  assert.match(css, /\.copy-status\.error/);
+  assert.match(css, /\.markup-toolbar/);
+  assert.match(css, /touch-action:\s*none/);
+  assert.match(css, /@media \(max-width:\s*760px\)[\s\S]*\.card-actions/);
+  assert.match(owners, /Screenshot copies/);
+  assert.match(owners, /Response copies/);
+  assert.match(owners, /Edited copies/);
+});
