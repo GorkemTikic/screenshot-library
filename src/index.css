@@ -359,7 +359,7 @@ img { max-width: 100%; }
 .inspector-owner { padding-bottom: 15px; border-bottom: 1px solid var(--line-1); }
 .inspector-language { margin: 0 0 10px; color: var(--text-3); font-size: 10.5px; font-weight: 650; }
 .inspector-response { flex: 1; overflow: auto; padding: 14px; border: 1px solid var(--line-1); border-radius: 9px; background: var(--bg-inset); color: var(--text-2); font-size: 12.5px; line-height: 1.65; white-space: pre-wrap; }
-.inspector-actions { justify-content: flex-start; margin-top: 12px; }
+.inspector-actions { justify-content: flex-start; align-items: flex-start; margin-top: 12px; }
 .inspector-actions .button-primary { flex: 1; }
 .button-primary.is-success { background: var(--positive); border-color: var(--positive); }
 .markup-editor { width: 100%; height: 100%; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 10px; }

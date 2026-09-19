@@ -237,11 +237,13 @@ test('the inspector hosts ephemeral accessible quick markup tools', async () => 
 test('send mode and quick markup have responsive accessible presentation styles', async () => {
   const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
   const owners = await readFile(new URL('../src/pages/OwnersPage.jsx', import.meta.url), 'utf8');
+  const inspectorActions = css.match(/\.inspector-actions\s*\{\s*justify-content:[^}]+\}/)?.[0] || '';
   assert.match(css, /\.btn-screenshot-copy/);
   assert.match(css, /\.copy-status\.error/);
   assert.match(css, /\.markup-toolbar/);
   assert.match(css, /touch-action:\s*none/);
   assert.match(css, /@media \(max-width:\s*760px\)[\s\S]*\.card-actions/);
+  assert.match(inspectorActions, /align-items:\s*flex-start/);
   assert.match(owners, /Screenshot copies/);
   assert.match(owners, /Response copies/);
   assert.match(owners, /Edited copies/);
