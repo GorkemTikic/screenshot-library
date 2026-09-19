@@ -65,13 +65,32 @@ async function clipboardPng(page) {
     if (!pngItem) return { type: '', width: 0, height: 0, types: items.flatMap((item) => item.types) };
     const blob = await pngItem.getType('image/png');
     const bitmap = await createImageBitmap(blob);
-    const result = { type: blob.type, width: bitmap.width, height: bitmap.height, types: pngItem.types };
+    const canvas = document.createElement('canvas');
+    canvas.width = bitmap.width;
+    canvas.height = bitmap.height;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    context.drawImage(bitmap, 0, 0);
+    const pixels = context.getImageData(0, 0, bitmap.width, bitmap.height).data;
+    const digest = await crypto.subtle.digest('SHA-256', pixels);
+    const pixelHash = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+    const result = {
+      type: blob.type, width: bitmap.width, height: bitmap.height, types: pngItem.types, pixelHash,
+    };
     bitmap.close();
     return result;
   });
 }
 
 const normalizedLines = (value) => String(value || '').replace(/\r\n/g, '\n');
+
+async function knownGuideContent(page) {
+  return page.evaluate(async (title) => {
+    const response = await fetch('/screenshot-library/data.json');
+    const catalog = await response.json();
+    const guide = catalog.find((item) => item.title === title);
+    return { text: guide?.text || '', textTr: guide?.text_tr || '' };
+  }, KNOWN_TRANSLATED_GUIDE);
+}
 
 test('card copies image/png while response copy remains available', async ({ page }) => {
   const card = translatedCard(page);
@@ -89,13 +108,27 @@ test('card copies image/png while response copy remains available', async ({ pag
   const clipboard = await clipboardPng(page);
   expect(clipboard.types).toContain('image/png');
   expect(clipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
-  await expect(responseCopy).toBeVisible();
+  expect(clipboard.pixelHash).toMatch(/^[a-f0-9]{64}$/);
+
+  const expected = await knownGuideContent(page);
+  await responseCopy.click();
+  await expect.poll(async () => normalizedLines(await page.evaluate(() => navigator.clipboard.readText())))
+    .toBe(normalizedLines(expected.text));
+  await card.getByRole('button', { name: 'TR', exact: true }).click();
+  await expect(card.getByRole('button', { name: 'Copy TR' })).toBeVisible({ timeout: 3_000 });
+  await card.getByRole('button', { name: 'Copy TR' }).click();
+  await expect.poll(async () => normalizedLines(await page.evaluate(() => navigator.clipboard.readText())))
+    .toBe(normalizedLines(expected.textTr));
+  await expect(card.locator('.btn-screenshot-copy')).toBeVisible();
 });
 
-test('quick markup previews every tool, supports undo and redo, and copies full resolution', async ({ page }) => {
+test('quick markup exports changed pixels, resets cleanly, and supports undo and redo', async ({ page }) => {
   const card = translatedCard(page);
   const image = await waitForCardImage(card);
   const source = await sourceImageDimensions(image);
+  await card.getByRole('button', { name: 'Copy Screenshot' }).click();
+  await expect(card.getByRole('button', { name: 'Screenshot copied' })).toBeVisible();
+  const cleanClipboard = await clipboardPng(page);
   const { dialog, canvas } = await openTranslatedGuide(page);
   const clean = await canvasSnapshot(canvas);
 
@@ -124,8 +157,21 @@ test('quick markup previews every tool, supports undo and redo, and copies full 
 
   await dialog.getByRole('button', { name: 'Copy Screenshot' }).click();
   await expect(dialog.getByRole('button', { name: 'Screenshot copied' })).toBeVisible();
-  const clipboard = await clipboardPng(page);
-  expect(clipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
+  const editedClipboard = await clipboardPng(page);
+  expect(editedClipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
+  expect(editedClipboard.pixelHash).not.toBe(cleanClipboard.pixelHash);
+
+  page.once('dialog', (confirmation) => confirmation.accept());
+  await dialog.getByRole('button', { name: 'Reset' }).click();
+  await expect.poll(() => canvasSnapshot(canvas)).toBe(clean);
+  await expect(dialog.getByRole('button', { name: 'Undo' })).toBeDisabled();
+  await expect(dialog.getByRole('button', { name: 'Reset' })).toBeDisabled();
+
+  await dialog.locator('.btn-screenshot-copy').click();
+  await expect(dialog.getByRole('button', { name: 'Screenshot copied' })).toBeVisible();
+  const resetClipboard = await clipboardPng(page);
+  expect(resetClipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
+  expect(resetClipboard.pixelHash).toBe(cleanClipboard.pixelHash);
 });
 
 test('crop changes clipboard dimensions and markup resets across navigation and reopen', async ({ page }) => {
@@ -179,6 +225,49 @@ test('EN and TR response copy remain independent from screenshot copy', async ({
     .toBe(normalizedLines(english));
 });
 
+test('focus and Escape cancel an active gesture before closing the inspector', async ({ page }) => {
+  const { dialog, canvas } = await openTranslatedGuide(page);
+  await expect(dialog.getByRole('button', { name: 'Close inspector' })).toBeFocused();
+  await dialog.getByRole('button', { name: 'Arrow' }).click();
+  await canvas.focus();
+
+  const box = await canvas.boundingBox();
+  await page.mouse.move(box.x + box.width * 0.2, box.y + box.height * 0.25);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * 0.75, box.y + box.height * 0.7, { steps: 4 });
+  await page.keyboard.press('Escape');
+  await page.mouse.up();
+
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole('button', { name: 'Undo' })).toBeDisabled();
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+});
+
+test('search, platform filters, favorites, and inspector navigation remain intact', async ({ page }) => {
+  const search = page.getByRole('searchbox', { name: 'Search title, response, topic or owner…' });
+  await search.fill(KNOWN_TRANSLATED_GUIDE);
+  await expect(translatedCard(page)).toBeVisible();
+
+  await page.getByRole('button', { name: 'Web', exact: true }).click();
+  await expect(translatedCard(page)).toBeHidden();
+  await page.getByRole('button', { name: 'Mobile', exact: true }).click();
+  const card = translatedCard(page);
+  await expect(card).toBeVisible();
+
+  await card.getByRole('button', { name: 'Add to favorites' }).click();
+  const favoritesFilter = page.locator('.filter-btn').filter({ hasText: 'Favorites' });
+  await favoritesFilter.click();
+  await expect(card).toBeVisible();
+  await expect(favoritesFilter).toHaveAttribute('aria-pressed', 'true');
+
+  await card.getByRole('button', { name: 'Inspect screenshot' }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('heading', { name: KNOWN_TRANSLATED_GUIDE, exact: true })).toBeVisible();
+  await dialog.getByRole('button', { name: 'Close inspector' }).click();
+  await expect(card).toBeVisible();
+});
+
 test('mobile inspector actions stay scrollable and reachable', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const { dialog } = await openTranslatedGuide(page);
@@ -219,4 +308,18 @@ test('short landscape keeps markup and send actions usable with top-aligned copy
     responseCopy.evaluate((element) => element.getBoundingClientRect().top),
   ]);
   expect(Math.abs(tops[0] - tops[1])).toBeLessThanOrEqual(2);
+});
+
+test.describe('touch-capable markup', () => {
+  test.use({ hasTouch: true, viewport: { width: 390, height: 844 } });
+
+  test('a touch tap places a numbered marker through the pointer path', async ({ page }) => {
+    const { dialog, canvas } = await openTranslatedGuide(page);
+    const clean = await canvasSnapshot(canvas);
+    await dialog.getByRole('button', { name: 'Number' }).click();
+    const box = await canvas.boundingBox();
+    await page.touchscreen.tap(box.x + box.width * 0.42, box.y + box.height * 0.36);
+    await expectCanvasToChange(canvas, clean);
+    await expect(dialog.getByRole('button', { name: 'Undo' })).toBeEnabled();
+  });
 });
