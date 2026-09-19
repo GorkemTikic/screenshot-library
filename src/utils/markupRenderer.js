@@ -139,6 +139,22 @@ export function paintMarkupPreview(context, image, session) {
   context.lineWidth = Math.max(3, Math.round(Math.min(width, height) * 0.004));
   context.setLineDash([context.lineWidth * 2, context.lineWidth * 1.5]);
   context.strokeRect(crop.x, crop.y, crop.width, crop.height);
+  context.setLineDash([]);
+  const handleSize = Math.max(12, Math.round(Math.min(width, height) * 0.022));
+  const halfHandle = handleSize / 2;
+  context.fillStyle = '#ffffff';
+  context.strokeStyle = '#ff5c35';
+  for (const corner of [
+    { x: crop.x, y: crop.y },
+    { x: crop.x + crop.width, y: crop.y },
+    { x: crop.x, y: crop.y + crop.height },
+    { x: crop.x + crop.width, y: crop.y + crop.height },
+  ]) {
+    const x = Math.max(0, Math.min(width - handleSize, corner.x - halfHandle));
+    const y = Math.max(0, Math.min(height - handleSize, corner.y - halfHandle));
+    context.fillRect(x, y, handleSize, handleSize);
+    context.strokeRect(x, y, handleSize, handleSize);
+  }
   context.restore();
 }
 
