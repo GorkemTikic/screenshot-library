@@ -66,15 +66,19 @@ test('number markers reuse the next visible sequence after undo and reset', () =
   assert.equal(nextMarkerNumber(markupReducer(two, { type: 'reset' })), 1);
 });
 
-test('reset clears markup history instead of leaving the cleared session undoable', () => {
+test('reset clears markup while preserving the pre-reset snapshot for undo and redo', () => {
   const arrow = markupReducer(createMarkupSession(), { type: 'commit', operation: drag('arrow') });
   const highlighted = markupReducer(arrow, { type: 'commit', operation: drag('highlight') });
   const reset = markupReducer(highlighted, { type: 'reset' });
 
   assert.equal(isMarkupDirty(reset), false);
-  assert.deepEqual(reset.past, []);
   assert.deepEqual(reset.future, []);
-  assert.equal(markupReducer(reset, { type: 'undo' }), reset);
+  const undone = markupReducer(reset, { type: 'undo' });
+  assert.deepEqual(undone.operations, highlighted.operations);
+  assert.equal(isMarkupDirty(undone), true);
+  const redone = markupReducer(undone, { type: 'redo' });
+  assert.equal(isMarkupDirty(redone), false);
+  assert.deepEqual(redone.operations, []);
 });
 
 test('tool selection rejects unsupported tools and permits null deselection', () => {

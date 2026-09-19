@@ -49,7 +49,7 @@ export function markupReducer(state, action) {
   }
   if (action.type === 'commit') return commit(state, action.operation);
   if (action.type === 'reset' && isMarkupDirty(state)) {
-    return { ...state, crop: null, operations: [], past: [], future: [] };
+    return { ...state, crop: null, operations: [], past: [...state.past, snapshot(state)], future: [] };
   }
   if (action.type === 'undo' && state.past.length) {
     const previous = state.past.at(-1);

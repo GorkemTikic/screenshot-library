@@ -164,14 +164,25 @@ test('quick markup exports changed pixels, resets cleanly, and supports undo and
   page.once('dialog', (confirmation) => confirmation.accept());
   await dialog.getByRole('button', { name: 'Reset' }).click();
   await expect.poll(() => canvasSnapshot(canvas)).toBe(clean);
-  await expect(dialog.getByRole('button', { name: 'Undo' })).toBeDisabled();
+  await expect(dialog.getByRole('button', { name: 'Undo' })).toBeEnabled();
   await expect(dialog.getByRole('button', { name: 'Reset' })).toBeDisabled();
 
   await dialog.locator('.btn-screenshot-copy').click();
-  await expect(dialog.getByRole('button', { name: 'Screenshot copied' })).toBeVisible();
+  await expect.poll(async () => (await clipboardPng(page)).pixelHash).toBe(cleanClipboard.pixelHash);
   const resetClipboard = await clipboardPng(page);
   expect(resetClipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
   expect(resetClipboard.pixelHash).toBe(cleanClipboard.pixelHash);
+
+  await dialog.getByRole('button', { name: 'Undo' }).click();
+  await expect.poll(() => canvasSnapshot(canvas)).toBe(blurred);
+  await expect(dialog.getByRole('button', { name: 'Redo' })).toBeEnabled();
+  await expect(dialog.getByRole('button', { name: 'Reset' })).toBeEnabled();
+  await dialog.locator('.btn-screenshot-copy').click();
+  await expect.poll(async () => (await clipboardPng(page)).pixelHash).toBe(editedClipboard.pixelHash);
+
+  await dialog.getByRole('button', { name: 'Redo' }).click();
+  await expect.poll(() => canvasSnapshot(canvas)).toBe(clean);
+  await expect(dialog.getByRole('button', { name: 'Reset' })).toBeDisabled();
 });
 
 test('crop changes clipboard dimensions and markup resets across navigation and reopen', async ({ page }) => {
