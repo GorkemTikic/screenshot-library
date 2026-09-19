@@ -1,7 +1,12 @@
 import { expect, test } from '@playwright/test';
+import process from 'node:process';
 
 const KNOWN_TRANSLATED_GUIDE = 'Futures Grid Bot Trade/Transaction History - EN';
-const APP_ORIGIN = 'http://127.0.0.1:5173';
+const requestedPort = Number.parseInt(process.env.PLAYWRIGHT_PORT || '', 10);
+const E2E_PORT = Number.isInteger(requestedPort) && requestedPort >= 1024 && requestedPort <= 65535
+  ? requestedPort
+  : 41737;
+const APP_ORIGIN = `http://127.0.0.1:${E2E_PORT}`;
 
 test.beforeEach(async ({ context, page }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: APP_ORIGIN });
@@ -51,11 +56,22 @@ async function expectCanvasToChange(canvas, previous) {
 }
 
 async function sourceImageDimensions(image) {
-  return image.evaluate((element) => ({
-    src: element.currentSrc || element.src,
-    width: element.naturalWidth,
-    height: element.naturalHeight,
-  }));
+  return image.evaluate(async (element) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = element.naturalWidth;
+    canvas.height = element.naturalHeight;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    context.drawImage(element, 0, 0, element.naturalWidth, element.naturalHeight);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+    const digest = await crypto.subtle.digest('SHA-256', pixels);
+    const pixelHash = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+    return {
+      src: element.currentSrc || element.src,
+      width: element.naturalWidth,
+      height: element.naturalHeight,
+      pixelHash,
+    };
+  });
 }
 
 async function clipboardPng(page) {
@@ -92,6 +108,12 @@ async function knownGuideContent(page) {
   }, KNOWN_TRANSLATED_GUIDE);
 }
 
+test('runs against the dedicated isolated worktree server', async ({ page }) => {
+  const url = new URL(page.url());
+  expect(url.port).toBe(String(E2E_PORT));
+  expect(url.port).not.toBe('5173');
+});
+
 test('card copies image/png while response copy remains available', async ({ page }) => {
   const card = translatedCard(page);
   await expect(card).toHaveCount(1);
@@ -108,7 +130,7 @@ test('card copies image/png while response copy remains available', async ({ pag
   const clipboard = await clipboardPng(page);
   expect(clipboard.types).toContain('image/png');
   expect(clipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
-  expect(clipboard.pixelHash).toMatch(/^[a-f0-9]{64}$/);
+  expect(clipboard.pixelHash).toBe(source.pixelHash);
 
   const expected = await knownGuideContent(page);
   await responseCopy.click();
@@ -129,6 +151,7 @@ test('quick markup exports changed pixels, resets cleanly, and supports undo and
   await card.getByRole('button', { name: 'Copy Screenshot' }).click();
   await expect(card.getByRole('button', { name: 'Screenshot copied' })).toBeVisible();
   const cleanClipboard = await clipboardPng(page);
+  expect(cleanClipboard.pixelHash).toBe(source.pixelHash);
   const { dialog, canvas } = await openTranslatedGuide(page);
   const clean = await canvasSnapshot(canvas);
 
@@ -159,7 +182,7 @@ test('quick markup exports changed pixels, resets cleanly, and supports undo and
   await expect(dialog.getByRole('button', { name: 'Screenshot copied' })).toBeVisible();
   const editedClipboard = await clipboardPng(page);
   expect(editedClipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
-  expect(editedClipboard.pixelHash).not.toBe(cleanClipboard.pixelHash);
+  expect(editedClipboard.pixelHash).not.toBe(source.pixelHash);
 
   page.once('dialog', (confirmation) => confirmation.accept());
   await dialog.getByRole('button', { name: 'Reset' }).click();
@@ -171,7 +194,7 @@ test('quick markup exports changed pixels, resets cleanly, and supports undo and
   await expect.poll(async () => (await clipboardPng(page)).pixelHash).toBe(cleanClipboard.pixelHash);
   const resetClipboard = await clipboardPng(page);
   expect(resetClipboard).toMatchObject({ type: 'image/png', width: source.width, height: source.height });
-  expect(resetClipboard.pixelHash).toBe(cleanClipboard.pixelHash);
+  expect(resetClipboard.pixelHash).toBe(source.pixelHash);
 
   await dialog.getByRole('button', { name: 'Undo' }).click();
   await expect.poll(() => canvasSnapshot(canvas)).toBe(blurred);
@@ -189,6 +212,13 @@ test('crop changes clipboard dimensions and markup resets across navigation and 
   const card = translatedCard(page);
   const image = await waitForCardImage(card);
   const source = await sourceImageDimensions(image);
+  const allCards = page.locator('.card');
+  const cardIndex = await allCards.evaluateAll((cards, title) => cards.findIndex(
+    (candidate) => candidate.querySelector('.card-title')?.textContent?.trim() === title,
+  ), KNOWN_TRANSLATED_GUIDE);
+  const cardCount = await allCards.count();
+  const nextCard = allCards.nth((cardIndex + 1) % cardCount);
+  const nextSource = await sourceImageDimensions(await waitForCardImage(nextCard));
   const { dialog, canvas } = await openTranslatedGuide(page);
 
   await dialog.getByRole('button', { name: 'Crop' }).click();
@@ -204,9 +234,15 @@ test('crop changes clipboard dimensions and markup resets across navigation and 
 
   await dialog.getByRole('button', { name: 'Next screenshot' }).click();
   await expect(dialog.getByRole('button', { name: 'Undo' })).toBeDisabled();
+  await expect(dialog.getByRole('button', { name: 'Reset' })).toBeDisabled();
+  await dialog.getByRole('button', { name: 'Copy Screenshot' }).click();
+  await expect.poll(async () => (await clipboardPng(page)).pixelHash).toBe(nextSource.pixelHash);
   await dialog.getByRole('button', { name: 'Previous screenshot' }).click();
   await expect(dialog.getByRole('heading', { name: KNOWN_TRANSLATED_GUIDE, exact: true })).toBeVisible();
   await expect(dialog.getByRole('button', { name: 'Undo' })).toBeDisabled();
+  await expect(dialog.getByRole('button', { name: 'Reset' })).toBeDisabled();
+  await dialog.getByRole('button', { name: 'Copy Screenshot' }).click();
+  await expect.poll(async () => (await clipboardPng(page)).pixelHash).toBe(source.pixelHash);
 
   await dialog.getByRole('button', { name: 'Close inspector' }).click();
   await translatedCard(page).locator('.card-image-wrapper').click();

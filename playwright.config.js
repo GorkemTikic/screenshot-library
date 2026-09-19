@@ -1,4 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
+import process from 'node:process';
+
+const requestedPort = Number.parseInt(process.env.PLAYWRIGHT_PORT || '', 10);
+const port = Number.isInteger(requestedPort) && requestedPort >= 1024 && requestedPort <= 65535
+  ? requestedPort
+  : 41737;
+const baseURL = `http://127.0.0.1:${port}/screenshot-library/`;
 
 export default defineConfig({
   testDir: './e2e',
@@ -7,13 +14,13 @@ export default defineConfig({
   expect: { timeout: 10_000 },
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:5173/screenshot-library/',
+    baseURL,
     trace: 'retain-on-failure',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: 'npm run dev -- --host 127.0.0.1',
-    url: 'http://127.0.0.1:5173/screenshot-library/',
-    reuseExistingServer: true,
+    command: `npm run dev -- --host 127.0.0.1 --port ${port} --strictPort`,
+    url: baseURL,
+    reuseExistingServer: false,
   },
 });
