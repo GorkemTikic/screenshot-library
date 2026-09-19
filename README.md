@@ -37,9 +37,11 @@ The system has four connected surfaces:
 - Fast fuzzy search across screenshot titles, categories, descriptions, and response text.
 - Compact information-rich cards with category, language, owner, and copy actions.
 - A full-image inspector that always fits unusually tall, wide, and multi-panel screenshots without cropping.
-- EN/TR response switching and one-click copy behavior.
+- **Copy Screenshot** actions on both cards and the inspector, alongside unchanged EN/TR response copying.
+- Temporary **Quick Markup** tools — Crop, Arrow, Number, Highlight, and Blur — with Undo, Redo, and Reset.
+- Full-resolution PNG clipboard output: marked-up copies are ready for chat while the published original remains untouched.
 - Distinct prepared-by colors for every owner.
-- Click/view/copy/request tracking for meaningful analytics.
+- Click/view/response-copy/screenshot-copy/request tracking for meaningful analytics.
 - A shared request workflow with five statuses, assignments, notes, linked screenshots, and immutable history.
 - Personal contributor access codes with per-person revocation, rotation, role controls, and audit trails.
 - Safe concurrent editing: five people can work at the same time without silently overwriting each other.
@@ -70,17 +72,31 @@ The inspector uses **Fit** behavior by default. The entire screenshot stays cent
 
 Opening the inspector records one meaningful screenshot-view event. Resizing, switching response language, or scrolling the detail pane does not create duplicate view events.
 
-### 3. Copy the response and send it
+The inspector also includes **Quick Markup** for the small edits agents commonly need before replying:
 
-Inside the inspector:
+| Tool | What it does |
+| --- | --- |
+| **Crop** | Keeps only the relevant part of the screenshot. The selection can be resized or moved before copying. |
+| **Arrow** | Points directly to the button, field, or menu the customer should use. |
+| **Number** | Adds clear step markers in the order they should be followed. |
+| **Highlight** | Frames the important area without hiding the surrounding context. |
+| **Blur** | Covers sensitive or distracting information before the screenshot is shared. |
 
-1. Select **EN** or **TR**.
-2. Review the prepared response.
-3. Copy the response with one click.
-4. Open or copy the screenshot.
-5. Paste both into the customer chat.
+![Copy, Mark, Send — Quick Markup announcement](.github/assets/quick-markup-announcement.png)
 
-Copy events retain the screenshot record, owner, language, category, and timestamp dimensions needed by Analytics.
+**Undo**, **Redo**, and **Reset** make experimentation safe. Markup is intentionally temporary: closing the inspector or moving to another screenshot starts clean, and the catalog image is never changed.
+
+### 3. Copy the screenshot, response, and send them
+
+From a card, agents can use **Copy Screenshot** and **Copy EN/TR** without opening the inspector. Inside the inspector:
+
+1. Select **EN** or **TR** and review the prepared response.
+2. Optionally apply Crop, Arrow, Number, Highlight, or Blur.
+3. Use **Copy Screenshot** for the original or marked-up full-resolution PNG.
+4. Use **Copy EN/TR** for the selected prepared response.
+5. Paste both directly into the customer chat.
+
+Copy events retain the screenshot record, owner, language, category, source surface, result, and selected markup-tool dimensions needed by Analytics. Clipboard failures are grouped into safe categories without storing image content or markup geometry.
 
 ### 4. Request a missing screenshot
 
@@ -92,7 +108,7 @@ Server-side validation and rate limiting protect the endpoint. New submissions e
 
 ### 5. Review usage analytics
 
-The Analytics overview summarizes library views, response copies, screenshot copies, search behavior, language usage, categories, and recent activity. It is designed to answer practical content questions: what agents use, what they cannot find, and which areas need maintenance.
+The Analytics overview summarizes library views, aggregate interactions, search behavior, language usage, categories, and recent activity. The Owners workspace separately tracks response copies, total screenshot copies, and how many of those screenshot copies used Quick Markup. Together, these views answer practical content questions: what agents use, what they cannot find, and which areas need maintenance.
 
 ![Analytics overview](.github/assets/analytics-overview.png)
 
@@ -220,7 +236,7 @@ Access codes are stored as secure hashes. GitHub credentials remain Worker-only 
 
 ### 10. Use the library on mobile
 
-The search, categories, cards, inspector, request flow, theme, and language controls adapt to small screens without horizontal overflow.
+The search, categories, cards, inspector, request flow, theme, language controls, screenshot copying, and touch-capable Quick Markup tools adapt to small screens without horizontal overflow.
 
 <p align="center">
   <img src=".github/assets/library-mobile.png" alt="FD Screenshot Library mobile layout" width="390" />
@@ -424,6 +440,7 @@ Open:
 
 ```powershell
 npm test
+npm run test:e2e
 npm run lint
 npm run build
 npm test --prefix worker
@@ -431,7 +448,7 @@ npm run typecheck --prefix worker
 npx wrangler deploy --dry-run --config worker/wrangler.toml
 ```
 
-The verified baseline is 71 frontend tests and 27 Worker tests, plus lint, production build, Worker typecheck, and Wrangler dry-run.
+The current verified baseline is 120 frontend tests, 10 Chromium end-to-end tests, and 27 Worker tests, plus lint, production build, Worker typecheck, and Wrangler dry-run.
 
 ### 5. Run data migrations safely
 
@@ -506,7 +523,9 @@ The Vite base is `/screenshot-library/`; `vite.config.js` copies the canonical c
 - Homepage, logo, theme, ticker, category icons, and responsive navigation render.
 - Search returns expected catalog records.
 - Tall and wide images remain fully visible in the inspector.
-- EN/TR response switching and copy actions work.
+- Card and inspector **Copy Screenshot** actions place an image on the clipboard.
+- EN/TR response switching and response-copy actions remain independent from screenshot copying.
+- Crop, Arrow, Number, Highlight, Blur, Undo, Redo, and Reset work with mouse and touch; reopening starts clean.
 - View/copy interactions appear in Analytics once, without duplicates.
 - Public request submission creates a live D1 request.
 - Contributor can sign in, update a request, and publish a text-only edit.
@@ -585,6 +604,7 @@ The Vite base is `/screenshot-library/`; `vite.config.js` copies the canonical c
 | An owner’s old usage is missing | Inspect `ownerHistory`, event timestamp, record ID, and collision report |
 | Production can’t reach Worker | GitHub Actions variable, build logs, Worker URL, CORS origin |
 | Local Studio shows GitHub error | Expected with a dummy local token; use a valid development token only when publishing is required |
+| Copy Screenshot is unavailable | Use a secure browser context with clipboard-image support; the app reports the failure without downloading or changing the source image |
 
 ## Design principles
 
@@ -602,6 +622,7 @@ The Vite base is `/screenshot-library/`; `vite.config.js` copies the canonical c
 - [`docs/superpowers/specs/2026-09-12-fd-screenshot-library-ultimate-redesign-design.md`](docs/superpowers/specs/2026-09-12-fd-screenshot-library-ultimate-redesign-design.md) — visual/product direction
 - [`docs/superpowers/specs/2026-09-12-home-density-and-tracking-refinement-design.md`](docs/superpowers/specs/2026-09-12-home-density-and-tracking-refinement-design.md) — density and event-tracking decisions
 - [`docs/superpowers/specs/2026-09-12-request-workflow-and-owner-history-design.md`](docs/superpowers/specs/2026-09-12-request-workflow-and-owner-history-design.md) — request workflow, ownership history, and inspector-fit architecture
+- [`docs/superpowers/specs/2026-09-13-agent-send-mode-and-quick-markup-design.md`](docs/superpowers/specs/2026-09-13-agent-send-mode-and-quick-markup-design.md) — screenshot clipboard, temporary markup, analytics, and responsive interaction decisions
 
 ---
 
