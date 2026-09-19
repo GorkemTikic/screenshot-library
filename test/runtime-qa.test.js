@@ -246,3 +246,11 @@ test('send mode and quick markup have responsive accessible presentation styles'
   assert.match(owners, /Response copies/);
   assert.match(owners, /Edited copies/);
 });
+
+test('compact inspector keeps copy actions reachable with a vertically scrollable panel', async () => {
+  const css = await readFile(new URL('../src/index.css', import.meta.url), 'utf8');
+  const compact = css.match(/@media \(max-width:\s*760px\)([\s\S]*?)@media \(max-width:\s*520px\)/)?.[1] || '';
+  const panel = compact.match(/\.inspector-panel\s*\{[^}]+\}/)?.[0] || '';
+  assert.match(panel, /min-height:\s*0/);
+  assert.match(panel, /overflow-y:\s*auto/);
+});
