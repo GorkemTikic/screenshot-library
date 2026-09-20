@@ -2,7 +2,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   beginCropGesture, cropOperationChangesCrop, cropOperationForPoint, gestureMovedEnough,
 } from '../domain/cropInteraction';
-import { markupReducer } from '../domain/markup';
+import { isMarkupDirty, markupReducer } from '../domain/markup';
+import {
+  isQuickMarkupDiscovered,
+  markQuickMarkupDiscovered,
+  shouldShowQuickMarkupTip,
+} from '../domain/quickMarkupDiscovery';
 import { paintMarkupPreview, previewCanvasGeometry } from '../utils/markupRenderer';
 import { AppIcon } from './AppIcon';
 
@@ -42,7 +47,7 @@ function releasePointer(target, pointerId) {
   }
 }
 
-function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady }) {
+function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady, showTip = false, onSoftDismiss, onTryMarkup }) {
   const canvasRef = useRef(null);
   const stageRef = useRef(null);
   const imageRef = useRef(null);
@@ -238,6 +243,21 @@ function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady }) {
       <button type="button" aria-label="Redo" disabled={!session.future.length} onClick={() => dispatch({ type: 'redo' })}><AppIcon name="Redo2" size={15} /></button>
       <button type="button" aria-label="Reset" disabled={!session.crop && !session.operations.length} onClick={reset}><AppIcon name="RotateCcw" size={15} /></button>
     </div>
+    {showTip && (
+      <div className="markup-discovery-tip" role="status">
+        <div className="markup-discovery-tip-copy">
+          <AppIcon name="Sparkles" size={14} />
+          <p>
+            <strong>What's new:</strong> Crop, arrow, number, highlight, or blur — then Copy Screenshot.
+            The catalog original stays untouched.
+          </p>
+        </div>
+        <div className="markup-discovery-tip-actions">
+          <button type="button" className="markup-discovery-try" onClick={onTryMarkup}>Try arrow</button>
+          <button type="button" className="markup-discovery-dismiss" onClick={onSoftDismiss}>Got it</button>
+        </div>
+      </div>
+    )}
     <div ref={stageRef} className="markup-stage">
       <canvas
         ref={canvasRef} tabIndex="0" aria-label="Screenshot markup canvas"
@@ -252,5 +272,26 @@ function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady }) {
 }
 
 export function QuickMarkupEditor(props) {
-  return <QuickMarkupSession key={props.imageUrl} {...props} />;
+  const [softDismissed, setSoftDismissed] = useState(false);
+  const dirty = isMarkupDirty(props.session);
+
+  useEffect(() => {
+    if (dirty) markQuickMarkupDiscovered();
+  }, [dirty]);
+
+  const discovered = dirty || isQuickMarkupDiscovered();
+  const showTip = shouldShowQuickMarkupTip({ discovered, softDismissed });
+
+  return (
+    <QuickMarkupSession
+      key={props.imageUrl}
+      {...props}
+      showTip={showTip}
+      onSoftDismiss={() => setSoftDismissed(true)}
+      onTryMarkup={() => {
+        props.dispatch({ type: 'select-tool', tool: 'arrow' });
+        setSoftDismissed(true);
+      }}
+    />
+  );
 }
