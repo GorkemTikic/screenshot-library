@@ -1,3 +1,5 @@
+import { searchCatalog } from './catalogSearch.js';
+
 export const TOPIC_META = {
     'Futures Trading': { icon: 'CandlestickChart', tone: 'amber' },
     'Margin Trading': { icon: 'Scale', tone: 'blue' },
@@ -118,6 +120,7 @@ export function aggregateOwners(items = [], interactionRows = []) {
 
 export function filterCatalog(items = [], filters = {}) {
     const {
+        query = '',
         matchedIds = null,
         platform = 'mobile',
         topic = 'All',
@@ -127,11 +130,12 @@ export function filterCatalog(items = [], filters = {}) {
     } = filters;
     const favorites = new Set(favoriteTitles);
 
-    return visibleCatalog(items)
+    const filtered = visibleCatalog(items)
         .filter((item) => normalizePlatform(item.platform) === platform)
         .filter((item) => !matchedIds || matchedIds.has(item.id))
         .filter((item) => topic === 'All' || item.topic === topic)
         .filter((item) => language === 'All' || item.language === language)
         .filter((item) => !favoritesOnly || favorites.has(item.title))
         .sort((a, b) => (Number(b.id) || 0) - (Number(a.id) || 0));
+    return searchCatalog(filtered, query);
 }

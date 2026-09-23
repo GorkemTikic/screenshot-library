@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import Fuse from 'fuse.js';
 import { useData } from '../contexts/DataContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
 import { filterCatalog, normalizePlatform, TOPIC_META, topicCounts } from '../domain/catalog';
@@ -22,34 +21,24 @@ export function ScreenshotGallery() {
     const [inspectorIndex, setInspectorIndex] = useState(null);
     useSearchShortcut(searchRef);
 
-    const fuse = useMemo(() => new Fuse(items, {
-        keys: ['title', 'text', 'text_tr', 'topic', 'language', 'owner', 'platform'],
-        threshold: 0.3,
-        ignoreLocation: true,
-    }), [items]);
-
-    const matchedIds = useMemo(() => search.trim()
-        ? new Set(fuse.search(search.trim()).map((result) => result.item.id))
-        : null, [fuse, search]);
-
     const filteredItems = useMemo(() => filterCatalog(items, {
-        matchedIds,
+        query: search,
         platform: selectedPlatform,
         topic: selectedTopic,
         language: selectedLang,
         favoritesOnly: showFavoritesOnly,
         favoriteTitles: favorites,
-    }), [items, matchedIds, selectedPlatform, selectedTopic, selectedLang, showFavoritesOnly, favorites]);
+    }), [items, search, selectedPlatform, selectedTopic, selectedLang, showFavoritesOnly, favorites]);
 
     const resultCountFor = useCallback((overrides = {}) => filterCatalog(items, {
-        matchedIds,
+        query: search,
         platform: selectedPlatform,
         topic: selectedTopic,
         language: selectedLang,
         favoritesOnly: showFavoritesOnly,
         favoriteTitles: favorites,
         ...overrides,
-    }).length, [favorites, items, matchedIds, selectedLang, selectedPlatform, selectedTopic, showFavoritesOnly]);
+    }).length, [favorites, items, search, selectedLang, selectedPlatform, selectedTopic, showFavoritesOnly]);
 
     useEffect(() => {
         const query = search.trim();
@@ -73,7 +62,7 @@ export function ScreenshotGallery() {
         setSelectedTopic('All');
         setSelectedPlatform('mobile');
         setShowFavoritesOnly(false);
-        logEvent('filters_reset', discoveryEvent('all', resultCountFor({ platform: 'mobile', topic: 'All', language: 'All', favoritesOnly: false })));
+        logEvent('filters_reset', discoveryEvent('all', resultCountFor({ query: '', platform: 'mobile', topic: 'All', language: 'All', favoritesOnly: false })));
     };
 
     const activeFilters = [
