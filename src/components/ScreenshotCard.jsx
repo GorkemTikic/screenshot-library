@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useData } from '../contexts/DataContext';
-import { TOPIC_META, normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
+import { normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
+import { topicMeta } from '../domain/topics';
 import { screenshotEvent } from '../domain/analyticsEvents';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
@@ -22,7 +23,7 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
     const [contentLang, setContentLang] = useState('en');
     const hasTr = Boolean(item.text_tr?.trim());
     const currentText = contentLang === 'tr' && hasTr ? item.text_tr : item.text;
-    const topic = TOPIC_META[item.topic] || TOPIC_META.General;
+    const topic = topicMeta(item.topic);
     const avatarStyle = ownerColorStyle(item.owner);
 
     const handleCopy = async (event) => {

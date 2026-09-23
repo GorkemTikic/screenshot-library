@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AppIcon } from '../AppIcon';
-import { buildPatch, TOPIC_META } from '../../domain/catalog';
+import { buildPatch } from '../../domain/catalog';
+import { getTopics, resolveTopic, topicKey, validateTopic } from '../../domain/topics';
+import { useData } from '../../contexts/DataContext';
 import { contentApi, ContentApiError } from '../../services/contentApi';
 import { useAuth } from '../../contexts/AuthContext';
 import { useUnsavedChanges } from '../../hooks/useUnsavedChanges';
@@ -18,18 +20,25 @@ function initialDraft(item) {
 
 export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) {
     const auth = useAuth();
+    const { items } = useData();
     const dialogRef = useRef(null);
     const closeButtonRef = useRef(null);
     const closeActionRef = useRef(null);
     const conflictOpenRef = useRef(false);
     const [base, setBase] = useState(item || null);
     const [draft, setDraft] = useState(() => initialDraft(item));
+    const [creatingTopic, setCreatingTopic] = useState(false);
     const [image, setImage] = useState(null);
     const [languageTab, setLanguageTab] = useState('source');
     const [status, setStatus] = useState({ state: 'idle', message: '' });
     const [conflict, setConflict] = useState(null);
-    const patch = useMemo(() => buildPatch(base || initialDraft(null), draft, FIELDS), [base, draft]);
-    const dirty = Boolean(image) || Object.keys(patch).length > 0;
+    const topicItems = useMemo(() => item ? [...items, item] : items, [items, item]);
+    const topics = useMemo(() => getTopics(topicItems), [topicItems]);
+    const resolvedTopic = resolveTopic(draft.topic, topicItems);
+    const existingTopic = topics.find((topic) => topicKey(topic) === topicKey(draft.topic));
+    const publishDraft = useMemo(() => ({ ...draft, topic: resolvedTopic }), [draft, resolvedTopic]);
+    const patch = useMemo(() => buildPatch(base || initialDraft(null), publishDraft, FIELDS), [base, publishDraft]);
+    const dirty = creatingTopic || Boolean(image) || Object.keys(patch).length > 0;
     const isExisting = Boolean(item);
     useUnsavedChanges(dirty);
 
@@ -79,6 +88,8 @@ export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) 
     };
 
     const publish = async (override = null, imageOverride = image) => {
+        const topicError = validateTopic(draft.topic);
+        if (topicError) return setStatus({ state: 'error', message: topicError });
         if (!draft.title.trim() || !draft.text.trim() || !draft.topic || !draft.language) return setStatus({ state: 'error', message: 'Title, source response, topic and language are required.' });
         if (!item && !image) return setStatus({ state: 'error', message: 'Choose a screenshot image before publishing.' });
         setStatus({ state: 'publishing', message: 'Validating and publishing…' });
@@ -86,7 +97,7 @@ export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) 
             action: item ? (image && !Object.keys(patch).length ? 'replace-image' : 'update') : 'create',
             recordId: item?.id,
             baseRecord: base || undefined,
-            patch: item ? patch : draft,
+            patch: item ? patch : publishDraft,
         };
         try {
             const result = await contentApi.publish(payload, imageOverride);
@@ -144,7 +155,8 @@ export function ContentEditor({ item, onChooseExisting, onClose, onPublished }) 
                     <aside className="editor-column editor-details">
                         <div className="editor-section-heading"><div><strong>Catalog details</strong><span>How this guide is found and credited</span></div></div>
                         <label className="form-group"><span>Title *</span><input className="form-input" value={draft.title} onChange={(event) => update('title', event.target.value)} maxLength={240} /></label>
-                        <div className="form-row"><label className="form-group"><span>Topic *</span><select className="form-select" value={draft.topic} onChange={(event) => update('topic', event.target.value)}>{Object.keys(TOPIC_META).map((topic) => <option key={topic}>{topic}</option>)}</select></label><label className="form-group"><span>Language *</span><select className="form-select" value={draft.language} onChange={(event) => update('language', event.target.value)}>{LANGUAGES.map((language) => <option key={language}>{language}</option>)}</select></label></div>
+                        <div className="form-row"><label className="form-group"><span id="editor-topic-label">Topic *</span><select aria-labelledby="editor-topic-label" className="form-select" value={creatingTopic ? '' : resolvedTopic} onChange={(event) => { setCreatingTopic(event.target.value === ''); update('topic', event.target.value); }}>{topics.map((topic) => <option key={topic}>{topic}</option>)}<option value="">+ New category</option></select></label><label className="form-group"><span>Language *</span><select className="form-select" value={draft.language} onChange={(event) => update('language', event.target.value)}>{LANGUAGES.map((language) => <option key={language}>{language}</option>)}</select></label></div>
+                        {creatingTopic && <div className="form-group"><label htmlFor="new-topic-name">New category name *</label><input id="new-topic-name" className="form-input" value={draft.topic} maxLength={80} onChange={(event) => update('topic', event.target.value)} placeholder="e.g. Spot Trading" aria-describedby="new-topic-help" /><small id="new-topic-help" className="text-muted">{existingTopic ? `Existing category “${existingTopic}” will be reused.` : 'Added to the library when you publish this screenshot.'}</small></div>}
                         <div className="form-group"><span>Platform *</span><div className="editor-segments">{['mobile', 'web'].map((value) => <button type="button" key={value} className={draft.platform === value ? 'active' : ''} onClick={() => update('platform', value)}><AppIcon name={value === 'mobile' ? 'Smartphone' : 'Monitor'} size={15} />{value === 'mobile' ? 'Mobile app' : 'Web desktop'}</button>)}</div></div>
                         {item && <div className="publish-summary"><div><AppIcon name="UserRound" size={16} /><span><strong>{item.owner}</strong><small>Ownership transfers only when the screenshot image is replaced.</small></span></div></div>}
                         <div className="publish-summary"><div><AppIcon name="ShieldCheck" size={16} /><span><strong>Atomic publishing</strong><small>Your text and image become one version. Concurrent edits are merged when safe.</small></span></div><div><AppIcon name="UserRound" size={16} /><span><strong>{auth.principal.displayName}</strong><small>Will be recorded in the audit trail</small></span></div></div>

@@ -1,14 +1,6 @@
 import { searchCatalog } from './catalogSearch.js';
-
-export const TOPIC_META = {
-    'Futures Trading': { icon: 'CandlestickChart', tone: 'amber' },
-    'Margin Trading': { icon: 'Scale', tone: 'blue' },
-    General: { icon: 'LayoutGrid', tone: 'slate' },
-    LOAN: { icon: 'HandCoins', tone: 'green' },
-    'Copy Trading': { icon: 'CopyCheck', tone: 'violet' },
-    'Event Contract': { icon: 'TicketCheck', tone: 'rose' },
-    BOTS: { icon: 'Bot', tone: 'cyan' },
-};
+import { getTopics, topicKey } from './topics.js';
+export { TOPIC_META } from './topics.js';
 
 export const normalizePlatform = (value) => value === 'web' ? 'web' : 'mobile';
 
@@ -32,11 +24,15 @@ export const buildPatch = (base, draft, fields) => Object.fromEntries(
 export const recordVersion = (item) => item?.version || item?.updatedAt || String(item?.id || '');
 
 export function topicCounts(items = [], platform = 'mobile') {
-    return visibleCatalog(items).reduce((counts, item) => {
-        if (normalizePlatform(item.platform) !== platform || !item.topic) return counts;
-        counts[item.topic] = (counts[item.topic] || 0) + 1;
-        return counts;
-    }, {});
+    const visible = visibleCatalog(items);
+    const names = new Map(getTopics(visible).map((name) => [topicKey(name), name]));
+    const counts = new Map();
+    for (const item of visible) {
+        if (normalizePlatform(item.platform) !== platform) continue;
+        const name = names.get(topicKey(item.topic));
+        if (name) counts.set(name, (counts.get(name) || 0) + 1);
+    }
+    return Object.fromEntries(counts);
 }
 
 export function latestCatalogUpdate(items = []) {
@@ -133,7 +129,7 @@ export function filterCatalog(items = [], filters = {}) {
     const filtered = visibleCatalog(items)
         .filter((item) => normalizePlatform(item.platform) === platform)
         .filter((item) => !matchedIds || matchedIds.has(item.id))
-        .filter((item) => topic === 'All' || item.topic === topic)
+        .filter((item) => topic === 'All' || topicKey(item.topic) === topicKey(topic))
         .filter((item) => language === 'All' || item.language === language)
         .filter((item) => !favoritesOnly || favorites.has(item.title))
         .sort((a, b) => (Number(b.id) || 0) - (Number(a.id) || 0));

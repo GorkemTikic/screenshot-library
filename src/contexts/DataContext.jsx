@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useCallback, useContext, useEffect, useState, useMemo } from 'react';
 import bundledData from '../data/data.json';
+import { getTopics } from '../domain/topics';
 
 const DataContext = createContext();
 // Same-origin copy of src/data/data.json, placed in the build output by the
@@ -80,7 +81,7 @@ export function DataProvider({ children }) {
 
 
     // Derived lists
-    const allTopics = useMemo(() => Array.from(new Set(items.map(i => i.topic).filter(Boolean))).sort(), [items]);
+    const allTopics = useMemo(() => getTopics(items), [items]);
     const allLanguages = useMemo(() => Array.from(new Set(items.map(i => i.language))).sort(), [items]);
 
     if (isLoading) {

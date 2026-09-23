@@ -1,3 +1,5 @@
+import { resolveTopic, validateTopic } from '../../src/domain/topics.js';
+
 export type CatalogValue = string | number | boolean | null | undefined;
 export type CatalogItem = Record<string, unknown> & { id: number; title?: string; version?: string };
 
@@ -100,6 +102,13 @@ export function applyCatalogMutation(items: CatalogItem[], mutation: CatalogMuta
   changedFields: string[];
 } {
   const patch = sanitizePatch(mutation.patch || {});
+  if (Object.hasOwn(patch, 'topic')) {
+    const error = validateTopic(patch.topic);
+    if (error) throw new Error(error);
+    // CatalogWriter serializes mutations against fresh data, so simultaneous
+    // publishers reuse the first category's spelling instead of creating twins.
+    patch.topic = resolveTopic(patch.topic, items);
+  }
   if (mutation.action === 'create') {
     const key = metadata.contributorKey;
     const record: CatalogItem = {

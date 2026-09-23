@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useData } from '../contexts/DataContext';
 import { useRequestModal } from '../contexts/RequestModalContext';
-import { filterCatalog, normalizePlatform, TOPIC_META, topicCounts } from '../domain/catalog';
+import { filterCatalog, normalizePlatform, visibleCatalog, topicCounts } from '../domain/catalog';
+import { getTopics, topicMeta } from '../domain/topics';
 import { discoveryEvent, screenshotEvent } from '../domain/analyticsEvents';
 import { useSearchShortcut } from '../hooks/useKeyboardShortcut';
 import { logEvent } from '../services/analytics';
@@ -55,6 +56,7 @@ export function ScreenshotGallery() {
     }, [filteredItems.length, search, selectedLang, selectedPlatform, selectedTopic]);
 
     const counts = useMemo(() => topicCounts(items, selectedPlatform), [items, selectedPlatform]);
+    const topics = useMemo(() => getTopics(visibleCatalog(items)), [items]);
     const platformTotal = useMemo(() => items.filter((item) => !item.archivedAt && normalizePlatform(item.platform) === selectedPlatform).length, [items, selectedPlatform]);
     const clearFilters = () => {
         setSearch('');
@@ -149,12 +151,15 @@ export function ScreenshotGallery() {
                     <span className="category-icon"><AppIcon name="LayoutGrid" size={17} /></span>
                     <span className="category-copy"><strong>All topics</strong><small>{platformTotal} guides</small></span>
                 </button>
-                {Object.entries(TOPIC_META).map(([topic, meta]) => (
+                {topics.map((topic) => {
+                    const meta = topicMeta(topic);
+                    return (
                     <button type="button" key={topic} className={`category-button tone-${meta.tone} ${selectedTopic === topic ? 'active' : ''}`} onClick={() => { logEvent('filter_topic', discoveryEvent(topic, resultCountFor({ topic }))); setSelectedTopic(topic); }}>
                         <span className="category-icon"><AppIcon name={meta.icon} size={17} /></span>
                         <span className="category-copy"><strong>{topic}</strong><small>{counts[topic] || 0} guides</small></span>
                     </button>
-                ))}
+                    );
+                })}
             </div>
 
             <div className="results-info" aria-live="polite">

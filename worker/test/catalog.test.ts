@@ -14,6 +14,18 @@ import type { CatalogItem } from '../src/catalog';
 const base = { id: 7, title: 'Title', text: 'Text', topic: 'General', language: 'English', platform: 'mobile', owner: 'CS Gorkem T', version: 'v1' };
 
 describe('catalog patch safety', () => {
+  it('canonicalizes custom topics against the latest catalog on create and update', () => {
+    const metadata = { now: '2026-09-23T12:00:00Z', contributor: 'CS Enzo', contributorKey: 'cs-enzo', nextId: 8, version: 'v8' };
+    const latest = { ...base, topic: 'Spot Trading' };
+    const created = applyCatalogMutation([latest], { action: 'create', patch: { ...base, topic: '  spot   TRADING  ' } }, metadata);
+    expect(created.record.topic).toBe('Spot Trading');
+    const updated = applyCatalogMutation(created.items, { action: 'update', recordId: 7, baseRecord: latest, patch: { topic: ' loan ' } }, metadata);
+    expect(updated.record.topic).toBe('LOAN');
+    for (const topic of ['', '   ', ' ALL ', 'x'.repeat(81), 123]) {
+      expect(() => applyCatalogMutation([latest], { action: 'create', patch: { ...base, topic } }, metadata)).toThrow();
+    }
+  });
+
   it('keeps editable fields and strips protected or unknown fields', () => {
     expect(sanitizePatch({ title: 'New', id: 99, image: 'evil.svg', owner: 'Spoof', ownerSince: 'yesterday', ownerHistory: [], updatedBy: 'spoof', unknown: true })).toEqual({ title: 'New' });
   });

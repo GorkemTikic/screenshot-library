@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useReducer, useRef, useState } from 'react';
-import { TOPIC_META, normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
+import { normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
+import { topicMeta } from '../domain/topics';
 import { screenshotEvent } from '../domain/analyticsEvents';
 import { createMarkupSession, isMarkupDirty, markupReducer } from '../domain/markup';
 import { logEvent } from '../services/analytics';
@@ -20,7 +21,7 @@ export function Lightbox({ item, position, total, onClose, onNavigate, markupLog
     const handleImageReady = useCallback((image) => setMarkupImage(image), []);
     const hasTr = Boolean(item.text_tr?.trim());
     const currentText = contentLang === 'tr' && hasTr ? item.text_tr : item.text;
-    const topic = TOPIC_META[item.topic] || TOPIC_META.General;
+    const topic = topicMeta(item.topic);
     const avatarStyle = ownerColorStyle(item.owner);
 
     useEffect(() => {
