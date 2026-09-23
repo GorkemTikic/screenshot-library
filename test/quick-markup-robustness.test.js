@@ -135,7 +135,8 @@ test('editor owns one pointer, rejects tiny/no-op gestures, cancels Escape, and 
   await act(async () => markupCanvas.props.onPointerUp({ pointerId: 11, clientX: 50, clientY: 120, currentTarget: canvas }));
   assert.equal(actions.length, 0, 'a clamped no-op crop move does not add history');
 
-  const staleLoad = images[0].onload;
+  await act(async () => renderer.update(render('/pending.png', session('arrow'))));
+  const staleLoad = images[1].onload;
   await act(async () => renderer.update(render('/b.png', session('arrow'))));
   for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, true);
   assert.equal(readyValues.at(-1), null, 'a URL change clears the copy-ready image immediately');
@@ -143,14 +144,14 @@ test('editor owns one pointer, rejects tiny/no-op gestures, cancels Escape, and 
   for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, true);
   assert.equal(readyValues.at(-1), null, 'a stale load callback cannot restore the old image');
 
-  const recoverLoad = images[1].onload;
-  await act(async () => images[1].onerror());
-  assert.equal(renderer.root.findByProps({ role: 'alert' }).children.join(''), 'This screenshot cannot be prepared for markup.');
-  await act(async () => recoverLoad());
+  await act(async () => images[2].onerror());
+  assert.equal(renderer.root.findByProps({ className: 'markup-error-message' }).children.join(''), 'This screenshot cannot be prepared for markup.');
+  await act(async () => renderer.root.findByProps({ 'aria-label': 'Retry screenshot' }).props.onClick());
+  await act(async () => images[3].onload());
   await flushFrames();
   assert.equal(renderer.root.findAllByProps({ role: 'alert' }).length, 0);
   for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, false);
-  assert.equal(readyValues.at(-1), images[1]);
+  assert.equal(readyValues.at(-1), images[3]);
   assert.ok(cancelledFrames.length > 0, 'pending preview frames are cancelled across URL sessions');
   assert.deepEqual(captures, [7, 8, 10, 11]);
 });

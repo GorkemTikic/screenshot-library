@@ -9,6 +9,7 @@ import {
   shouldShowQuickMarkupTip,
 } from '../domain/quickMarkupDiscovery';
 import { paintMarkupPreview, previewCanvasGeometry } from '../utils/markupRenderer';
+import { loadScreenshotImage } from '../utils/screenshotImageCache';
 import { AppIcon } from './AppIcon';
 
 const TOOLS = [
@@ -57,6 +58,8 @@ function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady, showTip
   const frameRef = useRef(null);
   const loadGeneration = useRef(0);
   const [loadState, setLoadState] = useState({ status: 'loading', error: '' });
+  const [canvasPainted, setCanvasPainted] = useState(false);
+  const [retry, setRetry] = useState(0);
   const imageReady = loadState.status === 'ready';
 
   const queuePreviewPaint = useCallback(() => {
@@ -74,6 +77,7 @@ function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady, showTip
         width: canvas.width,
         height: canvas.height,
       });
+      setCanvasPainted(true);
     });
   }, []);
 
@@ -123,30 +127,24 @@ function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady, showTip
     gestureRef.current = null;
     onImageReady(null);
 
-    const image = new Image();
-    image.crossOrigin = 'anonymous';
-    image.onload = () => {
+    loadScreenshotImage(imageUrl).then((image) => {
       if (cancelled || loadGeneration.current !== generation) return;
       imageRef.current = image;
       setLoadState({ status: 'ready', error: '' });
       onImageReady(image);
       sizePreviewCanvas();
-    };
-    image.onerror = () => {
+    }).catch(() => {
       if (cancelled || loadGeneration.current !== generation) return;
       imageRef.current = null;
       previewRef.current = null;
       setLoadState({ status: 'error', error: 'This screenshot cannot be prepared for markup.' });
       onImageReady(null);
       queuePreviewPaint();
-    };
-    image.src = imageUrl;
+    });
 
     return () => {
       cancelled = true;
       if (loadGeneration.current === generation) loadGeneration.current += 1;
-      image.onload = null;
-      image.onerror = null;
       releasePointer(pointerTarget, gestureRef.current?.pointerId);
       gestureRef.current = null;
       previewRef.current = null;
@@ -154,7 +152,7 @@ function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady, showTip
       cancelPreviewFrame(frameRef.current);
       frameRef.current = null;
     };
-  }, [imageUrl, onImageReady, queuePreviewPaint, sizePreviewCanvas]);
+  }, [imageUrl, onImageReady, queuePreviewPaint, sizePreviewCanvas, retry]);
 
   useEffect(() => {
     if (typeof ResizeObserver !== 'function') return undefined;
@@ -258,15 +256,30 @@ function QuickMarkupSession({ imageUrl, session, dispatch, onImageReady, showTip
         </div>
       </div>
     )}
-    <div ref={stageRef} className="markup-stage">
+    <div ref={stageRef} className="markup-stage" aria-busy={!canvasPainted && !loadState.error}>
+      {!canvasPainted && <img
+        key={retry} className="markup-preview" src={imageUrl} alt="Screenshot preview"
+        onError={(event) => { event.currentTarget.style.visibility = 'hidden'; }}
+      />}
       <canvas
-        ref={canvasRef} tabIndex="0" aria-label="Screenshot markup canvas"
+        ref={canvasRef} tabIndex={canvasPainted ? 0 : -1} aria-label="Screenshot markup canvas"
+        aria-hidden={!canvasPainted} style={{ visibility: canvasPainted ? 'visible' : 'hidden' }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={(event) => cancelGesture(event.pointerId, event.currentTarget)}
       />
-      {loadState.error && <div className="markup-error" role="alert">{loadState.error}</div>}
+      {!canvasPainted && !loadState.error && <div className="markup-load-status" role="status" aria-label="Loading screenshot">
+        <AppIcon name="LoaderCircle" size={16} /> Preparing screenshot…
+      </div>}
+      {loadState.error && <div className="markup-error" role="alert">
+        <span className="markup-error-message">{loadState.error}</span>
+        <button type="button" aria-label="Retry screenshot" onClick={() => {
+          setLoadState({ status: 'loading', error: '' });
+          setCanvasPainted(false);
+          setRetry((value) => value + 1);
+        }}>Retry</button>
+      </div>}
     </div>
   </div>;
 }

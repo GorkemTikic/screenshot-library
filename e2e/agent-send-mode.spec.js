@@ -9,6 +9,7 @@ const E2E_PORT = Number.isInteger(requestedPort) && requestedPort >= 1024 && req
 const APP_ORIGIN = `http://127.0.0.1:${E2E_PORT}`;
 
 test.beforeEach(async ({ context, page }) => {
+  await page.route('https://script.google.com/**', (route) => route.fulfill({ json: {} }));
   await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: APP_ORIGIN });
   await page.goto('#/');
   await expect(page.locator('.card').first()).toBeVisible();
@@ -26,14 +27,17 @@ async function waitForCardImage(card) {
   return image;
 }
 
-async function openTranslatedGuide(page) {
+async function openTranslatedGuide(page, dismissDiscoveryTip = true) {
   const card = translatedCard(page);
   await expect(card).toHaveCount(1);
   await waitForCardImage(card);
   await card.locator('.card-image-wrapper').click();
   const dialog = page.getByRole('dialog');
   await expect(dialog).toBeVisible();
-  await expect(dialog.getByRole('button', { name: 'Arrow' })).toBeEnabled();
+  const dismissTip = dialog.getByRole('button', { name: 'Got it', exact: true });
+  if (dismissDiscoveryTip && await dismissTip.count()) await dismissTip.click();
+  await expect(dialog.getByRole('button', { name: 'Arrow', exact: true })).toBeEnabled();
+  await expect(dialog.getByLabel('Screenshot markup canvas')).toBeVisible();
   return { card, dialog, canvas: dialog.getByLabel('Screenshot markup canvas') };
 }
 
@@ -155,7 +159,7 @@ test('quick markup exports changed pixels, resets cleanly, and supports undo and
   const { dialog, canvas } = await openTranslatedGuide(page);
   const clean = await canvasSnapshot(canvas);
 
-  await dialog.getByRole('button', { name: 'Arrow' }).click();
+  await dialog.getByRole('button', { name: 'Arrow', exact: true }).click();
   await dragAcross(page, canvas, { x: 0.18, y: 0.26 }, { x: 0.72, y: 0.66 });
   const arrow = await expectCanvasToChange(canvas, clean);
 
@@ -273,9 +277,9 @@ test('EN and TR response copy remain independent from screenshot copy', async ({
 });
 
 test('focus and Escape cancel an active gesture before closing the inspector', async ({ page }) => {
-  const { dialog, canvas } = await openTranslatedGuide(page);
+  const { dialog, canvas } = await openTranslatedGuide(page, false);
   await expect(dialog.getByRole('button', { name: 'Close inspector' })).toBeFocused();
-  await dialog.getByRole('button', { name: 'Arrow' }).click();
+  await dialog.getByRole('button', { name: 'Arrow', exact: true }).click();
   await canvas.focus();
 
   const box = await canvas.boundingBox();

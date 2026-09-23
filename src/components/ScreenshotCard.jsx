@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useData } from '../contexts/DataContext';
 import { normalizePlatform, ownerColorStyle, ownerInitials } from '../domain/catalog';
 import { topicMeta } from '../domain/topics';
@@ -6,6 +6,7 @@ import { screenshotEvent } from '../domain/analyticsEvents';
 import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
+import { loadScreenshotImage, rememberScreenshotImage } from '../utils/screenshotImageCache';
 import { formatDate, getLangCode } from '../utils/langUtils';
 import { AppIcon } from './AppIcon';
 import { ScreenshotCopyButton } from './ScreenshotCopyButton';
@@ -18,6 +19,7 @@ function Highlight({ children, query }) {
 }
 
 export function ScreenshotCard({ item, onInspect, search = '' }) {
+    const imageRef = useRef(null);
     const { isFavorite, toggleFavorite } = useData();
     const [copied, setCopied] = useState(false);
     const [contentLang, setContentLang] = useState('en');
@@ -41,19 +43,29 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
         }));
     };
 
+    const prepareImage = () => {
+        const url = resolveImageUrl(item.image);
+        if (!rememberScreenshotImage(url, imageRef.current)) {
+            void loadScreenshotImage(url).catch(() => {});
+        }
+    };
+
     const inspect = () => {
+        prepareImage();
         logEvent('view_image', screenshotEvent(item, { source: 'card' }));
         onInspect();
     };
 
     return (
-        <article className="card">
+        <article className="card" onPointerEnter={prepareImage} onFocusCapture={prepareImage}>
             <div className="card-image-wrapper" onClick={inspect} onContextMenu={() => logEvent('right_click_image', screenshotEvent(item, { source: 'card' }))}>
                 <img
+                    ref={imageRef}
                     src={resolveImageUrl(item.image)}
                     alt={item.title}
                     className="card-image"
                     loading="lazy"
+                    onLoad={(event) => rememberScreenshotImage(resolveImageUrl(item.image), event.currentTarget)}
                     onError={(event) => {
                         event.currentTarget.hidden = true;
                         event.currentTarget.parentElement.classList.add('image-error');

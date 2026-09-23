@@ -1,5 +1,7 @@
 import { createMarkupSession } from '../domain/markup.js';
 import { renderMarkupPng } from './markupRenderer.js';
+import { loadScreenshotImage } from './screenshotImageCache.js';
+export { loadScreenshotImage } from './screenshotImageCache.js';
 
 export function classifyClipboardError(error) {
   if (error?.name === 'NotAllowedError' || error?.name === 'SecurityError') return 'permission';
@@ -51,24 +53,6 @@ export async function writePngToClipboard(createBlob, environment = {}) {
   } catch (error) {
     return { ok: false, method: 'failed', reason: classifyClipboardError(error) };
   }
-}
-
-export async function loadScreenshotImage(url, environment = {}) {
-  const ImageClass = environment.Image ?? globalThis.Image;
-  if (!ImageClass) {
-    throw Object.assign(new Error('Image decoding is unavailable'), { code: 'IMAGE_DECODE_FAILED' });
-  }
-
-  return new Promise((resolve, reject) => {
-    const image = new ImageClass();
-    image.crossOrigin = 'anonymous';
-    image.onload = () => resolve(image);
-    image.onerror = () => reject(Object.assign(
-      new Error('Screenshot could not be decoded'),
-      { code: 'IMAGE_DECODE_FAILED' },
-    ));
-    image.src = url;
-  });
 }
 
 export async function copyScreenshot(url, options = {}) {

@@ -55,10 +55,18 @@ test('markup tools require a decoded image and crop movement commits once on poi
       imageUrl: '/broken.png', session: cleanSession(), dispatch() {}, onImageReady() {},
     }), { createNodeMock });
   });
+  assert.equal(renderer.root.findByProps({ 'aria-label': 'Loading screenshot' }).props.role, 'status');
+  assert.equal(renderer.root.findByProps({ className: 'markup-preview' }).props.src, '/broken.png');
   for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, true);
   await act(async () => images[0].onerror());
-  assert.equal(renderer.root.findByProps({ role: 'alert' }).children.join(''), 'This screenshot cannot be prepared for markup.');
+  assert.equal(renderer.root.findByProps({ className: 'markup-error-message' }).children.join(''), 'This screenshot cannot be prepared for markup.');
   for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, true);
+
+  await act(async () => renderer.root.findByProps({ 'aria-label': 'Retry screenshot' }).props.onClick());
+  assert.equal(images.length, 2);
+  assert.equal(renderer.root.findAllByProps({ role: 'alert' }).length, 0);
+  await act(async () => images[1].onload());
+  for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, false);
 
   await act(async () => renderer.unmount());
   const actions = [];
@@ -69,7 +77,7 @@ test('markup tools require a decoded image and crop movement commits once on poi
     }), { createNodeMock });
   });
   for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, true);
-  await act(async () => images[1].onload());
+  await act(async () => images[2].onload());
   for (const label of TOOL_LABELS) assert.equal(renderer.root.findByProps({ 'aria-label': label }).props.disabled, false);
 
   let markupCanvas = renderer.root.findByProps({ 'aria-label': 'Screenshot markup canvas' });

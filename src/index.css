@@ -379,7 +379,12 @@ img { max-width: 100%; }
 .markup-discovery-tip-actions button:hover { background: rgba(255,255,255,.1); color: #fff; }
 .markup-discovery-try { border-color: color-mix(in srgb, var(--accent) 68%, white) !important; background: var(--accent) !important; color: #fff !important; }
 
-.markup-stage { min-width: 0; min-height: 0; flex: 1; display: grid; place-items: center; overflow: hidden; }
+.markup-stage { position: relative; min-width: 0; min-height: 0; flex: 1; display: grid; place-items: center; overflow: hidden; }
+.markup-stage .markup-preview { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.markup-load-status, .markup-stage .markup-error { position: absolute; z-index: 1; bottom: 12px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 24px); display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 9px; background: rgba(17,18,22,.94); color: #fff; font-size: 12px; }
+.markup-stage .markup-error { flex-wrap: wrap; }
+.markup-error button { padding: 6px 12px; border: 1px solid rgba(255,255,255,.4); border-radius: 6px; background: transparent; color: #fff; font: inherit; cursor: pointer; }
+.markup-error button:hover, .markup-error button:focus-visible { background: rgba(255,255,255,.15); }
 .markup-stage canvas { width: auto; height: auto; max-width: 100%; max-height: 100%; display: block; border-radius: 9px; box-shadow: 0 18px 50px rgba(0,0,0,.4); touch-action: none; cursor: crosshair; }
 .markup-stage canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .markup-error { padding: 14px; border: 1px solid rgba(255,255,255,.16); border-radius: 9px; color: #fff; background: rgba(217,95,118,.18); }
