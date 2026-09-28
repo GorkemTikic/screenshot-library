@@ -1,5 +1,26 @@
 [
   {
+    "id": "REQ-20260928-11DF09A7",
+    "source": "worker",
+    "createdAt": "2026-09-28T13:10:08.872Z",
+    "topic": "Grid Bot",
+    "requestedLanguage": "EN",
+    "requestedPlatform": "Either",
+    "description": "how to close a position when the grid is stopped already and how to close the grid when the position is open",
+    "context": "",
+    "searchTerms": "grid",
+    "status": "new",
+    "assigneeContributorId": "",
+    "assigneeName": "",
+    "resolutionNote": "",
+    "linkedRecordId": "",
+    "version": 1,
+    "updatedByName": "",
+    "updatedAt": "2026-09-28T13:10:08.872Z",
+    "syncState": "synced",
+    "history": []
+  },
+  {
     "id": "REQ-SHEET-929154281EBC",
     "source": "sheet_import",
     "createdAt": "2026-09-09T05:44:14.880Z",
