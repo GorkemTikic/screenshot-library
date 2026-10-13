@@ -9,7 +9,7 @@ const titles = (items) => items.map((item) => item.title);
 test('Funding puts every matching title and language variant before response-only matches', () => {
     const expected = catalog.filter((item) => !item.archivedAt && item.platform !== 'web' && /funding/i.test(item.title));
     const results = filterCatalog(catalog, { query: 'Funding' });
-    assert.equal(expected.length, 8);
+    assert.equal(expected.length, 11);
     assert.deepEqual(new Set(titles(results.slice(0, expected.length))), new Set(titles(expected)));
     assert.ok(results.slice(expected.length).every((item) => /funding/i.test(`${item.text} ${item.text_tr}`)));
     assert.ok(!titles(results).includes('Close Open Position on Stopped Grid - EN'));
