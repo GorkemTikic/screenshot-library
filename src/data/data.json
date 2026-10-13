@@ -1,5 +1,955 @@
 [
   {
+    "title": "ADL Indicator/Explanation - AR",
+    "text": "يمثل المؤشر الظاهر في لقطة الشاشة ترتيب صفقتك في قائمة انتظار **إلغاء الرفع التلقائي (ADL)**. إليك كيفية عمل آلية ADL:\n\n* **ما هو ADL؟**: عندما لا يمكن تغطية فرق الأرباح والخسائر بين صفقات الشراء والبيع من خلال **صندوق التأمين**، يتم إغلاق الصفقات الأعلى ربحًا تلقائيًا لإدارة مخاطر السوق.\n* **آلية العمل**: تُعرف هذه العملية أيضًا باسم **تصفية الطرف المقابل**. وهي تختلف عن التصفية العادية لأنك تحتفظ بالربح الحالي من صفقتك ويمكنك العودة إلى السوق فورًا.\n* **أضواء المؤشر**: يظهر مدى قربك من ADL من خلال أربعة أشرطة؛ وتشير أربع علامات تعجب حمراء إلى أنك في مقدمة القائمة.\n* **حدوث نادر**: حتى عندما تكون جميع الأضواء مضاءة، فإن ADL يحدث نادرًا جدًا. إذا كانت جميع الأضواء مضاءة، فقد يتم تقليص صفقتك في حال حدوث تصفية.\n* **كيفية التجنب**: لتقليل مخاطر ADL، يمكنك تقليل حجم صفقتك أو إغلاقها ثم إعادة فتحها.\n\nلمزيد من التفاصيل، يُرجى الرجوع إلى المقال الرسمي:\n\n* [Binance Auto-Deleveraging FAQ](https://www.binance.com/support/faq/360033525471)\n\nإذا كانت لديك أي أسئلة أخرى، يُرجى مشاركتها معنا فنحن هنا لدعمك!",
+    "image": "screenshots/1791902670995_ADL-Indicator-Explanation-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902670995,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "4ae385ed-de19-4b1e-b3f1-19671a01e551"
+  },
+  {
+    "title": "How To Change TP/SL to Stop-Limit - AR",
+    "text": "لتغيير أمر **جني الأرباح/إيقاف الخسارة (TP/SL)** إلى أمر **إيقاف حدّي (Stop-Limit)** في العقود الآجلة على Binance، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اختر تبويب **الصفقات**.\n\n**3 -)** على الصفقة المعنية، اضغط على **TP/SL**.\n\n**4 -)** افتح تبويب **TP/SL**. بشكل افتراضي يكون هذا **طلب سوق لجني الأرباح/إيقاف الخسارة**، ويعرض صفّا **جني الأرباح** و**إيقاف الخسارة** نوع سعر التفعيل (**الأخير** أو **العادل**).\n\n**5 -)** حدّد مربع **طلب حدّي** بجانب **جني الأرباح** و/أو **إيقاف الخسارة**. سيحوّله ذلك إلى **طلب حدّي لجني الأرباح/إيقاف الخسارة** ويُظهر حقلَي السعر **حد جني الأرباح** و**حد إيقاف الخسارة**. أدخل السعر الحدّي (أو اضغط على **BBO** لاستخدام أفضل سعر عرض/طلب). ثم حدّد **الكمية** واضغط على **تأكيد**.\n\nيمكن ضبط نوع سعر التفعيل على **السعر الأخير** أو **السعر العادل**. قد يؤدي ضبط سعر تفعيل إيقاف الخسارة قريبًا جدًا من سعر التصفية إلى فشل تنفيذ الأمر في سوق سريعة الحركة.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902670996_How-To-Change-TP-SL-to-Stop-Limit-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902670996,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "edee912a-030e-4309-8f52-1066095a3050"
+  },
+  {
+    "title": "Margin Interest History - AR",
+    "text": "لعرض سجل فوائد التداول الاقتراضي (Margin)، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة **تداول**.\n\n**2 -)** فعّل **التداول الاقتراضي**.\n\n**3 -)** اضغط على أيقونة **السجل**.\n\n**4 -)** اختر الحساب المعني من قائمة **تداولاتي**، مثل **التداول الاقتراضي المتبادل** أو **التداول الاقتراضي المعزول**.\n\n**5 -)** افتح **سجل الديون**.\n\n**6 -)** اختر **الفائدة**.\n\nيمكنك استخدام عاملَي التصفية **العملة** و**النوع** للعثور على سجلات الفائدة المطلوبة.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902670997_Margin-Interest-History-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902670997,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "6ae88e9a-0638-4690-bd11-08c5e3cf6e03"
+  },
+  {
+    "title": "How To Change Order Size/Unit Preference to Initial Margin - AR",
+    "text": "لتغيير وحدة إدخال كمية الطلب إلى التداول الاقتراضي الأولي (Initial Margin)، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اضغط على محدد الوحدة بجانب حقل **الكمية**، مثل **BTC** أو **USDT**.\n\n**3 -)** اختر **BTC** لإدخال حجم الطلب وعرضه بوحدة BTC، أو اختر **USDT** لاستخدام USDT.\n\n**4 -)** ضمن تفضيل **USDT**، اختر **حجم الطلب** لإدخال القيمة الاسمية للطلب.\n\n**5 -)** اختر **التداول الاقتراضي الأولي** لإدخال مبلغ الهامش الذي تريد تخصيصه للصفقة.\n\nتُطبَّق الوحدة المختارة على لوحة الطلب. راجع تفاصيل الطلب والرافعة المالية والرصيد المتاح قبل تقديم الطلب.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902670998_How-To-Change-Order-Size-Unit-Preference-to-Initial-Margin-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902670998,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "7b7c961a-6ad0-42fd-82b3-f147996268f5"
+  },
+  {
+    "title": "Futures Swap Button (BNFCR) - AR",
+    "text": "لمبادلة أصل مؤهل داخل حساب العقود الآجلة USDⓈ-M، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح **الأصول**.\n\n**2 -)** اختر **العقود الآجلة**.\n\n**3 -)** اختر **USDⓈ-M**.\n\n**4 -)** اضغط على **مبادلة**.\n\n**5 -)** اختر الأصل الذي تريد استلامه ضمن **إلى**.\n\n**6 -)** اختر الأصل الذي تريد تحويله ضمن **من**.\n\n**7 -)** أدخل المبلغ، وراجع السعر في الوقت الحقيقي، ثم اضغط على **تأكيد المبادلة**.\n\nتظهر الأصول المتاحة للتحويل والسعر والحد الأقصى للمبلغ في صفحة المبادلة قبل التأكيد.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671000_Futures-Swap-Button-BNFCR-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671000,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "c9797bb8-08b5-4275-96d2-6354c8ba0333"
+  },
+  {
+    "title": "Funding Fee History - AR",
+    "text": "لعرض سجل رسوم التمويل في العقود الآجلة، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اضغط على أيقونة **السجل** فوق قسم الطلبات.\n\n**3 -)** مرّر عبر التبويبات واختر **رسوم التمويل**.\n\nاستخدم عوامل التصفية المتاحة لتضييق السجلات حسب الأصل أو الفترة الزمنية. تعرض الصفحة رسوم التمويل المدفوعة والمستلمة لحساب العقود الآجلة المحدد.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671002_Funding-Fee-History-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671002,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "0e701a18-6c04-4823-9155-75cf51314d8e"
+  },
+  {
+    "title": "DeviceID - AR",
+    "text": "للعثور على مُعرّف جهازك (Device ID) ونسخه، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح **الرئيسية**.\n\n**2 -)** اضغط على أيقونة **الملف الشخصي/القائمة** في الزاوية العلوية اليسرى.\n\n**3 -)** اضغط على أيقونة **الإعدادات** في الزاوية العلوية اليمنى.\n\n**4 -)** مرّر للأسفل واختر **معلومات عنا**.\n\n**5 -)** اضغط على شعار Binance خمس مرات بسرعة.\n\n**6 -)** عندما يظهر **مُعرّف الجهاز (Device ID)**، اضغط على أيقونة **النسخ** بجانبه.\n\nشارك مُعرّف الجهاز المنسوخ فقط عبر محادثة الدعم المعنية عندما يُطلب منك ذلك لاستكشاف المشكلة وحلها.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671003_DeviceID-AR.jpg",
+    "topic": "General",
+    "language": "Arabic",
+    "id": 1791902671003,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "2cff3691-683b-4828-8603-ecd34edc182a"
+  },
+  {
+    "title": "Cooling-Off Period - AR",
+    "text": "لتفعيل فترة التهدئة لتداول العقود الآجلة، يُرجى اتباع الخطوات التالية:\n\n**1 -)** في صفحة تداول **العقود الآجلة**، اضغط على أيقونة **\"...\"**.\n\n**2 -)** اختر **فترة التهدئة**.\n\n**3 -)** فعّل **تعطيل وظيفة تداول العقود الآجلة**.\n\n**4 -)** اختر **يوم واحد** أو **أسبوع واحد** أو **شهر واحد** أو **غير محدد**.\n\n**5 -)** اضغط على **تأكيد**.\n\nراجع التحذير الظاهر في التطبيق قبل التأكيد. يجب إغلاق الطلبات المفتوحة قبل تفعيل هذا الإعداد، ويظل تداول العقود الآجلة غير متاح خلال الفترة المحددة.\n\nللاطلاع على التفاصيل، راجع [What Is the Cooling Period Function and How to Use It?](https://www.binance.com/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc).\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671004_Cooling-Off-Period-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671004,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "61d280b7-1062-4575-9d97-2a224cb76d67"
+  },
+  {
+    "title": "Check For Updates - AR",
+    "text": "للتحقق مما إذا كان هناك إصدار أحدث من تطبيق Binance، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح **الرئيسية**.\n\n**2 -)** اضغط على أيقونة **الملف الشخصي/القائمة** في الزاوية العلوية اليسرى.\n\n**3 -)** اضغط على أيقونة **الإعدادات** في الزاوية العلوية اليمنى.\n\n**4 -)** اختر **التحقق من وجود تحديثات**.\n\nتعرض الصفحة إصدار التطبيق الحالي، وسيظهر خيار التحديث عند توفره.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671006_Check-For-Updates-AR.jpg",
+    "topic": "General",
+    "language": "Arabic",
+    "id": 1791902671006,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "e2fad4bd-6ce9-41db-8084-bf7f3e2a2f4d"
+  },
+  {
+    "title": "Buy/Sell Tab Setting - AR",
+    "text": "لتغيير طريقة عرض تبويب الشراء/البيع في صفحة تداول العقود الآجلة، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اضغط على أيقونة **\"...\"** في الزاوية العلوية اليمنى.\n\n**3 -)** اختر **التفضيلات**.\n\n**4 -)** افتح تبويب **التخطيط**.\n\n**5 -)** اختر **لوحة التداول**.\n\n**6 -)** ضمن **إعداد تبويب الشراء/البيع**، اختر **عرض تبويب الشراء/البيع** أو **إخفاء تبويب الشراء/البيع**.\n\nيغيّر الخيار المحدد طريقة عرض أزرار الشراء/البيع في لوحة التداول.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671008_Buy-Sell-Tab-Setting-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671008,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "78282a6c-f2e4-4d27-8010-1865b16ceee3"
+  },
+  {
+    "title": "Token & Project Feedback - AR",
+    "text": "لتقديم ملاحظات حول عملة أو مشروع، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة** للرمز المعني.\n\n**2 -)** اضغط على أيقونة **المخطط** بجانب الرمز.\n\n**3 -)** افتح تبويب **المعلومات**.\n\n**4 -)** اضغط على **تقديم الملاحظات**.\n\n**5 -)** اختر **نوع المنتج** و**رمز المشروع**، ثم أدخل **موضوع التحسين**.\n\n**6 -)** حدّد مربع الإقرار واضغط على **تقديم**.\n\n**7 -)** اضغط على **سجل ملاحظاتي** لعرض الملاحظات التي قدّمتها سابقًا.\n\nقدّم تفاصيل واضحة وواقعية حتى يتمكن الفريق المعني من فهم ملاحظاتك.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671011_Token-Project-Feedback-AR.jpg",
+    "topic": "General",
+    "language": "Arabic",
+    "id": 1791902671011,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "823f4579-8f1e-420d-b15a-1367d7ddaf58"
+  },
+  {
+    "title": "SWAP USDT to LDUSDT - AR",
+    "text": "لتحويل USDT في Earn إلى LDUSDT في العقود الآجلة USDⓈ-M، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح **الأصول**.\n\n**2 -)** اختر **العقود الآجلة**.\n\n**3 -)** اختر **USDⓈ-M**.\n\n**4 -)** اضغط على **LDUSDT** في قائمة الأصول.\n\n**5 -)** اضغط على **مبادلة**.\n\n**6 -)** اضغط على أيقونة الاتجاه، إذا لزم الأمر، لضبط مسار التحويل.\n\n**7 -)** تأكد من أن **من** هو **Earn - USDT** وأن **إلى** هو **USDⓈ-M Futures - LDUSDT**. أدخل المبلغ واضغط على **تأكيد**.\n\nراجع نسبة التحويل المعروضة والمبلغ الذي ستستلمه قبل التأكيد.\n\nلمزيد من المعلومات، راجع [What Is LDUSDT and How to Use It as Margin in Futures Trading?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd).\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671013_SWAP-USDT-to-LDUSDT-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671013,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "9a18cbef-2e8f-42c7-95c9-00fb92728c65"
+  },
+  {
+    "title": "SWAP LDUSDT to USDT - AR",
+    "text": "لتحويل LDUSDT في العقود الآجلة USDⓈ-M إلى USDT في Earn، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح **الأصول**.\n\n**2 -)** اختر **العقود الآجلة**.\n\n**3 -)** اختر **USDⓈ-M**.\n\n**4 -)** اضغط على **LDUSDT** في قائمة الأصول.\n\n**5 -)** اضغط على **مبادلة**.\n\n**6 -)** اضغط على أيقونة الاتجاه، إذا لزم الأمر، لضبط مسار التحويل.\n\n**7 -)** تأكد من أن **من** هو **USDⓈ-M Futures - LDUSDT** وأن **إلى** هو **Earn - USDT**. أدخل المبلغ واضغط على **تأكيد**.\n\nراجع نسبة التحويل المعروضة والمبلغ الذي ستستلمه قبل التأكيد.\n\nلمزيد من المعلومات، راجع [What Is LDUSDT and How to Use It as Margin in Futures Trading?](https://www.binance.com/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd).\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671014_SWAP-LDUSDT-to-USDT-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671014,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "29cd9123-8fd6-4edc-835c-417ab3266b5e"
+  },
+  {
+    "title": "Transfer From Spot Wallet to Isolated Margin - AR",
+    "text": "لتحويل أصل من المحفظة الفورية إلى التداول الاقتراضي المعزول، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح **الأصول**.\n\n**2 -)** اختر **الفوري**.\n\n**3 -)** افتح **التداول الاقتراضي المعزول**.\n\n**4 -)** اضغط على **تحويل**.\n\n**5 -)** اضبط **من** على **الفوري**، و**إلى** على **التداول الاقتراضي المعزول**، واختر زوج التداول الاقتراضي المعني.\n\n**6 -)** اختر الأصل، وأدخل المبلغ، ثم اضغط على **تأكيد التحويل**.\n\nيجب أن يكون الأصل مدعومًا في زوج التداول الاقتراضي المعزول المحدد.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671018_Transfer-From-Spot-Wallet-to-Isolated-Margin-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671018,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "4fe7ebc7-22cc-4fc0-8d5d-d143bacda2f2"
+  },
+  {
+    "title": "Transfer From Spot Wallet to Cross Margin - AR",
+    "text": "لتحويل أصل من المحفظة الفورية إلى التداول الاقتراضي المتبادل، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح **الأصول**.\n\n**2 -)** اختر **الفوري**.\n\n**3 -)** افتح **التداول الاقتراضي المتبادل**.\n\n**4 -)** اضغط على **تحويل**.\n\n**5 -)** اضبط **من** على **الفوري** و**إلى** على **التداول الاقتراضي المتبادل**.\n\n**6 -)** اختر الأصل، وأدخل المبلغ، ثم اضغط على **تأكيد التحويل**.\n\nتحقّق من الرصيد المتاح المعروض في صفحة التحويل قبل التأكيد.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671019_Transfer-From-Spot-Wallet-to-Cross-Margin-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671019,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "96fee7a1-c962-449b-9265-51d11302d3df"
+  },
+  {
+    "title": "Setting Up Margin Call Alerts - AR",
+    "text": "لإعداد **تنبيهات طلب التداول الاقتراضي (Margin Call Alerts)** في العقود الآجلة USDⓈ-M، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اضغط على أيقونة **\"...\"** في الزاوية العلوية اليمنى.\n\n**3 -)** اختر **\"التفضيلات\"**.\n\n**4 -)** افتح تبويب **\"الإشعارات\"**.\n\n**5 -)** اضغط على **\"إشعارات التداول\"**.\n\n**6 -)** ضمن **\"تنبيه طلب تداول اقتراضي\"**، اضغط على **\"تعديل\"** واختر نسبة الهامش التي تريد أن تتلقى عندها تنبيهًا.\n\nيمكنك أيضًا استخدام هذه الصفحة لإدارة إشعارات **\"تفعيل جني الأرباح/إيقاف الخسائر\"** و**\"تفعيل رسوم التمويل\"** و**\"تداول العقود الآجلة\"**.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671022_Setting-Up-Margin-Call-Alerts-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671022,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "4d8b2c94-4a64-403e-8368-5f1f2d6d57a6"
+  },
+  {
+    "title": "Change Asset Mode (Single,Multi) - AR",
+    "text": "لتغيير **وضع الأصول** في العقود الآجلة USDⓈ-M، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اضغط على أيقونة **\"...\"** في الزاوية العلوية اليمنى.\n\n**3 -)** اختر **\"التفضيلات\"**.\n\n**4 -)** اضغط على **\"وضع الأصول\"**.\n\n**5 -)** اختر **\"وضع الأصل الواحد\"** أو **\"وضع الأصول المتعددة\"** حسب تفضيلك.\n\nلمزيد من المعلومات، يُرجى الرجوع إلى الأدلة التالية:\n\n* [How to Switch Between Single-Asset and Multi-Assets Modes](https://www.binance.com/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [What Is Multi-Assets Mode and Which Assets Are Supported?](https://www.binance.com/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671023_Change-Asset-Mode-Single-Multi-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671023,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "d79f3596-1d07-4607-9fd4-77758f3c6e90"
+  },
+  {
+    "title": "How To Enable/Disable AUTO Borrow/Repay - AR",
+    "text": "لتفعيل أو تعطيل **الاقتراض التلقائي** و**السداد التلقائي** في التداول الاقتراضي، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة **تداول**.\n\n**2 -)** فعّل التداول **\"الاقتراضي\"** باستخدام المفتاح أعلى لوحة الطلب.\n\n**3 -)** اضغط على **\"اقتراض تلقائي\"** بجانب أدوات الطلب.\n\n**4 -)** افتح تبويب **\"تلقائي\"** في **\"الاقتراض والسداد\"**.\n\n**5 -)** استخدم المفاتيح لتفعيل أو تعطيل **\"الاقتراض التلقائي\"** و**\"السداد التلقائي\"**.\n\nيقترض **الاقتراض التلقائي** الأصل المطلوب عند تقديم طلب إذا كان رصيدك المتاح غير كافٍ. ويستخدم **السداد التلقائي** الأصول المستلمة بعد التداول لسداد الدين المرتبط في حساب التداول الاقتراضي نفسه.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671024_How-To-Enable-Disable-AUTO-Borrow-Repay-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671024,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "cc07ccb8-459c-47cf-8ea5-5e597c41f14f"
+  },
+  {
+    "title": "Enable Portfolio Margin - AR",
+    "text": "لتفعيل **التداول الاقتراضي للحافظة الاستثمارية (Portfolio Margin)**، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اضغط على أيقونة **\"...\"** في الزاوية العلوية اليمنى.\n\n**3 -)** اختر **\"التداول الاقتراضي للحافظة الاستثمارية\"** من القائمة.\n\n**4 -)** اختر **\"التداول الاقتراضي للحافظة الاستثمارية\"** في صفحة **\"وضع الحساب\"**.\n\n**5 -)** اضغط على **\"التبديل\"** وأكمل نافذة التأكيد.\n\nقبل التبديل، تأكد من أن حسابك يستوفي المتطلبات المعروضة في التطبيق، بما في ذلك عدم وجود طلبات نشطة أو التزامات أو صفقات في المنتجات المعنية.\n\nلمزيد من المعلومات، يُرجى الرجوع إلى الأدلة التالية:\n\n* [Introduction to Binance Portfolio Margin Mode](https://www.binance.com/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [How to View Portfolio Margin Information from Your Binance Account and Trading Interface](https://www.binance.com/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671025_Enable-Portfolio-Margin-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671025,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "68a88544-23c9-4d2c-bf91-f33ab64ab542"
+  },
+  {
+    "title": "Disable Portfolio Margin (To Classic) - AR",
+    "text": "لتعطيل **التداول الاقتراضي للحافظة الاستثمارية** والتبديل إلى **التداول الكلاسيكي**، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اضغط على أيقونة **\"...\"** في الزاوية العلوية اليمنى.\n\n**3 -)** اختر **\"إلى التداول الكلاسيكي\"** من القائمة.\n\n**4 -)** اختر **\"التداول الكلاسيكي\"** في صفحة **\"وضع الحساب\"**.\n\n**5 -)** اضغط على **\"التبديل\"** وأكمل نافذة التأكيد.\n\nقبل التبديل، تأكد من أن حسابك يستوفي المتطلبات المعروضة في التطبيق، بما في ذلك عدم وجود طلبات نشطة أو التزامات أو صفقات في المنتجات المعنية.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671026_Disable-Portfolio-Margin-To-Classic-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671026,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "db3c1d50-f1d9-49da-8254-ef1519365222"
+  },
+  {
+    "title": "Realized PnL on Open Position - AR",
+    "text": "لعرض **الأرباح والخسائر المحققة** على صفقة عقود آجلة مفتوحة، يُرجى اتباع الخطوات التالية:\n\n**1 -)** افتح صفحة تداول **العقود الآجلة**.\n\n**2 -)** اختر تبويب **\"الصفقات\"**.\n\n**3 -)** اضغط على منطقة **\"الأرباح والخسائر (PNL)\"** في الصفقة المفتوحة المعنية.\n\n**4 -)** فعّل مفتاح **\"عرض الأرباح والخسائر المحققة في الصفقات\"**.\n\nبعد التفعيل، ستظهر معلومات الأرباح والخسائر المحققة على بطاقة الصفقة المعنية. كما تتيح لك صفحة التفاصيل عرض نوع حساب الأرباح والخسائر غير المحققة وتفصيل الأرباح والخسائر المحققة، بما في ذلك أرباح وخسائر الإغلاق ورسوم التمويل ورسوم التداول.\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671027_Realized-PnL-on-Open-Position-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671027,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "350d285d-a528-42ac-8cbb-90a0f170de11"
+  },
+  {
+    "title": "TP/SL Before Position - AR",
+    "text": "لضبط أمر **جني الأرباح/إيقاف الخسارة (TP/SL)** قبل فتح صفقة عقود آجلة، يُرجى اتباع الخطوات التالية:\n\n**1 -)** في صفحة تداول **العقود الآجلة**، حدّد مربع **\"TP/SL\"** في لوحة الطلب.\n\n**2 -)** اضغط على **\"متقدم\"**.\n\n**3 -)** اختر نوع سعر التفعيل لكل من **\"جني الأرباح\"** و**\"إيقاف الخسارة\"**. الخيارات المتاحة هي **\"السعر العادل\"** و**\"السعر الأخير\"**.\n\n**4 -)** أدخل سعر التفعيل لأمر **\"جني الأرباح\"** و/أو **\"إيقاف الخسارة\"**.\n\n**5 -)** أبقِ خيار **\"طلب سوق\"** محددًا إذا كنت تريد تقديم الأمر كأمر سوق عند الوصول إلى سعر التفعيل. أو اضغط على **\"طلب سوق\"** للتبديل إلى **\"طلب حدّي\"** وأدخل سعرًا حدّيًا بدلًا من ذلك.\n\nلمزيد من المعلومات، يُرجى الرجوع إلى الأدلة التالية:\n\n* [Mark Price vs. Last Price on Binance Futures - What's the Difference?](https://www.binance.com/blog/futures/5704082076024731087)\n* [What Are Stop Orders in Binance Futures?](https://www.binance.com/blog/futures/2094497753519691034)\n* [Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)\n* [How to Place Stop Loss and Take Profit Orders on Binance Futures](https://www.binance.com/support/faq/detail/360040016512)\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671028_TP-SL-Before-Position-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671028,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "f2ca9299-4570-4d1d-aa7d-b4ffb9275442"
+  },
+  {
+    "title": "Futures Grid Bot Trade/Transaction History - AR",
+    "text": "لعرض *سجل التداول* أو *سجل المعاملات* لبوتات شبكة العقود الآجلة الخاصة بك، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1. اضغط على أيقونة *الآجلة* في شريط التنقل السفلي.\n2. اضغط على تبويب *البوتات* في القائمة العلوية.\n3. اضغط على قائمة *⋯ (النقاط الثلاث)* في الزاوية العلوية اليمنى من صفحة البوتات.\n4. اختر *الطلبات* من قائمة الوصول السريع.\n5. في صفحة طلبات بوتات التداول، انتقل إلى تبويب *سجل التداول* أو *سجل المعاملات*.\n6. تأكد من اختيار عامل تصفية السوق الصحيح، مثل العقود الآجلة *USDⓈ-M*، لعرض سجل تنفيذ بوتاتك.\n\n*ملاحظة:* يتيح لك التحقق المنتظم من هذه التبويبات متابعة جميع الصفقات المنفذة والرسوم والأرباح المحققة لبوتات الشبكة النشطة.\n\nإذا واجهت أي مشكلة، فلا تتردد في مشاركة لقطة شاشة معنا لمزيد من المساعدة.",
+    "image": "screenshots/1791902671030_Futures-Grid-Bot-Trade-Transaction-History-AR.jpg",
+    "topic": "BOTS",
+    "language": "Arabic",
+    "id": 1791902671030,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "27e5b554-9583-46ec-9592-2e5a89371c65"
+  },
+  {
+    "title": "Cross Margin Adjusted Entry Price - AR",
+    "text": "أولًا، من المهم ملاحظة أن سعر الدخول والأرباح والخسائر التي تراها في صفحة صفقة التداول الاقتراضي المتبادل هي للاسترشاد فقط، **ولا تُستخدم لحساب مقدار ربحك/خسارتك الفعلي من الصفقة.**\n\nسعر الدخول المعروض في صفحة الصفقات هو متوسط السعر المرجّح للأصول في حساب التداول الاقتراضي، والذي يشمل الأصول المحوّلة إلى الحساب والأصول المشتراة، ولهذا السبب لا يطابق سعر الدخول المعروض الأسعار الدقيقة لصفقاتك الفردية.\n\nحيث:\nتُحسب تكلفة الأصول المحوّلة بناءً على سعر إغلاق السوق بعملة USDT أو BTC وقت التحويل؛\n\nوتكون تكلفة الأصول المشتراة/المباعة هي متوسط سعر التنفيذ.\n\nبالنسبة للتداول الاقتراضي المتبادل، نوفر أيضًا خيار عرض سعر الدخول المُعدّل، وهو سعر تكلفة الصفقة بعد احتساب الأرباح والخسائر. وتُدرج عمليات التداول والتحويلات الواردة والصادرة في حساب سعر التكلفة. ويتم توزيع ربح أو خسارة الشراء أو البيع فوق سعر التعادل أو دونه، وقد يكون سعر التكلفة سالبًا، وإليك طريقة حسابه:\n\nسعر الدخول المُعدّل = (المبلغ الإجمالي لعمليات الشراء والتحويلات الواردة - المبلغ الإجمالي لعمليات البيع والتحويلات الصادرة) / الصفقات\n\n**يمكنك التبديل بين عرض سعر الدخول وسعر الدخول المُعدّل في تبويب الصفقات.**\n\nتُحسب الأرباح والخسائر على أساس حجم الصفقة × (سعر المؤشر - سعر الدخول أو سعر الدخول المُعدّل)، وبما أن سعر الدخول يأخذ في الاعتبار أكثر من مجرد الصفقات، فإن هذا المؤشر سيعكس ذلك أيضًا.\n\nالنقطة الأساسية هي أن سعر الدخول المعروض **لا يؤثر** على الربح أو الخسارة الفعلية لصفقاتك. إذ يُحسب الربح أو الخسارة الفعلية حصريًا من أسعار التنفيذ وأحجام أوامر الدخول والخروج. ولا يؤثر الاختلاف في سعر الدخول الذي تراه على نتائج تداولك.\n\nيمكنك قراءة المزيد هنا:\nhttps://www.binance.com/en/support/faq/introduction-to-margin-position-parameters-5410fa1449c5455d81e11955cc432729\n\nيُرجى الاطمئنان إلى أن فريقنا على علم بذلك ويعمل على تحسين هذه الميزة، ولكن في الوقت الحالي، يُرجى مراجعة سجل الطلبات/سجل تدفق رأس المال للحصول على معلومات دقيقة حول صفقات التداول الاقتراضي الخاصة بك.\n",
+    "image": "screenshots/1791902671031_Cross-Margin-Adjusted-Entry-Price-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671031,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "12b2d6fa-70e0-4bbe-bb7f-faf4a1dab5bb"
+  },
+  {
+    "title": "TOP MOVER Page - AR",
+    "text": "للوصول إلى صفحة **الأكثر تحركًا (Top Movers)** على Binance، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n**1 -)** اضغط على **\"الآجلة\"**.\n\n**2 -)** اضغط على أيقونة **\"...\"** في الزاوية العلوية اليمنى.\n\n**3 -)** اختر تبويب **\"البيانات\"** في القائمة المنبثقة.\n\n**4 -)** اضغط على زر **\"الأكثر تحركًا\"**.\n\n**إذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!**",
+    "image": "screenshots/1791902671032_TOP-MOVER-Page-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671032,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a07a93b1-f4cd-4f0a-b79f-bcbe45a98556"
+  },
+  {
+    "title": "Close Open Position on Stopped Grid - AR",
+    "text": "لإغلاق صفقة مفتوحة على بوت شبكة متوقف، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n**1 -)** اضغط على **\"الآجلة\"**.\n\n**2 -)** اضغط على **\"البوتات\"**.\n\n**3 -)** اضغط على **\"جميع الطلبات\"**.\n\n**4 -)** في تبويب **\"قيد التشغيل\"**، حدّد البوت الذي تظهر حالته **\"متوقف - الصفقة مفتوحة\"**.\n\n**5 -)** اضغط على زر **\"الصفقة\"**.\n\n**6 -)** يمكنك اختيار **\"إغلاق الصفقة\"** لإغلاق صفقة واحدة أو الضغط على **\"إغلاق الكل\"** لإغلاق جميع الصفقات المفتوحة المرتبطة بتلك الشبكة المتوقفة.\n\n**إذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!**",
+    "image": "screenshots/1791902671033_Close-Open-Position-on-Stopped-Grid-AR.jpg",
+    "topic": "BOTS",
+    "language": "Arabic",
+    "id": 1791902671033,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "9bd65218-2eb5-410a-8b86-bf33055384eb"
+  },
+  {
+    "title": "Loan Repayment (Collateral) - AR",
+    "text": "هناك طريقتان لسداد قرض جارٍ: باستخدام **العملة المقترضة** أو باستخدام **الضمان**. لسداد قرض جارٍ باستخدام مبلغ الضمان، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n**1 -)** اضغط على **\"الطلبات الجارية\"** في صفحة طلبات القروض.\n\n**2 -)** اضغط على **\"سداد\"**.\n\n**3 -)** اضغط على **\"الضمان\"** في القائمة العلوية.\n\n**4 -)** أدخل المبلغ الذي ترغب في سداده.\n\nفي قسم التفاصيل، سترى **LTV بعد السداد** و**مبلغ الضمان** الذي سيُعاد إليك بعد اكتمال العملية. هكذا يمكنك سداد قرض جارٍ باستخدام الضمان.\n\n**إذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!**",
+    "image": "screenshots/1791902671034_Loan-Repayment-Collateral-AR.jpg",
+    "topic": "LOAN",
+    "language": "Arabic",
+    "id": 1791902671034,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "b48a8d9e-b481-4473-a290-1cc310950da1"
+  },
+  {
+    "title": "What Is Funding Rate? - AR",
+    "text": "يحدد معدل التمويل أيّ المتداولين يدفعون التمويل وأيّهم يتلقونه.\nفي العقود الآجلة على Binance، يتم تبادل **رسوم التمويل** بشكل دوري للحفاظ على توافق أسعار العقود الآجلة الدائمة مع السعر الفوري. عادةً ما يحدث التمويل **كل 8 ساعات** (في الساعة 00:00 و08:00 و16:00 بتوقيت UTC)، وقد تعدّل Binance ذلك ليصبح كل 4 أو 2 أو ساعة واحدة خلال فترات التباعد الكبير في الأسعار.\n\n* **معدل تمويل إيجابي (Contango):** يحدث عندما يكون **سعر العقود الآجلة أعلى من السعر الفوري**. في هذه الحالة، يدفع المتداولون أصحاب **مراكز الشراء** رسوم التمويل لأصحاب **مراكز البيع**.\n* **معدل تمويل سلبي (Backwardation):** يحدث عندما يكون **سعر العقود الآجلة أقل من السعر الفوري**. في هذه الحالة، يدفع المتداولون أصحاب **مراكز البيع** رسوم التمويل لأصحاب **مراكز الشراء**.\n\n---\n\nلمزيد من التفاصيل، يمكنك الرجوع إلى المقالات الرسمية التالية:\n\n* [What Are Funding Fees in Binance Futures?](https://www.binance.com/blog/futures/6595842576313788144)\n* [Introduction to Binance Futures Funding Rates](https://www.binance.com/support/faq/detail/360033525031)\n\nإذا كانت لديك أي أسئلة حول هذا الموضوع، يُرجى مشاركتها معنا فنحن هنا لدعمك!",
+    "image": "screenshots/1791902671036_What-Is-Funding-Rate-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671036,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "9018c84e-33a1-443a-a095-77765a8db33a"
+  },
+  {
+    "title": "Stop-Market & Stop-Limit Differences - AR",
+    "text": "يعتمد الفرق بين أوامر إيقاف السوق (Stop-Market) وإيقاف الحد (Stop-Limit) على مزايا وعيوب أوامر السوق والأوامر الحدّية:\n\n**أمر إيقاف السوق (Stop-Market):**\n\n* يُفعّل أمر سوق عند الوصول إلى سعر الإيقاف.\n* يُنفَّذ أمرك فورًا بأفضل سعر متاح.\n* قد يختلف السعر الفعلي عن سعر الإيقاف، خاصةً في الأسواق سريعة الحركة.\n* يساعد ذلك على حمايتك من الخسائر الكبيرة بإغلاق الصفقة بسرعة، رغم أنه قد يسبب بعض الانزلاق السعري.\n\n**أمر إيقاف الحد (Stop-Limit):**\n\n* يُفعّل أمرًا حدّيًا عند الوصول إلى سعر الإيقاف.\n* لا يُنفَّذ أمرك إلا بالسعر الحدّي الذي حددته أو بسعر أفضل، مما يمنحك تحكمًا في سعر التنفيذ.\n* ومع ذلك، قد لا يُنفَّذ أمرك إذا ابتعد سعر السوق عن سعرك الحدّي.\n* يوفر هذا يقينًا في السعر ولكن دون يقين بتنفيذ أمرك، مما قد يكون محفوفًا بالمخاطر في الأسواق المتقلبة.\n\n**باختصار:**\n\n* **إيقاف السوق =** لا يقين في السعر (أفضل للخروج السريع).\n* **إيقاف الحد =** يقين في السعر، دون يقين في التنفيذ (أفضل عندما تريد التحكم في سعر الصفقة).\n\n---\n\nلمعرفة المزيد عن أنواع الأوامر، يمكنك الاطلاع على هذا الدليل الرسمي:\n\n* [Types of Order on Binance Futures](https://www.binance.com/en/support/faq/detail/360033779452)\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671037_Stop-Market-Stop-Limit-Differences-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671037,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "24c6bb98-f19a-488f-b918-c325a936f90d"
+  },
+  {
+    "title": "How To Add/Remove Margin to Isolated Position - AR",
+    "text": "لـ**إضافة الهامش أو إزالته** في صفقات العقود الآجلة المعزولة، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة أعلاه:\n\n**1 -)** اضغط على أيقونة **(+)** بجانب قيمة الهامش.\n\n**2 -)** اختر **إضافة التداول الاقتراضي** أو **إزالة التداول الاقتراضي**.\n\n**3 -)** أدخل **الكمية**.\n\n**4 -)** اضغط على **تأكيد** للمتابعة.\n\n---\n\n* **رصيد التداول الاقتراضي المخصص حاليًا:** هو مبلغ الهامش في صفقتك الحالية.\n* **الحد الأقصى القابل للإضافة:** هو الحد الأقصى للمبلغ الذي يمكنك إضافته.\n* **سعر التصفية التقديري بعد الزيادة:** هو سعر التصفية **التقديري** بعد إضافة الهامش.\n\n---\n\nلمعرفة المزيد، يمكنك الرجوع إلى الدليل الرسمي:\n\n* [How to Adjust Margin Balance in Cross/Isolated Margin Mode?](https://www.binance.com/support/faq/detail/360038447311)\n\nإذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671038_How-To-Add-Remove-Margin-to-Isolated-Position-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671038,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "4060a8e5-207b-4698-867d-b63f6c20e804"
+  },
+  {
+    "title": "How To Clear Negative Balance - Futures (AR)",
+    "text": "لـ**تسوية الرصيد السلبي في العقود الآجلة**، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة أعلاه:\n\n**1 -)** إذا كانت هناك صفقة سلبية لا يمكن إغلاقها بسبب رصيد سلبي، فاضغط على زر **\"تسوية الرصيد السلبي\"** في الأسفل.\n\n**2 -)** أو بدلًا من ذلك، انتقل إلى قسم **محفظة العقود الآجلة** واضغط على زر **\"تسوية الرصيد السلبي\"** لبدء عملية التسوية.\n\n**3 -)** إذا لم تكن لديك صفقات مفتوحة ولكن لا يزال لديك رصيد سلبي، فانتقل إلى تبويب **الصفقات** واضغط على زر **\"تسوية الرصيد السلبي\"**.\n\n**4 -)** بعد التفعيل، سيصبح الزر رماديًا ويعرض **\"جاري معالجة الرصيد السلبي\"**.\n\n---\n\n**ملاحظة مهمة:** من المتوقع أن تتم هذه العملية خلال **15 دقيقة**. يُرجى **عدم تحويل أي أموال** إلى محفظة العقود الآجلة حتى تكتمل العملية.\n\nإذا كانت لديك أي أسئلة إضافية، فلا تتردد في مشاركتها معي. إذا واجهت صعوبة في أي خطوة، يُرجى التقاط لقطة شاشة ومشاركتها معنا؛ نحن هنا لدعمك!",
+    "image": "screenshots/1791902671039_How-To-Clear-Negative-Balance-Futures-AR.jpg",
+    "topic": "Futures Trading",
+    "language": "Arabic",
+    "id": 1791902671039,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "54f688ef-b486-4458-801e-9345a1807a46"
+  },
+  {
+    "title": "How to CLOSE POSITION on Isolated Margin - AR",
+    "text": "إليك المسار خطوة بخطوة للوصول إلى قائمة \"إغلاق الصفقة\" في التداول الاقتراضي المعزول، مع ملخص واضح للخيارين المتاحين بداخلها.\n\nاتبع هذه الخطوات للوصول إلى الوظيفة:\n\n1.  اضغط على **[تداول]**.\n2.  اضغط على **[التداول الاقتراضي]**.\n3.  اضغط على **[المعزول]**.\n4.  اضغط على **[الصفقات]**.\n5.  اضغط على **[إغلاق الصفقة]** بجانب الزوج المعني.\n\n**الآن، اختر الإجراء المطلوب من التبويبات:**\n\n* **الخيار أ (خروج كامل):** اختر تبويب **[إغلاق الصفقة]**، وحدد العملة التي تريد **[التسوية بها]**، ثم اضغط على **[تأكيد]**.\n\n* **الخيار ب (سداد الدين فقط):** اختر تبويب **[سداد الدين]** واضغط على **[تأكيد]**.\n\n---\n\n**أ. ماذا يفعل \"إغلاق الصفقة\" (التبويب 1)؟**\n\nباختصار، تبويب **إغلاق الصفقة** هو \"استراتيجية الخروج\" الخاصة بك. فهو يُغلق صفقة التداول الاقتراضي المعزول بالكامل لذلك الزوج المحدد.\n\n* 🛑 **التسوية والتحويل:** تختار العملة الرقمية التي تريد التسوية بها (مثل USDC أو DOGE). يسدد النظام الدين المستحق ويحوّل الأصول المتبقية إلى العملة التي اخترتها.\n* 📦 **التحويل إلى الفوري:** بعد الاكتمال، تُحوَّل أي أصول متبقية تلقائيًا إلى حسابك الفوري.\n* ⚖️ **الحد:** يجب أن تتجاوز قيمة الصفقة 0.01 USDT لاستخدام هذه الوظيفة.\n\n**ب. ماذا يفعل \"سداد الدين\" (التبويب 2)؟**\n\nباختصار، تبويب **سداد الدين** هو \"مُصفّي الالتزامات\". إذ يركز فقط على سداد ما عليك دون أن يُغلق بالضرورة صفقتك بالكامل.\n\n* 💸 **يستخدم الأصول المتاحة:** يستخدم أصولك المتاحة لسداد الالتزامات أولًا.\n* 📉 **يبيع عند الحاجة:** إذا لم يكن لديك رصيد كافٍ، فإنه يقدّم أوامر سوق لبيع ما يكفي فقط من صفقتك لتغطية الدين.\n* 🛡️ **هامش احتياطي:** يضيف النظام هامشًا احتياطيًا تقريبيًا بنسبة **1%** إلى مبلغ الأمر لضمان توفر أموال كافية لسداد الدين بالكامل.\n\nلمعرفة المزيد عن التفاصيل، أقترح عليك الاطلاع على الدليل الرسمي:\n\n[How to Use the Close Position and Repay Functions on Binance Margin?](https://www.binance.com/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1791902671041_How-to-CLOSE-POSITION-on-Isolated-Margin-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671041,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "f9ddec20-3489-4fcc-8898-a15f7b73e53c"
+  },
+  {
+    "title": "How to REPAY ALL SYMBOLS on Isolated Margin - AR",
+    "text": "إليك المسار خطوة بخطوة للوصول إلى وظيفة \"سداد ديون جميع الرموز\"، مع ملخص واضح لما يحدث عند استخدامها.\n\nاتبع هذه الخطوات للوصول إلى الوظيفة:\n\n1.  اضغط على **[تداول]**\n2.  اضغط على **[التداول الاقتراضي]**\n3.  اضغط على **[المعزول]**\n4.  اضغط على **[الصفقات]**\n5.  اضغط على **[سداد جميع الرموز]**\n6.  اضغط على **[تأكيد]**\n\n---\n\n**ماذا تفعل وظيفة \"سداد ديون جميع الرموز\"؟**\n\nباختصار، **سداد ديون جميع الرموز** هو زر \"بداية نظيفة\" شامل لحساب **التداول الاقتراضي المعزول**. وهو مصمم لتسوية جميع الديون عبر جميع أزواجك المعزولة المختلفة دفعة واحدة باستخدام أصولك المتاحة.\n\nعند الضغط على **[تأكيد]**، يقوم النظام بالإجراءات التالية:\n\n* 🛑 **إيقاف النشاط:** يعلّق الطلبات الجديدة والتحويلات والطلبات اليدوية لمنع أخطاء الحساب.\n* 💸 **استخدام الأموال المتاحة:** يستخدم أولًا أي أصول متاحة لديك لسداد التزاماتك مباشرة.\n* ⚖️ **تسوية الدين المتبقي:** إذا لم تكن أموالك المتاحة كافية، فإنه يقدّم أوامر سوق لبيع الأصول وتغطية الدين المتبقي.\n* 🛡️ **إضافة هامش احتياطي:** قد يقدّم النظام أمرًا أعلى قليلًا (حوالي +1%) من مبلغ الدين الدقيق لضمان توفر أموال كافية لتسوية الرصيد بالكامل.\n\n**النتيجة:** تهدف إلى الخروج **بدون أي دين** عبر جميع أزواج التداول الاقتراضي المعزول.\n\nلمعرفة المزيد عن التفاصيل، أقترح عليك الاطلاع على الدليل الرسمي:\n\n[How to Use the Close Position and Repay Functions on Binance Margin?](https://www.binance.com/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1791902671042_How-to-REPAY-ALL-SYMBOLS-on-Isolated-Margin-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671042,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a730f522-8d1e-478a-be08-386093a19f25"
+  },
+  {
+    "title": "How to CLOSE POSITON on Cross Margin - AR",
+    "text": "إليك المسار خطوة بخطوة للوصول إلى وظيفة \"إغلاق الصفقة\"، مع ملخص واضح لما يحدث عند استخدامها.\n\nاتبع هذه الخطوات للوصول إلى وظيفة إغلاق الصفقة:\n\n1.  اضغط على **[تداول]**\n2.  اضغط على **[التداول الاقتراضي]**\n3.  اضغط على **[المتبادل]**\n4.  اضغط على **[إغلاق الصفقة]**\n5.  اختر **[العملة]** (مثل USDT)\n6.  اضغط على **[تأكيد]**\n\n---\n\n**ماذا تفعل وظيفة \"إغلاق الصفقة\"؟**\n\nباختصار، **إغلاق الصفقة** هو زر خروج \"لهدف واحد\". على عكس \"إغلاق الكل\" (الذي يبيع كل شيء)، تتيح لك هذه الوظيفة تسييل الأصل وتسوية الدين **لعملة واحدة محددة** فقط، مع إبقاء صفقاتك الأخرى مفتوحة.\n\nعند الضغط على **[تأكيد]**، يقوم النظام بثلاثة إجراءات فورية لذلك الأصل المحدد:\n\n* 🛑 **إيقاف النشاط:** يلغي الطلبات المفتوحة المعلّقة **لذلك الزوج المحدد** حتى لا تتغير الحسابات.\n* 💸 **تسوية الدين:** يسدد الدين المستحق **لتلك العملة المحددة** (الالتزامات).\n* 🔄 **بيع الأصل:** يبيع المبلغ المتبقي من تلك العملة المحددة إلى العملة التي اخترتها (مثل USDT).\n\n**النتيجة:** تخرج **بدون أي دين** و**بدون أي صفقة** لتلك العملة المحددة (مثل DOGE)، بينما تبقى حيازاتك الأخرى من العملات الرقمية (مثل BTC وETH) دون تغيير ومفتوحة.\n\n> **ملاحظة:** يُحسب الحد الأقصى للمبلغ الذي يمكنك إغلاقه في طلب واحد بناءً على حدود أوامر السوق (وغالبًا ما يكون محددًا بشكل مشابه لقواعد التداول الفوري). وقد تحتاج الصفقات الأكبر إلى الإغلاق على دفعات أصغر.\n\nلمعرفة المزيد عن التفاصيل، أقترح عليك الاطلاع على الدليل الرسمي:\n\n[How to Use the Close Position and Repay Functions on Binance Margin?](https://www.binance.com/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1791902671043_How-to-CLOSE-POSITON-on-Cross-Margin-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671043,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "61a119ac-d763-4a32-a58a-612c06866f0a"
+  },
+  {
+    "title": "How to CLOSE ALL on Cross Margin - AR",
+    "text": "إليك المسار خطوة بخطوة للوصول إلى وظيفة \"إغلاق الكل\"، مع ملخص واضح لما يحدث عند استخدامها.\n\nاتبع هذه الخطوات للوصول إلى وظيفة إغلاق الكل:\n\n1.  اضغط على **[تداول]**\n2.  اضغط على **[التداول الاقتراضي]**\n3.  اضغط على **[المتبادل]**\n4.  اضغط على **[إغلاق الكل]**\n5.  اختر **[العملة]** (مثل USDT)\n6.  اضغط على **[تأكيد]**\n\n---\n\n**ماذا تفعل وظيفة \"إغلاق الكل\"؟**\n\nباختصار، **إغلاق الكل** هو زر \"استراتيجية الخروج\". وهو مصمم ليتيح لك التسييل الكامل وسداد جميع الديون ومغادرة السوق بنقرة واحدة.\n\nعند الضغط على **[تأكيد]**، يقوم النظام بثلاثة إجراءات فورية:\n\n* 🛑 **إيقاف النشاط:** يلغي جميع طلباتك المفتوحة المعلّقة حتى لا تتغير الحسابات أثناء التنفيذ.\n* 💸 **تسوية الدين:** يسدد تلقائيًا أي أموال مقترضة مستحقة عليك.\n* 🔄 **بيع كل شيء:** يبيع جميع الأصول المتبقية في حساب التداول الاقتراضي المتبادل إلى العملة التي اخترتها (مثل USDT).\n\n**النتيجة:** تخرج **بدون أي دين** و**بدون أي صفقات**. لن تعود تحتفظ بأي أصول رقمية (مثل BTC أو ETH) في هذا الحساب، بل فقط بالعملة التي اخترتها (مثل USDT) من عملية البيع.\n\n> **ملاحظة:** يعمل هذا فقط إذا كان إجمالي أصولك أقل من **150,000 USDT**. إذا كانت محفظتك أكبر من ذلك، فيجب عليك إغلاق الصفقات الفردية يدويًا أولًا.\n\nلمعرفة المزيد عن التفاصيل، أقترح عليك الاطلاع على الدليل الرسمي:\n\n[How to Use the Close Position and Repay Functions on Binance Margin?](https://www.binance.com/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1791902671044_How-to-CLOSE-ALL-on-Cross-Margin-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671044,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "f8df951c-6cc7-4914-a5a0-9d8f92358016"
+  },
+  {
+    "title": "How to REPAY ALL on Cross Margin - AR",
+    "text": "إليك المسار خطوة بخطوة للوصول إلى وظيفة \"سداد الكل\"، مع ملخص واضح لما يحدث عند استخدامها.\n\nاتبع هذه الخطوات للوصول إلى وظيفة سداد الكل:\n\n1.  اضغط على **[تداول]**\n\n2.  اضغط على **[التداول الاقتراضي]**\n\n3.  اضغط على **[المتبادل]**\n\n4.  اضغط على **[سداد الكل]**\n\n5.  اضغط على **[تأكيد]**\n\n---\n\n**ماذا تفعل وظيفة \"سداد الكل\"؟**\n\nباختصار، **سداد الكل** هو زر \"تقليل المخاطر\". وهو مصمم لإيقاف دفع الفائدة على القروض دون إجبارك على بيع أصولك الرقمية.\n\nعند الضغط على **[تأكيد]**، يقوم النظام بثلاثة إجراءات فورية:\n\n* 🛑 **إيقاف النشاط:** يلغي جميع طلباتك المفتوحة المعلّقة حتى لا تتغير الحسابات أثناء التنفيذ.\n* 🧮 **حساب الدين:** يجمع كل دولار مستحق عليك عبر جميع عملاتك المختلفة.\n* 💸 **سداد الفاتورة:** يستخدم رصيدك المتاح (أو يبيع ما يكفي فقط من أصولك عند الضرورة) لسداد ذلك الدين حتى يصل إلى الصفر.\n\n**النتيجة:** تخرج **بدون أي دين** (فتتوقف عن دفع الفائدة)، لكنك **تحتفظ بصفقاتك** (ما زلت تمتلك عملات Bitcoin وEthereum وغيرها).\n\n> **ملاحظة:** يعمل هذا فقط إذا كان إجمالي دينك أقل من **150,000 USDT**. إذا كان المبلغ المستحق عليك أكبر، فيجب عليك سداد جزء منه يدويًا أولًا.\n\nلمعرفة المزيد عن التفاصيل، أقترح عليك الاطلاع على الدليل الرسمي:\n\n[How to Use the Close Position and Repay Functions on Binance Margin?](https://www.binance.com/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1791902671045_How-to-REPAY-ALL-on-Cross-Margin-AR.jpg",
+    "topic": "Margin Trading",
+    "language": "Arabic",
+    "id": 1791902671045,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a8b5cf8c-dbfa-4cfe-a1e7-7f2c9f602feb"
+  },
+  {
+    "title": "CLOSE CHAT (CSAT) - AR",
+    "text": "إذا كنا قد غطّينا كل شيء، يمكنك إنهاء المحادثة من جانبك باتباع هذه الخطوات السريعة:\n\n1️⃣ اضغط على زر ⎋ لإغلاق الدردشة.\n2️⃣ اختر \"شكرًا! تم حل المشكلة. إغلاق الدردشة\".\n3️⃣ إذا شعرت أنه تمت معالجة استفسارك في هذه الدردشة، يُرجى تقديم تقييم تأكيدي 👍\n4️⃣ بالإضافة إلى ذلك، اختر رمزًا تعبيريًا لمشاركة رأيك في التجربة 😊\n\n💡 نصيحة: احفظ رقم الدردشة هذا #.xxxx حتى يتمكن الموظف التالي عند عودتك من المتابعة من حيث توقفنا تمامًا.\n\n📝 إغلاق الدردشة يعني أن عمل الدعم قد اكتمل في الوقت الحالي: لقد اتخذنا جميع الإجراءات اللازمة وقدّمنا الحل النهائي.\nنتمنى لك ولأحبائك كل التوفيق.",
+    "image": "screenshots/1791902671046_CLOSE-CHAT-CSAT-AR.jpg",
+    "topic": "General",
+    "language": "Arabic",
+    "id": 1791902671046,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "d6dac3ea-f047-4508-9607-ee099b35e0b4"
+  },
+  {
+    "title": "Copy Trading History - AR",
+    "text": "1 -) اضغط على العقود الآجلة\n2 -) اضغط على زر النسخ\n3 -) اضغط على نسخ في الزاوية السفلية اليمنى\n4 -) يمكنك رؤية محافظ النسخ \"الجارية - المغلقة\" في هذه الصفحة.",
+    "image": "screenshots/1791902671047_Copy-Trading-History-AR.jpg",
+    "topic": "Copy Trading",
+    "language": "Arabic",
+    "id": 1791902671047,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-13T14:44:30.994Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-13T14:44:30.994Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "21a5a471-30f0-48d1-8bfa-d25cc7861345"
+  },
+  {
     "title": "Futures Grid Bot Trade/Transaction History - EN",
     "text": "To view the *Trade History* or *Transaction History* for your Futures Grid Bots, please follow the steps illustrated in the screenshot:\n\n1. Tap on the *Futures* icon at the bottom navigation bar.\n2. Tap on the *Bots* tab at the top menu.\n3. Click the *⋯ (Three Dots)* menu in the top right corner of the Bots page.\n4. Select *Orders* from the Quick Access menu.\n5. On the Trading Bots Orders page, navigate to the *Trade History* or *Transaction History* tab.\n6. Ensure you select the correct market filter, such as *USDⓈ-M* Futures, to view the execution history of your specific bots.\n\n*Note:* Regularly checking these tabs allows you to monitor all executed trades, fees, and realized profits for your active grid bots.\n\nIf you encounter any issues, feel free to share a screenshot with us for further assistance.",
     "text_tr": "Futures Grid Botlarınızın *Alım Satım Geçmişi (Trade History)* veya *İşlem Geçmişi (Transaction History)* detaylarını görmek için lütfen paylaşılan ekran görüntüsündeki adımları takip edin:\n\n1. Alt gezinme çubuğundaki *Futures* (Vadeli İşlemler) simgesine dokunun.\n2. Üst menüden *Bots* (Botlar) sekmesine dokunun.\n3. Botlar sayfasının sağ üst köşesindeki *⋯ (Üç Nokta)* menüsüne tıklayın.\n4. Açılan menüsünden *Orders* (Emirler) seçeneğine tıklayın.\n5. Trading Bots Orders (Alım Satım Botu Emirleri) sayfasında, *Trade History* (Alım Satım Geçmişi) veya *Transaction History* (İşlem Geçmişi) sekmesine gidin.\n6. İlgili botlarınızın geçmişini görebilmek için piyasa filtresinin, örneğin *USDⓈ-M* Futures, doğru seçildiğinden emin olun.\n\n*Not:* Bu sekmeleri düzenli olarak kontrol etmek, grid botlarınızın gerçekleştirdiği tüm alım satımları, ödenen komisyonları ve net kar/zarar durumunu kolayca takip etmenizi sağlar.\n\nHerhangi bir adımda sorun yaşarsanız, size yardımcı olabilmemiz için lütfen bir ekran görüntüsü paylaşın.",
@@ -1049,7 +1999,7 @@
   {
     "title": "Mark Price Chart - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Mark_Price_Chart_-_AR.jpg",
+    "image": "screenshots/1791902671016_Mark-Price-Chart-AR.jpg",
     "text": "لتغيير مخطط أسعارك من اخر سعر إلى السعر العادل، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n‎1-)‎ انقر على \"العقود الآجلة\"\n\n‎2-)‎ انقر على \"أيقونة المخطط\"\n\n‎3-)‎ انقر على زر \"اخر سعر\" أعلى المخطط.\n\n‎4-)‎ من القائمة المنبثقة أدناه، انقر على \"السعر العادل\".\n\nهكذا يمكنك تغيير مخططك إلى \"السعر العادل\" لعرض مخطط السعر العادل.",
     "topic": "Futures Trading",
     "id": 1765164170439,
@@ -1065,7 +2015,10 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "67472d6f-323b-4f54-8909-65b2f1b88423"
   },
   {
     "title": "Change Asset Mode (Single,Multi) - EN",
@@ -1549,7 +2502,7 @@
   {
     "title": "Clear Cache - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Clear_Cache_-_AR.png",
+    "image": "screenshots/1791902671005_Clear-Cache-AR.jpg",
     "text": "1 -) اضغط على الصفحة الرئيسية  \n2 -) اضغط على القائمة  \n3 -) اضغط على الإعدادات  \n4 -) اضغط على زر مسح الذاكرة المؤقتة  \n\nهذا يساعد على إزالة الملفات المؤقتة وقد يجعل تطبيقك يعمل بشكل أسرع وأكثر سلاسة!",
     "topic": "General",
     "id": 1765164170463,
@@ -1565,7 +2518,10 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a4db117c-6254-4728-a6ba-4608ecebf9ef"
   },
   {
     "title": "Copy Order History - AR",
@@ -1591,7 +2547,7 @@
   {
     "title": "Futures Transaction History (Export) - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures_Transaction_History_(Export)_-_AR.png",
+    "image": "screenshots/1791902670999_Futures-Transaction-History-Export-AR.jpg",
     "text": "يرجى الضغط على \"عقود الآجلة\" ثم أيقونة \"التاريخ\" مثلما حددت. \n\nبعدها، اذهب إلى علامة \"سجل المعاملات\" واضغط على زر \"تصدير\" في الزاوية العليا اليمنى. \n\nسترى علامة التصدير، وهنا: \n\nاختر: كل الوقت \nيمكنك تصدير سنة بسنة، مثلاً إذا تبغى تصدر بيانات 3 سنوات \nممكن تصدر من 2020-01-01 إلى 2020-12-31 \nلين توصل للسنة اللي تبيها",
     "topic": "Futures Trading",
     "id": 1765164170465,
@@ -1607,7 +2563,10 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "5063560f-3b9a-4e9b-a49c-aff2902b832c"
   },
   {
     "title": "System Feedback 系统反馈 - CN",
@@ -1655,7 +2614,7 @@
   {
     "title": "System Feedback - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/System_Feedback_-_AR.png",
+    "image": "screenshots/1791902671012_System-Feedback-AR.jpg",
     "text": "لإرسال ملاحظات النظام من تطبيق Binance للهاتف المحمول، يرجى اتباع الخطوات الموضحة في الصورة:\n\n1 -) انقر على الصفحة الرئيسية\n2 -) انقر على القائمة\n3 -) انقر على الإعدادات\n4 -) انقر على علامة التبويب ''المساعدة والدعم''\n5 -) انقر على ''ملاحظات النظام''\n6 -) انقر على ''إرسال''\n7 -) انتظر حتى تظهر إشعار النجاح.\n\nبعد أن تتبع الخطوات المتعلقة التي قدمتها أيضاً في الصورة، يرجى إخباري لأتمكن من إعلام الفريق الفني بأنك اكملت ملاحظات النظام.",
     "topic": "General",
     "id": 1765164170468,
@@ -1671,12 +2630,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "671efa0a-576f-4e15-bf26-bbebd6ca8e08"
   },
   {
     "title": "PNL Analysis Page (To see Fees) - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/PNL_Analysis_Page_(To_see_Fees)_-_AR.png",
+    "image": "screenshots/1791902671015_PNL-Analysis-Page-To-see-Fees-AR.jpg",
     "text": "لرؤية تحليل الربح والخسارة الخاص بعقود المستقبلية للتحقق من الرسوم الخاصة بك، يرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) اضغط على \"الأصول\".\n2 -) اضغط على \"عقود المستقبل\".\n3 -) اختر \"USDⓈ-M\".\n4 -) اضغط على زر \"الربح والخسارة المحققة اليوم\" لفتح صفحة تحليل الربح والخسارة لعقود المستقبل.\n5 -) انتقل إلى علامة التبويب \"التمويل والمعاملات\".\n6 -) قم بتمكين \"عرض رسوم المعاملات\".\n\n--ماذا سترى:**\nإجمالي رسوم المعاملات ورسوم التمويل التي دفعتها/استلمتها.\n\n**نصيحة:**\nاستخدم فلتر التاريخ لاختيار نطاق مخصص أو الخيارات السريعة: 7 أيام، 1 شهر، 3 أشهر، أو 1 سنة.",
     "topic": "Futures Trading",
     "id": 1765164170469,
@@ -1692,12 +2654,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "758cfe17-c80a-4cde-8d26-91f14e08cf53"
   },
   {
     "title": "BNB Discount (Futures,Margin Interest) - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/BNB_Discount_(Futures%2CMargin_Interest)_-_AR.png",
+    "image": "screenshots/1791902671021_BNB-Discount-Futures-Margin-Interest-AR.jpg",
     "text": "لتمكين خصم BNB على العقود الآجلة أو فوائد الهامش، يُرجى اتباع الخطوات المعروضة في لقطة الشاشة:\n\n1 -) انقر على الصفحة الرئيسية\n\n2 -) انقر على القائمة\n\n3 -) انقر على الإعدادات\n\n4 -) انقر على زر \"استخدام BNB\"\n\n5 -) يمكنك تمكين خصم BNB على العقود الآجلة وفوائد الهامش في هذه الصفحة.",
     "topic": "General",
     "id": 1765164170470,
@@ -1713,12 +2678,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "eba3aa6a-6701-43f2-a5eb-c4b10b8ab239"
   },
   {
     "title": "Transfer From Futures USDS-M To Spot Wallet - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Futures_USDS-M_To_Spot_Wallet_-_AR_.png",
+    "image": "screenshots/1791902671009_Transfer-From-Futures-USDS-M-To-Spot-Wallet-AR.jpg",
     "text": "لتحويل الأصول من محفظة العقود الآجلة USDS-M إلى محفظة التداول الفوري، يرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على \"الأصول\"\n\n2 -) انقر على \"العقود الآجلة\"\n\n3 -) انقر على \"زر USDS-M\"\n\n4 -) انقر على \"تحويل\"\n\n5 -) انقر على الأسهم لتغيير المسار، المسار الصحيح كما في الخطوة التالية:\n\n6 -) المسار الصحيح:\n\nمن: USDS-M العقود الآجلة\nإلى: محفظة التداول الفوري\n\n7 -) اختر الأصل/العملة\n\nأدخل كمية الأصول التي ترغب في تحويلها وبارك التحويل.\n\nهكذا تقوم بإجراء التحويلات من USDS-M العقود الآجلة إلى محفظة التداول الفوري.",
     "topic": "Futures Trading",
     "id": 1765164170471,
@@ -1734,12 +2702,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "d587bcf3-c3d1-4714-9e7c-90437fdf799e"
   },
   {
     "title": "Change Button Settings in Positions - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Button_Settings_in_Positions_-_AR.png",
+    "image": "screenshots/1791902671029_Change-Button-Settings-in-Positions-AR.jpg",
     "text": "لتغيير وضع الأصول، يرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على \"العقود الآجلة\"\n\n2 -) انقر على أيقونة \"...\" في الزاوية العلوية اليمنى.\n\n3 -) انقر على \"التفضيلات\" من القائمة المنبثقة.\n\n4 -) انقر على إعدادات الأزرار في الصفقات المفتوحة.\n\n5 -) في هذه الصفحة يمكنك تغيير إعدادات الأزرار الخاصة بك على الصفقات المفتوحة. يمكنك تفعيل أو تعطيل الخيارات التي تفضلها.",
     "topic": "Futures Trading",
     "id": 1765164170472,
@@ -1755,12 +2726,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "990afe65-0a17-4461-b12b-4fc1435f2556"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Change_Position_Mode_(One-Way%2CHedge)_-_AR.png",
+    "image": "screenshots/1791902671007_Change-Position-Mode-One-Way-Hedge-AR.jpg",
     "text": "1 -) انقر على \"عقود المستقبل\".\n\n2 -) انقر على أيقونة ''...'' في الزاوية العليا اليمنى.\n\n3 -) انقر على ''التفضيلات'' في القائمة المنبثقة.\n\n4 -) انقر على زر \"وضعية المركز\".\n\n5 -) في هذه الصفحة يمكنك تغيير وضعية مركزك.",
     "topic": "Futures Trading",
     "id": 1765164170473,
@@ -1776,12 +2750,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "b862baba-1ff2-4b70-9d59-8bde9edc7c0b"
   },
   {
     "title": "Transfer From Spot Wallet to USDS-M Futures - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Spot_Wallet_to_USDS-M_Futures_-_AR.png",
+    "image": "screenshots/1791902671017_Transfer-From-Spot-Wallet-to-USDS-M-Futures-AR.jpg",
     "text": "لتحويل الأصول من محفظة \"سبوت\" إلى محفظة \"فيوتشرز\"، يُرجى اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) اضغط على \"الأصول\"\n\n2 -) اضغط على \"فيوتشرز\"\n\n3 -) اضغط على زر \"USDS-M\"\n\n4 -) اضغط على \"تحويل\"\n\n5 -) تأكد أن المسار هو:\n\nمن: محفظة سبوت\nإلى: محفظة فيوتشرز USDS-M\n\n6 -) اختر الأصل/العملة\n\nادخل كمية الأصول التي ترغب في تحويلها ووافق على عملية التحويل.\n\nهذه هي الطريقة التي يمكنك من خلالها إجراء التحويلات من محفظة \"سبوت\" إلى محفظة \"فيوتشرز\" USDS-M.",
     "topic": "Futures Trading",
     "id": 1765164170474,
@@ -1797,12 +2774,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "260845c5-1094-48f6-9aee-05604f8a2e27"
   },
   {
     "title": "Transfer From Isolated Margin to Spot Wallet - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Isolated_Margin_to_Spot_Wallet_-_AR.png",
+    "image": "screenshots/1791902671020_Transfer-From-Isolated-Margin-to-Spot-Wallet-AR.jpg",
     "text": "لنقل الأصول من الاقتراض المعزول إلى المحفظة الفورية، يرجى اتباع الخطوات في لقطة الشاشة أعلاه:\n\n1 -) انقر على \"الأصول\"\n2 -) انقر على \"الفورية\"\n3 -) انقر على \"الاقتراض المعزول\"\n4 -) انقر على \"نقل\"\n5 -) انقر على الأسهم لتغيير المسار، المسار الصحيح هو:\n\nمن: الاقتراض المعزول\nإلى: المحفظة الفورية\n\n6 -) اختر الزوج الذي ترغب في النقل إليه عن طريق النقر على اسم الزوج.\n\n7 -) انقر على الأصل الذي ترغب في نقله\n\nحدد المبلغ وقدم تأكيد النقل.\n\nهذه هي طريقة النقل من الاقتراض المعزول إلى المحفظة الفورية.",
     "topic": "Margin Trading",
     "id": 1765164170475,
@@ -1818,12 +2798,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "636be33d-9b93-4cdb-9452-6fa4f8f5bbe5"
   },
   {
     "title": "Futures Notification for TP/SL/Funding - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Futures_Notification_for_TP%3ASL%3AFunding_-_AR.png",
+    "image": "screenshots/1791902671001_Futures-Notification-for-TP-SL-Funding-AR.jpg",
     "text": "لضبط إعدادات إشعارات العقود الآجلة، يرجى اتباع الخطوات الموضحة في لقطات الشاشة:\n\n1 -) انقر على \"العقود الآجلة\"\n\n2 -) انقر على أيقونة \"...\" في الزاوية العلوية اليمنى.\n\n3 -) انقر على \"التفضيلات\" في القائمة المنبثقة.\n\n4 -) انقر على زر \"الإشعارات\"\n\n5 -) في هذه الصفحة يمكنك تفعيل أو تعطيل الإشعارات لـ:\n\n**تنبيه TP/SL:** استقبل إشعارًا عند تفعيل أي مستوى جني ربح أو وقف خسارة. الحد الأقصى: 25 إشعارًا في اليوم.\n\n**تنبيه رسوم التمويل:** حدد حدًا لمعدل التمويل؛ ستتلقى تنبيهًا إذا تجاوز معدل التمويل المتوقع لأي مركز مفتوح هذا النسبة.\n\n**تداول العقود الآجلة:** احصل على إشعار عند تنفيذ أمر عقود آجلة.\n\n**تنبيه استدعاء الهامش:** الحد الافتراضي هو 80%. اضغط على \"تحرير\" لتعيين نسبة هامش مختلفة؛ ستتلقى إشعارًا عندما يصل مركزك إلى هذه النسبة.",
     "topic": "Futures Trading",
     "id": 1765164170476,
@@ -1839,12 +2822,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "64e743ce-3b11-4d10-ab06-0f8d71fc6d2f"
   },
   {
     "title": "Loan Repayment (Borrowed Coin) - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Loan_Repayment_(Borrowed_Coin)_-_AR.png",
+    "image": "screenshots/1791902671035_Loan-Repayment-Borrowed-Coin-AR.jpg",
     "text": "لذا إذا كنت ترغب في سداد قرض جاري باستخدام العملة المقترضة، يرجى اتباع الخطوات في لقطة الشاشة:\n\n1 -) انقر على \"الطلبات الجارية\" في صفحة طلبات القرض\n2 -) انقر على \"سداد\"\n3 -) انقر على \"العملة المقترضة\" في القائمة العلوية\n\nأدخل المبلغ الذي ترغب في سداده وسترى نسبة القرض إلى القيمة بعد السداد وسيرجع مبلغ الضمان بعد السداد ضمن التفاصيل أيضًا.\n\nهذه هي الطريقة التي تسدد بها قرضًا جاريًا باستخدام العملة المقترضة.",
     "topic": "LOAN",
     "id": 1765164170477,
@@ -1860,12 +2846,15 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "5af77b62-6403-4bf6-aee1-c19fff3dc93b"
   },
   {
     "title": "LOAN HISTORY (ONGOING LOANS) - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/LOAN_HISTORY_(ONGOING_LOANS)_-_AR.png",
+    "image": "screenshots/1791902671040_LOAN-HISTORY-ONGOING-LOANS-AR.jpg",
     "text": "للاطلاع على طلبات القروض الجارية الخاصة بك أو تاريخ قرضك، يمكنك اتباع الخطوات الموضحة في لقطة الشاشة:\n\n1 -) انقر على صفحة الكسب\n\n2 -) انقر على زر الاقتراض\n\n3 -) ثم انقر على رمز التاريخ في الأعلى\n\nفي تلك الصفحة، يمكنك رؤية قروضك الجارية وتاريخ قروضك.\n\nLoans history - on going",
     "topic": "LOAN",
     "id": 1765164170478,
@@ -1881,7 +2870,10 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "65cf048d-c467-439e-a0c7-5932f1e6584e"
   },
   {
     "title": "Margin Interest History - EN",
@@ -2089,7 +3081,7 @@
   {
     "title": "Transfer From Cross Margin To Spot - AR",
     "language": "Arabic",
-    "image": "https://raw.githubusercontent.com/GorkemTikic/support-screenshot-library/main/images/Transfer_From_Cross_Margin_To_Spot_-_AR.png",
+    "image": "screenshots/1791902671010_Transfer-From-Cross-Margin-To-Spot-AR.jpg",
     "text": "1 -) اضغط على الأصول  \n2 -) اضغط على السوق  \n3 -) اضغط على تداول المشتقات المتبادلة  \n4 -) اضغط على التحويل  \n\nتأكد إن المعايير مثل التالية:  \n\nمن: الهامش المتبادل  \nإلى: محفظة فورية \n\nاختر عملتك، والمبلغ، ووافق على التحويل.  \n\nمع هالخطوات، تقدر تنقل كل أصولك من الهامش المتبادَل إلى محفظة فورية",
     "topic": "Margin Trading",
     "id": 1765164170488,
@@ -2105,7 +3097,10 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-13T14:44:30.994Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "247cf6c9-81d8-47f1-8b9d-f4aa9ad1b0e3"
   },
   {
     "title": "How To Clear Negative Balance - Futures (EN)",
