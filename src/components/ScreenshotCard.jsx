@@ -7,7 +7,7 @@ import { logEvent } from '../services/analytics';
 import { copyPlainText } from '../utils/clipboard';
 import { resolveImageUrl } from '../utils/imageUtils';
 import { loadScreenshotImage, rememberScreenshotImage } from '../utils/screenshotImageCache';
-import { formatDate, getLangCode } from '../utils/langUtils';
+import { formatUpdatedAt, getLangCode } from '../utils/langUtils';
 import { AppIcon } from './AppIcon';
 import { ScreenshotCopyButton } from './ScreenshotCopyButton';
 
@@ -100,7 +100,7 @@ export function ScreenshotCard({ item, onInspect, search = '' }) {
                 <div className="owner-row">
                     <span className="owner-avatar" style={avatarStyle}>{ownerInitials(item.owner)}</span>
                     <span className="owner-copy"><small>Prepared by</small><strong>{item.owner || 'Unassigned'}</strong></span>
-                    <span className="card-updated"><AppIcon name="Clock3" size={11} /> {item.updatedAt || formatDate(item.id, item.language)}</span>
+                    <span className="card-updated"><AppIcon name="Clock3" size={11} /> {formatUpdatedAt(item.updatedAt, item.id, item.language)}</span>
                 </div>
 
                 {hasTr && (

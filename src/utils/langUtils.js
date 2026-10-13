@@ -31,3 +31,14 @@ export const formatDate = (timestamp, language) => {
 
     return `${Y}-${M}-${D} ${h}:${m} UTC+${tzOffset}`;
 };
+
+// Content Studio stores updatedAt as an ISO timestamp; older records already hold the display form
+// ("2026-09-02 19:36 UTC+0"). Show both the same way, falling back to the id timestamp.
+export const formatUpdatedAt = (updatedAt, id, language) => {
+    const value = String(updatedAt || '');
+    if (/^\d{4}-\d{2}-\d{2}T/.test(value)) {
+        const parsed = Date.parse(value);
+        if (!isNaN(parsed)) return formatDate(parsed, language);
+    }
+    return value || formatDate(id, language);
+};
