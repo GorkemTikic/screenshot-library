@@ -1,5 +1,1330 @@
 [
   {
+    "title": "ADL Indicator/Explanation 自动减仓指示灯说明 - CN",
+    "text": "截图中的指示灯代表您的仓位在**自动减仓 (ADL)** 队列中的排序。ADL 的运作方式如下：\n\n* **什么是 ADL？** 当多空仓位之间的盈亏差额无法由**风险保障基金**弥补时，系统会自动对盈利最高的仓位进行减仓，以控制市场风险。\n* **流程：** 这一过程也称为**对手方强平**。与普通强平不同，您可以保留仓位当前的盈利，并可立即重新入场。\n* **指示灯：** 您与 ADL 的接近程度由四格指示灯显示；四个红色感叹号表示您位于队列前端。\n* **极少发生：** 即使指示灯全部亮起，ADL 也极少发生。若指示灯全部亮起，在发生强平事件时，您的仓位可能会被减仓。\n* **如何避免：** 如需降低 ADL 风险，您可以减少仓位规模，或平仓后重新开仓。\n\n更多详情请参阅官方文章：\n\n* [币安自动减仓常见问题](https://www.binance.com/zh-CN/support/faq/360033525471)\n\n如果您还有其他问题，欢迎随时告诉我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086046_ADL-Indicator-Explanation-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086046,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "2d3fe8d2-804f-46d4-806a-5cd10e53964b"
+  },
+  {
+    "title": "How To Change TP/SL to Stop-Limit 止盈止损改为限价止盈止损 - CN",
+    "text": "如需在币安合约中将**止盈/止损**订单改为**限价止盈止损**（限价）订单，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 选择【持有仓位】标签。\n\n**3 -)** 在相应仓位上点击【止盈/止损】。\n\n**4 -)** 打开【止盈/止损】标签。默认为**止盈止损市价单**，【止盈】和【止损】行会显示触发价格类型（【最新价】或【标记】）。\n\n**5 -)** 勾选【止盈】和/或【止损】旁边的【限价单】复选框。订单将变为**止盈止损限价单**，并显示【止盈限价】和【止损限价】价格栏。请输入限价（或点击【最优价】使用最优买卖价），然后设置【数量】并点击【确认】。\n\n触发价格类型可设置为**最新价格**或**标记价格**。在行情快速变化时，若止损触发价设置得过于接近强平价，订单可能无法执行。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086047_How-To-Change-TP-SL-to-Stop-Limit-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086047,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "f36380f1-9a6e-48e8-bd7b-bc2e4d8d6aca"
+  },
+  {
+    "title": "Margin Interest History 杠杆利息历史 - CN",
+    "text": "如需查看杠杆利息历史，请按照以下步骤操作：\n\n**1 -)** 打开【交易】页面。\n\n**2 -)** 开启【杠杆】交易。\n\n**3 -)** 点击【历史记录】图标。\n\n**4 -)** 在【交易】菜单中选择相应账户，例如【全仓杠杆】或【逐仓杠杆】。\n\n**5 -)** 打开【负债历史】。\n\n**6 -)** 选择【利息】。\n\n您可以使用【币种】和【类型】筛选条件查找所需的利息记录。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086048_Margin-Interest-History-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086048,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "ec0bc5e0-3953-4c95-9ac2-4a1e6420935e"
+  },
+  {
+    "title": "How To Change Order Size/Unit Preference to Initial Margin 将订单单位偏好改为初始保证金 - CN",
+    "text": "如需将下单数量的输入方式改为初始保证金，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击【数量】栏旁边的单位选择器，例如【BTC】或【USDT】。\n\n**3 -)** 选择【BTC】即以 BTC 输入和显示订单数量，或选择【USDT】使用 USDT。\n\n**4 -)** 在【USDT】偏好下，选择【订单金额】以输入订单的名义价值。\n\n**5 -)** 选择【初始保证金】以输入您希望分配给该仓位的保证金金额。\n\n所选单位将应用于下单面板。下单前，请检查订单详情、杠杆和可用余额。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086049_How-To-Change-Order-Size-Unit-Preference-to-Initial-Margin-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086049,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a88874dc-d903-42b0-861a-8fd90e9f8595"
+  },
+  {
+    "title": "Futures Transaction History (Export) 合约资金流水（导出） - CN",
+    "text": "如需导出您的合约资金流水，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击【历史记录】图标。\n\n**3 -)** 选择【资金流水】标签。\n\n**4 -)** 点击右上角的【导出】图标。\n\n**5 -)** 选择所需的【时间范围】，并在【文件格式】下选择 **PDF**、**Excel** 或 **CSV**。\n\n**6 -)** 如需使用特定日期范围，请选择【自定义】，选择开始和结束日期，然后点击【确认】。\n\n**7 -)** 点击【生成】创建导出文件。\n\n单次导出最长可选择 12 个月的时间跨度。如需更长时间的历史记录，请按不同时间段分别导出。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086050_Futures-Transaction-History-Export-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086050,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "e1ce6836-bb61-4ad1-aa97-5755b4faffb7"
+  },
+  {
+    "title": "Futures Swap Button (BNFCR) 合约兑换按钮（BNFCR） - CN",
+    "text": "如需在 U本位合约账户内兑换符合条件的资产，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【合约】。\n\n**3 -)** 选择【U本位】。\n\n**4 -)** 点击【兑换】。\n\n**5 -)** 在【到】下选择您希望收到的资产。\n\n**6 -)** 在【从】下选择您希望兑换的资产。\n\n**7 -)** 输入数量，查看实时汇率，然后点击【确认兑换】。\n\n确认前，兑换页面会显示可兑换的资产、汇率和最大可兑换金额。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086051_Futures-Swap-Button-BNFCR-BNFCR-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086051,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "2075a3db-694c-4c7b-a237-7119f5ef820e"
+  },
+  {
+    "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率） - CN",
+    "text": "如需管理合约通知，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 选择【偏好设置】。\n\n**4 -)** 打开【通知】标签。\n\n**5 -)** 点击【交易通知】。\n\n**6 -)** 使用【止盈/止损触发价】、【资金费用触发值】和【合约交易】的开关。点击【资金费用触发值】或【追加保证金通知】旁边的【编辑】可调整相应阈值。\n\nApp 中显示的【止盈/止损触发价】通知上限为每天最多 25 条。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086052_Futures-Notification-for-TP-SL-Funding-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086052,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "e5b1e050-8b2b-476c-b3ff-e9ca3b91fd5a"
+  },
+  {
+    "title": "Funding Fee History 资金费用历史 - CN",
+    "text": "如需查看您的合约资金费用历史，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击委托区域上方的【历史记录】图标。\n\n**3 -)** 滑动标签栏并选择【资金费用】。\n\n您可以使用筛选条件按资产或时间段缩小记录范围。该页面会显示所选合约账户已支付和已收取的资金费用。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086053_Funding-Fee-History-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086053,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "200277e1-c539-402c-b8ba-df2ac88c628f"
+  },
+  {
+    "title": "DeviceID 设备ID - CN",
+    "text": "如需查找并复制您的设备 ID，请按照以下步骤操作：\n\n**1 -)** 打开【首页】。\n\n**2 -)** 点击左上角的【个人中心/菜单】图标。\n\n**3 -)** 点击右上角的【设置】图标。\n\n**4 -)** 向下滑动并选择【关于我们】。\n\n**5 -)** 快速点击币安标志五次。\n\n**6 -)** 出现**设备 ID** 后，点击旁边的【复制】图标。\n\n请仅在客服为排查问题而要求时，通过相应的客服对话提供复制的设备 ID。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086054_DeviceID-ID-CN.jpg",
+    "topic": "General",
+    "language": "Chinese",
+    "id": 1792257086054,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "b5ccb613-5526-4191-be30-10469f19671e"
+  },
+  {
+    "title": "Cooling-Off Period 合约冷静期 - CN",
+    "text": "如需开启合约交易冷静期，请按照以下步骤操作：\n\n**1 -)** 在【合约】交易页面点击【...】图标。\n\n**2 -)** 选择【冷静期】。\n\n**3 -)** 开启【关闭合约交易功能】。\n\n**4 -)** 选择【1天】、【1周】、【1个月】或【无限期】。\n\n**5 -)** 点击【确认】。\n\n确认前请阅读 App 中显示的提示。开启此设置前，您需要先撤销所有当前委托；在所选期间内将无法进行合约交易。\n\n详情请参阅[什么是冷静期功能以及如何使用？](https://www.binance.com/zh-CN/support/faq/detail/ad7fd07f63a64954a6d6e9257d16adcc)。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086055_Cooling-Off-Period-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086055,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "3faf57c6-2314-4974-baea-3a53c1117b0f"
+  },
+  {
+    "title": "Clear Caches 清除缓存 - CN",
+    "text": "如需清除币安 App 缓存，请按照以下步骤操作：\n\n**1 -)** 打开【首页】。\n\n**2 -)** 点击左上角的【个人中心/菜单】图标。\n\n**3 -)** 点击右上角的【设置】图标。\n\n**4 -)** 选择【清理缓存】。\n\n**5 -)** 缓存清除后，重新打开 App。\n\n清除缓存只会删除 App 的临时数据，不会影响您的账户余额或资产。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086056_Clear-Caches-CN.jpg",
+    "topic": "General",
+    "language": "Chinese",
+    "id": 1792257086056,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "96cee774-6af7-4b13-b578-8418944e1701"
+  },
+  {
+    "title": "Check For Updates 检查更新 - CN",
+    "text": "如需检查币安 App 是否有新版本，请按照以下步骤操作：\n\n**1 -)** 打开【首页】。\n\n**2 -)** 点击左上角的【个人中心/菜单】图标。\n\n**3 -)** 点击右上角的【设置】图标。\n\n**4 -)** 选择【检查更新】。\n\n该页面会显示您当前的 App 版本；如有可用更新，会显示更新选项。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086057_Check-For-Updates-CN.jpg",
+    "topic": "General",
+    "language": "Chinese",
+    "id": 1792257086057,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "809d4659-f24d-45d6-84c4-6981a2f97c28"
+  },
+  {
+    "title": "Change Position Mode (One-Way,Hedge) 仓位模式设置 - CN",
+    "text": "如需更改合约仓位模式，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 选择【偏好设置】。\n\n**4 -)** 点击【仓位模式】。\n\n**5 -)** 选择【单向持仓】或【双向持仓】。\n\n当您在 U本位或币本位合约中有持仓或当前委托时，无法更改仓位模式。此设置同时适用于 U本位和币本位合约。\n\n更多信息请参阅[什么是双向持仓模式以及如何使用？](https://www.binance.com/zh-CN/support/faq/detail/360041513552)。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086058_Change-Position-Mode-One-Way-Hedge-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086058,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "dba495dd-45be-4daf-9a67-752594f91bdf"
+  },
+  {
+    "title": "Buy/Sell Tab Setting 买入/卖出标签设置 - CN",
+    "text": "如需更改合约交易页面的买入/卖出标签布局，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 选择【偏好设置】。\n\n**4 -)** 打开【布局】标签。\n\n**5 -)** 选择【交易面板】。\n\n**6 -)** 在【买入/卖出标签设置】下，选择【显示买入/卖出标签】或【隐藏买入/卖出标签】。\n\n所选选项会改变交易面板中买入/卖出控件的显示方式。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086059_Buy-Sell-Tab-Setting-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086059,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "f13c5607-1610-4e61-aa84-cdfe0bb4cfa7"
+  },
+  {
+    "title": "Transfer From Futures USDⓈ-M To Spot Wallet 从U本位合约划转至现货账户 - CN",
+    "text": "如需将资产从 U本位合约划转至现货账户，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【合约】。\n\n**3 -)** 选择【U本位】。\n\n**4 -)** 点击【划转】。\n\n**5 -)** 将【从】设为【U本位合约】，将【到】设为【现货】。\n\n**6 -)** 选择资产，输入数量，然后点击【确认划转】。\n\n确认划转前，请检查页面显示的可用余额。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086060_Transfer-From-Futures-USDS-M-To-Spot-Wallet-U-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086060,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "fbb9de4d-c683-4487-a0cf-369bc749dbaf"
+  },
+  {
+    "title": "Transfer From Cross Margin To Spot 从全仓杠杆划转至现货账户 - CN",
+    "text": "如需将资产从全仓杠杆账户划转至现货账户，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【现货】。\n\n**3 -)** 打开【全仓杠杆】。\n\n**4 -)** 点击【划转】。\n\n**5 -)** 将【从】设为【全仓杠杆】，将【到】设为【现货】。\n\n**6 -)** 选择资产，输入数量，然后点击【确认划转】。\n\n可划转的金额取决于您全仓杠杆账户的状态和风险率。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086061_Transfer-From-Cross-Margin-To-Spot-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086061,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "0b123f09-3629-41c9-baeb-0c570ea4db0a"
+  },
+  {
+    "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
+    "text": "如需提交关于代币或项目的反馈，请按照以下步骤操作：\n\n**1 -)** 打开相应交易对的【合约】交易页面。\n\n**2 -)** 点击交易对旁边的【K线】图标。\n\n**3 -)** 打开【信息】标签。\n\n**4 -)** 点击【提交反馈】。\n\n**5 -)** 选择【产品类型】和【项目代码】，然后填写【建议及反馈的主题】。\n\n**6 -)** 勾选确认框并点击【提交】。\n\n**7 -)** 点击【我的反馈记录】可查看您之前提交的反馈。\n\n请提供清晰、真实的详细信息，以便相关团队理解您的反馈。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086062_Token-Project-Feedback-CN.jpg",
+    "topic": "General",
+    "language": "Chinese",
+    "id": 1792257086062,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "2c16659e-188a-48ef-a1fd-f56b0c825c8e"
+  },
+  {
+    "title": "System Feedback 系统反馈 - CN",
+    "text": "如需通过币安 App 发送系统反馈，请按照以下步骤操作：\n\n**1 -)** 打开【首页】。\n\n**2 -)** 点击左上角的【个人中心/菜单】图标。\n\n**3 -)** 点击右上角的【设置】图标。\n\n**4 -)** 选择【帮助中心】。\n\n**5 -)** 点击【系统反馈】。\n\n**6 -)** 查看提示信息并点击【发送】。\n\n**7 -)** 确认页面出现【成功】提示。\n\n系统反馈会附带 App 错误日志，帮助我们找出问题。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086063_System-Feedback-CN.jpg",
+    "topic": "General",
+    "language": "Chinese",
+    "id": 1792257086063,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "8d32afa3-9416-4d74-aa73-dd36bff32755"
+  },
+  {
+    "title": "SWAP USDT to LDUSDT USDT兑换为LDUSDT - CN",
+    "text": "如需将理财账户中的 USDT 兑换为 U本位合约中的 LDUSDT，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【合约】。\n\n**3 -)** 选择【U本位】。\n\n**4 -)** 在资产列表中点击 **LDUSDT**。\n\n**5 -)** 点击【兑换】。\n\n**6 -)** 如有需要，点击方向图标设置兑换方向。\n\n**7 -)** 确认【从】为【理财 - USDT】，【到】为【U本位合约 - LDUSDT】。输入数量并点击【确认】。\n\n确认前，请检查页面显示的兑换比例和将收到的数量。\n\n更多信息请参阅[什么是 LDUSDT 以及如何将其用作合约交易保证金？](https://www.binance.com/zh-CN/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd)。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086064_SWAP-USDT-to-LDUSDT-USDT-LDUSDT-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086064,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "74648bdc-e7e6-4aa5-a004-a69cb73a2bd7"
+  },
+  {
+    "title": "SWAP LDUSDT to USDT LDUSDT兑换为USDT - CN",
+    "text": "如需将 U本位合约中的 LDUSDT 兑换为理财账户中的 USDT，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【合约】。\n\n**3 -)** 选择【U本位】。\n\n**4 -)** 在资产列表中点击 **LDUSDT**。\n\n**5 -)** 点击【兑换】。\n\n**6 -)** 如有需要，点击方向图标设置兑换方向。\n\n**7 -)** 确认【从】为【U本位合约 - LDUSDT】，【到】为【理财 - USDT】。输入数量并点击【确认】。\n\n确认前，请检查页面显示的兑换比例和将收到的数量。\n\n更多信息请参阅[什么是 LDUSDT 以及如何将其用作合约交易保证金？](https://www.binance.com/zh-CN/support/faq/detail/a3e0a836380f4ef08ea46f9e2e67b4fd)。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086065_SWAP-LDUSDT-to-USDT-LDUSDT-USDT-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086065,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "b0b91dda-6ec4-4dec-9c17-84c9f3d14729"
+  },
+  {
+    "title": "PNL Analysis Page (To see Fees) 盈亏分析页面（查看费用） - CN",
+    "text": "如需在盈亏分析中查看合约资金费用和交易手续费，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【合约】。\n\n**3 -)** 选择【U本位】。\n\n**4 -)** 点击【今日已实现盈亏】。\n\n**5 -)** 打开【资金费用与交易手续费】标签。\n\n**6 -)** 开启【显示交易手续费】。\n\n使用 **7D**、**1M**、**3M**、**1Y** 或【自定义】选择分析显示的时间段。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086066_PNL-Analysis-Page-To-see-Fees-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086066,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "33914dee-84fb-45bc-a0fd-1f711dae73f6"
+  },
+  {
+    "title": "Mark Price Chart 标记价格K线图 - CN",
+    "text": "如需查看合约交易对的标记价格K线图，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击交易对旁边的【K线】图标。\n\n**3 -)** 点击K线图上方的【最新价格】选择器。\n\n**4 -)** 选择【标记价格】。\n\n价格选择器中还包括【最新价格】和【指数价格】。\n\n详情请参阅[合约的最新价格和标记价格有什么区别？](https://www.binance.com/zh-CN/blog/futures/5704082076024731087)。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086067_Mark-Price-Chart-K-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086067,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "9b80e41b-f264-4429-9ba0-7a30a29f0d4d"
+  },
+  {
+    "title": "Transfer From Spot Wallet to USDⓈ-M Futures 从现货账户划转至U本位合约 - CN",
+    "text": "如需将资产从现货账户划转至 U本位合约，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【合约】。\n\n**3 -)** 选择【U本位】。\n\n**4 -)** 点击【划转】。\n\n**5 -)** 将【从】设为【现货】，将【到】设为【U本位合约】。\n\n**6 -)** 选择资产，输入数量，然后点击【确认划转】。\n\n确认划转前，请检查页面显示的可用余额。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086068_Transfer-From-Spot-Wallet-to-USDS-M-Futures-U-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086068,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "b9994bb0-1139-416f-a2d6-4d93fe89c6d5"
+  },
+  {
+    "title": "Transfer From Spot Wallet to Isolated Margin 从现货账户划转至逐仓杠杆 - CN",
+    "text": "如需将资产从现货账户划转至逐仓杠杆账户，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【现货】。\n\n**3 -)** 打开【逐仓杠杆】。\n\n**4 -)** 点击【划转】。\n\n**5 -)** 将【从】设为【现货】，将【到】设为【逐仓杠杆】，并选择相应的杠杆交易对。\n\n**6 -)** 选择资产，输入数量，然后点击【确认划转】。\n\n所选资产需受该逐仓杠杆交易对支持。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086069_Transfer-From-Spot-Wallet-to-Isolated-Margin-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086069,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "06b8e9e7-b2cb-44b9-af74-525877c03cda"
+  },
+  {
+    "title": "Transfer From Spot Wallet to Cross Margin 从现货账户划转至全仓杠杆 - CN",
+    "text": "如需将资产从现货账户划转至全仓杠杆账户，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【现货】。\n\n**3 -)** 打开【全仓杠杆】。\n\n**4 -)** 点击【划转】。\n\n**5 -)** 将【从】设为【现货】，将【到】设为【全仓杠杆】。\n\n**6 -)** 选择资产，输入数量，然后点击【确认划转】。\n\n确认前，请检查划转页面显示的可用余额。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086070_Transfer-From-Spot-Wallet-to-Cross-Margin-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086070,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a989ecc5-0a29-46c7-87a1-83a2f5736742"
+  },
+  {
+    "title": "Transfer From Isolated Margin to Spot Wallet 从逐仓杠杆划转至现货账户 - CN",
+    "text": "如需将资产从逐仓杠杆账户划转至现货账户，请按照以下步骤操作：\n\n**1 -)** 打开【资产】。\n\n**2 -)** 选择【现货】。\n\n**3 -)** 打开【逐仓杠杆】。\n\n**4 -)** 点击【划转】。\n\n**5 -)** 将【从】设为【逐仓杠杆】，选择相应的杠杆交易对，并将【到】设为【现货】。\n\n**6 -)** 选择资产，输入数量，然后点击【确认划转】。\n\n可划转的金额取决于所选逐仓杠杆交易对及其风险率。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086071_Transfer-From-Isolated-Margin-to-Spot-Wallet-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086071,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "7d2dd95a-7c5f-4a01-989b-10c2250ec3d4"
+  },
+  {
+    "title": "BNB Discount (Futures,Margin Interest) BNB折扣（合约、杠杆利息） - CN",
+    "text": "如需管理 BNB 手续费和利息折扣，请按照以下步骤操作：\n\n**1 -)** 打开【首页】。\n\n**2 -)** 点击左上角的【个人中心/菜单】图标。\n\n**3 -)** 点击右上角的【设置】图标。\n\n**4 -)** 选择【使用 BNB】。\n\n**5 -)** 根据您的偏好，使用【使用BNB支付交易手续费】、【使用BNB支付杠杆利息】和【用BNB支付U本位合约手续费】的开关。\n\nApp 中显示的折扣比例可能因产品和账户资格而异。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086072_BNB-Discount-Futures-Margin-Interest-BNB-CN.jpg",
+    "topic": "General",
+    "language": "Chinese",
+    "id": 1792257086072,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "245c6e2a-1204-41cc-9f54-5e65e5aaa599"
+  },
+  {
+    "title": "Setting Up Margin Call Alerts 设置追加保证金通知 - CN",
+    "text": "如需为 U本位合约设置**追加保证金通知**，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 选择【偏好设置】。\n\n**4 -)** 打开【通知】标签。\n\n**5 -)** 点击【交易通知】。\n\n**6 -)** 在【追加保证金通知】下点击【编辑】，选择您希望收到提醒的保证金比率。\n\n您也可以在此页面管理【止盈/止损触发价】、【资金费用触发值】和【合约交易】通知。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086073_Setting-Up-Margin-Call-Alerts-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086073,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "dec51c4c-e501-46f7-a694-c3bb6745c7aa"
+  },
+  {
+    "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
+    "text": "如需更改 U本位合约的**资产模式**，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 选择【偏好设置】。\n\n**4 -)** 点击【资产模式】。\n\n**5 -)** 根据您的偏好，选择【单币保证金模式】或【联合保证金模式】。\n\n更多信息请参阅以下指南：\n\n* [如何切换单币保证金模式和联合保证金模式](https://www.binance.com/zh-CN/support/faq/detail/de2681ac63714c7d84a685967f7c1a53)\n* [什么是联合保证金模式？支持哪些资产？](https://www.binance.com/zh-CN/support/faq/detail/29b45c485d664028b9ca1cdf90b24f6f)\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086074_Change-Asset-Mode-Single-Multi-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086074,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "be366a4f-f72d-436a-89d0-4d5637d1a5d9"
+  },
+  {
+    "title": "How To Enable/Disable AUTO Borrow/Repay 开启/关闭自动借款/还款 - CN",
+    "text": "如需开启或关闭杠杆交易的**自动借款**和**自动还款**，请按照以下步骤操作：\n\n**1 -)** 打开【交易】页面。\n\n**2 -)** 使用下单面板顶部的开关开启【杠杆】交易。\n\n**3 -)** 点击下单控件旁边的【自动借款】。\n\n**4 -)** 在【借款/还款】中打开【自动】标签。\n\n**5 -)** 使用开关开启或关闭【自动借款】和【自动还款】。\n\n**自动借款**：下单时如可用余额不足，系统会自动借入所需资产。**自动还款**：交易后获得的资产将自动用于偿还同一杠杆账户中的相关负债。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086075_How-To-Enable-Disable-AUTO-Borrow-Repay-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086075,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "13785ec2-02ff-42b8-bc33-ecff2b873fe8"
+  },
+  {
+    "title": "Enable Portfolio Margin 开启统一账户 - CN",
+    "text": "如需开启**统一账户**，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 在菜单中选择【统一账户】。\n\n**4 -)** 在【账户模式】页面选择【统一账户】。\n\n**5 -)** 点击【切换】并完成确认提示。\n\n切换前，请确保您的账户满足 App 中显示的条件，包括相关产品中没有当前委托、负债或持仓。\n\n更多信息请参阅以下指南：\n\n* [币安统一账户模式介绍](https://www.binance.com/zh-CN/support/faq/detail/bddd924496d74ecd8820a6d95585ccee)\n* [如何在币安账户和交易界面查看统一账户信息](https://www.binance.com/zh-CN/support/faq/detail/07bd62ee3fe24461a623da54fa0f2865)\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086076_Enable-Portfolio-Margin-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086076,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "ad799853-bea8-423b-a084-deb4caea926a"
+  },
+  {
+    "title": "Disable Portfolio Margin (To Classic) 关闭统一账户（回到经典交易账户） - CN",
+    "text": "如需关闭**统一账户**并切换为**经典交易**，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 在菜单中选择【回到经典交易账户】。\n\n**4 -)** 在【账户模式】页面选择【经典交易】。\n\n**5 -)** 点击【切换】并完成确认提示。\n\n切换前，请确保您的账户满足 App 中显示的条件，包括相关产品中没有当前委托、负债或持仓。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086077_Disable-Portfolio-Margin-To-Classic-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086077,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "41978f82-a5f3-4ad8-9ca1-e8b1cb96de7e"
+  },
+  {
+    "title": "Realized PnL on Open Position 持仓中显示已实现盈亏 - CN",
+    "text": "如需在合约持仓中显示**已实现盈亏**，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 选择【持有仓位】标签。\n\n**3 -)** 点击相应持仓的【盈亏】区域。\n\n**4 -)** 开启【在仓位中显示已实现盈亏】开关。\n\n开启后，已实现盈亏信息将显示在相应的仓位卡片上。详情页面还可查看未实现盈亏的计算方式以及已实现盈亏的明细，包括平仓盈亏、资金费用和交易手续费。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086078_Realized-PnL-on-Open-Position-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086078,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "44d1b319-365d-471d-9d0d-95225683633b"
+  },
+  {
+    "title": "TP/SL Before Position 开仓前设置止盈止损 - CN",
+    "text": "如需在开立合约仓位前设置**止盈/止损**订单，请按照以下步骤操作：\n\n**1 -)** 在【合约】交易页面，勾选下单面板中的【止盈/止损】复选框。\n\n**2 -)** 点击【进阶】。\n\n**3 -)** 为【止盈】和【止损】选择触发价格类型。可选项为【标记价格】和【最新价格】。\n\n**4 -)** 输入【止盈】和/或【止损】订单的触发价格。\n\n**5 -)** 如果希望在触发价格达到后以市价单下单，请保持选择【市价】。点击【市价】可切换为【限价】并输入限价。\n\n更多信息请参阅以下指南：\n\n* [币安合约的标记价格与最新价格有什么区别？](https://www.binance.com/zh-CN/blog/futures/5704082076024731087)\n* [什么是币安合约的止损单？](https://www.binance.com/zh-CN/blog/futures/2094497753519691034)\n* [币安合约的订单类型](https://www.binance.com/zh-CN/support/faq/detail/360033779452)\n* [如何在币安合约中下止损和止盈订单](https://www.binance.com/zh-CN/support/faq/detail/360040016512)\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086079_TP-SL-Before-Position-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086079,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "8b83bf89-2ed7-4325-9e08-6e78d7dc95e0"
+  },
+  {
+    "title": "Change Button Settings in Positions 仓位按钮设置 - CN",
+    "text": "如需自定义合约持仓中显示的操作按钮，请按照以下步骤操作：\n\n**1 -)** 打开【合约】交易页面。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 选择【偏好设置】。\n\n**4 -)** 打开【布局】标签。\n\n**5 -)** 选择【持有仓位】。\n\n**6 -)** 在【仓位按钮设置】下，使用开关显示或隐藏【调整杠杆】、【止盈止损】、【平仓】和【市价平仓】等选项。您也可以拖动选项旁边的手柄来调整显示顺序。\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086080_Change-Button-Settings-in-Positions-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086080,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "d0a06b6a-e617-4a76-a08c-f2ebdd6cc9e3"
+  },
+  {
+    "title": "Futures Grid Bot Trade/Transaction History 合约网格机器人成交/资金流水历史 - CN",
+    "text": "如需查看合约网格机器人的*历史成交*或*资金流水*，请按照截图中的步骤操作：\n\n1. 点击底部导航栏的*合约*图标。\n2. 点击顶部菜单的*交易机器人*标签。\n3. 点击交易机器人页面右上角的*⋯（三个点）*菜单。\n4. 在快速访问菜单中选择*订单*。\n5. 在交易机器人订单页面，进入*历史成交*或*资金流水*标签。\n6. 请确保选择正确的市场筛选条件，例如 *U本位*合约，以查看特定机器人的成交记录。\n\n*提示：*定期查看这些标签，可以随时掌握运行中网格机器人的所有成交、手续费和已实现盈利。\n\n如果遇到任何问题，欢迎随时截图发送给我们，以便我们进一步协助您。",
+    "image": "screenshots/1792257086081_Futures-Grid-Bot-Trade-Transaction-History-CN.jpg",
+    "topic": "BOTS",
+    "language": "Chinese",
+    "id": 1792257086081,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "18a8cd65-f802-4590-8286-af92b0155d91"
+  },
+  {
+    "title": "Cross Margin Adjusted Entry Price 全仓杠杆调整后开仓价格 - CN",
+    "text": "首先需要说明的是，全仓杠杆仓位页面上显示的开仓价格和盈亏仅供参考，**并不用于计算您每笔交易的实际盈亏。**\n\n仓位页面显示的开仓价格是您杠杆账户中资产的加权平均价格，其中包括转入的资产和买入的资产，因此显示的开仓价格与您各笔交易的实际成交价格并不一致。\n\n其中：\n转入资产的成本按转入时以 USDT 或 BTC 计的市场收盘价计算；\n\n买入/卖出资产的成本为平均成交价格。\n\n对于全仓杠杆，我们还提供调整后开仓价格的查看选项，即计入盈亏后的持仓成本价。交易、转入和转出都会计入成本价计算。买入或卖出的盈亏会摊入保本价格之上或之下，成本价可能为负数，计算方式如下：\n\n调整后开仓价格 =（买入和转入总金额 - 卖出和转出总金额）/ 持仓数量\n\n**您可以在【持有仓位】标签中切换查看开仓价格和调整后开仓价格。**\n\n盈亏按 持仓数量 ×（指数价格 - 开仓价格或调整后开仓价格）计算。由于开仓价格考虑的不仅是交易，这一指标也会反映这一点。\n\n关键在于，显示的开仓价格**不会**影响您交易的实际盈亏。实际盈亏仅根据您开仓和平仓订单的成交价格和数量计算。您看到的开仓价格差异不会影响您的交易结果。\n\n您可以在此阅读更多信息：\nhttps://www.binance.com/zh-CN/support/faq/introduction-to-margin-position-parameters-5410fa1449c5455d81e11955cc432729\n\n请放心，我们的团队已了解此情况，并正在改进该功能。目前，请查看您的订单历史/资金流水，以获取杠杆交易的准确信息。\n",
+    "image": "screenshots/1792257086082_Cross-Margin-Adjusted-Entry-Price-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086082,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "f426a24d-fcd1-438f-8964-8d7fddbd17cb"
+  },
+  {
+    "title": "TOP MOVER Page 市场异动 - CN",
+    "text": "如需进入币安的**市场异动**页面，请按照截图中的步骤操作：\n\n**1 -)** 点击【合约】。\n\n**2 -)** 点击右上角的【...】图标。\n\n**3 -)** 在弹出菜单中选择【数据】标签。\n\n**4 -)** 点击【市场异动】按钮。\n\n**如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！**",
+    "image": "screenshots/1792257086083_TOP-MOVER-Page-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086083,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "b5163a07-1c95-46e4-9c13-5115054e9a4b"
+  },
+  {
+    "title": "Close Open Position on Stopped Grid 已停止网格的持仓平仓 - CN",
+    "text": "如需对已停止的网格机器人的持仓进行平仓，请按照截图中的步骤操作：\n\n**1 -)** 点击【合约】。\n\n**2 -)** 点击【交易机器人】。\n\n**3 -)** 点击【全部订单】。\n\n**4 -)** 在【运行中】标签中，找到状态为【已停止 - 持仓未平】的机器人。\n\n**5 -)** 点击【仓位】按钮。\n\n**6 -)** 您可以选择【平仓】平掉单个仓位，或点击【一键平仓】平掉该已停止网格的所有持仓。\n\n**如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！**",
+    "image": "screenshots/1792257086084_Close-Open-Position-on-Stopped-Grid-CN.jpg",
+    "topic": "BOTS",
+    "language": "Chinese",
+    "id": 1792257086084,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "acec93f7-840b-4d2e-9d04-afd17805e8c0"
+  },
+  {
+    "title": "Loan Repayment (Collateral) 借币还款（抵押物） - CN",
+    "text": "偿还进行中的借币有两种方式：使用**借贷币种**或使用**抵押物**。如需使用抵押物偿还进行中的借币，请按照截图中的步骤操作：\n\n**1 -)** 在借币订单页面点击【进行中订单】。\n\n**2 -)** 点击【还款】。\n\n**3 -)** 在上方菜单中点击【抵押物】。\n\n**4 -)** 输入您希望偿还的金额。\n\n在详情部分，您将看到**还款后质押率**以及还款完成后将退还给您的**抵押物数量**。以上就是使用抵押物偿还进行中借币的方法。\n\n**如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！**",
+    "image": "screenshots/1792257086085_Loan-Repayment-Collateral-CN.jpg",
+    "topic": "LOAN",
+    "language": "Chinese",
+    "id": 1792257086085,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "976d10cd-1485-4c55-9bce-b4a07bbd149b"
+  },
+  {
+    "title": "Loan Repayment (Borrowed Coin) 借币还款（借贷币种） - CN",
+    "text": "偿还进行中的借币有两种方式：使用**借贷币种**或使用**抵押物**。如需使用借贷币种偿还进行中的借币，请按照截图中的步骤操作：\n\n**1 -)** 在借币订单页面点击【进行中订单】。\n\n**2 -)** 点击【还款】。\n\n**3 -)** 在上方菜单中点击【借贷币种】。\n\n**4 -)** 输入您希望偿还的金额。\n\n在详情部分，您将看到**还款后质押率**以及将退还给您的**抵押物数量**。以上就是使用借贷币种偿还进行中借币的方法。\n\n**如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！**",
+    "image": "screenshots/1792257086086_Loan-Repayment-Borrowed-Coin-CN.jpg",
+    "topic": "LOAN",
+    "language": "Chinese",
+    "id": 1792257086086,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "46892dd4-3531-42d2-bada-d0574da65795"
+  },
+  {
+    "title": "What Is Funding Rate? 什么是资金费率？ - CN",
+    "text": "资金费率决定了哪些交易者支付或收取资金费用。\n在币安合约中，**资金费用**会定期交换，以使永续合约价格与现货价格保持一致。通常每 **8 小时**结算一次（UTC 时间 00:00、08:00 和 16:00），但在价格偏离较大时，币安可能会将结算频率调整为每 4、2 或 1 小时一次。\n\n* **正资金费率（期货溢价）：** 当**合约价格 > 现货价格**时出现。此时，持有**多头仓位**的交易者向持有**空头仓位**的交易者支付资金费用。\n* **负资金费率（期货贴水）：** 当**合约价格 < 现货价格**时出现。此时，持有**空头仓位**的交易者向持有**多头仓位**的交易者支付资金费用。\n\n---\n\n更多详情请参阅以下官方文章：\n\n* [什么是币安合约的资金费用？](https://www.binance.com/zh-CN/blog/futures/6595842576313788144)\n* [币安合约资金费率介绍](https://www.binance.com/zh-CN/support/faq/detail/360033525031)\n\n如果您对此还有任何疑问，欢迎随时告诉我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086087_What-Is-Funding-Rate-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086087,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "9396289f-f3d2-499f-8ca4-40caedd73535"
+  },
+  {
+    "title": "Stop-Market & Stop-Limit Differences 市价止损与限价止损的区别 - CN",
+    "text": "市价止损单与限价止损单的区别，取决于市价单和限价单各自的优缺点：\n\n**市价止损单：**\n\n* 达到止损价格时触发市价单。\n* 订单将立即以最优可用价格成交。\n* 实际成交价格可能与止损价格不同，尤其是在行情快速变化时。\n* 它能迅速平仓，帮助您避免较大亏损，但可能产生一定滑点。\n\n**限价止损单：**\n\n* 达到止损价格时触发限价单。\n* 订单只会以您设置的限价或更优价格成交，让您能够控制成交价格。\n* 但如果市场价格偏离您的限价，订单可能无法成交。\n* 它能确保价格，但不能确保成交，在波动剧烈的市场中可能存在风险。\n\n**简而言之：**\n\n* **市价止损 =** 不确保价格（更适合快速离场）。\n* **限价止损 =** 确保价格，但不确保成交（更适合希望控制成交价格时）。\n\n---\n\n如需了解更多订单类型，请参阅以下官方指南：\n\n* [币安合约的订单类型](https://www.binance.com/zh-CN/support/faq/detail/360033779452)\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086088_Stop-Market-Stop-Limit-Differences-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086088,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "8e2244d9-9596-45c9-bade-c6a38bbdc205"
+  },
+  {
+    "title": "How To Add/Remove Margin to Isolated Position 增加/减少保证金（逐仓） - CN",
+    "text": "如需为合约逐仓仓位**增加或减少保证金**，请按照截图中的步骤操作：\n\n**1 -)** 点击保证金数值旁边的 **(+)** 图标。\n\n**2 -)** 选择【增加保证金】或【减少保证金】。\n\n**3 -)** 输入【数量】。\n\n**4 -)** 点击【确认】继续操作。\n\n---\n\n* **当前仓位保证金：** 当前仓位中的保证金金额。\n* **最大可增加：** 您可以增加的最大金额。\n* **调整后参考强平价：** 增加保证金后的**预估**强平价格。\n\n---\n\n如需了解更多，请参阅官方指南：\n\n* [如何在全仓/逐仓保证金模式下调整保证金余额？](https://www.binance.com/zh-CN/support/faq/detail/360038447311)\n\n如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086089_How-To-Add-Remove-Margin-to-Isolated-Position-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086089,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "823b769b-e618-471b-bcc3-2bf734a56dc0"
+  },
+  {
+    "title": "How To Clear Negative Balance - Futures 清算合约负余额 - CN",
+    "text": "如需**清算合约负余额**，请按照截图中的步骤操作：\n\n**1 -)** 如果有仓位因负余额而无法平仓，请点击底部的【清算负余额】按钮。\n\n**2 -)** 您也可以前往**合约账户**部分，点击【清算负余额】按钮开始清算流程。\n\n**3 -)** 如果您没有持仓但仍有负余额，请前往【持有仓位】标签并点击【清算负余额】按钮。\n\n**4 -)** 开始处理后，按钮将变为灰色并显示【负余额处理中】。\n\n---\n\n**重要提示：** 该流程预计在 **15 分钟**内完成。在处理完成前，请**不要向合约账户划转任何资金**。\n\n如果您还有其他问题，欢迎随时告诉我。如果您在任何步骤中遇到问题，请截图发送给我们，我们随时为您提供帮助！",
+    "image": "screenshots/1792257086090_How-To-Clear-Negative-Balance-Futures-CN.jpg",
+    "topic": "Futures Trading",
+    "language": "Chinese",
+    "id": 1792257086090,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "6c84203b-6a15-4dae-a281-8e88dc725fb9"
+  },
+  {
+    "title": "LOAN HISTORY (ONGOING LOANS) 借币订单历史（进行中的借币） - CN",
+    "text": "如需查看进行中的借币订单或借币历史，请按照截图中的步骤操作：\n\n**1 -)** 点击【首页】按钮。\n\n**2 -)** 点击【更多】。\n\n**3 -)** 在该页面向下滑动，在【金融业务】分类下找到【质押借币】。\n\n**4 -)** 点击右上角的**历史记录图标**。\n\n在该页面中，您可以查看进行中的借币以及借币历史。",
+    "image": "screenshots/1792257086091_LOAN-HISTORY-ONGOING-LOANS-CN.jpg",
+    "topic": "LOAN",
+    "language": "Chinese",
+    "id": 1792257086091,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "590b25e6-148a-4570-80a0-add44b11ff26"
+  },
+  {
+    "title": "How to CLOSE POSITION on Isolated Margin 逐仓杠杆平仓 - CN",
+    "text": "以下是进入逐仓杠杆“平仓”菜单的步骤，以及其中两个选项的简要说明。\n\n按照以下步骤进入该功能：\n\n1.  点击 **[交易]**。\n2.  点击 **[杠杆]**。\n3.  点击 **[逐仓]**。\n4.  点击 **[持有仓位]**。\n5.  点击相应交易对旁边的 **[平仓]**。\n\n**接下来，在标签中选择您需要的操作：**\n\n* **选项 A（完全退出）：** 选择 **[平仓]** 标签，选择要 **[结算币种]**，然后点击 **[确认]**。\n\n* **选项 B（仅偿还负债）：** 选择 **[偿还欠债]** 标签并点击 **[确认]**。\n\n---\n\n**A.“平仓”（标签 1）有什么作用？**\n\n简而言之，**平仓**标签是您的“退出策略”。它会完全退出该交易对的逐仓杠杆仓位。\n\n* 🛑 **结算并兑换：** 您可以选择结算币种（例如 USDC 或 DOGE）。系统会偿还未偿负债，并将剩余资产兑换为所选币种。\n* 📦 **划转至现货：** 完成后，所有剩余资产将自动划转至您的现货账户。\n* ⚖️ **限制：** 仓位价值需高于 0.01 USDT 才能使用此功能。\n\n**B.“偿还欠债”（标签 2）有什么作用？**\n\n简而言之，**偿还欠债**标签是“负债清理器”。它只用于偿还您的欠款，不一定会平掉整笔交易。\n\n* 💸 **使用可用资产：** 优先使用您的可用资产偿还负债。\n* 📉 **必要时卖出：** 如果资金不足，系统会下市价单，卖出刚好足以偿还负债的仓位。\n* 🛡️ **缓冲：** 系统会在订单金额上增加约 **1% 的缓冲**，以确保有足够资金完全偿还负债。\n\n如需了解更多详情，建议您查看官方指南：\n\n[如何使用币安杠杆的平仓和还款功能？](https://www.binance.com/zh-CN/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1792257086092_How-to-CLOSE-POSITION-on-Isolated-Margin-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086092,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a50482c4-6f06-4981-9071-ec5fa21c91b9"
+  },
+  {
+    "title": "How to REPAY ALL SYMBOLS on Isolated Margin 逐仓杠杆偿还所有币对 - CN",
+    "text": "以下是进入“偿还所有币对负债”功能的步骤，以及使用该功能时的简要说明。\n\n按照以下步骤进入该功能：\n\n1.  点击 **[交易]**\n2.  点击 **[杠杆]**\n3.  点击 **[逐仓]**\n4.  点击 **[持有仓位]**\n5.  点击 **[偿还所有币对]**\n6.  点击 **[确认]**\n\n---\n\n**“偿还所有币对负债”有什么作用？**\n\n简而言之，**偿还所有币对负债**是您**逐仓杠杆**账户的“一键清零”按钮。它会使用您的可用资产，一次性清偿所有逐仓交易对的全部负债。\n\n点击 **[确认]** 后，系统将执行以下操作：\n\n* 🛑 **暂停操作：** 暂停新订单、划转和手动请求，以避免计算错误。\n* 💸 **使用可用资金：** 优先使用您持有的可用资产直接偿还负债。\n* ⚖️ **清偿剩余负债：** 如果可用资金不足，系统会下市价单卖出资产，以偿还剩余负债。\n* 🛡️ **增加缓冲：** 系统下单金额可能略高于实际负债（约 +1%），以确保有足够资金完全清偿。\n\n**结果：** 您的所有逐仓杠杆交易对都将实现**零负债**。\n\n如需了解更多详情，建议您查看官方指南：\n\n[如何使用币安杠杆的平仓和还款功能？](https://www.binance.com/zh-CN/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1792257086093_How-to-REPAY-ALL-SYMBOLS-on-Isolated-Margin-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086093,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "38023a97-9891-4c2f-93e5-410a831db722"
+  },
+  {
+    "title": "How to CLOSE POSITON on Cross Margin 全仓杠杆平仓 - CN",
+    "text": "以下是进入“平仓”功能的步骤，以及使用该功能时的简要说明。\n\n按照以下步骤进入平仓功能：\n\n1.  点击 **[交易]**\n2.  点击 **[杠杆]**\n3.  点击 **[全仓]**\n4.  点击 **[平仓]**\n5.  选择 **[币种]**（例如 USDT）\n6.  点击 **[确认]**\n\n---\n\n**“平仓”有什么作用？**\n\n简而言之，**平仓**是“单一目标”退出按钮。与卖出所有资产的“全部平仓”不同，此功能只会对**某一个币种**进行变现和清偿负债，其他仓位保持不变。\n\n点击 **[确认]** 后，系统会针对该资产立即执行三项操作：\n\n* 🛑 **暂停操作：** 撤销**该交易对**的待成交订单，以免计算发生变化。\n* 💸 **清偿负债：** 偿还**该币种**的未偿负债。\n* 🔄 **卖出资产：** 将该币种的剩余数量卖出，换成您选择的币种（例如 USDT）。\n\n**结果：** 该币种（例如 DOGE）将实现**零负债**和**零持仓**，而您的其他加密货币（例如 BTC、ETH）保持不变。\n\n> **注意：** 单次申请可平仓的最大金额根据市价单限额计算（通常与现货交易规则的上限类似）。较大的仓位可能需要分多次平仓。\n\n如需了解更多详情，建议您查看官方指南：\n\n[如何使用币安杠杆的平仓和还款功能？](https://www.binance.com/zh-CN/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1792257086094_How-to-CLOSE-POSITON-on-Cross-Margin-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086094,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "b61369d0-b316-40d1-9b61-f2a31d4aa95a"
+  },
+  {
+    "title": "How to CLOSE ALL on Cross Margin 全仓杠杆全部平仓 - CN",
+    "text": "以下是进入“全部平仓”功能的步骤，以及使用该功能时的简要说明。\n\n按照以下步骤进入全部平仓功能：\n\n1.  点击 **[交易]**\n2.  点击 **[杠杆]**\n3.  点击 **[全仓]**\n4.  点击 **[全部平仓]**\n5.  选择 **[币种]**（例如 USDT）\n6.  点击 **[确认]**\n\n---\n\n**“全部平仓”有什么作用？**\n\n简而言之，**全部平仓**是“退出策略”按钮。它让您一键完全变现、还清所有负债并退出市场。\n\n点击 **[确认]** 后，系统会立即执行三项操作：\n\n* 🛑 **暂停操作：** 撤销您所有待成交订单，以免处理过程中计算发生变化。\n* 💸 **清偿负债：** 自动偿还所有未偿还的借款。\n* 🔄 **全部卖出：** 将全仓杠杆账户中的所有剩余资产卖出，换成您选择的币种（例如 USDT）。\n\n**结果：** 您将实现**零负债**和**零持仓**。该账户中不再持有任何加密资产（如 BTC 或 ETH），只保留卖出所得的所选币种（例如 USDT）。\n\n> **注意：** 此功能仅在您的总资产低于 **150,000 USDT** 时可用。如果您的资产超过此金额，需要先手动平掉部分仓位。\n\n如需了解更多详情，建议您查看官方指南：\n\n[如何使用币安杠杆的平仓和还款功能？](https://www.binance.com/zh-CN/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1792257086095_How-to-CLOSE-ALL-on-Cross-Margin-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086095,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "6a08a906-3b6b-43e2-8ecb-3853ef414127"
+  },
+  {
+    "title": "How to REPAY ALL on Cross Margin 全仓杠杆全部偿还 - CN",
+    "text": "以下是进入“全部偿还”功能的步骤，以及使用该功能时的简要说明。\n\n按照以下步骤进入全部偿还功能：\n\n1.  点击 **[交易]**\n\n2.  点击 **[杠杆]**\n\n3.  点击 **[全仓]**\n\n4.  点击 **[全部偿还]**\n\n5.  点击 **[确认]**\n\n---\n\n**“全部偿还”有什么作用？**\n\n简而言之，**全部偿还**是“降低风险”按钮。它可以让您停止支付借款利息，而无需卖出您的加密资产。\n\n点击 **[确认]** 后，系统会立即执行三项操作：\n\n* 🛑 **暂停操作：** 撤销您所有待成交订单，以免处理过程中计算发生变化。\n* 🧮 **计算负债：** 汇总您在所有币种上的全部欠款。\n* 💸 **偿还欠款：** 使用您的可用余额（必要时仅卖出刚好足够的资产）将负债清零。\n\n**结果：** 您将实现**零负债**（不再支付利息），同时**保留您的持仓**（仍持有比特币、以太坊等）。\n\n> **注意：** 此功能仅在您的总负债低于 **150,000 USDT** 时可用。如果欠款超过此金额，需要先手动偿还一部分。\n\n如需了解更多详情，建议您查看官方指南：\n\n[如何使用币安杠杆的平仓和还款功能？](https://www.binance.com/zh-CN/support/faq/detail/0ec778021b7a4f14b1b334f74b764b77)",
+    "image": "screenshots/1792257086096_How-to-REPAY-ALL-on-Cross-Margin-CN.jpg",
+    "topic": "Margin Trading",
+    "language": "Chinese",
+    "id": 1792257086096,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "6278a22e-784c-4715-ae98-d39316224a24"
+  },
+  {
+    "title": "CLOSE CHAT (CSAT) 好评以及问题解决 - CN",
+    "text": "如果我们已经解决了您的所有问题，您可以按照以下简单步骤结束本次聊天：\n\n1️⃣ 点击 ⎋ 按钮关闭聊天。\n2️⃣ 选择“谢谢！问题已解决。关闭聊天”。\n3️⃣ 如果您认为问题已在本次聊天中得到解决，请点击“赞”确认 👍\n4️⃣ 另外，请选择一个表情，分享您对本次体验的评价 😊\n\n💡 小提示：请保存本次聊天编号 #.xxxx，您下次回来时，客服可以从我们中断的地方继续。\n\n📝 关闭聊天表示我们本次的服务已经完成：我们已采取所有必要措施，并提供了最终解决方案。\n祝您和您的家人一切顺利。",
+    "image": "screenshots/1792257086097_CLOSE-CHAT-CSAT-CN.jpg",
+    "topic": "General",
+    "language": "Chinese",
+    "id": 1792257086097,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "445a6743-c55e-4851-9de8-e290f6472d39"
+  },
+  {
+    "title": "Copy Trading History 跟单组合历史 - CN",
+    "text": "1 -) 点击【合约】\n2 -) 点击【跟单】按钮\n3 -) 点击右下角的【跟单】\n4 -) 您可以在此页面查看【进行中】和【已结束】的跟单组合。",
+    "image": "screenshots/1792257086098_Copy-Trading-History-CN.jpg",
+    "topic": "Copy Trading",
+    "language": "Chinese",
+    "id": 1792257086098,
+    "platform": "mobile",
+    "owner": "CS Gorkem T",
+    "ownerKey": "cs-gorkem-t",
+    "ownerSince": "2026-10-17T17:11:26.045Z",
+    "ownerHistory": [
+      {
+        "ownerKey": "cs-gorkem-t",
+        "owner": "CS Gorkem T",
+        "from": "2026-10-17T17:11:26.045Z",
+        "to": null,
+        "reason": "created",
+        "changedBy": "CS Gorkem T"
+      }
+    ],
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "8c03aa8e-fd33-4366-85b5-6a33e67002d0"
+  },
+  {
     "title": "Hide Close All Position 隐藏一键平仓 - CN",
     "text": "隐藏一键平仓按钮设置，请按照截图中的步骤操作：\n\n1）点击右上角的 【…】 \n2）在弹出菜单中点击 【偏好设置】\n3）点击【布局】\n4）在此页面中，您可以选择点击【一键平仓】隐藏即可",
     "text_tr": "",
@@ -2380,7 +3705,7 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1768324962732,
-    "updatedAt": "2026-01-14 01:25 UTC+8",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
     "owner": "CS Enzo",
     "ownerSince": "2026-01-13T17:22:42.732Z",
     "ownerKey": "cs-enzo",
@@ -2393,7 +3718,11 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedBy": "CS Gorkem T",
+    "version": "a6c65256-849d-437c-a20e-bd8e14a9f3a3"
   },
   {
     "title": "Futures Convert 合约兑换 - CN",
@@ -2548,7 +3877,7 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1767726601188,
-    "updatedAt": "2026-01-07 03:10 UTC+8",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
     "owner": "CS Enzo",
     "ownerSince": "2026-01-06T19:10:01.188Z",
     "ownerKey": "cs-enzo",
@@ -2561,7 +3890,11 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedBy": "CS Gorkem T",
+    "version": "1816a281-586a-4dd5-be06-23869dcceb37"
   },
   {
     "title": "Token & Project Feedback 项目方与代币问题反馈 - CN",
@@ -2572,7 +3905,7 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1767721746211,
-    "updatedAt": "2026-01-08 00:06 UTC+8",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
     "owner": "CS Enzo",
     "ownerSince": "2026-01-06T17:49:06.211Z",
     "ownerKey": "cs-enzo",
@@ -2585,7 +3918,11 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedBy": "CS Gorkem T",
+    "version": "75065e8d-429f-4df7-bdfe-cb0a964f721b"
   },
   {
     "title": "EC Max Loss 事件合约最大损失 - CN",
@@ -2770,7 +4107,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a7ebf632-bb30-40f1-900a-b6c3ca615334"
   },
   {
     "title": "Loan Repay (Collateral) 借币还款（抵押物）- CN",
@@ -2781,7 +4123,7 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1766684949490,
-    "updatedAt": "2025-12-31 03:31 UTC+8",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
     "owner": "CS Enzo",
     "ownerSince": "2025-12-25T17:49:09.490Z",
     "ownerKey": "cs-enzo",
@@ -2794,7 +4136,11 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedBy": "CS Gorkem T",
+    "version": "64639347-88eb-405b-b267-f9ef4006ab46"
   },
   {
     "title": "Loan Order History 借币订单历史 - CN",
@@ -2817,7 +4163,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "97e3c0a8-4edd-4535-93df-11897d77ea75"
   },
   {
     "title": "BNB Discount BNB折扣 - CN",
@@ -2840,7 +4191,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "53b44dd5-0f41-47ff-b936-a5381d002119"
   },
   {
     "title": "Add/Remove Margin in Isolated Position 增加/减少保证金（逐仓） - CN",
@@ -2863,7 +4219,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "a13e7988-3e59-48ae-9400-460212f60440"
   },
   {
     "title": "Futures Notification for TP/SL/Funding 合约通知设置（止盈/止损/资金费率）- CN",
@@ -2886,7 +4247,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "fa56db6d-8d0d-4e9f-a168-05e9a306a01f"
   },
   {
     "title": "Webhook Failed Signal Webhook失败信号 - CN",
@@ -2920,7 +4286,7 @@
     "language": "Chinese",
     "platform": "mobile",
     "id": 1766598907265,
-    "updatedAt": "2026-01-07 03:10 UTC+8",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
     "owner": "CS Enzo",
     "ownerSince": "2025-12-24T17:55:07.265Z",
     "ownerKey": "cs-enzo",
@@ -2933,7 +4299,11 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedBy": "CS Gorkem T",
+    "version": "463dd3fb-c609-44ba-bf43-38cf9d7083ca"
   },
   {
     "title": "Change Asset Mode (Single,Multi) 资产模式切换 - CN",
@@ -2956,7 +4326,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "22dd987a-3b19-4eac-8c6b-0a1ebaee8c98"
   },
   {
     "title": "Funding Fee History 资金费用历史 - CN",
@@ -2979,7 +4354,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "79e24eba-bea9-406d-94ab-088b6360dce5"
   },
   {
     "title": "Futures Transaction History (Export) 合约资金流水（导出）- CN",
@@ -3002,7 +4382,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "e2c72243-d658-4985-9150-cb2e42746f35"
   },
   {
     "title": "Copy Trading History - EN",
@@ -3916,7 +5301,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "72e016ad-27b0-4674-b6fa-9f3ba4c17a12"
   },
   {
     "title": "Clear Cache 清除缓存 - CN",
@@ -3938,7 +5328,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "cf5306f1-8ae2-4f16-9498-523010d3b2ce"
   },
   {
     "title": "System Feedback - AR",
@@ -4247,7 +5642,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "e5cec4ad-e5cb-4416-8aad-8d41584f0908"
   },
   {
     "title": "Mark Price Chart 标记价格K线图 - CN",
@@ -4269,7 +5669,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "e902475d-531d-4ac4-b31f-8c9b978a9af9"
   },
   {
     "title": "Change Position Mode (One-Way,Hedge) 仓位模式设置 - CN",
@@ -4293,9 +5698,11 @@
       }
     ],
     "text_tr": "",
-    "updatedAt": "2026-10-17T14:03:47.505Z",
-    "updatedBy": "CS Enzo",
-    "version": "3dbc45a3-7d3d-49a5-9186-21eb140ed854"
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "ea27545f-5e27-4fb4-aee0-6a05ab98cbdc",
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T"
   },
   {
     "title": "How To Add/Remove Margin to Isolated Position - EN",
@@ -4664,7 +6071,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "19c28958-f5ba-4956-aaea-bc1a5f063d5c"
   },
   {
     "title": "EC Index Price History 事件合约指数价格历史数据 - CN",
@@ -4710,7 +6122,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "19e15264-b0b2-4f32-a06f-2d80a49dfa96"
   },
   {
     "title": "好评以及问题解决 - CN",
@@ -4733,7 +6150,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "8ea85971-207b-42f3-b5e2-72267d6005a9"
   },
   {
     "title": "PNL Analysis Page (To see Fees) 盈亏分析页面（查看费用）- CN",
@@ -4756,7 +6178,12 @@
         "reason": "initial-attribution",
         "changedBy": "migration"
       }
-    ]
+    ],
+    "archivedAt": "2026-10-17T17:11:26.045Z",
+    "archivedBy": "CS Gorkem T",
+    "updatedAt": "2026-10-17T17:11:26.045Z",
+    "updatedBy": "CS Gorkem T",
+    "version": "2c73b091-e862-4c2a-91b4-f4942def8f7e"
   },
   {
     "title": "Loan Adjust LTV 借贷订单调整质押率 - CN",
